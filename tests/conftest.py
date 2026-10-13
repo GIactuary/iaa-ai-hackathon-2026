@@ -53,7 +53,7 @@ def reg_data():
 @pytest.fixture(scope="session")
 def count_data():
     """Poisson counts with exposure: log mu = log(exposure) - 2 + 0.4 x1 - 0.3 x2 + region effect."""
-    d, _ = _features(3000, seed=1)
+    d, _ = _features(20000, seed=1)
     rng = np.random.default_rng(1)
     exposure = rng.uniform(0.2, 1.0, len(d))
     reg_eff = d.region.map({"A": -0.3, "B": 0.0, "C": 0.2, "D": 0.4, "Z": 0.0}).values
