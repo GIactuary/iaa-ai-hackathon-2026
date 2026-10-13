@@ -16,6 +16,13 @@ Judging weights in 2025: private-leaderboard accuracy 30%, creative use of AI 30
 - The 1st prize won on the whole package: an accurate model, explained, with AI use shown. The most accurate model placed 3rd.
 - Creative AI use is judged on evidence that AI changed decisions and was challenged, not on volume of AI-written code.
 
+## How we work in 2026 (decided 12 to 13 October, exchanges D1 to D4)
+
+- **Start from the principles, not from 2025 choices.** The 2025 model, its settings and its threshold values are context, not defaults. Data rules, models and evaluations are built from the 2026 data (D1, D4).
+- **One decision at a time.** At each step, propose with evidence, put the choice to the actuary, record the decision in the judgment register and the exchange in the AI log. The notebook then shows how we collaborated to get there.
+- **Models (J-model, decided).** Try several candidate models in each family, keep the strongest in each family, and weight the families. Weighting several models within a family is tested as the challenger on a paired test. Weights are fitted on out-of-fold predictions, and the blend is scored with weights fitted without the rows being scored (D2).
+- **Evaluations are designed with the actuary**, once the data and its intended use are known (D2).
+
 ## Non-negotiable rules
 
 1. **Out of fold or it does not count.** No number is reported from rows a model was fitted on, except when labelled "apparent" next to the honest number.
@@ -36,11 +43,11 @@ Work through these phases in order. Do not start a phase until the previous gate
 | 0. Intake (`/intake`) | `competition/brief.md`: task, metric, deliverables, deadline, rules on external data and AI APIs, data origin | Actuary confirms intended use and business story (J1) |
 | 1. Data understanding | Data dictionary readings, missing-value rules with cross-checks | Every blank classified: absent, zero, estimable or unknown |
 | 2. Screens (`/screen`) | Outlier screen with reasons; train-versus-test evidence check; referral list v0 | Exclusions and referrals decided together by the actuary |
-| 3. Validation design | `src/validation.py`: folds on three seeds, locked 20% hold-out, paired bootstrap | Hold-out written to disk and never read again until phase 7 |
-| 4. Baselines | GLM and boosted tree, each out of fold; incumbent reproduced if one exists | Scores recorded with their spread across seeds |
-| 5. Features and model | Drop-one test for engineered features; forward-built GLM; tree; fixed 50/50 blend | Every kept feature passed on all three seeds |
+| 3. Validation design | `src/validation.py`: folds on three split seeds, a locked hold-out (share and seeds set with the actuary and written down), paired bootstrap | Hold-out written to disk and never read again until phase 7 |
+| 4. Baselines | A simple out-of-fold baseline in each candidate family; incumbent reproduced if one exists | Scores recorded with their spread across seeds |
+| 5. Features and model | Drop-one test for engineered features; candidate models per family, tuned on inner folds only; the strongest per family; family weights fitted out of fold (J-model) | Every kept feature and every model choice passes a paired test on all three seeds |
 | 6. Tail and ranges | Referral rule (size or evidence, plus model disagreement), treatment, prediction ranges | Treatment of referred records decided by the actuary |
-| 7. Validation report | Paired tests, lift, double lift, A/E by segment, hold-out opened once | Independent review (`/review`) run in a fresh context |
+| 7. Validation report | The evaluations designed with the actuary; hold-out opened once | Independent review (`/review`) run in a fresh context |
 | 8. Notebook and submission | Notebook in the template structure, AI log rendered, submission file | Clean rerun matches; actuary submits personally |
 
 Freeze the model by about the halfway point of the window. The second half goes to explanation, the AI log, the judgment register and the write-up.
@@ -52,13 +59,14 @@ Freeze the model by about the halfway point of the window. The second half goes 
 | `competition/` | Drop the competition overview, rules, evaluation page and data description here (markdown or text). `brief.md` is written in phase 0 |
 | `data/raw/` | Competition files exactly as downloaded. Never edit them |
 | `data/work/` | Anything derived. Regenerable |
-| `src/` | The 2026 pipeline. Small modules: `clean.py`, `validation.py`, `glm.py`, `trees.py`, `pipeline.py`, `explain.py`, `evidence.py` |
-| `notebooks/` | The final Kaggle notebook and the script that builds it |
+| `src/` | The 2026 code. Now: `thresholds.py` (refuses undated thresholds), `validation.py`, `evidence.py` (the evidence file), `exhibits.py` (exchange cards, ledger). Data rules, models and evaluations are added as small modules once the data arrives |
+| `notebooks/` | `build_notebook.py` builds the Kaggle notebook from the AI log, the decisions and the evidence file; `--strict` refuses while placeholders remain |
 | `decisions/` | `thresholds.md`, `judgment_register.md`, `exclusions.md` |
 | `ai/` | `ai_log.json`, `prompt_library.md`, `transcript.md` |
 | `docs/` | Playbook, 2025 lessons, filing template, judging notes |
-| `reference/2025/` | The 2025 code: our decided model, the winner reproduction, the 2nd and 3rd prize reruns, the notebook builder. Read to reuse ideas; do not copy data-specific rules |
-| `outputs/` | Scores, exhibits, submission files |
+| `reference/2025/` | The 2025 code and results: our decided model, the winner reproduction, the 2nd and 3rd prize reruns, the 2025 notebook builder. Context only; do not reuse its rules, settings or thresholds |
+| `outputs/` | Scores, exhibits, the evidence file, submission files |
+| `tests/` | Tests for `src/` and the notebook builder: `python -m pytest` |
 
 ## Subagents and commands
 
@@ -70,4 +78,4 @@ Freeze the model by about the halfway point of the window. The second half goes 
 
 ## Environment
 
-Python 3.13 with the versions in `requirements.txt`. On Kaggle, use the preinstalled versions and record them in the notebook's reproducibility section. Use 2 to 4 CPU cores; boosted trees at learning rate 0.01 with a few thousand trees fit in seconds on data of this size.
+Locally: the `.venv` virtual environment (Python 3.14.5, the versions pinned in `requirements.txt`, plus `requirements-dev.txt` for tests); run tools as `.venv/Scripts/python.exe`. On Kaggle, record the preinstalled versions on day one; the notebook's reproducibility section prints the versions it ran with. Use 2 to 4 CPU cores.

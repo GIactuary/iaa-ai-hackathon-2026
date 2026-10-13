@@ -12,4 +12,4 @@ Read everything in `competition/` and list `data/raw/`. Then write `competition/
 7. Leakage paths and inputs known only after the event.
 8. A candidate business story for an insurer and the intended use, with the costlier error.
 
-Then open `decisions/judgment_register.md` with J1 (intended use) and J-external (external data) at "Needs your call", and log this exchange with `/log-decision`. Stop and wait for the actuary.
+Then open `decisions/judgment_register.md` with J1 (intended use) and J-ext (external data) at "Needs your call", and log this exchange with `/log-decision`. Stop and wait for the actuary.

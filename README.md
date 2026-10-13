@@ -5,7 +5,7 @@ A Claude Code workspace for the 2026 IAA AI for Actuaries hackathon. It carries 
 ## Set up (once)
 
 1. Create a private GitHub repo and copy this folder's contents to its root.
-2. `pip install -r requirements.txt` (Python 3.13), or use Kaggle's preinstalled versions.
+2. `python -m venv .venv` and `.venv/Scripts/python.exe -m pip install -r requirements-dev.txt`, or use Kaggle's preinstalled versions.
 3. Open Claude Code at the repo root. It reads `CLAUDE.md` automatically.
 
 ## When the competition opens
@@ -25,4 +25,5 @@ A Claude Code workspace for the 2026 IAA AI for Actuaries hackathon. It carries 
 - `docs/JUDGING_AND_AI_EVIDENCE.md`: criteria, and how to evidence creative AI use.
 - `.claude/`: the `independent-reviewer` and `data-steward` subagents and four slash commands.
 - `ai/`, `decisions/`: the log, prompts, transcript, judgment register, thresholds, exclusions.
-- `reference/2025/`: code and results from 2025.
+- `src/`, `notebooks/`, `tests/`: process code (thresholds, hold-out, evidence file) and the notebook builder.
+- `reference/2025/`: code and results from 2025, for context only.
