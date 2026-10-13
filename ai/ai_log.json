@@ -13,5 +13,20 @@
     "effect": "what changed in the model or the notebook",
     "section": "notebook section where the card is shown"
   },
-  "entries": []
+  "entries": [
+    {
+      "id": "D1",
+      "stage": "Preparation: modelling approach",
+      "role": "Modeller",
+      "proposed_by": "Actuary",
+      "question": "How should the 2026 model be built, given that the 2026 data will differ from 2025?",
+      "ai_answer": "Proposed keeping the 2025 choices (GLM and LightGBM pair at fixed 50/50, hand-set tree settings, ranges by predicted-value fifth, the 2025 threshold values) as defaults that the 2026 data would have to earn.",
+      "challenge": "Actuary: \"The starting point to use 2025 choices, I don't really like.\" \"We can try many models to see which is the strongest for that particular data set, and then pick one from one family and weight it against another family.\"",
+      "test": "",
+      "result": "",
+      "decision": "Actuary: no 2025 choices as starting points; a principle-based route from data to model building, optimisation and evaluation; try many candidate models, choose one per family, weight across families, and optimise for the lowest error while reducing the black box. Whether members within a family are weighted or only the best is kept is still open.",
+      "effect": "The fixed GLM-plus-tree pair stops being the default; the pipeline is to gain candidate models by family, a within-family selection step, and cross-family weights estimated out of fold.",
+      "section": "2"
+    }
+  ]
 }
