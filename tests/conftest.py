@@ -47,7 +47,7 @@ def reg_data():
     rng = np.random.default_rng(0)
     reg_eff = d.region.map({"A": -0.2, "B": 0.0, "C": 0.1, "D": 0.25, "Z": 0.0}).values
     z = 12 + 0.25 * signal / signal.std() + reg_eff + 0.3 * np.log(d["size"] / 1000) + rng.normal(0, 0.1, len(d))
-    return d, np.expm1(z)
+    return d, np.expm1(np.asarray(z))
 
 
 @pytest.fixture(scope="session")
@@ -67,3 +67,16 @@ def thresholds_path(tmp_path):
     p = tmp_path / "thresholds.md"
     p.write_text(THRESHOLDS_MD, encoding="utf-8")
     return p
+
+
+@pytest.fixture(scope="session")
+def reg_run(reg_data, tmp_path_factory):
+    p = tmp_path_factory.mktemp("reg")
+    (p / "thresholds.md").write_text(THRESHOLDS_MD, encoding="utf-8")
+    d, y = reg_data
+    from synthetic_run import run
+    from src.evidence import write_evidence
+    from src.families import LogGaussian
+    from src.thresholds import load_thresholds
+    ev, oof = run(d, y, LogGaussian(), load_thresholds(p / "thresholds.md"), p)
+    return ev, write_evidence(ev, p / "evidence.json", seeds=[42, 1, 2])
