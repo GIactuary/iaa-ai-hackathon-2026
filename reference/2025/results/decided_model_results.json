@@ -1,0 +1,1260 @@
+{
+ "compare": [
+  {
+   "seed": 42,
+   "current": 0.09341766707753099,
+   "proposed": 0.09010596392395315,
+   "gain": 0.003311703153577844,
+   "lo": 0.0011527800882631823,
+   "hi": 0.005723021511893403,
+   "glm": 0.0959423897405714,
+   "gbm": 0.09360163647027452,
+   "lasso": 0.09210690403639803,
+   "lasso_gbm": 0.08919262434536668,
+   "three": 0.08905933446660233
+  },
+  {
+   "seed": 1,
+   "current": 0.09216640150769607,
+   "proposed": 0.08976486716478435,
+   "gain": 0.0024015343429117236,
+   "lo": 0.00026761890608053115,
+   "hi": 0.004729021394460418,
+   "glm": 0.09602070259100054,
+   "gbm": 0.09251819785261947,
+   "lasso": 0.0898556530602882,
+   "lasso_gbm": 0.08783629731529542,
+   "three": 0.08828049740744491
+  },
+  {
+   "seed": 2,
+   "current": 0.09205065385970267,
+   "proposed": 0.09011595478353239,
+   "gain": 0.0019346990761702765,
+   "lo": -0.0005214144360304075,
+   "hi": 0.004512370427642804,
+   "glm": 0.09769091265238047,
+   "gbm": 0.09094160074468555,
+   "lasso": 0.0917135814507813,
+   "lasso_gbm": 0.08799947585694032,
+   "three": 0.08907107944534137
+  }
+ ],
+ "holdout": {
+  "n_fit": 1170,
+  "n_hold": 293,
+  "proposed": {
+   "apparent": 0.06061137553403722,
+   "cv": 0.09163921761531905,
+   "holdout": 0.09010979488828594
+  },
+  "current": {
+   "apparent": 0.04068810480667908,
+   "cv": 0.09335577602502017,
+   "holdout": 0.08998075697430383
+  },
+  "components": {
+   "glm": {
+    "apparent": 0.08606952235303984,
+    "holdout": 0.09624007874572942
+   },
+   "gbm": {
+    "apparent": 0.04186809717634685,
+    "holdout": 0.09140159088683693
+   }
+  },
+  "gain_ci": [
+   -0.004181699069225093,
+   0.0035880767615376575
+  ]
+ },
+ "glm_path": [
+  {
+   "var": "(base rate only)",
+   "cv": 0.3615276234238875
+  },
+  {
+   "var": "TotalSF",
+   "cv": 0.19917050115817359
+  },
+  {
+   "var": "OverallQual",
+   "cv": 0.1488507421606235
+  },
+  {
+   "var": "Neighborhood",
+   "cv": 0.1304566315461763
+  },
+  {
+   "var": "GarageArea",
+   "cv": 0.12364172348899177
+  },
+  {
+   "var": "OverallCond",
+   "cv": 0.1168339649616094
+  },
+  {
+   "var": "YearBuilt",
+   "cv": 0.11234606609004218
+  },
+  {
+   "var": "LotArea",
+   "cv": 0.10797155469583271
+  },
+  {
+   "var": "TotalBath",
+   "cv": 0.1055176345212192
+  },
+  {
+   "var": "MSSubClass",
+   "cv": 0.10308702294854191
+  },
+  {
+   "var": "GrLivArea",
+   "cv": 0.10168273561614458
+  },
+  {
+   "var": "KitchenQual_o",
+   "cv": 0.10022266872149818
+  },
+  {
+   "var": "Fireplaces",
+   "cv": 0.09908946751411406
+  },
+  {
+   "var": "Condition1",
+   "cv": 0.09794199203064527
+  },
+  {
+   "var": "Functional_o",
+   "cv": 0.09686040564249779
+  },
+  {
+   "var": "BsmtFinSF1",
+   "cv": 0.09608494210042784
+  },
+  {
+   "var": "PoolQC_o",
+   "cv": 0.09533055991865681
+  },
+  {
+   "var": "HeatingQC_o",
+   "cv": 0.09477446191866655
+  },
+  {
+   "var": "BsmtExposure_o",
+   "cv": 0.09428171412322696
+  },
+  {
+   "var": "BsmtUnfSF",
+   "cv": 0.09384975182672606
+  },
+  {
+   "var": "MSZoning",
+   "cv": 0.09343832318727245
+  },
+  {
+   "var": "Heating",
+   "cv": 0.09303506425720474
+  },
+  {
+   "var": "Bedroom",
+   "cv": 0.09270430528860725
+  },
+  {
+   "var": "ScreenPorch",
+   "cv": 0.09245075735594842
+  },
+  {
+   "var": "GarageType",
+   "cv": 0.0921596403266803
+  },
+  {
+   "var": "LandContour",
+   "cv": 0.09188651923417286
+  },
+  {
+   "var": "GarageFinish_o",
+   "cv": 0.09164768764334569
+  },
+  {
+   "var": "1stFlrSF",
+   "cv": 0.09145317929537757
+  },
+  {
+   "var": "RemodelAge",
+   "cv": 0.09124913785291962
+  }
+ ],
+ "glm_sel": [
+  "TotalSF",
+  "OverallQual",
+  "Neighborhood",
+  "GarageArea",
+  "OverallCond",
+  "YearBuilt",
+  "LotArea",
+  "TotalBath",
+  "MSSubClass",
+  "GrLivArea",
+  "KitchenQual_o",
+  "Fireplaces",
+  "Condition1",
+  "Functional_o",
+  "BsmtFinSF1",
+  "PoolQC_o",
+  "HeatingQC_o",
+  "BsmtExposure_o",
+  "BsmtUnfSF",
+  "MSZoning",
+  "Heating",
+  "Bedroom",
+  "ScreenPorch",
+  "GarageType",
+  "LandContour",
+  "GarageFinish_o",
+  "1stFlrSF",
+  "RemodelAge"
+ ],
+ "referral": [
+  {
+   "Id": 2022,
+   "Neighborhood": "Edwards",
+   "GrLivArea": 5520,
+   "nbmax": 2520,
+   "ratio": 2.1904761904761907,
+   "gap": 0.7213999103650215,
+   "OverallQual": 10,
+   "YearBuilt": 2008,
+   "SaleCondition": "Partial",
+   "size_flag": true,
+   "gap_flag": true,
+   "treatment": "comparable sale",
+   "model": 833324.3294803714,
+   "final_p": 169363.63636363635,
+   "current": 223944.07344160328
+  },
+  {
+   "Id": 2092,
+   "Neighborhood": "Edwards",
+   "GrLivArea": 5130,
+   "nbmax": 2520,
+   "ratio": 2.0357142857142856,
+   "gap": 0.40347531094975575,
+   "OverallQual": 10,
+   "YearBuilt": 2007,
+   "SaleCondition": "Partial",
+   "size_flag": true,
+   "gap_flag": true,
+   "treatment": "comparable sale",
+   "model": 701915.9770585181,
+   "final_p": 157397.7272727273,
+   "current": 248334.43019885465
+  },
+  {
+   "Id": 1682,
+   "Neighborhood": "SWISU",
+   "GrLivArea": 3840,
+   "nbmax": 2160,
+   "ratio": 1.7777777777777777,
+   "gap": 0.11754192481761426,
+   "OverallQual": 6,
+   "YearBuilt": 1914,
+   "SaleCondition": "Abnorml",
+   "size_flag": true,
+   "gap_flag": false,
+   "treatment": "size capped",
+   "model": 209151.98626968218,
+   "final_p": 152098.43519206223,
+   "current": 191152.18798506475
+  },
+  {
+   "Id": 2712,
+   "Neighborhood": "SWISU",
+   "GrLivArea": 3490,
+   "nbmax": 2160,
+   "ratio": 1.6157407407407407,
+   "gap": 0.0668345230153833,
+   "OverallQual": 7,
+   "YearBuilt": 1920,
+   "SaleCondition": "Normal",
+   "size_flag": true,
+   "gap_flag": false,
+   "treatment": "size capped",
+   "model": 240289.2996732554,
+   "final_p": 185688.58783159024,
+   "current": 240954.35417854376
+  },
+  {
+   "Id": 2759,
+   "Neighborhood": "Edwards",
+   "GrLivArea": 4060,
+   "nbmax": 2520,
+   "ratio": 1.6111111111111112,
+   "gap": 0.15367086107968903,
+   "OverallQual": 6,
+   "YearBuilt": 1935,
+   "SaleCondition": "Normal",
+   "size_flag": true,
+   "gap_flag": false,
+   "treatment": "size capped",
+   "model": 361722.3982611838,
+   "final_p": 269643.21031234553,
+   "current": 329774.28651395283
+  },
+  {
+   "Id": 1657,
+   "Neighborhood": "SWISU",
+   "GrLivArea": 2970,
+   "nbmax": 2160,
+   "ratio": 1.375,
+   "gap": 0.07965882912489457,
+   "OverallQual": 4,
+   "YearBuilt": 1967,
+   "SaleCondition": "Normal",
+   "size_flag": true,
+   "gap_flag": false,
+   "treatment": "size capped",
+   "model": 147161.18770395688,
+   "final_p": 126398.24839645319,
+   "current": 144669.66487055138
+  },
+  {
+   "Id": 2636,
+   "Neighborhood": "SWISU",
+   "GrLivArea": 2920,
+   "nbmax": 2160,
+   "ratio": 1.3518518518518519,
+   "gap": 0.02835065695381331,
+   "OverallQual": 5,
+   "YearBuilt": 1921,
+   "SaleCondition": "Normal",
+   "size_flag": true,
+   "gap_flag": false,
+   "treatment": "size capped",
+   "model": 210732.9396854614,
+   "final_p": 181994.61022408944,
+   "current": 207383.55009006808
+  },
+  {
+   "Id": 1617,
+   "Neighborhood": "SWISU",
+   "GrLivArea": 2900,
+   "nbmax": 2160,
+   "ratio": 1.3425925925925926,
+   "gap": 0.4264010137891634,
+   "OverallQual": 5,
+   "YearBuilt": 1923,
+   "SaleCondition": "AdjLand",
+   "size_flag": true,
+   "gap_flag": true,
+   "treatment": "size capped",
+   "model": 157062.12835934406,
+   "final_p": 129699.79794369133,
+   "current": 167778.03657071595
+  },
+  {
+   "Id": 2151,
+   "Neighborhood": "ClearCr",
+   "GrLivArea": 3510,
+   "nbmax": 2710,
+   "ratio": 1.2952029520295203,
+   "gap": 0.018461536367847836,
+   "OverallQual": 5,
+   "YearBuilt": 1946,
+   "SaleCondition": "Normal",
+   "size_flag": true,
+   "gap_flag": false,
+   "treatment": "size capped",
+   "model": 253212.1639562715,
+   "final_p": 215214.57690010397,
+   "current": 248439.43779679944
+  },
+  {
+   "Id": 2197,
+   "Neighborhood": "SWISU",
+   "GrLivArea": 2750,
+   "nbmax": 2160,
+   "ratio": 1.2731481481481481,
+   "gap": 0.09517211483111125,
+   "OverallQual": 6,
+   "YearBuilt": 1919,
+   "SaleCondition": "Normal",
+   "size_flag": true,
+   "gap_flag": false,
+   "treatment": "size capped",
+   "model": 209889.48130375947,
+   "final_p": 184762.61896634658,
+   "current": 213825.0058579029
+  },
+  {
+   "Id": 1757,
+   "Neighborhood": "NoRidge",
+   "GrLivArea": 4930,
+   "nbmax": 4750,
+   "ratio": 1.0378947368421052,
+   "gap": 0.4980755042648064,
+   "OverallQual": 10,
+   "YearBuilt": 1996,
+   "SaleCondition": "Abnorml",
+   "size_flag": false,
+   "gap_flag": true,
+   "treatment": "referred, model price",
+   "model": 712253.0968993774,
+   "final_p": 712253.0968993774,
+   "current": 517473.3083299637
+  },
+  {
+   "Id": 2344,
+   "Neighborhood": "Crawfor",
+   "GrLivArea": 2980,
+   "nbmax": 3550,
+   "ratio": 0.8394366197183099,
+   "gap": 0.36753836854098326,
+   "OverallQual": 8,
+   "YearBuilt": 1986,
+   "SaleCondition": "Normal",
+   "size_flag": false,
+   "gap_flag": true,
+   "treatment": "referred, model price",
+   "model": 397636.47884936613,
+   "final_p": 397636.47884936613,
+   "current": 326278.22779023787
+  },
+  {
+   "Id": 1850,
+   "Neighborhood": "Mitchel",
+   "GrLivArea": 2240,
+   "nbmax": 2740,
+   "ratio": 0.8175182481751825,
+   "gap": 0.3356617846861577,
+   "OverallQual": 3,
+   "YearBuilt": 1953,
+   "SaleCondition": "Normal",
+   "size_flag": false,
+   "gap_flag": true,
+   "treatment": "referred, model price",
+   "model": 183676.34333916256,
+   "final_p": 183676.34333916256,
+   "current": 155821.02689910037
+  },
+  {
+   "Id": 2493,
+   "Neighborhood": "Timber",
+   "GrLivArea": 2050,
+   "nbmax": 2830,
+   "ratio": 0.7243816254416962,
+   "gap": 0.30357366964380955,
+   "OverallQual": 5,
+   "YearBuilt": 1965,
+   "SaleCondition": "Normal",
+   "size_flag": false,
+   "gap_flag": true,
+   "treatment": "referred, model price",
+   "model": 284601.0605381887,
+   "final_p": 284601.0605381887,
+   "current": 260157.24415496388
+  },
+  {
+   "Id": 1809,
+   "Neighborhood": "Somerst",
+   "GrLivArea": 2100,
+   "nbmax": 2950,
+   "ratio": 0.711864406779661,
+   "gap": 0.3111121116616942,
+   "OverallQual": 9,
+   "YearBuilt": 2006,
+   "SaleCondition": "Normal",
+   "size_flag": false,
+   "gap_flag": true,
+   "treatment": "referred, model price",
+   "model": 324457.90996883996,
+   "final_p": 324457.90996883996,
+   "current": 352265.7793308884
+  },
+  {
+   "Id": 2604,
+   "Neighborhood": "Somerst",
+   "GrLivArea": 1840,
+   "nbmax": 2950,
+   "ratio": 0.6237288135593221,
+   "gap": 0.304538539232153,
+   "OverallQual": 8,
+   "YearBuilt": 2006,
+   "SaleCondition": "Partial",
+   "size_flag": false,
+   "gap_flag": true,
+   "treatment": "referred, model price",
+   "model": 282548.08083862555,
+   "final_p": 282548.08083862555,
+   "current": 324724.57342009817
+  },
+  {
+   "Id": 1664,
+   "Neighborhood": "Mitchel",
+   "GrLivArea": 1260,
+   "nbmax": 2740,
+   "ratio": 0.45985401459854014,
+   "gap": 0.304440699303453,
+   "OverallQual": 6,
+   "YearBuilt": 1977,
+   "SaleCondition": "Normal",
+   "size_flag": false,
+   "gap_flag": true,
+   "treatment": "referred, model price",
+   "model": 197594.36762589816,
+   "final_p": 197594.36762589816,
+   "current": 179182.997155454
+  },
+  {
+   "Id": 1644,
+   "Neighborhood": "IDOTRR",
+   "GrLivArea": 940,
+   "nbmax": 2590,
+   "ratio": 0.36293436293436293,
+   "gap": 0.3548175526346223,
+   "OverallQual": 5,
+   "YearBuilt": 1963,
+   "SaleCondition": "Normal",
+   "size_flag": false,
+   "gap_flag": true,
+   "treatment": "referred, model price",
+   "model": 115116.28456685613,
+   "final_p": 115116.28456685613,
+   "current": 133840.01008144126
+  },
+  {
+   "Id": 2884,
+   "Neighborhood": "IDOTRR",
+   "GrLivArea": 850,
+   "nbmax": 2590,
+   "ratio": 0.3281853281853282,
+   "gap": 0.304425160360727,
+   "OverallQual": 1,
+   "YearBuilt": 1952,
+   "SaleCondition": "Abnorml",
+   "size_flag": false,
+   "gap_flag": true,
+   "treatment": "referred, model price",
+   "model": 82103.71316354077,
+   "final_p": 82103.71316354077,
+   "current": 98804.6486323034
+  }
+ ],
+ "referral_counts": {
+  "size": 10,
+  "gap": 12,
+  "either": 19,
+  "comparable": 2,
+  "nonmarket_ppsf": 30.681818181818183
+ },
+ "adjust_test": {
+  "pcts": {
+   "5": 0.9528321779698419,
+   "10": 0.9643453168394109,
+   "25": 0.9819507808465963,
+   "50": 0.9986879750397752,
+   "75": 1.0162810618696254,
+   "90": 1.0350977025337957,
+   "95": 1.0470061341578714
+  },
+  "within5": 0.9071672354948805,
+  "within10": 0.9870307167235495,
+  "max_up": 1.1943203145677308,
+  "max_down": 0.7621827439578023,
+  "hist": [
+   2,
+   0,
+   2,
+   4,
+   0,
+   8,
+   29,
+   70,
+   221,
+   424,
+   404,
+   195,
+   58,
+   18,
+   19,
+   5,
+   1,
+   3,
+   1,
+   1
+  ]
+ },
+ "adjust_drivers": [
+  {
+   "var": "QualSF",
+   "mean_abs": 0.030341194928927902,
+   "in_glm": false
+  },
+  {
+   "var": "YearBuilt",
+   "mean_abs": 0.02476929350113245,
+   "in_glm": true
+  },
+  {
+   "var": "GrLivArea",
+   "mean_abs": 0.02220537253092147,
+   "in_glm": true
+  },
+  {
+   "var": "OverallQual",
+   "mean_abs": 0.011243832722324357,
+   "in_glm": true
+  },
+  {
+   "var": "Neighborhood",
+   "mean_abs": 0.01040814935537703,
+   "in_glm": true
+  },
+  {
+   "var": "HouseAge",
+   "mean_abs": 0.007492358138237051,
+   "in_glm": false
+  },
+  {
+   "var": "MSSubClass",
+   "mean_abs": 0.007428666569845209,
+   "in_glm": true
+  },
+  {
+   "var": "GarageType",
+   "mean_abs": 0.0059252179257385405,
+   "in_glm": true
+  },
+  {
+   "var": "OverallCond",
+   "mean_abs": 0.0058939186486828285,
+   "in_glm": true
+  },
+  {
+   "var": "GarageArea",
+   "mean_abs": 0.0058122757158207035,
+   "in_glm": true
+  },
+  {
+   "var": "GarageCars",
+   "mean_abs": 0.005751133771216876,
+   "in_glm": false
+  },
+  {
+   "var": "1stFlrSF",
+   "mean_abs": 0.0055351193822325475,
+   "in_glm": true
+  }
+ ],
+ "perm": [
+  {
+   "var": "Living area (above ground)",
+   "glm": 0.10561588102737125,
+   "gbm": 0.08361016640359696,
+   "blend": 0.0968772977366575
+  },
+  {
+   "var": "Overall quality",
+   "glm": 0.039449728448664956,
+   "gbm": 0.04297880119181409,
+   "blend": 0.042779565698676816
+  },
+  {
+   "var": "Year built",
+   "glm": 0.044488252461955965,
+   "gbm": 0.013626299769485938,
+   "blend": 0.028481433485663447
+  },
+  {
+   "var": "Basement area",
+   "glm": 0.01620228532921508,
+   "gbm": 0.025160441805670324,
+   "blend": 0.021377268600853153
+  },
+  {
+   "var": "Lot area",
+   "glm": 0.0162770421723349,
+   "gbm": 0.008835142359646322,
+   "blend": 0.012730713951600716
+  },
+  {
+   "var": "Neighbourhood",
+   "glm": 0.013715614781879307,
+   "gbm": 0.011229933818982952,
+   "blend": 0.012141609141501478
+  },
+  {
+   "var": "Overall condition",
+   "glm": 0.012521634742911927,
+   "gbm": 0.007730853611273474,
+   "blend": 0.010305719816554596
+  },
+  {
+   "var": "Garage",
+   "glm": 0.007957034690895667,
+   "gbm": 0.010019518764049518,
+   "blend": 0.009199749725041274
+  },
+  {
+   "var": "Bathrooms",
+   "glm": 0.005551147093608705,
+   "gbm": 0.0037887127367482384,
+   "blend": 0.004775097442134399
+  },
+  {
+   "var": "Kitchen quality",
+   "glm": 0.004015040665946104,
+   "gbm": 0.002913070959402118,
+   "blend": 0.003748014717929976
+  },
+  {
+   "var": "Building class",
+   "glm": 0.008058933478228314,
+   "gbm": 0.001969478867491835,
+   "blend": 0.0037224585923696985
+  },
+  {
+   "var": "Functional",
+   "glm": 0.004918669932885167,
+   "gbm": 0.0015000298579013775,
+   "blend": 0.0031807394608732663
+  },
+  {
+   "var": "Fireplaces",
+   "glm": 0.0019383973081525472,
+   "gbm": 0.0034280102196047025,
+   "blend": 0.0027550695905593455
+  },
+  {
+   "var": "Year remodelled",
+   "glm": 0.0010457828086487754,
+   "gbm": 0.004520030316486772,
+   "blend": 0.0025850996480949167
+  },
+  {
+   "var": "Exterior quality",
+   "glm": 0.0,
+   "gbm": 0.001605449729829813,
+   "blend": 0.0007063636957733414
+  },
+  {
+   "var": "Zoning",
+   "glm": 0.0008305177559851087,
+   "gbm": 6.501598071625425e-05,
+   "blend": 0.000296141637107535
+  },
+  {
+   "var": "Central air",
+   "glm": 0.00015299578789059094,
+   "gbm": 0.00019623925403043177,
+   "blend": 0.00019104752146034963
+  }
+ ],
+ "ranges": {
+  "proposed": {
+   "by_fifth": [
+    {
+     "fifth": 1,
+     "lo": 0.8696757054759031,
+     "hi": 1.2486670952560297,
+     "median_price": 132716.6163992913,
+     "width": 50298.45489608335,
+     "coverage": 0.8839590443686007,
+     "above": 0.027303754266211604,
+     "below": 0.08873720136518772
+    },
+    {
+     "fifth": 2,
+     "lo": 0.9025084105034482,
+     "hi": 1.1623864929831143,
+     "median_price": 161650.2598186075,
+     "width": 42009.35955399953,
+     "coverage": 0.8972602739726028,
+     "above": 0.02054794520547945,
+     "below": 0.0821917808219178
+    },
+    {
+     "fifth": 3,
+     "lo": 0.897858320980605,
+     "hi": 1.145731304531883,
+     "median_price": 187745.9433287358,
+     "width": 46537.14712254291,
+     "coverage": 0.89419795221843,
+     "above": 0.023890784982935155,
+     "below": 0.08191126279863481
+    },
+    {
+     "fifth": 4,
+     "lo": 0.8928852126820989,
+     "hi": 1.20783835147387,
+     "median_price": 231130.11965804227,
+     "width": 72795.15665561805,
+     "coverage": 0.8767123287671232,
+     "above": 0.03767123287671233,
+     "below": 0.08561643835616438
+    },
+    {
+     "fifth": 5,
+     "lo": 0.9102926950639241,
+     "hi": 1.2053583110692225,
+     "median_price": 314343.03675737965,
+     "width": 92751.8217777924,
+     "coverage": 0.8907849829351536,
+     "above": 0.030716723549488054,
+     "below": 0.07849829351535836
+    }
+   ],
+   "total": {
+    "coverage": 0.8885850991114149,
+    "above": 0.028024606971975393,
+    "below": 0.08339029391660971,
+    "width_median": 51384.68797854393
+   },
+   "edges": [
+    11.277366681880475,
+    11.908794985224368,
+    12.067479423051076,
+    12.248688686292569,
+    12.469032536216194,
+    13.441383953384438
+   ]
+  },
+  "current": {
+   "by_fifth": [
+    {
+     "fifth": 1,
+     "lo": 0.8487621491948477,
+     "hi": 1.241102480750289,
+     "median_price": 133406.07540545758,
+     "width": 52340.58385608744,
+     "coverage": 0.8737201365187713,
+     "above": 0.034129692832764506,
+     "below": 0.09215017064846416
+    },
+    {
+     "fifth": 2,
+     "lo": 0.8975736724593131,
+     "hi": 1.1422441782234383,
+     "median_price": 162649.02063546647,
+     "width": 39795.41814091922,
+     "coverage": 0.8972602739726028,
+     "above": 0.02054794520547945,
+     "below": 0.0821917808219178
+    },
+    {
+     "fifth": 3,
+     "lo": 0.9147439142440138,
+     "hi": 1.1601742021801598,
+     "median_price": 188006.55396514235,
+     "width": 46142.50267354745,
+     "coverage": 0.8976109215017065,
+     "above": 0.020477815699658702,
+     "below": 0.08191126279863481
+    },
+    {
+     "fifth": 4,
+     "lo": 0.9041183612344864,
+     "hi": 1.2185933541018341,
+     "median_price": 228373.21148689318,
+     "width": 71817.66405343403,
+     "coverage": 0.8904109589041096,
+     "above": 0.0273972602739726,
+     "below": 0.0821917808219178
+    },
+    {
+     "fifth": 5,
+     "lo": 0.9099949118330375,
+     "hi": 1.2459237319906737,
+     "median_price": 315767.6218774004,
+     "width": 106075.44466125772,
+     "coverage": 0.8907849829351536,
+     "above": 0.027303754266211604,
+     "below": 0.08191126279863481
+    }
+   ],
+   "total": {
+    "coverage": 0.8899521531100478,
+    "above": 0.025974025974025976,
+    "below": 0.08407382091592618,
+    "width_median": 51876.53170086847
+   },
+   "edges": [
+    11.30400430485851,
+    11.923832243267404,
+    12.061923834723494,
+    12.23830461931951,
+    12.470095727425736,
+    13.302763534866687
+   ]
+  }
+ },
+ "drop_one": {
+  "HasGarage_HasBsmt": {
+   "with_": 0.0899914604660295,
+   "without": 0.09006232870172072,
+   "per_seed": [
+    0.00015092224667638543,
+    0.00025956098162585595,
+    -0.00019787852122858662
+   ]
+  },
+  "HouseAge_RemodelAge": {
+   "with_": 0.0899914604660295,
+   "without": 0.09055970816877691,
+   "per_seed": [
+    0.0005472613793437581,
+    0.0004533682889630575,
+    0.0007041134399354276
+   ]
+  },
+  "QualSF": {
+   "with_": 0.0899914604660295,
+   "without": 0.090300641162899,
+   "per_seed": [
+    0.00031924281446303604,
+    0.00038942115233950303,
+    0.00021887812380592953
+   ]
+  },
+  "TotalBath": {
+   "with_": 0.0899914604660295,
+   "without": 0.09071128067413053,
+   "per_seed": [
+    0.0005667850204930519,
+    0.0009094662320246055,
+    0.0006832093717854121
+   ]
+  },
+  "TotalPorchSF": {
+   "with_": 0.0899914604660295,
+   "without": 0.09005675472777598,
+   "per_seed": [
+    -2.0363444820370447e-06,
+    0.00028724965985364725,
+    -8.933053013214509e-05
+   ]
+  },
+  "TotalSF": {
+   "with_": 0.0899914604660295,
+   "without": 0.09038312858932555,
+   "per_seed": [
+    0.0003317123699621144,
+    0.000412475776560714,
+    0.00043081622336527126
+   ]
+  }
+ },
+ "model_choice": {
+  "best": {
+   "1": {
+    "n": 8,
+    "top": [
+     {
+      "models": [
+       "lasso"
+      ],
+      "err": 0.09122382622611354
+     },
+     {
+      "models": [
+       "enet"
+      ],
+      "err": 0.09125796673191472
+     },
+     {
+      "models": [
+       "lgb"
+      ],
+      "err": 0.09233285769608728
+     }
+    ]
+   },
+   "2": {
+    "n": 28,
+    "top": [
+     {
+      "models": [
+       "lasso",
+       "lgb"
+      ],
+      "err": 0.08825322583902444
+     },
+     {
+      "models": [
+       "enet",
+       "lgb"
+      ],
+      "err": 0.08825821094756066
+     },
+     {
+      "models": [
+       "kridge",
+       "lgb"
+      ],
+      "err": 0.08857862093784143
+     }
+    ]
+   },
+   "3": {
+    "n": 56,
+    "top": [
+     {
+      "models": [
+       "lasso",
+       "kridge",
+       "lgb"
+      ],
+      "err": 0.08797566560761809
+     },
+     {
+      "models": [
+       "enet",
+       "kridge",
+       "lgb"
+      ],
+      "err": 0.0879906431771761
+     },
+     {
+      "models": [
+       "lasso",
+       "svr",
+       "lgb"
+      ],
+      "err": 0.0881905651463553
+     }
+    ]
+   },
+   "4": {
+    "n": 70,
+    "top": [
+     {
+      "models": [
+       "lasso",
+       "kridge",
+       "lgb",
+       "cat"
+      ],
+      "err": 0.08779699020827038
+     },
+     {
+      "models": [
+       "enet",
+       "kridge",
+       "lgb",
+       "cat"
+      ],
+      "err": 0.08780881901598879
+     },
+     {
+      "models": [
+       "lasso",
+       "svr",
+       "lgb",
+       "cat"
+      ],
+      "err": 0.08791980726227648
+     }
+    ]
+   },
+   "trees3": 0.09123996847223792,
+   "best_tree": 0.09233285769608728
+  },
+  "err_corr": {
+   "ridge": {
+    "ridge": 1.0,
+    "lasso": 0.952,
+    "enet": 0.954,
+    "svr": 0.86,
+    "kridge": 0.962,
+    "lgb": 0.815,
+    "xgb": 0.839,
+    "cat": 0.823
+   },
+   "lasso": {
+    "ridge": 0.952,
+    "lasso": 1.0,
+    "enet": 1.0,
+    "svr": 0.829,
+    "kridge": 0.918,
+    "lgb": 0.843,
+    "xgb": 0.847,
+    "cat": 0.849
+   },
+   "enet": {
+    "ridge": 0.954,
+    "lasso": 1.0,
+    "enet": 1.0,
+    "svr": 0.829,
+    "kridge": 0.92,
+    "lgb": 0.84,
+    "xgb": 0.846,
+    "cat": 0.847
+   },
+   "svr": {
+    "ridge": 0.86,
+    "lasso": 0.829,
+    "enet": 0.829,
+    "svr": 1.0,
+    "kridge": 0.921,
+    "lgb": 0.76,
+    "xgb": 0.811,
+    "cat": 0.771
+   },
+   "kridge": {
+    "ridge": 0.962,
+    "lasso": 0.918,
+    "enet": 0.92,
+    "svr": 0.921,
+    "kridge": 1.0,
+    "lgb": 0.805,
+    "xgb": 0.842,
+    "cat": 0.813
+   },
+   "lgb": {
+    "ridge": 0.815,
+    "lasso": 0.843,
+    "enet": 0.84,
+    "svr": 0.76,
+    "kridge": 0.805,
+    "lgb": 1.0,
+    "xgb": 0.958,
+    "cat": 0.929
+   },
+   "xgb": {
+    "ridge": 0.839,
+    "lasso": 0.847,
+    "enet": 0.846,
+    "svr": 0.811,
+    "kridge": 0.842,
+    "lgb": 0.958,
+    "xgb": 1.0,
+    "cat": 0.933
+   },
+   "cat": {
+    "ridge": 0.823,
+    "lasso": 0.849,
+    "enet": 0.847,
+    "svr": 0.771,
+    "kridge": 0.813,
+    "lgb": 0.929,
+    "xgb": 0.933,
+    "cat": 1.0
+   }
+  },
+  "eight_fitted": 0.08818921456493102
+ },
+ "screen": [
+  {
+   "Id": 1227,
+   "Neighborhood": "Edwards",
+   "GrLivArea": 6160,
+   "OverallQual": 10,
+   "YearBuilt": 2008,
+   "SaleCondition": "Partial",
+   "SaleType": "New",
+   "SalePrice": 189000,
+   "fit": 462779.15,
+   "z": -6.3
+  },
+  {
+   "Id": 766,
+   "Neighborhood": "IDOTRR",
+   "GrLivArea": 1540,
+   "OverallQual": 4,
+   "YearBuilt": 1920,
+   "SaleCondition": "Normal",
+   "SaleType": "WD ",
+   "SalePrice": 61000,
+   "fit": 122499.6,
+   "z": -4.91
+  },
+  {
+   "Id": 1003,
+   "Neighborhood": "Edwards",
+   "GrLivArea": 1680,
+   "OverallQual": 7,
+   "YearBuilt": 2009,
+   "SaleCondition": "Partial",
+   "SaleType": "Con",
+   "SalePrice": 346000,
+   "fit": 200040.71,
+   "z": 3.86
+  },
+  {
+   "Id": 854,
+   "Neighborhood": "OldTown",
+   "GrLivArea": 1170,
+   "OverallQual": 3,
+   "YearBuilt": 1910,
+   "SaleCondition": "Abnorml",
+   "SaleType": "WD ",
+   "SalePrice": 58000,
+   "fit": 99928.44,
+   "z": -3.83
+  },
+  {
+   "Id": 1117,
+   "Neighborhood": "Sawyer",
+   "GrLivArea": 990,
+   "OverallQual": 5,
+   "YearBuilt": 1965,
+   "SaleCondition": "Normal",
+   "SaleType": "WD ",
+   "SalePrice": 85000,
+   "fit": 145295.98,
+   "z": -3.77
+  },
+  {
+   "Id": 1315,
+   "Neighborhood": "OldTown",
+   "GrLivArea": 2540,
+   "OverallQual": 5,
+   "YearBuilt": 1910,
+   "SaleCondition": "Abnorml",
+   "SaleType": "WD ",
+   "SalePrice": 100000,
+   "fit": 168794.62,
+   "z": -3.68
+  }
+ ],
+ "excluded": [
+  {
+   "Id": 424,
+   "GrLivArea": 4150,
+   "OverallQual": 5,
+   "YearBuilt": 1959,
+   "SaleCondition": "Normal",
+   "SaleType": "WD ",
+   "TotalBsmtSF": 0.0,
+   "price": 322000.0,
+   "model": 321541.20423443423,
+   "ratio": 1.6468253968253967
+  },
+  {
+   "Id": 1227,
+   "GrLivArea": 6160,
+   "OverallQual": 10,
+   "YearBuilt": 2008,
+   "SaleCondition": "Partial",
+   "SaleType": "New",
+   "TotalBsmtSF": 6490.0,
+   "price": 189000.0,
+   "model": 1000491.1443423693,
+   "ratio": 2.4444444444444446
+  }
+ ],
+ "gap_check": {
+  "top2": 0.12540200336526722,
+  "rest": 0.08912460011357017,
+  "gap_cut": 0.15437381251163826
+ },
+ "disloc_stats": {
+  "n": 1465,
+  "within5": 0.837542662116041,
+  "within10": 0.9686006825938567,
+  "over15": 11,
+  "median_abs": 0.020526347327606165,
+  "mean_chg": 0.0035532042581594148
+ }
+}

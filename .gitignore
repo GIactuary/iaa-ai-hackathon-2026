@@ -1,0 +1,9 @@
+data/work/
+outputs/*.parquet
+__pycache__/
+.ipynb_checkpoints/
+*.pyc
+.env
+.venv/
+.pytest_cache/
+notebooks/run/

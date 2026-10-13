@@ -1,0 +1,17 @@
+{
+  "schema": {
+    "id": "D1, D2, ... in order",
+    "stage": "notebook stage, e.g. 3.2 Cleaning",
+    "role": "Data steward | Modeller | Filing writer | Plain-language explainer | Independent reviewer | Appointed actuary",
+    "proposed_by": "AI or Actuary",
+    "question": "what was asked",
+    "ai_answer": "what the AI said or proposed, including when it was wrong",
+    "challenge": "the actuary's challenge, in his words where possible",
+    "test": "the check that was run",
+    "result": "what the check showed, with numbers",
+    "decision": "what was decided, and by whom",
+    "effect": "what changed in the model or the notebook",
+    "section": "notebook section where the card is shown"
+  },
+  "entries": []
+}
