@@ -41,6 +41,20 @@
       "decision": "Actuary: \"a with b sounds right, go with it.\" Option (a) is the approach and (b) its challenger. On evaluations: \"for evals we need to work closer\", so the evaluation design is to be worked out with the actuary, not set by the AI.",
       "effect": "J-model decided. The pipeline gains candidate models by family, nested tuning, per-family selection and out-of-fold cross-family weights; the evaluation suite is not extended until it is designed jointly.",
       "section": "2"
+    },
+    {
+      "id": "D3",
+      "stage": "Preparation: modelling approach",
+      "role": "Modeller",
+      "proposed_by": "Actuary",
+      "question": "Should the candidate-model code (one wrapper per model, nested tuning, per-family selection, cross-family weights) be built before the data arrives?",
+      "ai_answer": "Had started building it on synthetic data, following exchange D2; no model code had been written when the actuary stopped it.",
+      "challenge": "Actuary: \"Let's be ready and work on models after we get the data; start with a clean state with principles.\"",
+      "test": "",
+      "result": "",
+      "decision": "Actuary: model work waits for the 2026 data and starts from the principles, not from code prepared in advance. J-model (D2) stands as the approach.",
+      "effect": "Candidate-model build stopped before any code was written; preparation ends at intake readiness.",
+      "section": "2"
     }
   ]
 }
