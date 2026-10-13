@@ -27,6 +27,20 @@
       "decision": "Actuary: no 2025 choices as starting points; a principle-based route from data to model building, optimisation and evaluation; try many candidate models, choose one per family, weight across families, and optimise for the lowest error while reducing the black box. Whether members within a family are weighted or only the best is kept is still open.",
       "effect": "The fixed GLM-plus-tree pair stops being the default; the pipeline is to gain candidate models by family, a within-family selection step, and cross-family weights estimated out of fold.",
       "section": "2"
+    },
+    {
+      "id": "D2",
+      "stage": "Preparation: modelling approach",
+      "role": "Modeller",
+      "proposed_by": "AI",
+      "question": "J-model: within a family, keep only the best candidate, or weight several before weighting across families?",
+      "ai_answer": "Recommended (a), the best single model per family with weights across families only, and testing (b), weighted members within each family, as a challenger on a paired test. Cited 2025 evidence: averaging three tree models gained about 1%, adding a GLM about 4%.",
+      "challenge": "",
+      "test": "",
+      "result": "",
+      "decision": "Actuary: \"a with b sounds right, go with it.\" Option (a) is the approach and (b) its challenger. On evaluations: \"for evals we need to work closer\", so the evaluation design is to be worked out with the actuary, not set by the AI.",
+      "effect": "J-model decided. The pipeline gains candidate models by family, nested tuning, per-family selection and out-of-fold cross-family weights; the evaluation suite is not extended until it is designed jointly.",
+      "section": "2"
     }
   ]
 }
