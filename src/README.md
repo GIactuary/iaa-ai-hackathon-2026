@@ -1,22 +1,12 @@
-# 2026 pipeline
+# 2026 code
 
-Data-agnostic modules, built and tested on synthetic data before the competition opened. Nothing here names a 2026 column, cleaning rule or threshold value; thresholds are read from `decisions/thresholds.md`, and a threshold without a "Written on" date is refused.
-
-All predictions are carried on the link scale (log, logit, or log of 1 + y for a price); `families.py` converts and scores them.
+What is here is process code, kept from the preparation: it holds the rules of the playbook and packages our evidence into the notebook. No model code exists yet. Models, evaluations and data rules are built after the data arrives, one decision at a time with the actuary.
 
 | Module | Contents |
 |---|---|
-| `families.py` | Log-Gaussian (RMSLE scale), Poisson, gamma, Tweedie, binomial: link, variance, per-row loss, score, LightGBM objective |
-| `thresholds.py` | Reads `decisions/thresholds.md`; refuses missing, open or undated thresholds |
-| `validation.py` | K-fold on seeds 42, 1, 2 (optionally grouped or stratified); hold-out drawn once, written to disk, opened once; out-of-fold runner; paired bootstrap; drop-one verdict |
-| `glm.py` | `ForwardGLM`: forward selection on cross-validated error, level pooling, IRLS with offsets and weights, relativities with standard errors, centred terms |
-| `trees.py` | `TreeModel`: LightGBM with the matching objective, starting from the same base and offset as the GLM; exact Shapley contributions |
-| `pipeline.py` | `ModelPair` (fixed 50/50 blend on the link scale), `ReferralRule` (out of evidence, model disagreement), `PredictionRanges` (by predicted-value fifth, cross-fitted coverage) |
-| `evidence.py` | Exhibit calculations for the filing template; `write_evidence` writes the JSON the notebook reads |
-| `exhibits.py` | Notebook tables, charts, exchange cards and ledger, all drawn from the evidence and the AI log |
+| `thresholds.py` | Reads `decisions/thresholds.md`; refuses a threshold that has no value or no "Written on" date (rule 2) |
+| `validation.py` | Folds on the split seeds we choose (optionally grouped or stratified); a hold-out drawn once, written to disk and opened once, with each opening recorded; an out-of-fold runner that checks every row is predicted once per seed; a paired bootstrap for any metric; the drop-one verdict |
+| `evidence.py` | Writes the evidence file (results plus run metadata) that the notebook's numbers come from |
+| `exhibits.py` | Exchange cards and the decision ledger from `ai/ai_log.json`, tables, the working-loop diagram, and the rerun check |
 
-Still to write once the data arrives: `clean.py` (data-specific, from the data dictionary), `explain.py` (relativities against ALE curves, adjustment drivers, permutation importance), and the run script that ties them together. `tests/synthetic_run.py` shows the shape of that run script.
-
-`reference/2025/decided_model/v2lib.py` is the 2025 version of most of this. Its data-specific rules are not carried over.
-
-Run the tests with `python -m pytest` from the repo root (about 30 seconds).
+The 2025 code is in `reference/2025/` for context. Run the tests with `python -m pytest` from the repo root.

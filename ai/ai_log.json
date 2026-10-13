@@ -55,6 +55,20 @@
       "decision": "Actuary: model work waits for the 2026 data and starts from the principles, not from code prepared in advance. J-model (D2) stands as the approach.",
       "effect": "Candidate-model build stopped before any code was written; preparation ends at intake readiness.",
       "section": "2"
+    },
+    {
+      "id": "D4",
+      "stage": "Preparation: scope of what is carried into 2026",
+      "role": "Appointed actuary",
+      "proposed_by": "Actuary",
+      "question": "What from the 2025 preparation should the 2026 work start with?",
+      "ai_answer": "Had built model code on synthetic data that carried 2025 choices: a forward GLM, a LightGBM wrapper with the 2025 settings, a fixed 50/50 pair, 2025 threshold values, and evaluation calculations.",
+      "challenge": "Actuary: \"Clear everything you got carried over from 2025 except context ideas and best practices and knowledge on how to package the notebook to win.\" \"We will go about it one by one and make decisions along the way, document this, and we will build a good model.\"",
+      "test": "",
+      "result": "",
+      "decision": "Actuary: keep the 2025 knowledge (what happened, what won, how creative AI use was evidenced) and the notebook packaging; build the data rules, models and evaluations from the 2026 data one decision at a time.",
+      "effect": "Removed the GLM, tree and blend modules, the evaluation calculations, their tests and the 2025 threshold values. Kept the docs, the 2025 reference folder, the threshold rule, the hold-out lock, the evidence file and the notebook builder.",
+      "section": "2"
     }
   ]
 }

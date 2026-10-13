@@ -6,7 +6,10 @@
   each opening in the lock file, refusing a second opening unless it is explicitly allowed and given a reason.
 - `oof_predictions` runs any fit-and-predict function over the folds and checks that every row is predicted exactly
   once per seed.
-- `paired_bootstrap` compares two sets of out-of-fold predictions on the same rows.
+- `paired_bootstrap` compares two sets of out-of-fold predictions on the same rows, for any metric.
+
+The split seeds and the hold-out seed are not defaulted: they are fixed in the validation design (phase 3) and
+passed in, so they are written down before anything is fitted.
 
 If records are dated, random folds leak the future: hold out the latest periods instead (`lock_holdout(order=...)`)
 and discuss the fold design with the actuary before fitting.
@@ -24,19 +27,16 @@ import pandas as pd
 from joblib import Parallel, delayed
 from sklearn.model_selection import GroupKFold, KFold, StratifiedGroupKFold, StratifiedKFold
 
-from .families import Family
 
-SEEDS = (42, 1, 2)
 N_FOLDS = 5
-HOLDOUT_SEED = 2026
 BOOTSTRAP_N, BOOTSTRAP_SEED = 2000, 0
 
 Folds = list[tuple[np.ndarray, np.ndarray]]
 
 
 # ------------------------------------------------------------------------------------------------ folds
-def make_folds(n: int, n_folds: int = N_FOLDS, seeds=SEEDS, strata=None, groups=None) -> dict[int, Folds]:
-    """Shuffled K-fold splits of rows 0..n-1, one set per seed.
+def make_folds(n: int, seeds, n_folds: int = N_FOLDS, strata=None, groups=None) -> dict[int, Folds]:
+    """Shuffled K-fold splits of rows 0..n-1, one set per seed (three seeds, per principle 6).
 
     strata: labels to balance across folds (for example a claim indicator or a binned target).
     groups: records that must stay together (for example several rows of one policy).
@@ -86,7 +86,7 @@ def _fingerprint(ids: list[str]) -> str:
     return hashlib.sha256("\n".join(sorted(ids)).encode()).hexdigest()
 
 
-def lock_holdout(ids, share: float, path: str | Path, seed: int = HOLDOUT_SEED, strata=None, order=None) -> dict:
+def lock_holdout(ids, share: float, path: str | Path, seed: int, strata=None, order=None) -> dict:
     """Draw the hold-out once and write it to `path`. Returns the lock record (without reading it for scoring).
 
     order: if given (for example a date), the hold-out is the latest `share` of records by that order instead of a
@@ -158,7 +158,7 @@ def oof_predictions(fit_predict: Callable[[np.ndarray, np.ndarray, int], pd.Data
     """Out-of-fold predictions for every seed.
 
     fit_predict(train_rows, valid_rows, seed) must fit on train_rows only and return a DataFrame with one row per
-    valid_rows entry, in the same order (columns such as glm, gbm, blend on the link scale).
+    valid_rows entry, in the same order (one column per model).
     """
     out = {}
     for s, folds in folds_by_seed.items():
@@ -177,12 +177,11 @@ def oof_predictions(fit_predict: Callable[[np.ndarray, np.ndarray, int], pd.Data
 
 
 # ------------------------------------------------------------------------------------------------ paired bootstrap
-def paired_bootstrap(y, pred_a, pred_b, family: Family | None = None, metric: Callable | None = None, weight=None,
-                     n_boot: int = BOOTSTRAP_N, seed: int = BOOTSTRAP_SEED, greater_is_better: bool = False) -> dict:
-    """Paired bootstrap of score(a) - score(b) on the same rows. Predictions are on the link scale.
+def paired_bootstrap(y, pred_a, pred_b, metric: Callable, weight=None, n_boot: int = BOOTSTRAP_N,
+                     seed: int = BOOTSTRAP_SEED, greater_is_better: bool = False) -> dict:
+    """Paired bootstrap of metric(a) - metric(b) on the same rows: resample the records, rescore both, repeat.
 
-    With a family, the score is the family's (fast: per-row losses resampled). With `metric(y, pred, weight)`, any
-    score can be used (slower). gain > 0 means b is better, whichever direction the metric runs.
+    metric(y, pred, weight) -> float. gain > 0 means b is better, whichever direction the metric runs.
     """
     y = np.asarray(y, dtype=float)
     pa, pb = np.asarray(pred_a, dtype=float), np.asarray(pred_b, dtype=float)
@@ -191,24 +190,13 @@ def paired_bootstrap(y, pred_a, pred_b, family: Family | None = None, metric: Ca
         raise ValueError("y and both predictions must be the same rows")
     w = np.ones(n) if weight is None else np.asarray(weight, dtype=float)
     sign = -1.0 if greater_is_better else 1.0
+    sa, sb = metric(y, pa, w), metric(y, pb, w)
     rng = np.random.default_rng(seed)
-    if family is not None:
-        la, lb = w * family.row_loss(y, pa), w * family.row_loss(y, pb)
-        sa, sb = family.score(y, pa, w), family.score(y, pb, w)
-        gains = np.empty(n_boot)
-        for k in range(n_boot):
-            i = rng.integers(0, n, n)
-            ws = w[i].sum()
-            gains[k] = family.finalize(la[i].sum() / ws) - family.finalize(lb[i].sum() / ws)
-    elif metric is not None:
-        sa, sb = metric(y, pa, w), metric(y, pb, w)
-        gains = np.empty(n_boot)
-        for k in range(n_boot):
-            i = rng.integers(0, n, n)
-            gains[k] = sign * (metric(y[i], pa[i], w[i]) - metric(y[i], pb[i], w[i]))
-    else:
-        raise ValueError("give a family or a metric")
-    gain = sign * (sa - sb) if family is None else sa - sb
+    gains = np.empty(n_boot)
+    for k in range(n_boot):
+        i = rng.integers(0, n, n)
+        gains[k] = sign * (metric(y[i], pa[i], w[i]) - metric(y[i], pb[i], w[i]))
+    gain = sign * (sa - sb)
     return dict(score_a=float(sa), score_b=float(sb), gain=float(gain), rel_gain=float(gain / sa) if sa else float("nan"),
                 lo=float(np.quantile(gains, 0.025)), hi=float(np.quantile(gains, 0.975)),
                 share_b_better=float(np.mean(gains > 0)), n=int(n), n_boot=int(n_boot), boot_seed=int(seed))

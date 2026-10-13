@@ -1,1 +1,1 @@
-"""2026 pipeline: data-agnostic modules. Data-specific rules live in clean.py once the data arrives."""
+"""2026 process code: thresholds, validation design, the evidence file and notebook packaging. Model code is written after the data arrives."""

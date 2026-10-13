@@ -2,26 +2,32 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from src.families import LogGaussian, Poisson
 from src.validation import (HoldoutError, check_folds, drop_one_verdict, fitting_mask, lock_holdout, make_folds,
                             oof_predictions, open_holdout, paired_bootstrap, paired_by_seed)
 
 
+SEEDS = (11, 22, 33)
+
+
+def rmse(y, p, w):
+    return float(np.sqrt(np.sum(w * (y - p) ** 2) / np.sum(w)))
+
+
 def test_folds_partition_rows_on_three_seeds():
-    f = make_folds(103)
-    assert sorted(f) == [1, 2, 42]
+    f = make_folds(103, SEEDS)
+    assert sorted(f) == [11, 22, 33]
     for folds in f.values():
         check_folds(folds, 103)
         assert len(folds) == 5
-    assert not np.array_equal(f[42][0][1], f[1][0][1])
-    assert np.array_equal(make_folds(103)[42][0][1], f[42][0][1])          # reproducible
+    assert not np.array_equal(f[11][0][1], f[22][0][1])
+    assert np.array_equal(make_folds(103, SEEDS)[11][0][1], f[11][0][1])          # reproducible
 
 
 def test_grouped_and_stratified_folds():
     groups = np.repeat(np.arange(50), 3)
     strata = np.tile([0, 1, 1], 50)
     for kw in (dict(groups=groups), dict(strata=strata), dict(groups=groups, strata=strata)):
-        f = make_folds(150, **kw)
+        f = make_folds(150, SEEDS, **kw)
         for folds in f.values():
             for a, b in folds:
                 if "groups" in kw:
@@ -50,43 +56,35 @@ def test_holdout_locked_once_and_opened_once(tmp_path):
 def test_holdout_by_date_takes_latest(tmp_path):
     ids = np.arange(200)
     order = np.arange(200)[::-1]                       # id 0 is the latest
-    lock = lock_holdout(ids, 0.1, tmp_path / "h.json", order=order)
+    lock = lock_holdout(ids, 0.1, tmp_path / "h.json", seed=5, order=order)
     assert sorted(map(int, lock["holdout_ids"])) == list(range(20))
 
 
-def test_oof_runner_and_paired_bootstrap(reg_data):
-    d, y = reg_data
-    fam = LogGaussian()
-    z = fam.link(y)
-    X = d[["x0", "x1", "x2", "x3"]].values
-    folds = make_folds(len(y))
+def test_oof_runner_and_paired_bootstrap():
+    rng = np.random.default_rng(0)
+    X = rng.normal(size=(600, 3))
+    y = X @ np.array([1.0, -0.5, 0.2]) + rng.normal(0, 0.3, 600)
+    folds = make_folds(len(y), SEEDS)
 
     def fit_predict(a, b, seed):
         A = np.column_stack([np.ones(len(a)), X[a]])
-        beta = np.linalg.lstsq(A, z[a], rcond=None)[0]
-        good = np.column_stack([np.ones(len(b)), X[b]]) @ beta
-        return pd.DataFrame(dict(mean_only=np.full(len(b), z[a].mean()), linear=good))
+        beta = np.linalg.lstsq(A, y[a], rcond=None)[0]
+        return pd.DataFrame(dict(mean_only=np.full(len(b), y[a].mean()), linear=np.column_stack([np.ones(len(b)), X[b]]) @ beta))
 
     oof = oof_predictions(fit_predict, len(y), folds)
-    for s, o in oof.items():
-        assert len(o) == len(y)
-        assert fam.score(y, o.linear) < fam.score(y, o.mean_only)
-    rows = paired_by_seed(y, {s: o.mean_only.values for s, o in oof.items()}, {s: o.linear.values for s, o in oof.items()}, family=fam)
+    w = np.ones(len(y))
+    for o in oof.values():
+        assert len(o) == len(y) and rmse(y, o.linear, w) < rmse(y, o.mean_only, w)
+    rows = paired_by_seed(y, {s: o.mean_only.values for s, o in oof.items()}, {s: o.linear.values for s, o in oof.items()},
+                          metric=rmse, n_boot=300)
     for r in rows:
         assert r["gain"] > 0 and r["lo"] > 0 and r["share_b_better"] == 1.0
-    # identical predictions: zero gain, interval straddles zero trivially
-    same = paired_bootstrap(y, oof[42].linear, oof[42].linear, family=fam, n_boot=200)
+    same = paired_bootstrap(y, oof[11].linear, oof[11].linear, metric=rmse, n_boot=100)
     assert same["gain"] == 0 and same["lo"] == 0 and same["hi"] == 0
-
-
-def test_bootstrap_with_generic_metric(count_data):
-    d, y, e, _ = count_data
-    fam = Poisson()
-    good = np.log(e) - 2 + 0.4 * d.x1 - 0.3 * d.x2
-    flat = np.log(e) + np.log(y.sum() / e.sum())
-    a = paired_bootstrap(y, flat, good, family=fam, n_boot=300)
-    b = paired_bootstrap(y, flat, good, metric=lambda yy, p, w: fam.score(yy, p, w), n_boot=300)
-    assert a["gain"] == pytest.approx(b["gain"]) and a["lo"] > 0 and b["lo"] > 0
+    # a metric where higher is better: gain still positive when b is better
+    r2 = lambda yy, p, ww: 1 - rmse(yy, p, ww) ** 2 / np.var(yy)
+    g = paired_bootstrap(y, oof[11].mean_only, oof[11].linear, metric=r2, greater_is_better=True, n_boot=100)
+    assert g["gain"] > 0 and g["lo"] > 0
 
 
 def test_drop_one_verdict():

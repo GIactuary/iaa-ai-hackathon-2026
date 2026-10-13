@@ -35,7 +35,7 @@ def test_build_without_evidence_marks_pending(project):
     nbformat.validate(nb)
     text = "\n".join(c.source for c in nb.cells)
     assert "[pending: summary.proposed_cv]" in text
-    assert '"D1"' in text and "%%writefile src/glm.py" in text
+    assert '"D1"' in text and "%%writefile src/validation.py" in text
     assert "—" not in text                                           # house style: no em dashes
     with pytest.raises(BuildError, match="not ready"):
         build(None, project / "nb2.ipynb", root=project, strict=True)
@@ -47,15 +47,17 @@ def test_old_log_format_refused(project):
         build(None, project / "nb.ipynb", root=project)
 
 
-def test_build_and_execute_with_evidence(project, reg_run):
-    ev, ev_path = reg_run
+def test_build_and_execute_with_evidence(project):
+    from src.evidence import write_evidence
+    ev = dict(summary=dict(title="Test run", team="test", metric="RMSE", public_lb="(not submitted)", n_seeds=3,
+                           current_cv=0.1234, proposed_cv=0.1111, n_holdout=100, current_holdout=0.125,
+                           proposed_holdout=0.112, within5=0.8, n_referred=3, n_test=500))
+    ev_path = write_evidence(ev, project / "evidence.json")
     out = project / "nb.ipynb"
     rep = build(ev_path, out, root=project)
-    summary_tokens = [p for p in rep["pending"] if p.startswith("summary.") or p.startswith("compare.")]
-    assert summary_tokens == []
+    assert [p for p in rep["pending"] if p.startswith("summary.")] == []
     nb = nbformat.read(str(out), as_version=4)
-    first = "\n".join(c.source for c in nb.cells if c.cell_type == "markdown")
-    assert f"{ev['summary']['proposed_cv']:.4f}" in first
+    assert "0.1111" in chr(10).join(c.source for c in nb.cells if c.cell_type == "markdown")
     execute(out, project / "run", timeout=600)
     nb = nbformat.read(str(out), as_version=4)
     errors = [o for c in nb.cells if c.cell_type == "code" for o in c.get("outputs", []) if o.get("output_type") == "error"]

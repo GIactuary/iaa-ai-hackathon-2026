@@ -5,8 +5,8 @@ from src.thresholds import DEFAULT_PATH, ThresholdError, load_thresholds
 
 def test_reads_dated_values(thresholds_path):
     t = load_thresholds(thresholds_path)
-    assert t["glm_entry_gain"] == pytest.approx(0.002)
-    assert t["glm_min_level_count"] == 5
+    assert t["example_share"] == pytest.approx(0.25)
+    assert t["example_count"] == 7
     assert "undated" in t
 
 
@@ -22,9 +22,8 @@ def test_refuses_undated_open_and_missing(thresholds_path):
 
 
 def test_repo_file_parses():
-    """The real decisions file parses; its values stay unusable until the actuary dates them."""
-    t = load_thresholds(DEFAULT_PATH, require_dated=False)
-    for key in ["screen_z", "refer_size_ratio", "refer_disagreement", "drop_one_seeds_worse",
-                "glm_entry_gain", "glm_min_level_count", "holdout_share"]:
-        assert key in t
-        t[key]
+    """The real decisions file parses; its thresholds stay unusable until the actuary sets and dates them."""
+    t = load_thresholds(DEFAULT_PATH)
+    assert "holdout_share" in t
+    with pytest.raises(ThresholdError):
+        t["holdout_share"]
