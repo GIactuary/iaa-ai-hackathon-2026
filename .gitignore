@@ -7,3 +7,7 @@ __pycache__/
 .venv/
 .pytest_cache/
 notebooks/run/
+
+# competition data stays out of the repository (rules 2.5.b; CC BY-NC 4.0)
+data/raw/*
+!data/raw/.gitkeep
