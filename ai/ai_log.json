@@ -69,6 +69,48 @@
       "decision": "Actuary: keep the 2025 knowledge (what happened, what won, how creative AI use was evidenced) and the notebook packaging; build the data rules, models and evaluations from the 2026 data one decision at a time.",
       "effect": "Removed the GLM, tree and blend modules, the evaluation calculations, their tests and the 2025 threshold values. Kept the docs, the 2025 reference folder, the threshold rule, the hold-out lock, the evidence file and the notebook builder.",
       "section": "2"
+    },
+    {
+      "id": "D5",
+      "stage": "0. Intake",
+      "role": "Data steward",
+      "proposed_by": "Actuary",
+      "question": "Explore the data and the rules before any code, adjust the 2025 preparation to this year's problem, and set out the plan and the judgments.",
+      "ai_answer": "Found a loss-cost task scored on Tweedie D2 (p = 1.5) whose target must be developed to ultimate (2024 paid to incurred 0.72 to 0.86) and trended to 2025; two leakage columns (customer_service_contacts averages 3.3 on claim rows against 0.4; renewal_decision 'declined_by_insurer' rows have a claim 95% to 99% of the time); realised 2025 weather in the weather file; unit errors in exposure and sum insured, 11 spellings of construction_type, motor customer ids missing leading zeros, and one 11.9M reserve. Recommended use (a) technical risk premium, no external data, weather as plan plus a separate disclosed year adjustment, and the current premium as the incumbent only.",
+      "challenge": "",
+      "test": "Matched claims to policy rows by policy_id and loss date (99.7% match one row, none match two); padded motor customer ids to 8 digits (all 98,110 then match); compared claim frequency across weather fifths by peril; compared contact counts for rows with and without a claim, train against test.",
+      "result": "Every flag above confirmed by a count. No public dataset shares the schema, so the 2025 row-matching check for a source has nothing to match against.",
+      "decision": "None yet. J1, J-ext, J-weather and J-prem opened at 'Needs your call'.",
+      "effect": "competition/brief.md written; judgment register opened with four items.",
+      "section": "3.1"
+    },
+    {
+      "id": "D6",
+      "stage": "0. Intake: plan brief round 1",
+      "role": "Appointed actuary",
+      "proposed_by": "AI",
+      "question": "Twelve plan decisions put to the actuary on the round 1 brief (intended use, target construction, validation, structure, large losses, weather, history, fairness exclusions, current premium, model families, data repairs, external data).",
+      "ai_answer": "Recommended J1 (a), P1 (a) shape and level apart, P2 (a) out of time, P3 (c) both structures tested, P4 (a) cap and load, J-weather (c), P5 (a), P6 (a), J-prem (a), P7 (a), P8 (a), and J-ext (a) no external data.",
+      "challenge": "Actuary accepted eleven and asked for evidence on five. P1: \"research if there are any claim level reserving factor possible and will be reliable here\". P2: industry practice for the base rate and matching problems \"so that we can confidently align\". P3: \"explain what a tweedie is\". J-weather: evidence that weather drives loss cost, attritional or large. P7: \"relying on you ... to get me to the most accurate and the most explainable model\". J-ext: chose (b), not the recommended (a): look for the real market and public data, \"otherwise leave it out\".",
+      "test": "Four literature reviews by research subagents (development, base rate and validation, model families, weather and market). Data checks: reporting-delay completion by peril with a pseudo-valuation backtest at 31 Dec 2023; cost by report delay; 2024 severity against the 2021 to 2023 trend; row completion for 2024 new business against renewals; weather effects within address (same place, different years); regional climate profile.",
+      "result": "Backtest: 2023 counts predicted within 1.5% for 13 of 15 perils (bodily injury +2.2%, subsidence +3.3%). Late claims not larger (0.80 to 1.17). 2024 new-business motor rows have 34% of expected bodily injury reported against 59% for renewals. Weather moves frequency (storm 1.27, subsidence 1.63, escape of water 1.19, glass 1.66), not severity (0.95 to 1.04). Regions span 6.6 to 17.3 C, and real 2025 UK weather (record subsidence) contradicts the file's 2025 values. The literature supports the plan and adds an explicit off-balance step and exposure entering the loss as the metric uses it.",
+      "decision": "Actuary decided eleven items as recommended (J1, P1 to P8, J-weather, J-prem). J-ext stays open pending the research. The AI's research opened three new decisions (P9 trend selection, P10 row-level completion offset, P11 explicit level calibration).",
+      "effect": "Judgment register updated; research saved in docs/research/2026-10-18_round2_research.md; brief round 2 carries J-ext with findings and the three new cards.",
+      "section": "2"
+    },
+    {
+      "id": "D7",
+      "stage": "0. Intake: plan brief round 2",
+      "role": "Appointed actuary",
+      "proposed_by": "AI",
+      "question": "Four open calls after the round 2 research: J-ext with the market findings, P9 trend by peril, P10 row-level reporting completion, P11 explicit level calibration.",
+      "ai_answer": "Recommended J-ext (a) leave external data out, since the data uses UK vocabulary but does not behave like the UK (regional climates 6.6 to 17.3 C; real 2025 was a record UK subsidence year while the file's 2025 dry-summer reading is below normal). Recommended P9 (a) per-peril trends with stated breaks, P10 (a) a row completion offset, and P11 (a) an explicit off-balance by line and peril with models compared at a common level.",
+      "challenge": "",
+      "test": "Pseudo-valuation backtest of the completion curves; row completion for 2024 new business against renewals; review of the textbook ratemaking and calibration literature.",
+      "result": "Backtest within 1.5% for 13 of 15 perils. New-business motor bodily injury 34% reported against 59% for renewals. 20% of 2025 test rows start after 1 January.",
+      "decision": "Actuary chose (a) on all four, moving J-ext from his round 1 conditional (b) to (a) after the research, and finalized the plan brief on 2026-10-18.",
+      "effect": "Plan frozen as docs/specs/SPEC_pricing_plan.md; phase 1 (data rules) starts against it.",
+      "section": "2"
     }
   ]
 }
