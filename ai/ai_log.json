@@ -279,6 +279,20 @@
       "decision": "The actuary chose (a) on all eight cards on the check-in 2 page, with no notes.",
       "effect": "The working base becomes V1 + H-P + H-D in every line, with Poisson-gamma k, plus voluntary excess and vehicle age in motor and trees x clay in buildings. Body type, property type, bedrooms and new business are removed as listed. Customer, address and repudiation history and the near misses go to step 7 as candidates.",
       "section": "3.7"
+    },
+    {
+      "id": "D20",
+      "stage": "5. Check-in 3: model structure and the excess-loss factor",
+      "role": "Appointed actuary",
+      "proposed_by": "AI",
+      "question": "Three calls: the GLM structure (one Tweedie per line or frequency x severity per peril, M1), the excess-loss factor (line or per peril, M2), and whether the 2025 weather applies row by row or as one factor per line (M3).",
+      "ai_answer": "The AI recommended one Tweedie GLM per line with frequency x severity built in step 7 for motor only (M1 a), the line excess factor everywhere (M2 a, reversing C2's per-peril form on evidence), and the 2025 weather as one factor per line (M3 b). It disclosed that the weather test was added after the scored frames were seen and that the design's per-peril diagnostic proved uninformative.",
+      "challenge": "",
+      "test": "Step 6 under the keep rule, design committed before any fit: four structures on the W2 factors, line against per-peril excess factors, scored on A and B in a bare and a priced form; the row-level weather was tested as information.",
+      "result": "No per-peril structure passed in any line: motor frequency x severity +12,541 on A [-12,076, 34,902] and +35,947 on B; buildings -19,093 and -33,017; contents -32,007 and -6,706. The per-peril excess factor lost in motor (-4,205 [-6,753, -1,404]) and buildings (-6,776 [-10,420, -2,709]); row-level weather was all lines -3,466 [-18,910, 11,931] and -9,238.",
+      "decision": "The actuary chose M1 (a), M2 (a) and M3 (b) on the check-in 3 page, with no notes, and confirmed in the chat.",
+      "effect": "One capped Tweedie GLM per line stays; step 7 builds frequency x severity for motor only. The line excess factor applies everywhere; the 2025 weather enters as one exposure-weighted factor per line, level unchanged.",
+      "section": "3.8"
     }
   ]
 }

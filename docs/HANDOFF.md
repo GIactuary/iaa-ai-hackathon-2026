@@ -113,3 +113,12 @@ Evidence: `decisions/phase5_checkin1.md`, `outputs/phase5_steps123*.json` and `o
   - Tweedie per line against frequency × severity per peril, on W2, with the per-peril excess factor retested.
   - Step 7 carries these extra candidates: customer, address and repudiation history; years licensed; property voluntary excess; the flood measures.
   - Motor step 5 fits were slow, about 2 hours for 24 candidates. Budget for it.
+
+## Update after check-in 3 (2026-10-19)
+
+- **Step 6 is done and decided** (M1 to M3; D20). Evidence: `decisions/phase5_checkin3.md`, `outputs/phase5_step6.json`. Page: https://claude.ai/artifact/5wm9GbRV98cZ9zxKPy1wiF (generator `scripts/checkin3_page.py`).
+- **Structure (M1 a).** One capped Tweedie GLM per line stays in all three lines; no per-peril structure passed anywhere. In step 7, each family also builds frequency × severity per peril for motor only (the near miss: +12,541 on A [−12,076, 34,902], +35,947 on B). Property stays per line in every family.
+- **Excess (M2 a).** The line excess factor everywhere, including any per-peril motor model. C2's per-peril form is retired on evidence.
+- **Weather (M3 b).** The 2025 weather enters as one exposure-weighted factor per line, not row by row. Apply it when the final pricing chain is assembled.
+- **Code.** `scripts/phase5_step6.py` fits the structures (`fit_plan`); `TweedieGLM.fit` takes a `weight` for gamma severity (ec = n, weight = n). The full run took about 35 minutes with 4 workers.
+- **Next: step 7 (families, P7, C5)**, then step 8 (weights), then the freeze by the end of 21 October.

@@ -53,3 +53,12 @@ These relativities explain the line GLM's factors; they are not adopted as a str
 - **M1.** Structure: one Tweedie GLM per line in all three lines; in step 7, build frequency × severity in motor only.
 - **M2.** Excess factor: the line factor stays (K2 (a)); C2's per-peril form is retired.
 - **M3.** 2025 weather: apply it as a line-level factor rather than row by row.
+
+## Verdicts (actuary, 2026-10-19, check-in 3 round 1)
+
+M1 (a), M2 (a), M3 (b): the recommendations, with no notes on the page. Exchange D20.
+
+What changes:
+- **Structure.** One capped Tweedie GLM per line stays in all three lines. In step 7, each family builds frequency × severity per peril for motor only; property stays per line.
+- **Excess.** The line excess factor applies everywhere, including any per-peril motor model in step 7. C2's per-peril form is retired on evidence.
+- **Weather.** The 2025 weather enters as one factor per line: the exposure-weighted average of the 2025 row multipliers (motor −0.04%, buildings +0.06%, contents −0.28%). The level is unchanged; the row-by-row form of K4 is dropped. This is applied when the final pricing chain is assembled.
