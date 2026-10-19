@@ -80,3 +80,19 @@ def test_glm_numeric_term_recovers_coefficient():
     assert rel[("x", "coefficient")] == pytest.approx(0.7, abs=0.05)
     assert rel[("g", "b")] == pytest.approx(np.exp(0.3), rel=0.05)
     assert m.rate(f.iloc[:5]).shape == (5,)
+
+
+def test_glm_gamma_severity_weighted_by_claims():
+    """Rows hold n claims each with mean cost 1,000 x 1.5 on level b: the weighted gamma fit recovers the relativity
+    and the base severity from the row averages."""
+    rng = np.random.default_rng(5)
+    n_rows = 20000
+    g = rng.choice(["a", "b"], n_rows, p=[0.7, 0.3])
+    n = rng.integers(1, 4, n_rows)
+    mu = 1000 * np.where(g == "b", 1.5, 1.0)
+    y = np.array([rng.gamma(2.0, m / 2.0, k).sum() for m, k in zip(mu, n)])
+    f = pd.DataFrame({"g": pd.Series(g, dtype="string")})
+    m = TweedieGLM(power=2.0, alpha=0.0).fit(f, y, n.astype(float), weight=n)
+    rel = m.relativities().set_index(["factor", "level"])["relativity"]
+    assert rel[("g", "b")] == pytest.approx(1.5, rel=0.03)
+    assert m.rate(f.iloc[:1])[0] == pytest.approx(1000 if g[0] == "a" else 1500, rel=0.03)

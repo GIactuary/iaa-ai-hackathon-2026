@@ -101,7 +101,9 @@ class TweedieGLM:
         r, k, x = np.concatenate(rows), np.concatenate(cols), np.concatenate(vals_)
         return sp.csr_matrix((x, (r, k)), shape=(len(f), j))
 
-    def fit(self, f: pd.DataFrame, y, ec):
+    def fit(self, f: pd.DataFrame, y, ec, weight=None):
+        """Fit y / ec with weight ec^(2 - p), times `weight` where given. For a gamma severity (p = 2) on rows
+        holding n claims, pass ec = n and weight = n: the average cost per claim, weighted by the claims behind it."""
         self.columns_ = list(f.columns)
         self.numeric_ = {c for c in self.columns_ if pd.api.types.is_float_dtype(f[c])}
         self.levels_ = {}
@@ -112,7 +114,8 @@ class TweedieGLM:
             self.levels_[c] = [vc.index[0]] + sorted(set(vc.index) - {vc.index[0]})
         y, ec = np.asarray(y, dtype=float), np.asarray(ec, dtype=float)
         self.model_ = TweedieRegressor(power=self.power, link="log", alpha=self.alpha, solver="lbfgs", max_iter=3000, tol=1e-7)
-        self.model_.fit(self._x(f), y / ec, sample_weight=np.power(ec, 2 - self.power))
+        w = np.power(ec, 2 - self.power) * (1.0 if weight is None else np.asarray(weight, dtype=float))
+        self.model_.fit(self._x(f), y / ec, sample_weight=w)
         return self
 
     def rate(self, f: pd.DataFrame) -> np.ndarray:
