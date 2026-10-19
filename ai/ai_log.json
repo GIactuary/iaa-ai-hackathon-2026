@@ -209,6 +209,20 @@
       "decision": "Actuary chose (a) on all eight and set a standing rule: test as widely as possible within explainability.",
       "effect": "Nine thresholds dated in thresholds.md (caps, trend bounds, level band, power grid 1.1 to 1.9 in 0.1 steps). The engineered-feature list is widened to every candidate with a risk reason. The rule is saved for future sessions.",
       "section": "3.6"
+    },
+    {
+      "id": "D15",
+      "stage": "5. Steps 1 to 3: cap and load, trend and level, weather",
+      "role": "Modeller",
+      "proposed_by": "Actuary",
+      "question": "Run phase 5 steps 1 to 3 under the agreed thresholds and bring the results to the first check-in.",
+      "ai_answer": "The AI implemented the per-peril load (C2) as two capped GLMs per line, built climate normals that averaged all the fitting years including each row's own year, fitted weather elasticities on unstandardised deviations, and judged the year-weather multiplier on ranking. All four turned out wrong.",
+      "challenge": "No actuary challenge. The keep rule, an implausible coefficient (exactly 0.0 for subsidence) and the pattern across scorings (ten times worse on A than on B) caught the errors.",
+      "test": "Two full runs. Nested variants V0 to V7 were scored out of time on A and B, each against the previous one with the 95% customer bootstrap. The level was assessed by trend variant, with a C4 check on 2021 to 2024. The weather multiplier was re-judged on level.",
+      "result": "Capping with a line excess factor passes: combined +32,825 on A [6,688, 58,429], with motor passing alone. The two-GLM load fails: −54,597 [−99,284, −11,519]. Normals fail twice, the second time with each row's own year left out: −67,365 [−127,048, −7,144]. The weather multiplier is neutral on ranking but improves the 2024 buildings level from 0.974 to 0.991, and nets −0.05% to −0.24% for 2025. Trend improves the level in five of six line-scorings; the exception is the motor bodily injury break in 2023. C4 passes for buildings (0.0%) and contents (−2.1%); motor stops at −5.3%.",
+      "decision": "Open: K1 to K4 put to the actuary on the check-in brief.",
+      "effect": "V1 becomes the working base, and the subsidence elasticity bug is fixed with a test. decisions/phase5_checkin1.md and the check-in brief were written.",
+      "section": "3.6"
     }
   ]
 }

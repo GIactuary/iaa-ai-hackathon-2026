@@ -1,0 +1,5523 @@
+{
+ "phase5_steps123_run2": {
+  "by_line": {
+   "motor": {
+    "A": {
+     "excess_factor_line": 1.0357766536757347,
+     "trends": [
+      {
+       "peril": "bodily_injury",
+       "freq_trend_fitted": -0.015093787418699378,
+       "freq_trend": -0.015093787418699378,
+       "sev_trend_fitted": 0.02505736522005031,
+       "sev_trend": 0.02505736522005031,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.011283420087328067,
+       "freq_2022": 0.01111311054317405,
+       "sev_2021": 19897.46136590783,
+       "sev_2022": 20396.039322305227
+      },
+      {
+       "peril": "glass_hail",
+       "freq_trend_fitted": 0.052269850034503795,
+       "freq_trend": 0.052269850034503795,
+       "sev_trend_fitted": 0.1174782584187104,
+       "sev_trend": 0.1174782584187104,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.019037537262454992,
+       "freq_2022": 0.02003262648018979,
+       "sev_2021": 940.7772278855639,
+       "sev_2022": 1051.2980981775427
+      },
+      {
+       "peril": "own_damage",
+       "freq_trend_fitted": 0.02815511505024859,
+       "freq_trend": 0.02815511505024859,
+       "sev_trend_fitted": 0.044937279303005395,
+       "sev_trend": 0.044937279303005395,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.06362957209325634,
+       "freq_2022": 0.06542107001614007,
+       "sev_2021": 1723.6722786304604,
+       "sev_2022": 1801.1294212421244
+      },
+      {
+       "peril": "theft",
+       "freq_trend_fitted": -0.0350646651547869,
+       "freq_trend": -0.0350646651547869,
+       "sev_trend_fitted": -0.016961379265506227,
+       "sev_trend": -0.016961379265506227,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.007988128098287592,
+       "freq_2022": 0.007708027061307593,
+       "sev_2021": 5975.328001567398,
+       "sev_2022": 5873.978197097021
+      },
+      {
+       "peril": "third_party_prop",
+       "freq_trend_fitted": 0.03237929469532541,
+       "freq_trend": 0.03237929469532541,
+       "sev_trend_fitted": 0.05902137748632463,
+       "sev_trend": 0.05902137748632463,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.043440141750797495,
+       "freq_2022": 0.04484670290215327,
+       "sev_2021": 3307.903719556132,
+       "sev_2022": 3503.1407536764705
+      }
+     ],
+     "indication": [
+      {
+       "peril": "bodily_injury",
+       "indicated_capped_lc": 228.8360919444087,
+       "lc_2021": 228.83609194440876,
+       "lc_2022": 228.8360919444087
+      },
+      {
+       "peril": "glass_hail",
+       "indicated_capped_lc": 24.76452381231592,
+       "lc_2021": 24.764523812315915,
+       "lc_2022": 24.764523812315925
+      },
+      {
+       "peril": "own_damage",
+       "indicated_capped_lc": 126.5935058820088,
+       "lc_2021": 126.59350588200883,
+       "lc_2022": 126.59350588200877
+      },
+      {
+       "peril": "theft",
+       "indicated_capped_lc": 42.94813912642454,
+       "lc_2021": 42.94813912642452,
+       "lc_2022": 42.94813912642457
+      },
+      {
+       "peril": "third_party_prop",
+       "indicated_capped_lc": 171.76398980826318,
+       "lc_2021": 171.7639898082632,
+       "lc_2022": 171.76398980826318
+      }
+     ],
+     "indicated_capped_lc": 594.9062505734212,
+     "line_trend": 0.05006030167058408,
+     "level": {
+      "V1": {
+       "factor": 1.0508737655390281,
+       "model_projection": 1.050060301670584,
+       "gap": 0.000774683003585519,
+       "model_lc_last_year": 566.106291813531,
+       "indicated_lc": 594.9062505734212,
+       "trend": 0.05006030167058408
+      },
+      "V5": {
+       "factor": 1.0510082037479924,
+       "model_projection": 1.050060301670584,
+       "gap": 0.0009027120403468647,
+       "model_lc_last_year": 566.0338791380796,
+       "indicated_lc": 594.9062505734212,
+       "trend": 0.05006030167058408
+      }
+     },
+     "capped_lc_by_year": {
+      "bodily_injury": {
+       "2021": 224.51141526291858,
+       "2022": 226.66343963170274
+      },
+      "glass_hail": {
+       "2021": 17.910081531540538,
+       "2022": 21.0602621201246
+      },
+      "own_damage": {
+       "2021": 109.67652951826432,
+       "2022": 117.83181397521086
+      },
+      "theft": {
+       "2021": 47.73168550580518,
+       "2022": 45.276782900754625
+      },
+      "third_party_prop": {
+       "2021": 143.69580647550868,
+       "2022": 157.10431260455394
+      }
+     },
+     "weather_elasticities": {
+      "glass_hail": {
+       "variable": "hail_days",
+       "b": 0.03930310200265048
+      }
+     },
+     "cost_share": {
+      "bodily_injury": 0.42530851529661595,
+      "glass_hail": 0.03396732231304511,
+      "own_damage": 0.19802841359682413,
+      "theft": 0.0808026380021867,
+      "third_party_prop": 0.2618931107913281
+     }
+    },
+    "B": {
+     "excess_factor_line": 1.0342212071630301,
+     "trends": [
+      {
+       "peril": "bodily_injury",
+       "freq_trend_fitted": -0.021277326115827333,
+       "freq_trend": -0.021277326115827333,
+       "sev_trend_fitted": 0.0,
+       "sev_trend": 0.0,
+       "bounded": false,
+       "sev_step_level": 16278.659936231885,
+       "freq_2021": 0.011283420087328067,
+       "freq_2022": 0.01111311054317405,
+       "freq_2023": 0.010807340039988263,
+       "sev_2021": 19897.46136590783,
+       "sev_2022": 20396.039322305227,
+       "sev_2023": 16278.659936231885
+      },
+      {
+       "peril": "glass_hail",
+       "freq_trend_fitted": 0.0418541494450424,
+       "freq_trend": 0.0418541494450424,
+       "sev_trend_fitted": 0.09293529730284456,
+       "sev_trend": 0.09293529730284456,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.019037537262454992,
+       "freq_2022": 0.02003262648018979,
+       "freq_2023": 0.020674177192497676,
+       "sev_2021": 940.7772278855639,
+       "sev_2022": 1051.2980981775427,
+       "sev_2023": 1124.9423421879465
+      },
+      {
+       "peril": "own_damage",
+       "freq_trend_fitted": -0.030282361533548463,
+       "freq_trend": -0.030282361533548463,
+       "sev_trend_fitted": 0.04651349338889932,
+       "sev_trend": 0.04651349338889932,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.06362957209325634,
+       "freq_2022": 0.06542107001614007,
+       "freq_2023": 0.05983104117303765,
+       "sev_2021": 1723.6722786304604,
+       "sev_2022": 1801.1294212421244,
+       "sev_2023": 1887.7520694417046
+      },
+      {
+       "peril": "theft",
+       "freq_trend_fitted": -0.007957397041191472,
+       "freq_trend": -0.007957397041191472,
+       "sev_trend_fitted": 0.06409073821193156,
+       "sev_trend": 0.06409073821193156,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.007988128098287592,
+       "freq_2022": 0.007708027061307593,
+       "freq_2023": 0.007858453766296021,
+       "sev_2021": 5975.328001567398,
+       "sev_2022": 5873.978197097021,
+       "sev_2023": 6758.293275732532
+      },
+      {
+       "peril": "third_party_prop",
+       "freq_trend_fitted": -0.0178590335091926,
+       "freq_trend": -0.0178590335091926,
+       "sev_trend_fitted": 0.07820914773719823,
+       "sev_trend": 0.07820914773719823,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.043440141750797495,
+       "freq_2022": 0.04484670290215327,
+       "freq_2023": 0.04191909599273153,
+       "sev_2021": 3307.903719556132,
+       "sev_2022": 3503.1407536764705,
+       "sev_2023": 3845.0023284969716
+      }
+     ],
+     "indication": [
+      {
+       "peril": "bodily_injury",
+       "indicated_capped_lc": 172.56656787878495,
+       "lc_2021": 172.20206583190736,
+       "lc_2022": 173.29003300198528,
+       "lc_2023": 172.18571433641452
+      },
+      {
+       "peril": "glass_hail",
+       "indicated_capped_lc": 26.74999029810302,
+       "lc_2021": 26.44245028298991,
+       "lc_2022": 27.30653079274105,
+       "lc_2023": 26.482554560766225
+      },
+      {
+       "peril": "own_damage",
+       "indicated_capped_lc": 116.91153615843463,
+       "lc_2021": 114.62624936863887,
+       "lc_2022": 121.35084886166035,
+       "lc_2023": 114.62032697545689
+      },
+      {
+       "peril": "theft",
+       "indicated_capped_lc": 54.18254682429125,
+       "lc_2021": 56.14792737103137,
+       "lc_2022": 50.4537595983111,
+       "lc_2023": 56.06387641112893
+      },
+      {
+       "peril": "third_party_prop",
+       "indicated_capped_lc": 172.535502895646,
+       "lc_2021": 170.63755119806456,
+       "lc_2022": 176.17398743274487,
+       "lc_2023": 170.68106891837783
+      }
+     ],
+     "indicated_capped_lc": 542.9461440552599,
+     "line_trend": 0.02754639369791335,
+     "level": {
+      "V1": {
+       "factor": 1.016893174993589,
+       "model_projection": 1.0275463936979135,
+       "gap": -0.010367627943285274,
+       "model_lc_last_year": 533.9264314156528,
+       "indicated_lc": 542.9461440552599,
+       "trend": 0.02754639369791335
+      },
+      "V5": {
+       "factor": 1.0166131947969925,
+       "model_projection": 1.0275463936979135,
+       "gap": -0.010640102449851141,
+       "model_lc_last_year": 534.0734773402984,
+       "indicated_lc": 542.9461440552599,
+       "trend": 0.02754639369791335
+      }
+     },
+     "capped_lc_by_year": {
+      "bodily_injury": {
+       "2021": 224.51141526291858,
+       "2022": 226.66343963170274,
+       "2023": 175.92901332619167
+      },
+      "glass_hail": {
+       "2021": 17.910081531540538,
+       "2022": 21.0602621201246,
+       "2023": 23.257257313736957
+      },
+      "own_damage": {
+       "2021": 109.67652951826432,
+       "2022": 117.83181397521086,
+       "2023": 112.94617179125366
+      },
+      "theft": {
+       "2021": 47.73168550580518,
+       "2022": 45.276782900754625,
+       "2023": 53.10973524641339
+      },
+      "third_party_prop": {
+       "2021": 143.69580647550868,
+       "2022": 157.10431260455394,
+       "2023": 161.1790217005408
+      }
+     },
+     "weather_elasticities": {
+      "glass_hail": {
+       "variable": "hail_days",
+       "b": 0.050417993252279636
+      }
+     },
+     "cost_share": {
+      "bodily_injury": 0.3982932038181902,
+      "glass_hail": 0.037099763131976535,
+      "own_damage": 0.20262149277004762,
+      "theft": 0.0869184684725292,
+      "third_party_prop": 0.2750670718072565
+     }
+    },
+    "final": {
+     "excess_factor_line": 1.0313220733785247,
+     "trends": [
+      {
+       "peril": "bodily_injury",
+       "freq_trend_fitted": -0.017506244740460475,
+       "freq_trend": -0.017506244740460475,
+       "sev_trend_fitted": 0.0,
+       "sev_trend": 0.0,
+       "bounded": false,
+       "sev_step_level": 16401.52283053324,
+       "freq_2021": 0.011283420087328067,
+       "freq_2022": 0.01111311054317405,
+       "freq_2023": 0.010807340039988263,
+       "freq_2024": 0.010768280459846371,
+       "sev_2021": 19897.46136590783,
+       "sev_2022": 20396.039322305227,
+       "sev_2023": 16278.659936231885,
+       "sev_2024": 16610.741480750246
+      },
+      {
+       "peril": "glass_hail",
+       "freq_trend_fitted": 0.02911611284636595,
+       "freq_trend": 0.02911611284636595,
+       "sev_trend_fitted": 0.08171587508988432,
+       "sev_trend": 0.08171587508988432,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.019037537262454992,
+       "freq_2022": 0.02003262648018979,
+       "freq_2023": 0.020674177192497676,
+       "freq_2024": 0.02075666786532107,
+       "sev_2021": 940.7772278855639,
+       "sev_2022": 1051.2980981775427,
+       "sev_2023": 1124.9423421879465,
+       "sev_2024": 1197.0577839254515
+      },
+      {
+       "peril": "own_damage",
+       "freq_trend_fitted": -0.029113648099760248,
+       "freq_trend": -0.029113648099760248,
+       "sev_trend_fitted": 0.05428869933384539,
+       "sev_trend": 0.05428869933384539,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.06362957209325634,
+       "freq_2022": 0.06542107001614007,
+       "freq_2023": 0.05983104117303765,
+       "freq_2024": 0.059475048629520764,
+       "sev_2021": 1723.6722786304604,
+       "sev_2022": 1801.1294212421244,
+       "sev_2023": 1887.7520694417046,
+       "sev_2024": 2024.2668693693695
+      },
+      {
+       "peril": "theft",
+       "freq_trend_fitted": -0.012452675489765253,
+       "freq_trend": -0.012452675489765253,
+       "sev_trend_fitted": 0.04069197398603652,
+       "sev_trend": 0.04069197398603652,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.007988128098287592,
+       "freq_2022": 0.007708027061307593,
+       "freq_2023": 0.007858453766296021,
+       "freq_2024": 0.007609141321267759,
+       "sev_2021": 5975.328001567398,
+       "sev_2022": 5873.978197097021,
+       "sev_2023": 6758.293275732532,
+       "sev_2024": 6504.546464088397
+      },
+      {
+       "peril": "third_party_prop",
+       "freq_trend_fitted": -0.02499566334224257,
+       "freq_trend": -0.02499566334224257,
+       "sev_trend_fitted": 0.08007066231689675,
+       "sev_trend": 0.08007066231689675,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.043440141750797495,
+       "freq_2022": 0.04484670290215327,
+       "freq_2023": 0.04191909599273153,
+       "freq_2024": 0.04086115247062583,
+       "sev_2021": 3307.903719556132,
+       "sev_2022": 3503.1407536764705,
+       "sev_2023": 3845.0023284969716,
+       "sev_2024": 4144.2719365275
+      }
+     ],
+     "indication": [
+      {
+       "peril": "bodily_injury",
+       "indicated_capped_lc": 172.4852167765154,
+       "lc_2021": 172.44242634975458,
+       "lc_2022": 172.865848882267,
+       "lc_2023": 171.1049550079908,
+       "lc_2024": 173.52431142380308
+      },
+      {
+       "peril": "glass_hail",
+       "indicated_capped_lc": 28.271135419909132,
+       "lc_2021": 27.504761815175343,
+       "lc_2022": 29.05337009317375,
+       "lc_2023": 28.821306278929853,
+       "lc_2024": 27.659882601678238
+      },
+      {
+       "peril": "own_damage",
+       "indicated_capped_lc": 122.11181773704331,
+       "lc_2021": 120.39972357655175,
+       "lc_2022": 126.37070436065349,
+       "lc_2023": 118.33886798907392,
+       "lc_2024": 123.23399297611626
+      },
+      {
+       "peril": "theft",
+       "indicated_capped_lc": 52.326459110465116,
+       "lc_2021": 53.250937525161895,
+       "lc_2022": 49.14914041675806,
+       "lc_2023": 56.09632109896554,
+       "lc_2024": 50.866609688916185
+      },
+      {
+       "peril": "third_party_prop",
+       "indicated_capped_lc": 179.35321795871627,
+       "lc_2021": 176.7172571078101,
+       "lc_2022": 183.46966069252122,
+       "lc_2023": 178.74172684592284,
+       "lc_2024": 178.3271929933893
+      }
+     ],
+     "indicated_capped_lc": 554.5478470026492,
+     "line_trend": 0.025303993128107726,
+     "level": {
+      "V1": {
+       "factor": 0.9707079862766667,
+       "model_projection": 1.0253039931281078,
+       "gap": -0.05324860452837388,
+       "model_lc_last_year": 571.2818425752547,
+       "indicated_lc": 554.5478470026492,
+       "trend": 0.025303993128107726
+      },
+      "V5": {
+       "factor": 0.97061717931088,
+       "model_projection": 1.0253039931281078,
+       "gap": -0.05333717042336239,
+       "model_lc_last_year": 571.3352893633798,
+       "indicated_lc": 554.5478470026492,
+       "trend": 0.025303993128107726
+      }
+     },
+     "capped_lc_by_year": {
+      "bodily_injury": {
+       "2021": 224.51141526291858,
+       "2022": 226.66343963170274,
+       "2023": 175.92901332619167,
+       "2024": 178.8691229107225
+      },
+      "glass_hail": {
+       "2021": 17.910081531540538,
+       "2022": 21.0602621201246,
+       "2023": 23.257257313736957,
+       "2024": 24.846930836537872
+      },
+      "own_damage": {
+       "2021": 109.67652951826432,
+       "2022": 117.83181397521086,
+       "2023": 112.94617179125366,
+       "2024": 120.39337049487104
+      },
+      "theft": {
+       "2021": 47.73168550580518,
+       "2022": 45.276782900754625,
+       "2023": 53.10973524641339,
+       "2024": 49.49401327600111
+      },
+      "third_party_prop": {
+       "2021": 143.69580647550868,
+       "2022": 157.10431260455394,
+       "2023": 161.1790217005408,
+       "2024": 169.33972747818595
+      }
+     },
+     "weather_elasticities": {
+      "glass_hail": {
+       "variable": "hail_days",
+       "b": 0.05791558457445085
+      }
+     },
+     "cost_share": {
+      "bodily_injury": 0.36349553271323387,
+      "glass_hail": 0.04056512103708845,
+      "own_damage": 0.21404969558376835,
+      "theft": 0.09114660959007535,
+      "third_party_prop": 0.290743041075834
+     },
+     "relativities_V1": [
+      {
+       "factor": "region",
+       "level": "R01",
+       "relativity": 1.0
+      },
+      {
+       "factor": "region",
+       "level": "R02",
+       "relativity": 0.9444686516980434
+      },
+      {
+       "factor": "region",
+       "level": "R03",
+       "relativity": 1.1687019112942159
+      },
+      {
+       "factor": "region",
+       "level": "R04",
+       "relativity": 1.0013418245719203
+      },
+      {
+       "factor": "region",
+       "level": "R05",
+       "relativity": 0.8252832938802955
+      },
+      {
+       "factor": "region",
+       "level": "R06",
+       "relativity": 0.8424770390654656
+      },
+      {
+       "factor": "region",
+       "level": "R07",
+       "relativity": 1.1722707243387638
+      },
+      {
+       "factor": "region",
+       "level": "R08",
+       "relativity": 1.0969004295642752
+      },
+      {
+       "factor": "region",
+       "level": "R09",
+       "relativity": 0.8882236639969476
+      },
+      {
+       "factor": "region",
+       "level": "R10",
+       "relativity": 0.9940742204412071
+      },
+      {
+       "factor": "region",
+       "level": "R11",
+       "relativity": 1.032481707303252
+      },
+      {
+       "factor": "region",
+       "level": "R12",
+       "relativity": 1.0813085565441225
+      },
+      {
+       "factor": "urban",
+       "level": "suburban",
+       "relativity": 1.0
+      },
+      {
+       "factor": "urban",
+       "level": "dense_urban",
+       "relativity": 1.1824945781462994
+      },
+      {
+       "factor": "urban",
+       "level": "rural",
+       "relativity": 0.8721522154284237
+      },
+      {
+       "factor": "urban",
+       "level": "urban",
+       "relativity": 1.0622609070885742
+      },
+      {
+       "factor": "pay",
+       "level": "annual",
+       "relativity": 1.0
+      },
+      {
+       "factor": "pay",
+       "level": "monthly",
+       "relativity": 1.13713058147294
+      },
+      {
+       "factor": "missed",
+       "level": "0",
+       "relativity": 1.0
+      },
+      {
+       "factor": "missed",
+       "level": "1",
+       "relativity": 1.1911518074744811
+      },
+      {
+       "factor": "missed",
+       "level": "2+",
+       "relativity": 1.2184915347495513
+      },
+      {
+       "factor": "credit",
+       "level": "B",
+       "relativity": 1.0
+      },
+      {
+       "factor": "credit",
+       "level": "A",
+       "relativity": 1.0090546207571185
+      },
+      {
+       "factor": "credit",
+       "level": "C",
+       "relativity": 1.0178748467483036
+      },
+      {
+       "factor": "credit",
+       "level": "D",
+       "relativity": 1.0349532264518455
+      },
+      {
+       "factor": "credit",
+       "level": "E",
+       "relativity": 1.2271157346492778
+      },
+      {
+       "factor": "channel",
+       "level": "direct",
+       "relativity": 1.0
+      },
+      {
+       "factor": "channel",
+       "level": "broker",
+       "relativity": 1.0405984266864798
+      },
+      {
+       "factor": "channel",
+       "level": "comparison_site",
+       "relativity": 1.1712323275785417
+      },
+      {
+       "factor": "new_bus",
+       "level": "False",
+       "relativity": 1.0
+      },
+      {
+       "factor": "new_bus",
+       "level": "True",
+       "relativity": 1.2091176402441526
+      },
+      {
+       "factor": "age",
+       "level": "(29.0, 39.0]",
+       "relativity": 1.0
+      },
+      {
+       "factor": "age",
+       "level": "(-0.001, 20.0]",
+       "relativity": 2.3452275652990786
+      },
+      {
+       "factor": "age",
+       "level": "(20.0, 24.0]",
+       "relativity": 1.5078512534605533
+      },
+      {
+       "factor": "age",
+       "level": "(24.0, 29.0]",
+       "relativity": 1.263823870335663
+      },
+      {
+       "factor": "age",
+       "level": "(39.0, 49.0]",
+       "relativity": 0.8754081029596782
+      },
+      {
+       "factor": "age",
+       "level": "(49.0, 59.0]",
+       "relativity": 0.7641472803414289
+      },
+      {
+       "factor": "age",
+       "level": "(59.0, 69.0]",
+       "relativity": 0.7944948211929287
+      },
+      {
+       "factor": "age",
+       "level": "(69.0, 79.0]",
+       "relativity": 0.9577553669976286
+      },
+      {
+       "factor": "age",
+       "level": "(79.0, 200.0]",
+       "relativity": 1.1290949564865373
+      },
+      {
+       "factor": "yr",
+       "level": "2022",
+       "relativity": 1.0
+      },
+      {
+       "factor": "yr",
+       "level": "2021",
+       "relativity": 0.9447218486022997
+      },
+      {
+       "factor": "yr",
+       "level": "2023",
+       "relativity": 0.9684862595175788
+      },
+      {
+       "factor": "yr",
+       "level": "2024",
+       "relativity": 1.0575204102697129
+      },
+      {
+       "factor": "ncb",
+       "level": "10",
+       "relativity": 1.0
+      },
+      {
+       "factor": "ncb",
+       "level": "0",
+       "relativity": 2.322298783724855
+      },
+      {
+       "factor": "ncb",
+       "level": "1",
+       "relativity": 1.8839351340313748
+      },
+      {
+       "factor": "ncb",
+       "level": "2",
+       "relativity": 1.6712258454300815
+      },
+      {
+       "factor": "ncb",
+       "level": "3",
+       "relativity": 1.5627675246814314
+      },
+      {
+       "factor": "ncb",
+       "level": "4",
+       "relativity": 1.283227765146301
+      },
+      {
+       "factor": "ncb",
+       "level": "5",
+       "relativity": 1.3635577801604835
+      },
+      {
+       "factor": "ncb",
+       "level": "6",
+       "relativity": 1.1928757817880349
+      },
+      {
+       "factor": "ncb",
+       "level": "7",
+       "relativity": 1.1514731870793526
+      },
+      {
+       "factor": "ncb",
+       "level": "8",
+       "relativity": 1.070207973537586
+      },
+      {
+       "factor": "ncb",
+       "level": "9",
+       "relativity": 1.009091464861656
+      },
+      {
+       "factor": "vvg",
+       "level": "11",
+       "relativity": 1.0
+      },
+      {
+       "factor": "vvg",
+       "level": "1",
+       "relativity": 0.7534136033274303
+      },
+      {
+       "factor": "vvg",
+       "level": "10",
+       "relativity": 0.9606305041312436
+      },
+      {
+       "factor": "vvg",
+       "level": "12",
+       "relativity": 0.9961575641214605
+      },
+      {
+       "factor": "vvg",
+       "level": "13",
+       "relativity": 1.0479845265233785
+      },
+      {
+       "factor": "vvg",
+       "level": "14",
+       "relativity": 1.0631108678738215
+      },
+      {
+       "factor": "vvg",
+       "level": "15",
+       "relativity": 1.0268717296415608
+      },
+      {
+       "factor": "vvg",
+       "level": "16",
+       "relativity": 1.1391975045282647
+      },
+      {
+       "factor": "vvg",
+       "level": "17",
+       "relativity": 1.0942842728130762
+      },
+      {
+       "factor": "vvg",
+       "level": "18",
+       "relativity": 1.2129667703477967
+      },
+      {
+       "factor": "vvg",
+       "level": "19",
+       "relativity": 1.2464688941416129
+      },
+      {
+       "factor": "vvg",
+       "level": "2",
+       "relativity": 0.8104033924966276
+      },
+      {
+       "factor": "vvg",
+       "level": "20",
+       "relativity": 1.2366972265953569
+      },
+      {
+       "factor": "vvg",
+       "level": "3",
+       "relativity": 0.8409614821831681
+      },
+      {
+       "factor": "vvg",
+       "level": "4",
+       "relativity": 0.8381623978766266
+      },
+      {
+       "factor": "vvg",
+       "level": "5",
+       "relativity": 0.8196128971568596
+      },
+      {
+       "factor": "vvg",
+       "level": "6",
+       "relativity": 0.8872858101227166
+      },
+      {
+       "factor": "vvg",
+       "level": "7",
+       "relativity": 0.8961952523921322
+      },
+      {
+       "factor": "vvg",
+       "level": "8",
+       "relativity": 0.8825565076337762
+      },
+      {
+       "factor": "vvg",
+       "level": "9",
+       "relativity": 0.93974126432979
+      },
+      {
+       "factor": "cover",
+       "level": "comprehensive",
+       "relativity": 1.0
+      },
+      {
+       "factor": "cover",
+       "level": "third_party_fire_theft",
+       "relativity": 0.698115499950082
+      },
+      {
+       "factor": "cover",
+       "level": "third_party_only",
+       "relativity": 0.6588990882268424
+      },
+      {
+       "factor": "use",
+       "level": "social",
+       "relativity": 1.0
+      },
+      {
+       "factor": "use",
+       "level": "business",
+       "relativity": 1.255704981395211
+      },
+      {
+       "factor": "use",
+       "level": "commuting",
+       "relativity": 1.0940041991072247
+      },
+      {
+       "factor": "fuel",
+       "level": "petrol",
+       "relativity": 1.0
+      },
+      {
+       "factor": "fuel",
+       "level": "diesel",
+       "relativity": 1.0084379089375652
+      },
+      {
+       "factor": "fuel",
+       "level": "electric",
+       "relativity": 1.0307187134047344
+      },
+      {
+       "factor": "fuel",
+       "level": "hybrid",
+       "relativity": 1.005211470475644
+      },
+      {
+       "factor": "body",
+       "level": "hatchback",
+       "relativity": 1.0
+      },
+      {
+       "factor": "body",
+       "level": "coupe",
+       "relativity": 0.9910924837255588
+      },
+      {
+       "factor": "body",
+       "level": "estate",
+       "relativity": 1.0111940336810248
+      },
+      {
+       "factor": "body",
+       "level": "saloon",
+       "relativity": 0.9802389354531637
+      },
+      {
+       "factor": "body",
+       "level": "suv",
+       "relativity": 0.9772088342307805
+      },
+      {
+       "factor": "mileage",
+       "level": "(7500.0, 10000.0]",
+       "relativity": 1.0
+      },
+      {
+       "factor": "mileage",
+       "level": "(-1.001, 0.0]",
+       "relativity": 0.7814304496389407
+      },
+      {
+       "factor": "mileage",
+       "level": "(0.0, 5000.0]",
+       "relativity": 0.8364597765883839
+      },
+      {
+       "factor": "mileage",
+       "level": "(10000.0, 15000.0]",
+       "relativity": 1.2077774428572778
+      },
+      {
+       "factor": "mileage",
+       "level": "(15000.0, 20000.0]",
+       "relativity": 1.3477310367133064
+      },
+      {
+       "factor": "mileage",
+       "level": "(20000.0, 10000000.0]",
+       "relativity": 1.5764889196444583
+      },
+      {
+       "factor": "mileage",
+       "level": "(5000.0, 7500.0]",
+       "relativity": 0.8437364106682044
+      },
+      {
+       "factor": "mileage",
+       "level": "blank",
+       "relativity": 0.9032694797270298
+      },
+      {
+       "factor": "points",
+       "level": "(-1.001, 0.0]",
+       "relativity": 1.0
+      },
+      {
+       "factor": "points",
+       "level": "(0.0, 3.0]",
+       "relativity": 1.0715350855713222
+      },
+      {
+       "factor": "points",
+       "level": "(3.0, 6.0]",
+       "relativity": 1.192530637815689
+      },
+      {
+       "factor": "points",
+       "level": "(6.0, 99.0]",
+       "relativity": 1.1815143031247715
+      },
+      {
+       "factor": "young",
+       "level": "False",
+       "relativity": 1.0
+      },
+      {
+       "factor": "young",
+       "level": "True",
+       "relativity": 1.1776668498376848
+      },
+      {
+       "factor": "telem",
+       "level": "False",
+       "relativity": 1.0
+      },
+      {
+       "factor": "telem",
+       "level": "True",
+       "relativity": 0.8270364063630613
+      }
+     ],
+     "relativities_V5": [
+      {
+       "factor": "region",
+       "level": "R01",
+       "relativity": 1.0
+      },
+      {
+       "factor": "region",
+       "level": "R02",
+       "relativity": 0.9881765004066023
+      },
+      {
+       "factor": "region",
+       "level": "R03",
+       "relativity": 1.2945267740923188
+      },
+      {
+       "factor": "region",
+       "level": "R04",
+       "relativity": 0.9869514176225808
+      },
+      {
+       "factor": "region",
+       "level": "R05",
+       "relativity": 0.812858772225437
+      },
+      {
+       "factor": "region",
+       "level": "R06",
+       "relativity": 0.9702086142319073
+      },
+      {
+       "factor": "region",
+       "level": "R07",
+       "relativity": 1.2891685511761477
+      },
+      {
+       "factor": "region",
+       "level": "R08",
+       "relativity": 1.1108360882964823
+      },
+      {
+       "factor": "region",
+       "level": "R09",
+       "relativity": 1.020301074824381
+      },
+      {
+       "factor": "region",
+       "level": "R10",
+       "relativity": 1.0456485218419496
+      },
+      {
+       "factor": "region",
+       "level": "R11",
+       "relativity": 1.016038345951791
+      },
+      {
+       "factor": "region",
+       "level": "R12",
+       "relativity": 1.2078329920304776
+      },
+      {
+       "factor": "urban",
+       "level": "suburban",
+       "relativity": 1.0
+      },
+      {
+       "factor": "urban",
+       "level": "dense_urban",
+       "relativity": 1.1801567940793958
+      },
+      {
+       "factor": "urban",
+       "level": "rural",
+       "relativity": 0.8719383500574395
+      },
+      {
+       "factor": "urban",
+       "level": "urban",
+       "relativity": 1.0622946776383708
+      },
+      {
+       "factor": "pay",
+       "level": "annual",
+       "relativity": 1.0
+      },
+      {
+       "factor": "pay",
+       "level": "monthly",
+       "relativity": 1.137331607355705
+      },
+      {
+       "factor": "missed",
+       "level": "0",
+       "relativity": 1.0
+      },
+      {
+       "factor": "missed",
+       "level": "1",
+       "relativity": 1.1901469546412184
+      },
+      {
+       "factor": "missed",
+       "level": "2+",
+       "relativity": 1.2178210672902736
+      },
+      {
+       "factor": "credit",
+       "level": "B",
+       "relativity": 1.0
+      },
+      {
+       "factor": "credit",
+       "level": "A",
+       "relativity": 1.009481451135804
+      },
+      {
+       "factor": "credit",
+       "level": "C",
+       "relativity": 1.0176970761333446
+      },
+      {
+       "factor": "credit",
+       "level": "D",
+       "relativity": 1.0356305484617503
+      },
+      {
+       "factor": "credit",
+       "level": "E",
+       "relativity": 1.2269454269520468
+      },
+      {
+       "factor": "channel",
+       "level": "direct",
+       "relativity": 1.0
+      },
+      {
+       "factor": "channel",
+       "level": "broker",
+       "relativity": 1.0403513494365761
+      },
+      {
+       "factor": "channel",
+       "level": "comparison_site",
+       "relativity": 1.1715469471682298
+      },
+      {
+       "factor": "new_bus",
+       "level": "False",
+       "relativity": 1.0
+      },
+      {
+       "factor": "new_bus",
+       "level": "True",
+       "relativity": 1.2090812352561033
+      },
+      {
+       "factor": "age",
+       "level": "(29.0, 39.0]",
+       "relativity": 1.0
+      },
+      {
+       "factor": "age",
+       "level": "(-0.001, 20.0]",
+       "relativity": 2.345574216702866
+      },
+      {
+       "factor": "age",
+       "level": "(20.0, 24.0]",
+       "relativity": 1.506384031245176
+      },
+      {
+       "factor": "age",
+       "level": "(24.0, 29.0]",
+       "relativity": 1.2624775736590854
+      },
+      {
+       "factor": "age",
+       "level": "(39.0, 49.0]",
+       "relativity": 0.8746316967893666
+      },
+      {
+       "factor": "age",
+       "level": "(49.0, 59.0]",
+       "relativity": 0.7624583456273699
+      },
+      {
+       "factor": "age",
+       "level": "(59.0, 69.0]",
+       "relativity": 0.7940594442916126
+      },
+      {
+       "factor": "age",
+       "level": "(69.0, 79.0]",
+       "relativity": 0.9563722997727755
+      },
+      {
+       "factor": "age",
+       "level": "(79.0, 200.0]",
+       "relativity": 1.1271135441564886
+      },
+      {
+       "factor": "yr",
+       "level": "2022",
+       "relativity": 1.0
+      },
+      {
+       "factor": "yr",
+       "level": "2021",
+       "relativity": 0.9524199564707918
+      },
+      {
+       "factor": "yr",
+       "level": "2023",
+       "relativity": 0.9710666472456564
+      },
+      {
+       "factor": "yr",
+       "level": "2024",
+       "relativity": 1.0548248579027006
+      },
+      {
+       "factor": "ncb",
+       "level": "10",
+       "relativity": 1.0
+      },
+      {
+       "factor": "ncb",
+       "level": "0",
+       "relativity": 2.320909441663902
+      },
+      {
+       "factor": "ncb",
+       "level": "1",
+       "relativity": 1.8840905196646598
+      },
+      {
+       "factor": "ncb",
+       "level": "2",
+       "relativity": 1.6714885170548168
+      },
+      {
+       "factor": "ncb",
+       "level": "3",
+       "relativity": 1.5631433710961875
+      },
+      {
+       "factor": "ncb",
+       "level": "4",
+       "relativity": 1.2834039491574176
+      },
+      {
+       "factor": "ncb",
+       "level": "5",
+       "relativity": 1.3618104061816243
+      },
+      {
+       "factor": "ncb",
+       "level": "6",
+       "relativity": 1.191969123657976
+      },
+      {
+       "factor": "ncb",
+       "level": "7",
+       "relativity": 1.1520136725738654
+      },
+      {
+       "factor": "ncb",
+       "level": "8",
+       "relativity": 1.0690382349080048
+      },
+      {
+       "factor": "ncb",
+       "level": "9",
+       "relativity": 1.0094132222026415
+      },
+      {
+       "factor": "vvg",
+       "level": "11",
+       "relativity": 1.0
+      },
+      {
+       "factor": "vvg",
+       "level": "1",
+       "relativity": 0.7523407945758751
+      },
+      {
+       "factor": "vvg",
+       "level": "10",
+       "relativity": 0.9621630638329155
+      },
+      {
+       "factor": "vvg",
+       "level": "12",
+       "relativity": 0.9966043466169814
+      },
+      {
+       "factor": "vvg",
+       "level": "13",
+       "relativity": 1.0489760889440267
+      },
+      {
+       "factor": "vvg",
+       "level": "14",
+       "relativity": 1.0650322605253997
+      },
+      {
+       "factor": "vvg",
+       "level": "15",
+       "relativity": 1.0273041455757583
+      },
+      {
+       "factor": "vvg",
+       "level": "16",
+       "relativity": 1.1392775112884679
+      },
+      {
+       "factor": "vvg",
+       "level": "17",
+       "relativity": 1.0944593535385843
+      },
+      {
+       "factor": "vvg",
+       "level": "18",
+       "relativity": 1.2146943215433497
+      },
+      {
+       "factor": "vvg",
+       "level": "19",
+       "relativity": 1.2470158754989142
+      },
+      {
+       "factor": "vvg",
+       "level": "2",
+       "relativity": 0.8141407430623546
+      },
+      {
+       "factor": "vvg",
+       "level": "20",
+       "relativity": 1.2376259173304682
+      },
+      {
+       "factor": "vvg",
+       "level": "3",
+       "relativity": 0.84195845325938
+      },
+      {
+       "factor": "vvg",
+       "level": "4",
+       "relativity": 0.8397404063320502
+      },
+      {
+       "factor": "vvg",
+       "level": "5",
+       "relativity": 0.8202898572890158
+      },
+      {
+       "factor": "vvg",
+       "level": "6",
+       "relativity": 0.8887131697973976
+      },
+      {
+       "factor": "vvg",
+       "level": "7",
+       "relativity": 0.8965757029095991
+      },
+      {
+       "factor": "vvg",
+       "level": "8",
+       "relativity": 0.8820192851535446
+      },
+      {
+       "factor": "vvg",
+       "level": "9",
+       "relativity": 0.9403398780166397
+      },
+      {
+       "factor": "cover",
+       "level": "comprehensive",
+       "relativity": 1.0
+      },
+      {
+       "factor": "cover",
+       "level": "third_party_fire_theft",
+       "relativity": 0.697967573216151
+      },
+      {
+       "factor": "cover",
+       "level": "third_party_only",
+       "relativity": 0.6579648262057916
+      },
+      {
+       "factor": "use",
+       "level": "social",
+       "relativity": 1.0
+      },
+      {
+       "factor": "use",
+       "level": "business",
+       "relativity": 1.2560512697169306
+      },
+      {
+       "factor": "use",
+       "level": "commuting",
+       "relativity": 1.0949038193953402
+      },
+      {
+       "factor": "fuel",
+       "level": "petrol",
+       "relativity": 1.0
+      },
+      {
+       "factor": "fuel",
+       "level": "diesel",
+       "relativity": 1.0087663781413654
+      },
+      {
+       "factor": "fuel",
+       "level": "electric",
+       "relativity": 1.0304122323191267
+      },
+      {
+       "factor": "fuel",
+       "level": "hybrid",
+       "relativity": 1.004563716862437
+      },
+      {
+       "factor": "body",
+       "level": "hatchback",
+       "relativity": 1.0
+      },
+      {
+       "factor": "body",
+       "level": "coupe",
+       "relativity": 0.9914833245776695
+      },
+      {
+       "factor": "body",
+       "level": "estate",
+       "relativity": 1.011545324452008
+      },
+      {
+       "factor": "body",
+       "level": "saloon",
+       "relativity": 0.9805840350886159
+      },
+      {
+       "factor": "body",
+       "level": "suv",
+       "relativity": 0.9767496556668738
+      },
+      {
+       "factor": "mileage",
+       "level": "(7500.0, 10000.0]",
+       "relativity": 1.0
+      },
+      {
+       "factor": "mileage",
+       "level": "(-1.001, 0.0]",
+       "relativity": 0.7824721799165323
+      },
+      {
+       "factor": "mileage",
+       "level": "(0.0, 5000.0]",
+       "relativity": 0.8367433244257222
+      },
+      {
+       "factor": "mileage",
+       "level": "(10000.0, 15000.0]",
+       "relativity": 1.2077601215451588
+      },
+      {
+       "factor": "mileage",
+       "level": "(15000.0, 20000.0]",
+       "relativity": 1.3478617166912328
+      },
+      {
+       "factor": "mileage",
+       "level": "(20000.0, 10000000.0]",
+       "relativity": 1.5780027970265207
+      },
+      {
+       "factor": "mileage",
+       "level": "(5000.0, 7500.0]",
+       "relativity": 0.84394196028045
+      },
+      {
+       "factor": "mileage",
+       "level": "blank",
+       "relativity": 0.8998234755522677
+      },
+      {
+       "factor": "points",
+       "level": "(-1.001, 0.0]",
+       "relativity": 1.0
+      },
+      {
+       "factor": "points",
+       "level": "(0.0, 3.0]",
+       "relativity": 1.0713331017507772
+      },
+      {
+       "factor": "points",
+       "level": "(3.0, 6.0]",
+       "relativity": 1.1931764606136162
+      },
+      {
+       "factor": "points",
+       "level": "(6.0, 99.0]",
+       "relativity": 1.1819652747411467
+      },
+      {
+       "factor": "young",
+       "level": "False",
+       "relativity": 1.0
+      },
+      {
+       "factor": "young",
+       "level": "True",
+       "relativity": 1.1773641341604397
+      },
+      {
+       "factor": "telem",
+       "level": "False",
+       "relativity": 1.0
+      },
+      {
+       "factor": "telem",
+       "level": "True",
+       "relativity": 0.8265644877337844
+      },
+      {
+       "factor": "n_wind_exposure_index",
+       "level": "(5.3, 6.433]",
+       "relativity": 1.0
+      },
+      {
+       "factor": "n_wind_exposure_index",
+       "level": "(-inf, 2.4]",
+       "relativity": 1.0277859953147217
+      },
+      {
+       "factor": "n_wind_exposure_index",
+       "level": "(2.4, 3.767]",
+       "relativity": 1.006694372710539
+      },
+      {
+       "factor": "n_wind_exposure_index",
+       "level": "(3.767, 5.3]",
+       "relativity": 0.991718413366128
+      },
+      {
+       "factor": "n_wind_exposure_index",
+       "level": "(6.433, inf]",
+       "relativity": 0.9789556179426515
+      },
+      {
+       "factor": "n_dry_summer_index",
+       "level": "(0.348, 0.492]",
+       "relativity": 1.0
+      },
+      {
+       "factor": "n_dry_summer_index",
+       "level": "(-inf, 0.348]",
+       "relativity": 0.9605955027610561
+      },
+      {
+       "factor": "n_dry_summer_index",
+       "level": "(0.492, 0.625]",
+       "relativity": 0.9708442989335208
+      },
+      {
+       "factor": "n_dry_summer_index",
+       "level": "(0.625, 0.713]",
+       "relativity": 0.9659676159912504
+      },
+      {
+       "factor": "n_dry_summer_index",
+       "level": "(0.713, inf]",
+       "relativity": 0.9499542499039488
+      },
+      {
+       "factor": "n_freezing_days",
+       "level": "(19.0, 29.0]",
+       "relativity": 1.0
+      },
+      {
+       "factor": "n_freezing_days",
+       "level": "(-inf, 19.0]",
+       "relativity": 0.9733858347295492
+      },
+      {
+       "factor": "n_freezing_days",
+       "level": "(29.0, 43.667]",
+       "relativity": 0.9959610662184649
+      },
+      {
+       "factor": "n_freezing_days",
+       "level": "(43.667, 60.667]",
+       "relativity": 0.8862342655661282
+      },
+      {
+       "factor": "n_freezing_days",
+       "level": "(60.667, inf]",
+       "relativity": 0.8427593982916645
+      },
+      {
+       "factor": "n_hail_days",
+       "level": "(-inf, 3.333]",
+       "relativity": 1.0
+      },
+      {
+       "factor": "n_hail_days",
+       "level": "(3.333, 5.0]",
+       "relativity": 1.0316459523326105
+      },
+      {
+       "factor": "n_hail_days",
+       "level": "(5.0, 6.667]",
+       "relativity": 0.9929777297862258
+      },
+      {
+       "factor": "n_hail_days",
+       "level": "(6.667, 9.0]",
+       "relativity": 1.0097346212520109
+      },
+      {
+       "factor": "n_hail_days",
+       "level": "(9.0, inf]",
+       "relativity": 1.0726351689802973
+      },
+      {
+       "factor": "n_rainfall_mm",
+       "level": "(833.667, 949.667]",
+       "relativity": 1.0
+      },
+      {
+       "factor": "n_rainfall_mm",
+       "level": "(-inf, 833.667]",
+       "relativity": 1.015025652851821
+      },
+      {
+       "factor": "n_rainfall_mm",
+       "level": "(1071.667, 1242.0]",
+       "relativity": 0.9977402848986614
+      },
+      {
+       "factor": "n_rainfall_mm",
+       "level": "(1242.0, inf]",
+       "relativity": 1.015731483453835
+      },
+      {
+       "factor": "n_rainfall_mm",
+       "level": "(949.667, 1071.667]",
+       "relativity": 1.017581364349175
+      },
+      {
+       "factor": "n_wildfire_index",
+       "level": "(-inf, 0.0443]",
+       "relativity": 1.0
+      },
+      {
+       "factor": "n_wildfire_index",
+       "level": "(0.0443, 0.108]",
+       "relativity": 1.0361845509482646
+      },
+      {
+       "factor": "n_wildfire_index",
+       "level": "(0.108, 0.171]",
+       "relativity": 1.03104342518127
+      },
+      {
+       "factor": "n_wildfire_index",
+       "level": "(0.171, 0.257]",
+       "relativity": 1.0327269433408128
+      },
+      {
+       "factor": "n_wildfire_index",
+       "level": "(0.257, inf]",
+       "relativity": 1.0984806046074072
+      },
+      {
+       "factor": "n_mean_temperature_c",
+       "level": "(11.733, 14.333]",
+       "relativity": 1.0
+      },
+      {
+       "factor": "n_mean_temperature_c",
+       "level": "(-inf, 9.467]",
+       "relativity": 1.019171535505164
+      },
+      {
+       "factor": "n_mean_temperature_c",
+       "level": "(14.333, 15.833]",
+       "relativity": 0.9806330164379353
+      },
+      {
+       "factor": "n_mean_temperature_c",
+       "level": "(15.833, inf]",
+       "relativity": 0.9348037984418831
+      },
+      {
+       "factor": "n_mean_temperature_c",
+       "level": "(9.467, 11.733]",
+       "relativity": 1.012636762999835
+      }
+     ]
+    }
+   },
+   "buildings": {
+    "A": {
+     "excess_factor_line": 1.020618919703103,
+     "trends": [
+      {
+       "peril": "accidental_damage",
+       "freq_trend_fitted": 0.09197270862834173,
+       "freq_trend": 0.09197270862834173,
+       "sev_trend_fitted": 0.05688244333414394,
+       "sev_trend": 0.05688244333414394,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.006102444699819628,
+       "freq_2022": 0.006663703068116703,
+       "sev_2021": 1166.6943484224967,
+       "sev_2022": 1233.0587735849056
+      },
+      {
+       "peril": "escape_of_water",
+       "freq_trend_fitted": -0.0412814737944579,
+       "freq_trend": -0.0412814737944579,
+       "sev_trend_fitted": 0.040637492481135684,
+       "sev_trend": 0.040637492481135684,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.017696252531438535,
+       "freq_2022": 0.016965725146301843,
+       "sev_2021": 5100.345,
+       "sev_2022": 5307.610231588698
+      },
+      {
+       "peril": "fire",
+       "freq_trend_fitted": 0.10358716754604602,
+       "freq_trend": 0.10358716754604602,
+       "sev_trend_fitted": -0.05547320363532182,
+       "sev_trend": -0.05,
+       "bounded": true,
+       "sev_step_level": null,
+       "freq_2021": 0.0017160509786872753,
+       "freq_2022": 0.0018938118389341101,
+       "sev_2021": 51278.92614634146,
+       "sev_2022": 48434.3198340249
+      },
+      {
+       "peril": "flood",
+       "freq_trend_fitted": -0.010940037333395325,
+       "freq_trend": -0.010940037333395325,
+       "sev_trend_fitted": 0.03333454979764938,
+       "sev_trend": 0.03333454979764938,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.004059925486162578,
+       "freq_2022": 0.004015509749773155,
+       "sev_2021": 28279.08268041237,
+       "sev_2022": 29221.7531702544
+      },
+      {
+       "peril": "storm",
+       "freq_trend_fitted": 0.036227167436811536,
+       "freq_trend": 0.036227167436811536,
+       "sev_trend_fitted": 0.04106413941510323,
+       "sev_trend": 0.04106413941510323,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.012815970967659603,
+       "freq_2022": 0.013280257293770317,
+       "sev_2021": 3081.89235793599,
+       "sev_2022": 3208.4476153846153
+      },
+      {
+       "peril": "subsidence",
+       "freq_trend_fitted": 0.10045099284835768,
+       "freq_trend": 0.10045099284835768,
+       "sev_trend_fitted": 0.03194300698190733,
+       "sev_trend": 0.03194300698190733,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.001992293331354007,
+       "freq_2022": 0.0021924211745336796,
+       "sev_2021": 22161.89668067227,
+       "sev_2022": 22869.814301075272
+      }
+     ],
+     "indication": [
+      {
+       "peril": "accidental_damage",
+       "indicated_capped_lc": 9.482828196963025,
+       "lc_2021": 9.482828196963027,
+       "lc_2022": 9.482828196963021
+      },
+      {
+       "peril": "escape_of_water",
+       "indicated_capped_lc": 89.8384060796809,
+       "lc_2021": 89.8384060796809,
+       "lc_2022": 89.8384060796809
+      },
+      {
+       "peril": "fire",
+       "indicated_capped_lc": 96.4355371635371,
+       "lc_2021": 96.72296507184996,
+       "lc_2022": 96.1657182465339
+      },
+      {
+       "peril": "flood",
+       "indicated_capped_lc": 119.92522033064353,
+       "lc_2021": 119.9252203306436,
+       "lc_2022": 119.92522033064347
+      },
+      {
+       "peril": "storm",
+       "indicated_capped_lc": 45.96570265948139,
+       "lc_2021": 45.96570265948139,
+       "lc_2022": 45.96570265948139
+      },
+      {
+       "peril": "subsidence",
+       "indicated_capped_lc": 56.93942079258808,
+       "lc_2021": 56.93942079258811,
+       "lc_2022": 56.939420792588066
+      }
+     ],
+     "indicated_capped_lc": 418.587115222894,
+     "line_trend": 0.047552940250203984,
+     "level": {
+      "V1": {
+       "factor": 1.0360517308035564,
+       "model_projection": 1.047552940250204,
+       "gap": -0.010979120008866139,
+       "model_lc_last_year": 404.0214429237428,
+       "indicated_lc": 418.587115222894,
+       "trend": 0.047552940250203984
+      },
+      "V5": {
+       "factor": 1.0364215665890202,
+       "model_projection": 1.047552940250204,
+       "gap": -0.010626072662757391,
+       "model_lc_last_year": 403.877272257573,
+       "indicated_lc": 418.587115222894,
+       "trend": 0.047552940250203984
+      }
+     },
+     "capped_lc_by_year": {
+      "accidental_damage": {
+       "2021": 7.1196877428403775,
+       "2022": 8.216737532705954
+      },
+      "escape_of_water": {
+       "2021": 90.25699311745988,
+       "2022": 90.04745637283332
+      },
+      "fire": {
+       "2021": 87.99725139946177,
+       "2022": 91.72548831239754
+      },
+      "flood": {
+       "2021": 114.81096849950495,
+       "2022": 117.34023476062114
+      },
+      "storm": {
+       "2021": 39.49744298475964,
+       "2022": 42.609009845891514
+      },
+      "subsidence": {
+       "2021": 44.15299896705987,
+       "2022": 50.14026513133057
+      }
+     },
+     "weather_elasticities": {
+      "storm": {
+       "variable": "wind_exposure_index",
+       "b": 0.056228273037401626
+      },
+      "subsidence": {
+       "variable": "dry_summer_index",
+       "b": 0.8081215823627904
+      },
+      "escape_of_water": {
+       "variable": "freezing_days",
+       "b": 0.00773227438391658
+      }
+     },
+     "cost_share": {
+      "accidental_damage": 0.019199420003959567,
+      "escape_of_water": 0.22520284966163778,
+      "fire": 0.24440656528813462,
+      "flood": 0.2904981575923663,
+      "storm": 0.10267872064792713,
+      "subsidence": 0.11801428680597453
+     }
+    },
+    "B": {
+     "excess_factor_line": 1.019373127701997,
+     "trends": [
+      {
+       "peril": "accidental_damage",
+       "freq_trend_fitted": 0.032764190307496444,
+       "freq_trend": 0.032764190307496444,
+       "sev_trend_fitted": -0.014455263603851853,
+       "sev_trend": -0.014455263603851853,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.006102444699819628,
+       "freq_2022": 0.006663703068116703,
+       "freq_2023": 0.006524994556684826,
+       "sev_2021": 1166.6943484224967,
+       "sev_2022": 1233.0587735849056,
+       "sev_2023": 1136.7267792521109
+      },
+      {
+       "peril": "escape_of_water",
+       "freq_trend_fitted": -0.029451121513102807,
+       "freq_trend": -0.029451121513102807,
+       "sev_trend_fitted": 0.08794560616487401,
+       "sev_trend": 0.08794560616487401,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.017696252531438535,
+       "freq_2022": 0.016965725146301843,
+       "freq_2023": 0.016669089676462447,
+       "sev_2021": 5100.345,
+       "sev_2022": 5307.610231588698,
+       "sev_2023": 6036.68505899009
+      },
+      {
+       "peril": "fire",
+       "freq_trend_fitted": 0.04731869841836467,
+       "freq_trend": 0.04731869841836467,
+       "sev_trend_fitted": -0.0449576945047796,
+       "sev_trend": -0.0449576945047796,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.0017160509786872753,
+       "freq_2022": 0.0018938118389341101,
+       "freq_2023": 0.00188762149945047,
+       "sev_2021": 51278.92614634146,
+       "sev_2022": 48434.3198340249,
+       "sev_2023": 46743.857833333335
+      },
+      {
+       "peril": "flood",
+       "freq_trend_fitted": -0.048884438752163195,
+       "freq_trend": -0.048884438752163195,
+       "sev_trend_fitted": 0.08178641552576016,
+       "sev_trend": 0.08178641552576016,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.004059925486162578,
+       "freq_2022": 0.004015509749773155,
+       "freq_2023": 0.0036707828573169596,
+       "sev_2021": 28279.08268041237,
+       "sev_2022": 29221.7531702544,
+       "sev_2023": 33114.10518201285
+      },
+      {
+       "peril": "storm",
+       "freq_trend_fitted": 0.05489589116831417,
+       "freq_trend": 0.05489589116831417,
+       "sev_trend_fitted": 0.08944764854072562,
+       "sev_trend": 0.08944764854072562,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.012815970967659603,
+       "freq_2022": 0.013280257293770317,
+       "freq_2023": 0.014247643377783954,
+       "sev_2021": 3081.89235793599,
+       "sev_2022": 3208.4476153846153,
+       "sev_2023": 3648.7332781456953
+      },
+      {
+       "peril": "subsidence",
+       "freq_trend_fitted": 0.14541473737770216,
+       "freq_trend": 0.12,
+       "sev_trend_fitted": 0.008080544593781713,
+       "sev_trend": 0.008080544593781713,
+       "bounded": true,
+       "sev_step_level": null,
+       "freq_2021": 0.001992293331354007,
+       "freq_2022": 0.0021924211745336796,
+       "freq_2023": 0.0026031616271891384,
+       "sev_2021": 22161.89668067227,
+       "sev_2022": 22869.814301075272,
+       "sev_2023": 22575.424072948328
+      }
+     ],
+     "indication": [
+      {
+       "peril": "accidental_damage",
+       "indicated_capped_lc": 7.863628524267428,
+       "lc_2021": 7.507467968398678,
+       "lc_2022": 8.512447413342166,
+       "lc_2023": 7.549422980348685
+      },
+      {
+       "peril": "escape_of_water",
+       "indicated_capped_lc": 104.26142060917955,
+       "lc_2021": 106.25628920805605,
+       "lc_2022": 100.3969776054317,
+       "lc_2023": 106.25148202867067
+      },
+      {
+       "peril": "fire",
+       "indicated_capped_lc": 89.38768668419725,
+       "lc_2021": 88.05895126951735,
+       "lc_2022": 91.7683592692763,
+       "lc_2023": 88.25532831771109
+      },
+      {
+       "peril": "flood",
+       "indicated_capped_lc": 124.77651833657562,
+       "lc_2021": 125.0569443129744,
+       "lc_2022": 124.22144426530427,
+       "lc_2023": 125.0680934719937
+      },
+      {
+       "peril": "storm",
+       "indicated_capped_lc": 58.632021402272464,
+       "lc_2021": 59.95382288842887,
+       "lc_2022": 56.277315816924414,
+       "lc_2023": 59.74493876508598
+      },
+      {
+       "peril": "subsidence",
+       "indicated_capped_lc": 64.6277799823045,
+       "lc_2021": 63.547720199005255,
+       "lc_2022": 63.91652241889126,
+       "lc_2023": 66.35143299472894
+      }
+     ],
+     "indicated_capped_lc": 449.54905553879684,
+     "line_trend": 0.05936530879671346,
+     "level": {
+      "V1": {
+       "factor": 1.0599986776380257,
+       "model_projection": 1.0593653087967134,
+       "gap": 0.0005978757620745956,
+       "model_lc_last_year": 424.10341165756756,
+       "indicated_lc": 449.54905553879684,
+       "trend": 0.05936530879671346
+      },
+      "V5": {
+       "factor": 1.0570764113403648,
+       "model_projection": 1.0593653087967134,
+       "gap": -0.002160630933769725,
+       "model_lc_last_year": 425.27583693668095,
+       "indicated_lc": 449.54905553879684,
+       "trend": 0.05936530879671346
+      }
+     },
+     "capped_lc_by_year": {
+      "accidental_damage": {
+       "2021": 7.1196877428403775,
+       "2022": 8.216737532705954,
+       "2023": 7.417136047057896
+      },
+      "escape_of_water": {
+       "2021": 90.25699311745988,
+       "2022": 90.04745637283332,
+       "2023": 100.62604459686682
+      },
+      "fire": {
+       "2021": 87.99725139946177,
+       "2022": 91.72548831239754,
+       "2023": 88.23471101345626
+      },
+      "flood": {
+       "2021": 114.81096849950495,
+       "2022": 117.34023476062114,
+       "2023": 121.55468963752348
+      },
+      "storm": {
+       "2021": 39.49744298475964,
+       "2022": 42.609009845891514,
+       "2023": 51.98585052767246
+      },
+      "subsidence": {
+       "2021": 44.15299896705987,
+       "2022": 50.14026513133057,
+       "2023": 58.76747766422101
+      }
+     },
+     "weather_elasticities": {
+      "storm": {
+       "variable": "wind_exposure_index",
+       "b": 0.17733502768913847
+      },
+      "subsidence": {
+       "variable": "dry_summer_index",
+       "b": 1.2093918788360436
+      },
+      "escape_of_water": {
+       "variable": "freezing_days",
+       "b": 0.008347649232741651
+      }
+     },
+     "cost_share": {
+      "accidental_damage": 0.018413748933772373,
+      "escape_of_water": 0.2272639297590924,
+      "fire": 0.23404121659644295,
+      "flood": 0.28776543381708614,
+      "storm": 0.1086735888017288,
+      "subsidence": 0.12384208209187737
+     }
+    },
+    "final": {
+     "excess_factor_line": 1.0222030964793336,
+     "trends": [
+      {
+       "peril": "accidental_damage",
+       "freq_trend_fitted": 0.030676211895931615,
+       "freq_trend": 0.030676211895931615,
+       "sev_trend_fitted": 0.010137061869426534,
+       "sev_trend": 0.010137061869426534,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.006102444699819628,
+       "freq_2022": 0.006663703068116703,
+       "freq_2023": 0.006524994556684826,
+       "freq_2024": 0.006816590349553354,
+       "sev_2021": 1166.6943484224967,
+       "sev_2022": 1233.0587735849056,
+       "sev_2023": 1136.7267792521109,
+       "sev_2024": 1241.007088305489
+      },
+      {
+       "peril": "escape_of_water",
+       "freq_trend_fitted": 0.0046709247644696195,
+       "freq_trend": 0.0046709247644696195,
+       "sev_trend_fitted": 0.08751948747623106,
+       "sev_trend": 0.08751948747623106,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.017696252531438535,
+       "freq_2022": 0.016965725146301843,
+       "freq_2023": 0.016669089676462447,
+       "freq_2024": 0.018065747878953018,
+       "sev_2021": 5100.345,
+       "sev_2022": 5307.610231588698,
+       "sev_2023": 6036.68505899009,
+       "sev_2024": 6461.461740947075
+      },
+      {
+       "peril": "fire",
+       "freq_trend_fitted": 0.04666900378143013,
+       "freq_trend": 0.04666900378143013,
+       "sev_trend_fitted": -0.03888844016713777,
+       "sev_trend": -0.03888844016713777,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.0017160509786872753,
+       "freq_2022": 0.0018938118389341101,
+       "freq_2023": 0.00188762149945047,
+       "freq_2024": 0.00200596247646097,
+       "sev_2021": 51278.92614634146,
+       "sev_2022": 48434.3198340249,
+       "sev_2023": 46743.857833333335,
+       "sev_2024": 45392.4325
+      },
+      {
+       "peril": "flood",
+       "freq_trend_fitted": -0.043852779577414625,
+       "freq_trend": -0.043852779577414625,
+       "sev_trend_fitted": 0.07352079778520659,
+       "sev_trend": 0.07352079778520659,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.004059925486162578,
+       "freq_2022": 0.004015509749773155,
+       "freq_2023": 0.0036707828573169596,
+       "freq_2024": 0.003604731269503983,
+       "sev_2021": 28279.08268041237,
+       "sev_2022": 29221.7531702544,
+       "sev_2023": 33114.10518201285,
+       "sev_2024": 34331.67207207207
+      },
+      {
+       "peril": "storm",
+       "freq_trend_fitted": 0.021012073129704545,
+       "freq_trend": 0.021012073129704545,
+       "sev_trend_fitted": 0.08437262871479101,
+       "sev_trend": 0.08437262871479101,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.012815970967659603,
+       "freq_2022": 0.013280257293770317,
+       "freq_2023": 0.014247643377783954,
+       "freq_2024": 0.013406947909518258,
+       "sev_2021": 3081.89235793599,
+       "sev_2022": 3208.4476153846153,
+       "sev_2023": 3648.7332781456953,
+       "sev_2024": 3860.614914004914
+      },
+      {
+       "peril": "subsidence",
+       "freq_trend_fitted": 0.13433316222111547,
+       "freq_trend": 0.12,
+       "sev_trend_fitted": 0.054381779986268475,
+       "sev_trend": 0.054381779986268475,
+       "bounded": true,
+       "sev_step_level": null,
+       "freq_2021": 0.001992293331354007,
+       "freq_2022": 0.0021924211745336796,
+       "freq_2023": 0.0026031616271891384,
+       "freq_2024": 0.0028533978259533666,
+       "sev_2021": 22161.89668067227,
+       "sev_2022": 22869.814301075272,
+       "sev_2023": 22575.424072948328,
+       "sev_2024": 26705.72248995984
+      }
+     ],
+     "indication": [
+      {
+       "peril": "accidental_damage",
+       "indicated_capped_lc": 8.625110747050241,
+       "lc_2021": 8.365100819610912,
+       "lc_2022": 9.272718788814124,
+       "lc_2023": 8.039728103010134,
+       "lc_2024": 8.80732486051345
+      },
+      {
+       "peril": "escape_of_water",
+       "indicated_capped_lc": 123.35443674799413,
+       "lc_2021": 128.62470401643816,
+       "lc_2022": 117.45029043551727,
+       "lc_2023": 120.12465834705064,
+       "lc_2024": 127.54034987583819
+      },
+      {
+       "peril": "fire",
+       "indicated_capped_lc": 91.11049249569452,
+       "lc_2021": 90.11597018673345,
+       "lc_2022": 93.37691554920424,
+       "lc_2023": 89.29061112639118,
+       "lc_2024": 91.59872427839584
+      },
+      {
+       "peril": "flood",
+       "indicated_capped_lc": 127.35884283598429,
+       "lc_2021": 127.44543923756989,
+       "lc_2022": 126.89737583068694,
+       "lc_2023": 128.0684572015634,
+       "lc_2024": 127.02905841480691
+      },
+      {
+       "peril": "storm",
+       "indicated_capped_lc": 59.55474323834474,
+       "lc_2021": 59.348080615072405,
+       "lc_2022": 57.82687387337479,
+       "lc_2023": 63.724142818290716,
+       "lc_2024": 57.3054372144664
+      },
+      {
+       "peril": "subsidence",
+       "indicated_capped_lc": 85.08336914353762,
+       "lc_2021": 85.86652118454707,
+       "lc_2022": 82.57229811451859,
+       "lc_2023": 81.95375959424864,
+       "lc_2024": 89.98758007433382
+      }
+     ],
+     "indicated_capped_lc": 495.0869952086056,
+     "line_trend": 0.07566871344291572,
+     "level": {
+      "V1": {
+       "factor": 1.0754892882461673,
+       "model_projection": 1.0756687134429157,
+       "gap": -0.00016680339820807077,
+       "model_lc_last_year": 460.33651903308015,
+       "indicated_lc": 495.0869952086056,
+       "trend": 0.07566871344291572
+      },
+      "V5": {
+       "factor": 1.0756749697352952,
+       "model_projection": 1.0756687134429157,
+       "gap": 5.8161888518704075e-06,
+       "model_lc_last_year": 460.25705639542565,
+       "indicated_lc": 495.0869952086056,
+       "trend": 0.07566871344291572
+      }
+     },
+     "capped_lc_by_year": {
+      "accidental_damage": {
+       "2021": 7.1196877428403775,
+       "2022": 8.216737532705954,
+       "2023": 7.417136047057896,
+       "2024": 8.459436941870505
+      },
+      "escape_of_water": {
+       "2021": 90.25699311745988,
+       "2022": 90.04745637283332,
+       "2023": 100.62604459686682,
+       "2024": 116.73113874145069
+      },
+      "fire": {
+       "2021": 87.99725139946177,
+       "2022": 91.72548831239754,
+       "2023": 88.23471101345626,
+       "2024": 91.05551631028742
+      },
+      "flood": {
+       "2021": 114.81096849950495,
+       "2022": 117.34023476062114,
+       "2023": 121.55468963752348,
+       "2024": 123.7564518525548
+      },
+      "storm": {
+       "2021": 39.49744298475964,
+       "2022": 42.609009845891514,
+       "2023": 51.98585052767246,
+       "2024": 51.75906305077319
+      },
+      "subsidence": {
+       "2021": 44.15299896705987,
+       "2022": 50.14026513133057,
+       "2023": 58.76747766422101,
+       "2024": 76.20205049336535
+      }
+     },
+     "weather_elasticities": {
+      "storm": {
+       "variable": "wind_exposure_index",
+       "b": 0.12140371995596595
+      },
+      "subsidence": {
+       "variable": "dry_summer_index",
+       "b": 1.3573520330164708
+      },
+      "escape_of_water": {
+       "variable": "freezing_days",
+       "b": 0.008207717996886247
+      }
+     },
+     "cost_share": {
+      "accidental_damage": 0.018436768097050586,
+      "escape_of_water": 0.23269465283491914,
+      "fire": 0.23173599062592362,
+      "flood": 0.28526326337063435,
+      "storm": 0.10951041210156535,
+      "subsidence": 0.12235891296990692
+     },
+     "relativities_V1": [
+      {
+       "factor": "region",
+       "level": "R01",
+       "relativity": 1.0
+      },
+      {
+       "factor": "region",
+       "level": "R02",
+       "relativity": 0.9556093012102409
+      },
+      {
+       "factor": "region",
+       "level": "R03",
+       "relativity": 0.8617534644565545
+      },
+      {
+       "factor": "region",
+       "level": "R04",
+       "relativity": 0.9216375975593188
+      },
+      {
+       "factor": "region",
+       "level": "R05",
+       "relativity": 1.0736081388862595
+      },
+      {
+       "factor": "region",
+       "level": "R06",
+       "relativity": 0.70922331360434
+      },
+      {
+       "factor": "region",
+       "level": "R07",
+       "relativity": 0.8934245472879003
+      },
+      {
+       "factor": "region",
+       "level": "R08",
+       "relativity": 0.9251316051108024
+      },
+      {
+       "factor": "region",
+       "level": "R09",
+       "relativity": 0.8026167947979873
+      },
+      {
+       "factor": "region",
+       "level": "R10",
+       "relativity": 1.0017578499464723
+      },
+      {
+       "factor": "region",
+       "level": "R11",
+       "relativity": 0.7193365689724454
+      },
+      {
+       "factor": "region",
+       "level": "R12",
+       "relativity": 1.0300502911092688
+      },
+      {
+       "factor": "urban",
+       "level": "suburban",
+       "relativity": 1.0
+      },
+      {
+       "factor": "urban",
+       "level": "dense_urban",
+       "relativity": 0.9822132851891436
+      },
+      {
+       "factor": "urban",
+       "level": "rural",
+       "relativity": 0.967478664469198
+      },
+      {
+       "factor": "urban",
+       "level": "urban",
+       "relativity": 1.0419126381727395
+      },
+      {
+       "factor": "pay",
+       "level": "annual",
+       "relativity": 1.0
+      },
+      {
+       "factor": "pay",
+       "level": "monthly",
+       "relativity": 1.1115653606181983
+      },
+      {
+       "factor": "missed",
+       "level": "0",
+       "relativity": 1.0
+      },
+      {
+       "factor": "missed",
+       "level": "1",
+       "relativity": 1.2140157598398504
+      },
+      {
+       "factor": "missed",
+       "level": "2+",
+       "relativity": 1.2633655177174856
+      },
+      {
+       "factor": "credit",
+       "level": "B",
+       "relativity": 1.0
+      },
+      {
+       "factor": "credit",
+       "level": "A",
+       "relativity": 1.0760464951891633
+      },
+      {
+       "factor": "credit",
+       "level": "C",
+       "relativity": 1.1017961619526577
+      },
+      {
+       "factor": "credit",
+       "level": "D",
+       "relativity": 0.9059155742904099
+      },
+      {
+       "factor": "credit",
+       "level": "E",
+       "relativity": 1.235412005744772
+      },
+      {
+       "factor": "channel",
+       "level": "direct",
+       "relativity": 1.0
+      },
+      {
+       "factor": "channel",
+       "level": "broker",
+       "relativity": 1.05659999701652
+      },
+      {
+       "factor": "channel",
+       "level": "comparison_site",
+       "relativity": 1.183248421946618
+      },
+      {
+       "factor": "new_bus",
+       "level": "False",
+       "relativity": 1.0
+      },
+      {
+       "factor": "new_bus",
+       "level": "True",
+       "relativity": 1.0904334396041195
+      },
+      {
+       "factor": "age",
+       "level": "(29.0, 39.0]",
+       "relativity": 1.0
+      },
+      {
+       "factor": "age",
+       "level": "(-0.001, 20.0]",
+       "relativity": 1.0947535129653545
+      },
+      {
+       "factor": "age",
+       "level": "(20.0, 24.0]",
+       "relativity": 0.9621506389879599
+      },
+      {
+       "factor": "age",
+       "level": "(24.0, 29.0]",
+       "relativity": 1.1245438612963836
+      },
+      {
+       "factor": "age",
+       "level": "(39.0, 49.0]",
+       "relativity": 0.9745207001921529
+      },
+      {
+       "factor": "age",
+       "level": "(49.0, 59.0]",
+       "relativity": 0.9459043650302856
+      },
+      {
+       "factor": "age",
+       "level": "(59.0, 69.0]",
+       "relativity": 0.9848692264733399
+      },
+      {
+       "factor": "age",
+       "level": "(69.0, 79.0]",
+       "relativity": 1.1194061705309635
+      },
+      {
+       "factor": "age",
+       "level": "(79.0, 200.0]",
+       "relativity": 1.0171322690830498
+      },
+      {
+       "factor": "yr",
+       "level": "2023",
+       "relativity": 1.0
+      },
+      {
+       "factor": "yr",
+       "level": "2021",
+       "relativity": 0.9291300088370799
+      },
+      {
+       "factor": "yr",
+       "level": "2022",
+       "relativity": 0.9697021872583054
+      },
+      {
+       "factor": "yr",
+       "level": "2024",
+       "relativity": 1.0766465708414243
+      },
+      {
+       "factor": "si",
+       "level": "(-inf, 121000.0]",
+       "relativity": 1.0
+      },
+      {
+       "factor": "si",
+       "level": "(121000.0, 154000.0]",
+       "relativity": 1.2205410680683455
+      },
+      {
+       "factor": "si",
+       "level": "(154000.0, 179000.0]",
+       "relativity": 1.4107251859938732
+      },
+      {
+       "factor": "si",
+       "level": "(179000.0, 201000.0]",
+       "relativity": 1.4603716710896746
+      },
+      {
+       "factor": "si",
+       "level": "(201000.0, 223000.0]",
+       "relativity": 1.8138288696473717
+      },
+      {
+       "factor": "si",
+       "level": "(223000.0, 246000.0]",
+       "relativity": 1.9733899816127443
+      },
+      {
+       "factor": "si",
+       "level": "(246000.0, 272000.0]",
+       "relativity": 1.924563706461238
+      },
+      {
+       "factor": "si",
+       "level": "(272000.0, 305000.0]",
+       "relativity": 2.087187457668498
+      },
+      {
+       "factor": "si",
+       "level": "(305000.0, 355000.0]",
+       "relativity": 2.1252057569467517
+      },
+      {
+       "factor": "si",
+       "level": "(355000.0, inf]",
+       "relativity": 2.6504395375885466
+      },
+      {
+       "factor": "ptype",
+       "level": "semi_detached",
+       "relativity": 1.0
+      },
+      {
+       "factor": "ptype",
+       "level": "detached",
+       "relativity": 1.0071388905728678
+      },
+      {
+       "factor": "ptype",
+       "level": "flat",
+       "relativity": 1.0344288306466372
+      },
+      {
+       "factor": "ptype",
+       "level": "terraced",
+       "relativity": 1.026519523055671
+      },
+      {
+       "factor": "flood",
+       "level": "1.0",
+       "relativity": 1.0
+      },
+      {
+       "factor": "flood",
+       "level": "2.0",
+       "relativity": 1.1154618017389881
+      },
+      {
+       "factor": "flood",
+       "level": "3.0",
+       "relativity": 1.4828810972275086
+      },
+      {
+       "factor": "flood",
+       "level": "4.0",
+       "relativity": 3.7727732233671953
+      },
+      {
+       "factor": "flood",
+       "level": "5.0",
+       "relativity": 8.465646007286097
+      },
+      {
+       "factor": "flood",
+       "level": "blank",
+       "relativity": 2.85384100108165
+      },
+      {
+       "factor": "ad_cover",
+       "level": "False",
+       "relativity": 1.0
+      },
+      {
+       "factor": "ad_cover",
+       "level": "True",
+       "relativity": 1.1010995868910944
+      },
+      {
+       "factor": "constr",
+       "level": "brick",
+       "relativity": 1.0
+      },
+      {
+       "factor": "constr",
+       "level": "non_standard",
+       "relativity": 1.3621450866753162
+      },
+      {
+       "factor": "constr",
+       "level": "stone",
+       "relativity": 1.0575572279620746
+      },
+      {
+       "factor": "constr",
+       "level": "timber",
+       "relativity": 1.0509610651664945
+      },
+      {
+       "factor": "soil",
+       "level": "clay",
+       "relativity": 1.0
+      },
+      {
+       "factor": "soil",
+       "level": "blank",
+       "relativity": 0.9422151897935992
+      },
+      {
+       "factor": "soil",
+       "level": "chalk",
+       "relativity": 0.8212552804913834
+      },
+      {
+       "factor": "soil",
+       "level": "loam",
+       "relativity": 0.8450581912965639
+      },
+      {
+       "factor": "soil",
+       "level": "rock",
+       "relativity": 0.8247013955186681
+      },
+      {
+       "factor": "soil",
+       "level": "sand",
+       "relativity": 0.8640498474629891
+      },
+      {
+       "factor": "occ",
+       "level": "owner_occupied",
+       "relativity": 1.0
+      },
+      {
+       "factor": "occ",
+       "level": "let",
+       "relativity": 1.312486588324218
+      },
+      {
+       "factor": "built",
+       "level": "(-0.001, 1919.0]",
+       "relativity": 1.0
+      },
+      {
+       "factor": "built",
+       "level": "(1919.0, 1944.0]",
+       "relativity": 1.0254371195682597
+      },
+      {
+       "factor": "built",
+       "level": "(1944.0, 1969.0]",
+       "relativity": 0.7151842570582605
+      },
+      {
+       "factor": "built",
+       "level": "(1969.0, 1989.0]",
+       "relativity": 0.6892854585181816
+      },
+      {
+       "factor": "built",
+       "level": "(1989.0, 2009.0]",
+       "relativity": 0.6261581929553502
+      },
+      {
+       "factor": "built",
+       "level": "(2009.0, 3000.0]",
+       "relativity": 0.6687196098093782
+      },
+      {
+       "factor": "beds",
+       "level": "3",
+       "relativity": 1.0
+      },
+      {
+       "factor": "beds",
+       "level": "1",
+       "relativity": 0.8368978096060486
+      },
+      {
+       "factor": "beds",
+       "level": "2",
+       "relativity": 1.000346496767849
+      },
+      {
+       "factor": "beds",
+       "level": "4",
+       "relativity": 1.0265011812147868
+      },
+      {
+       "factor": "beds",
+       "level": "5",
+       "relativity": 1.0216374612811774
+      }
+     ],
+     "relativities_V5": [
+      {
+       "factor": "region",
+       "level": "R01",
+       "relativity": 1.0
+      },
+      {
+       "factor": "region",
+       "level": "R02",
+       "relativity": 0.8986465458982622
+      },
+      {
+       "factor": "region",
+       "level": "R03",
+       "relativity": 0.9718303235173725
+      },
+      {
+       "factor": "region",
+       "level": "R04",
+       "relativity": 1.0678304882501737
+      },
+      {
+       "factor": "region",
+       "level": "R05",
+       "relativity": 1.2413366309697884
+      },
+      {
+       "factor": "region",
+       "level": "R06",
+       "relativity": 0.6845172422883218
+      },
+      {
+       "factor": "region",
+       "level": "R07",
+       "relativity": 0.8879552472915372
+      },
+      {
+       "factor": "region",
+       "level": "R08",
+       "relativity": 0.8247426978400727
+      },
+      {
+       "factor": "region",
+       "level": "R09",
+       "relativity": 0.8497343851611151
+      },
+      {
+       "factor": "region",
+       "level": "R10",
+       "relativity": 1.0330764138917774
+      },
+      {
+       "factor": "region",
+       "level": "R11",
+       "relativity": 0.7202698490727766
+      },
+      {
+       "factor": "region",
+       "level": "R12",
+       "relativity": 0.9995978419295226
+      },
+      {
+       "factor": "urban",
+       "level": "suburban",
+       "relativity": 1.0
+      },
+      {
+       "factor": "urban",
+       "level": "dense_urban",
+       "relativity": 0.983308612800666
+      },
+      {
+       "factor": "urban",
+       "level": "rural",
+       "relativity": 0.9687178274863499
+      },
+      {
+       "factor": "urban",
+       "level": "urban",
+       "relativity": 1.0437382146949432
+      },
+      {
+       "factor": "pay",
+       "level": "annual",
+       "relativity": 1.0
+      },
+      {
+       "factor": "pay",
+       "level": "monthly",
+       "relativity": 1.110914419498801
+      },
+      {
+       "factor": "missed",
+       "level": "0",
+       "relativity": 1.0
+      },
+      {
+       "factor": "missed",
+       "level": "1",
+       "relativity": 1.2108408642107231
+      },
+      {
+       "factor": "missed",
+       "level": "2+",
+       "relativity": 1.2529827207756588
+      },
+      {
+       "factor": "credit",
+       "level": "B",
+       "relativity": 1.0
+      },
+      {
+       "factor": "credit",
+       "level": "A",
+       "relativity": 1.0713574261830712
+      },
+      {
+       "factor": "credit",
+       "level": "C",
+       "relativity": 1.099040072422985
+      },
+      {
+       "factor": "credit",
+       "level": "D",
+       "relativity": 0.9074100948443043
+      },
+      {
+       "factor": "credit",
+       "level": "E",
+       "relativity": 1.232063845850835
+      },
+      {
+       "factor": "channel",
+       "level": "direct",
+       "relativity": 1.0
+      },
+      {
+       "factor": "channel",
+       "level": "broker",
+       "relativity": 1.0566332046163067
+      },
+      {
+       "factor": "channel",
+       "level": "comparison_site",
+       "relativity": 1.182354311896523
+      },
+      {
+       "factor": "new_bus",
+       "level": "False",
+       "relativity": 1.0
+      },
+      {
+       "factor": "new_bus",
+       "level": "True",
+       "relativity": 1.0878916567427452
+      },
+      {
+       "factor": "age",
+       "level": "(29.0, 39.0]",
+       "relativity": 1.0
+      },
+      {
+       "factor": "age",
+       "level": "(-0.001, 20.0]",
+       "relativity": 1.1001876337732954
+      },
+      {
+       "factor": "age",
+       "level": "(20.0, 24.0]",
+       "relativity": 0.9689007510190731
+      },
+      {
+       "factor": "age",
+       "level": "(24.0, 29.0]",
+       "relativity": 1.1255277160311177
+      },
+      {
+       "factor": "age",
+       "level": "(39.0, 49.0]",
+       "relativity": 0.973578716616073
+      },
+      {
+       "factor": "age",
+       "level": "(49.0, 59.0]",
+       "relativity": 0.9465565154331405
+      },
+      {
+       "factor": "age",
+       "level": "(59.0, 69.0]",
+       "relativity": 0.9855298790688518
+      },
+      {
+       "factor": "age",
+       "level": "(69.0, 79.0]",
+       "relativity": 1.1178271310388013
+      },
+      {
+       "factor": "age",
+       "level": "(79.0, 200.0]",
+       "relativity": 1.0173753173191726
+      },
+      {
+       "factor": "yr",
+       "level": "2023",
+       "relativity": 1.0
+      },
+      {
+       "factor": "yr",
+       "level": "2021",
+       "relativity": 0.9416373187329283
+      },
+      {
+       "factor": "yr",
+       "level": "2022",
+       "relativity": 0.9595492937108177
+      },
+      {
+       "factor": "yr",
+       "level": "2024",
+       "relativity": 1.0905175221177872
+      },
+      {
+       "factor": "si",
+       "level": "(-inf, 121000.0]",
+       "relativity": 1.0
+      },
+      {
+       "factor": "si",
+       "level": "(121000.0, 154000.0]",
+       "relativity": 1.2280603685892368
+      },
+      {
+       "factor": "si",
+       "level": "(154000.0, 179000.0]",
+       "relativity": 1.4162619658874331
+      },
+      {
+       "factor": "si",
+       "level": "(179000.0, 201000.0]",
+       "relativity": 1.462911642937291
+      },
+      {
+       "factor": "si",
+       "level": "(201000.0, 223000.0]",
+       "relativity": 1.8139692406763228
+      },
+      {
+       "factor": "si",
+       "level": "(223000.0, 246000.0]",
+       "relativity": 1.9714557840122284
+      },
+      {
+       "factor": "si",
+       "level": "(246000.0, 272000.0]",
+       "relativity": 1.9211720642621093
+      },
+      {
+       "factor": "si",
+       "level": "(272000.0, 305000.0]",
+       "relativity": 2.092146556962337
+      },
+      {
+       "factor": "si",
+       "level": "(305000.0, 355000.0]",
+       "relativity": 2.1255083557620083
+      },
+      {
+       "factor": "si",
+       "level": "(355000.0, inf]",
+       "relativity": 2.656772707040098
+      },
+      {
+       "factor": "ptype",
+       "level": "semi_detached",
+       "relativity": 1.0
+      },
+      {
+       "factor": "ptype",
+       "level": "detached",
+       "relativity": 1.0086620304635567
+      },
+      {
+       "factor": "ptype",
+       "level": "flat",
+       "relativity": 1.0378178517735008
+      },
+      {
+       "factor": "ptype",
+       "level": "terraced",
+       "relativity": 1.0291165072147241
+      },
+      {
+       "factor": "flood",
+       "level": "1.0",
+       "relativity": 1.0
+      },
+      {
+       "factor": "flood",
+       "level": "2.0",
+       "relativity": 1.1084162029601763
+      },
+      {
+       "factor": "flood",
+       "level": "3.0",
+       "relativity": 1.4584938716214568
+      },
+      {
+       "factor": "flood",
+       "level": "4.0",
+       "relativity": 3.6839558311302243
+      },
+      {
+       "factor": "flood",
+       "level": "5.0",
+       "relativity": 8.259239029615287
+      },
+      {
+       "factor": "flood",
+       "level": "blank",
+       "relativity": 2.8068358871853762
+      },
+      {
+       "factor": "ad_cover",
+       "level": "False",
+       "relativity": 1.0
+      },
+      {
+       "factor": "ad_cover",
+       "level": "True",
+       "relativity": 1.0983442178136178
+      },
+      {
+       "factor": "constr",
+       "level": "brick",
+       "relativity": 1.0
+      },
+      {
+       "factor": "constr",
+       "level": "non_standard",
+       "relativity": 1.3624304185393428
+      },
+      {
+       "factor": "constr",
+       "level": "stone",
+       "relativity": 1.059312036170906
+      },
+      {
+       "factor": "constr",
+       "level": "timber",
+       "relativity": 1.0528513268817745
+      },
+      {
+       "factor": "soil",
+       "level": "clay",
+       "relativity": 1.0
+      },
+      {
+       "factor": "soil",
+       "level": "blank",
+       "relativity": 0.9443750795076723
+      },
+      {
+       "factor": "soil",
+       "level": "chalk",
+       "relativity": 0.8213106019976646
+      },
+      {
+       "factor": "soil",
+       "level": "loam",
+       "relativity": 0.8436248043096135
+      },
+      {
+       "factor": "soil",
+       "level": "rock",
+       "relativity": 0.8229431331013468
+      },
+      {
+       "factor": "soil",
+       "level": "sand",
+       "relativity": 0.8651871980462865
+      },
+      {
+       "factor": "occ",
+       "level": "owner_occupied",
+       "relativity": 1.0
+      },
+      {
+       "factor": "occ",
+       "level": "let",
+       "relativity": 1.3150813211825416
+      },
+      {
+       "factor": "built",
+       "level": "(-0.001, 1919.0]",
+       "relativity": 1.0
+      },
+      {
+       "factor": "built",
+       "level": "(1919.0, 1944.0]",
+       "relativity": 1.0276328422996512
+      },
+      {
+       "factor": "built",
+       "level": "(1944.0, 1969.0]",
+       "relativity": 0.7127143216076446
+      },
+      {
+       "factor": "built",
+       "level": "(1969.0, 1989.0]",
+       "relativity": 0.6893919951858404
+      },
+      {
+       "factor": "built",
+       "level": "(1989.0, 2009.0]",
+       "relativity": 0.625351858236184
+      },
+      {
+       "factor": "built",
+       "level": "(2009.0, 3000.0]",
+       "relativity": 0.6660419694498915
+      },
+      {
+       "factor": "beds",
+       "level": "3",
+       "relativity": 1.0
+      },
+      {
+       "factor": "beds",
+       "level": "1",
+       "relativity": 0.833625060807874
+      },
+      {
+       "factor": "beds",
+       "level": "2",
+       "relativity": 0.9958930321850437
+      },
+      {
+       "factor": "beds",
+       "level": "4",
+       "relativity": 1.0259123899454217
+      },
+      {
+       "factor": "beds",
+       "level": "5",
+       "relativity": 1.01883994288647
+      },
+      {
+       "factor": "n_wind_exposure_index",
+       "level": "(5.3, 6.433]",
+       "relativity": 1.0
+      },
+      {
+       "factor": "n_wind_exposure_index",
+       "level": "(-inf, 2.4]",
+       "relativity": 1.1640974557364339
+      },
+      {
+       "factor": "n_wind_exposure_index",
+       "level": "(2.4, 3.767]",
+       "relativity": 1.044062215084792
+      },
+      {
+       "factor": "n_wind_exposure_index",
+       "level": "(3.767, 5.3]",
+       "relativity": 1.1339863532241723
+      },
+      {
+       "factor": "n_wind_exposure_index",
+       "level": "(6.433, inf]",
+       "relativity": 0.9919968347091477
+      },
+      {
+       "factor": "n_dry_summer_index",
+       "level": "(0.348, 0.491]",
+       "relativity": 1.0
+      },
+      {
+       "factor": "n_dry_summer_index",
+       "level": "(-inf, 0.348]",
+       "relativity": 0.8768103058195501
+      },
+      {
+       "factor": "n_dry_summer_index",
+       "level": "(0.491, 0.625]",
+       "relativity": 0.9250076424938075
+      },
+      {
+       "factor": "n_dry_summer_index",
+       "level": "(0.625, 0.713]",
+       "relativity": 0.9796391275419633
+      },
+      {
+       "factor": "n_dry_summer_index",
+       "level": "(0.713, inf]",
+       "relativity": 0.9518273820382323
+      },
+      {
+       "factor": "n_freezing_days",
+       "level": "(-inf, 19.333]",
+       "relativity": 1.0
+      },
+      {
+       "factor": "n_freezing_days",
+       "level": "(19.333, 29.0]",
+       "relativity": 0.9660065597787723
+      },
+      {
+       "factor": "n_freezing_days",
+       "level": "(29.0, 43.667]",
+       "relativity": 0.916356102404282
+      },
+      {
+       "factor": "n_freezing_days",
+       "level": "(43.667, 60.667]",
+       "relativity": 1.0292830178207513
+      },
+      {
+       "factor": "n_freezing_days",
+       "level": "(60.667, inf]",
+       "relativity": 1.0887935481079094
+      },
+      {
+       "factor": "n_hail_days",
+       "level": "(-inf, 3.333]",
+       "relativity": 1.0
+      },
+      {
+       "factor": "n_hail_days",
+       "level": "(3.333, 5.0]",
+       "relativity": 0.9931255996677378
+      },
+      {
+       "factor": "n_hail_days",
+       "level": "(5.0, 6.667]",
+       "relativity": 0.9652034604740778
+      },
+      {
+       "factor": "n_hail_days",
+       "level": "(6.667, 9.0]",
+       "relativity": 0.9863716194493994
+      },
+      {
+       "factor": "n_hail_days",
+       "level": "(9.0, inf]",
+       "relativity": 1.011125024560305
+      },
+      {
+       "factor": "n_rainfall_mm",
+       "level": "(-inf, 833.667]",
+       "relativity": 1.0
+      },
+      {
+       "factor": "n_rainfall_mm",
+       "level": "(1071.0, 1241.0]",
+       "relativity": 1.0400389915976775
+      },
+      {
+       "factor": "n_rainfall_mm",
+       "level": "(1241.0, inf]",
+       "relativity": 1.155185938230023
+      },
+      {
+       "factor": "n_rainfall_mm",
+       "level": "(833.667, 949.0]",
+       "relativity": 1.0728640899646047
+      },
+      {
+       "factor": "n_rainfall_mm",
+       "level": "(949.0, 1071.0]",
+       "relativity": 1.0160688759352483
+      },
+      {
+       "factor": "n_wildfire_index",
+       "level": "(0.044, 0.107]",
+       "relativity": 1.0
+      },
+      {
+       "factor": "n_wildfire_index",
+       "level": "(-inf, 0.044]",
+       "relativity": 0.9510542305889078
+      },
+      {
+       "factor": "n_wildfire_index",
+       "level": "(0.107, 0.17]",
+       "relativity": 0.943369005419198
+      },
+      {
+       "factor": "n_wildfire_index",
+       "level": "(0.17, 0.256]",
+       "relativity": 1.05444588334152
+      },
+      {
+       "factor": "n_wildfire_index",
+       "level": "(0.256, inf]",
+       "relativity": 1.0999956107584874
+      },
+      {
+       "factor": "n_mean_temperature_c",
+       "level": "(14.3, 15.833]",
+       "relativity": 1.0
+      },
+      {
+       "factor": "n_mean_temperature_c",
+       "level": "(-inf, 9.467]",
+       "relativity": 0.9626700678367617
+      },
+      {
+       "factor": "n_mean_temperature_c",
+       "level": "(11.733, 14.3]",
+       "relativity": 0.9493025024225963
+      },
+      {
+       "factor": "n_mean_temperature_c",
+       "level": "(15.833, inf]",
+       "relativity": 0.9641474796035207
+      },
+      {
+       "factor": "n_mean_temperature_c",
+       "level": "(9.467, 11.733]",
+       "relativity": 0.9524857844231268
+      }
+     ]
+    }
+   },
+   "contents": {
+    "A": {
+     "excess_factor_line": 1.0117805495688275,
+     "trends": [
+      {
+       "peril": "accidental_damage",
+       "freq_trend_fitted": -0.03903267913361963,
+       "freq_trend": -0.03903267913361963,
+       "sev_trend_fitted": -0.012721221188555787,
+       "sev_trend": -0.012721221188555787,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.015562416326300031,
+       "freq_2022": 0.01495497352329176,
+       "sev_2021": 771.4384900591081,
+       "sev_2022": 761.6248503937009
+      },
+      {
+       "peril": "escape_of_water",
+       "freq_trend_fitted": 0.019163806157113994,
+       "freq_trend": 0.019163806157113994,
+       "sev_trend_fitted": 0.04205462358071621,
+       "sev_trend": 0.04205462358071621,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.009081560521419578,
+       "freq_2022": 0.009255597786856161,
+       "sev_2021": 2609.1019429097605,
+       "sev_2022": 2718.8267430025444
+      },
+      {
+       "peril": "flood",
+       "freq_trend_fitted": -0.04762286211523181,
+       "freq_trend": -0.04762286211523181,
+       "sev_trend_fitted": -0.02559985008505472,
+       "sev_trend": -0.02559985008505472,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.00288502613249517,
+       "freq_2022": 0.0027476329307885125,
+       "sev_2021": 8903.698782608695,
+       "sev_2022": 8675.765428571429
+      },
+      {
+       "peril": "theft",
+       "freq_trend_fitted": 0.06681532682163138,
+       "freq_trend": 0.06681532682163138,
+       "sev_trend_fitted": -0.006637350387350138,
+       "sev_trend": -0.006637350387350138,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.012200733702349139,
+       "freq_2022": 0.013015929712135296,
+       "sev_2021": 3485.67694996573,
+       "sev_2022": 3462.5412907117006
+      }
+     ],
+     "indication": [
+      {
+       "peril": "accidental_damage",
+       "indicated_capped_lc": 10.806254102805983,
+       "lc_2021": 10.806254102805982,
+       "lc_2022": 10.806254102805985
+      },
+      {
+       "peril": "escape_of_water",
+       "indicated_capped_lc": 26.725170439258658,
+       "lc_2021": 26.72517043925867,
+       "lc_2022": 26.72517043925865
+      },
+      {
+       "peril": "flood",
+       "indicated_capped_lc": 22.121410640341477,
+       "lc_2021": 22.121410640341477,
+       "lc_2022": 22.12141064034148
+      },
+      {
+       "peril": "theft",
+       "indicated_capped_lc": 47.76032009009244,
+       "lc_2021": 47.76032009009241,
+       "lc_2022": 47.76032009009248
+      }
+     ],
+     "indicated_capped_lc": 107.41315527249856,
+     "line_trend": 0.022006891635490446,
+     "level": {
+      "V1": {
+       "factor": 1.01068208226603,
+       "model_projection": 1.0220068916354905,
+       "gap": -0.011080952058295512,
+       "model_lc_last_year": 106.27788614958887,
+       "indicated_lc": 107.41315527249856,
+       "trend": 0.022006891635490446
+      },
+      "V5": {
+       "factor": 1.0112770283059351,
+       "model_projection": 1.0220068916354905,
+       "gap": -0.010498817001502458,
+       "model_lc_last_year": 106.21536163283989,
+       "indicated_lc": 107.41315527249856,
+       "trend": 0.022006891635490446
+      }
+     },
+     "capped_lc_by_year": {
+      "accidental_damage": {
+       "2021": 12.005446952432107,
+       "2022": 11.390079472318844
+      },
+      "escape_of_water": {
+       "2021": 23.694717201088398,
+       "2022": 25.164366785379695
+      },
+      "flood": {
+       "2021": 25.687403663691516,
+       "2022": 23.837818791339373
+      },
+      "theft": {
+       "2021": 42.52781623894843,
+       "2022": 45.068194065269715
+      }
+     },
+     "weather_elasticities": {
+      "escape_of_water": {
+       "variable": "freezing_days",
+       "b": 0.0017063441843056279
+      }
+     },
+     "cost_share": {
+      "accidental_damage": 0.11032090551088244,
+      "escape_of_water": 0.231213011673237,
+      "flood": 0.24415896595530512,
+      "theft": 0.4143071168605755
+     }
+    },
+    "B": {
+     "excess_factor_line": 1.0151700378174122,
+     "trends": [
+      {
+       "peril": "accidental_damage",
+       "freq_trend_fitted": 0.013280287911905164,
+       "freq_trend": 0.013280287911905164,
+       "sev_trend_fitted": 0.010982393657377854,
+       "sev_trend": 0.010982393657377854,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.015562416326300031,
+       "freq_2022": 0.01495497352329176,
+       "freq_2023": 0.015954524579076475,
+       "sev_2021": 771.4384900591081,
+       "sev_2022": 761.6248503937009,
+       "sev_2023": 787.9460955194486
+      },
+      {
+       "peril": "escape_of_water",
+       "freq_trend_fitted": 0.006017466004889727,
+       "freq_trend": 0.006017466004889727,
+       "sev_trend_fitted": 0.032854632469157874,
+       "sev_trend": 0.032854632469157874,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.009081560521419578,
+       "freq_2022": 0.009255597786856161,
+       "freq_2023": 0.009194099873588366,
+       "sev_2021": 2609.1019429097605,
+       "sev_2022": 2718.8267430025444,
+       "sev_2023": 2783.9632733504714
+      },
+      {
+       "peril": "flood",
+       "freq_trend_fitted": 0.03544425855584121,
+       "freq_trend": 0.03544425855584121,
+       "sev_trend_fitted": 0.0318143882923263,
+       "sev_trend": 0.0318143882923263,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.00288502613249517,
+       "freq_2022": 0.0027476329307885125,
+       "freq_2023": 0.0030829414688945092,
+       "sev_2021": 8903.698782608695,
+       "sev_2022": 8675.765428571429,
+       "sev_2023": 9457.779283887468
+      },
+      {
+       "peril": "theft",
+       "freq_trend_fitted": 0.034041046072673,
+       "freq_trend": 0.034041046072673,
+       "sev_trend_fitted": 0.026384283746879955,
+       "sev_trend": 0.026384283746879955,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.012200733702349139,
+       "freq_2022": 0.013015929712135296,
+       "freq_2023": 0.013063628410926603,
+       "sev_2021": 3485.67694996573,
+       "sev_2022": 3462.5412907117006,
+       "sev_2023": 3666.7042874323515
+      }
+     ],
+     "indication": [
+      {
+       "peril": "accidental_damage",
+       "indicated_capped_lc": 12.572334778236076,
+       "lc_2021": 12.906185190597025,
+       "lc_2022": 11.952895626593541,
+       "lc_2023": 12.878152443230258
+      },
+      {
+       "peril": "escape_of_water",
+       "indicated_capped_lc": 26.786485554324788,
+       "lc_2021": 26.581880254307528,
+       "lc_2022": 27.16911247525308,
+       "lc_2023": 26.59606840449462
+      },
+      {
+       "peril": "flood",
+       "indicated_capped_lc": 29.86632096031017,
+       "lc_2021": 31.326012901056583,
+       "lc_2022": 27.20966043772208,
+       "lc_2023": 31.15177218632699
+      },
+      {
+       "peril": "theft",
+       "indicated_capped_lc": 50.81422314430015,
+       "lc_2021": 50.84127085811639,
+       "lc_2022": 50.76515297312528,
+       "lc_2023": 50.83788527103136
+      }
+     ],
+     "indicated_capped_lc": 120.03936443717117,
+     "line_trend": 0.05424859187657992,
+     "level": {
+      "V1": {
+       "factor": 1.0154013453544666,
+       "model_projection": 1.0542485918765798,
+       "gap": -0.03684827925922529,
+       "model_lc_last_year": 118.21863836044714,
+       "indicated_lc": 120.03936443717117,
+       "trend": 0.05424859187657992
+      },
+      "V5": {
+       "factor": 1.015388304138448,
+       "model_projection": 1.0542485918765798,
+       "gap": -0.03686064941188105,
+       "model_lc_last_year": 118.2201567104163,
+       "indicated_lc": 120.03936443717117,
+       "trend": 0.05424859187657992
+      }
+     },
+     "capped_lc_by_year": {
+      "accidental_damage": {
+       "2021": 12.005446952432107,
+       "2022": 11.390079472318844,
+       "2023": 12.57130534795238
+      },
+      "escape_of_water": {
+       "2021": 23.694717201088398,
+       "2022": 25.164366785379695,
+       "2023": 25.59603637958622
+      },
+      "flood": {
+       "2021": 25.687403663691516,
+       "2022": 23.837818791339373,
+       "2023": 29.157779957948094
+      },
+      "theft": {
+       "2021": 42.52781623894843,
+       "2022": 45.068194065269715,
+       "2023": 47.90046230376764
+      }
+     },
+     "weather_elasticities": {
+      "escape_of_water": {
+       "variable": "freezing_days",
+       "b": 0.0063373992174928844
+      }
+     },
+     "cost_share": {
+      "accidental_damage": 0.1091170508997415,
+      "escape_of_water": 0.22613404110768012,
+      "flood": 0.25269855471536806,
+      "theft": 0.41205035327721035
+     }
+    },
+    "final": {
+     "excess_factor_line": 1.0179848606621604,
+     "trends": [
+      {
+       "peril": "accidental_damage",
+       "freq_trend_fitted": 0.011666261979685677,
+       "freq_trend": 0.011666261979685677,
+       "sev_trend_fitted": 0.021864172197974208,
+       "sev_trend": 0.021864172197974208,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.015562416326300031,
+       "freq_2022": 0.01495497352329176,
+       "freq_2023": 0.015954524579076475,
+       "freq_2024": 0.01581876803396041,
+       "sev_2021": 771.4384900591081,
+       "sev_2022": 761.6248503937009,
+       "sev_2023": 787.9460955194486,
+       "sev_2024": 819.3827920081967
+      },
+      {
+       "peril": "escape_of_water",
+       "freq_trend_fitted": 0.020632643060208622,
+       "freq_trend": 0.020632643060208622,
+       "sev_trend_fitted": 0.026367486114461602,
+       "sev_trend": 0.026367486114461602,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.009081560521419578,
+       "freq_2022": 0.009255597786856161,
+       "freq_2023": 0.009194099873588366,
+       "freq_2024": 0.009740728676688551,
+       "sev_2021": 2609.1019429097605,
+       "sev_2022": 2718.8267430025444,
+       "sev_2023": 2783.9632733504714,
+       "sev_2024": 2824.5643425605535
+      },
+      {
+       "peril": "flood",
+       "freq_trend_fitted": -0.01352024113986039,
+       "freq_trend": -0.01352024113986039,
+       "sev_trend_fitted": 0.03875122459797309,
+       "sev_trend": 0.03875122459797309,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.00288502613249517,
+       "freq_2022": 0.0027476329307885125,
+       "freq_2023": 0.0030829414688945092,
+       "freq_2024": 0.0026319765073834914,
+       "sev_2021": 8903.698782608695,
+       "sev_2022": 8675.765428571429,
+       "sev_2023": 9457.779283887468,
+       "sev_2024": 9819.92202492212
+      },
+      {
+       "peril": "theft",
+       "freq_trend_fitted": 0.03217055950012071,
+       "freq_trend": 0.03217055950012071,
+       "sev_trend_fitted": 0.0463098407306084,
+       "sev_trend": 0.0463098407306084,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.012200733702349139,
+       "freq_2022": 0.013015929712135296,
+       "freq_2023": 0.013063628410926603,
+       "freq_2024": 0.0135635488009597,
+       "sev_2021": 3485.67694996573,
+       "sev_2022": 3462.5412907117006,
+       "sev_2023": 3666.7042874323515,
+       "sev_2024": 3962.8032804232803
+      }
+     ],
+     "indication": [
+      {
+       "peril": "accidental_damage",
+       "indicated_capped_lc": 13.276052936505584,
+       "lc_2021": 13.711977472207934,
+       "lc_2022": 12.583981547141432,
+       "lc_2023": 13.435110854692732,
+       "lc_2024": 13.399541438875179
+      },
+      {
+       "peril": "escape_of_water",
+       "indicated_capped_lc": 28.593106821187654,
+       "lc_2021": 28.532569907918727,
+       "lc_2022": 28.92697544097889,
+       "lc_2023": 28.087778970648774,
+       "lc_2024": 28.82141233889002
+      },
+      {
+       "peril": "flood",
+       "indicated_capped_lc": 27.759210999366353,
+       "lc_2021": 28.32168707418147,
+       "lc_2022": 25.648719980342186,
+       "lc_2023": 30.616384890355747,
+       "lc_2024": 26.484377842796498
+      },
+      {
+       "peril": "theft",
+       "indicated_capped_lc": 57.12309911253883,
+       "lc_2021": 57.852241811757594,
+       "lc_2022": 56.768247636954776,
+       "lc_2023": 55.86801743592556,
+       "lc_2024": 58.04804873420444
+      }
+     ],
+     "indicated_capped_lc": 126.75146986959842,
+     "line_trend": 0.055715080131908505,
+     "level": {
+      "V1": {
+       "factor": 1.0340826205441747,
+       "model_projection": 1.0557150801319084,
+       "gap": -0.02049081233644101,
+       "model_lc_last_year": 122.57383244957434,
+       "indicated_lc": 126.75146986959842,
+       "trend": 0.055715080131908505
+      },
+      "V5": {
+       "factor": 1.0365444637791057,
+       "model_projection": 1.0557150801319084,
+       "gap": -0.01815889221778233,
+       "model_lc_last_year": 122.282713669107,
+       "indicated_lc": 126.75146986959842,
+       "trend": 0.055715080131908505
+      }
+     },
+     "capped_lc_by_year": {
+      "accidental_damage": {
+       "2021": 12.005446952432107,
+       "2022": 11.390079472318844,
+       "2023": 12.57130534795238,
+       "2024": 12.961626317796494
+      },
+      "escape_of_water": {
+       "2021": 23.694717201088398,
+       "2022": 25.164366785379695,
+       "2023": 25.59603637958622,
+       "2024": 27.513314890731532
+      },
+      "flood": {
+       "2021": 25.687403663691516,
+       "2022": 23.837818791339373,
+       "2023": 29.157779957948094,
+       "2024": 25.84580407393274
+      },
+      "theft": {
+       "2021": 42.52781623894843,
+       "2022": 45.068194065269715,
+       "2023": 47.90046230376764,
+       "2024": 53.749675682624336
+      }
+     },
+     "weather_elasticities": {
+      "escape_of_water": {
+       "variable": "freezing_days",
+       "b": 0.00674895110448357
+      }
+     },
+     "cost_share": {
+      "accidental_damage": 0.10818795799800801,
+      "escape_of_water": 0.2233292072442938,
+      "flood": 0.2470830688583301,
+      "theft": 0.421399765899368
+     },
+     "relativities_V1": [
+      {
+       "factor": "region",
+       "level": "R01",
+       "relativity": 1.0
+      },
+      {
+       "factor": "region",
+       "level": "R02",
+       "relativity": 1.1610629899344629
+      },
+      {
+       "factor": "region",
+       "level": "R03",
+       "relativity": 1.2640602489585568
+      },
+      {
+       "factor": "region",
+       "level": "R04",
+       "relativity": 1.0436927655082204
+      },
+      {
+       "factor": "region",
+       "level": "R05",
+       "relativity": 0.92204762392903
+      },
+      {
+       "factor": "region",
+       "level": "R06",
+       "relativity": 0.8037902930466574
+      },
+      {
+       "factor": "region",
+       "level": "R07",
+       "relativity": 1.4130222351591113
+      },
+      {
+       "factor": "region",
+       "level": "R08",
+       "relativity": 0.8021461540896103
+      },
+      {
+       "factor": "region",
+       "level": "R09",
+       "relativity": 1.0251531495878679
+      },
+      {
+       "factor": "region",
+       "level": "R10",
+       "relativity": 0.9473172964371389
+      },
+      {
+       "factor": "region",
+       "level": "R11",
+       "relativity": 1.0566810628030958
+      },
+      {
+       "factor": "region",
+       "level": "R12",
+       "relativity": 1.2031993526370386
+      },
+      {
+       "factor": "urban",
+       "level": "suburban",
+       "relativity": 1.0
+      },
+      {
+       "factor": "urban",
+       "level": "dense_urban",
+       "relativity": 1.376168440671439
+      },
+      {
+       "factor": "urban",
+       "level": "rural",
+       "relativity": 0.9924882932422373
+      },
+      {
+       "factor": "urban",
+       "level": "urban",
+       "relativity": 1.1309807293695857
+      },
+      {
+       "factor": "pay",
+       "level": "annual",
+       "relativity": 1.0
+      },
+      {
+       "factor": "pay",
+       "level": "monthly",
+       "relativity": 1.0979541820540897
+      },
+      {
+       "factor": "missed",
+       "level": "0",
+       "relativity": 1.0
+      },
+      {
+       "factor": "missed",
+       "level": "1",
+       "relativity": 1.2739452445842425
+      },
+      {
+       "factor": "missed",
+       "level": "2+",
+       "relativity": 1.2724740400419872
+      },
+      {
+       "factor": "credit",
+       "level": "B",
+       "relativity": 1.0
+      },
+      {
+       "factor": "credit",
+       "level": "A",
+       "relativity": 0.9857473702533949
+      },
+      {
+       "factor": "credit",
+       "level": "C",
+       "relativity": 1.0528134889438774
+      },
+      {
+       "factor": "credit",
+       "level": "D",
+       "relativity": 0.9856775078499431
+      },
+      {
+       "factor": "credit",
+       "level": "E",
+       "relativity": 1.2161724610589113
+      },
+      {
+       "factor": "channel",
+       "level": "direct",
+       "relativity": 1.0
+      },
+      {
+       "factor": "channel",
+       "level": "broker",
+       "relativity": 1.0754055748762372
+      },
+      {
+       "factor": "channel",
+       "level": "comparison_site",
+       "relativity": 1.1852156236006501
+      },
+      {
+       "factor": "new_bus",
+       "level": "False",
+       "relativity": 1.0
+      },
+      {
+       "factor": "new_bus",
+       "level": "True",
+       "relativity": 1.0192367581751123
+      },
+      {
+       "factor": "age",
+       "level": "(29.0, 39.0]",
+       "relativity": 1.0
+      },
+      {
+       "factor": "age",
+       "level": "(-0.001, 20.0]",
+       "relativity": 1.222083318343716
+      },
+      {
+       "factor": "age",
+       "level": "(20.0, 24.0]",
+       "relativity": 1.3125957106968031
+      },
+      {
+       "factor": "age",
+       "level": "(24.0, 29.0]",
+       "relativity": 1.1580128841766675
+      },
+      {
+       "factor": "age",
+       "level": "(39.0, 49.0]",
+       "relativity": 0.8332485313134766
+      },
+      {
+       "factor": "age",
+       "level": "(49.0, 59.0]",
+       "relativity": 0.8673719436000541
+      },
+      {
+       "factor": "age",
+       "level": "(59.0, 69.0]",
+       "relativity": 0.9598408193206719
+      },
+      {
+       "factor": "age",
+       "level": "(69.0, 79.0]",
+       "relativity": 1.015905298419989
+      },
+      {
+       "factor": "age",
+       "level": "(79.0, 200.0]",
+       "relativity": 1.078744075877063
+      },
+      {
+       "factor": "yr",
+       "level": "2023",
+       "relativity": 1.0
+      },
+      {
+       "factor": "yr",
+       "level": "2021",
+       "relativity": 0.8973381087659503
+      },
+      {
+       "factor": "yr",
+       "level": "2022",
+       "relativity": 0.908744170758346
+      },
+      {
+       "factor": "yr",
+       "level": "2024",
+       "relativity": 1.0301575721960456
+      },
+      {
+       "factor": "si",
+       "level": "(-inf, 18600.0]",
+       "relativity": 1.0
+      },
+      {
+       "factor": "si",
+       "level": "(18600.0, 24000.0]",
+       "relativity": 1.3498098858856364
+      },
+      {
+       "factor": "si",
+       "level": "(24000.0, 29000.0]",
+       "relativity": 1.5475615740760142
+      },
+      {
+       "factor": "si",
+       "level": "(29000.0, 33900.0]",
+       "relativity": 1.7507121034792656
+      },
+      {
+       "factor": "si",
+       "level": "(33900.0, 38900.0]",
+       "relativity": 1.9949541562249693
+      },
+      {
+       "factor": "si",
+       "level": "(38900.0, 44400.0]",
+       "relativity": 2.1613789907044656
+      },
+      {
+       "factor": "si",
+       "level": "(44400.0, 50700.0]",
+       "relativity": 2.593731911306978
+      },
+      {
+       "factor": "si",
+       "level": "(50700.0, 58900.0]",
+       "relativity": 2.832548100355409
+      },
+      {
+       "factor": "si",
+       "level": "(58900.0, 71900.0]",
+       "relativity": 2.9184894414690694
+      },
+      {
+       "factor": "si",
+       "level": "(71900.0, inf]",
+       "relativity": 3.7423672432766613
+      },
+      {
+       "factor": "ptype",
+       "level": "semi_detached",
+       "relativity": 1.0
+      },
+      {
+       "factor": "ptype",
+       "level": "detached",
+       "relativity": 0.9758007398615164
+      },
+      {
+       "factor": "ptype",
+       "level": "flat",
+       "relativity": 0.875978275316578
+      },
+      {
+       "factor": "ptype",
+       "level": "terraced",
+       "relativity": 0.9989311040747852
+      },
+      {
+       "factor": "flood",
+       "level": "1.0",
+       "relativity": 1.0
+      },
+      {
+       "factor": "flood",
+       "level": "2.0",
+       "relativity": 1.1206099504719822
+      },
+      {
+       "factor": "flood",
+       "level": "3.0",
+       "relativity": 1.5645596868306926
+      },
+      {
+       "factor": "flood",
+       "level": "4.0",
+       "relativity": 2.7652796905659054
+      },
+      {
+       "factor": "flood",
+       "level": "5.0",
+       "relativity": 7.3104962937898845
+      },
+      {
+       "factor": "flood",
+       "level": "blank",
+       "relativity": 2.2288977967769568
+      },
+      {
+       "factor": "ad_cover",
+       "level": "False",
+       "relativity": 1.0
+      },
+      {
+       "factor": "ad_cover",
+       "level": "True",
+       "relativity": 1.2203786971555552
+      },
+      {
+       "factor": "tenure",
+       "level": "owner",
+       "relativity": 1.0
+      },
+      {
+       "factor": "tenure",
+       "level": "renter",
+       "relativity": 1.122158195292098
+      },
+      {
+       "factor": "security",
+       "level": "standard",
+       "relativity": 1.0
+      },
+      {
+       "factor": "security",
+       "level": "alarm_and_locks",
+       "relativity": 0.8617929598130953
+      },
+      {
+       "factor": "security",
+       "level": "blank",
+       "relativity": 0.004892940615732144
+      },
+      {
+       "factor": "security",
+       "level": "locks",
+       "relativity": 0.9579935758978094
+      },
+      {
+       "factor": "hvi",
+       "level": "0.0",
+       "relativity": 1.0
+      },
+      {
+       "factor": "hvi",
+       "level": "1.0",
+       "relativity": 1.1018553056243539
+      },
+      {
+       "factor": "hvi",
+       "level": "2.0",
+       "relativity": 1.126331124708404
+      },
+      {
+       "factor": "hvi",
+       "level": "3.0",
+       "relativity": 1.2133115601358397
+      },
+      {
+       "factor": "hvi",
+       "level": "4.0",
+       "relativity": 1.2699589588064526
+      },
+      {
+       "factor": "hvi",
+       "level": "blank",
+       "relativity": 0.22804154363851145
+      },
+      {
+       "factor": "bike",
+       "level": "False",
+       "relativity": 1.0
+      },
+      {
+       "factor": "bike",
+       "level": "True",
+       "relativity": 1.0162677187662559
+      }
+     ],
+     "relativities_V5": [
+      {
+       "factor": "region",
+       "level": "R01",
+       "relativity": 1.0
+      },
+      {
+       "factor": "region",
+       "level": "R02",
+       "relativity": 1.0307257852469962
+      },
+      {
+       "factor": "region",
+       "level": "R03",
+       "relativity": 1.1907441069225733
+      },
+      {
+       "factor": "region",
+       "level": "R04",
+       "relativity": 0.9259036014610964
+      },
+      {
+       "factor": "region",
+       "level": "R05",
+       "relativity": 0.8241584217921696
+      },
+      {
+       "factor": "region",
+       "level": "R06",
+       "relativity": 0.6561132005947645
+      },
+      {
+       "factor": "region",
+       "level": "R07",
+       "relativity": 1.2634673334145583
+      },
+      {
+       "factor": "region",
+       "level": "R08",
+       "relativity": 0.7493266498351486
+      },
+      {
+       "factor": "region",
+       "level": "R09",
+       "relativity": 0.9478120282546508
+      },
+      {
+       "factor": "region",
+       "level": "R10",
+       "relativity": 0.869295701834448
+      },
+      {
+       "factor": "region",
+       "level": "R11",
+       "relativity": 0.8466212805396826
+      },
+      {
+       "factor": "region",
+       "level": "R12",
+       "relativity": 1.2238451488302342
+      },
+      {
+       "factor": "urban",
+       "level": "suburban",
+       "relativity": 1.0
+      },
+      {
+       "factor": "urban",
+       "level": "dense_urban",
+       "relativity": 1.3774467018347396
+      },
+      {
+       "factor": "urban",
+       "level": "rural",
+       "relativity": 0.9925059731932279
+      },
+      {
+       "factor": "urban",
+       "level": "urban",
+       "relativity": 1.1318619509023125
+      },
+      {
+       "factor": "pay",
+       "level": "annual",
+       "relativity": 1.0
+      },
+      {
+       "factor": "pay",
+       "level": "monthly",
+       "relativity": 1.1003201654643613
+      },
+      {
+       "factor": "missed",
+       "level": "0",
+       "relativity": 1.0
+      },
+      {
+       "factor": "missed",
+       "level": "1",
+       "relativity": 1.2754295507729718
+      },
+      {
+       "factor": "missed",
+       "level": "2+",
+       "relativity": 1.278221817284214
+      },
+      {
+       "factor": "credit",
+       "level": "B",
+       "relativity": 1.0
+      },
+      {
+       "factor": "credit",
+       "level": "A",
+       "relativity": 0.9844345889100989
+      },
+      {
+       "factor": "credit",
+       "level": "C",
+       "relativity": 1.0517139086187546
+      },
+      {
+       "factor": "credit",
+       "level": "D",
+       "relativity": 0.9828063467850072
+      },
+      {
+       "factor": "credit",
+       "level": "E",
+       "relativity": 1.215248401908676
+      },
+      {
+       "factor": "channel",
+       "level": "direct",
+       "relativity": 1.0
+      },
+      {
+       "factor": "channel",
+       "level": "broker",
+       "relativity": 1.0756661131257508
+      },
+      {
+       "factor": "channel",
+       "level": "comparison_site",
+       "relativity": 1.1855169550788736
+      },
+      {
+       "factor": "new_bus",
+       "level": "False",
+       "relativity": 1.0
+      },
+      {
+       "factor": "new_bus",
+       "level": "True",
+       "relativity": 1.0219015693347226
+      },
+      {
+       "factor": "age",
+       "level": "(29.0, 39.0]",
+       "relativity": 1.0
+      },
+      {
+       "factor": "age",
+       "level": "(-0.001, 20.0]",
+       "relativity": 1.2171570620835217
+      },
+      {
+       "factor": "age",
+       "level": "(20.0, 24.0]",
+       "relativity": 1.3124046236954132
+      },
+      {
+       "factor": "age",
+       "level": "(24.0, 29.0]",
+       "relativity": 1.156290958441695
+      },
+      {
+       "factor": "age",
+       "level": "(39.0, 49.0]",
+       "relativity": 0.8263837396653191
+      },
+      {
+       "factor": "age",
+       "level": "(49.0, 59.0]",
+       "relativity": 0.869316817422261
+      },
+      {
+       "factor": "age",
+       "level": "(59.0, 69.0]",
+       "relativity": 0.9589716504361031
+      },
+      {
+       "factor": "age",
+       "level": "(69.0, 79.0]",
+       "relativity": 1.0141215037308442
+      },
+      {
+       "factor": "age",
+       "level": "(79.0, 200.0]",
+       "relativity": 1.0777196904046027
+      },
+      {
+       "factor": "yr",
+       "level": "2023",
+       "relativity": 1.0
+      },
+      {
+       "factor": "yr",
+       "level": "2021",
+       "relativity": 0.9001886793993827
+      },
+      {
+       "factor": "yr",
+       "level": "2022",
+       "relativity": 0.9128175272566819
+      },
+      {
+       "factor": "yr",
+       "level": "2024",
+       "relativity": 1.0254413171749825
+      },
+      {
+       "factor": "si",
+       "level": "(-inf, 18600.0]",
+       "relativity": 1.0
+      },
+      {
+       "factor": "si",
+       "level": "(18600.0, 24000.0]",
+       "relativity": 1.3478551633661675
+      },
+      {
+       "factor": "si",
+       "level": "(24000.0, 29000.0]",
+       "relativity": 1.5451145438058327
+      },
+      {
+       "factor": "si",
+       "level": "(29000.0, 33900.0]",
+       "relativity": 1.749024562317189
+      },
+      {
+       "factor": "si",
+       "level": "(33900.0, 38900.0]",
+       "relativity": 1.98301714976292
+      },
+      {
+       "factor": "si",
+       "level": "(38900.0, 44400.0]",
+       "relativity": 2.156084210129655
+      },
+      {
+       "factor": "si",
+       "level": "(44400.0, 50700.0]",
+       "relativity": 2.5902038707788333
+      },
+      {
+       "factor": "si",
+       "level": "(50700.0, 58900.0]",
+       "relativity": 2.822802976930682
+      },
+      {
+       "factor": "si",
+       "level": "(58900.0, 71900.0]",
+       "relativity": 2.9067193385286494
+      },
+      {
+       "factor": "si",
+       "level": "(71900.0, inf]",
+       "relativity": 3.720744403587857
+      },
+      {
+       "factor": "ptype",
+       "level": "semi_detached",
+       "relativity": 1.0
+      },
+      {
+       "factor": "ptype",
+       "level": "detached",
+       "relativity": 0.9744254773921477
+      },
+      {
+       "factor": "ptype",
+       "level": "flat",
+       "relativity": 0.8752054722830628
+      },
+      {
+       "factor": "ptype",
+       "level": "terraced",
+       "relativity": 0.9985010858656178
+      },
+      {
+       "factor": "flood",
+       "level": "1.0",
+       "relativity": 1.0
+      },
+      {
+       "factor": "flood",
+       "level": "2.0",
+       "relativity": 1.114805915613432
+      },
+      {
+       "factor": "flood",
+       "level": "3.0",
+       "relativity": 1.5424846287648957
+      },
+      {
+       "factor": "flood",
+       "level": "4.0",
+       "relativity": 2.7086541796778776
+      },
+      {
+       "factor": "flood",
+       "level": "5.0",
+       "relativity": 7.094579256871942
+      },
+      {
+       "factor": "flood",
+       "level": "blank",
+       "relativity": 2.1990771468578747
+      },
+      {
+       "factor": "ad_cover",
+       "level": "False",
+       "relativity": 1.0
+      },
+      {
+       "factor": "ad_cover",
+       "level": "True",
+       "relativity": 1.2204121654142017
+      },
+      {
+       "factor": "tenure",
+       "level": "owner",
+       "relativity": 1.0
+      },
+      {
+       "factor": "tenure",
+       "level": "renter",
+       "relativity": 1.1195120685296047
+      },
+      {
+       "factor": "security",
+       "level": "standard",
+       "relativity": 1.0
+      },
+      {
+       "factor": "security",
+       "level": "alarm_and_locks",
+       "relativity": 0.8620133596521805
+      },
+      {
+       "factor": "security",
+       "level": "blank",
+       "relativity": 0.004876710454820527
+      },
+      {
+       "factor": "security",
+       "level": "locks",
+       "relativity": 0.9580946264694667
+      },
+      {
+       "factor": "hvi",
+       "level": "0.0",
+       "relativity": 1.0
+      },
+      {
+       "factor": "hvi",
+       "level": "1.0",
+       "relativity": 1.0986659101675214
+      },
+      {
+       "factor": "hvi",
+       "level": "2.0",
+       "relativity": 1.124864381554338
+      },
+      {
+       "factor": "hvi",
+       "level": "3.0",
+       "relativity": 1.2112706946359548
+      },
+      {
+       "factor": "hvi",
+       "level": "4.0",
+       "relativity": 1.2672796356963645
+      },
+      {
+       "factor": "hvi",
+       "level": "blank",
+       "relativity": 0.2387643283061324
+      },
+      {
+       "factor": "bike",
+       "level": "False",
+       "relativity": 1.0
+      },
+      {
+       "factor": "bike",
+       "level": "True",
+       "relativity": 1.018490429944147
+      },
+      {
+       "factor": "n_wind_exposure_index",
+       "level": "(5.3, 6.433]",
+       "relativity": 1.0
+      },
+      {
+       "factor": "n_wind_exposure_index",
+       "level": "(-inf, 2.4]",
+       "relativity": 0.9190218098114566
+      },
+      {
+       "factor": "n_wind_exposure_index",
+       "level": "(2.4, 3.767]",
+       "relativity": 0.9555557834131434
+      },
+      {
+       "factor": "n_wind_exposure_index",
+       "level": "(3.767, 5.3]",
+       "relativity": 0.916887875067159
+      },
+      {
+       "factor": "n_wind_exposure_index",
+       "level": "(6.433, inf]",
+       "relativity": 0.9884970760289147
+      },
+      {
+       "factor": "n_dry_summer_index",
+       "level": "(0.348, 0.492]",
+       "relativity": 1.0
+      },
+      {
+       "factor": "n_dry_summer_index",
+       "level": "(-inf, 0.348]",
+       "relativity": 0.9456562152984054
+      },
+      {
+       "factor": "n_dry_summer_index",
+       "level": "(0.492, 0.625]",
+       "relativity": 0.8993176336092071
+      },
+      {
+       "factor": "n_dry_summer_index",
+       "level": "(0.625, 0.713]",
+       "relativity": 0.9301804102803927
+      },
+      {
+       "factor": "n_dry_summer_index",
+       "level": "(0.713, inf]",
+       "relativity": 1.0089092922071
+      },
+      {
+       "factor": "n_freezing_days",
+       "level": "(19.0, 29.0]",
+       "relativity": 1.0
+      },
+      {
+       "factor": "n_freezing_days",
+       "level": "(-inf, 19.0]",
+       "relativity": 1.0159410871723114
+      },
+      {
+       "factor": "n_freezing_days",
+       "level": "(29.0, 43.667]",
+       "relativity": 1.079056004904943
+      },
+      {
+       "factor": "n_freezing_days",
+       "level": "(43.667, 60.667]",
+       "relativity": 1.073159914015256
+      },
+      {
+       "factor": "n_freezing_days",
+       "level": "(60.667, inf]",
+       "relativity": 1.0866431005107153
+      },
+      {
+       "factor": "n_hail_days",
+       "level": "(-inf, 3.333]",
+       "relativity": 1.0
+      },
+      {
+       "factor": "n_hail_days",
+       "level": "(3.333, 5.0]",
+       "relativity": 0.9922657129466028
+      },
+      {
+       "factor": "n_hail_days",
+       "level": "(5.0, 6.667]",
+       "relativity": 0.9546621973894832
+      },
+      {
+       "factor": "n_hail_days",
+       "level": "(6.667, 9.0]",
+       "relativity": 1.0385767523093707
+      },
+      {
+       "factor": "n_hail_days",
+       "level": "(9.0, inf]",
+       "relativity": 1.0148137730493296
+      },
+      {
+       "factor": "n_rainfall_mm",
+       "level": "(-inf, 833.667]",
+       "relativity": 1.0
+      },
+      {
+       "factor": "n_rainfall_mm",
+       "level": "(1071.0, 1242.0]",
+       "relativity": 1.008792407040041
+      },
+      {
+       "factor": "n_rainfall_mm",
+       "level": "(1242.0, inf]",
+       "relativity": 1.1264289348675163
+      },
+      {
+       "factor": "n_rainfall_mm",
+       "level": "(833.667, 949.333]",
+       "relativity": 0.9548847208662016
+      },
+      {
+       "factor": "n_rainfall_mm",
+       "level": "(949.333, 1071.0]",
+       "relativity": 0.9366517472099344
+      },
+      {
+       "factor": "n_wildfire_index",
+       "level": "(-inf, 0.0443]",
+       "relativity": 1.0
+      },
+      {
+       "factor": "n_wildfire_index",
+       "level": "(0.0443, 0.108]",
+       "relativity": 1.0305162902765574
+      },
+      {
+       "factor": "n_wildfire_index",
+       "level": "(0.108, 0.17]",
+       "relativity": 1.052509857903776
+      },
+      {
+       "factor": "n_wildfire_index",
+       "level": "(0.17, 0.256]",
+       "relativity": 1.0506790246095412
+      },
+      {
+       "factor": "n_wildfire_index",
+       "level": "(0.256, inf]",
+       "relativity": 1.0600074630662062
+      },
+      {
+       "factor": "n_mean_temperature_c",
+       "level": "(11.767, 14.333]",
+       "relativity": 1.0
+      },
+      {
+       "factor": "n_mean_temperature_c",
+       "level": "(-inf, 9.467]",
+       "relativity": 0.9787313153017946
+      },
+      {
+       "factor": "n_mean_temperature_c",
+       "level": "(14.333, 15.833]",
+       "relativity": 0.9388460631515392
+      },
+      {
+       "factor": "n_mean_temperature_c",
+       "level": "(15.833, inf]",
+       "relativity": 0.9256091956253348
+      },
+      {
+       "factor": "n_mean_temperature_c",
+       "level": "(9.467, 11.767]",
+       "relativity": 0.8769948413630534
+      }
+     ]
+    }
+   }
+  },
+  "tests": {
+   "V1_vs_V0": {
+    "A": {
+     "motor": {
+      "gain": 32147.854578894745,
+      "d2_ref": 0.0480634939772,
+      "d2_cand": 0.049319220535385844,
+      "boot": {
+       "gain": 32147.854578894752,
+       "rel_gain": 0.0013191284820374097,
+       "lo": 8841.569623386999,
+       "hi": 55740.17270377869,
+       "share_b_better": 0.994,
+       "groups": 200376,
+       "n_boot": 2000,
+       "boot_seed": 0
+      }
+     },
+     "buildings": {
+      "gain": 606.5109145673305,
+      "d2_ref": 0.06529066282340057,
+      "d2_cand": 0.06532205076987008,
+      "boot": {
+       "gain": 606.5109145673289,
+       "rel_gain": 3.3580435351684126e-05,
+       "lo": -11079.075625548805,
+       "hi": 11453.624793675332,
+       "share_b_better": 0.5625,
+       "groups": 150454,
+       "n_boot": 2000,
+       "boot_seed": 0
+      }
+     },
+     "contents": {
+      "gain": 70.16645271878588,
+      "d2_ref": 0.06332087735369474,
+      "d2_cand": 0.06332767458409394,
+      "boot": {
+       "gain": 70.16645271878588,
+       "rel_gain": 7.25673310614792e-06,
+       "lo": -2765.0627169153713,
+       "hi": 2863.704470785442,
+       "share_b_better": 0.525,
+       "groups": 150626,
+       "n_boot": 2000,
+       "boot_seed": 0
+      }
+     },
+     "all": {
+      "gain": 32824.53194618086,
+      "d2_ref": 0.09966135108998597,
+      "d2_cand": 0.1002285787812367,
+      "boot": {
+       "gain": 32824.53194618086,
+       "rel_gain": 0.0006300159300474404,
+       "lo": 6688.116451392436,
+       "hi": 58428.87880422387,
+       "share_b_better": 0.9915,
+       "groups": 317735,
+       "n_boot": 2000,
+       "boot_seed": 0
+      }
+     }
+    },
+    "B": {
+     "motor": {
+      "gain": 36364.666893593945,
+      "d2_ref": 0.053356688209162395,
+      "d2_cand": 0.054871541422266024
+     },
+     "buildings": {
+      "gain": 15427.216113201313,
+      "d2_ref": 0.060421490654732346,
+      "d2_cand": 0.06121158221257683
+     },
+     "contents": {
+      "gain": 1251.9100119917882,
+      "d2_ref": 0.054000869759911585,
+      "d2_cand": 0.05412250180617095
+     },
+     "all": {
+      "gain": 53043.793018787044,
+      "d2_ref": 0.09405972381357164,
+      "d2_cand": 0.09500554045796328
+     }
+    },
+    "verdict": {
+     "motor": {
+      "keep": true,
+      "scorings_better": 2,
+      "gain_by_scoring": {
+       "A": 32147.854578894745,
+       "B": 36364.666893593945
+      },
+      "a_interval": [
+       8841.569623386999,
+       55740.17270377869
+      ]
+     },
+     "buildings": {
+      "keep": false,
+      "scorings_better": 2,
+      "gain_by_scoring": {
+       "A": 606.5109145673305,
+       "B": 15427.216113201313
+      },
+      "a_interval": [
+       -11079.075625548805,
+       11453.624793675332
+      ]
+     },
+     "contents": {
+      "keep": false,
+      "scorings_better": 2,
+      "gain_by_scoring": {
+       "A": 70.16645271878588,
+       "B": 1251.9100119917882
+      },
+      "a_interval": [
+       -2765.0627169153713,
+       2863.704470785442
+      ]
+     },
+     "all": {
+      "keep": true,
+      "scorings_better": 2,
+      "gain_by_scoring": {
+       "A": 32824.53194618086,
+       "B": 53043.793018787044
+      },
+      "a_interval": [
+       6688.116451392436,
+       58428.87880422387
+      ]
+     }
+    }
+   },
+   "V5_vs_V1": {
+    "A": {
+     "motor": {
+      "gain": -12165.98883219466,
+      "d2_ref": 0.049319220535385844,
+      "d2_cand": 0.04884400514439646,
+      "boot": {
+       "gain": -12165.988832194662,
+       "rel_gain": -0.0004998685165981856,
+       "lo": -28207.83687191897,
+       "hi": 3248.833797075656,
+       "share_b_better": 0.057,
+       "groups": 200376,
+       "n_boot": 2000,
+       "boot_seed": 0
+      }
+     },
+     "buildings": {
+      "gain": -36621.86012848736,
+      "d2_ref": 0.06532205076987008,
+      "d2_cand": 0.06342680872603512,
+      "boot": {
+       "gain": -36621.86012848736,
+       "rel_gain": -0.0020276952563138256,
+       "lo": -95070.99746629786,
+       "hi": 16208.369191864906,
+       "share_b_better": 0.0865,
+       "groups": 150454,
+       "n_boot": 2000,
+       "boot_seed": 0
+      }
+     },
+     "contents": {
+      "gain": -18576.82482336835,
+      "d2_ref": 0.06332767458409394,
+      "d2_cand": 0.06152808299129864,
+      "boot": {
+       "gain": -18576.824823368355,
+       "rel_gain": -0.0019212605560820545,
+       "lo": -34652.40314883069,
+       "hi": -3098.5791623253917,
+       "share_b_better": 0.008,
+       "groups": 150626,
+       "n_boot": 2000,
+       "boot_seed": 0
+      }
+     },
+     "all": {
+      "gain": -67364.67378405036,
+      "d2_ref": 0.1002285787812367,
+      "d2_cand": 0.09906447662602447,
+      "boot": {
+       "gain": -67364.67378405036,
+       "rel_gain": -0.0012937754275807846,
+       "lo": -127047.82600728993,
+       "hi": -7143.94342329249,
+       "share_b_better": 0.0185,
+       "groups": 317735,
+       "n_boot": 2000,
+       "boot_seed": 0
+      }
+     }
+    },
+    "B": {
+     "motor": {
+      "gain": -18632.781601595154,
+      "d2_ref": 0.054871541422266024,
+      "d2_cand": 0.054095350369538164
+     },
+     "buildings": {
+      "gain": -20012.763835431397,
+      "d2_ref": 0.06121158221257683,
+      "d2_cand": 0.0601866457859731
+     },
+     "contents": {
+      "gain": 3481.796486500083,
+      "d2_ref": 0.05412250180617095,
+      "d2_cand": 0.05446078333380078
+     },
+     "all": {
+      "gain": -35163.74895052647,
+      "d2_ref": 0.09500554045796328,
+      "d2_cand": 0.0943785404426204
+     }
+    },
+    "verdict": {
+     "motor": {
+      "keep": false,
+      "scorings_better": 0,
+      "gain_by_scoring": {
+       "A": -12165.98883219466,
+       "B": -18632.781601595154
+      },
+      "a_interval": [
+       -28207.83687191897,
+       3248.833797075656
+      ]
+     },
+     "buildings": {
+      "keep": false,
+      "scorings_better": 0,
+      "gain_by_scoring": {
+       "A": -36621.86012848736,
+       "B": -20012.763835431397
+      },
+      "a_interval": [
+       -95070.99746629786,
+       16208.369191864906
+      ]
+     },
+     "contents": {
+      "keep": false,
+      "scorings_better": 1,
+      "gain_by_scoring": {
+       "A": -18576.82482336835,
+       "B": 3481.796486500083
+      },
+      "a_interval": [
+       -34652.40314883069,
+       -3098.5791623253917
+      ]
+     },
+     "all": {
+      "keep": false,
+      "scorings_better": 0,
+      "gain_by_scoring": {
+       "A": -67364.67378405036,
+       "B": -35163.74895052647
+      },
+      "a_interval": [
+       -127047.82600728993,
+       -7143.94342329249
+      ]
+     }
+    }
+   },
+   "V6_vs_V5": {
+    "A": {
+     "motor": {
+      "gain": 355.4114363043193,
+      "d2_ref": 0.04884400514439646,
+      "d2_cand": 0.048857887861781246,
+      "boot": {
+       "gain": 355.4114363043193,
+       "rel_gain": 1.459562622746008e-05,
+       "lo": -914.148214267725,
+       "hi": 1642.7694126062418,
+       "share_b_better": 0.7105,
+       "groups": 200376,
+       "n_boot": 2000,
+       "boot_seed": 0
+      }
+     },
+     "buildings": {
+      "gain": -1064.6309239411316,
+      "d2_ref": 0.06342680872603512,
+      "d2_cand": 0.06337171230872751,
+      "boot": {
+       "gain": -1064.6309239411296,
+       "rel_gain": -5.882766859114286e-05,
+       "lo": -8558.931021944321,
+       "hi": 6833.508209718759,
+       "share_b_better": 0.4055,
+       "groups": 150454,
+       "n_boot": 2000,
+       "boot_seed": 0
+      }
+     },
+     "contents": {
+      "gain": 173.53835056111208,
+      "d2_ref": 0.06152808299129864,
+      "d2_cand": 0.061544894161111974,
+      "boot": {
+       "gain": 173.538350561112,
+       "rel_gain": 1.7913343498728325e-05,
+       "lo": -379.44062824973446,
+       "hi": 725.7996988566767,
+       "share_b_better": 0.71,
+       "groups": 150626,
+       "n_boot": 2000,
+       "boot_seed": 0
+      }
+     },
+     "all": {
+      "gain": -535.6811370757,
+      "d2_ref": 0.09906447662602447,
+      "d2_cand": 0.09905521973318798,
+      "boot": {
+       "gain": -535.6811370756994,
+       "rel_gain": -1.0274756179786604e-05,
+       "lo": -8300.253244171456,
+       "hi": 7540.433148109126,
+       "share_b_better": 0.442,
+       "groups": 317735,
+       "n_boot": 2000,
+       "boot_seed": 0
+      }
+     }
+    },
+    "B": {
+     "motor": {
+      "gain": 147.85219026227037,
+      "d2_ref": 0.054095350369538164,
+      "d2_cand": 0.05410150949004222
+     },
+     "buildings": {
+      "gain": -4048.576287161106,
+      "d2_ref": 0.0601866457859731,
+      "d2_cand": 0.059979301445795
+     },
+     "contents": {
+      "gain": -990.1405781209255,
+      "d2_ref": 0.05446078333380078,
+      "d2_cand": 0.05436458406752154
+     },
+     "all": {
+      "gain": -4890.864675019761,
+      "d2_ref": 0.0943785404426204,
+      "d2_cand": 0.09429133210113816
+     }
+    },
+    "verdict": {
+     "motor": {
+      "keep": false,
+      "scorings_better": 2,
+      "gain_by_scoring": {
+       "A": 355.4114363043193,
+       "B": 147.85219026227037
+      },
+      "a_interval": [
+       -914.148214267725,
+       1642.7694126062418
+      ]
+     },
+     "buildings": {
+      "keep": false,
+      "scorings_better": 0,
+      "gain_by_scoring": {
+       "A": -1064.6309239411316,
+       "B": -4048.576287161106
+      },
+      "a_interval": [
+       -8558.931021944321,
+       6833.508209718759
+      ]
+     },
+     "contents": {
+      "keep": false,
+      "scorings_better": 1,
+      "gain_by_scoring": {
+       "A": 173.53835056111208,
+       "B": -990.1405781209255
+      },
+      "a_interval": [
+       -379.44062824973446,
+       725.7996988566767
+      ]
+     },
+     "all": {
+      "keep": false,
+      "scorings_better": 0,
+      "gain_by_scoring": {
+       "A": -535.6811370757,
+       "B": -4890.864675019761
+      },
+      "a_interval": [
+       -8300.253244171456,
+       7540.433148109126
+      ]
+     }
+    }
+   },
+   "V7_vs_V1": {
+    "A": {
+     "motor": {
+      "gain": 257.0896484881339,
+      "d2_ref": 0.049319220535385844,
+      "d2_cand": 0.049329262707831556,
+      "boot": {
+       "gain": 257.089648488134,
+       "rel_gain": 1.056313818753769e-05,
+       "lo": -1007.2779305272335,
+       "hi": 1537.6691140917856,
+       "share_b_better": 0.6505,
+       "groups": 200376,
+       "n_boot": 2000,
+       "boot_seed": 0
+      }
+     },
+     "buildings": {
+      "gain": -58.920413898544666,
+      "d2_ref": 0.06532205076987008,
+      "d2_cand": 0.06531900154065928,
+      "boot": {
+       "gain": -58.92041389854484,
+       "rel_gain": -3.262331387399718e-06,
+       "lo": -7353.97528723642,
+       "hi": 7731.039126862347,
+       "share_b_better": 0.522,
+       "groups": 150454,
+       "n_boot": 2000,
+       "boot_seed": 0
+      }
+     },
+     "contents": {
+      "gain": 168.67381679446305,
+      "d2_ref": 0.06332767458409394,
+      "d2_cand": 0.06334401451223093,
+      "boot": {
+       "gain": 168.673816794463,
+       "rel_gain": 1.744465774599756e-05,
+       "lo": -379.2628149891054,
+       "hi": 704.59843640142,
+       "share_b_better": 0.7065,
+       "groups": 150626,
+       "n_boot": 2000,
+       "boot_seed": 0
+      }
+     },
+     "all": {
+      "gain": 366.84305138405284,
+      "d2_ref": 0.1002285787812367,
+      "d2_cand": 0.10023491805021478,
+      "boot": {
+       "gain": 366.8430513840525,
+       "rel_gain": 7.045421568890818e-06,
+       "lo": -7273.395640130577,
+       "hi": 8249.57090116639,
+       "share_b_better": 0.533,
+       "groups": 317735,
+       "n_boot": 2000,
+       "boot_seed": 0
+      }
+     }
+    },
+    "B": {
+     "motor": {
+      "gain": -75.44084529441761,
+      "d2_ref": 0.054871541422266024,
+      "d2_cand": 0.05486839876163796
+     },
+     "buildings": {
+      "gain": -4631.628666373184,
+      "d2_ref": 0.06121158221257683,
+      "d2_cand": 0.060974377348036235
+     },
+     "contents": {
+      "gain": -1040.1965122193367,
+      "d2_ref": 0.05412250180617095,
+      "d2_cand": 0.05402143924649705
+     },
+     "all": {
+      "gain": -5747.26602388694,
+      "d2_ref": 0.09500554045796328,
+      "d2_cand": 0.09490306174074159
+     }
+    },
+    "verdict": {
+     "motor": {
+      "keep": false,
+      "scorings_better": 1,
+      "gain_by_scoring": {
+       "A": 257.0896484881339,
+       "B": -75.44084529441761
+      },
+      "a_interval": [
+       -1007.2779305272335,
+       1537.6691140917856
+      ]
+     },
+     "buildings": {
+      "keep": false,
+      "scorings_better": 0,
+      "gain_by_scoring": {
+       "A": -58.920413898544666,
+       "B": -4631.628666373184
+      },
+      "a_interval": [
+       -7353.97528723642,
+       7731.039126862347
+      ]
+     },
+     "contents": {
+      "keep": false,
+      "scorings_better": 1,
+      "gain_by_scoring": {
+       "A": 168.67381679446305,
+       "B": -1040.1965122193367
+      },
+      "a_interval": [
+       -379.2628149891054,
+       704.59843640142
+      ]
+     },
+     "all": {
+      "keep": false,
+      "scorings_better": 1,
+      "gain_by_scoring": {
+       "A": 366.84305138405284,
+       "B": -5747.26602388694
+      },
+      "a_interval": [
+       -7273.395640130577,
+       8249.57090116639
+      ]
+     }
+    }
+   }
+  },
+  "levels": {
+   "A": {
+    "buildings": {
+     "L_none": 0.9576522350785137,
+     "L_trend": 1.0031914145936767,
+     "L_ind": 0.9921772556609884
+    },
+    "contents": {
+     "L_none": 0.9266495621046723,
+     "L_trend": 0.9470422386019847,
+     "L_ind": 0.9365481089588551
+    },
+    "motor": {
+     "L_none": 1.053970888175384,
+     "L_trend": 1.1067329887894573,
+     "L_ind": 1.10759035602538
+    },
+    "all": {
+     "L_none": 1.00886734909117,
+     "L_trend": 1.0561207287956773,
+     "L_ind": 1.0518234588726092
+    }
+   },
+   "B": {
+    "buildings": {
+     "L_none": 0.9192749038066704,
+     "L_trend": 0.9738479423402223,
+     "L_ind": 0.9744301824208939
+    },
+    "contents": {
+     "L_none": 0.9797629901462928,
+     "L_trend": 1.0329137527345165,
+     "L_ind": 0.9948526583230608
+    },
+    "motor": {
+     "L_none": 0.9287427436121535,
+     "L_trend": 0.954326256871774,
+     "L_ind": 0.9444321573040195
+    },
+    "all": {
+     "L_none": 0.9303561098030267,
+     "L_trend": 0.9696962101786619,
+     "L_ind": 0.9608946155287007
+    }
+   }
+  }
+ },
+ "meta": {
+  "created": "2026-10-18T23:50:01",
+  "git_commit": "04fd422",
+  "seeds": null,
+  "versions": {
+   "python": "3.14.5",
+   "numpy": "2.5.3",
+   "pandas": "3.0.5",
+   "scipy": "1.18.1",
+   "sklearn": "1.9.1",
+   "lightgbm": "4.7.0",
+   "xgboost": "3.4.1",
+   "catboost": "1.2.10"
+  }
+ }
+}
