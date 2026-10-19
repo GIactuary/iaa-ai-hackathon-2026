@@ -139,6 +139,20 @@
       "decision": "Actuary: P8-R rules adopted as recommended (flood-zone blank as its own level, service contacts left out), J-cust (a) with years_at_address as given. Missed payments stays a candidate rating variable, to pass the phase 5 drop-one test like any other. Form to be tested in phase 5: any missed payment as a yes/no, or 0, 1, 2 or more.",
       "effect": "Register P8-R and J-cust decided; missed payments documented as an independent behavioural factor in decisions/data_rules.md.",
       "section": "3.3"
+    },
+    {
+      "id": "D10",
+      "stage": "2. Screens",
+      "role": "Data steward",
+      "proposed_by": "AI",
+      "question": "Phase 2: which claims are outliers at z = 4, which test rows sit outside the training evidence (1.25 times the segment maximum), and what are the three repairers?",
+      "ai_answer": "At intake the AI had called the 11.9M bodily injury reserve 'possibly a keying error (a digit too many)'. It also expected NCB above licensed years to be a data error worth correcting.",
+      "challenge": "Actuary agreed the thresholds before the screens ran: \"screen_z = 4 on log claim cost by peril, refer_size_ratio = 1.25 by the segments you proposed, NCB-above-licence as a flagged segment, and investigate the three repairers.\"",
+      "test": "Claim screen on 161,028 claims; train-versus-test size check by segment, unseen levels and impossible combinations; case-reserve ratio and paid rank of the 11.9M claim; claim frequency of the impossible-combination rows; repairer severity, recoveries, repudiation by year, and later frequency of their users.",
+      "result": "One claim flagged (the 11.9M, z 5.23). Its paid 739k is the largest on any open bodily injury claim and its reserve ratio of 16.1 is ordinary (408th of 2,878), so the keying-error reading was withdrawn. NCB above licence still carries signal (0.388 at zero NCB to 0.131 at four years for drivers licensed 0 to 3 years), so correcting it was wrong too. One thin-segment size referral. The repairers inflate own-damage cost 1.8 times, steadily, and their users do not claim more afterwards.",
+      "decision": "Actuary: \"Accept X1 (a), X2 (a) and X3 (a) as recommended.\" The 11.9M claim stays as a genuine large loss, capped with its excess in the motor load; the repairers' paid claims stay in the target and are reported as a claims finding; no individual referrals, with the impossible-combination flags available to the model and a minimum segment size added to the phase 6 referral rule.",
+      "effect": "src/screens.py and tests; decisions/screens_phase2.md; register X1 to X3.",
+      "section": "3.2"
     }
   ]
 }
