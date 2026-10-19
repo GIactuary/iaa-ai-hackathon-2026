@@ -53,3 +53,12 @@ For each family model of each line: the five inputs with the largest effect (mea
 ## 6. Thresholds
 
 New rows in `decisions/thresholds.md`, written 2026-10-19 before any step 7 run: `gbm_learning_rate`, `cat_learning_rate`, `early_stop_rounds`, `max_trees`, `ebm_outer_bags`, `spline_knots`. The grids in section 2 are written here. The keep rule (`keep_years_better`, `keep_ci`) and the power grid (`power_min`, `power_max`, `power_step`) are already written.
+
+## 7. Amendment (2026-10-19, during the run, before any out-of-time score)
+
+**Standardised predictors in the elastic-net GLM (the actuary's suggestion).** The penalty in candidate F1 (b) acts on raw coefficients. A rare factor level and a common one, or a numeric term on a small scale, are then penalised unevenly. The actuary pointed out that the optimisation works better when every input is standardised (z-score: divided by its standard deviation).
+
+- **Change.** F1 gains candidate (d): the elastic-net GLM with every predictor scaled to standard deviation one before the penalty applies (`glum`'s `scale_predictors`; coefficients are reported on the original scale). It is tuned exactly like (b): power, then α × L1 share, on the same folds.
+- **Knock-on.** The spline variant (c), the carried-candidate tests and the motor frequency × severity GLM use whichever of (b) and (d) has the lower inner-fold deviance.
+- **Where it does not apply.** The tree families and the EBM split on order, so scaling an input changes nothing. The W2 GLM has an almost negligible penalty (α = 1e-5), so scaling changes only how fast it converges.
+- **What had already run.** Contents had finished tuning LightGBM, F4, the unscaled elastic-net GLM and the EBM, and was part way through CatBoost. No out-of-time score had been computed. Finished tuning results are kept; tuning now checkpoints every trial.

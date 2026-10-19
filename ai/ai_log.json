@@ -293,6 +293,20 @@
       "decision": "The actuary chose M1 (a), M2 (a) and M3 (b) on the check-in 3 page, with no notes, and confirmed in the chat.",
       "effect": "One capped Tweedie GLM per line stays; step 7 builds frequency x severity for motor only. The line excess factor applies everywhere; the 2025 weather enters as one exposure-weighted factor per line, level unchanged.",
       "section": "3.8"
+    },
+    {
+      "id": "D21",
+      "stage": "5. Step 7: model families",
+      "role": "Appointed actuary",
+      "proposed_by": "Actuary",
+      "question": "Should the inputs be standardised (z-score) so the penalised optimisation works better?",
+      "ai_answer": "The AI confirmed that scaling matters only for the penalised GLM: its elastic-net penalty acted on raw coefficients, so rare levels and small-scale terms were penalised unevenly. Trees and the EBM split on order and are unaffected; the W2 GLM's penalty is negligible.",
+      "challenge": "The actuary raised it: \"the optimization also works better if you do Standardization (Z-score) divides by the standard deviation instead of the range - are we trying that\".",
+      "test": "A standardised elastic-net GLM was added to family F1 as its own candidate, tuned on the same inner folds and grids, and the run was restarted before any out-of-time score had been computed.",
+      "result": "Pending: filled in when step 7 completes.",
+      "decision": "Added to the step 7 design as F1 candidate (d) (decisions/phase5_step7_design.md section 7); the inner folds choose between scaled and unscaled.",
+      "effect": "The spline GLM, the carried-candidate tests and the motor frequency x severity GLM use whichever scaling tunes better.",
+      "section": "3.9"
     }
   ]
 }

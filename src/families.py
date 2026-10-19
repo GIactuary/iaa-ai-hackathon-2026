@@ -121,8 +121,10 @@ class EBM:
 
 
 class GlumGLM:
-    def __init__(self, objective="tweedie", power=1.5, alpha=1e-4, l1_ratio=0.5):
-        self.objective, self.power, self.alpha, self.l1_ratio = objective, power, alpha, l1_ratio
+    def __init__(self, objective="tweedie", power=1.5, alpha=1e-4, l1_ratio=0.5, scale=False):
+        """scale: standardise every predictor to standard deviation one before the penalty applies, so each
+        coefficient is penalised on the same footing (glum's scale_predictors)."""
+        self.objective, self.power, self.alpha, self.l1_ratio, self.scale = objective, power, alpha, l1_ratio, scale
 
     def fit(self, X, y, ec, weight=None, init=None, val=None, es_rounds=None):
         from glum import GeneralizedLinearRegressor, TweedieDistribution
@@ -130,7 +132,7 @@ class GlumGLM:
         fam = {"poisson": "poisson", "gamma": "gamma"}.get(self.objective) or TweedieDistribution(self.power)
         t, w = rate_weights(y, ec, p, weight)
         self.model_ = GeneralizedLinearRegressor(family=fam, link="log", alpha=self.alpha, l1_ratio=self.l1_ratio,
-                                                 drop_first=True, max_iter=300)
+                                                 drop_first=True, max_iter=300, scale_predictors=self.scale)
         self.model_.fit(X, t, sample_weight=w, offset=init)
         self.best_iter_ = None
         return self

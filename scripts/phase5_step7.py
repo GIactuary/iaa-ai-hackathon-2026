@@ -61,13 +61,14 @@ SPLINES = {"motor": {"age": "driver_age", "ncb": "ncb_years", "vvg": "vehicle_va
            "contents": {"age": "policyholder_age", "si": "sum_insured"}}
 POWERS = [round(x, 1) for x in np.arange(1.1, 1.95, 0.1)]
 GRIDS = {"glum": [dict(alpha=a, l1_ratio=l) for a in (1e-6, 1e-5, 1e-4, 1e-3, 1e-2) for l in (0.0, 0.5, 1.0)],
+         "glum_std": [dict(alpha=a, l1_ratio=l, scale=True) for a in (1e-6, 1e-5, 1e-4, 1e-3, 1e-2) for l in (0.0, 0.5, 1.0)],
          "lgb": [dict(leaves=a, min_leaf=b) for a in (15, 31, 63) for b in (100, 400, 1600)],
          "cat": [dict(depth=d) for d in (4, 6, 8)],
          "ebm": [dict(interactions=k) for k in (0, 5, 15)],
          "f4": [dict(leaves=a, min_leaf=b) for a in (7, 15, 31) for b in (400, 1600)]}
-MIDDLE = {"glum": dict(alpha=1e-4, l1_ratio=0.5), "lgb": dict(leaves=31, min_leaf=400), "cat": dict(depth=6),
+MIDDLE = {"glum": dict(alpha=1e-4, l1_ratio=0.5), "glum_std": dict(alpha=1e-4, l1_ratio=0.5, scale=True), "lgb": dict(leaves=31, min_leaf=400), "cat": dict(depth=6),
           "ebm": dict(interactions=5), "f4": dict(leaves=15, min_leaf=400)}
-FAMILY_OF = {"glm_w2": "F1", "glum": "F1", "glum_spline": "F1", "lgb": "F2", "cat": "F2", "ebm": "F3", "f4": "F4"}
+FAMILY_OF = {"glm_w2": "F1", "glum": "F1", "glum_std": "F1", "glum_spline": "F1", "lgb": "F2", "cat": "F2", "ebm": "F3", "f4": "F4"}
 if SMOKE:
     WORK = WORK.with_name("phase5_step7_smoke")
     POWERS = [1.5]
@@ -145,7 +146,7 @@ def spline_frame(D: dict, fit_mask: np.ndarray, knots: int) -> pd.DataFrame:
 # ------------------------------------------------------------------------------------------------ fitting
 def make(kind: str, power: float, setting: dict, th, D, objective="tweedie", n_trees=None):
     nt = int(n_trees or (200 if SMOKE else th["max_trees"]))
-    if kind in ("glum", "glum_spline"):
+    if kind in ("glum", "glum_std", "glum_spline"):
         return GlumGLM(objective, power, **setting)
     if kind in ("lgb", "f4"):
         return LGB(objective, power, lr=th["gbm_learning_rate"], n_trees=nt, threads=THREADS, **setting)
@@ -157,7 +158,7 @@ def make(kind: str, power: float, setting: dict, th, D, objective="tweedie", n_t
 
 
 def frame_for(kind: str, D: dict, cols=None, spline=None):
-    if kind == "glum":
+    if kind in ("glum", "glum_std"):
         X = D["G"][cols or D["w2"]]
     elif kind == "glum_spline":
         X = spline
@@ -201,17 +202,25 @@ def cv(kind, power, setting, th, D, X, folds, fi, gf=None, es=True):
 
 
 def tune(kind, th, D, X, folds, fi, gf):
-    """Stage 1: power at the middle setting; stage 2: the grid at the best power."""
+    """Stage 1: power at the middle setting; stage 2: the grid at the best power. Each trial is checkpointed."""
+    part = WORK / f"tune_{D['line']}_{kind}.partial.json"
+    done = {json.dumps([t["power"], t["setting"]], sort_keys=True): t for t in (json.loads(part.read_text()) if part.exists() else [])}
     res = []
+
+    def trial(p, s, label):
+        key = json.dumps([p, s], sort_keys=True)
+        if key not in done:
+            done[key] = dict(power=p, setting=s, **cv(kind, p, s, th, D, X, folds, fi, gf))
+            part.write_text(json.dumps(list(done.values()), default=float))
+            log(D["line"], kind, label, p, s, round(done[key]["dev"], 1))
+        res.append(done[key])
+
     for p in POWERS:
-        r = cv(kind, p, MIDDLE[kind], th, D, X, folds, fi, gf)
-        res.append(dict(power=p, setting=MIDDLE[kind], **r)); log(D["line"], kind, "power", p, round(r["dev"], 1))
+        trial(p, MIDDLE[kind], "power")
     bp = min(res, key=lambda r: r["dev"])["power"]
     for s in GRIDS[kind]:
-        if s == MIDDLE[kind]:
-            continue
-        r = cv(kind, bp, s, th, D, X, folds, fi, gf)
-        res.append(dict(power=bp, setting=s, **r)); log(D["line"], kind, "setting", s, round(r["dev"], 1))
+        if s != MIDDLE[kind]:
+            trial(bp, s, "setting")
     best = min(res, key=lambda r: r["dev"])
     return dict(trials=res, best=best)
 
@@ -231,7 +240,7 @@ def run_line(line: str) -> None:
     log(line, "W2 GLM inner deviance", round(float(np.mean([g["dev"] for g in gf[s1]])), 1))
     spline = spline_frame(D, D["fit"], int(th["spline_knots"]))
     tuned = {}
-    for kind in ("lgb", "f4", "glum", "ebm", "cat"):
+    for kind in ("lgb", "f4", "glum", "glum_std", "ebm", "cat"):
         path = WORK / f"tune_{line}_{kind}.json"
         if path.exists():
             tuned[kind] = json.loads(path.read_text()); continue
@@ -243,7 +252,7 @@ def run_line(line: str) -> None:
     if path.exists():
         tuned["glum_spline"] = json.loads(path.read_text())
     else:
-        b = tuned["glum"]["best"]
+        b = min((tuned["glum"]["best"], tuned["glum_std"]["best"]), key=lambda t: t["dev"])   # the better scaling
         r = cv("glum_spline", b["power"], b["setting"], th, D, spline, folds[s1], fi)
         tuned["glum_spline"] = dict(trials=[dict(power=b["power"], setting=b["setting"], **r)], best=dict(power=b["power"], setting=b["setting"], **r))
         path.write_text(json.dumps(tuned["glum_spline"], default=float))
@@ -316,7 +325,7 @@ def out_of_time(line, th, tuned, chosen) -> dict:
             f[fam] = p; models[fam] = (kind, m, X)
             log(line, name, fam, kind, "fitted")
         # every candidate's own out-of-time prediction, for information
-        for kind in ("glum", "glum_spline", "lgb", "cat", "ebm", "f4"):
+        for kind in ("glum", "glum_std", "glum_spline", "lgb", "cat", "ebm", "f4"):
             if kind in chosen.values():
                 f[f"cand:{kind}"] = f[[fm for fm, k in chosen.items() if k == kind][0]]
                 continue
@@ -324,13 +333,13 @@ def out_of_time(line, th, tuned, chosen) -> dict:
         # carried candidates: the group, then one at a time for LightGBM and the elastic-net GLM
         for fam, kind in chosen.items():
             if kind in ("glm_w2", "glum_spline"):
-                base_kind = "glum"
+                base_kind = min(("glum", "glum_std"), key=lambda k: tuned[k]["best"]["dev"])
             else:
                 base_kind = kind
-            gl = base_kind == "glum"
+            gl = base_kind in ("glum", "glum_std")
             base_cols = D["w2"] if gl else D["tbase"]
             groups = {"all": [c for t, gg in CARRIED[line].values() for c in (gg if gl else t)]}
-            if base_kind in ("lgb", "glum"):
+            if base_kind in ("lgb", "glum", "glum_std"):
                 groups |= {k: (gg if gl else t) for k, (t, gg) in CARRIED[line].items()}
             f[f"{fam}|base"] = f[f"cand:{base_kind}"]
             for gname, add in groups.items():
@@ -352,7 +361,7 @@ def freq_sev(kind, th, D, tuned, name):
     tr, fit, sc, last = D["tr"], D["fit"], D["sc"], D["last"]
     e = tr["exposure"].to_numpy()
     use_c = v.SCORINGS[name]["completion"]
-    b = tuned["glum" if kind == "glum" else kind]["best"]
+    b = (min((tuned["glum"]["best"], tuned["glum_std"]["best"]), key=lambda t: t["dev"]) if kind == "glum" else tuned[kind]["best"])
     X = frame_for(kind, D)
     total = np.zeros(int(sc.sum()))
     es_path = WORK / f"fs_trees_{kind}.json"
@@ -432,7 +441,7 @@ def run_tests() -> None:
     tests = {}
     for fam in ("F1", "F2", "F3", "F4"):
         tests[f"{fam} vs W2 GLM"] = test(frames, "ref", fam, th)
-    for kind in ("glum", "glum_spline", "lgb", "cat", "ebm", "f4"):
+    for kind in ("glum", "glum_std", "glum_spline", "lgb", "cat", "ebm", "f4"):
         tests[f"cand:{kind} vs W2 GLM"] = test(frames, "ref", f"cand:{kind}", th)
     for fam in ("F1", "F2", "F3", "F4"):
         cols = [c for c in frames["A"].columns if c.startswith(f"{fam}+")]
@@ -441,7 +450,8 @@ def run_tests() -> None:
             sub = {s: f.dropna(subset=[c]) for s, f in frames.items()}
             tests[f"{c} vs {fam}|base"] = test(sub, f"{fam}|base", c, th, lines=lines)
     fm = {s: f[f["line"] == "motor"] for s, f in frames.items()}
-    for kind, base in (("glum", "cand:glum"), ("lgb", "cand:lgb"), ("ebm", "cand:ebm")):
+    gbest = min(("glum", "glum_std"), key=lambda k: res["motor"]["tuned"][k]["best"]["dev"])   # the GLM frequency x severity uses it
+    for kind, base in (("glum", f"cand:{gbest}"), ("lgb", "cand:lgb"), ("ebm", "cand:ebm")):
         tests[f"FS:{kind} vs {base}"] = test(fm, base, f"FS:{kind}", th, lines=["motor"])
     d2 = {}
     for s, f in frames.items():

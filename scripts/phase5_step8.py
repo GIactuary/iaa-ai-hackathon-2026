@@ -29,7 +29,7 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT, WORK7, WORK = ROOT / "outputs", ROOT / "data" / "work" / "phase5_step7", ROOT / "data" / "work" / "phase5_step8"
 P = 1.5
 FAMILY_COLS = {l: {"F1": "F1", "F2": "F2", "F3": "F3", "F4": "F4"} for l in dr.LINES}
-CANDIDATES = ["ref", "cand:glum", "cand:glum_spline", "cand:lgb", "cand:cat", "cand:ebm", "cand:f4"]
+CANDIDATES = ["ref", "cand:glum", "cand:glum_std", "cand:glum_spline", "cand:lgb", "cand:cat", "cand:ebm", "cand:f4"]
 
 
 def common(Pm: np.ndarray, y: np.ndarray) -> np.ndarray:
