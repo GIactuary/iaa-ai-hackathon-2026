@@ -167,6 +167,20 @@
       "decision": "Actuary agreed the design as proposed: \"15% customer hold-out seed 2026, out-of-time scorings A ... and B ..., 5 customer-grouped inner folds on seeds 11, 22, 33, ranking D2 at a common level plus level ratio, keep rule better in both years with the 95% customer bootstrap on A.\"",
       "effect": "thresholds.md gained 8 dated rows; decisions/validation_design.md written; hold-out locked; phase 4 (baselines) can start.",
       "section": "3.4"
+    },
+    {
+      "id": "D12",
+      "stage": "4. Baselines",
+      "role": "Modeller",
+      "proposed_by": "Actuary",
+      "question": "Build the row targets and completion factors, score the constant-rate, incumbent and plain Tweedie GLM baselines on A and B, and prepare an early submission.",
+      "ai_answer": "Built src/targets.py and a plain Tweedie GLM with exposure times completion as an exact offset (the rate target weighted by exposure^0.5). Two bugs were caught by the new tests before any real run. A month with no history divided by zero. A column filter counted 'own_damage' as a claim-count column because it contains 'n_'.",
+      "challenge": "",
+      "test": "Completion check: loss cost per exposure by year before and after the adjustment. The three baselines were scored on A and B with 95% customer-bootstrap intervals.",
+      "result": "The completion adjustment brings motor 2024 from 454 to 578 per exposure, in line with earlier years. The plain GLM beats the current price in every line in both scorings (combined ranking D2 9.98% against 8.01% on A, and 9.42% against 7.28% on B). The current price under-prices buildings (level 0.76) and over-prices contents (1.18).",
+      "decision": "None needed. These are the floors for phase 5. The early submission file is for the actuary to upload.",
+      "effect": "scripts/phase4_baselines.py, outputs/phase4_baselines.json and decisions/baselines_phase4.md were added. outputs/submissions/baseline_glm_v0.csv was written but kept out of git.",
+      "section": "3.5"
     }
   ]
 }

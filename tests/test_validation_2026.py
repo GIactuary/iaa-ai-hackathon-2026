@@ -50,3 +50,13 @@ def test_keep_verdict_needs_both_scorings_and_interval():
     assert v.keep_verdict({"A": 3.0, "B": 1.0}, boot_ok, 2)["keep"]
     assert not v.keep_verdict({"A": 3.0, "B": -1.0}, boot_ok, 2)["keep"]
     assert not v.keep_verdict({"A": 3.0, "B": 1.0}, boot_bad, 2)["keep"]
+
+
+def test_d2_interval_contains_point_estimate():
+    rng = np.random.default_rng(3)
+    e = np.ones(3000); groups = np.repeat(np.arange(1000), 3)
+    true = rng.gamma(1, 50, 3000)
+    y = np.where(rng.random(3000) < 0.1, rng.gamma(2, true * 5), 0.0)
+    mu = true * 1.0
+    lo, hi = v.d2_interval_groups(y, mu, e, groups, n_boot=300)
+    assert lo < v.d2_tweedie(y, mu, e) < hi

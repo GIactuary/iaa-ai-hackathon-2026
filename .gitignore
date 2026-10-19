@@ -11,3 +11,6 @@ notebooks/run/
 # competition data stays out of the repository (rules 2.5.b; CC BY-NC 4.0)
 data/raw/*
 !data/raw/.gitkeep
+
+# submission files hold test row ids (competition data): kept out of the repository
+outputs/submissions/

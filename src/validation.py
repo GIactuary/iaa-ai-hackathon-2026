@@ -297,3 +297,20 @@ def keep_verdict(gain_by_scoring: dict[str, float], boot_a: dict, min_years_bett
     keep = better >= min_years_better and boot_a["lo"] > 0
     return dict(keep=bool(keep), scorings_better=int(better), gain_by_scoring={k: float(v) for k, v in gain_by_scoring.items()},
                 a_interval=(boot_a["lo"], boot_a["hi"]))
+
+
+def d2_interval_groups(y, mu, exposure, groups, n_boot: int = BOOTSTRAP_N, seed: int = BOOTSTRAP_SEED,
+                       ci: float = 0.95, power: float = TWEEDIE_POWER) -> tuple[float, float]:
+    """Bootstrap interval for D2, resampling groups (customers); the constant-rate baseline is held fixed."""
+    dm = tweedie_unit_deviance(y, mu, power)
+    d0 = tweedie_unit_deviance(y, constant_rate(y, exposure), power)
+    _, inv = np.unique(np.asarray(groups), return_inverse=True)
+    gm, g0 = np.bincount(inv, weights=dm), np.bincount(inv, weights=d0)
+    k = len(gm)
+    rng = np.random.default_rng(seed)
+    vals = np.empty(n_boot)
+    for b in range(n_boot):
+        cnt = np.bincount(rng.integers(0, k, k), minlength=k)
+        vals[b] = 1 - (cnt @ gm) / (cnt @ g0)
+    a = (1 - ci) / 2
+    return float(np.quantile(vals, a)), float(np.quantile(vals, 1 - a))
