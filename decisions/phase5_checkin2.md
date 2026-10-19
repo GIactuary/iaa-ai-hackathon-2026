@@ -81,6 +81,34 @@ Base: V1 plus H-P and H-D in every line (provisional on L2 and L3). 67 candidate
 
 **V1 factors under drop-one** (`outputs/phase5_step5.json`, `base_factor_drop`). Five rating factors lower deviance in both years when removed: body type (motor), property type and bedrooms (buildings), new business and property type (contents). Bicycle cover does too, but it defines cover (L8).
 
-## Verdicts
+## Verdicts (actuary, 2026-10-19, check-in 2 round 1)
 
-Pending the actuary on the check-in 2 page, https://claude.ai/artifact/8tRL6guGbPhmu7dM4CQ3ZG (L1 to L8).
+All eight cards: option (a), the recommendation, with no notes. Exchange D19.
+
+## L8 joint-drop check: criterion written before it ran (2026-10-19)
+
+The model is the line's model after check-in 2: V1 plus H-P and H-D, plus G1 and M9 in motor and B9 in buildings. The check drops these factors together:
+- body type in motor;
+- property type and bedrooms in buildings;
+- new business and property type in contents.
+
+The joint drop is confirmed for a line if the model without them has lower total deviance than the model with them in both scorings, A and B. The 95% interval on A is reported but not required: each factor already failed the keep rule as an addition. If a line fails, its factors stay and the line goes back to the actuary.
+
+**Result (`scripts/phase5_l8_check.py`, `outputs/phase5_l8_check.json`).** The joint drop is confirmed in every line. Deviance saved by dropping, A [95%] and B:
+- motor: +247 [−4,748, 4,866], +2,609;
+- buildings: +5,648 [−15,775, 25,734], +25,331;
+- contents: +4,299 [−10,927, 22,389], +3,617.
+
+## Working base after check-in 2 (W2)
+
+| Line | Model |
+|---|---|
+| Motor | V1 less body type, plus policy history (log mod, Poisson-gamma k), declared prior claims, voluntary excess and vehicle age |
+| Buildings | V1 less property type and bedrooms, plus policy history, declared prior claims, and trees within 5 m × clay |
+| Contents | V1 less new business and property type, plus policy history and declared prior claims |
+
+Each line keeps the line excess factor and the K3 and K4 level. Candidates carried to step 7 (L4, L7):
+- customer, address and repudiation history;
+- years licensed (motor);
+- voluntary excess (property);
+- the flood measures (buildings).

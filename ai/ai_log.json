@@ -265,6 +265,20 @@
       "decision": "Reported to the actuary at check-in 2 as a true null, reached through a test the AI designed badly. No re-run.",
       "effect": "M7 is not in the model. The check-in 2 page records the error and the hand check.",
       "section": "3.7"
+    },
+    {
+      "id": "D19",
+      "stage": "5. Check-in 2: claims history and features kept and dropped",
+      "role": "Appointed actuary",
+      "proposed_by": "AI",
+      "question": "Eight calls (L1 to L8): the credibility estimator, policy and declared claims history, the failed history pieces, the motor and buildings additions, the near misses, and five V1 factors that improve their line when removed.",
+      "ai_answer": "The AI recommended (a) on every card. It disclosed two estimator errors of its own (D17, D18) and recommended dropping five V1 factors on drop-one evidence, keeping every factor that defines cover.",
+      "challenge": "",
+      "test": "Before step 6, the joint drop of the five factors was checked against a criterion written first: lower deviance in both scorings, in every line.",
+      "result": "Joint drop confirmed: motor +247 and +2,609, buildings +5,648 and +25,331, contents +4,299 and +3,617 saved on A and B. Policy plus declared history moves combined ranking D2 from 10.02% to 10.34% on A and from 9.49% to 9.95% on B.",
+      "decision": "The actuary chose (a) on all eight cards on the check-in 2 page, with no notes.",
+      "effect": "The working base becomes V1 + H-P + H-D in every line, with Poisson-gamma k, plus voluntary excess and vehicle age in motor and trees x clay in buildings. Body type, property type, bedrooms and new business are removed as listed. Customer, address and repudiation history and the near misses go to step 7 as candidates.",
+      "section": "3.7"
     }
   ]
 }
