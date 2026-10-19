@@ -78,25 +78,36 @@ def features(df: pd.DataFrame, line: str, edges: dict, normals: bool = False) ->
 
 
 class TweedieGLM:
-    """Tweedie GLM, log link, on one-hot main effects; the first (most common) level of each factor is the base."""
+    """Tweedie GLM, log link, on one-hot main effects; the first (most common) level of each factor is the base.
+
+    A float column enters as one numeric term (for example log of an experience mod); `relativities` reports its
+    coefficient. Every other column is a factor.
+    """
 
     def __init__(self, power: float = 1.5, alpha: float = 1e-5):
         self.power, self.alpha = power, alpha
 
     def _x(self, f):
-        rows, cols, j = [], [], 0
+        rows, cols, vals_, j = [], [], [], 0
         for c in self.columns_:
             vals = f[c].to_numpy()
+            if c in self.numeric_:
+                r = np.flatnonzero(vals != 0)
+                rows.append(r); cols.append(np.full(len(r), j)); vals_.append(vals[r].astype(float)); j += 1
+                continue
             for lvl in self.levels_[c][1:]:
                 r = np.flatnonzero(vals == lvl)
-                rows.append(r); cols.append(np.full(len(r), j)); j += 1
-        r, k = np.concatenate(rows), np.concatenate(cols)
-        return sp.csr_matrix((np.ones(len(r)), (r, k)), shape=(len(f), j))
+                rows.append(r); cols.append(np.full(len(r), j)); vals_.append(np.ones(len(r))); j += 1
+        r, k, x = np.concatenate(rows), np.concatenate(cols), np.concatenate(vals_)
+        return sp.csr_matrix((x, (r, k)), shape=(len(f), j))
 
     def fit(self, f: pd.DataFrame, y, ec):
         self.columns_ = list(f.columns)
+        self.numeric_ = {c for c in self.columns_ if pd.api.types.is_float_dtype(f[c])}
         self.levels_ = {}
         for c in self.columns_:
+            if c in self.numeric_:
+                continue
             vc = f[c].value_counts()
             self.levels_[c] = [vc.index[0]] + sorted(set(vc.index) - {vc.index[0]})
         y, ec = np.asarray(y, dtype=float), np.asarray(ec, dtype=float)
@@ -108,12 +119,17 @@ class TweedieGLM:
         """Predicted cost per unit of exposure; unseen levels fall back to the base level."""
         f = f[self.columns_].copy()
         for c in self.columns_:
-            f[c] = f[c].where(f[c].isin(self.levels_[c]), self.levels_[c][0])
+            if c not in self.numeric_:
+                f[c] = f[c].where(f[c].isin(self.levels_[c]), self.levels_[c][0])
         return self.model_.predict(self._x(f))
 
     def relativities(self) -> pd.DataFrame:
         coef, out, j = self.model_.coef_, [], 0
         for c in self.columns_:
+            if c in self.numeric_:
+                out.append((c, "coefficient", float(coef[j])))
+                j += 1
+                continue
             out.append((c, self.levels_[c][0], 1.0))
             for lvl in self.levels_[c][1:]:
                 out.append((c, lvl, float(np.exp(coef[j]))))

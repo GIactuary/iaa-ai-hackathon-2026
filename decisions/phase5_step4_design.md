@@ -63,3 +63,21 @@ For each row and each scope, with A = claims reported before the cutoff and E = 
 ## 6. Thresholds used
 
 `hist_mod_quantiles` (written in `thresholds.md` on 2026-10-19), plus the keep rule already written: `keep_years_better`, `keep_ci`.
+
+## 7. Amendment after run 1 (2026-10-19, written before run 2 was scored)
+
+**What went wrong.** The non-parametric estimator of section 2 proved too inefficient for this data. Run 1 found:
+- k infinite for buildings on scoring A, so the policy history there was null and its test meaningless;
+- contents k at 25.1 (A), 4.6 (B) and 92.7 (final fit);
+- motor k at 6.1, 5.0 and 5.7.
+
+**Why.** A policy-year carries about 0.05 expected claims in property and 0.15 in motor. The non-parametric between-risk estimate subtracts about one unit of Poisson noise per policy from a signal of a × E per policy, so it is mostly noise. Within-policy variance is Poisson (s² from 1.02 to 1.06; 1.004 claims per incident, so claims do not cluster). The Poisson-gamma moment estimator weights policies by E², which is efficient in this rare-event regime. It gave stable values: motor 2.35, 2.62, 2.76; buildings 1.77, 2.21, 2.30; contents 2.08, 2.30, 2.54.
+
+**Independent check.** The GLM slopes on log(mod) imply an effective k of about k ÷ β for small histories:
+- motor: 3.5 (A), 3.4 (B), 3.4 (final);
+- buildings: 3.0 (B), 3.1 (final);
+- contents: 6.0 (A), 3.2 (B), 4.1 (final).
+
+These sit close to the Poisson-gamma values and far from the non-parametric ones.
+
+**Amendment.** Run 2 uses the Poisson-gamma moment estimate of k for every scope, with every other part of the design unchanged. Both runs are reported; run 1 stays in `outputs/phase5_step4.json` and run 2 is `outputs/phase5_step4_pg.json`. The choice of estimator goes to the actuary at check-in 2.
