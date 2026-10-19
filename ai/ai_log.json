@@ -247,9 +247,23 @@
       "ai_answer": "The AI designed k as the non-parametric Bühlmann-Straub estimate, with the Poisson-gamma moment estimate only as a check. That was wrong for this data: with about 0.05 expected claims per property policy-year, the non-parametric between-risk estimate is mostly Poisson noise.",
       "challenge": "",
       "test": "Run 1 compared k from both estimators on scorings A, B and the final fit. It also compared the implied k from the GLM's fitted slope on log(mod), k divided by beta, and checked claims per incident (1.004) and within-policy variance (s2 1.02 to 1.06).",
-      "result": "The non-parametric k was infinite for buildings on A, which made the policy-history test meaningless, and contents swung from 4.6 to 92.7. The Poisson-gamma k was stable (motor 2.35 to 2.76, buildings 1.77 to 2.30, contents 2.08 to 2.54) and close to the GLM-implied 3.0 to 4.1. In run 2, policy history passed the keep rule in all three lines, with slopes of 0.87 to 0.92 against a theoretical 1.",
+      "result": "The non-parametric k was infinite for buildings on A, which made the policy-history test meaningless, and contents swung from 4.6 to 92.7. The Poisson-gamma k was stable (motor 2.35 to 2.76, buildings 1.77 to 2.30, contents 2.08 to 2.54) and close to the k implied by the GLM slopes, 3.0 to 3.5 in six of eight fits (contents gave 4.1 and 6.0). In run 2, policy history passed the keep rule in all three lines, with slopes of 0.87 to 0.92 against a theoretical 1.",
       "decision": "The AI amended the design before run 2 was scored and kept both runs on file. The estimator choice goes to the actuary at check-in 2; not yet decided.",
       "effect": "decisions/phase5_step4_design.md section 7 records the amendment. scripts/phase5_step4.py has P5_K=pg, writing outputs/phase5_step4_pg.json beside run 1, and step 5 uses the Poisson-gamma k.",
+      "section": "3.7"
+    },
+    {
+      "id": "D18",
+      "stage": "5. Step 5, features: make-model credibility encoding",
+      "role": "Modeller",
+      "proposed_by": "AI",
+      "question": "C8, widened under the actuary's standing rule (\"test as widely as possible\"): encode make_model (300 models) by credibility, out of fold, and test it with the keep rule.",
+      "ai_answer": "The AI built the encoding with the same non-parametric Bühlmann-Straub estimate, this time on capped cost by model, without carrying over the step 4 lesson (D17). That estimate found no between-model variance, so k was infinite and the encoding was 1 on every row: the test was empty.",
+      "challenge": "",
+      "test": "The AI checked by hand on scorings A and B: actual over expected claims by model against a Poisson GLM on the V1 factors, with both estimators, and capped cost against the cost GLM.",
+      "result": "The test was empty: 0 saved, interval [0, 0]. The check shows the spread of A/E across models is 0.085 against 0.079 expected from noise (A) and 0.074 against 0.064 (B), so about 3% between-model spread in frequency (Poisson-gamma k 846 to 1,071), with no detectable variance in capped cost. Make-model adds almost nothing beyond the V1 vehicle factors on this data.",
+      "decision": "Reported to the actuary at check-in 2 as a true null, reached through a test the AI designed badly. No re-run.",
+      "effect": "M7 is not in the model. The check-in 2 page records the error and the hand check.",
       "section": "3.7"
     }
   ]

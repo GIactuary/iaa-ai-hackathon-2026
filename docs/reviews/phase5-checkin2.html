@@ -1,0 +1,572 @@
+<title>Phase 5 Check-in Two</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: the check-in 1 filing-memo column, status strip on top, evidence first, decision cards, sticky action bar at the foot. */
+:root {
+  --paper: #f5f7f8;
+  --surface: #ffffff;
+  --ink: #16202a;
+  --muted: #56636f;
+  --line: #d8dee4;
+  --accent: #0c6767;
+  --accent-weak: #e2f0ef;
+  --door: #8f5300;
+  --door-bg: #fbeed6;
+  --good: #23704a;
+  --good-bg: #e2f2e9;
+  --bad: #a3332b;
+  --bad-bg: #f9e3e1;
+  --font-display: "Newsreader", "Iowan Old Style", Georgia, serif;
+  --font-body: "Public Sans", "Segoe UI", system-ui, sans-serif;
+  --font-data: "JetBrains Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  --step--1: 0.8125rem;
+  --step-0: 0.9375rem;
+  --step-1: 1.125rem;
+  --step-2: 1.45rem;
+  --step-3: 2.1rem;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #10161b; --surface: #172028; --ink: #e5eaee; --muted: #9ba8b3; --line: #2b3742;
+    --accent: #5ab8b1; --accent-weak: #16302f; --door: #eab35d; --door-bg: #34270f;
+    --good: #6fcf9c; --good-bg: #133022; --bad: #f08a80; --bad-bg: #3a1a17; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #10161b; --surface: #172028; --ink: #e5eaee; --muted: #9ba8b3; --line: #2b3742;
+  --accent: #5ab8b1; --accent-weak: #16302f; --door: #eab35d; --door-bg: #34270f;
+  --good: #6fcf9c; --good-bg: #133022; --bad: #f08a80; --bad-bg: #3a1a17; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--paper); color: var(--ink); font-family: var(--font-body); font-size: var(--step-0);
+  line-height: 1.55; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0 96px;
+}
+.wrap { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 40px; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 600; text-wrap: balance; margin: 0; line-height: 1.2; }
+h1 { font-size: var(--step-3); }
+h2 { font-size: var(--step-2); }
+h3 { font-size: var(--step-1); font-family: var(--font-body); font-weight: 600; }
+p { margin: 0; max-width: 68ch; }
+.eyebrow { font-size: var(--step--1); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.mono, code { font-family: var(--font-data); font-size: 0.86em; }
+.num { font-variant-numeric: tabular-nums; }
+section { display: flex; flex-direction: column; gap: 14px; }
+.status { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--paper); border-bottom: 1px solid var(--line); padding-block: 10px; margin: 0 calc(-1 * max(16px, env(safe-area-inset-left, 0px))); padding-inline: max(16px, env(safe-area-inset-left, 0px)); }
+.status-in { max-width: 900px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: center; font-size: var(--step--1); }
+.pill { display: inline-flex; align-items: center; gap: 6px; padding: 2px 10px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); font-weight: 600; white-space: nowrap; }
+.pill.state-submitted { color: var(--accent); border-color: var(--accent); }
+.pill.state-final { color: var(--good); border-color: var(--good); background: var(--good-bg); }
+.blocked { color: var(--muted); min-width: 0; }
+header { display: flex; flex-direction: column; gap: 12px; padding-top: 28px; }
+.lede { font-size: var(--step-1); max-width: 64ch; }
+.formula { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 18px 20px; display: flex; flex-direction: column; gap: 12px; }
+.formula .eq { font-family: var(--font-data); font-size: 0.95rem; overflow-x: auto; white-space: nowrap; padding-bottom: 4px; }
+.terms { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px 18px; font-size: var(--step--1); }
+.terms div { min-width: 0; }
+.terms b { display: block; font-family: var(--font-data); font-weight: 500; color: var(--accent); }
+.diagram { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); padding: 8px; }
+.diagram svg { display: block; min-width: 860px; width: 100%; height: auto; }
+.node rect { fill: var(--surface); stroke: var(--line); stroke-width: 1.2; }
+.node.new rect { fill: var(--accent-weak); stroke: var(--accent); }
+.node.here rect { stroke: var(--accent); stroke-width: 2.4; }
+.node text { fill: var(--ink); font-family: var(--font-body); font-size: 12.5px; }
+.node text.sub { fill: var(--muted); font-size: 10.5px; }
+.node.noted rect { stroke-width: 2.4; }
+.node { cursor: pointer; }
+.node:hover rect, .node:focus rect { stroke: var(--accent); stroke-width: 2; }
+.node:focus { outline: none; }
+.edge { stroke: var(--muted); stroke-width: 1.2; fill: none; }
+.arrowhead { fill: var(--muted); }
+.legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: var(--step--1); color: var(--muted); align-items: center; }
+.swatch { display: inline-block; width: 12px; height: 12px; border-radius: 2px; border: 1px solid var(--line); vertical-align: -2px; margin-right: 4px; background: var(--surface); }
+.swatch.new { background: var(--accent-weak); border-color: var(--accent); }
+.note-box { display: flex; flex-direction: column; gap: 8px; background: var(--surface); border: 1px solid var(--accent); border-radius: 6px; padding: 12px 14px; }
+.note-list { display: flex; flex-direction: column; gap: 6px; font-size: var(--step--1); padding: 0; margin: 0; list-style: none; }
+.note-list li { border-left: 2px solid var(--accent); padding-left: 10px; }
+.note-list .anchor { font-family: var(--font-data); color: var(--accent); margin-right: 6px; }
+.legend-doors { display: flex; flex-wrap: wrap; gap: 10px; font-size: var(--step--1); color: var(--muted); }
+.cards { display: flex; flex-direction: column; gap: 18px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 18px 20px; display: flex; flex-direction: column; gap: 12px; }
+.card.decided { border-color: var(--good); }
+.card.rejected { border-color: var(--bad); }
+.card-top { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: baseline; }
+.cid { font-family: var(--font-data); font-weight: 500; color: var(--accent); }
+.door { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; padding: 1px 8px; border-radius: 3px; }
+.door.one { color: var(--door); background: var(--door-bg); }
+.door.costly { color: var(--door); border: 1px solid var(--door); }
+.door.easy { color: var(--muted); border: 1px solid var(--line); }
+.verdict-chip { margin-left: auto; font-size: var(--step--1); font-weight: 600; }
+.verdict-chip.ok { color: var(--good); }
+.verdict-chip.rej { color: var(--bad); }
+.verdict-chip.none { color: var(--muted); }
+.q { font-size: var(--step-1); font-weight: 600; }
+.stakes { font-size: var(--step--1); color: var(--muted); max-width: 72ch; }
+.stakes b { color: var(--ink); font-weight: 600; }
+.opts { display: flex; flex-direction: column; gap: 8px; border: 0; padding: 0; margin: 0; }
+.opts legend { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.opt { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; border: 1px solid var(--line); border-radius: 5px; padding: 10px 12px; cursor: pointer; }
+.opt:hover { border-color: var(--muted); }
+.opt.rec { border-color: var(--accent); }
+.opt input { margin: 4px 0 0; accent-color: var(--accent); width: 16px; height: 16px; }
+.opt input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.opt .body { min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+.opt .name { font-weight: 600; }
+.opt .name .k { font-family: var(--font-data); color: var(--muted); margin-right: 6px; }
+.opt .tag { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--accent); margin-left: 6px; }
+.opt .det { font-size: var(--step--1); color: var(--muted); }
+.opt .det span { color: var(--ink); font-weight: 600; }
+.opt.reject { border-style: dashed; }
+.rec-line { font-size: var(--step--1); background: var(--accent-weak); border-radius: 4px; padding: 8px 12px; }
+.rec-line b { color: var(--accent); }
+.card textarea { width: 100%; min-height: 56px; resize: vertical; font: inherit; font-size: var(--step--1); color: var(--ink); background: var(--paper); border: 1px solid var(--line); border-radius: 4px; padding: 8px 10px; }
+.card textarea:focus-visible, .note-box textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.card-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: var(--step--1); color: var(--muted); }
+button { font: inherit; font-size: var(--step--1); font-weight: 600; border-radius: 4px; padding: 7px 14px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; }
+button:hover:not(:disabled) { border-color: var(--accent); }
+button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+button.primary { background: var(--accent); border-color: var(--accent); color: var(--surface); }
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+.note-box textarea { width: 100%; min-height: 60px; font: inherit; font-size: var(--step--1); color: var(--ink); background: var(--paper); border: 1px solid var(--line); border-radius: 4px; padding: 8px 10px; }
+.tbl { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: var(--step--1); }
+th, td { text-align: left; vertical-align: top; padding: 8px 12px; border-bottom: 1px solid var(--line); }
+th { font-weight: 600; color: var(--muted); font-size: 0.75rem; letter-spacing: 0.05em; text-transform: uppercase; white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+td.k { font-family: var(--font-data); color: var(--accent); white-space: nowrap; }
+.tbl.wide table { min-width: 720px; }
+th.r, td.r { text-align: right; }
+td.pass { color: var(--good); font-weight: 600; }
+td.fail { color: var(--bad); font-weight: 600; }
+td.neg { color: var(--bad); }
+.bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 6; background: var(--surface); border-top: 1px solid var(--line); padding-bottom: env(safe-area-inset-bottom, 0px); padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.bar-in { max-width: 900px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 8px 10px; align-items: center; padding-block: 10px; }
+.bar-msg { font-size: var(--step--1); color: var(--muted); flex: 1 1 220px; min-width: 0; }
+.bar-msg.err { color: var(--bad); }
+.locked .opt, .locked textarea { pointer-events: none; opacity: 0.75; }
+@media (prefers-reduced-motion: no-preference) { .card, .opt { transition: border-color 0.15s ease; } }
+@media (max-width: 520px) { .verdict-chip { margin-left: 0; width: 100%; } h1 { font-size: 1.75rem; } }
+.changes { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 6px; max-width: 72ch; }
+.resolved { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 6px 18px; font-size: var(--step--1); }
+.resolved div { display: grid; grid-template-columns: 5.5em 1fr; gap: 8px; padding: 6px 0; border-bottom: 1px solid var(--line); min-width: 0; }
+.facts { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 6px; max-width: 72ch; font-size: var(--step--1); }
+.how { font-size: var(--step--1); color: var(--muted); border-left: 2px solid var(--accent); padding-left: 12px; }
+.how b { color: var(--ink); }
+.wrong { font-size: var(--step--1); background: var(--bad-bg); border-left: 3px solid var(--bad); border-radius: 0 4px 4px 0; padding: 10px 14px; display: flex; flex-direction: column; gap: 6px; }
+.wrong b { color: var(--bad); }
+.evidence { display: flex; flex-direction: column; gap: 10px; }
+.kept { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font-size: 0.78rem; padding: 2px 8px; border-radius: 3px; border: 1px solid var(--line); background: var(--paper); }
+.chip.in { border-color: var(--good); color: var(--good); background: var(--good-bg); }
+.chip.out { color: var(--muted); text-decoration: line-through; }
+</style>
+
+<div class="status" role="status">
+  <div class="status-in">
+    <span class="pill" id="roundPill">Round 1</span>
+    <span class="pill" id="countPill">0 decided</span>
+    <span class="pill" id="statePill">Draft</span>
+    <span class="blocked" id="blockedText">Waiting on you.</span>
+  </div>
+</div>
+
+<div class="wrap">
+  <header>
+    <span class="eyebrow">IAA AI Hackathon 2026 · Part 1 · Phase 5 · Check-in 2 · Round 1 · 19 Oct 2026</span>
+    <h1>Claims history and features: what the tests kept</h1>
+    <p class="lede" id="lede">LEDE</p>
+  </header>
+
+  <section aria-labelledby="h-settled">
+    <span class="eyebrow">Settled at check-in 1</span>
+    <h2 id="h-settled">The working base, V1</h2>
+    <div class="resolved">
+      <div><span class="cid">K1</span><span>Cap all three lines at 100k, 200k and 30k</span></div>
+      <div><span class="cid">K2</span><span>One capped GLM per line times the line excess factor</span></div>
+      <div><span class="cid">K3</span><span>2025 level from the indication, by off-balance</span></div>
+      <div><span class="cid">K4</span><span>Weather-normalised level and trends × 2025 weather; no climate normals</span></div>
+    </div>
+    <p class="how"><b>How every test on this page reads.</b> Each row adds something to the model and scores it out of time. Scoring A fits 2021 to 2022 and scores 2023; scoring B fits 2021 to 2023 and scores 2024. "Saved" is the drop in total Tweedie deviance on the scored year, with every line held at its actual total, so only ranking counts. The keep rule needs a saving in both scorings and a 95% customer-bootstrap interval on A that lies above zero. Example: own-policy history in motor saves 77,289 on A, interval 41,027 to 115,031, and 103,319 on B, so it is kept.</p>
+  </section>
+
+  <section aria-labelledby="h-s4">
+    <span class="eyebrow">Step 4 · claims history (C7)</span>
+    <h2 id="h-s4">A credibility-weighted experience mod</h2>
+    <p>Each row sees only claims reported before it starts, or before 1 January of the pricing year if it starts later, which mirrors pricing 2025 with data to 31 December 2024. Hold-out customers are removed from every count. The history enters each line's GLM as one term:</p>
+    <div class="formula">
+      <div class="eq">relativity = mod<sup>β</sup>,&nbsp;&nbsp; mod = (A + k) ÷ (E + k) = Z·A/E + (1 − Z),&nbsp;&nbsp; Z = E ÷ (E + k)</div>
+      <div class="terms">
+        <div><b>A</b>Claims on the policy's earlier rows, reported before the cutoff</div>
+        <div><b>E</b>Claims expected over the same exposure: class frequency × exposure × share reported by the cutoff</div>
+        <div><b>k</b>Bühlmann-Straub constant, estimated from the fitting years (card L1)</div>
+        <div><b>β</b>Fitted by the GLM; 1 is pure experience rating on top of the class rate</div>
+      </div>
+    </div>
+    <div class="tbl wide"><table>
+      <thead><tr><th>Worked example (final fit, 2021 to 2024)</th><th class="r">E</th><th class="r">k</th><th class="r">Z</th><th class="r">β</th><th class="r">No claim</th><th class="r">One claim</th><th class="r">Two claims</th></tr></thead>
+      <tbody>
+        <tr><td>Motor, three years with the insurer</td><td class="r num">0.44</td><td class="r num">2.76</td><td class="r num">13.8%</td><td class="r num">0.86</td><td class="r num">0.880</td><td class="r num">1.149</td><td class="r num">1.409</td></tr>
+        <tr><td>Buildings, three years</td><td class="r num">0.144</td><td class="r num">2.30</td><td class="r num">5.9%</td><td class="r num">0.82</td><td class="r num">0.952</td><td class="r num">1.279</td><td class="r num">1.588</td></tr>
+        <tr><td>Contents, three years</td><td class="r num">0.13</td><td class="r num">2.54</td><td class="r num">4.9%</td><td class="r num">0.83</td><td class="r num">0.959</td><td class="r num">1.265</td><td class="r num">1.556</td></tr>
+      </tbody>
+    </table></div>
+    <p class="how"><b>How to read this.</b> A motor policy with three years of history at an average class rate expects 0.44 claims. With k = 2.76, its history earns Z = 0.44 ÷ 3.20 = 13.8% credibility. Claim-free, its mod is 2.76 ÷ 3.20 = 0.863, and the GLM applies 0.863<sup>0.86</sup> = 0.880, a 12% discount. One claim makes the mod 3.76 ÷ 3.20 = 1.175, applied as 1.149. Property policies expect fewer claims, so the same history earns less credibility, but one claim weighs more against the small expectation. The E values are the 75th percentile of the 2025 test rows; the median is lower.</p>
+
+    <div class="tbl wide"><table>
+      <thead><tr><th>Piece, added to V1 (run 2)</th><th>Line</th><th class="r">A: saved</th><th class="r">A: 95% interval</th><th class="r">B: saved</th><th>Keep</th></tr></thead>
+      <tbody id="t4"></tbody>
+    </table></div>
+    <p class="how"><b>How to read this.</b> Own-policy history (H-P) passes in every line. Declared claims before joining (H-D, the customers table's <code>prior_claims_5y</code>, never in V1) passes in motor and overall. In buildings and contents it saves in both years, but its interval on A crosses zero (card L3). The customer's other lines, other occupants at the address and prior repudiated claims save nothing that holds up. Only 0.2% of 2025 buildings rows and 0.7% of contents rows have another customer's history at the address, so H-A has almost no data to work with.</p>
+
+    <div class="tbl wide"><table>
+      <thead><tr><th>Both pieces together: each dropped in turn</th><th>Line</th><th class="r">A: saved</th><th class="r">A: 95% interval</th><th class="r">B: saved</th><th>Earns its place</th></tr></thead>
+      <tbody id="t4c"></tbody>
+    </table></div>
+    <p class="how"><b>How to read this.</b> The first block asks what declared history adds once policy history is in; the second asks the reverse. Across all lines both earn their place: declared history adds 68,502 on A (interval 12,293 to 126,299). With both, the combined ranking D² moves from 10.02% to 10.34% on A and from 9.49% to 9.95% on B.</p>
+
+    <div class="tbl wide"><table>
+      <thead><tr><th>Other forms of policy history, against H-P (all lines)</th><th class="r">A: saved</th><th class="r">A: 95% interval</th><th class="r">B: saved</th><th>Reading</th></tr></thead>
+      <tbody id="t4v"></tbody>
+    </table></div>
+    <p class="how"><b>How to read this.</b> Negative means the form loses to the credibility mod. Raw counts (C7 option c, tested as evidence) lose 172,685 on A. A count learned on one-year histories in 2022 overstates the same count on two-year histories in 2023, and credibility corrects that by construction. Holding β at 1 costs little and is not significantly worse.</p>
+
+    <div class="wrong">
+      <b>Where I was wrong in this step (logged as D17)</b>
+      <span>I designed k as the non-parametric Bühlmann-Straub estimate, with the Poisson-gamma moment estimate only as a check. Run 1 made k infinite for buildings on scoring A, which nulled the history there, and contents k swung from 4.6 to 92.7. The reason: a property policy-year expects about 0.05 claims, so the non-parametric between-risk estimate is mostly Poisson noise. The process variance is Poisson (1.02 to 1.06; 1.004 claims per incident), and the Poisson-gamma estimate was steady: motor 2.35 to 2.76, buildings 1.77 to 2.30, contents 2.08 to 2.54. In run 1 the GLM's own slopes implied k between 3.0 and 3.5 in six of eight fits (contents gave 4.1 and 6.0), much nearer the Poisson-gamma values than the non-parametric ones. I wrote the amendment down before run 2 was scored, and both runs are kept.</span>
+    </div>
+  </section>
+
+  <!--STEP5-->
+  <section aria-labelledby="h-s5">
+    <span class="eyebrow">Step 5 · features (C8, widened)</span>
+    <h2 id="h-s5">Three of 67 candidate tests pass</h2>
+    <p>The base is V1 plus policy and declared history in every line (provisional on cards L2 and L3). Each candidate was added alone, and every passer then went through drop-one rounds together. Every candidate has a written risk reason (<code>decisions/phase5_step5_design.md</code>).</p>
+    <div class="tbl wide"><table>
+      <thead><tr><th>Kept</th><th>Relativities, final fit 2021 to 2024</th><th class="r">A: saved</th><th class="r">B: saved</th></tr></thead>
+      <tbody>
+        <tr><td>Motor: voluntary excess</td><td>0 CU 1.00 · 250 CU 0.95 · 500 CU 0.83 · 1,000 CU 0.72</td><td class="r num">56,232</td><td class="r num">28,380</td></tr>
+        <tr><td>Motor: vehicle age</td><td>0-1 1.09 · 2-3 1.09 · 4-6 1.10 · 7-10 1.00 · 11-15 0.92 · 16+ 0.83</td><td class="r num">23,484</td><td class="r num">32,249</td></tr>
+        <tr><td>Buildings: trees within 5 m × clay</td><td>Neither 1.00 · clay, no trees 1.07 · trees, not clay 0.94 · trees on clay 1.25</td><td class="r num">6,574</td><td class="r num">3,744</td></tr>
+      </tbody>
+    </table></div>
+    <p class="how"><b>How to read this.</b> A motor policy with a 1,000 CU voluntary excess costs 0.72 times one with none, other things equal: small claims fall under the excess, and careful buyers choose it. Motor ranking D² moves from 5.37% to 5.68% on 2023, and buildings from 6.83% to 6.87%. Contents keeps nothing. Across lines the three save 86,481 on 2023 and 64,812 on 2024.</p>
+    <details><summary class="eyebrow">Every candidate, motor</summary><div class="tbl wide"><table><thead><tr><th>Candidate</th><th class="r">A: saved</th><th class="r">A: 95% interval</th><th class="r">B: saved</th><th>Passes</th></tr></thead><tbody id="t5_motor"></tbody></table></div></details>
+    <details><summary class="eyebrow">Every candidate, buildings</summary><div class="tbl wide"><table><thead><tr><th>Candidate</th><th class="r">A: saved</th><th class="r">A: 95% interval</th><th class="r">B: saved</th><th>Passes</th></tr></thead><tbody id="t5_buildings"></tbody></table></div></details>
+    <details><summary class="eyebrow">Every candidate, contents</summary><div class="tbl wide"><table><thead><tr><th>Candidate</th><th class="r">A: saved</th><th class="r">A: 95% interval</th><th class="r">B: saved</th><th>Passes</th></tr></thead><tbody id="t5_contents"></tbody></table></div></details>
+    <p class="how"><b>Worth knowing.</b>
+      <span>Household size, marital status and occupation all fail, so no fairness judgment is needed on them now. Days unoccupied fails too, so its point-of-use question is moot.</span>
+      <span>The flood measures in buildings save 87,486 to 95,241 on 2024 but lose on 2023, where the flood-score interval runs from -175,577 to 28,891: flood cost is too lumpy to rank on two years.</span>
+      <span>Years licensed in motor saves about 25,000 in both years and misses only on the interval.</span>
+    </p>
+    <div class="wrong">
+      <b>Where I was wrong again (to log as D18)</b>
+      <span>The make-model encoding (M7) used the same non-parametric credibility estimate, now on capped cost by model. It found no between-model variance (k infinite), so the encoding was 1 everywhere and the test was empty. I checked by hand with the efficient estimator on claim counts: across 300 models, the spread of actual over expected claims is 0.085 against 0.079 from noise alone, so make-model adds at most about 3% in frequency beyond V1's vehicle factors, and nothing detectable in cost. M7 is a true null on this data, but the empty test was my design's fault, and I should have caught it after step 4.</span>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-v1">
+    <span class="eyebrow">For information · the V1 factors under the same test</span>
+    <h2 id="h-v1">Which existing factors would pass the keep rule today</h2>
+    <p>Each V1 factor was dropped in turn from the final model of its line. "Saved" is what the factor is worth; a negative value means the model ranks better without it.</p>
+    <details><summary class="eyebrow">Motor</summary><div class="tbl wide"><table><thead><tr><th>Factor</th><th class="r">A: worth</th><th class="r">A: 95% interval</th><th class="r">B: worth</th><th>Passes</th></tr></thead><tbody id="t5v1_motor"></tbody></table></div></details>
+    <details><summary class="eyebrow">Buildings</summary><div class="tbl wide"><table><thead><tr><th>Factor</th><th class="r">A: worth</th><th class="r">A: 95% interval</th><th class="r">B: worth</th><th>Passes</th></tr></thead><tbody id="t5v1_buildings"></tbody></table></div></details>
+    <details><summary class="eyebrow">Contents</summary><div class="tbl wide"><table><thead><tr><th>Factor</th><th class="r">A: worth</th><th class="r">A: 95% interval</th><th class="r">B: worth</th><th>Passes</th></tr></thead><tbody id="t5v1_contents"></tbody></table></div></details>
+    <p class="how"><b>How to read this.</b> Most V1 factors save in both years but miss the interval test, as property claims are few. Six factors make the model better in both years when removed: body type in motor, property type and bedrooms in buildings, and new business, property type and bicycle cover in contents. Bicycle cover defines what is covered, so it stays whatever the score. Card L8 asks what to do with the other five.</p>
+  </section>
+<!--END STEP5-->
+
+  <section aria-labelledby="h-dec">
+    <span class="eyebrow">Decisions</span>
+    <h2 id="h-dec">Calls for you</h2>
+    <div class="legend-doors"><span class="door one">One-way</span> hard to undo once work starts <span class="door costly">Costly</span> undoable, at half a day or more of rework <span class="door easy">Reversible</span> cheap to change later</div>
+    <div class="cards" id="cards"></div>
+  </section>
+
+  <section aria-labelledby="h-flow">
+    <span class="eyebrow">Where we are · click a step to leave a note on it</span>
+    <h2 id="h-flow">Steps 4 and 5 done; next, structure and model families</h2>
+    <div class="legend"><span><span class="swatch"></span>Step</span><span><span class="swatch new"></span>Check-in with you</span></div>
+    <div class="diagram" id="diagram"></div>
+    <div class="note-box" id="noteBox" hidden>
+      <label for="noteText"><span class="eyebrow">Note on</span> <b id="noteAnchorLabel"></b></label>
+      <textarea id="noteText" placeholder="What should change at this step?"></textarea>
+      <div class="card-actions"><button class="primary" id="noteSave" type="button">Save note</button><button id="noteCancel" type="button">Cancel</button><span id="noteMsg"></span></div>
+    </div>
+    <ul class="note-list" id="noteList"></ul>
+  </section>
+</div>
+
+<div class="bar">
+  <div class="bar-in">
+    <span class="bar-msg" id="barMsg">Verdicts save as you choose them. When done, click Send to Claude, then type anything in the chat so Claude picks them up.</span>
+    <button type="button" id="copyBtn">Copy for Claude</button>
+    <button type="button" id="finalBtn">Finalize</button>
+    <button type="button" class="primary" id="sendBtn">Send to Claude</button>
+  </div>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var ROUND = 1;
+  /*DATA*/var T4 = [{"name": "H-P own policy", "a": 77289.2073983557, "lo": 41026.900343032255, "hi": 115031.18261216096, "b": 103319.349867146, "keep": true, "line": "Motor"}, {"name": "", "a": 27157.686284201358, "lo": 1463.3503197697273, "hi": 55687.10129284852, "b": 27814.62512234151, "keep": true, "line": "Buildings"}, {"name": "", "a": 10394.90516634043, "lo": 4393.689090805036, "hi": 17130.17563313195, "b": 11909.454369853214, "keep": true, "line": "Contents"}, {"name": "", "a": 114841.79884889748, "lo": 68646.54515620065, "hi": 164655.80330582728, "b": 143043.4293593407, "keep": true, "line": "All lines"}, {"name": "H-D declared, before joining", "a": 44067.43421293401, "lo": 9975.762962502302, "hi": 80600.48781697519, "b": 54682.992451099635, "keep": true, "line": "Motor"}, {"name": "", "a": 34658.55759986699, "lo": -7844.509412194461, "hi": 82112.01136113396, "b": 45915.67786013812, "keep": false, "line": "Buildings"}, {"name": "", "a": 4022.9381487286446, "lo": -14343.17771602355, "hi": 22056.09089916934, "b": 28820.265797736858, "keep": false, "line": "Contents"}, {"name": "", "a": 82748.92996152965, "lo": 26082.186278613535, "hi": 142422.39565416932, "b": 129418.93610897464, "keep": true, "line": "All lines"}, {"name": "H-C customer's other lines", "a": -1723.0195249422686, "lo": -4025.1878030356124, "hi": 759.2622307375287, "b": 0.5074205000579357, "keep": false, "line": "Motor"}, {"name": "", "a": -6060.76271698393, "lo": -15027.69762612605, "hi": 2736.082176353746, "b": 555.5636419342552, "keep": false, "line": "Buildings"}, {"name": "", "a": -345.22666984876525, "lo": -723.2155521558782, "hi": 23.969929180280253, "b": 610.0423143485663, "keep": false, "line": "Contents"}, {"name": "", "a": -8129.008911774965, "lo": -16893.740435952855, "hi": 1723.1297844046505, "b": 1166.113376782881, "keep": false, "line": "All lines"}, {"name": "H-A others at the address", "a": 291.8806272967396, "lo": -5706.321238777724, "hi": 4547.804728117398, "b": 1123.3386800535875, "keep": false, "line": "Motor"}, {"name": "", "a": -2951.203834132207, "lo": -5258.216413768203, "hi": -877.972550301257, "b": -3911.1657856833754, "keep": false, "line": "Buildings"}, {"name": "", "a": -1187.1780952556055, "lo": -3170.0313421582573, "hi": 249.83531022030826, "b": -43.39193846122359, "keep": false, "line": "Contents"}, {"name": "", "a": -3846.501302091074, "lo": -9987.276366783914, "hi": 1271.7696058374718, "b": -2831.2190440910113, "keep": false, "line": "All lines"}, {"name": "H-R prior repudiated claim", "a": -69.47162928960779, "lo": -374.3916532651595, "hi": 278.77374965943363, "b": -415.3835829497061, "keep": false, "line": "Motor"}, {"name": "", "a": -309.34459345083474, "lo": -447.422672389427, "hi": -140.2112828077934, "b": 3444.7245210574006, "keep": false, "line": "Buildings"}, {"name": "", "a": -958.1643209879327, "lo": -2590.4257945772883, "hi": 1406.8668932371797, "b": 1570.048200983712, "keep": false, "line": "Contents"}, {"name": "", "a": -1336.9805437283753, "lo": -3039.587510309948, "hi": 946.1191259941271, "b": 4599.389139091408, "keep": false, "line": "All lines"}];
+  var T4C = [{"name": "H-D added to H-P", "a": 34182.491750169276, "lo": 1145.4319004730253, "hi": 69443.61766136257, "b": 44629.479292564574, "keep": true, "line": "Motor"}, {"name": "", "a": 31203.13908521083, "lo": -10935.471029847118, "hi": 78451.01448938376, "b": 42149.63979827113, "keep": false, "line": "Buildings"}, {"name": "", "a": 3116.5914889686474, "lo": -15215.63972674676, "hi": 20934.556899572064, "b": 27554.488674250344, "keep": false, "line": "Contents"}, {"name": "", "a": 68502.22232434875, "lo": 12293.380561938493, "hi": 126298.55570671741, "b": 114333.60776508602, "keep": true, "line": "All lines"}, {"name": "H-P added to H-D", "a": 67404.26493559097, "lo": 34453.82279278581, "hi": 101394.68820421943, "b": 93265.83670861094, "keep": true, "line": "Motor"}, {"name": "", "a": 23702.2677695452, "lo": -407.6514161808918, "hi": 50085.63536348528, "b": 24048.58706047449, "keep": false, "line": "Buildings"}, {"name": "", "a": 9488.558506580435, "lo": 3670.0790439123825, "hi": 16072.982582605091, "b": 10643.677246366698, "keep": true, "line": "Contents"}, {"name": "", "a": 100595.0912117166, "lo": 57251.544895231025, "hi": 146589.85038915527, "b": 127958.10101545212, "keep": true, "line": "All lines"}];
+  var T4V = [{"name": "Raw counts with exposure years", "a": -172684.57332854898, "lo": -239477.96985278907, "hi": -109656.14192028414, "b": -27217.417139159268, "keep": false, "label": "Loses"}, {"name": "Mod in ten bands", "a": -141146.06077071908, "lo": -200141.3705182303, "hi": -81261.86525470039, "b": -58432.94892371593, "keep": false, "label": "Loses"}, {"name": "Average-rate E", "a": -25419.479099183365, "lo": -36812.93673656361, "hi": -13710.973698382155, "b": -3573.7403650969686, "keep": false, "label": "Loses"}, {"name": "\u03b2 fixed at 1, no refit", "a": -3960.113430671885, "lo": -23725.25940430026, "hi": 15794.325443701582, "b": -5802.650483169706, "keep": false, "label": "Not worse, not better"}, {"name": "Split by peril group", "a": 6391.788147671478, "lo": -1679.9477917583774, "hi": 14348.886403862485, "b": -3081.6293277204586, "keep": false, "label": "No gain"}];
+  var T5 = {"t5_motor": [{"name": "G1 Voluntary excess", "a": 56231.94441407955, "lo": 21725.33594634624, "hi": 84774.73214681513, "b": 28379.519947821755, "keep": true, "label": "Kept"}, {"name": "G2 Renewal count (tenure)", "a": 6238.59002280604, "lo": -617.7188163550891, "hi": 13223.208017047986, "b": 1474.6820581299228, "keep": false, "label": "No"}, {"name": "G3 Days from quote to inception", "a": -7544.131783136673, "lo": -19101.376963304094, "hi": 3347.73882371067, "b": 8472.29369061931, "keep": false, "label": "No"}, {"name": "G4 Missed payments yes/no (swap for 0/1/2+)", "a": 1686.486826109936, "lo": -2294.378844516008, "hi": 5045.339913857012, "b": -35.96107629340929, "keep": false, "label": "No"}, {"name": "G5 Household size", "a": -12749.223334646002, "lo": -26976.37520914517, "hi": -589.2593512814301, "b": 5468.155380154994, "keep": false, "label": "No"}, {"name": "G6 Marital status", "a": -315.4297740211408, "lo": -7542.782667610733, "hi": 7310.980446630289, "b": 3725.051058954171, "keep": false, "label": "No"}, {"name": "G7 Years at address", "a": -6511.584050648706, "lo": -15466.541011431811, "hi": 2681.384532663518, "b": 1151.1897769787452, "keep": false, "label": "No"}, {"name": "G8 Occupation", "a": -5055.376375385344, "lo": -24387.521770756815, "hi": 13586.0049592903, "b": -13380.194595274308, "keep": false, "label": "No"}, {"name": "G9 Other lines held at the start", "a": -1292.507313674846, "lo": -9895.025570579479, "hi": 6171.280563076639, "b": 1492.827167835709, "keep": false, "label": "No"}, {"name": "M1 NCB above years licensed", "a": 3142.4233597909997, "lo": -11759.05531883795, "hi": 17084.949402862265, "b": -1203.2372446802005, "keep": false, "label": "No"}, {"name": "M2 Licence before age 16", "a": -762.6641328961498, "lo": -1403.5248328356038, "hi": 74.35407819546886, "b": -49.69605915294305, "keep": false, "label": "No"}, {"name": "M3 Vehicle value per engine litre", "a": -17871.760949035124, "lo": -30105.111066088106, "hi": -6432.338759179375, "b": 4286.145861335353, "keep": false, "label": "No"}, {"name": "M4 Telematics score bands (swap for opt-in)", "a": 9242.079506527483, "lo": -4591.428169419227, "hi": 22264.687002194376, "b": -4862.829133676424, "keep": false, "label": "No"}, {"name": "M5 Age \u00d7 NCB", "a": -2928.1344171515702, "lo": -20045.148722581052, "hi": 12650.613496152077, "b": -5702.67164329715, "keep": false, "label": "No"}, {"name": "M6 Mileage deciles (swap)", "a": 1273.7900002522774, "lo": -1601.3474389448854, "hi": 4838.580722712412, "b": -1367.4716065067757, "keep": false, "label": "No"}, {"name": "M7 Make-model credibility encoding", "a": 0.0, "lo": 0.0, "hi": 0.0, "b": 0.0, "keep": false, "label": "No"}, {"name": "M8 Years licensed", "a": 25803.46396686523, "lo": -10129.884310341693, "hi": 58987.17058995473, "b": 25484.68232309803, "keep": false, "label": "No"}, {"name": "M9 Vehicle age", "a": 23484.291022143436, "lo": 4119.181245507928, "hi": 43173.66330806386, "b": 32249.016512581202, "keep": true, "label": "Kept"}, {"name": "M10 Engine size", "a": -14184.271106511962, "lo": -26785.830878394583, "hi": -690.8688837792482, "b": -7700.466099031522, "keep": false, "label": "No"}, {"name": "M11 Transmission", "a": 20.884702532547585, "lo": -103.87410321188828, "hi": 148.63696806918836, "b": -201.04548289428868, "keep": false, "label": "No"}, {"name": "M12 Seats", "a": -1309.1598997972583, "lo": -5806.421674344423, "hi": 3787.4321633508403, "b": -4516.8110471799955, "keep": false, "label": "No"}, {"name": "M13 Driver assist", "a": -234.21393052634005, "lo": -5306.712433307064, "hi": 5410.3481925065125, "b": 1053.1565178714245, "keep": false, "label": "No"}, {"name": "M14 Overnight parking", "a": -1701.5330586582586, "lo": -12997.367636941035, "hi": 9954.4341451761, "b": 13246.002447220286, "keep": false, "label": "No"}, {"name": "M15 Vehicle colour", "a": 821.3798407594363, "lo": -6206.1007872364935, "hi": 7908.057590920424, "b": 5843.276418378084, "keep": false, "label": "No"}], "t5v1_motor": [{"name": "Region", "a": 34166.367854623735, "lo": -3455.5147606300857, "hi": 70600.00721240898, "b": 53700.22025067679, "keep": false}, {"name": "Urban density", "a": 36209.63160088476, "lo": 12799.204685467816, "hi": 61714.77395943352, "b": 50645.297010943395, "keep": true}, {"name": "Payment method", "a": 8424.500747210757, "lo": -13314.576004253611, "hi": 30224.261886751232, "b": -767.7559732225945, "keep": false}, {"name": "Missed payments", "a": 6721.153714640033, "lo": -8103.504344924475, "hi": 23245.857213438365, "b": 7867.310639790841, "keep": false}, {"name": "Credit band", "a": 15370.29928650913, "lo": -1715.4904290308034, "hi": 37026.26634089159, "b": 16618.26669172282, "keep": false}, {"name": "Channel", "a": 17874.403842100466, "lo": -4745.3938480012175, "hi": 40643.4942692513, "b": 27521.063679425766, "keep": false}, {"name": "New business", "a": 23054.223207054456, "lo": 9148.15378135654, "hi": 38578.610354471, "b": 14841.458462144072, "keep": true}, {"name": "Age", "a": 198290.61110038636, "lo": 110521.59025785916, "hi": 283422.6378086029, "b": 255945.33907151734, "keep": true}, {"name": "NCB years", "a": 189671.40661671996, "lo": 117538.68933786688, "hi": 268619.31571219006, "b": 119417.3123370053, "keep": true}, {"name": "Vehicle value group", "a": 16236.070831526291, "lo": -5914.137717717848, "hi": 37358.939949120926, "b": 59802.14150139564, "keep": false}, {"name": "Cover type", "a": 47435.456711882536, "lo": -1193.6759766575394, "hi": 90390.408229239, "b": 91789.66888758847, "keep": false}, {"name": "Vehicle use", "a": 3862.2870243981915, "lo": -16682.130825833727, "hi": 24711.2388040817, "b": 3474.903439344851, "keep": false}, {"name": "Fuel", "a": -2383.529153557083, "lo": -6945.036852548388, "hi": 2098.4531173473547, "b": 125.37226021402802, "keep": false}, {"name": "Body type", "a": -246.5378681989382, "lo": -4865.769036032156, "hi": 4748.068785274851, "b": -2609.109590021534, "keep": false}, {"name": "Mileage", "a": 135492.38774669936, "lo": 84765.07654032312, "hi": 184903.80399064397, "b": 150300.2990952734, "keep": true}, {"name": "Licence points", "a": -633.4117966234362, "lo": -18682.07536711345, "hi": 19745.954022132213, "b": 18136.63145247017, "keep": false}, {"name": "Named young driver", "a": 10668.909185751429, "lo": -2476.8986795482488, "hi": 27395.962539299737, "b": 234.58263174191734, "keep": false}, {"name": "Telematics opt-in", "a": 15332.508503483885, "lo": -2401.334552346759, "hi": 31932.98171632969, "b": 13891.254251236829, "keep": false}, {"name": "Policy history (step 4)", "a": 60289.26959695436, "lo": 29515.46079101312, "hi": 92395.48209138536, "b": 83734.21945085289, "keep": true}, {"name": "Declared history (step 4)", "a": 36711.21149472186, "lo": 2639.335599283061, "hi": 73060.83815897154, "b": 44627.660717993436, "keep": true}], "t5_buildings": [{"name": "G1 Voluntary excess", "a": 7772.864470397027, "lo": -16931.848793691155, "hi": 29390.69876954141, "b": 3666.3133924432077, "keep": false, "label": "No"}, {"name": "G2 Renewal count (tenure)", "a": 2868.5560128660827, "lo": -12357.07979767462, "hi": 18103.135409515176, "b": -7260.677078601204, "keep": false, "label": "No"}, {"name": "G3 Days from quote to inception", "a": 4739.96875579571, "lo": -12360.960492045173, "hi": 21789.402405093126, "b": 2245.5053741911065, "keep": false, "label": "No"}, {"name": "G4 Missed payments yes/no (swap for 0/1/2+)", "a": 3455.461327126277, "lo": -4846.497828034931, "hi": 10871.253945642424, "b": 4458.508745758754, "keep": false, "label": "No"}, {"name": "G5 Household size", "a": -40473.52843369398, "lo": -64224.08519458055, "hi": -17261.987187665884, "b": -10936.119297406975, "keep": false, "label": "No"}, {"name": "G6 Marital status", "a": -14034.731563330692, "lo": -26123.06737942732, "hi": -2034.7849531883767, "b": -5362.110365126144, "keep": false, "label": "No"}, {"name": "G7 Years at address", "a": 4108.487516468123, "lo": -10799.505123868126, "hi": 19475.802244490096, "b": 5697.036045017874, "keep": false, "label": "No"}, {"name": "G8 Occupation", "a": -21648.17838064926, "lo": -46095.50739917719, "hi": 284.73736073234045, "b": -14357.364397921287, "keep": false, "label": "No"}, {"name": "G9 Other lines held at the start", "a": 2130.4327715883505, "lo": -5299.421664808137, "hi": 9024.358110471841, "b": 11637.609024614372, "keep": false, "label": "No"}, {"name": "B1 Building age at the row (swap for year built)", "a": -7826.983598446824, "lo": -24284.44675861109, "hi": 9970.873073567205, "b": -25572.90589336688, "keep": false, "label": "No"}, {"name": "B2 Sum insured per bedroom", "a": -15684.787885495301, "lo": -42208.56769745135, "hi": 9754.682811326511, "b": 11097.006386016232, "keep": false, "label": "No"}, {"name": "B3a River distance and elevation", "a": -23863.11578402022, "lo": -95357.14882440769, "hi": 43912.849303468385, "b": 95240.5062162779, "keep": false, "label": "No"}, {"name": "B3b Flood score: zone \u00d7 proximity", "a": -59339.16665370807, "lo": -175577.084052579, "hi": 28890.761150744605, "b": 87486.0583076053, "keep": false, "label": "No"}, {"name": "B4 Clay \u00d7 dry-summer normal", "a": -5021.397173590202, "lo": -17533.860126507036, "hi": 8580.873587150692, "b": 2272.1467518922486, "keep": false, "label": "No"}, {"name": "B5 Days unoccupied", "a": 948.3832508412585, "lo": -8102.855993983443, "hi": 9894.437545221921, "b": -11639.198454282665, "keep": false, "label": "No"}, {"name": "B6 Roof type", "a": -9475.188186961557, "lo": -23058.50854991423, "hi": 1519.074139657232, "b": 1719.9101595585198, "keep": false, "label": "No"}, {"name": "B7 Basement", "a": 9890.993822279726, "lo": 3106.255080026224, "hi": 16879.129966909386, "b": -960.393594390559, "keep": false, "label": "No"}, {"name": "B8 Trees within 5 m", "a": 4.5384299931725325, "lo": -2.5686582949417334, "hi": 12.573898181783987, "b": -409.72404937491876, "keep": false, "label": "No"}, {"name": "B9 Trees within 5 m \u00d7 clay soil", "a": 6574.325476331098, "lo": 494.97765041757265, "hi": 13878.098299295694, "b": 3744.1980882123835, "keep": true, "label": "Kept"}, {"name": "B10 Listed building", "a": -3172.54524867471, "lo": -25842.988783268716, "hi": 26630.627481075622, "b": -3117.489866490848, "keep": false, "label": "No"}, {"name": "B11 Energy rating", "a": 10586.52903941599, "lo": -28704.505449032753, "hi": 54938.736362352094, "b": 25227.001282749192, "keep": false, "label": "No"}, {"name": "B12 Solar panels", "a": 7.588923526695623, "lo": -261.55407294474594, "hi": 267.8419922056098, "b": 101.47154439846157, "keep": false, "label": "No"}, {"name": "B13 Smoke alarms", "a": 310.1494459409013, "lo": -290.32487186976306, "hi": 982.194718439625, "b": -807.743319425286, "keep": false, "label": "No"}, {"name": "B14 Mortgage", "a": 289.19377985945243, "lo": -6699.51862896216, "hi": 7319.117352578927, "b": 213.16011733445657, "keep": false, "label": "No"}], "t5v1_buildings": [{"name": "Region", "a": 7769.100003711917, "lo": -41661.99839954405, "hi": 55531.94451083072, "b": 10966.681210977267, "keep": false}, {"name": "Urban density", "a": 1626.1258754659627, "lo": -10016.93889842747, "hi": 14003.336713572355, "b": -3657.3693370908527, "keep": false}, {"name": "Payment method", "a": 6722.007908173411, "lo": -11362.157937701075, "hi": 25894.342887677838, "b": -5215.042336321468, "keep": false}, {"name": "Missed payments", "a": 6336.688322368631, "lo": -7165.214013817424, "hi": 21258.262579016584, "b": 9027.124639149048, "keep": false}, {"name": "Credit band", "a": -17108.69416722307, "lo": -50921.82882322372, "hi": 16192.278690826884, "b": 10729.049992149838, "keep": false}, {"name": "Channel", "a": 3171.8144509636277, "lo": -26090.35626624233, "hi": 31295.83557843341, "b": 1053.095972093729, "keep": false}, {"name": "New business", "a": -2498.1932634428986, "lo": -11408.65804812655, "hi": 7382.976219363609, "b": 5425.332553099227, "keep": false}, {"name": "Age", "a": -5935.845613239209, "lo": -32658.19750649445, "hi": 22494.22696969535, "b": 7686.477238478089, "keep": false}, {"name": "Sum insured", "a": 78107.00867663488, "lo": 30413.843813432628, "hi": 124926.1679616958, "b": 92231.37470691092, "keep": true}, {"name": "Property type", "a": -6316.667269120804, "lo": -16107.666291659929, "hi": 4639.747223918708, "b": -4817.710144677382, "keep": false}, {"name": "Flood zone", "a": 855073.9522954351, "lo": 653923.0581042184, "hi": 1047203.1728431928, "b": 795143.4458048828, "keep": true}, {"name": "Accidental damage cover", "a": 185.5278469154091, "lo": -20774.82858575873, "hi": 21489.355310778265, "b": -1423.5768122881054, "keep": false}, {"name": "Construction", "a": -16989.032156696114, "lo": -47506.173048043755, "hi": 17117.05823338622, "b": 37833.002582657864, "keep": false}, {"name": "Soil", "a": 1766.438953882623, "lo": -4483.599449964614, "hi": 8230.206743621253, "b": -3340.2736397898243, "keep": false}, {"name": "Occupancy", "a": 41969.92032831125, "lo": 12721.273337795254, "hi": 74536.70645580035, "b": -4156.752453636733, "keep": false}, {"name": "Year built", "a": 61104.564263082735, "lo": 58.708277156781435, "hi": 122332.70312679339, "b": 141872.7813690417, "keep": true}, {"name": "Bedrooms", "a": -1381.2267100204008, "lo": -21070.615842683314, "hi": 19055.069385887644, "b": -22486.24399613376, "keep": false}, {"name": "Policy history (step 4)", "a": 23783.25084601459, "lo": -351.36593788773934, "hi": 50177.54858058327, "b": 23994.234150413864, "keep": false}, {"name": "Declared history (step 4)", "a": 32580.61053938282, "lo": -9851.763580066112, "hi": 79657.25869507542, "b": 42285.57933275887, "keep": false}], "t5_contents": [{"name": "G1 Voluntary excess", "a": 9439.060117132736, "lo": -31220.148684602438, "hi": 40327.59242375668, "b": 14636.554715819853, "keep": false, "label": "No"}, {"name": "G2 Renewal count (tenure)", "a": 300.7359749749478, "lo": -1919.6904325975436, "hi": 2451.224929603164, "b": -2654.322521870031, "keep": false, "label": "No"}, {"name": "G3 Days from quote to inception", "a": 3308.754305188343, "lo": -5028.779672334341, "hi": 12120.051904137468, "b": -8402.555143600915, "keep": false, "label": "No"}, {"name": "G4 Missed payments yes/no (swap for 0/1/2+)", "a": 204.52784716281496, "lo": -869.1061156489644, "hi": 1322.977482012305, "b": 32.41174734088577, "keep": false, "label": "No"}, {"name": "G5 Household size", "a": -8229.818912634968, "lo": -18439.99593651342, "hi": 1795.3597672137853, "b": -1234.648750189042, "keep": false, "label": "No"}, {"name": "G6 Marital status", "a": 135.30767937272185, "lo": -2579.5352308179176, "hi": 3101.9184280558434, "b": -519.7491669253016, "keep": false, "label": "No"}, {"name": "G7 Years at address", "a": 2349.2383269094307, "lo": -3565.568962258465, "hi": 8801.06557553699, "b": -330.15801632723014, "keep": false, "label": "No"}, {"name": "G8 Occupation", "a": -20751.435971172217, "lo": -34950.210499770976, "hi": -6259.009498496675, "b": -3045.561428400356, "keep": false, "label": "No"}, {"name": "G9 Other lines held at the start", "a": -648.1633173973319, "lo": -10168.087025290277, "hi": 8690.39242555487, "b": 465.75610578911983, "keep": false, "label": "No"}, {"name": "C1 Sum insured per bedroom", "a": -2.1472980194580487, "lo": -8554.953241702478, "hi": 7771.195172566333, "b": 5546.33563240511, "keep": false, "label": "No"}, {"name": "C2 Bedrooms", "a": -1392.6133214806048, "lo": -10848.127744990486, "hi": 6988.874694636094, "b": -1423.5482440523285, "keep": false, "label": "No"}, {"name": "C3 Building age at the row", "a": 4071.0454143505813, "lo": -935.5105899773143, "hi": 9072.378984759007, "b": -7786.134788101415, "keep": false, "label": "No"}, {"name": "C4 Works from home", "a": 2111.641020465341, "lo": -2323.6492157402013, "hi": 6359.775670124258, "b": 3799.92718607638, "keep": false, "label": "No"}, {"name": "C5 Lodgers", "a": -1105.779674593954, "lo": -5151.690327877024, "hi": 3249.674282412001, "b": -186.88007258114715, "keep": false, "label": "No"}, {"name": "C6 Basement", "a": -626.2544257562326, "lo": -1829.9770275929068, "hi": 610.4169725764759, "b": 3.224955844838197, "keep": false, "label": "No"}, {"name": "C7 Flood score: zone \u00d7 proximity", "a": -1297.3808694473155, "lo": -39104.65814536252, "hi": 30416.71943054385, "b": -11082.266465340144, "keep": false, "label": "No"}, {"name": "C8 Listed building", "a": -738.4259285343198, "lo": -1737.9237017303237, "hi": 390.30008245030467, "b": -64.52143351610229, "keep": false, "label": "No"}, {"name": "C9 Roof type", "a": -6291.470508656937, "lo": -16353.111380681654, "hi": 2668.5189604797065, "b": 70.69079953444646, "keep": false, "label": "No"}, {"name": "C10 Energy rating", "a": -4000.185906086827, "lo": -9894.789552242179, "hi": 1651.7363348305278, "b": -2745.928359971074, "keep": false, "label": "No"}], "t5v1_contents": [{"name": "Region", "a": 27677.40397797595, "lo": 6334.348337726693, "hi": 48979.63562092212, "b": 29657.90759880869, "keep": true}, {"name": "Urban density", "a": 14911.83006584896, "lo": -700.508454467512, "hi": 31495.068187407447, "b": 11280.69962304016, "keep": false}, {"name": "Payment method", "a": 3928.4489606810594, "lo": -5924.291656647302, "hi": 13464.151849971604, "b": -2823.430032425502, "keep": false}, {"name": "Missed payments", "a": 5701.259844403408, "lo": -573.5802380916167, "hi": 12272.413919523384, "b": 8567.525885542886, "keep": false}, {"name": "Credit band", "a": 4859.1670729286925, "lo": -3634.394869753695, "hi": 13247.034129814672, "b": 1631.2407915465355, "keep": false}, {"name": "Channel", "a": 9551.501801716004, "lo": -5550.3824683772, "hi": 22949.52282542732, "b": 2672.9886126901065, "keep": false}, {"name": "New business", "a": -1285.5146377034137, "lo": -2890.3604933232486, "hi": -54.363657014457054, "b": -2588.5750308403403, "keep": false}, {"name": "Age", "a": 16745.330074616246, "lo": -16043.967695136686, "hi": 45198.26946322805, "b": 24909.370935245628, "keep": false}, {"name": "Sum insured", "a": 164047.37808695593, "lo": 107080.64670851993, "hi": 235168.61801407888, "b": 105379.673592459, "keep": true}, {"name": "Property type", "a": -2896.3552040253408, "lo": -21306.228227723223, "hi": 12849.782113774465, "b": -1022.0428906221412, "keep": false}, {"name": "Flood zone", "a": 348966.22705508675, "lo": 253041.09606970174, "hi": 454798.97523016785, "b": 283024.8985249327, "keep": true}, {"name": "Accidental damage cover", "a": 2964.9688181787114, "lo": -18078.012025006326, "hi": 22438.640729433766, "b": 12870.47058964295, "keep": false}, {"name": "Tenure", "a": 4774.407169227446, "lo": 1618.5851811069604, "hi": 7950.437905854557, "b": 1077.7003860593734, "keep": true}, {"name": "Security level", "a": -6754.137594750471, "lo": -21925.813901450478, "hi": 6141.0711703768475, "b": 12440.061290333419, "keep": false}, {"name": "High-value items", "a": 8701.874393321743, "lo": -7307.949385450269, "hi": 25776.899133148778, "b": 7220.671783597396, "keep": false}, {"name": "Bicycle cover", "a": -255.30582375472227, "lo": -2445.9773246232257, "hi": 1860.9091358297997, "b": -497.48480215272724, "keep": false}, {"name": "Policy history (step 4)", "a": 9488.558506580435, "lo": 3670.0790439123834, "hi": 16072.9825826051, "b": 10643.677246366698, "keep": true}, {"name": "Declared history (step 4)", "a": 3116.5914889686474, "lo": -15215.639726746756, "hi": 20934.556899572053, "b": 27554.488674250344, "keep": false}]};
+  var LEDE = "Claims history adds the most. Own-policy history passes in all three lines, and declared claims before joining add to it. Together they lift the combined ranking D\u00b2 from 10.02% to 10.34% on 2023 and from 9.49% to 9.95% on 2024. Of 67 further candidate tests, three pass: voluntary excess and vehicle age in motor, and trees on clay in buildings. Twice the credibility estimator I designed failed on this data; I fixed it and both runs are on file.";
+  var DECS = [{"id": "L1", "door": "easy", "q": "Which estimate of the credibility constant k?", "stakes": "<b>It decides whether history counts at all in property.</b> With the design's estimator, k was infinite for buildings on 2023 and contents k ranged from 4.6 to 92.7. With the Poisson-gamma estimate, final k is 2.76, 2.30 and 2.54, and policy history passes in all three lines.", "opts": [{"k": "A", "n": "Poisson-gamma moment estimate", "d": "Assumes Poisson claim counts within a policy, which the data supports (variance 1.02 to 1.06 of the mean; 1.004 claims per incident).", "c": "Relies on the Poisson assumption.", "f": "Nothing."}, {"k": "B", "n": "Non-parametric Bühlmann-Straub (the original design)", "d": "Makes no distribution assumption.", "c": "Mostly noise at 0.05 expected claims per policy-year; k infinite for buildings on 2023.", "f": "Property history."}, {"k": "C", "n": "k tuned on the out-of-time score", "d": "Picks k by grid on the scorings.", "c": "A fitted setting, not a credibility estimate; harder to explain.", "f": "Nothing."}], "rec": "A", "why": "It is the efficient estimator in this rare-claim setting, stable across all three fits, and consistent with what the GLM's own slopes imply."}, {"id": "L2", "door": "costly", "q": "Add the policy's own claims history to all three lines, as a credibility-weighted experience mod?", "stakes": "<b>The largest single gain since capping.</b> It saves 114,842 on 2023 (interval 68,647 to 164,656) and 143,043 on 2024, and passes in each line. 72% of 2025 rows have history.", "opts": [{"k": "A", "n": "Yes: log(mod) with a fitted slope β", "d": "The relativity is mod raised to β; β is 0.86, 0.82 and 0.83 with declared history also in.", "c": "One more term per line.", "f": "Nothing."}, {"k": "B", "n": "Yes: the mod as a pure multiplier, β = 1", "d": "Class rate × mod, the textbook experience-rating form; -3,960 on 2023, not significantly worse.", "c": "Slightly over-credits history in property.", "f": "Nothing."}, {"k": "C", "n": "No", "d": "Keep V1 without history.", "c": "Gives up the largest tested gain.", "f": "Experience rating."}], "rec": "A", "why": "It is the tested form that passed; with β close to 1 it still reads as class rate × experience mod."}, {"id": "L3", "door": "easy", "q": "Add declared claims before joining (prior_claims_5y) to every line, or to motor only?", "stakes": "<b>A customer field not used in V1 until now.</b> Relativities rise steadily from 0 to 3+ claims: motor 1.00, 1.23, 1.50, 1.79; buildings 1.00, 1.19, 1.66, 2.25; contents 1.00, 1.22, 1.49, 2.02. It passes the keep rule in motor and across lines. In buildings and contents it saves in both years, but the 2023 interval crosses zero.", "opts": [{"k": "A", "n": "All three lines", "d": "One rule with the same meaning everywhere, as in K1.", "c": "Property relies on the across-lines evidence.", "f": "Nothing."}, {"k": "B", "n": "Motor only (strict per-line rule)", "d": "Property keeps policy history only.", "c": "Gives up gains that show in both years in property.", "f": "Nothing."}, {"k": "C", "n": "None", "d": "Policy history only.", "c": "Gives up the motor gain that passed.", "f": "Declared history."}], "rec": "A", "why": "The pattern is steady and the same in every line, it saves in both years everywhere, and the across-lines test passes; K1 applied the same reasoning to caps."}, {"id": "L4", "door": "easy", "q": "What happens to customer, address and repudiation history, which failed?", "stakes": "Customer history from other lines saves nothing (−8,129 on 2023, interval −16,894 to 1,723). Address history has almost no data: 0.2% of 2025 buildings rows have another customer's history at the address. Prior repudiation is neutral.", "opts": [{"k": "A", "n": "Drop from the GLM; offer them to the step 7 tree families as candidates under the keep rule", "d": "Trees may find interactions the GLM cannot.", "c": "A few more candidates in step 7.", "f": "Nothing."}, {"k": "B", "n": "Drop everywhere", "d": "Simplest.", "c": "A small chance of a missed interaction.", "f": "These fields in any model."}], "rec": "A", "why": "It follows your standing rule to test widely at almost no cost, and the keep rule still decides."}, {"id": "L5", "door": "easy", "q": "Add voluntary excess and vehicle age to motor?", "stakes": "Both pass alone and in the drop-one round. Together they add 79,907 to motor on 2023 (interval 45,218 to 112,951) and 61,068 on 2024.", "opts": [{"k": "A", "n": "Add both", "d": "Excess removes small claims; older cars cost less to repair.", "c": "Two more factors.", "f": "Nothing."}, {"k": "B", "n": "Voluntary excess only", "d": "It has the mechanical reason and the larger gain.", "c": "Gives up the vehicle age gain.", "f": "Nothing."}, {"k": "C", "n": "Neither", "d": "Keep the motor plan as it is.", "c": "Gives up both gains.", "f": "Nothing."}], "rec": "A", "why": "Both pass the keep rule and both have a clear risk reason."}, {"id": "L6", "door": "easy", "q": "Add trees within 5 m × clay soil to buildings?", "stakes": "It passes alone and in drop-one: 6,574 on 2023 (interval 495 to 13,878) and 3,744 on 2024. Trees on clay cost 1.25 times a property with neither: roots draw water from shrinkable clay, the subsidence mechanism.", "opts": [{"k": "A", "n": "Add it", "d": "A four-level factor with a physical reason.", "c": "One more factor.", "f": "Nothing."}, {"k": "B", "n": "Leave it out", "d": "Buildings stays as it is.", "c": "Gives up a small, passed gain.", "f": "Nothing."}], "rec": "A", "why": "It passes the rule and is the textbook subsidence interaction."}, {"id": "L7", "door": "easy", "q": "What happens to the near misses, which save in both years but fail the interval?", "stakes": "Examples: years licensed in motor (+25,804 and +25,485), voluntary excess in buildings and contents, and the flood measures in buildings (+95,241 on 2024, but −23,863 on 2023).", "opts": [{"k": "A", "n": "Hold the keep rule; offer the near misses to the step 7 families", "d": "The elastic-net GLM and the boosters may use them, still under the keep rule.", "c": "None now.", "f": "Nothing."}, {"k": "B", "n": "Admit voluntary excess on property too", "d": "Same mechanical reason as motor.", "c": "Overrides the agreed rule on a judgment.", "f": "Nothing."}], "rec": "A", "why": "The rule was agreed before results, and step 7 gives these fields a second, fair test."}, {"id": "L8", "door": "costly", "q": "Five V1 rating factors make their line better when removed. Drop them?", "stakes": "Body type (motor), property type and bedrooms (buildings), and new business and property type (contents): removing each, one at a time, lowers deviance in both years. Bicycle cover does too, but it defines cover and stays. Most other V1 factors save in both years but miss the interval.", "opts": [{"k": "A", "n": "Drop the five, check the joint drop before step 6, and leave the rest to step 7's elastic net", "d": "Removes factors that only add noise. Factors that define cover (cover type, sum insured, accidental damage, bicycle cover) are never dropped.", "c": "A joint check, about 30 minutes.", "f": "Nothing."}, {"k": "B", "n": "Keep V1 as decided; let the step 7 elastic net shrink weak factors", "d": "No change now.", "c": "Keeps six factors that do not help.", "f": "Nothing."}, {"k": "C", "n": "Apply the full keep rule to every V1 factor now", "d": "Backward elimination of V1.", "c": "Would drop real but noisy factors, and in a strict reading even cover type in motor.", "f": "Several factors."}], "rec": "A", "why": "It removes only what the evidence says hurts in both years, keeps the plan explainable, and leaves the borderline cases to the method built for them."}];/*END DATA*/
+
+  var STEPS = [
+    { id: "cap", t: "1 Cap and load", s: "C1, C2", isNew: false },
+    { id: "level", t: "2 Trend and level", s: "C3, C4, P11", isNew: false },
+    { id: "check1", t: "Check-in 1", s: "K1 to K4, done", isNew: true },
+    { id: "weather", t: "3 Weather", s: "C6, K4", isNew: false },
+    { id: "history", t: "4 Claims history", s: "C7", isNew: false },
+    { id: "features", t: "5 Features", s: "C8", isNew: false },
+    { id: "check2", t: "Check-in 2", s: "you are here", isNew: true, here: true },
+    { id: "structure", t: "6 Tweedie or F x S", s: "P3", isNew: false },
+    { id: "families", t: "7 Families, tuning", s: "P7, C5", isNew: false },
+    { id: "weights", t: "8 Weights", s: "J-model", isNew: false },
+    { id: "check3", t: "Check-in 3", s: "freeze, submit", isNew: true },
+    { id: "holdout", t: "Hold-out, review", s: "phase 7", isNew: false }
+  ];
+
+  function fmt(x) { var s = Math.round(Math.abs(x)).toLocaleString("en-GB"); return (x < 0 ? "−" : "") + s; }
+  function rowsHtml(list, withLine) {
+    return list.map(function (r) {
+      var cls = r.keep ? "pass" : "fail";
+      return "<tr><td>" + r.name + "</td>" + (withLine ? "<td>" + r.line + "</td>" : "") +
+        '<td class="r num' + (r.a < 0 ? " neg" : "") + '">' + fmt(r.a) + '</td><td class="r num">' + fmt(r.lo) + " to " + fmt(r.hi) +
+        '</td><td class="r num' + (r.b < 0 ? " neg" : "") + '">' + fmt(r.b) + '</td><td class="' + cls + '">' + (r.label || (r.keep ? "Yes" : "No")) + "</td></tr>";
+    }).join("");
+  }
+  function fill(id, list, withLine) { var el = document.getElementById(id); if (el) el.innerHTML = rowsHtml(list, withLine); }
+  fill("t4", T4, true); fill("t4c", T4C, true); fill("t4v", T4V, false);
+  if (typeof T5 !== "undefined") Object.keys(T5).forEach(function (k) { fill(k, T5[k], k.indexOf("drop") >= 0 || k.indexOf("v1") >= 0 ? false : false); });
+  document.getElementById("lede").innerHTML = LEDE;
+
+  var DECISIONS = DECS;
+  var IDS = DECISIONS.map(function (d) { return d.id; });
+  var state = { verdicts: {}, notes: [], status: "draft", round: ROUND, locked: false };
+  var db = null, writeChains = {}, noteTimers = {}, noteAnchor = null;
+
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  function byId(id) { return document.getElementById(id); }
+  function decision(id) { for (var i = 0; i < DECISIONS.length; i++) if (DECISIONS[i].id === id) return DECISIONS[i]; return null; }
+
+  function drawDiagram() {
+    var W = 860, bw = 124, bh = 54, gap = (W - 20 - 6 * bw) / 5, y1 = 20, y2 = 130;
+    var parts = ['<svg viewBox="0 0 ' + W + ' 200" role="img" aria-label="Phase 5 steps from cap and load to the hold-out"><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrowhead" d="M0,0 L10,5 L0,10 z"/></marker></defs>'];
+    var pos = STEPS.map(function (s, i) { var row = i < 6 ? 0 : 1, col = row === 0 ? i : 11 - i; return { x: 10 + col * (bw + gap), y: row === 0 ? y1 : y2, row: row }; });
+    for (var i = 0; i < STEPS.length - 1; i++) {
+      var a = pos[i], b = pos[i + 1];
+      if (a.row === b.row) {
+        var dir = a.row === 0 ? 1 : -1, x1 = dir > 0 ? a.x + bw : a.x, x2 = dir > 0 ? b.x : b.x + bw, yy = a.y + bh / 2;
+        parts.push('<path class="edge" d="M' + x1 + ',' + yy + ' L' + (x2 - 2 * dir) + ',' + yy + '" marker-end="url(#ah)"/>');
+      } else {
+        var xx = a.x + bw / 2;
+        parts.push('<path class="edge" d="M' + xx + ',' + (a.y + bh) + ' L' + xx + ',' + (b.y - 2) + '" marker-end="url(#ah)"/>');
+      }
+    }
+    STEPS.forEach(function (s, i) {
+      var p = pos[i];
+      parts.push('<g class="node' + (s.isNew ? ' new' : '') + (s.here ? ' here' : '') + '" data-node-id="' + s.id + '" tabindex="0" role="button" aria-label="' + esc(s.t) + ': add a note">' +
+        '<rect x="' + p.x + '" y="' + p.y + '" width="' + bw + '" height="' + bh + '" rx="4"/>' +
+        '<text x="' + (p.x + 10) + '" y="' + (p.y + 23) + '">' + esc(s.t) + '</text>' +
+        '<text class="sub" x="' + (p.x + 10) + '" y="' + (p.y + 41) + '">' + esc(s.s) + '</text></g>');
+    });
+    parts.push('</svg>');
+    byId("diagram").innerHTML = parts.join("");
+    Array.prototype.forEach.call(document.querySelectorAll(".node"), function (g) {
+      g.addEventListener("click", function () { openNote(g.getAttribute("data-node-id")); });
+      g.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openNote(g.getAttribute("data-node-id")); } });
+    });
+  }
+  function stepTitle(id) { for (var i = 0; i < STEPS.length; i++) if (STEPS[i].id === id) return STEPS[i].t; return id; }
+  function openNote(id) {
+    if (state.locked) return;
+    noteAnchor = id; byId("noteAnchorLabel").textContent = stepTitle(id); byId("noteText").value = ""; byId("noteMsg").textContent = "";
+    byId("noteBox").hidden = false; byId("noteText").focus();
+  }
+  function renderNotes() {
+    var notes = state.notes.slice().sort(function (a, b) { return String(a.createdAt).localeCompare(String(b.createdAt)); });
+    byId("noteList").innerHTML = notes.map(function (n) { return '<li><span class="anchor">' + esc(stepTitle(n.anchor)) + '</span>' + esc(n.text) + '</li>'; }).join("");
+    var noted = {}; notes.forEach(function (n) { noted[n.anchor] = true; });
+    Array.prototype.forEach.call(document.querySelectorAll(".node"), function (g) { g.classList.toggle("noted", !!noted[g.getAttribute("data-node-id")]); });
+  }
+
+  function doorLabel(d) { return d === "one" ? "One-way" : d === "costly" ? "Costly" : "Reversible"; }
+  function drawCards() {
+    byId("cards").innerHTML = DECISIONS.map(function (d) {
+      var opts = d.opts.map(function (o) {
+        var rid = "v-" + d.id + "-" + o.k;
+        return '<label class="opt' + (o.k === d.rec ? ' rec' : '') + '" for="' + rid + '">' +
+          '<input type="radio" name="v-' + d.id + '" id="' + rid + '" value="' + o.k + '">' +
+          '<span class="body"><span class="name"><span class="k">' + o.k + '</span>' + esc(o.n) + (o.k === d.rec ? '<span class="tag">Recommended</span>' : '') + '</span>' +
+          '<span class="det">' + o.d + '</span>' +
+          '<span class="det"><span>Costs:</span> ' + esc(o.c) + ' <span>Rules out:</span> ' + esc(o.f) + '</span></span></label>';
+      }).join("");
+      var rj = "v-" + d.id + "-reject";
+      opts += '<label class="opt reject" for="' + rj + '"><input type="radio" name="v-' + d.id + '" id="' + rj + '" value="reject"><span class="body"><span class="name">None of these</span><span class="det">Say why in the note; the card comes back with different options.</span></span></label>';
+      return '<article class="card" id="card-' + d.id + '" aria-labelledby="q-' + d.id + '">' +
+        '<div class="card-top"><span class="cid">' + d.id + '</span><span class="door ' + d.door + '">' + doorLabel(d.door) + '</span><span class="verdict-chip none" id="chip-' + d.id + '">No verdict yet</span></div>' +
+        '<div class="q" id="q-' + d.id + '">' + esc(d.q) + '</div>' +
+        '<p class="stakes">' + d.stakes + '</p>' +
+        (d.evidence ? '<div class="evidence">' + d.evidence + '</div>' : '') +
+        '<fieldset class="opts"><legend>Options for ' + d.id + '</legend>' + opts + '</fieldset>' +
+        '<div class="rec-line"><b>Recommend ' + d.rec + '.</b> ' + esc(d.why) + '</div>' +
+        '<label class="eyebrow" for="n-' + d.id + '">Your note (optional)</label>' +
+        '<textarea id="n-' + d.id + '" placeholder="Reasoning, a condition, or what to change"></textarea>' +
+        '<div class="card-actions"><button type="button" data-accept="' + d.id + '">Accept recommendation</button><span id="save-' + d.id + '"></span></div>' +
+        '</article>';
+    }).join("");
+    DECISIONS.forEach(function (d) {
+      Array.prototype.forEach.call(document.querySelectorAll('input[name="v-' + d.id + '"]'), function (r) {
+        r.addEventListener("change", function () { if (r.checked) setChoice(d.id, r.value); });
+      });
+      byId("n-" + d.id).addEventListener("input", function () {
+        clearTimeout(noteTimers[d.id]);
+        noteTimers[d.id] = setTimeout(function () { setNote(d.id, byId("n-" + d.id).value); }, 600);
+      });
+    });
+    Array.prototype.forEach.call(document.querySelectorAll("[data-accept]"), function (b) {
+      b.addEventListener("click", function () { var id = b.getAttribute("data-accept"), d = decision(id); byId("v-" + id + "-" + d.rec).checked = true; setChoice(id, d.rec); });
+    });
+  }
+  function applyVerdictsToControls() {
+    DECISIONS.forEach(function (d) {
+      var v = state.verdicts[d.id], choice = v && v.choice;
+      if (choice) { var r = byId("v-" + d.id + "-" + choice); if (r && !r.checked) r.checked = true; }
+      var ta = byId("n-" + d.id);
+      if (v && typeof v.note === "string" && document.activeElement !== ta && ta.value !== v.note) ta.value = v.note;
+      var chip = byId("chip-" + d.id), card = byId("card-" + d.id);
+      card.classList.remove("decided", "rejected");
+      if (!choice) { chip.className = "verdict-chip none"; chip.textContent = "No verdict yet"; }
+      else if (choice === "reject") { chip.className = "verdict-chip rej"; chip.textContent = "Rejected: rework"; card.classList.add("rejected"); }
+      else { chip.className = "verdict-chip ok"; chip.textContent = "Chose " + choice + (choice === d.rec ? " (recommended)" : ""); card.classList.add("decided"); }
+    });
+    renderStatus();
+  }
+  function renderStatus() {
+    var done = IDS.filter(function (id) { return state.verdicts[id] && state.verdicts[id].choice; });
+    byId("countPill").textContent = done.length + " of " + IDS.length + " decided";
+    byId("roundPill").textContent = "Round " + state.round;
+    var sp = byId("statePill"); sp.className = "pill state-" + state.status;
+    sp.textContent = state.status === "final" ? "Final" : state.status === "submitted" ? "Sent to Claude" : "Draft";
+    var open = IDS.filter(function (id) { return done.indexOf(id) < 0; }), bt = byId("blockedText");
+    if (state.status === "final") bt.textContent = "Finalized. Claude records the verdicts and moves to step 6.";
+    else if (state.status === "submitted") bt.textContent = "Sent. Type anything in the chat so Claude reads the verdicts.";
+    else if (open.length === 0) bt.textContent = "Every card has a verdict. Send to Claude when ready.";
+    else bt.textContent = "Waiting on you: " + open.join(", ") + ".";
+    var locked = state.status === "final"; state.locked = locked;
+    document.body.classList.toggle("locked", locked);
+    byId("sendBtn").disabled = locked; byId("finalBtn").disabled = locked;
+    Array.prototype.forEach.call(document.querySelectorAll("[data-accept]"), function (b) { b.disabled = locked; });
+  }
+  function queueWrite(key, fn) { var prev = writeChains[key] || Promise.resolve(); var next = prev.then(fn, fn); writeChains[key] = next.catch(function () {}); return next; }
+  function saveVerdict(id) {
+    var v = state.verdicts[id], flag = byId("save-" + id);
+    if (!db) { flag.textContent = "Kept on this page only. Use Copy for Claude."; return; }
+    flag.textContent = "Saving…";
+    var body = { decisionId: id, choice: v.choice || null, note: v.note || "", updatedAt: new Date().toISOString() };
+    queueWrite("verdicts/" + id, function () { return db.doc("verdicts/" + id).set(body); })
+      .then(function () { flag.textContent = "Saved"; })
+      .catch(function (e) { flag.textContent = "Not saved: " + (e && e.message ? e.message : "store unavailable") + ". Use Copy for Claude."; });
+  }
+  function setChoice(id, choice) {
+    if (state.locked) return;
+    var v = Object.assign({}, state.verdicts[id] || {}); if (v.choice === choice) return;
+    v.choice = choice; v.note = byId("n-" + id).value; state.verdicts[id] = v; applyVerdictsToControls(); saveVerdict(id);
+  }
+  function setNote(id, text) {
+    if (state.locked) return;
+    var v = Object.assign({}, state.verdicts[id] || {}); if ((v.note || "") === text) return;
+    v.note = text; state.verdicts[id] = v; saveVerdict(id);
+  }
+  function setState(status) {
+    var body = { status: status, round: state.round, submittedAt: new Date().toISOString() };
+    if (!db) { state.status = status; renderStatus(); return Promise.resolve(); }
+    return queueWrite("brief/state", function () { return db.doc("brief/state").set(body); });
+  }
+  function flushNotes() { DECISIONS.forEach(function (d) { if (noteTimers[d.id]) { clearTimeout(noteTimers[d.id]); noteTimers[d.id] = null; setNote(d.id, byId("n-" + d.id).value); } }); }
+  function copyText() {
+    var lines = ["Check-in 2 round " + state.round];
+    DECISIONS.forEach(function (d) {
+      var v = state.verdicts[d.id] || {}, note = (byId("n-" + d.id).value || "").replace(/\s+/g, " ").trim();
+      var c = !v.choice ? "no verdict" : v.choice === d.rec ? "accept (" + d.rec + ")" : v.choice === "reject" ? "reject" : "option " + v.choice;
+      lines.push(d.id + ": " + c + (note ? " | " + note : ""));
+    });
+    state.notes.forEach(function (n) { lines.push("note@" + n.anchor + ": " + n.text); });
+    return lines.join("\n");
+  }
+  function msg(text, isErr) { var m = byId("barMsg"); m.textContent = text; m.classList.toggle("err", !!isErr); }
+  byId("sendBtn").addEventListener("click", function () {
+    flushNotes();
+    setState("submitted").then(function () { msg("Sent. Now type anything in the chat so Claude reads your verdicts."); })
+      .catch(function () { msg("Could not send. Use Copy for Claude and paste into the chat.", true); });
+  });
+  byId("finalBtn").addEventListener("click", function () {
+    flushNotes();
+    var missing = IDS.filter(function (id) { return !(state.verdicts[id] && state.verdicts[id].choice); });
+    if (missing.length) { msg("Finalize needs a verdict on every card. Missing: " + missing.join(", ") + ".", true); return; }
+    var rejected = IDS.filter(function (id) { return state.verdicts[id].choice === "reject"; });
+    if (rejected.length) { msg("Rejected cards need another round first: " + rejected.join(", ") + ". Send to Claude instead.", true); return; }
+    setState("final").then(function () { msg("Finalized. Type anything in the chat and Claude records the verdicts."); })
+      .catch(function () { msg("Could not finalize. Use Copy for Claude and paste into the chat.", true); });
+  });
+  byId("copyBtn").addEventListener("click", function () {
+    var t = copyText();
+    function fallback() {
+      var ta = document.createElement("textarea"); ta.value = t; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.opacity = "0";
+      document.body.appendChild(ta); ta.select(); var ok = false; try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+      document.body.removeChild(ta);
+      msg(ok ? "Copied. Paste it into the chat." : "Copy was blocked. Select your verdicts from the cards and paste them into the chat.", !ok);
+    }
+    try { navigator.clipboard.writeText(t).then(function () { msg("Copied. Paste it into the chat."); }, fallback); } catch (e) { fallback(); }
+  });
+  byId("noteCancel").addEventListener("click", function () { byId("noteBox").hidden = true; noteAnchor = null; });
+  byId("noteSave").addEventListener("click", function () {
+    var text = byId("noteText").value.trim();
+    if (!text || !noteAnchor) { byId("noteMsg").textContent = "Write a note first."; return; }
+    var body = { anchor: noteAnchor, quote: stepTitle(noteAnchor), text: text, createdAt: new Date().toISOString() };
+    if (!db) { state.notes.push(body); renderNotes(); byId("noteBox").hidden = true; msg("Note kept on this page only. Use Copy for Claude."); return; }
+    byId("noteSave").disabled = true;
+    db.collection("notes").add(body).then(function () { byId("noteBox").hidden = true; noteAnchor = null; })
+      .catch(function (e) { byId("noteMsg").textContent = "Not saved: " + (e && e.message ? e.message : "store unavailable"); })
+      .then(function () { byId("noteSave").disabled = false; });
+  });
+
+  drawDiagram(); drawCards(); applyVerdictsToControls(); renderNotes();
+
+  if (window.claude && typeof window.claude.use === "function") {
+    window.claude.use("db").then(function (d) {
+      if (!d) { msg("Saving is not available in this view. Your choices stay on the page; use Copy for Claude."); return; }
+      db = d;
+      db.collection("verdicts").onSnapshot(function (snap) {
+        var next = {};
+        snap.docs.forEach(function (doc) { var b = doc.data(); if (b && IDS.indexOf(doc.id) >= 0) next[doc.id] = { choice: b.choice || null, note: typeof b.note === "string" ? b.note : "" }; });
+        IDS.forEach(function (id) { if (next[id]) state.verdicts[id] = next[id]; });
+        applyVerdictsToControls();
+      }, function () { msg("Lost the connection to saved verdicts. Reload, or use Copy for Claude.", true); });
+      db.collection("notes").onSnapshot(function (snap) {
+        state.notes = snap.docs.map(function (doc) { return doc.data(); }).filter(function (n) { return n && n.text; }); renderNotes();
+      }, function () {});
+      db.doc("brief/state").onSnapshot(function (snap) {
+        var b = snap.exists ? snap.data() : null;
+        state.status = (b && b.round === state.round && (b.status === "submitted" || b.status === "final" || b.status === "draft")) ? b.status : "draft";
+        renderStatus();
+      }, function () {});
+      db.doc("brief/meta").onSnapshot(function (snap) {
+        var b = snap.exists ? snap.data() : null;
+        if (b && typeof b.round === "number" && b.round !== state.round) { state.round = b.round; renderStatus(); }
+      }, function () {});
+    }, function () { msg("Saving is not available in this view. Use Copy for Claude."); });
+  } else {
+    msg("Saving is not available here. Your choices stay on the page; use Copy for Claude.");
+  }
+})();
+</script>
