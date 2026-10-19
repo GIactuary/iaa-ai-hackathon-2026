@@ -181,6 +181,20 @@
       "decision": "None needed. These are the floors for phase 5. The early submission file is for the actuary to upload.",
       "effect": "scripts/phase4_baselines.py, outputs/phase4_baselines.json and decisions/baselines_phase4.md were added. outputs/submissions/baseline_glm_v0.csv was written but kept out of git.",
       "section": "3.5"
+    },
+    {
+      "id": "D13",
+      "stage": "Data overview: corrections found while building it",
+      "role": "Data steward",
+      "proposed_by": "Actuary",
+      "question": "The actuary asked for summary statistics and the relationships in the data: \"my understanding of the data itself is limited, can you tell me what we are working with\".",
+      "ai_answer": "At intake the AI had reported the insurer's 2025 premium per exposure as up 36% to 44% on 2024, and loss ratios of motor 0.91 to 0.61 and buildings 1.17 to 1.05. Both were wrong. Total annual premium had been divided by total exposure, which inflates the test year, since test rows average 0.78 to 0.82 years of exposure against about 1.0 in training. The 2024 loss ratios were also left undeveloped. The wrong premium figure was carried into the plan brief, the register, the spec and the phase 5 brief.",
+      "challenge": "Found by the AI while building the overview the actuary asked for. The actuary did not challenge it.",
+      "test": "Premium rate recomputed as written premium weighted by exposure. Loss ratios recomputed on earned premium with completion-adjusted cost, excluding hold-out customers. Hold-out membership of the 11.9M claim checked (membership only).",
+      "result": "The 2025 premium rate is up 2.6% (motor), 5.6% (buildings) and 5.5% (contents), in line with the fitted trends. Loss ratios: motor 1.05, 1.08, 0.97, 1.00; buildings 1.33, 1.29, 1.32, 1.36; contents 0.84, 0.81, 0.85, 0.84. The 11.9M claim belongs to a hold-out customer, so loads estimated before phase 7 exclude it (motor load about 2.8%, against 5.5% once it enters at the final refit).",
+      "decision": "Figures corrected in competition/brief.md, the register (J1, P9), the spec (open item 6) and the phase 5 brief (C1, C4). Finalized documents and earlier log cards are kept as written.",
+      "effect": "The level check against the market is now a reasonableness check, not a gap to explain. X1's load effect is deferred to the final refit, where the actuary confirms it with both figures.",
+      "section": "3.2"
     }
   ]
 }

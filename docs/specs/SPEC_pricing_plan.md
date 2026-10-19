@@ -85,5 +85,5 @@ Every item below is a constraint the build must meet, in the order the build nee
 3. **Construction codes W and T:** both timber, or one of them something else.
 4. **`days_unoccupied`:** whether it can be used at the point of pricing.
 5. **The form of the weather-year adjustment.** It could be a frequency multiplier per peril from within-address elasticities, or the year's weather as a feature with the year factor held at the experience average. This is a design choice to put to the actuary when built.
-6. **The 2025 level against the insurer's +36% to +44% premium move.** A large gap needs an explanation in the write-up.
+6. **The 2025 level against the insurer's premium move.** Corrected in exchange D13: the move is +2.6% to +5.6%, not +36% to +44%, and is in line with our trends. The comparison stays as a reasonableness check.
 7. **The deadline.** The exact time and the public and private split are not published.

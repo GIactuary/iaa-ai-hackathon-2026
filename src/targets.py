@@ -110,3 +110,11 @@ def row_targets(rows: pd.DataFrame, claims: pd.DataFrame, line: str) -> pd.DataF
     out["cost"] = out.filter(regex="^cost_").sum(axis=1)
     out["n_claims"] = out.filter(regex="^n_").sum(axis=1)
     return out.reset_index()
+
+
+def peril_count_shares(claims: pd.DataFrame) -> dict[str, pd.Series]:
+    """Each peril's share of the line's claim count in 2021-2022: the weights for count completion (frequency)."""
+    c = _non_repudiated(claims)
+    c = c[c["loss_date"].dt.year.isin(SHARE_YEARS)]
+    s = c.groupby(["line", "peril"]).size()
+    return {line: s[line] / s[line].sum() for line in s.index.get_level_values(0).unique()}

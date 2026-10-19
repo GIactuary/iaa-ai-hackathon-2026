@@ -92,16 +92,16 @@ Consequence for J-ext. There is no public source that holds the answers, unlike 
 - **IDs:** row_id, policy_id, customer_id, address_id, claim_id, all read as text. `policy_id` persists across years: 85% of 2025 test policies were in force in 2024 (motor 200,063 of 236,008).
 - **Dates:** period_start, period_end, loss_date, report_date. Rows never cross a calendar year. Validation must hold out the latest periods (rolling-origin by policy year), not random folds; random folds would also let a policy's 2023 row inform its own 2022 row.
 - **Claims to rows:** 99.7% of claims match exactly one row by policy_id and loss date in period; none match two. The 414 unmatched claims are mostly December 2020 losses on policies that start on 2021-01-01 (outside any row's period, so outside the target by definition).
-- **Accident-year picture** (net incurred to premium; 2024 not developed):
+- **Accident-year picture.** Loss ratio = net incurred over earned premium (written premium × exposure), with each row's cost corrected for reporting completion (P10). Claims are uncapped, and the locked hold-out customers are excluded. Corrected on 2026-10-18 (exchange D13): the intake figures divided by annual premium without exposure, and showed 2024 undeveloped. They were motor 0.91, 0.83, 0.81, 0.61; buildings 1.17, 1.07, 1.07, 1.05; contents 0.75, 0.65, 0.67, 0.64.
 
 | Line | 2021 | 2022 | 2023 | 2024 |
 |---|---|---|---|---|
-| Motor | 0.91 | 0.83 | 0.81 | 0.61 |
-| Buildings | 1.17 | 1.07 | 1.07 | 1.05 |
-| Contents | 0.75 | 0.65 | 0.67 | 0.64 |
+| Motor | 1.05 | 1.08 | 0.97 | 1.00 |
+| Buildings | 1.33 | 1.29 | 1.32 | 1.36 |
+| Contents | 0.84 | 0.81 | 0.85 | 0.84 |
 
 - **Development.** Paid to incurred for accident year 2024: motor 0.73, buildings 0.72, contents 0.86. December 2024 motor claims reported: 1,409 against about 2,300 in a normal month. Subsidence claims reported for Nov and Dec 2024: 5 and 7 against about 27 a month. Reporting lag 95th percentile: motor 82 days, buildings 54, contents 33; maximum 1,361 days.
-- **Trend.** Median net severity rises about 6% to 9% a year for most perils (escape of water 3,379 to 4,219 from 2021 to 2024; glass and hail 652 to 835). Written premium per unit of exposure in the test is 36% (motor) to 44% (contents) above 2024: the insurer's own 2025 pricing has moved a long way.
+- **Trend.** Median net severity rises about 6% to 9% a year for most perils (escape of water 3,379 to 4,219 from 2021 to 2024; glass and hail 652 to 835). The insurer's 2025 premium rate (written premium weighted by exposure) is 2.6% (motor) to 5.6% (buildings) above 2024, in line with these trends. Corrected on 2026-10-18 (exchange D13): the intake figure of 36% to 44% divided total annual premium by total exposure, and test rows average 0.78 to 0.82 years of exposure against about 1.0 in training.
 
 ## 7. Leakage paths and inputs known only after the event
 
@@ -129,7 +129,7 @@ Fairness and proxy flags for the rating plan: `surname`, `email_domain`, `market
 
 ## 8. Candidate business story and intended use
 
-**Story.** We are the pricing team of an established insurer writing private motor, home buildings and home contents in one developed market. The current rating plan (`written_premium`) is under review: buildings has run above a 100% loss ratio in every year, motor has improved, and the 2025 price level has already been raised 36% to 44%. We are asked for a technical price: the expected ultimate cost of each 2025 policy row, built so that it can be filed, explained by line and peril, and moved to a new market.
+**Story.** We are the pricing team of an established insurer writing private motor, home buildings and home contents in one developed market. The current rating plan (`written_premium`) is under review: buildings has run at a loss ratio of 1.29 to 1.36 in every year, motor at about 1.0, contents at about 0.84, and the 2025 premium rate is up only 2.6% to 5.6%. We are asked for a technical price: the expected ultimate cost of each 2025 policy row, built so that it can be filed, explained by line and peril, and moved to a new market.
 
 **Intended use (candidate).** The technical risk premium used to (a) set 2025 base rates and relativities per line, (b) measure rate adequacy against the current price, policy by policy, and (c) refer risks the evidence cannot support to an underwriter.
 
