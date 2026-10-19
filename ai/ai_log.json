@@ -111,6 +111,34 @@
       "decision": "Actuary chose (a) on all four, moving J-ext from his round 1 conditional (b) to (a) after the research, and finalized the plan brief on 2026-10-18.",
       "effect": "Plan frozen as docs/specs/SPEC_pricing_plan.md; phase 1 (data rules) starts against it.",
       "section": "2"
+    },
+    {
+      "id": "D8",
+      "stage": "1. Data rules: annual mileage of zero",
+      "role": "Data steward",
+      "proposed_by": "AI",
+      "question": "Is an annual mileage of exactly 0 (11,928 motor training rows, 3,108 test rows) a blank code or a declared value?",
+      "ai_answer": "The modeller read it as a blank code and wrote rule R5 to set it to missing. The evidence was a spike at 0 with the next value at 1,200, and a usage mix identical to the whole book. This was wrong.",
+      "challenge": "Challenged by the data steward subagent, run in a separate context on the actuary's phase 1 instruction, which tested claim frequency by mileage band instead of usage mix.",
+      "test": "Motor claim frequency by mileage band, and the mileage on the same policy's earlier rows.",
+      "result": "Zero-mileage rows claim at 0.101, the lowest of any band, continuing the gradient (1 to 3,000: 0.107; 3,000 to 5,000: 0.109; over 20,000: 0.204). Blank rows claim at 0.137, the book average. Earlier rows of the same policies have median mileage 5,000.",
+      "decision": "R5 withdrawn by the AI before use; zero kept as a value. The phase 1 rules as a whole await the actuary (register P8-R).",
+      "effect": "The rule and its test were removed from src/data_rules.py and replaced by a test that zero survives the rules. decisions/data_rules.md records the first proposal and why it failed.",
+      "section": "3.2"
+    },
+    {
+      "id": "D9",
+      "stage": "1. Data rules: missed payments and the phase 1 decisions",
+      "role": "Appointed actuary",
+      "proposed_by": "Actuary",
+      "question": "Phase 1 rules and the customer snapshot put to the actuary; the actuary asked for a second look at missed payments.",
+      "ai_answer": "Had cleared missed_payments_12m for use on raw evidence (motor frequency 0.137 with none, 0.217 with three or more; same distribution in train and test; above zero only for monthly payers), without testing whether it only stood in for credit band, payment method or driver profile.",
+      "challenge": "Actuary: \"usually the missed payment is used in motor as an indicator to have surcharge or not, can you test ... (just a second pair of eyes)\". Then: \"Do you think missed payments as own factor is not going to reduce the quality of this prediction power?\"",
+      "test": "Within each credit band (monthly payers), frequency with and without a missed payment; a Poisson GLM with controls (payment method, credit band, age, channel, new business, licence points, prior claims, renewal count, and NCB, vehicle value, cover and use for motor or sum insured for property), fitted on 2021 to 2022 and scored on 2023 at a common level; whether a claim in the previous year raises missed payments. Second round: relativities fitted on each year alone; credit-band relativities with and without missed payments; two out-of-time scorings (fit to 2022 score 2023, fit to 2023 score 2024) with a 1,000-draw paired bootstrap by policy.",
+      "result": "Holds inside every credit band (motor 1.14 to 1.23). After controls: motor 1.17, 1.18, 1.24 for one, two, three or more; buildings 1.20 to 1.25; contents 1.12 to 1.36. Out-of-time Poisson D2 rises from 6.68% to 6.72% (motor), 0.77% to 0.83% (buildings), 0.89% to 0.95% (contents). A claim last year barely moves missed payments (18.0% to 19.2% of monthly payers), so it is not an outcome of claims. Second round: deviance falls in all six out-of-time tests, with the 95% interval above zero in five (buildings scored on immature 2024: saved 13, interval -5 to 30). One missed payment is stable at 1.13 to 1.32 in every year and line; the three-or-more level is noisy (0.96 to 1.42, 0.3% of rows). Motor credit band E falls from 1.31 to 1.23 when missed payments enters: shared signal split by the joint fit, not double counting.",
+      "decision": "Actuary: P8-R rules adopted as recommended (flood-zone blank as its own level, service contacts left out), J-cust (a) with years_at_address as given. Missed payments stays a candidate rating variable, to pass the phase 5 drop-one test like any other. Form to be tested in phase 5: any missed payment as a yes/no, or 0, 1, 2 or more.",
+      "effect": "Register P8-R and J-cust decided; missed payments documented as an independent behavioural factor in decisions/data_rules.md.",
+      "section": "3.3"
     }
   ]
 }
