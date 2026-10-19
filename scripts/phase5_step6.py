@@ -179,6 +179,8 @@ def peril_diagnostic(frames: dict, perils: dict) -> dict:
                 for form in FORMS:
                     dev = {st: float(v.tweedie_unit_deviance(y, v.rescale_to_total(d[f"{form}:{st}:{p}"].to_numpy(), y)).sum())
                            for st in PERIL_STRUCTS}
+                    dev["S1"] = float(v.tweedie_unit_deviance(y, v.rescale_to_total(d[f"{form}:S1-L"].to_numpy(), y)).sum())
+                    dev["claims"] = int((y > 0).sum())
                     out.setdefault(ln, {}).setdefault(p, {}).setdefault(form, {})[s] = dev
     return out
 
@@ -198,6 +200,9 @@ def run_tests(fits: dict) -> dict:
         tests[f"{form}|S4-P vs S3-P"] = test(frames, f"{form}:S3-P", f"{form}:S4-P", th)
         tests[f"{form}|S3-P vs S2-P"] = test(frames, f"{form}:S2-P", f"{form}:S3-P", th)
         tests[f"{form}|S2-P vs S4-P"] = test(frames, f"{form}:S4-P", f"{form}:S2-P", th)
+    # Information, added after the A and B frames were seen: the row-level weather of the scored year on S1 (priced
+    # against bare differs only by it, since a per-line off-balance does not move ranking)
+    tests["S1 weather: priced vs bare"] = test(frames, "bare:S1-L", "priced:S1-L", th)
     perils = {l: fits[l]["A"]["perils"] for l in dr.LINES}
     return dict(tests=tests, ranking_d2=ranking_d2(frames), peril_diagnostic=peril_diagnostic(frames, perils))
 
