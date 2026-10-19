@@ -153,6 +153,20 @@
       "decision": "Actuary: \"Accept X1 (a), X2 (a) and X3 (a) as recommended.\" The 11.9M claim stays as a genuine large loss, capped with its excess in the motor load; the repairers' paid claims stay in the target and are reported as a claims finding; no individual referrals, with the impossible-combination flags available to the model and a minimum segment size added to the phase 6 referral rule.",
       "effect": "src/screens.py and tests; decisions/screens_phase2.md; register X1 to X3.",
       "section": "3.2"
+    },
+    {
+      "id": "D11",
+      "stage": "3. Validation design",
+      "role": "Modeller",
+      "proposed_by": "AI",
+      "question": "How should every later choice be validated: hold-out unit and size, scoring years, tuning folds, metric and keep rule?",
+      "ai_answer": "Proposed a 15% hold-out by customer (seed 2026), since 44% of customers hold two or three lines. Two out-of-time scorings: A, fit 2021-2022 and score 2023; B, fit 2021-2023 and score 2024 with predictions scaled by row completion. Customer-grouped inner folds on seeds 11, 22 and 33. Ranking D2 at a common level per line and combined, with the level ratio judged apart. Keep a change only if it is better in both scorings and the 95% customer bootstrap on A is above zero. Proposed dropping the event-week grouping of tuning folds that the spec had listed.",
+      "challenge": "",
+      "test": "Counted customers by lines held and rows by year to size the hold-out. Built the deviance, D2, common-level and customer-bootstrap code with tests (a closed-form check at power 1.5; the bootstrap finds a true gain and passes noise).",
+      "result": "Hold-out locked: 73,227 customers, 361,770 rows (15.02%), even across lines and years; only counts were read. A pre-data test that expected an unset hold-out share was updated to check the agreed value.",
+      "decision": "Actuary agreed the design as proposed: \"15% customer hold-out seed 2026, out-of-time scorings A ... and B ..., 5 customer-grouped inner folds on seeds 11, 22, 33, ranking D2 at a common level plus level ratio, keep rule better in both years with the 95% customer bootstrap on A.\"",
+      "effect": "thresholds.md gained 8 dated rows; decisions/validation_design.md written; hold-out locked; phase 4 (baselines) can start.",
+      "section": "3.4"
     }
   ]
 }

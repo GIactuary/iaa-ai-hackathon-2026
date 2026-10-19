@@ -22,8 +22,9 @@ def test_refuses_undated_open_and_missing(thresholds_path):
 
 
 def test_repo_file_parses():
-    """The real decisions file parses; its thresholds stay unusable until the actuary sets and dates them."""
+    """The real decisions file parses; agreed thresholds read back, and open ones stay unusable until set and dated."""
     t = load_thresholds(DEFAULT_PATH)
-    assert "holdout_share" in t
-    with pytest.raises(ThresholdError):
-        t["holdout_share"]
+    assert t["holdout_share"] == pytest.approx(0.15)
+    assert t["screen_z"] == 4
+    with pytest.raises(ThresholdError, match="still open"):
+        t["refer_disagreement"]

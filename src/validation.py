@@ -215,3 +215,85 @@ def drop_one_verdict(score_with: dict[int, float], score_without: dict[int, floa
     diffs = {s: (score_with[s] - score_without[s]) if greater_is_better else (score_without[s] - score_with[s]) for s in score_with}
     worse = sum(d > 0 for d in diffs.values())
     return dict(keep=worse >= min_seeds_worse, seeds_worse=int(worse), worsening_by_seed={int(s): float(d) for s, d in diffs.items()})
+
+
+# ------------------------------------------------------------------------------------------------ 2026 design
+# Agreed with the actuary on 2026-10-18 (decisions/validation_design.md, exchange D11): two out-of-time scorings,
+# Tweedie deviance at power 1.5 against a constant rate, ranking judged at a common level, level judged apart,
+# and a paired bootstrap that resamples customers.
+
+TWEEDIE_POWER = 1.5
+SCORINGS = {"A": dict(fit_years=(2021, 2022), score_year=2023, completion=False),
+            "B": dict(fit_years=(2021, 2022, 2023), score_year=2024, completion=True)}
+
+
+def tweedie_unit_deviance(y, mu, power: float = TWEEDIE_POWER) -> np.ndarray:
+    """Row-level Tweedie deviance for 1 < power < 2. At 1.5 it equals 4 (sqrt(y) - sqrt(mu))^2 / sqrt(mu)."""
+    y, mu = np.asarray(y, dtype=float), np.asarray(mu, dtype=float)
+    if np.any(mu <= 0):
+        raise ValueError("predictions must be strictly positive under Tweedie deviance")
+    p = power
+    return 2 * (np.power(y, 2 - p) / ((1 - p) * (2 - p)) - y * np.power(mu, 1 - p) / (1 - p) + np.power(mu, 2 - p) / (2 - p))
+
+
+def constant_rate(y, exposure) -> np.ndarray:
+    """The D2 baseline: one rate per unit of exposure, times each row's exposure."""
+    y, e = np.asarray(y, dtype=float), np.asarray(exposure, dtype=float)
+    return np.full(len(y), y.sum() / e.sum()) * e
+
+
+def d2_tweedie(y, mu, exposure, power: float = TWEEDIE_POWER) -> float:
+    """Share of the constant-rate baseline's Tweedie deviance that the predictions remove."""
+    return 1 - tweedie_unit_deviance(y, mu, power).sum() / tweedie_unit_deviance(y, constant_rate(y, exposure), power).sum()
+
+
+def rescale_to_total(pred, y, by=None) -> np.ndarray:
+    """Common level for ranking comparisons: scale predictions so each group's total equals its actual total."""
+    pred, y = np.asarray(pred, dtype=float), np.asarray(y, dtype=float)
+    if by is None:
+        return pred * y.sum() / pred.sum()
+    by = np.asarray(by)
+    out = pred.copy()
+    for g in np.unique(by):
+        m = by == g
+        out[m] = pred[m] * y[m].sum() / pred[m].sum()
+    return out
+
+
+def score_report(y, pred, exposure, line) -> pd.DataFrame:
+    """Per line and combined: ranking D2 at a common level (per line), raw D2, and the level ratio."""
+    y, pred, e, line = (np.asarray(a) for a in (y, pred, exposure, line))
+    common = rescale_to_total(pred, y, by=line)
+    rows = []
+    for name, m in [(g, line == g) for g in np.unique(line)] + [("all", np.ones(len(y), bool))]:
+        rows.append(dict(line=name, rows=int(m.sum()), d2_ranking=d2_tweedie(y[m], common[m], e[m]),
+                         d2_raw=d2_tweedie(y[m], pred[m], e[m]), level_ratio=float(pred[m].sum() / y[m].sum())))
+    return pd.DataFrame(rows).set_index("line")
+
+
+def paired_bootstrap_groups(dev_a, dev_b, groups, n_boot: int = BOOTSTRAP_N, seed: int = BOOTSTRAP_SEED,
+                            ci: float = 0.95) -> dict:
+    """Paired bootstrap of total deviance saved by b over a, resampling groups (customers) with replacement.
+
+    dev_a, dev_b: row-level deviances of two predictions on the same rows. gain > 0 means b is better.
+    """
+    da, db = np.asarray(dev_a, dtype=float), np.asarray(dev_b, dtype=float)
+    if len(da) != len(db) or len(da) != len(groups):
+        raise ValueError("deviances and groups must be the same rows")
+    _, inv = np.unique(np.asarray(groups), return_inverse=True)
+    per_group = np.bincount(inv, weights=da - db)
+    k = len(per_group)
+    rng = np.random.default_rng(seed)
+    draws = np.array([np.bincount(rng.integers(0, k, k), minlength=k) @ per_group for _ in range(n_boot)])
+    a = (1 - ci) / 2
+    return dict(gain=float(per_group.sum()), rel_gain=float(per_group.sum() / da.sum()),
+                lo=float(np.quantile(draws, a)), hi=float(np.quantile(draws, 1 - a)),
+                share_b_better=float(np.mean(draws > 0)), groups=int(k), n_boot=int(n_boot), boot_seed=int(seed))
+
+
+def keep_verdict(gain_by_scoring: dict[str, float], boot_a: dict, min_years_better: int) -> dict:
+    """Keep rule: better in at least `min_years_better` scorings, and scoring A's bootstrap interval above zero."""
+    better = sum(g > 0 for g in gain_by_scoring.values())
+    keep = better >= min_years_better and boot_a["lo"] > 0
+    return dict(keep=bool(keep), scorings_better=int(better), gain_by_scoring={k: float(v) for k, v in gain_by_scoring.items()},
+                a_interval=(boot_a["lo"], boot_a["hi"]))
