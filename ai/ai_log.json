@@ -195,6 +195,20 @@
       "decision": "Figures corrected in competition/brief.md, the register (J1, P9), the spec (open item 6) and the phase 5 brief (C1, C4). Finalized documents and earlier log cards are kept as written.",
       "effect": "The level check against the market is now a reasonableness check, not a gap to explain. X1's load effect is deferred to the final refit, where the actuary confirms it with both figures.",
       "section": "3.2"
+    },
+    {
+      "id": "D14",
+      "stage": "5. Features and model: thresholds",
+      "role": "Appointed actuary",
+      "proposed_by": "AI",
+      "question": "Eight phase 5 calls put to the actuary on a decision brief, each with evidence, alternatives and a recommendation: caps, load form, trend bounds, level band, training power, weather adjustment, claims history, engineered features.",
+      "ai_answer": "Recommended (a) on all eight: caps of 100k, 200k and 30k; a per-peril excess-loss factor in place of the spec's flat load; per-peril trends bounded at -5% to +12% with bodily injury as a step; a +/-3% level band (a 3% miss costs 0.01 to 0.02 D2 points); a power grid; same-address weather multipliers; credibility-weighted history; a reasoned feature list. Several options were costed partly in analyst time or compute.",
+      "challenge": "Actuary, on C8: \"you shouldn't put too much weight on either the coding or the amount of compute because that is pretty much not the constraint here. The constraint is ... still being able to explain ... if you can gain some edge by doing a little bit more test ... we will always do more tests ... as a rule of thumb for your future decision.\"",
+      "test": "",
+      "result": "",
+      "decision": "Actuary chose (a) on all eight and set a standing rule: test as widely as possible within explainability.",
+      "effect": "Nine thresholds dated in thresholds.md (caps, trend bounds, level band, power grid 1.1 to 1.9 in 0.1 steps). The engineered-feature list is widened to every candidate with a risk reason. The rule is saved for future sessions.",
+      "section": "3.6"
     }
   ]
 }

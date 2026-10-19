@@ -42,7 +42,7 @@ Every item below is a constraint the build must meet, in the order the build nee
 - **P1.** Shape and level are set apart. Relativities are fitted with an accident-year factor. As the Monograph 5 check, the GLM is refitted on developed, trended targets with the year factor kept, and any year effect left over is investigated.
 - **P10.** Each row's expected reported share by peril, from its own dates and the peril's delay curve, enters the exposure offset. This is pure IBNR at row level, with amounts handled in aggregate. The curves are re-estimated whenever data changes and backtested at a pseudo-valuation.
 - No claim-level IBNER factor is used, because there is no case-estimate history. Development is checked in aggregate by peril; bodily injury and subsidence are watched most closely.
-- **P4.** Claims are capped at per-line levels written before results. The expected excess over the cap is added back as a load per unit of exposure.
+- **P4.** Claims are capped at per-line levels written before results. Amended by C1 and C2 on 2026-10-19: the caps are 100k (motor), 200k (buildings) and 30k (contents), and the excess returns as a per-peril excess-loss factor on capped cost, not a flat load per unit of exposure.
 
 ## 5. Level
 
