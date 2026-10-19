@@ -52,6 +52,7 @@ def build_all(rebuild: bool = False) -> dict[str, tuple[pd.DataFrame, pd.DataFra
             frames.append(df)
         tr, te = frames
         tr = tr.merge(tg.row_targets(tr, claims, line, cap=_cap(th, line)), on="row_id", how="left")
+        tr["customer_id"] = tr["customer_id"].astype("string")
         ll = list(LARGE_LOSS_PERILS[line])
         perils = sorted(c[5:] for c in tr.columns if c.startswith("cost_"))
         tr["costc_large"] = tr[[f"costc_{p}" for p in ll]].sum(axis=1)
@@ -65,5 +66,25 @@ def build_all(rebuild: bool = False) -> dict[str, tuple[pd.DataFrame, pd.DataFra
     CACHE.mkdir(parents=True, exist_ok=True)
     for line, (tr, te) in out.items():
         tr["holdout"] = ~tr["customer_id"].map(keep).to_numpy()
+        tr["completion"] = line_completion_by_year(tr)
         tr.to_parquet(paths[line][0]); te.to_parquet(paths[line][1])
     return out
+
+
+def line_completion_by_year(tr: pd.DataFrame) -> pd.Series:
+    """Line-level completion weighted by each year's own peril mix (P10 fix, exchange D16).
+
+    Weighting every year by the 2021-2022 peril mix overstated 2024 motor by about 5%: bodily injury, the slowest
+    peril, fell from 42% to 33% of cost after its 2023 severity step. Each year's weights are its perils' shares of
+    completion-adjusted capped cost, estimated on non-hold-out rows only.
+    """
+    perils = sorted(c[6:] for c in tr.columns if c.startswith("costc_") and c not in ("costc_large", "costc_other"))
+    fit = ~tr["holdout"]
+    comp = pd.Series(0.0, index=tr.index)
+    for y in sorted(tr["yr"].unique()):
+        m = (tr["yr"] == y)
+        mf = m & fit
+        ult = {p: tr.loc[mf, f"costc_{p}"].sum() / (tr.loc[mf, "exposure"] * tr.loc[mf, f"completion_{p}"]).sum() for p in perils}
+        tot = sum(ult.values())
+        comp[m] = sum(ult[p] / tot * tr.loc[m, f"completion_{p}"] for p in perils)
+    return comp

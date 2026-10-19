@@ -97,3 +97,38 @@ For 2025:
 2. **Climate normals that include the row's own year let that year's actual weather in.** The damage was ten times larger on A, with two-year normals, than on B, with three-year normals. Rebuilt, the normals still failed, so this was not the only reason.
 3. **The subsidence elasticity was stuck at exactly zero, because its deviation was not standardised.** The bug was found from an implausible number, fixed, and covered by a test.
 4. **The weather multiplier was first judged on ranking, which by design cannot see a level effect.** It was re-judged on level.
+
+## Round 2 (2026-10-19): the actuary's questions on K3 and K4
+
+**K3. The motor gap was a bug, now fixed.**
+- Line completion weighted every year by the 2021-2022 peril mix. Bodily injury, the slowest peril, fell from 42% to 33% of motor cost after its 2023 step, so 2024 motor completion was understated by 4.8% (0.785 against 0.823).
+- With each year's own mix, estimated without the hold-out:
+  - The motor C4 gap falls from −5.3% to −0.7%.
+  - Buildings moves to −1.5% and contents to −2.0%.
+  - On scoring B, motor's level moves from 0.944 to 0.991, and all lines from 0.961 to 0.980.
+- The indication (554.5), a plain projection of 2024 (553.6) and the model's projection (558.2) now agree. The AI's round 1 recommendation (the model projection) is withdrawn.
+- Run: `scripts/phase5_k3k4.py`. Before the fix: `outputs/phase5_k3k4_before_fix.json`; after: `outputs/phase5_k3k4.json`.
+
+**K4. The actuary's weather-normalised experience method.**
+
+Trends change where weather drifted:
+
+| Peril | Frequency trend, raw | Weather-normalised |
+|---|---|---|
+| Subsidence | +13.4% | +6.5% |
+| Storm | +2.1% | +3.6% |
+| Glass | +2.9% | +0.6% |
+| Escape of water | +0.5% | +1.3% |
+
+Level error:
+
+| | Scoring A (2023) | Scoring B (2024) |
+|---|---|---|
+| All lines, raw → normalised | 5.5% → 6.3% | 2.0% → 0.3% |
+| Buildings, raw → normalised | 0.8% → 2.1% | 4.0% → 0.1% |
+
+- Normalising the GLM's relativities adds nothing (−2,381 on A, interval −17,207 to 13,162), so the method applies to level and trends only.
+- 2025 under the method:
+  - Motor 552.3, against 554.5 raw.
+  - Buildings 487.7, against 495.1 raw.
+  - Contents 126.8, unchanged.

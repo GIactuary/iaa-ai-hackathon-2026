@@ -91,3 +91,12 @@ def test_leave_own_year_out_normals():
     out = wx.normals_leave_own_year_out(rows, w, [2021, 2022], (rows["yr"] == 2023).to_numpy())
     assert out["norm_wind_exposure_index"].tolist() == [3.0, 1.0, 2.0]
     assert out["dev_wind_exposure_index"].tolist() == [-2.0, 2.0, 8.0]
+
+
+def test_weather_multiplier_normalises_frequency():
+    df = _rows(freq_growth=0.0, sev_growth=0.0)
+    df["wm_storm"] = np.where(df.yr == 2024, 1.5, 1.0)          # 2024 expected 50% more storm from its weather
+    df.loc[df.yr == 2024, "n_storm"] *= 1.5
+    df.loc[df.yr == 2024, "costc_storm"] *= 1.5
+    t = lv.peril_trends(df, "buildings", -0.05, 0.12)
+    assert abs(t.loc["storm", "freq_2024"] - t.loc["storm", "freq_2021"]) < 0.02

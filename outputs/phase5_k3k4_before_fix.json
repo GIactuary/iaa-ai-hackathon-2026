@@ -1,0 +1,1173 @@
+{
+ "phase5_k3k4": {
+  "by_line": {
+   "motor": {
+    "A": {
+     "balance_by_year": {
+      "2021": 1.0029484875253918,
+      "2022": 0.9965764242998637
+     },
+     "elf": 1.0357766536757347,
+     "indication": 594.9062505734212,
+     "indication_normalised": 591.6697321692632,
+     "empirical_projection": 594.9062505734211,
+     "model_projection": 594.4457435593321,
+     "model_lc_last": 566.106291813531,
+     "actual_capped_lc_last": 568.0364504392533,
+     "line_trend": 0.05006030167058408,
+     "line_trend_normalised": 0.045867157342588644,
+     "gap_model": 0.000774683003585297,
+     "gap_empirical": 2.220446049250313e-16,
+     "gap_normalised": 0.0012709337829235334,
+     "trends": [
+      {
+       "peril": "bodily_injury",
+       "freq_trend_fitted": -0.01509,
+       "freq_trend": -0.01509,
+       "sev_trend_fitted": 0.02506,
+       "sev_trend": 0.02506
+      },
+      {
+       "peril": "glass_hail",
+       "freq_trend_fitted": 0.05227,
+       "freq_trend": 0.05227,
+       "sev_trend_fitted": 0.11748,
+       "sev_trend": 0.11748
+      },
+      {
+       "peril": "own_damage",
+       "freq_trend_fitted": 0.02816,
+       "freq_trend": 0.02816,
+       "sev_trend_fitted": 0.04494,
+       "sev_trend": 0.04494
+      },
+      {
+       "peril": "theft",
+       "freq_trend_fitted": -0.03506,
+       "freq_trend": -0.03506,
+       "sev_trend_fitted": -0.01696,
+       "sev_trend": -0.01696
+      },
+      {
+       "peril": "third_party_prop",
+       "freq_trend_fitted": 0.03238,
+       "freq_trend": 0.03238,
+       "sev_trend_fitted": 0.05902,
+       "sev_trend": 0.05902
+      }
+     ],
+     "trends_normalised": [
+      {
+       "peril": "bodily_injury",
+       "freq_trend_fitted": -0.01509,
+       "freq_trend": -0.01509,
+       "sev_trend_fitted": 0.02506,
+       "sev_trend": 0.02506
+      },
+      {
+       "peril": "glass_hail",
+       "freq_trend_fitted": -0.03393,
+       "freq_trend": -0.03393,
+       "sev_trend_fitted": 0.11748,
+       "sev_trend": 0.11748
+      },
+      {
+       "peril": "own_damage",
+       "freq_trend_fitted": 0.02816,
+       "freq_trend": 0.02816,
+       "sev_trend_fitted": 0.04494,
+       "sev_trend": 0.04494
+      },
+      {
+       "peril": "theft",
+       "freq_trend_fitted": -0.03506,
+       "freq_trend": -0.03506,
+       "sev_trend_fitted": -0.01696,
+       "sev_trend": -0.01696
+      },
+      {
+       "peril": "third_party_prop",
+       "freq_trend_fitted": 0.03238,
+       "freq_trend": 0.03238,
+       "sev_trend_fitted": 0.05902,
+       "sev_trend": 0.05902
+      }
+     ],
+     "elasticities": {
+      "glass_hail": {
+       "variable": "hail_days",
+       "b": 0.07860620400530095
+      }
+     },
+     "year_factor_by_year": {
+      "2021": 0.998967145807563,
+      "2022": 1.0019057916337764,
+      "2023": 1.0014598089418372,
+      "2024": 1.00297441496502
+     }
+    },
+    "B": {
+     "balance_by_year": {
+      "2021": 1.0007723997023243,
+      "2022": 0.9925458407123988,
+      "2023": 1.008524010073275
+     },
+     "elf": 1.0342212071630301,
+     "indication": 542.9461440552599,
+     "indication_normalised": 541.3900157950641,
+     "empirical_projection": 540.0335412021443,
+     "model_projection": 548.6341791011504,
+     "model_lc_last": 533.9264314156528,
+     "actual_capped_lc_last": 529.2138951476167,
+     "line_trend": 0.02754639369791335,
+     "line_trend_normalised": 0.026052567631585553,
+     "gap_model": -0.010367627943285385,
+     "gap_empirical": 0.005393373986793515,
+     "gap_normalised": -0.011177258130725898,
+     "trends": [
+      {
+       "peril": "bodily_injury",
+       "freq_trend_fitted": -0.02128,
+       "freq_trend": -0.02128,
+       "sev_trend_fitted": 0.0,
+       "sev_trend": 0.0
+      },
+      {
+       "peril": "glass_hail",
+       "freq_trend_fitted": 0.04185,
+       "freq_trend": 0.04185,
+       "sev_trend_fitted": 0.09294,
+       "sev_trend": 0.09294
+      },
+      {
+       "peril": "own_damage",
+       "freq_trend_fitted": -0.03028,
+       "freq_trend": -0.03028,
+       "sev_trend_fitted": 0.04651,
+       "sev_trend": 0.04651
+      },
+      {
+       "peril": "theft",
+       "freq_trend_fitted": -0.00796,
+       "freq_trend": -0.00796,
+       "sev_trend_fitted": 0.06409,
+       "sev_trend": 0.06409
+      },
+      {
+       "peril": "third_party_prop",
+       "freq_trend_fitted": -0.01786,
+       "freq_trend": -0.01786,
+       "sev_trend_fitted": 0.07821,
+       "sev_trend": 0.07821
+      }
+     ],
+     "trends_normalised": [
+      {
+       "peril": "bodily_injury",
+       "freq_trend_fitted": -0.02128,
+       "freq_trend": -0.02128,
+       "sev_trend_fitted": 0.0,
+       "sev_trend": 0.0
+      },
+      {
+       "peril": "glass_hail",
+       "freq_trend_fitted": 0.01876,
+       "freq_trend": 0.01876,
+       "sev_trend_fitted": 0.09294,
+       "sev_trend": 0.09294
+      },
+      {
+       "peril": "own_damage",
+       "freq_trend_fitted": -0.03028,
+       "freq_trend": -0.03028,
+       "sev_trend_fitted": 0.04651,
+       "sev_trend": 0.04651
+      },
+      {
+       "peril": "theft",
+       "freq_trend_fitted": -0.00796,
+       "freq_trend": -0.00796,
+       "sev_trend_fitted": 0.06409,
+       "sev_trend": 0.06409
+      },
+      {
+       "peril": "third_party_prop",
+       "freq_trend_fitted": -0.01786,
+       "freq_trend": -0.01786,
+       "sev_trend_fitted": 0.07821,
+       "sev_trend": 0.07821
+      }
+     ],
+     "elasticities": {
+      "glass_hail": {
+       "variable": "hail_days",
+       "b": 0.07562698987841945
+      }
+     },
+     "year_factor_by_year": {
+      "2021": 0.9989273351228292,
+      "2022": 1.0020935799596407,
+      "2023": 1.000688920134306,
+      "2024": 1.0028741757538844
+     }
+    },
+    "final": {
+     "balance_by_year": {
+      "2021": 1.0023391293295814,
+      "2022": 0.9927478656637672,
+      "2023": 1.0080435175322133,
+      "2024": 0.9996178576745083
+     },
+     "elf": 1.0313220733785247,
+     "indication": 554.5478470026492,
+     "indication_normalised": 552.5306748666374,
+     "empirical_projection": 553.6119896839032,
+     "model_projection": 585.7375543939917,
+     "model_lc_last": 571.2818425752547,
+     "actual_capped_lc_last": 569.0286113803323,
+     "line_trend": 0.025303993128107726,
+     "line_trend_normalised": 0.023812616646272468,
+     "gap_model": -0.053248604528373766,
+     "gap_empirical": 0.001690457100252285,
+     "gap_normalised": -0.05332977057131938,
+     "trends": [
+      {
+       "peril": "bodily_injury",
+       "freq_trend_fitted": -0.01751,
+       "freq_trend": -0.01751,
+       "sev_trend_fitted": 0.0,
+       "sev_trend": 0.0
+      },
+      {
+       "peril": "glass_hail",
+       "freq_trend_fitted": 0.02912,
+       "freq_trend": 0.02912,
+       "sev_trend_fitted": 0.08172,
+       "sev_trend": 0.08172
+      },
+      {
+       "peril": "own_damage",
+       "freq_trend_fitted": -0.02911,
+       "freq_trend": -0.02911,
+       "sev_trend_fitted": 0.05429,
+       "sev_trend": 0.05429
+      },
+      {
+       "peril": "theft",
+       "freq_trend_fitted": -0.01245,
+       "freq_trend": -0.01245,
+       "sev_trend_fitted": 0.04069,
+       "sev_trend": 0.04069
+      },
+      {
+       "peril": "third_party_prop",
+       "freq_trend_fitted": -0.025,
+       "freq_trend": -0.025,
+       "sev_trend_fitted": 0.08007,
+       "sev_trend": 0.08007
+      }
+     ],
+     "trends_normalised": [
+      {
+       "peril": "bodily_injury",
+       "freq_trend_fitted": -0.01751,
+       "freq_trend": -0.01751,
+       "sev_trend_fitted": 0.0,
+       "sev_trend": 0.0
+      },
+      {
+       "peril": "glass_hail",
+       "freq_trend_fitted": 0.00634,
+       "freq_trend": 0.00634,
+       "sev_trend_fitted": 0.08172,
+       "sev_trend": 0.08172
+      },
+      {
+       "peril": "own_damage",
+       "freq_trend_fitted": -0.02911,
+       "freq_trend": -0.02911,
+       "sev_trend_fitted": 0.05429,
+       "sev_trend": 0.05429
+      },
+      {
+       "peril": "theft",
+       "freq_trend_fitted": -0.01245,
+       "freq_trend": -0.01245,
+       "sev_trend_fitted": 0.04069,
+       "sev_trend": 0.04069
+      },
+      {
+       "peril": "third_party_prop",
+       "freq_trend_fitted": -0.025,
+       "freq_trend": -0.025,
+       "sev_trend_fitted": 0.08007,
+       "sev_trend": 0.08007
+      }
+     ],
+     "elasticities": {
+      "glass_hail": {
+       "variable": "hail_days",
+       "b": 0.07722077943260115
+      }
+     },
+     "year_factor_by_year": {
+      "2021": 0.9984898484862302,
+      "2022": 1.0019438910265008,
+      "2023": 1.0004393337283257,
+      "2024": 1.0021328355860808
+     },
+     "year_factor_2025": 0.9996312620756347
+    }
+   },
+   "buildings": {
+    "A": {
+     "balance_by_year": {
+      "2021": 0.9869043573140621,
+      "2022": 1.0098536765901047
+     },
+     "elf": 1.020618919703103,
+     "indication": 418.587115222894,
+     "indication_normalised": 428.8512866379978,
+     "empirical_projection": 418.31729630589075,
+     "model_projection": 423.23385045889677,
+     "model_lc_last": 404.0214429237428,
+     "actual_capped_lc_last": 400.0791919557801,
+     "line_trend": 0.047552940250203984,
+     "line_trend_normalised": 0.06635769099374664,
+     "gap_model": -0.01097912000886625,
+     "gap_empirical": 0.0006450101857751189,
+     "gap_normalised": -0.01159453109893771,
+     "trends": [
+      {
+       "peril": "accidental_damage",
+       "freq_trend_fitted": 0.09197,
+       "freq_trend": 0.09197,
+       "sev_trend_fitted": 0.05688,
+       "sev_trend": 0.05688
+      },
+      {
+       "peril": "escape_of_water",
+       "freq_trend_fitted": -0.04128,
+       "freq_trend": -0.04128,
+       "sev_trend_fitted": 0.04064,
+       "sev_trend": 0.04064
+      },
+      {
+       "peril": "fire",
+       "freq_trend_fitted": 0.10359,
+       "freq_trend": 0.10359,
+       "sev_trend_fitted": -0.05547,
+       "sev_trend": -0.05
+      },
+      {
+       "peril": "flood",
+       "freq_trend_fitted": -0.01094,
+       "freq_trend": -0.01094,
+       "sev_trend_fitted": 0.03333,
+       "sev_trend": 0.03333
+      },
+      {
+       "peril": "storm",
+       "freq_trend_fitted": 0.03623,
+       "freq_trend": 0.03623,
+       "sev_trend_fitted": 0.04106,
+       "sev_trend": 0.04106
+      },
+      {
+       "peril": "subsidence",
+       "freq_trend_fitted": 0.10045,
+       "freq_trend": 0.10045,
+       "sev_trend_fitted": 0.03194,
+       "sev_trend": 0.03194
+      }
+     ],
+     "trends_normalised": [
+      {
+       "peril": "accidental_damage",
+       "freq_trend_fitted": 0.09197,
+       "freq_trend": 0.09197,
+       "sev_trend_fitted": 0.05688,
+       "sev_trend": 0.05688
+      },
+      {
+       "peril": "escape_of_water",
+       "freq_trend_fitted": 0.0245,
+       "freq_trend": 0.0245,
+       "sev_trend_fitted": 0.04064,
+       "sev_trend": 0.04064
+      },
+      {
+       "peril": "fire",
+       "freq_trend_fitted": 0.10359,
+       "freq_trend": 0.10359,
+       "sev_trend_fitted": -0.05547,
+       "sev_trend": -0.05
+      },
+      {
+       "peril": "flood",
+       "freq_trend_fitted": -0.01094,
+       "freq_trend": -0.01094,
+       "sev_trend_fitted": 0.03333,
+       "sev_trend": 0.03333
+      },
+      {
+       "peril": "storm",
+       "freq_trend_fitted": 0.04732,
+       "freq_trend": 0.04732,
+       "sev_trend_fitted": 0.04106,
+       "sev_trend": 0.04106
+      },
+      {
+       "peril": "subsidence",
+       "freq_trend_fitted": 0.14279,
+       "freq_trend": 0.12,
+       "sev_trend_fitted": 0.03194,
+       "sev_trend": 0.03194
+      }
+     ],
+     "elasticities": {
+      "storm": {
+       "variable": "wind_exposure_index",
+       "b": 0.11245654607480347
+      },
+      "subsidence": {
+       "variable": "dry_summer_index",
+       "b": 1.6162431647255808
+      },
+      "escape_of_water": {
+       "variable": "freezing_days",
+       "b": 0.01546454876783316
+      }
+     },
+     "year_factor_by_year": {
+      "2021": 1.013428291895011,
+      "2022": 0.9928114828863944,
+      "2023": 1.0040621212008702,
+      "2024": 1.0280764002211
+     }
+    },
+    "B": {
+     "balance_by_year": {
+      "2021": 0.9882428109988225,
+      "2022": 1.0126007658832246,
+      "2023": 0.9896293189909234
+     },
+     "elf": 1.019373127701997,
+     "indication": 449.54905553879684,
+     "indication_normalised": 455.8475926441424,
+     "empirical_projection": 453.2206985585391,
+     "model_projection": 449.2804416523587,
+     "model_lc_last": 424.10341165756756,
+     "actual_capped_lc_last": 428.5460504711675,
+     "line_trend": 0.05936530879671346,
+     "line_trend_normalised": 0.07014339663295865,
+     "gap_model": 0.0005978757620745956,
+     "gap_empirical": -0.008101225366405007,
+     "gap_normalised": 0.00756428537604803,
+     "trends": [
+      {
+       "peril": "accidental_damage",
+       "freq_trend_fitted": 0.03276,
+       "freq_trend": 0.03276,
+       "sev_trend_fitted": -0.01446,
+       "sev_trend": -0.01446
+      },
+      {
+       "peril": "escape_of_water",
+       "freq_trend_fitted": -0.02945,
+       "freq_trend": -0.02945,
+       "sev_trend_fitted": 0.08795,
+       "sev_trend": 0.08795
+      },
+      {
+       "peril": "fire",
+       "freq_trend_fitted": 0.04732,
+       "freq_trend": 0.04732,
+       "sev_trend_fitted": -0.04496,
+       "sev_trend": -0.04496
+      },
+      {
+       "peril": "flood",
+       "freq_trend_fitted": -0.04888,
+       "freq_trend": -0.04888,
+       "sev_trend_fitted": 0.08179,
+       "sev_trend": 0.08179
+      },
+      {
+       "peril": "storm",
+       "freq_trend_fitted": 0.0549,
+       "freq_trend": 0.0549,
+       "sev_trend_fitted": 0.08945,
+       "sev_trend": 0.08945
+      },
+      {
+       "peril": "subsidence",
+       "freq_trend_fitted": 0.14541,
+       "freq_trend": 0.12,
+       "sev_trend_fitted": 0.00808,
+       "sev_trend": 0.00808
+      }
+     ],
+     "trends_normalised": [
+      {
+       "peril": "accidental_damage",
+       "freq_trend_fitted": 0.03276,
+       "freq_trend": 0.03276,
+       "sev_trend_fitted": -0.01446,
+       "sev_trend": -0.01446
+      },
+      {
+       "peril": "escape_of_water",
+       "freq_trend_fitted": 0.01079,
+       "freq_trend": 0.01079,
+       "sev_trend_fitted": 0.08795,
+       "sev_trend": 0.08795
+      },
+      {
+       "peril": "fire",
+       "freq_trend_fitted": 0.04732,
+       "freq_trend": 0.04732,
+       "sev_trend_fitted": -0.04496,
+       "sev_trend": -0.04496
+      },
+      {
+       "peril": "flood",
+       "freq_trend_fitted": -0.04888,
+       "freq_trend": -0.04888,
+       "sev_trend_fitted": 0.08179,
+       "sev_trend": 0.08179
+      },
+      {
+       "peril": "storm",
+       "freq_trend_fitted": 0.08444,
+       "freq_trend": 0.08444,
+       "sev_trend_fitted": 0.08945,
+       "sev_trend": 0.08945
+      },
+      {
+       "peril": "subsidence",
+       "freq_trend_fitted": 0.08863,
+       "freq_trend": 0.08863,
+       "sev_trend_fitted": 0.00808,
+       "sev_trend": 0.00808
+      }
+     ],
+     "elasticities": {
+      "storm": {
+       "variable": "wind_exposure_index",
+       "b": 0.2660025415337079
+      },
+      "subsidence": {
+       "variable": "dry_summer_index",
+       "b": 1.8140878182540656
+      },
+      "escape_of_water": {
+       "variable": "freezing_days",
+       "b": 0.012521473849112476
+      }
+     },
+     "year_factor_by_year": {
+      "2021": 1.0159559161454925,
+      "2022": 0.995661094070761,
+      "2023": 1.0034453394548288,
+      "2024": 1.0283993094948045
+     }
+    },
+    "final": {
+     "balance_by_year": {
+      "2021": 0.9885206362856456,
+      "2022": 1.0109053503680336,
+      "2023": 0.9882207931467721,
+      "2024": 0.9978754909645132
+     },
+     "elf": 1.0222030964793336,
+     "indication": 495.0869952086056,
+     "indication_normalised": 487.40332884583916,
+     "empirical_projection": 502.2684747183546,
+     "model_projection": 495.1695911791036,
+     "model_lc_last": 460.33651903308015,
+     "actual_capped_lc_last": 461.19805573589434,
+     "line_trend": 0.07566871344291572,
+     "line_trend_normalised": 0.06883517157180613,
+     "gap_model": -0.0001668033982081818,
+     "gap_empirical": -0.014298089311251316,
+     "gap_normalised": 0.009670861340176806,
+     "trends": [
+      {
+       "peril": "accidental_damage",
+       "freq_trend_fitted": 0.03068,
+       "freq_trend": 0.03068,
+       "sev_trend_fitted": 0.01014,
+       "sev_trend": 0.01014
+      },
+      {
+       "peril": "escape_of_water",
+       "freq_trend_fitted": 0.00467,
+       "freq_trend": 0.00467,
+       "sev_trend_fitted": 0.08752,
+       "sev_trend": 0.08752
+      },
+      {
+       "peril": "fire",
+       "freq_trend_fitted": 0.04667,
+       "freq_trend": 0.04667,
+       "sev_trend_fitted": -0.03889,
+       "sev_trend": -0.03889
+      },
+      {
+       "peril": "flood",
+       "freq_trend_fitted": -0.04385,
+       "freq_trend": -0.04385,
+       "sev_trend_fitted": 0.07352,
+       "sev_trend": 0.07352
+      },
+      {
+       "peril": "storm",
+       "freq_trend_fitted": 0.02101,
+       "freq_trend": 0.02101,
+       "sev_trend_fitted": 0.08437,
+       "sev_trend": 0.08437
+      },
+      {
+       "peril": "subsidence",
+       "freq_trend_fitted": 0.13433,
+       "freq_trend": 0.12,
+       "sev_trend_fitted": 0.05438,
+       "sev_trend": 0.05438
+      }
+     ],
+     "trends_normalised": [
+      {
+       "peril": "accidental_damage",
+       "freq_trend_fitted": 0.03068,
+       "freq_trend": 0.03068,
+       "sev_trend_fitted": 0.01014,
+       "sev_trend": 0.01014
+      },
+      {
+       "peril": "escape_of_water",
+       "freq_trend_fitted": 0.01268,
+       "freq_trend": 0.01268,
+       "sev_trend_fitted": 0.08752,
+       "sev_trend": 0.08752
+      },
+      {
+       "peril": "fire",
+       "freq_trend_fitted": 0.04667,
+       "freq_trend": 0.04667,
+       "sev_trend_fitted": -0.03889,
+       "sev_trend": -0.03889
+      },
+      {
+       "peril": "flood",
+       "freq_trend_fitted": -0.04385,
+       "freq_trend": -0.04385,
+       "sev_trend_fitted": 0.07352,
+       "sev_trend": 0.07352
+      },
+      {
+       "peril": "storm",
+       "freq_trend_fitted": 0.03574,
+       "freq_trend": 0.03574,
+       "sev_trend_fitted": 0.08437,
+       "sev_trend": 0.08437
+      },
+      {
+       "peril": "subsidence",
+       "freq_trend_fitted": 0.06483,
+       "freq_trend": 0.06483,
+       "sev_trend_fitted": 0.05438,
+       "sev_trend": 0.05438
+      }
+     ],
+     "elasticities": {
+      "storm": {
+       "variable": "wind_exposure_index",
+       "b": 0.16187162660795446
+      },
+      "subsidence": {
+       "variable": "dry_summer_index",
+       "b": 1.8098027106886279
+      },
+      "escape_of_water": {
+       "variable": "freezing_days",
+       "b": 0.010943623995848336
+      }
+     },
+     "year_factor_by_year": {
+      "2021": 1.0080277681939727,
+      "2022": 0.9904321815213877,
+      "2023": 0.9988484403400314,
+      "2024": 1.0198367060322557
+     },
+     "year_factor_2025": 1.0006322127157812
+    }
+   },
+   "contents": {
+    "A": {
+     "balance_by_year": {
+      "2021": 0.9907047757148295,
+      "2022": 1.0077510286049034
+     },
+     "elf": 1.0117805495688275,
+     "indication": 107.41315527249856,
+     "indication_normalised": 108.0066022971308,
+     "empirical_projection": 107.4131552724986,
+     "model_projection": 108.61673207333186,
+     "model_lc_last": 106.27788614958887,
+     "actual_capped_lc_last": 105.46045911430762,
+     "line_trend": 0.022006891635490446,
+     "line_trend_normalised": 0.02620404261747763,
+     "gap_model": -0.011080952058295401,
+     "gap_empirical": -4.440892098500626e-16,
+     "gap_normalised": -0.011336809605432041,
+     "trends": [
+      {
+       "peril": "accidental_damage",
+       "freq_trend_fitted": -0.03903,
+       "freq_trend": -0.03903,
+       "sev_trend_fitted": -0.01272,
+       "sev_trend": -0.01272
+      },
+      {
+       "peril": "escape_of_water",
+       "freq_trend_fitted": 0.01916,
+       "freq_trend": 0.01916,
+       "sev_trend_fitted": 0.04205,
+       "sev_trend": 0.04205
+      },
+      {
+       "peril": "flood",
+       "freq_trend_fitted": -0.04762,
+       "freq_trend": -0.04762,
+       "sev_trend_fitted": -0.0256,
+       "sev_trend": -0.0256
+      },
+      {
+       "peril": "theft",
+       "freq_trend_fitted": 0.06682,
+       "freq_trend": 0.06682,
+       "sev_trend_fitted": -0.00664,
+       "sev_trend": -0.00664
+      }
+     ],
+     "trends_normalised": [
+      {
+       "peril": "accidental_damage",
+       "freq_trend_fitted": -0.03903,
+       "freq_trend": -0.03903,
+       "sev_trend_fitted": -0.01272,
+       "sev_trend": -0.01272
+      },
+      {
+       "peril": "escape_of_water",
+       "freq_trend_fitted": 0.03425,
+       "freq_trend": 0.03425,
+       "sev_trend_fitted": 0.04205,
+       "sev_trend": 0.04205
+      },
+      {
+       "peril": "flood",
+       "freq_trend_fitted": -0.04762,
+       "freq_trend": -0.04762,
+       "sev_trend_fitted": -0.0256,
+       "sev_trend": -0.0256
+      },
+      {
+       "peril": "theft",
+       "freq_trend_fitted": 0.06682,
+       "freq_trend": 0.06682,
+       "sev_trend_fitted": -0.00664,
+       "sev_trend": -0.00664
+      }
+     ],
+     "elasticities": {
+      "escape_of_water": {
+       "variable": "freezing_days",
+       "b": 0.0034126883686112558
+      }
+     },
+     "year_factor_by_year": {
+      "2021": 1.0017249280624818,
+      "2022": 0.9983263310238238,
+      "2023": 0.9966341330478499,
+      "2024": 1.000385641663547
+     }
+    },
+    "B": {
+     "balance_by_year": {
+      "2021": 0.9907216346964484,
+      "2022": 1.0046690074117994,
+      "2023": 1.025975312147432
+     },
+     "elf": 1.0151700378174122,
+     "indication": 120.03936443717117,
+     "indication_normalised": 121.71809552307295,
+     "empirical_projection": 121.46387830508321,
+     "model_projection": 124.63183302506802,
+     "model_lc_last": 118.21863836044714,
+     "actual_capped_lc_last": 115.22421712931298,
+     "line_trend": 0.05424859187657992,
+     "line_trend_normalised": 0.061686261863659934,
+     "gap_model": -0.03684827925922529,
+     "gap_empirical": -0.01172788064887953,
+     "gap_normalised": -0.03626096137110735,
+     "trends": [
+      {
+       "peril": "accidental_damage",
+       "freq_trend_fitted": 0.01328,
+       "freq_trend": 0.01328,
+       "sev_trend_fitted": 0.01098,
+       "sev_trend": 0.01098
+      },
+      {
+       "peril": "escape_of_water",
+       "freq_trend_fitted": 0.00602,
+       "freq_trend": 0.00602,
+       "sev_trend_fitted": 0.03285,
+       "sev_trend": 0.03285
+      },
+      {
+       "peril": "flood",
+       "freq_trend_fitted": 0.03544,
+       "freq_trend": 0.03544,
+       "sev_trend_fitted": 0.03181,
+       "sev_trend": 0.03181
+      },
+      {
+       "peril": "theft",
+       "freq_trend_fitted": 0.03404,
+       "freq_trend": 0.03404,
+       "sev_trend_fitted": 0.02638,
+       "sev_trend": 0.02638
+      }
+     ],
+     "trends_normalised": [
+      {
+       "peril": "accidental_damage",
+       "freq_trend_fitted": 0.01328,
+       "freq_trend": 0.01328,
+       "sev_trend_fitted": 0.01098,
+       "sev_trend": 0.01098
+      },
+      {
+       "peril": "escape_of_water",
+       "freq_trend_fitted": 0.03768,
+       "freq_trend": 0.03768,
+       "sev_trend_fitted": 0.03285,
+       "sev_trend": 0.03285
+      },
+      {
+       "peril": "flood",
+       "freq_trend_fitted": 0.03544,
+       "freq_trend": 0.03544,
+       "sev_trend_fitted": 0.03181,
+       "sev_trend": 0.03181
+      },
+      {
+       "peril": "theft",
+       "freq_trend_fitted": 0.03404,
+       "freq_trend": 0.03404,
+       "sev_trend_fitted": 0.02638,
+       "sev_trend": 0.02638
+      }
+     ],
+     "elasticities": {
+      "escape_of_water": {
+       "variable": "freezing_days",
+       "b": 0.009506098826239333
+      }
+     },
+     "year_factor_by_year": {
+      "2021": 1.0082438374414058,
+      "2022": 0.9987721304341839,
+      "2023": 0.9941054631571694,
+      "2024": 1.004722423256461
+     }
+    },
+    "final": {
+     "balance_by_year": {
+      "2021": 0.9865027526135934,
+      "2022": 1.0035889892075238,
+      "2023": 1.0249295359539843,
+      "2024": 1.0198656577852094
+     },
+     "elf": 1.0179848606621604,
+     "indication": 126.75146986959842,
+     "indication_normalised": 127.1850906398218,
+     "empirical_projection": 126.75338035476614,
+     "model_projection": 129.40304334657748,
+     "model_lc_last": 122.57383244957434,
+     "actual_capped_lc_last": 120.1782361403704,
+     "line_trend": 0.055715080131908505,
+     "line_trend_normalised": 0.05723047621306487,
+     "gap_model": -0.0204908123364409,
+     "gap_empirical": -1.5072459309317665e-05,
+     "gap_normalised": -0.01538692883065329,
+     "trends": [
+      {
+       "peril": "accidental_damage",
+       "freq_trend_fitted": 0.01167,
+       "freq_trend": 0.01167,
+       "sev_trend_fitted": 0.02186,
+       "sev_trend": 0.02186
+      },
+      {
+       "peril": "escape_of_water",
+       "freq_trend_fitted": 0.02063,
+       "freq_trend": 0.02063,
+       "sev_trend_fitted": 0.02637,
+       "sev_trend": 0.02637
+      },
+      {
+       "peril": "flood",
+       "freq_trend_fitted": -0.01352,
+       "freq_trend": -0.01352,
+       "sev_trend_fitted": 0.03875,
+       "sev_trend": 0.03875
+      },
+      {
+       "peril": "theft",
+       "freq_trend_fitted": 0.03217,
+       "freq_trend": 0.03217,
+       "sev_trend_fitted": 0.04631,
+       "sev_trend": 0.04631
+      }
+     ],
+     "trends_normalised": [
+      {
+       "peril": "accidental_damage",
+       "freq_trend_fitted": 0.01167,
+       "freq_trend": 0.01167,
+       "sev_trend_fitted": 0.02186,
+       "sev_trend": 0.02186
+      },
+      {
+       "peril": "escape_of_water",
+       "freq_trend_fitted": 0.02722,
+       "freq_trend": 0.02722,
+       "sev_trend_fitted": 0.02637,
+       "sev_trend": 0.02637
+      },
+      {
+       "peril": "flood",
+       "freq_trend_fitted": -0.01352,
+       "freq_trend": -0.01352,
+       "sev_trend_fitted": 0.03875,
+       "sev_trend": 0.03875
+      },
+      {
+       "peril": "theft",
+       "freq_trend_fitted": 0.03217,
+       "freq_trend": 0.03217,
+       "sev_trend_fitted": 0.04631,
+       "sev_trend": 0.04631
+      }
+     ],
+     "elasticities": {
+      "escape_of_water": {
+       "variable": "freezing_days",
+       "b": 0.008998601472644766
+      }
+     },
+     "year_factor_by_year": {
+      "2021": 1.006794510773932,
+      "2022": 0.9979636651674911,
+      "2023": 0.9935999673582477,
+      "2024": 1.0031446184006276
+     },
+     "year_factor_2025": 0.9971956852496049
+    }
+   }
+  },
+  "levels": {
+   "A": {
+    "buildings": {
+     "L_model": 1.0031914145936767,
+     "L_ind": 0.9921772556609884,
+     "L_emp": 0.9915377037424943,
+     "L_ind_n": 1.020775045862568
+    },
+    "contents": {
+     "L_model": 0.9470422386019847,
+     "L_ind": 0.9365481089588553,
+     "L_emp": 0.9365481089588557,
+     "L_ind_n": 0.9382031724775977
+    },
+    "motor": {
+     "L_model": 1.1067329887894573,
+     "L_ind": 1.1075903560253797,
+     "L_emp": 1.1075903560253795,
+     "L_ind_n": 1.1029180718781144
+    },
+    "all": {
+     "L_model": 1.0561207287956773,
+     "L_ind": 1.0518234588726092,
+     "L_emp": 1.0516027444857488,
+     "L_ind_n": 1.059222491687596
+    }
+   },
+   "B": {
+    "buildings": {
+     "L_model": 0.9738479423402223,
+     "L_ind": 0.9744301824208937,
+     "L_emp": 0.9823887349602242,
+     "L_ind_n": 1.0154513933691292
+    },
+    "contents": {
+     "L_model": 1.0329137527345165,
+     "L_ind": 0.9948526583230606,
+     "L_emp": 1.006658630596865,
+     "L_ind_n": 1.0144754882938998
+    },
+    "motor": {
+     "L_model": 0.954326256871774,
+     "L_ind": 0.9444321573040193,
+     "L_emp": 0.9393658062007728,
+     "L_ind_n": 0.9444338487501608
+    },
+    "all": {
+     "L_model": 0.9696962101786619,
+     "L_ind": 0.9608946155287005,
+     "L_emp": 0.9624654624358319,
+     "L_ind_n": 0.9783894373112266
+    }
+   }
+  },
+  "ranking": {
+   "A": {
+    "motor": {
+     "gain": 254.93004974243303,
+     "boot": {
+      "gain": 254.9300497424324,
+      "rel_gain": 1.0474405949135132e-05,
+      "lo": -2479.085218060755,
+      "hi": 2943.3173634885898,
+      "share_b_better": 0.5795,
+      "groups": 200376,
+      "n_boot": 2000,
+      "boot_seed": 0
+     }
+    },
+    "buildings": {
+     "gain": -2924.3051744068616,
+     "boot": {
+      "gain": -2924.3051744068616,
+      "rel_gain": -0.00016191421488026108,
+      "lo": -17552.63859292029,
+      "hi": 12269.432675719412,
+      "share_b_better": 0.357,
+      "groups": 150454,
+      "n_boot": 2000,
+      "boot_seed": 0
+     }
+    },
+    "contents": {
+     "gain": 288.4138684821497,
+     "boot": {
+      "gain": 288.41386848214967,
+      "rel_gain": 2.9828466092049765e-05,
+      "lo": -781.6714717076426,
+      "hi": 1335.997015310105,
+      "share_b_better": 0.677,
+      "groups": 150626,
+      "n_boot": 2000,
+      "boot_seed": 0
+     }
+    },
+    "all": {
+     "gain": -2380.9612561822796,
+     "boot": {
+      "gain": -2380.961256182283,
+      "rel_gain": -4.5727663985212594e-05,
+      "lo": -17207.039428439257,
+      "hi": 13161.788334506282,
+      "share_b_better": 0.375,
+      "groups": 317735,
+      "n_boot": 2000,
+      "boot_seed": 0
+     }
+    }
+   },
+   "B": {
+    "motor": {
+     "gain": -377.95935949095986
+    },
+    "buildings": {
+     "gain": -9144.250015161622
+    },
+    "contents": {
+     "gain": -1727.973562337765
+    },
+    "all": {
+     "gain": -11250.182936990352
+    }
+   }
+  },
+  "verdict": {
+   "motor": {
+    "keep": false,
+    "scorings_better": 1,
+    "gain_by_scoring": {
+     "A": 254.93004974243303,
+     "B": -377.95935949095986
+    },
+    "a_interval": [
+     -2479.085218060755,
+     2943.3173634885898
+    ]
+   },
+   "buildings": {
+    "keep": false,
+    "scorings_better": 0,
+    "gain_by_scoring": {
+     "A": -2924.3051744068616,
+     "B": -9144.250015161622
+    },
+    "a_interval": [
+     -17552.63859292029,
+     12269.432675719412
+    ]
+   },
+   "contents": {
+    "keep": false,
+    "scorings_better": 1,
+    "gain_by_scoring": {
+     "A": 288.4138684821497,
+     "B": -1727.973562337765
+    },
+    "a_interval": [
+     -781.6714717076426,
+     1335.997015310105
+    ]
+   },
+   "all": {
+    "keep": false,
+    "scorings_better": 0,
+    "gain_by_scoring": {
+     "A": -2380.9612561822796,
+     "B": -11250.182936990352
+    },
+    "a_interval": [
+     -17207.039428439257,
+     13161.788334506282
+    ]
+   }
+  }
+ },
+ "meta": {
+  "created": "2026-10-19T10:01:55",
+  "git_commit": "4a4d3cf",
+  "seeds": null,
+  "versions": {
+   "python": "3.14.5",
+   "numpy": "2.5.3",
+   "pandas": "3.0.5",
+   "scipy": "1.18.1",
+   "sklearn": "1.9.1",
+   "lightgbm": "4.7.0",
+   "xgboost": "3.4.1",
+   "catboost": "1.2.10"
+  }
+ }
+}

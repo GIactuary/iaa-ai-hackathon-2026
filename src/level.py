@@ -20,6 +20,13 @@ def perils_of(df: pd.DataFrame) -> list[str]:
     return sorted(c[6:] for c in df.columns if c.startswith("costc_") and c not in ("costc_large", "costc_other"))
 
 
+def _ec(df: pd.DataFrame, p: str) -> pd.Series:
+    """Completed exposure for a peril; times the row's weather multiplier for that peril where one is given
+    (column wm_<peril>), so frequency reads at normal weather (weather-normalised experience, K4)."""
+    ec = df["exposure"] * df[f"completion_{p}"]
+    return ec * df[f"wm_{p}"] if f"wm_{p}" in df.columns else ec
+
+
 def excess_factors(df: pd.DataFrame, groups: dict[str, tuple]) -> dict:
     """Per peril and per group: uncapped cost over capped cost on the given rows."""
     per = {p: float(df[f"cost_{p}"].sum() / max(df[f"costc_{p}"].sum(), 1e-9)) for p in perils_of(df)}
@@ -40,7 +47,7 @@ def peril_trends(df: pd.DataFrame, line: str, lo: float, hi: float) -> pd.DataFr
     rows = []
     years = sorted(df["yr"].unique())
     for p in perils_of(df):
-        ec = (df["exposure"] * df[f"completion_{p}"]).groupby(df["yr"]).sum()
+        ec = _ec(df, p).groupby(df["yr"]).sum()
         n = df[f"n_{p}"].groupby(df["yr"]).sum()
         c = df[f"costc_{p}"].groupby(df["yr"]).sum()
         freq, sev = n / ec, c / n.clip(lower=1)
@@ -65,7 +72,7 @@ def indication(df: pd.DataFrame, trends: pd.DataFrame, target_year: int) -> pd.D
     expo = df["exposure"].groupby(df["yr"]).sum()
     out = {}
     for p, t in trends.iterrows():
-        ec = (df["exposure"] * df[f"completion_{p}"]).groupby(df["yr"]).sum()
+        ec = _ec(df, p).groupby(df["yr"]).sum()
         n = df[f"n_{p}"].groupby(df["yr"]).sum()
         c = df[f"costc_{p}"].groupby(df["yr"]).sum()
         lc = []
