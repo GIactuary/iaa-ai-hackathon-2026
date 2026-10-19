@@ -98,3 +98,18 @@ Evidence: `decisions/phase5_checkin1.md`, `outputs/phase5_steps123*.json` and `o
 - **Data.** UK-like but stylised. No external data (J-ext).
 - **Customers table.** It is a 2025 snapshot; J-cust says use it as given.
 - **Claims-handling finding.** Three repairers (RP0733, RP0901, RP0417) show a fraud or repair-inflation pattern. Their claims stay in the target (X2).
+
+## Update after check-in 2 (2026-10-19, commit 80e4a3a)
+
+- **Steps 4 and 5 are done and decided** (L1 to L8, all (a); D17 to D19).
+  - Working base W2: `decisions/phase5_checkin2.md`, last section.
+  - Check-in 2 page: https://claude.ai/artifact/8tRL6guGbPhmu7dM4CQ3ZG.
+- **Claims history.**
+  - `src/history.py` builds point-in-time A and E per scope.
+  - k is the Poisson-gamma moment estimate (`k_poisson_gamma` in `data/work/phase5_step4/k.json`; run with `P5_K=pg`). The non-parametric estimate failed twice (D17, D18): do not use it at these claim frequencies.
+  - The GLM takes numeric terms now (`glm.TweedieGLM`, float columns).
+- **Caveat for the final refit.** History for hold-out customers' 2025 rows is empty until phase 7. Rebuild the history on all customers at the final refit.
+- **Next: step 6.**
+  - Tweedie per line against frequency × severity per peril, on W2, with the per-peril excess factor retested.
+  - Step 7 carries these extra candidates: customer, address and repudiation history; years licensed; property voluntary excess; the flood measures.
+  - Motor step 5 fits were slow, about 2 hours for 24 candidates. Budget for it.
