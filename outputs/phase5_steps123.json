@@ -1,0 +1,5290 @@
+{
+ "phase5_steps123": {
+  "by_line": {
+   "motor": {
+    "A": {
+     "excess_factor_line": 1.0357766536757347,
+     "excess_factors": {
+      "peril": {
+       "bodily_injury": 1.0883924212148466,
+       "glass_hail": 1.0,
+       "own_damage": 1.0,
+       "theft": 1.0,
+       "third_party_prop": 1.0
+      },
+      "group": {
+       "large": 1.0883924212148466,
+       "other": 1.0
+      }
+     },
+     "trends": [
+      {
+       "peril": "bodily_injury",
+       "freq_trend_fitted": -0.015093787418699378,
+       "freq_trend": -0.015093787418699378,
+       "sev_trend_fitted": 0.02505736522005031,
+       "sev_trend": 0.02505736522005031,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.011283420087328067,
+       "freq_2022": 0.01111311054317405,
+       "sev_2021": 19897.46136590783,
+       "sev_2022": 20396.039322305227
+      },
+      {
+       "peril": "glass_hail",
+       "freq_trend_fitted": 0.052269850034503795,
+       "freq_trend": 0.052269850034503795,
+       "sev_trend_fitted": 0.1174782584187104,
+       "sev_trend": 0.1174782584187104,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.019037537262454992,
+       "freq_2022": 0.02003262648018979,
+       "sev_2021": 940.7772278855639,
+       "sev_2022": 1051.2980981775427
+      },
+      {
+       "peril": "own_damage",
+       "freq_trend_fitted": 0.02815511505024859,
+       "freq_trend": 0.02815511505024859,
+       "sev_trend_fitted": 0.044937279303005395,
+       "sev_trend": 0.044937279303005395,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.06362957209325634,
+       "freq_2022": 0.06542107001614007,
+       "sev_2021": 1723.6722786304604,
+       "sev_2022": 1801.1294212421244
+      },
+      {
+       "peril": "theft",
+       "freq_trend_fitted": -0.0350646651547869,
+       "freq_trend": -0.0350646651547869,
+       "sev_trend_fitted": -0.016961379265506227,
+       "sev_trend": -0.016961379265506227,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.007988128098287592,
+       "freq_2022": 0.007708027061307593,
+       "sev_2021": 5975.328001567398,
+       "sev_2022": 5873.978197097021
+      },
+      {
+       "peril": "third_party_prop",
+       "freq_trend_fitted": 0.03237929469532541,
+       "freq_trend": 0.03237929469532541,
+       "sev_trend_fitted": 0.05902137748632463,
+       "sev_trend": 0.05902137748632463,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.043440141750797495,
+       "freq_2022": 0.04484670290215327,
+       "sev_2021": 3307.903719556132,
+       "sev_2022": 3503.1407536764705
+      }
+     ],
+     "indication": [
+      {
+       "peril": "bodily_injury",
+       "indicated_capped_lc": 228.8360919444087,
+       "lc_2021": 228.83609194440876,
+       "lc_2022": 228.8360919444087
+      },
+      {
+       "peril": "glass_hail",
+       "indicated_capped_lc": 24.76452381231592,
+       "lc_2021": 24.764523812315915,
+       "lc_2022": 24.764523812315925
+      },
+      {
+       "peril": "own_damage",
+       "indicated_capped_lc": 126.5935058820088,
+       "lc_2021": 126.59350588200883,
+       "lc_2022": 126.59350588200877
+      },
+      {
+       "peril": "theft",
+       "indicated_capped_lc": 42.94813912642454,
+       "lc_2021": 42.94813912642452,
+       "lc_2022": 42.94813912642457
+      },
+      {
+       "peril": "third_party_prop",
+       "indicated_capped_lc": 171.76398980826318,
+       "lc_2021": 171.7639898082632,
+       "lc_2022": 171.76398980826318
+      }
+     ],
+     "level": {
+      "V2_large": {
+       "factor": 1.0138095773832716,
+       "model_projection": 1.0095853672574469,
+       "gap": 0.004184103952793894,
+       "model_lc_last_year": 225.71900783878374,
+       "indicated_lc": 228.8360919444087,
+       "group_trend": 0.009585367257446853
+      },
+      "V2_other": {
+       "factor": 1.0706084239512867,
+       "model_projection": 1.0753618062988133,
+       "gap": -0.004420263319455997,
+       "model_lc_last_year": 341.9272167483607,
+       "indicated_lc": 366.07015862901244,
+       "group_trend": 0.07536180629881335
+      },
+      "V3_large": {
+       "factor": 1.015138950142121,
+       "model_projection": 1.0095853672574469,
+       "gap": 0.005500855167662078,
+       "model_lc_last_year": 225.42341805756865,
+       "indicated_lc": 228.8360919444087,
+       "group_trend": 0.009585367257446853
+      },
+      "V3_other": {
+       "factor": 1.0704044625536469,
+       "model_projection": 1.0753618062988133,
+       "gap": -0.004609931016825497,
+       "model_lc_last_year": 341.99236964659576,
+       "indicated_lc": 366.07015862901244,
+       "group_trend": 0.07536180629881335
+      }
+     },
+     "weather_elasticities": {
+      "glass_hail": {
+       "variable": "hail_days",
+       "b": 0.07919611751803363
+      }
+     },
+     "cost_share": {
+      "bodily_injury": 0.42530851529661595,
+      "glass_hail": 0.03396732231304511,
+      "own_damage": 0.19802841359682413,
+      "theft": 0.0808026380021867,
+      "third_party_prop": 0.2618931107913281
+     },
+     "relativities_V2": null
+    },
+    "B": {
+     "excess_factor_line": 1.0342212071630301,
+     "excess_factors": {
+      "peril": {
+       "bodily_injury": 1.0906037054072055,
+       "glass_hail": 1.0,
+       "own_damage": 1.0,
+       "theft": 1.0,
+       "third_party_prop": 1.0
+      },
+      "group": {
+       "large": 1.0906037054072055,
+       "other": 1.0
+      }
+     },
+     "trends": [
+      {
+       "peril": "bodily_injury",
+       "freq_trend_fitted": -0.021277326115827333,
+       "freq_trend": -0.021277326115827333,
+       "sev_trend_fitted": 0.0,
+       "sev_trend": 0.0,
+       "bounded": false,
+       "sev_step_level": 16278.659936231885,
+       "freq_2021": 0.011283420087328067,
+       "freq_2022": 0.01111311054317405,
+       "freq_2023": 0.010807340039988263,
+       "sev_2021": 19897.46136590783,
+       "sev_2022": 20396.039322305227,
+       "sev_2023": 16278.659936231885
+      },
+      {
+       "peril": "glass_hail",
+       "freq_trend_fitted": 0.0418541494450424,
+       "freq_trend": 0.0418541494450424,
+       "sev_trend_fitted": 0.09293529730284456,
+       "sev_trend": 0.09293529730284456,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.019037537262454992,
+       "freq_2022": 0.02003262648018979,
+       "freq_2023": 0.020674177192497676,
+       "sev_2021": 940.7772278855639,
+       "sev_2022": 1051.2980981775427,
+       "sev_2023": 1124.9423421879465
+      },
+      {
+       "peril": "own_damage",
+       "freq_trend_fitted": -0.030282361533548463,
+       "freq_trend": -0.030282361533548463,
+       "sev_trend_fitted": 0.04651349338889932,
+       "sev_trend": 0.04651349338889932,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.06362957209325634,
+       "freq_2022": 0.06542107001614007,
+       "freq_2023": 0.05983104117303765,
+       "sev_2021": 1723.6722786304604,
+       "sev_2022": 1801.1294212421244,
+       "sev_2023": 1887.7520694417046
+      },
+      {
+       "peril": "theft",
+       "freq_trend_fitted": -0.007957397041191472,
+       "freq_trend": -0.007957397041191472,
+       "sev_trend_fitted": 0.06409073821193156,
+       "sev_trend": 0.06409073821193156,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.007988128098287592,
+       "freq_2022": 0.007708027061307593,
+       "freq_2023": 0.007858453766296021,
+       "sev_2021": 5975.328001567398,
+       "sev_2022": 5873.978197097021,
+       "sev_2023": 6758.293275732532
+      },
+      {
+       "peril": "third_party_prop",
+       "freq_trend_fitted": -0.0178590335091926,
+       "freq_trend": -0.0178590335091926,
+       "sev_trend_fitted": 0.07820914773719823,
+       "sev_trend": 0.07820914773719823,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.043440141750797495,
+       "freq_2022": 0.04484670290215327,
+       "freq_2023": 0.04191909599273153,
+       "sev_2021": 3307.903719556132,
+       "sev_2022": 3503.1407536764705,
+       "sev_2023": 3845.0023284969716
+      }
+     ],
+     "indication": [
+      {
+       "peril": "bodily_injury",
+       "indicated_capped_lc": 172.56656787878495,
+       "lc_2021": 172.20206583190736,
+       "lc_2022": 173.29003300198528,
+       "lc_2023": 172.18571433641452
+      },
+      {
+       "peril": "glass_hail",
+       "indicated_capped_lc": 26.74999029810302,
+       "lc_2021": 26.44245028298991,
+       "lc_2022": 27.30653079274105,
+       "lc_2023": 26.482554560766225
+      },
+      {
+       "peril": "own_damage",
+       "indicated_capped_lc": 116.91153615843463,
+       "lc_2021": 114.62624936863887,
+       "lc_2022": 121.35084886166035,
+       "lc_2023": 114.62032697545689
+      },
+      {
+       "peril": "theft",
+       "indicated_capped_lc": 54.18254682429125,
+       "lc_2021": 56.14792737103137,
+       "lc_2022": 50.4537595983111,
+       "lc_2023": 56.06387641112893
+      },
+      {
+       "peril": "third_party_prop",
+       "indicated_capped_lc": 172.535502895646,
+       "lc_2021": 170.63755119806456,
+       "lc_2022": 176.17398743274487,
+       "lc_2023": 170.68106891837783
+      }
+     ],
+     "level": {
+      "V2_large": {
+       "factor": 0.9646660128806983,
+       "model_projection": 0.9787226738841727,
+       "gap": -0.014362251308318918,
+       "model_lc_last_year": 178.88737197599033,
+       "indicated_lc": 172.56656787878495,
+       "group_trend": -0.021277326115827333
+      },
+      "V2_other": {
+       "factor": 1.0554170127852642,
+       "model_projection": 1.0502942510347288,
+       "gap": 0.0048774538616092045,
+       "model_lc_last_year": 350.931974461011,
+       "indicated_lc": 370.37957617647487,
+       "group_trend": 0.05029425103472891
+      },
+      "V3_large": {
+       "factor": 0.9646731451005831,
+       "model_projection": 0.9787226738841727,
+       "gap": -0.014354964034737683,
+       "model_lc_last_year": 178.886049389083,
+       "indicated_lc": 172.56656787878495,
+       "group_trend": -0.021277326115827333
+      },
+      "V3_other": {
+       "factor": 1.0552756443534808,
+       "model_projection": 1.0502942510347288,
+       "gap": 0.0047428549797776665,
+       "model_lc_last_year": 350.9789865408952,
+       "indicated_lc": 370.37957617647487,
+       "group_trend": 0.05029425103472891
+      }
+     },
+     "weather_elasticities": {
+      "glass_hail": {
+       "variable": "hail_days",
+       "b": 0.07596377325840714
+      }
+     },
+     "cost_share": {
+      "bodily_injury": 0.3982932038181902,
+      "glass_hail": 0.037099763131976535,
+      "own_damage": 0.20262149277004762,
+      "theft": 0.0869184684725292,
+      "third_party_prop": 0.2750670718072565
+     },
+     "relativities_V2": null
+    },
+    "final": {
+     "excess_factor_line": 1.0313220733785247,
+     "excess_factors": {
+      "peril": {
+       "bodily_injury": 1.0911694443343858,
+       "glass_hail": 1.0,
+       "own_damage": 1.0,
+       "theft": 1.0,
+       "third_party_prop": 1.0
+      },
+      "group": {
+       "large": 1.0911694443343858,
+       "other": 1.0
+      }
+     },
+     "trends": [
+      {
+       "peril": "bodily_injury",
+       "freq_trend_fitted": -0.017506244740460475,
+       "freq_trend": -0.017506244740460475,
+       "sev_trend_fitted": 0.0,
+       "sev_trend": 0.0,
+       "bounded": false,
+       "sev_step_level": 16401.52283053324,
+       "freq_2021": 0.011283420087328067,
+       "freq_2022": 0.01111311054317405,
+       "freq_2023": 0.010807340039988263,
+       "freq_2024": 0.010768280459846371,
+       "sev_2021": 19897.46136590783,
+       "sev_2022": 20396.039322305227,
+       "sev_2023": 16278.659936231885,
+       "sev_2024": 16610.741480750246
+      },
+      {
+       "peril": "glass_hail",
+       "freq_trend_fitted": 0.02911611284636595,
+       "freq_trend": 0.02911611284636595,
+       "sev_trend_fitted": 0.08171587508988432,
+       "sev_trend": 0.08171587508988432,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.019037537262454992,
+       "freq_2022": 0.02003262648018979,
+       "freq_2023": 0.020674177192497676,
+       "freq_2024": 0.02075666786532107,
+       "sev_2021": 940.7772278855639,
+       "sev_2022": 1051.2980981775427,
+       "sev_2023": 1124.9423421879465,
+       "sev_2024": 1197.0577839254515
+      },
+      {
+       "peril": "own_damage",
+       "freq_trend_fitted": -0.029113648099760248,
+       "freq_trend": -0.029113648099760248,
+       "sev_trend_fitted": 0.05428869933384539,
+       "sev_trend": 0.05428869933384539,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.06362957209325634,
+       "freq_2022": 0.06542107001614007,
+       "freq_2023": 0.05983104117303765,
+       "freq_2024": 0.059475048629520764,
+       "sev_2021": 1723.6722786304604,
+       "sev_2022": 1801.1294212421244,
+       "sev_2023": 1887.7520694417046,
+       "sev_2024": 2024.2668693693695
+      },
+      {
+       "peril": "theft",
+       "freq_trend_fitted": -0.012452675489765253,
+       "freq_trend": -0.012452675489765253,
+       "sev_trend_fitted": 0.04069197398603652,
+       "sev_trend": 0.04069197398603652,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.007988128098287592,
+       "freq_2022": 0.007708027061307593,
+       "freq_2023": 0.007858453766296021,
+       "freq_2024": 0.007609141321267759,
+       "sev_2021": 5975.328001567398,
+       "sev_2022": 5873.978197097021,
+       "sev_2023": 6758.293275732532,
+       "sev_2024": 6504.546464088397
+      },
+      {
+       "peril": "third_party_prop",
+       "freq_trend_fitted": -0.02499566334224257,
+       "freq_trend": -0.02499566334224257,
+       "sev_trend_fitted": 0.08007066231689675,
+       "sev_trend": 0.08007066231689675,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.043440141750797495,
+       "freq_2022": 0.04484670290215327,
+       "freq_2023": 0.04191909599273153,
+       "freq_2024": 0.04086115247062583,
+       "sev_2021": 3307.903719556132,
+       "sev_2022": 3503.1407536764705,
+       "sev_2023": 3845.0023284969716,
+       "sev_2024": 4144.2719365275
+      }
+     ],
+     "indication": [
+      {
+       "peril": "bodily_injury",
+       "indicated_capped_lc": 172.4852167765154,
+       "lc_2021": 172.44242634975458,
+       "lc_2022": 172.865848882267,
+       "lc_2023": 171.1049550079908,
+       "lc_2024": 173.52431142380308
+      },
+      {
+       "peril": "glass_hail",
+       "indicated_capped_lc": 28.271135419909132,
+       "lc_2021": 27.504761815175343,
+       "lc_2022": 29.05337009317375,
+       "lc_2023": 28.821306278929853,
+       "lc_2024": 27.659882601678238
+      },
+      {
+       "peril": "own_damage",
+       "indicated_capped_lc": 122.11181773704331,
+       "lc_2021": 120.39972357655175,
+       "lc_2022": 126.37070436065349,
+       "lc_2023": 118.33886798907392,
+       "lc_2024": 123.23399297611626
+      },
+      {
+       "peril": "theft",
+       "indicated_capped_lc": 52.326459110465116,
+       "lc_2021": 53.250937525161895,
+       "lc_2022": 49.14914041675806,
+       "lc_2023": 56.09632109896554,
+       "lc_2024": 50.866609688916185
+      },
+      {
+       "peril": "third_party_prop",
+       "indicated_capped_lc": 179.35321795871627,
+       "lc_2021": 176.7172571078101,
+       "lc_2022": 183.46966069252122,
+       "lc_2023": 178.74172684592284,
+       "lc_2024": 178.3271929933893
+      }
+     ],
+     "level": {
+      "V2_large": {
+       "factor": 0.9732204247191231,
+       "model_projection": 0.9824937552595395,
+       "gap": -0.009438564358067336,
+       "model_lc_last_year": 177.23139835078533,
+       "indicated_lc": 172.4852167765154,
+       "group_trend": -0.017506244740460475
+      },
+      "V2_other": {
+       "factor": 1.052291000645626,
+       "model_projection": 1.0446310159113714,
+       "gap": 0.0073327180770828004,
+       "model_lc_last_year": 363.07697204644137,
+       "indicated_lc": 382.0626302261338,
+       "group_trend": 0.04463101591137151
+      },
+      "V3_large": {
+       "factor": 0.9702793435663218,
+       "model_projection": 0.9824937552595395,
+       "gap": -0.012432050206762968,
+       "model_lc_last_year": 177.7686167599274,
+       "indicated_lc": 172.4852167765154,
+       "group_trend": -0.017506244740460475
+      },
+      "V3_other": {
+       "factor": 1.0524037572226406,
+       "model_projection": 1.0446310159113714,
+       "gap": 0.0074406572204712695,
+       "model_lc_last_year": 363.0380712763902,
+       "indicated_lc": 382.0626302261338,
+       "group_trend": 0.04463101591137151
+      }
+     },
+     "weather_elasticities": {
+      "glass_hail": {
+       "variable": "hail_days",
+       "b": 0.0778628977226679
+      }
+     },
+     "cost_share": {
+      "bodily_injury": 0.36349553271323387,
+      "glass_hail": 0.04056512103708845,
+      "own_damage": 0.21404969558376835,
+      "theft": 0.09114660959007535,
+      "third_party_prop": 0.290743041075834
+     },
+     "relativities_V2": {
+      "large": [
+       {
+        "factor": "region",
+        "level": "R01",
+        "relativity": 1.0
+       },
+       {
+        "factor": "region",
+        "level": "R02",
+        "relativity": 0.9624796830354186
+       },
+       {
+        "factor": "region",
+        "level": "R03",
+        "relativity": 1.1059773313532533
+       },
+       {
+        "factor": "region",
+        "level": "R04",
+        "relativity": 0.9248782319622894
+       },
+       {
+        "factor": "region",
+        "level": "R05",
+        "relativity": 0.8422065759398503
+       },
+       {
+        "factor": "region",
+        "level": "R06",
+        "relativity": 0.7959128978770993
+       },
+       {
+        "factor": "region",
+        "level": "R07",
+        "relativity": 1.1838997042332895
+       },
+       {
+        "factor": "region",
+        "level": "R08",
+        "relativity": 1.0927350032507506
+       },
+       {
+        "factor": "region",
+        "level": "R09",
+        "relativity": 0.805213239311035
+       },
+       {
+        "factor": "region",
+        "level": "R10",
+        "relativity": 0.9375888232787175
+       },
+       {
+        "factor": "region",
+        "level": "R11",
+        "relativity": 0.9425031964043751
+       },
+       {
+        "factor": "region",
+        "level": "R12",
+        "relativity": 1.0404570500890085
+       },
+       {
+        "factor": "urban",
+        "level": "suburban",
+        "relativity": 1.0
+       },
+       {
+        "factor": "urban",
+        "level": "dense_urban",
+        "relativity": 1.2430022457852021
+       },
+       {
+        "factor": "urban",
+        "level": "rural",
+        "relativity": 0.8473849494361672
+       },
+       {
+        "factor": "urban",
+        "level": "urban",
+        "relativity": 1.1390481548057672
+       },
+       {
+        "factor": "pay",
+        "level": "annual",
+        "relativity": 1.0
+       },
+       {
+        "factor": "pay",
+        "level": "monthly",
+        "relativity": 1.1551841385076624
+       },
+       {
+        "factor": "missed",
+        "level": "0",
+        "relativity": 1.0
+       },
+       {
+        "factor": "missed",
+        "level": "1",
+        "relativity": 1.1660699145083935
+       },
+       {
+        "factor": "missed",
+        "level": "2+",
+        "relativity": 1.188115399439538
+       },
+       {
+        "factor": "credit",
+        "level": "B",
+        "relativity": 1.0
+       },
+       {
+        "factor": "credit",
+        "level": "A",
+        "relativity": 0.9623142325874354
+       },
+       {
+        "factor": "credit",
+        "level": "C",
+        "relativity": 1.0021244427625289
+       },
+       {
+        "factor": "credit",
+        "level": "D",
+        "relativity": 0.9954213202635563
+       },
+       {
+        "factor": "credit",
+        "level": "E",
+        "relativity": 1.1834748019573504
+       },
+       {
+        "factor": "channel",
+        "level": "direct",
+        "relativity": 1.0
+       },
+       {
+        "factor": "channel",
+        "level": "broker",
+        "relativity": 0.9904285704254709
+       },
+       {
+        "factor": "channel",
+        "level": "comparison_site",
+        "relativity": 1.1434138586654525
+       },
+       {
+        "factor": "new_bus",
+        "level": "False",
+        "relativity": 1.0
+       },
+       {
+        "factor": "new_bus",
+        "level": "True",
+        "relativity": 1.1033425950908091
+       },
+       {
+        "factor": "age",
+        "level": "(29.0, 39.0]",
+        "relativity": 1.0
+       },
+       {
+        "factor": "age",
+        "level": "(-0.001, 20.0]",
+        "relativity": 2.675793112262782
+       },
+       {
+        "factor": "age",
+        "level": "(20.0, 24.0]",
+        "relativity": 1.5856497617118792
+       },
+       {
+        "factor": "age",
+        "level": "(24.0, 29.0]",
+        "relativity": 1.326769529595426
+       },
+       {
+        "factor": "age",
+        "level": "(39.0, 49.0]",
+        "relativity": 0.8144141999851495
+       },
+       {
+        "factor": "age",
+        "level": "(49.0, 59.0]",
+        "relativity": 0.6717644673943566
+       },
+       {
+        "factor": "age",
+        "level": "(59.0, 69.0]",
+        "relativity": 0.7295958189684131
+       },
+       {
+        "factor": "age",
+        "level": "(69.0, 79.0]",
+        "relativity": 0.9049348412513367
+       },
+       {
+        "factor": "age",
+        "level": "(79.0, 200.0]",
+        "relativity": 1.1159457446028265
+       },
+       {
+        "factor": "yr",
+        "level": "2022",
+        "relativity": 1.0
+       },
+       {
+        "factor": "yr",
+        "level": "2021",
+        "relativity": 0.9800217572020893
+       },
+       {
+        "factor": "yr",
+        "level": "2023",
+        "relativity": 0.8205739284288731
+       },
+       {
+        "factor": "yr",
+        "level": "2024",
+        "relativity": 0.827609109654492
+       },
+       {
+        "factor": "ncb",
+        "level": "10",
+        "relativity": 1.0
+       },
+       {
+        "factor": "ncb",
+        "level": "0",
+        "relativity": 2.494976859315961
+       },
+       {
+        "factor": "ncb",
+        "level": "1",
+        "relativity": 2.0511282171160126
+       },
+       {
+        "factor": "ncb",
+        "level": "2",
+        "relativity": 1.7554260739410383
+       },
+       {
+        "factor": "ncb",
+        "level": "3",
+        "relativity": 1.87019353213361
+       },
+       {
+        "factor": "ncb",
+        "level": "4",
+        "relativity": 1.2794993475053766
+       },
+       {
+        "factor": "ncb",
+        "level": "5",
+        "relativity": 1.4168322835078853
+       },
+       {
+        "factor": "ncb",
+        "level": "6",
+        "relativity": 1.1885981354436777
+       },
+       {
+        "factor": "ncb",
+        "level": "7",
+        "relativity": 1.2828543399445598
+       },
+       {
+        "factor": "ncb",
+        "level": "8",
+        "relativity": 1.0351514119305951
+       },
+       {
+        "factor": "ncb",
+        "level": "9",
+        "relativity": 0.998563026178958
+       },
+       {
+        "factor": "vvg",
+        "level": "11",
+        "relativity": 1.0
+       },
+       {
+        "factor": "vvg",
+        "level": "1",
+        "relativity": 1.0406168653460877
+       },
+       {
+        "factor": "vvg",
+        "level": "10",
+        "relativity": 0.9749115026148552
+       },
+       {
+        "factor": "vvg",
+        "level": "12",
+        "relativity": 0.9372537916152147
+       },
+       {
+        "factor": "vvg",
+        "level": "13",
+        "relativity": 1.0657391824273053
+       },
+       {
+        "factor": "vvg",
+        "level": "14",
+        "relativity": 0.9386532211215687
+       },
+       {
+        "factor": "vvg",
+        "level": "15",
+        "relativity": 0.9376096884716938
+       },
+       {
+        "factor": "vvg",
+        "level": "16",
+        "relativity": 1.0426137625144356
+       },
+       {
+        "factor": "vvg",
+        "level": "17",
+        "relativity": 0.9006467150443631
+       },
+       {
+        "factor": "vvg",
+        "level": "18",
+        "relativity": 0.8949100437981568
+       },
+       {
+        "factor": "vvg",
+        "level": "19",
+        "relativity": 0.9877152311564896
+       },
+       {
+        "factor": "vvg",
+        "level": "2",
+        "relativity": 0.8994926908836834
+       },
+       {
+        "factor": "vvg",
+        "level": "20",
+        "relativity": 0.8525066545830654
+       },
+       {
+        "factor": "vvg",
+        "level": "3",
+        "relativity": 1.0242759678930937
+       },
+       {
+        "factor": "vvg",
+        "level": "4",
+        "relativity": 0.8238418914201071
+       },
+       {
+        "factor": "vvg",
+        "level": "5",
+        "relativity": 0.7700611815429693
+       },
+       {
+        "factor": "vvg",
+        "level": "6",
+        "relativity": 0.8584562144255132
+       },
+       {
+        "factor": "vvg",
+        "level": "7",
+        "relativity": 0.9528901968679112
+       },
+       {
+        "factor": "vvg",
+        "level": "8",
+        "relativity": 0.9261702157202436
+       },
+       {
+        "factor": "vvg",
+        "level": "9",
+        "relativity": 0.9783943758386665
+       },
+       {
+        "factor": "cover",
+        "level": "comprehensive",
+        "relativity": 1.0
+       },
+       {
+        "factor": "cover",
+        "level": "third_party_fire_theft",
+        "relativity": 0.9727610802765213
+       },
+       {
+        "factor": "cover",
+        "level": "third_party_only",
+        "relativity": 1.1273994758235708
+       },
+       {
+        "factor": "use",
+        "level": "social",
+        "relativity": 1.0
+       },
+       {
+        "factor": "use",
+        "level": "business",
+        "relativity": 1.247170890533744
+       },
+       {
+        "factor": "use",
+        "level": "commuting",
+        "relativity": 1.099000753357923
+       },
+       {
+        "factor": "fuel",
+        "level": "petrol",
+        "relativity": 1.0
+       },
+       {
+        "factor": "fuel",
+        "level": "diesel",
+        "relativity": 1.089497630549414
+       },
+       {
+        "factor": "fuel",
+        "level": "electric",
+        "relativity": 0.9278914350165723
+       },
+       {
+        "factor": "fuel",
+        "level": "hybrid",
+        "relativity": 1.0519747590285753
+       },
+       {
+        "factor": "body",
+        "level": "hatchback",
+        "relativity": 1.0
+       },
+       {
+        "factor": "body",
+        "level": "coupe",
+        "relativity": 0.9325060684771617
+       },
+       {
+        "factor": "body",
+        "level": "estate",
+        "relativity": 1.05220491712112
+       },
+       {
+        "factor": "body",
+        "level": "saloon",
+        "relativity": 0.9470479772294041
+       },
+       {
+        "factor": "body",
+        "level": "suv",
+        "relativity": 0.9606729413528362
+       },
+       {
+        "factor": "mileage",
+        "level": "(7500.0, 10000.0]",
+        "relativity": 1.0
+       },
+       {
+        "factor": "mileage",
+        "level": "(-1.001, 0.0]",
+        "relativity": 0.8479227928019143
+       },
+       {
+        "factor": "mileage",
+        "level": "(0.0, 5000.0]",
+        "relativity": 0.8186323257866164
+       },
+       {
+        "factor": "mileage",
+        "level": "(10000.0, 15000.0]",
+        "relativity": 1.3613731069292963
+       },
+       {
+        "factor": "mileage",
+        "level": "(15000.0, 20000.0]",
+        "relativity": 1.5285083460347515
+       },
+       {
+        "factor": "mileage",
+        "level": "(20000.0, 10000000.0]",
+        "relativity": 1.7054512134334483
+       },
+       {
+        "factor": "mileage",
+        "level": "(5000.0, 7500.0]",
+        "relativity": 0.8504248598099876
+       },
+       {
+        "factor": "mileage",
+        "level": "blank",
+        "relativity": 0.9685519330770181
+       },
+       {
+        "factor": "points",
+        "level": "(-1.001, 0.0]",
+        "relativity": 1.0
+       },
+       {
+        "factor": "points",
+        "level": "(0.0, 3.0]",
+        "relativity": 1.0822668978595908
+       },
+       {
+        "factor": "points",
+        "level": "(3.0, 6.0]",
+        "relativity": 1.2152205360910977
+       },
+       {
+        "factor": "points",
+        "level": "(6.0, 99.0]",
+        "relativity": 1.194710224208825
+       },
+       {
+        "factor": "young",
+        "level": "False",
+        "relativity": 1.0
+       },
+       {
+        "factor": "young",
+        "level": "True",
+        "relativity": 1.1861294692463427
+       },
+       {
+        "factor": "telem",
+        "level": "False",
+        "relativity": 1.0
+       },
+       {
+        "factor": "telem",
+        "level": "True",
+        "relativity": 0.8026111820766305
+       }
+      ],
+      "other": [
+       {
+        "factor": "region",
+        "level": "R01",
+        "relativity": 1.0
+       },
+       {
+        "factor": "region",
+        "level": "R02",
+        "relativity": 0.9298846470453218
+       },
+       {
+        "factor": "region",
+        "level": "R03",
+        "relativity": 1.198020480275132
+       },
+       {
+        "factor": "region",
+        "level": "R04",
+        "relativity": 1.0329561494572717
+       },
+       {
+        "factor": "region",
+        "level": "R05",
+        "relativity": 0.822646805782835
+       },
+       {
+        "factor": "region",
+        "level": "R06",
+        "relativity": 0.8705427651514791
+       },
+       {
+        "factor": "region",
+        "level": "R07",
+        "relativity": 1.1682066805864086
+       },
+       {
+        "factor": "region",
+        "level": "R08",
+        "relativity": 1.0893421426123375
+       },
+       {
+        "factor": "region",
+        "level": "R09",
+        "relativity": 0.9271536396408192
+       },
+       {
+        "factor": "region",
+        "level": "R10",
+        "relativity": 1.0214459588800864
+       },
+       {
+        "factor": "region",
+        "level": "R11",
+        "relativity": 1.0814767020940819
+       },
+       {
+        "factor": "region",
+        "level": "R12",
+        "relativity": 1.0954338026763055
+       },
+       {
+        "factor": "urban",
+        "level": "suburban",
+        "relativity": 1.0
+       },
+       {
+        "factor": "urban",
+        "level": "dense_urban",
+        "relativity": 1.145219100400882
+       },
+       {
+        "factor": "urban",
+        "level": "rural",
+        "relativity": 0.8827500629109616
+       },
+       {
+        "factor": "urban",
+        "level": "urban",
+        "relativity": 1.0253415867461295
+       },
+       {
+        "factor": "pay",
+        "level": "annual",
+        "relativity": 1.0
+       },
+       {
+        "factor": "pay",
+        "level": "monthly",
+        "relativity": 1.1214650981524357
+       },
+       {
+        "factor": "missed",
+        "level": "0",
+        "relativity": 1.0
+       },
+       {
+        "factor": "missed",
+        "level": "1",
+        "relativity": 1.2119629172061033
+       },
+       {
+        "factor": "missed",
+        "level": "2+",
+        "relativity": 1.237204124730426
+       },
+       {
+        "factor": "credit",
+        "level": "B",
+        "relativity": 1.0
+       },
+       {
+        "factor": "credit",
+        "level": "A",
+        "relativity": 1.0263135644021197
+       },
+       {
+        "factor": "credit",
+        "level": "C",
+        "relativity": 1.0166927766833502
+       },
+       {
+        "factor": "credit",
+        "level": "D",
+        "relativity": 1.0469441998258304
+       },
+       {
+        "factor": "credit",
+        "level": "E",
+        "relativity": 1.2399645606594019
+       },
+       {
+        "factor": "channel",
+        "level": "direct",
+        "relativity": 1.0
+       },
+       {
+        "factor": "channel",
+        "level": "broker",
+        "relativity": 1.0627659386918185
+       },
+       {
+        "factor": "channel",
+        "level": "comparison_site",
+        "relativity": 1.1873137100293742
+       },
+       {
+        "factor": "new_bus",
+        "level": "False",
+        "relativity": 1.0
+       },
+       {
+        "factor": "new_bus",
+        "level": "True",
+        "relativity": 1.2438589254993428
+       },
+       {
+        "factor": "age",
+        "level": "(29.0, 39.0]",
+        "relativity": 1.0
+       },
+       {
+        "factor": "age",
+        "level": "(-0.001, 20.0]",
+        "relativity": 2.153611479287069
+       },
+       {
+        "factor": "age",
+        "level": "(20.0, 24.0]",
+        "relativity": 1.4708595226207217
+       },
+       {
+        "factor": "age",
+        "level": "(24.0, 29.0]",
+        "relativity": 1.2390789899065862
+       },
+       {
+        "factor": "age",
+        "level": "(39.0, 49.0]",
+        "relativity": 0.9109452493013638
+       },
+       {
+        "factor": "age",
+        "level": "(49.0, 59.0]",
+        "relativity": 0.8119061015460606
+       },
+       {
+        "factor": "age",
+        "level": "(59.0, 69.0]",
+        "relativity": 0.8306923021029254
+       },
+       {
+        "factor": "age",
+        "level": "(69.0, 79.0]",
+        "relativity": 0.9856635157869594
+       },
+       {
+        "factor": "age",
+        "level": "(79.0, 200.0]",
+        "relativity": 1.1405928371726017
+       },
+       {
+        "factor": "yr",
+        "level": "2022",
+        "relativity": 1.0
+       },
+       {
+        "factor": "yr",
+        "level": "2021",
+        "relativity": 0.915744079959749
+       },
+       {
+        "factor": "yr",
+        "level": "2023",
+        "relativity": 1.0487423422680404
+       },
+       {
+        "factor": "yr",
+        "level": "2024",
+        "relativity": 1.104866083991895
+       },
+       {
+        "factor": "ncb",
+        "level": "10",
+        "relativity": 1.0
+       },
+       {
+        "factor": "ncb",
+        "level": "0",
+        "relativity": 2.2567014303469386
+       },
+       {
+        "factor": "ncb",
+        "level": "1",
+        "relativity": 1.8075697305725158
+       },
+       {
+        "factor": "ncb",
+        "level": "2",
+        "relativity": 1.6408152615686722
+       },
+       {
+        "factor": "ncb",
+        "level": "3",
+        "relativity": 1.4374839677107756
+       },
+       {
+        "factor": "ncb",
+        "level": "4",
+        "relativity": 1.3001171408027776
+       },
+       {
+        "factor": "ncb",
+        "level": "5",
+        "relativity": 1.352234614920271
+       },
+       {
+        "factor": "ncb",
+        "level": "6",
+        "relativity": 1.2014688621922824
+       },
+       {
+        "factor": "ncb",
+        "level": "7",
+        "relativity": 1.118844218819332
+       },
+       {
+        "factor": "ncb",
+        "level": "8",
+        "relativity": 1.084444819007757
+       },
+       {
+        "factor": "ncb",
+        "level": "9",
+        "relativity": 1.006930939560357
+       },
+       {
+        "factor": "vvg",
+        "level": "11",
+        "relativity": 1.0
+       },
+       {
+        "factor": "vvg",
+        "level": "1",
+        "relativity": 0.59915363358351
+       },
+       {
+        "factor": "vvg",
+        "level": "10",
+        "relativity": 0.9500350103941143
+       },
+       {
+        "factor": "vvg",
+        "level": "12",
+        "relativity": 1.0156546768349408
+       },
+       {
+        "factor": "vvg",
+        "level": "13",
+        "relativity": 1.0362944602163704
+       },
+       {
+        "factor": "vvg",
+        "level": "14",
+        "relativity": 1.1144655462663293
+       },
+       {
+        "factor": "vvg",
+        "level": "15",
+        "relativity": 1.05938481094575
+       },
+       {
+        "factor": "vvg",
+        "level": "16",
+        "relativity": 1.1714367640251475
+       },
+       {
+        "factor": "vvg",
+        "level": "17",
+        "relativity": 1.1815690044748803
+       },
+       {
+        "factor": "vvg",
+        "level": "18",
+        "relativity": 1.3355383096820672
+       },
+       {
+        "factor": "vvg",
+        "level": "19",
+        "relativity": 1.3316737228855382
+       },
+       {
+        "factor": "vvg",
+        "level": "2",
+        "relativity": 0.7551650554394095
+       },
+       {
+        "factor": "vvg",
+        "level": "20",
+        "relativity": 1.3974214509031944
+       },
+       {
+        "factor": "vvg",
+        "level": "3",
+        "relativity": 0.7325783098995101
+       },
+       {
+        "factor": "vvg",
+        "level": "4",
+        "relativity": 0.8587769570205148
+       },
+       {
+        "factor": "vvg",
+        "level": "5",
+        "relativity": 0.8340885418014085
+       },
+       {
+        "factor": "vvg",
+        "level": "6",
+        "relativity": 0.8939195311456495
+       },
+       {
+        "factor": "vvg",
+        "level": "7",
+        "relativity": 0.8670479806524092
+       },
+       {
+        "factor": "vvg",
+        "level": "8",
+        "relativity": 0.8569344211184752
+       },
+       {
+        "factor": "vvg",
+        "level": "9",
+        "relativity": 0.9047287837566274
+       },
+       {
+        "factor": "cover",
+        "level": "comprehensive",
+        "relativity": 1.0
+       },
+       {
+        "factor": "cover",
+        "level": "third_party_fire_theft",
+        "relativity": 0.5695903248463061
+       },
+       {
+        "factor": "cover",
+        "level": "third_party_only",
+        "relativity": 0.4523847964573858
+       },
+       {
+        "factor": "use",
+        "level": "social",
+        "relativity": 1.0
+       },
+       {
+        "factor": "use",
+        "level": "business",
+        "relativity": 1.2463263013565617
+       },
+       {
+        "factor": "use",
+        "level": "commuting",
+        "relativity": 1.0917281676665471
+       },
+       {
+        "factor": "fuel",
+        "level": "petrol",
+        "relativity": 1.0
+       },
+       {
+        "factor": "fuel",
+        "level": "diesel",
+        "relativity": 0.9715841018018656
+       },
+       {
+        "factor": "fuel",
+        "level": "electric",
+        "relativity": 1.0828180910557805
+       },
+       {
+        "factor": "fuel",
+        "level": "hybrid",
+        "relativity": 0.9891133870275192
+       },
+       {
+        "factor": "body",
+        "level": "hatchback",
+        "relativity": 1.0
+       },
+       {
+        "factor": "body",
+        "level": "coupe",
+        "relativity": 1.0260604822185322
+       },
+       {
+        "factor": "body",
+        "level": "estate",
+        "relativity": 0.9916176255985089
+       },
+       {
+        "factor": "body",
+        "level": "saloon",
+        "relativity": 0.9928629738860221
+       },
+       {
+        "factor": "body",
+        "level": "suv",
+        "relativity": 0.9818690111568087
+       },
+       {
+        "factor": "mileage",
+        "level": "(7500.0, 10000.0]",
+        "relativity": 1.0
+       },
+       {
+        "factor": "mileage",
+        "level": "(-1.001, 0.0]",
+        "relativity": 0.7429132784860322
+       },
+       {
+        "factor": "mileage",
+        "level": "(0.0, 5000.0]",
+        "relativity": 0.8432145605904099
+       },
+       {
+        "factor": "mileage",
+        "level": "(10000.0, 15000.0]",
+        "relativity": 1.1440164130519013
+       },
+       {
+        "factor": "mileage",
+        "level": "(15000.0, 20000.0]",
+        "relativity": 1.2665314938010244
+       },
+       {
+        "factor": "mileage",
+        "level": "(20000.0, 10000000.0]",
+        "relativity": 1.5182295772071066
+       },
+       {
+        "factor": "mileage",
+        "level": "(5000.0, 7500.0]",
+        "relativity": 0.8396723104936096
+       },
+       {
+        "factor": "mileage",
+        "level": "blank",
+        "relativity": 0.8761865130827807
+       },
+       {
+        "factor": "points",
+        "level": "(-1.001, 0.0]",
+        "relativity": 1.0
+       },
+       {
+        "factor": "points",
+        "level": "(0.0, 3.0]",
+        "relativity": 1.0703285902397688
+       },
+       {
+        "factor": "points",
+        "level": "(3.0, 6.0]",
+        "relativity": 1.1796974913920786
+       },
+       {
+        "factor": "points",
+        "level": "(6.0, 99.0]",
+        "relativity": 1.2099595272678694
+       },
+       {
+        "factor": "young",
+        "level": "False",
+        "relativity": 1.0
+       },
+       {
+        "factor": "young",
+        "level": "True",
+        "relativity": 1.1711081311148799
+       },
+       {
+        "factor": "telem",
+        "level": "False",
+        "relativity": 1.0
+       },
+       {
+        "factor": "telem",
+        "level": "True",
+        "relativity": 0.8375039479782835
+       }
+      ]
+     }
+    }
+   },
+   "buildings": {
+    "A": {
+     "excess_factor_line": 1.020618919703103,
+     "excess_factors": {
+      "peril": {
+       "accidental_damage": 1.0,
+       "escape_of_water": 1.0,
+       "fire": 1.0880324661762186,
+       "flood": 1.0014737358595125,
+       "storm": 1.0,
+       "subsidence": 1.0
+      },
+      "group": {
+       "large": 1.0392505853542453,
+       "other": 1.0
+      }
+     },
+     "trends": [
+      {
+       "peril": "accidental_damage",
+       "freq_trend_fitted": 0.09197270862834173,
+       "freq_trend": 0.09197270862834173,
+       "sev_trend_fitted": 0.05688244333414394,
+       "sev_trend": 0.05688244333414394,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.006102444699819628,
+       "freq_2022": 0.006663703068116703,
+       "sev_2021": 1166.6943484224967,
+       "sev_2022": 1233.0587735849056
+      },
+      {
+       "peril": "escape_of_water",
+       "freq_trend_fitted": -0.0412814737944579,
+       "freq_trend": -0.0412814737944579,
+       "sev_trend_fitted": 0.040637492481135684,
+       "sev_trend": 0.040637492481135684,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.017696252531438535,
+       "freq_2022": 0.016965725146301843,
+       "sev_2021": 5100.345,
+       "sev_2022": 5307.610231588698
+      },
+      {
+       "peril": "fire",
+       "freq_trend_fitted": 0.10358716754604602,
+       "freq_trend": 0.10358716754604602,
+       "sev_trend_fitted": -0.05547320363532182,
+       "sev_trend": -0.05,
+       "bounded": true,
+       "sev_step_level": null,
+       "freq_2021": 0.0017160509786872753,
+       "freq_2022": 0.0018938118389341101,
+       "sev_2021": 51278.92614634146,
+       "sev_2022": 48434.3198340249
+      },
+      {
+       "peril": "flood",
+       "freq_trend_fitted": -0.010940037333395325,
+       "freq_trend": -0.010940037333395325,
+       "sev_trend_fitted": 0.03333454979764938,
+       "sev_trend": 0.03333454979764938,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.004059925486162578,
+       "freq_2022": 0.004015509749773155,
+       "sev_2021": 28279.08268041237,
+       "sev_2022": 29221.7531702544
+      },
+      {
+       "peril": "storm",
+       "freq_trend_fitted": 0.036227167436811536,
+       "freq_trend": 0.036227167436811536,
+       "sev_trend_fitted": 0.04106413941510323,
+       "sev_trend": 0.04106413941510323,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.012815970967659603,
+       "freq_2022": 0.013280257293770317,
+       "sev_2021": 3081.89235793599,
+       "sev_2022": 3208.4476153846153
+      },
+      {
+       "peril": "subsidence",
+       "freq_trend_fitted": 0.10045099284835768,
+       "freq_trend": 0.10045099284835768,
+       "sev_trend_fitted": 0.03194300698190733,
+       "sev_trend": 0.03194300698190733,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.001992293331354007,
+       "freq_2022": 0.0021924211745336796,
+       "sev_2021": 22161.89668067227,
+       "sev_2022": 22869.814301075272
+      }
+     ],
+     "indication": [
+      {
+       "peril": "accidental_damage",
+       "indicated_capped_lc": 9.482828196963025,
+       "lc_2021": 9.482828196963027,
+       "lc_2022": 9.482828196963021
+      },
+      {
+       "peril": "escape_of_water",
+       "indicated_capped_lc": 89.8384060796809,
+       "lc_2021": 89.8384060796809,
+       "lc_2022": 89.8384060796809
+      },
+      {
+       "peril": "fire",
+       "indicated_capped_lc": 96.4355371635371,
+       "lc_2021": 96.72296507184996,
+       "lc_2022": 96.1657182465339
+      },
+      {
+       "peril": "flood",
+       "indicated_capped_lc": 119.92522033064353,
+       "lc_2021": 119.9252203306436,
+       "lc_2022": 119.92522033064347
+      },
+      {
+       "peril": "storm",
+       "indicated_capped_lc": 45.96570265948139,
+       "lc_2021": 45.96570265948139,
+       "lc_2022": 45.96570265948139
+      },
+      {
+       "peril": "subsidence",
+       "indicated_capped_lc": 56.93942079258808,
+       "lc_2021": 56.93942079258811,
+       "lc_2022": 56.939420792588066
+      }
+     ],
+     "level": {
+      "V2_large": {
+       "factor": 1.0032767557709925,
+       "model_projection": 1.0337869285108,
+       "gap": -0.02951301849381882,
+       "model_lc_last_year": 215.65411163932822,
+       "indicated_lc": 216.36075749418063,
+       "group_trend": 0.03378692851079997
+      },
+      "V2_other": {
+       "factor": 1.0597167990183272,
+       "model_projection": 1.0622811129823004,
+       "gap": -0.0024139692710661853,
+       "model_lc_last_year": 190.83056710627457,
+       "indicated_lc": 202.22635772871337,
+       "group_trend": 0.06228111298230052
+      },
+      "V3_large": {
+       "factor": 1.0033181502203454,
+       "model_projection": 1.0337869285108,
+       "gap": -0.02947297692605344,
+       "model_lc_last_year": 215.64521427890463,
+       "indicated_lc": 216.36075749418063,
+       "group_trend": 0.03378692851079997
+      },
+      "V3_other": {
+       "factor": 1.060938453763501,
+       "model_projection": 1.0622811129823004,
+       "gap": -0.0012639396506166634,
+       "model_lc_last_year": 190.61082856536055,
+       "indicated_lc": 202.22635772871337,
+       "group_trend": 0.06228111298230052
+      }
+     },
+     "weather_elasticities": {
+      "storm": {
+       "variable": "wind_exposure_index",
+       "b": 0.11218271855903506
+      },
+      "subsidence": {
+       "variable": "dry_summer_index",
+       "b": 0.0
+      },
+      "escape_of_water": {
+       "variable": "freezing_days",
+       "b": 0.015444745753795194
+      }
+     },
+     "cost_share": {
+      "accidental_damage": 0.019199420003959567,
+      "escape_of_water": 0.22520284966163778,
+      "fire": 0.24440656528813462,
+      "flood": 0.2904981575923663,
+      "storm": 0.10267872064792713,
+      "subsidence": 0.11801428680597453
+     },
+     "relativities_V2": null
+    },
+    "B": {
+     "excess_factor_line": 1.019373127701997,
+     "excess_factors": {
+      "peril": {
+       "accidental_damage": 1.0,
+       "escape_of_water": 1.0,
+       "fire": 1.080062120497912,
+       "flood": 1.0056087653033947,
+       "storm": 1.0,
+       "subsidence": 1.0004126754904372
+      },
+      "group": {
+       "large": 1.0376926553099761,
+       "other": 1.000106841653759
+      }
+     },
+     "trends": [
+      {
+       "peril": "accidental_damage",
+       "freq_trend_fitted": 0.032764190307496444,
+       "freq_trend": 0.032764190307496444,
+       "sev_trend_fitted": -0.014455263603851853,
+       "sev_trend": -0.014455263603851853,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.006102444699819628,
+       "freq_2022": 0.006663703068116703,
+       "freq_2023": 0.006524994556684826,
+       "sev_2021": 1166.6943484224967,
+       "sev_2022": 1233.0587735849056,
+       "sev_2023": 1136.7267792521109
+      },
+      {
+       "peril": "escape_of_water",
+       "freq_trend_fitted": -0.029451121513102807,
+       "freq_trend": -0.029451121513102807,
+       "sev_trend_fitted": 0.08794560616487401,
+       "sev_trend": 0.08794560616487401,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.017696252531438535,
+       "freq_2022": 0.016965725146301843,
+       "freq_2023": 0.016669089676462447,
+       "sev_2021": 5100.345,
+       "sev_2022": 5307.610231588698,
+       "sev_2023": 6036.68505899009
+      },
+      {
+       "peril": "fire",
+       "freq_trend_fitted": 0.04731869841836467,
+       "freq_trend": 0.04731869841836467,
+       "sev_trend_fitted": -0.0449576945047796,
+       "sev_trend": -0.0449576945047796,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.0017160509786872753,
+       "freq_2022": 0.0018938118389341101,
+       "freq_2023": 0.00188762149945047,
+       "sev_2021": 51278.92614634146,
+       "sev_2022": 48434.3198340249,
+       "sev_2023": 46743.857833333335
+      },
+      {
+       "peril": "flood",
+       "freq_trend_fitted": -0.048884438752163195,
+       "freq_trend": -0.048884438752163195,
+       "sev_trend_fitted": 0.08178641552576016,
+       "sev_trend": 0.08178641552576016,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.004059925486162578,
+       "freq_2022": 0.004015509749773155,
+       "freq_2023": 0.0036707828573169596,
+       "sev_2021": 28279.08268041237,
+       "sev_2022": 29221.7531702544,
+       "sev_2023": 33114.10518201285
+      },
+      {
+       "peril": "storm",
+       "freq_trend_fitted": 0.05489589116831417,
+       "freq_trend": 0.05489589116831417,
+       "sev_trend_fitted": 0.08944764854072562,
+       "sev_trend": 0.08944764854072562,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.012815970967659603,
+       "freq_2022": 0.013280257293770317,
+       "freq_2023": 0.014247643377783954,
+       "sev_2021": 3081.89235793599,
+       "sev_2022": 3208.4476153846153,
+       "sev_2023": 3648.7332781456953
+      },
+      {
+       "peril": "subsidence",
+       "freq_trend_fitted": 0.14541473737770216,
+       "freq_trend": 0.12,
+       "sev_trend_fitted": 0.008080544593781713,
+       "sev_trend": 0.008080544593781713,
+       "bounded": true,
+       "sev_step_level": null,
+       "freq_2021": 0.001992293331354007,
+       "freq_2022": 0.0021924211745336796,
+       "freq_2023": 0.0026031616271891384,
+       "sev_2021": 22161.89668067227,
+       "sev_2022": 22869.814301075272,
+       "sev_2023": 22575.424072948328
+      }
+     ],
+     "indication": [
+      {
+       "peril": "accidental_damage",
+       "indicated_capped_lc": 7.863628524267428,
+       "lc_2021": 7.507467968398678,
+       "lc_2022": 8.512447413342166,
+       "lc_2023": 7.549422980348685
+      },
+      {
+       "peril": "escape_of_water",
+       "indicated_capped_lc": 104.26142060917955,
+       "lc_2021": 106.25628920805605,
+       "lc_2022": 100.3969776054317,
+       "lc_2023": 106.25148202867067
+      },
+      {
+       "peril": "fire",
+       "indicated_capped_lc": 89.38768668419725,
+       "lc_2021": 88.05895126951735,
+       "lc_2022": 91.7683592692763,
+       "lc_2023": 88.25532831771109
+      },
+      {
+       "peril": "flood",
+       "indicated_capped_lc": 124.77651833657562,
+       "lc_2021": 125.0569443129744,
+       "lc_2022": 124.22144426530427,
+       "lc_2023": 125.0680934719937
+      },
+      {
+       "peril": "storm",
+       "indicated_capped_lc": 58.632021402272464,
+       "lc_2021": 59.95382288842887,
+       "lc_2022": 56.277315816924414,
+       "lc_2023": 59.74493876508598
+      },
+      {
+       "peril": "subsidence",
+       "indicated_capped_lc": 64.6277799823045,
+       "lc_2021": 63.547720199005255,
+       "lc_2022": 63.91652241889126,
+       "lc_2023": 66.35143299472894
+      }
+     ],
+     "level": {
+      "V2_large": {
+       "factor": 1.044448864367517,
+       "model_projection": 1.0169375360465298,
+       "gap": 0.027053115206997713,
+       "model_lc_last_year": 205.0499668554511,
+       "indicated_lc": 214.16420502077287,
+       "group_trend": 0.016937536046529755
+      },
+      "V2_other": {
+       "factor": 1.0841389951870979,
+       "model_projection": 1.0979680914390455,
+       "gap": -0.012595171353133372,
+       "model_lc_last_year": 217.11685638371657,
+       "indicated_lc": 235.38485051802394,
+       "group_trend": 0.09796809143904554
+      },
+      "V3_large": {
+       "factor": 1.0303931990729007,
+       "model_projection": 1.0169375360465298,
+       "gap": 0.013231553118475237,
+       "model_lc_last_year": 207.84706771499245,
+       "indicated_lc": 214.16420502077287,
+       "group_trend": 0.016937536046529755
+      },
+      "V3_other": {
+       "factor": 1.0841988530593027,
+       "model_projection": 1.0979680914390455,
+       "gap": -0.01254065440253016,
+       "model_lc_last_year": 217.1048695115609,
+       "indicated_lc": 235.38485051802394,
+       "group_trend": 0.09796809143904554
+      }
+     },
+     "weather_elasticities": {
+      "storm": {
+       "variable": "wind_exposure_index",
+       "b": 0.26076003223252464
+      },
+      "subsidence": {
+       "variable": "dry_summer_index",
+       "b": 0.0
+      },
+      "escape_of_water": {
+       "variable": "freezing_days",
+       "b": 0.012522684949868723
+      }
+     },
+     "cost_share": {
+      "accidental_damage": 0.018413748933772373,
+      "escape_of_water": 0.2272639297590924,
+      "fire": 0.23404121659644295,
+      "flood": 0.28776543381708614,
+      "storm": 0.1086735888017288,
+      "subsidence": 0.12384208209187737
+     },
+     "relativities_V2": null
+    },
+    "final": {
+     "excess_factor_line": 1.0222030964793336,
+     "excess_factors": {
+      "peril": {
+       "accidental_damage": 1.0,
+       "escape_of_water": 1.0,
+       "fire": 1.087128608042243,
+       "flood": 1.011025121035651,
+       "storm": 1.0,
+       "subsidence": 1.0003060319365742
+      },
+      "group": {
+       "large": 1.0437768992983125,
+       "other": 1.0000775095708092
+      }
+     },
+     "trends": [
+      {
+       "peril": "accidental_damage",
+       "freq_trend_fitted": 0.030676211895931615,
+       "freq_trend": 0.030676211895931615,
+       "sev_trend_fitted": 0.010137061869426534,
+       "sev_trend": 0.010137061869426534,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.006102444699819628,
+       "freq_2022": 0.006663703068116703,
+       "freq_2023": 0.006524994556684826,
+       "freq_2024": 0.006816590349553354,
+       "sev_2021": 1166.6943484224967,
+       "sev_2022": 1233.0587735849056,
+       "sev_2023": 1136.7267792521109,
+       "sev_2024": 1241.007088305489
+      },
+      {
+       "peril": "escape_of_water",
+       "freq_trend_fitted": 0.0046709247644696195,
+       "freq_trend": 0.0046709247644696195,
+       "sev_trend_fitted": 0.08751948747623106,
+       "sev_trend": 0.08751948747623106,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.017696252531438535,
+       "freq_2022": 0.016965725146301843,
+       "freq_2023": 0.016669089676462447,
+       "freq_2024": 0.018065747878953018,
+       "sev_2021": 5100.345,
+       "sev_2022": 5307.610231588698,
+       "sev_2023": 6036.68505899009,
+       "sev_2024": 6461.461740947075
+      },
+      {
+       "peril": "fire",
+       "freq_trend_fitted": 0.04666900378143013,
+       "freq_trend": 0.04666900378143013,
+       "sev_trend_fitted": -0.03888844016713777,
+       "sev_trend": -0.03888844016713777,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.0017160509786872753,
+       "freq_2022": 0.0018938118389341101,
+       "freq_2023": 0.00188762149945047,
+       "freq_2024": 0.00200596247646097,
+       "sev_2021": 51278.92614634146,
+       "sev_2022": 48434.3198340249,
+       "sev_2023": 46743.857833333335,
+       "sev_2024": 45392.4325
+      },
+      {
+       "peril": "flood",
+       "freq_trend_fitted": -0.043852779577414625,
+       "freq_trend": -0.043852779577414625,
+       "sev_trend_fitted": 0.07352079778520659,
+       "sev_trend": 0.07352079778520659,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.004059925486162578,
+       "freq_2022": 0.004015509749773155,
+       "freq_2023": 0.0036707828573169596,
+       "freq_2024": 0.003604731269503983,
+       "sev_2021": 28279.08268041237,
+       "sev_2022": 29221.7531702544,
+       "sev_2023": 33114.10518201285,
+       "sev_2024": 34331.67207207207
+      },
+      {
+       "peril": "storm",
+       "freq_trend_fitted": 0.021012073129704545,
+       "freq_trend": 0.021012073129704545,
+       "sev_trend_fitted": 0.08437262871479101,
+       "sev_trend": 0.08437262871479101,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.012815970967659603,
+       "freq_2022": 0.013280257293770317,
+       "freq_2023": 0.014247643377783954,
+       "freq_2024": 0.013406947909518258,
+       "sev_2021": 3081.89235793599,
+       "sev_2022": 3208.4476153846153,
+       "sev_2023": 3648.7332781456953,
+       "sev_2024": 3860.614914004914
+      },
+      {
+       "peril": "subsidence",
+       "freq_trend_fitted": 0.13433316222111547,
+       "freq_trend": 0.12,
+       "sev_trend_fitted": 0.054381779986268475,
+       "sev_trend": 0.054381779986268475,
+       "bounded": true,
+       "sev_step_level": null,
+       "freq_2021": 0.001992293331354007,
+       "freq_2022": 0.0021924211745336796,
+       "freq_2023": 0.0026031616271891384,
+       "freq_2024": 0.0028533978259533666,
+       "sev_2021": 22161.89668067227,
+       "sev_2022": 22869.814301075272,
+       "sev_2023": 22575.424072948328,
+       "sev_2024": 26705.72248995984
+      }
+     ],
+     "indication": [
+      {
+       "peril": "accidental_damage",
+       "indicated_capped_lc": 8.625110747050241,
+       "lc_2021": 8.365100819610912,
+       "lc_2022": 9.272718788814124,
+       "lc_2023": 8.039728103010134,
+       "lc_2024": 8.80732486051345
+      },
+      {
+       "peril": "escape_of_water",
+       "indicated_capped_lc": 123.35443674799413,
+       "lc_2021": 128.62470401643816,
+       "lc_2022": 117.45029043551727,
+       "lc_2023": 120.12465834705064,
+       "lc_2024": 127.54034987583819
+      },
+      {
+       "peril": "fire",
+       "indicated_capped_lc": 91.11049249569452,
+       "lc_2021": 90.11597018673345,
+       "lc_2022": 93.37691554920424,
+       "lc_2023": 89.29061112639118,
+       "lc_2024": 91.59872427839584
+      },
+      {
+       "peril": "flood",
+       "indicated_capped_lc": 127.35884283598429,
+       "lc_2021": 127.44543923756989,
+       "lc_2022": 126.89737583068694,
+       "lc_2023": 128.0684572015634,
+       "lc_2024": 127.02905841480691
+      },
+      {
+       "peril": "storm",
+       "indicated_capped_lc": 59.55474323834474,
+       "lc_2021": 59.348080615072405,
+       "lc_2022": 57.82687387337479,
+       "lc_2023": 63.724142818290716,
+       "lc_2024": 57.3054372144664
+      },
+      {
+       "peril": "subsidence",
+       "indicated_capped_lc": 85.08336914353762,
+       "lc_2021": 85.86652118454707,
+       "lc_2022": 82.57229811451859,
+       "lc_2023": 81.95375959424864,
+       "lc_2024": 89.98758007433382
+      }
+     ],
+     "level": {
+      "V2_large": {
+       "factor": 1.008921878583364,
+       "model_projection": 1.0179036744832188,
+       "gap": -0.008823817149903546,
+       "model_lc_last_year": 216.53741480800625,
+       "indicated_lc": 218.4693353316788,
+       "group_trend": 0.01790367448321882
+      },
+      "V2_other": {
+       "factor": 1.1082803955419653,
+       "model_projection": 1.1212908536654467,
+       "gap": -0.011603107330226403,
+       "model_lc_last_year": 249.59176485446775,
+       "indicated_lc": 276.6176598769267,
+       "group_trend": 0.12129085366544663
+      },
+      "V3_large": {
+       "factor": 1.0034264417314567,
+       "model_projection": 1.0179036744832188,
+       "gap": -0.014222596022273049,
+       "model_lc_last_year": 217.72331906532213,
+       "indicated_lc": 218.4693353316788,
+       "group_trend": 0.01790367448321882
+      },
+      "V3_other": {
+       "factor": 1.1082597637540543,
+       "model_projection": 1.1212908536654467,
+       "gap": -0.011621507362513772,
+       "model_lc_last_year": 249.59641135028508,
+       "indicated_lc": 276.6176598769267,
+       "group_trend": 0.12129085366544663
+      }
+     },
+     "weather_elasticities": {
+      "storm": {
+       "variable": "wind_exposure_index",
+       "b": 0.15926528102239915
+      },
+      "subsidence": {
+       "variable": "dry_summer_index",
+       "b": 0.0
+      },
+      "escape_of_water": {
+       "variable": "freezing_days",
+       "b": 0.010859728257879647
+      }
+     },
+     "cost_share": {
+      "accidental_damage": 0.018436768097050586,
+      "escape_of_water": 0.23269465283491914,
+      "fire": 0.23173599062592362,
+      "flood": 0.28526326337063435,
+      "storm": 0.10951041210156535,
+      "subsidence": 0.12235891296990692
+     },
+     "relativities_V2": {
+      "large": [
+       {
+        "factor": "region",
+        "level": "R01",
+        "relativity": 1.0
+       },
+       {
+        "factor": "region",
+        "level": "R02",
+        "relativity": 1.0867914668927778
+       },
+       {
+        "factor": "region",
+        "level": "R03",
+        "relativity": 0.7916763271469768
+       },
+       {
+        "factor": "region",
+        "level": "R04",
+        "relativity": 0.9203327140624546
+       },
+       {
+        "factor": "region",
+        "level": "R05",
+        "relativity": 1.012252142578446
+       },
+       {
+        "factor": "region",
+        "level": "R06",
+        "relativity": 0.6680442064069787
+       },
+       {
+        "factor": "region",
+        "level": "R07",
+        "relativity": 0.7400243219777496
+       },
+       {
+        "factor": "region",
+        "level": "R08",
+        "relativity": 1.0760126188853116
+       },
+       {
+        "factor": "region",
+        "level": "R09",
+        "relativity": 0.6732015557020481
+       },
+       {
+        "factor": "region",
+        "level": "R10",
+        "relativity": 0.8617421918052556
+       },
+       {
+        "factor": "region",
+        "level": "R11",
+        "relativity": 0.6586942166050674
+       },
+       {
+        "factor": "region",
+        "level": "R12",
+        "relativity": 1.0392614028539617
+       },
+       {
+        "factor": "urban",
+        "level": "suburban",
+        "relativity": 1.0
+       },
+       {
+        "factor": "urban",
+        "level": "dense_urban",
+        "relativity": 0.9911277898826808
+       },
+       {
+        "factor": "urban",
+        "level": "rural",
+        "relativity": 0.8634833281248837
+       },
+       {
+        "factor": "urban",
+        "level": "urban",
+        "relativity": 1.137708950661733
+       },
+       {
+        "factor": "pay",
+        "level": "annual",
+        "relativity": 1.0
+       },
+       {
+        "factor": "pay",
+        "level": "monthly",
+        "relativity": 1.0883318196340264
+       },
+       {
+        "factor": "missed",
+        "level": "0",
+        "relativity": 1.0
+       },
+       {
+        "factor": "missed",
+        "level": "1",
+        "relativity": 1.0245934794935978
+       },
+       {
+        "factor": "missed",
+        "level": "2+",
+        "relativity": 1.198196779796941
+       },
+       {
+        "factor": "credit",
+        "level": "B",
+        "relativity": 1.0
+       },
+       {
+        "factor": "credit",
+        "level": "A",
+        "relativity": 1.0892984778158956
+       },
+       {
+        "factor": "credit",
+        "level": "C",
+        "relativity": 1.095530467635674
+       },
+       {
+        "factor": "credit",
+        "level": "D",
+        "relativity": 0.8099556235819096
+       },
+       {
+        "factor": "credit",
+        "level": "E",
+        "relativity": 1.358923752089269
+       },
+       {
+        "factor": "channel",
+        "level": "direct",
+        "relativity": 1.0
+       },
+       {
+        "factor": "channel",
+        "level": "broker",
+        "relativity": 1.0359511393552987
+       },
+       {
+        "factor": "channel",
+        "level": "comparison_site",
+        "relativity": 1.2239082421811007
+       },
+       {
+        "factor": "new_bus",
+        "level": "False",
+        "relativity": 1.0
+       },
+       {
+        "factor": "new_bus",
+        "level": "True",
+        "relativity": 1.1386391662526583
+       },
+       {
+        "factor": "age",
+        "level": "(29.0, 39.0]",
+        "relativity": 1.0
+       },
+       {
+        "factor": "age",
+        "level": "(-0.001, 20.0]",
+        "relativity": 1.1060492665464094
+       },
+       {
+        "factor": "age",
+        "level": "(20.0, 24.0]",
+        "relativity": 1.0720435746551304
+       },
+       {
+        "factor": "age",
+        "level": "(24.0, 29.0]",
+        "relativity": 1.3481061861978523
+       },
+       {
+        "factor": "age",
+        "level": "(39.0, 49.0]",
+        "relativity": 0.958725755248166
+       },
+       {
+        "factor": "age",
+        "level": "(49.0, 59.0]",
+        "relativity": 0.8483878730630082
+       },
+       {
+        "factor": "age",
+        "level": "(59.0, 69.0]",
+        "relativity": 1.0653414916705422
+       },
+       {
+        "factor": "age",
+        "level": "(69.0, 79.0]",
+        "relativity": 1.3392484721924471
+       },
+       {
+        "factor": "age",
+        "level": "(79.0, 200.0]",
+        "relativity": 1.092584032712021
+       },
+       {
+        "factor": "yr",
+        "level": "2023",
+        "relativity": 1.0
+       },
+       {
+        "factor": "yr",
+        "level": "2021",
+        "relativity": 1.0359458379236066
+       },
+       {
+        "factor": "yr",
+        "level": "2022",
+        "relativity": 1.0734894841083475
+       },
+       {
+        "factor": "yr",
+        "level": "2024",
+        "relativity": 1.070047528670967
+       },
+       {
+        "factor": "si",
+        "level": "(-inf, 121000.0]",
+        "relativity": 1.0
+       },
+       {
+        "factor": "si",
+        "level": "(121000.0, 154000.0]",
+        "relativity": 1.1365515098127252
+       },
+       {
+        "factor": "si",
+        "level": "(154000.0, 179000.0]",
+        "relativity": 1.3125013148765228
+       },
+       {
+        "factor": "si",
+        "level": "(179000.0, 201000.0]",
+        "relativity": 1.1838132490613207
+       },
+       {
+        "factor": "si",
+        "level": "(201000.0, 223000.0]",
+        "relativity": 1.8910213584917466
+       },
+       {
+        "factor": "si",
+        "level": "(223000.0, 246000.0]",
+        "relativity": 1.7904506017371107
+       },
+       {
+        "factor": "si",
+        "level": "(246000.0, 272000.0]",
+        "relativity": 1.797462622251405
+       },
+       {
+        "factor": "si",
+        "level": "(272000.0, 305000.0]",
+        "relativity": 1.754529587515604
+       },
+       {
+        "factor": "si",
+        "level": "(305000.0, 355000.0]",
+        "relativity": 1.6099592333456925
+       },
+       {
+        "factor": "si",
+        "level": "(355000.0, inf]",
+        "relativity": 2.0445131245891024
+       },
+       {
+        "factor": "ptype",
+        "level": "semi_detached",
+        "relativity": 1.0
+       },
+       {
+        "factor": "ptype",
+        "level": "detached",
+        "relativity": 0.965787470829835
+       },
+       {
+        "factor": "ptype",
+        "level": "flat",
+        "relativity": 1.0500196435463427
+       },
+       {
+        "factor": "ptype",
+        "level": "terraced",
+        "relativity": 1.0025341280901137
+       },
+       {
+        "factor": "flood",
+        "level": "1.0",
+        "relativity": 1.0
+       },
+       {
+        "factor": "flood",
+        "level": "2.0",
+        "relativity": 1.42439158293602
+       },
+       {
+        "factor": "flood",
+        "level": "3.0",
+        "relativity": 2.811090583208048
+       },
+       {
+        "factor": "flood",
+        "level": "4.0",
+        "relativity": 9.694775894821161
+       },
+       {
+        "factor": "flood",
+        "level": "5.0",
+        "relativity": 24.778639226545263
+       },
+       {
+        "factor": "flood",
+        "level": "blank",
+        "relativity": 7.031264840671006
+       },
+       {
+        "factor": "ad_cover",
+        "level": "False",
+        "relativity": 1.0
+       },
+       {
+        "factor": "ad_cover",
+        "level": "True",
+        "relativity": 1.0644980715953833
+       },
+       {
+        "factor": "constr",
+        "level": "brick",
+        "relativity": 1.0
+       },
+       {
+        "factor": "constr",
+        "level": "non_standard",
+        "relativity": 1.5842472111503152
+       },
+       {
+        "factor": "constr",
+        "level": "stone",
+        "relativity": 1.1110335312833388
+       },
+       {
+        "factor": "constr",
+        "level": "timber",
+        "relativity": 1.0648092076576887
+       },
+       {
+        "factor": "soil",
+        "level": "clay",
+        "relativity": 1.0
+       },
+       {
+        "factor": "soil",
+        "level": "blank",
+        "relativity": 1.01022728962108
+       },
+       {
+        "factor": "soil",
+        "level": "chalk",
+        "relativity": 0.9576412540490753
+       },
+       {
+        "factor": "soil",
+        "level": "loam",
+        "relativity": 0.9103452708986689
+       },
+       {
+        "factor": "soil",
+        "level": "rock",
+        "relativity": 0.8809740381053202
+       },
+       {
+        "factor": "soil",
+        "level": "sand",
+        "relativity": 1.0305206588389784
+       },
+       {
+        "factor": "occ",
+        "level": "owner_occupied",
+        "relativity": 1.0
+       },
+       {
+        "factor": "occ",
+        "level": "let",
+        "relativity": 1.3403987988083355
+       },
+       {
+        "factor": "built",
+        "level": "(-0.001, 1919.0]",
+        "relativity": 1.0
+       },
+       {
+        "factor": "built",
+        "level": "(1919.0, 1944.0]",
+        "relativity": 0.9345361602024836
+       },
+       {
+        "factor": "built",
+        "level": "(1944.0, 1969.0]",
+        "relativity": 0.7841082954971195
+       },
+       {
+        "factor": "built",
+        "level": "(1969.0, 1989.0]",
+        "relativity": 0.7464371989565789
+       },
+       {
+        "factor": "built",
+        "level": "(1989.0, 2009.0]",
+        "relativity": 0.6789778297952886
+       },
+       {
+        "factor": "built",
+        "level": "(2009.0, 3000.0]",
+        "relativity": 0.6410756475602799
+       },
+       {
+        "factor": "beds",
+        "level": "3",
+        "relativity": 1.0
+       },
+       {
+        "factor": "beds",
+        "level": "1",
+        "relativity": 0.6633216257056098
+       },
+       {
+        "factor": "beds",
+        "level": "2",
+        "relativity": 0.987122013915526
+       },
+       {
+        "factor": "beds",
+        "level": "4",
+        "relativity": 1.1761830124320485
+       },
+       {
+        "factor": "beds",
+        "level": "5",
+        "relativity": 1.1843113007442172
+       }
+      ],
+      "other": [
+       {
+        "factor": "region",
+        "level": "R01",
+        "relativity": 1.0
+       },
+       {
+        "factor": "region",
+        "level": "R02",
+        "relativity": 0.879621788291937
+       },
+       {
+        "factor": "region",
+        "level": "R03",
+        "relativity": 0.9313078268112337
+       },
+       {
+        "factor": "region",
+        "level": "R04",
+        "relativity": 0.9517376164423378
+       },
+       {
+        "factor": "region",
+        "level": "R05",
+        "relativity": 1.1462952478256472
+       },
+       {
+        "factor": "region",
+        "level": "R06",
+        "relativity": 0.7097360950478306
+       },
+       {
+        "factor": "region",
+        "level": "R07",
+        "relativity": 1.0104532437426759
+       },
+       {
+        "factor": "region",
+        "level": "R08",
+        "relativity": 0.8504762460130655
+       },
+       {
+        "factor": "region",
+        "level": "R09",
+        "relativity": 0.9386948537118318
+       },
+       {
+        "factor": "region",
+        "level": "R10",
+        "relativity": 1.103312077519395
+       },
+       {
+        "factor": "region",
+        "level": "R11",
+        "relativity": 0.7518354029417667
+       },
+       {
+        "factor": "region",
+        "level": "R12",
+        "relativity": 1.0561528724871314
+       },
+       {
+        "factor": "urban",
+        "level": "suburban",
+        "relativity": 1.0
+       },
+       {
+        "factor": "urban",
+        "level": "dense_urban",
+        "relativity": 0.9636052847167222
+       },
+       {
+        "factor": "urban",
+        "level": "rural",
+        "relativity": 1.0400347041585674
+       },
+       {
+        "factor": "urban",
+        "level": "urban",
+        "relativity": 0.9690125168044987
+       },
+       {
+        "factor": "pay",
+        "level": "annual",
+        "relativity": 1.0
+       },
+       {
+        "factor": "pay",
+        "level": "monthly",
+        "relativity": 1.1357074597257213
+       },
+       {
+        "factor": "missed",
+        "level": "0",
+        "relativity": 1.0
+       },
+       {
+        "factor": "missed",
+        "level": "1",
+        "relativity": 1.3200077478315517
+       },
+       {
+        "factor": "missed",
+        "level": "2+",
+        "relativity": 1.2962454130334409
+       },
+       {
+        "factor": "credit",
+        "level": "B",
+        "relativity": 1.0
+       },
+       {
+        "factor": "credit",
+        "level": "A",
+        "relativity": 1.0445372450053696
+       },
+       {
+        "factor": "credit",
+        "level": "C",
+        "relativity": 1.1088850522299039
+       },
+       {
+        "factor": "credit",
+        "level": "D",
+        "relativity": 0.9829523060843792
+       },
+       {
+        "factor": "credit",
+        "level": "E",
+        "relativity": 1.1615846999735857
+       },
+       {
+        "factor": "channel",
+        "level": "direct",
+        "relativity": 1.0
+       },
+       {
+        "factor": "channel",
+        "level": "broker",
+        "relativity": 1.1076800267505995
+       },
+       {
+        "factor": "channel",
+        "level": "comparison_site",
+        "relativity": 1.2089062783953657
+       },
+       {
+        "factor": "new_bus",
+        "level": "False",
+        "relativity": 1.0
+       },
+       {
+        "factor": "new_bus",
+        "level": "True",
+        "relativity": 1.0351467838587785
+       },
+       {
+        "factor": "age",
+        "level": "(29.0, 39.0]",
+        "relativity": 1.0
+       },
+       {
+        "factor": "age",
+        "level": "(-0.001, 20.0]",
+        "relativity": 1.1067062108734629
+       },
+       {
+        "factor": "age",
+        "level": "(20.0, 24.0]",
+        "relativity": 0.9013950971781802
+       },
+       {
+        "factor": "age",
+        "level": "(24.0, 29.0]",
+        "relativity": 0.973778189418349
+       },
+       {
+        "factor": "age",
+        "level": "(39.0, 49.0]",
+        "relativity": 0.9878948031036786
+       },
+       {
+        "factor": "age",
+        "level": "(49.0, 59.0]",
+        "relativity": 1.0107319962029608
+       },
+       {
+        "factor": "age",
+        "level": "(59.0, 69.0]",
+        "relativity": 0.9306083301753044
+       },
+       {
+        "factor": "age",
+        "level": "(69.0, 79.0]",
+        "relativity": 0.9789589864879024
+       },
+       {
+        "factor": "age",
+        "level": "(79.0, 200.0]",
+        "relativity": 0.979966923440191
+       },
+       {
+        "factor": "yr",
+        "level": "2023",
+        "relativity": 1.0
+       },
+       {
+        "factor": "yr",
+        "level": "2021",
+        "relativity": 0.8718065455873256
+       },
+       {
+        "factor": "yr",
+        "level": "2022",
+        "relativity": 0.8988469195434668
+       },
+       {
+        "factor": "yr",
+        "level": "2024",
+        "relativity": 1.1255071920156707
+       },
+       {
+        "factor": "si",
+        "level": "(-inf, 121000.0]",
+        "relativity": 1.0
+       },
+       {
+        "factor": "si",
+        "level": "(121000.0, 154000.0]",
+        "relativity": 1.2787433332283227
+       },
+       {
+        "factor": "si",
+        "level": "(154000.0, 179000.0]",
+        "relativity": 1.4935471111090346
+       },
+       {
+        "factor": "si",
+        "level": "(179000.0, 201000.0]",
+        "relativity": 1.6779171528968115
+       },
+       {
+        "factor": "si",
+        "level": "(201000.0, 223000.0]",
+        "relativity": 1.7260928765604278
+       },
+       {
+        "factor": "si",
+        "level": "(223000.0, 246000.0]",
+        "relativity": 2.0499394366802024
+       },
+       {
+        "factor": "si",
+        "level": "(246000.0, 272000.0]",
+        "relativity": 1.975641489499239
+       },
+       {
+        "factor": "si",
+        "level": "(272000.0, 305000.0]",
+        "relativity": 2.3318680837107078
+       },
+       {
+        "factor": "si",
+        "level": "(305000.0, 355000.0]",
+        "relativity": 2.5542893053520883
+       },
+       {
+        "factor": "si",
+        "level": "(355000.0, inf]",
+        "relativity": 3.159846189788083
+       },
+       {
+        "factor": "ptype",
+        "level": "semi_detached",
+        "relativity": 1.0
+       },
+       {
+        "factor": "ptype",
+        "level": "detached",
+        "relativity": 1.0487966619778255
+       },
+       {
+        "factor": "ptype",
+        "level": "flat",
+        "relativity": 1.0348828769513876
+       },
+       {
+        "factor": "ptype",
+        "level": "terraced",
+        "relativity": 1.0497303150971171
+       },
+       {
+        "factor": "flood",
+        "level": "1.0",
+        "relativity": 1.0
+       },
+       {
+        "factor": "flood",
+        "level": "2.0",
+        "relativity": 0.97905619510678
+       },
+       {
+        "factor": "flood",
+        "level": "3.0",
+        "relativity": 0.8672938987666218
+       },
+       {
+        "factor": "flood",
+        "level": "4.0",
+        "relativity": 1.0290145808935602
+       },
+       {
+        "factor": "flood",
+        "level": "5.0",
+        "relativity": 0.9417386426259132
+       },
+       {
+        "factor": "flood",
+        "level": "blank",
+        "relativity": 0.8752137823575417
+       },
+       {
+        "factor": "ad_cover",
+        "level": "False",
+        "relativity": 1.0
+       },
+       {
+        "factor": "ad_cover",
+        "level": "True",
+        "relativity": 1.1420183437826563
+       },
+       {
+        "factor": "constr",
+        "level": "brick",
+        "relativity": 1.0
+       },
+       {
+        "factor": "constr",
+        "level": "non_standard",
+        "relativity": 1.2113570856408908
+       },
+       {
+        "factor": "constr",
+        "level": "stone",
+        "relativity": 1.0379552555861888
+       },
+       {
+        "factor": "constr",
+        "level": "timber",
+        "relativity": 1.0275038691099059
+       },
+       {
+        "factor": "soil",
+        "level": "clay",
+        "relativity": 1.0
+       },
+       {
+        "factor": "soil",
+        "level": "blank",
+        "relativity": 0.889212845779574
+       },
+       {
+        "factor": "soil",
+        "level": "chalk",
+        "relativity": 0.7173242693400336
+       },
+       {
+        "factor": "soil",
+        "level": "loam",
+        "relativity": 0.7875309877239774
+       },
+       {
+        "factor": "soil",
+        "level": "rock",
+        "relativity": 0.7819733961355402
+       },
+       {
+        "factor": "soil",
+        "level": "sand",
+        "relativity": 0.7469768476764391
+       },
+       {
+        "factor": "occ",
+        "level": "owner_occupied",
+        "relativity": 1.0
+       },
+       {
+        "factor": "occ",
+        "level": "let",
+        "relativity": 1.2954557729495366
+       },
+       {
+        "factor": "built",
+        "level": "(-0.001, 1919.0]",
+        "relativity": 1.0
+       },
+       {
+        "factor": "built",
+        "level": "(1919.0, 1944.0]",
+        "relativity": 1.0795604127963698
+       },
+       {
+        "factor": "built",
+        "level": "(1944.0, 1969.0]",
+        "relativity": 0.6544608441087175
+       },
+       {
+        "factor": "built",
+        "level": "(1969.0, 1989.0]",
+        "relativity": 0.6198650930240205
+       },
+       {
+        "factor": "built",
+        "level": "(1989.0, 2009.0]",
+        "relativity": 0.5694706174542439
+       },
+       {
+        "factor": "built",
+        "level": "(2009.0, 3000.0]",
+        "relativity": 0.6579192644663002
+       },
+       {
+        "factor": "beds",
+        "level": "3",
+        "relativity": 1.0
+       },
+       {
+        "factor": "beds",
+        "level": "1",
+        "relativity": 0.9289788592235707
+       },
+       {
+        "factor": "beds",
+        "level": "2",
+        "relativity": 0.9898335654472429
+       },
+       {
+        "factor": "beds",
+        "level": "4",
+        "relativity": 0.9262389155693419
+       },
+       {
+        "factor": "beds",
+        "level": "5",
+        "relativity": 0.9049951858460967
+       }
+      ]
+     }
+    }
+   },
+   "contents": {
+    "A": {
+     "excess_factor_line": 1.0117805495688275,
+     "excess_factors": {
+      "peril": {
+       "accidental_damage": 1.0,
+       "escape_of_water": 1.0017715520582888,
+       "flood": 1.0458583429214716,
+       "theft": 1.0012778002997358
+      },
+      "group": {
+       "large": 1.0458583429214716,
+       "other": 1.0012420233512584
+      }
+     },
+     "trends": [
+      {
+       "peril": "accidental_damage",
+       "freq_trend_fitted": -0.03903267913361963,
+       "freq_trend": -0.03903267913361963,
+       "sev_trend_fitted": -0.012721221188555787,
+       "sev_trend": -0.012721221188555787,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.015562416326300031,
+       "freq_2022": 0.01495497352329176,
+       "sev_2021": 771.4384900591081,
+       "sev_2022": 761.6248503937009
+      },
+      {
+       "peril": "escape_of_water",
+       "freq_trend_fitted": 0.019163806157113994,
+       "freq_trend": 0.019163806157113994,
+       "sev_trend_fitted": 0.04205462358071621,
+       "sev_trend": 0.04205462358071621,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.009081560521419578,
+       "freq_2022": 0.009255597786856161,
+       "sev_2021": 2609.1019429097605,
+       "sev_2022": 2718.8267430025444
+      },
+      {
+       "peril": "flood",
+       "freq_trend_fitted": -0.04762286211523181,
+       "freq_trend": -0.04762286211523181,
+       "sev_trend_fitted": -0.02559985008505472,
+       "sev_trend": -0.02559985008505472,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.00288502613249517,
+       "freq_2022": 0.0027476329307885125,
+       "sev_2021": 8903.698782608695,
+       "sev_2022": 8675.765428571429
+      },
+      {
+       "peril": "theft",
+       "freq_trend_fitted": 0.06681532682163138,
+       "freq_trend": 0.06681532682163138,
+       "sev_trend_fitted": -0.006637350387350138,
+       "sev_trend": -0.006637350387350138,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.012200733702349139,
+       "freq_2022": 0.013015929712135296,
+       "sev_2021": 3485.67694996573,
+       "sev_2022": 3462.5412907117006
+      }
+     ],
+     "indication": [
+      {
+       "peril": "accidental_damage",
+       "indicated_capped_lc": 10.806254102805983,
+       "lc_2021": 10.806254102805982,
+       "lc_2022": 10.806254102805985
+      },
+      {
+       "peril": "escape_of_water",
+       "indicated_capped_lc": 26.725170439258658,
+       "lc_2021": 26.72517043925867,
+       "lc_2022": 26.72517043925865
+      },
+      {
+       "peril": "flood",
+       "indicated_capped_lc": 22.121410640341477,
+       "lc_2021": 22.121410640341477,
+       "lc_2022": 22.12141064034148
+      },
+      {
+       "peril": "theft",
+       "indicated_capped_lc": 47.76032009009244,
+       "lc_2021": 47.76032009009241,
+       "lc_2022": 47.76032009009248
+      }
+     ],
+     "level": {
+      "V2_large": {
+       "factor": 0.8702617874185336,
+       "model_projection": 0.9279964259304846,
+       "gap": -0.06221428973076226,
+       "model_lc_last_year": 25.419259997569746,
+       "indicated_lc": 22.121410640341477,
+       "group_trend": -0.07200357406951541
+      },
+      "V2_other": {
+       "factor": 1.0461891168199582,
+       "model_projection": 1.0463896044680066,
+       "gap": -0.0001915994264395371,
+       "model_lc_last_year": 81.52612492415669,
+       "indicated_lc": 85.29174463215708,
+       "group_trend": 0.04638960446800645
+      },
+      "V3_large": {
+       "factor": 0.85187568722202,
+       "model_projection": 0.9279964259304846,
+       "gap": -0.0820269740070817,
+       "model_lc_last_year": 25.967885892458963,
+       "indicated_lc": 22.121410640341477,
+       "group_trend": -0.07200357406951541
+      },
+      "V3_other": {
+       "factor": 1.0451851634191232,
+       "model_projection": 1.0463896044680066,
+       "gap": -0.0011510445475954034,
+       "model_lc_last_year": 81.60443490523866,
+       "indicated_lc": 85.29174463215708,
+       "group_trend": 0.04638960446800645
+      }
+     },
+     "weather_elasticities": {
+      "escape_of_water": {
+       "variable": "freezing_days",
+       "b": 0.0034127110589299505
+      }
+     },
+     "cost_share": {
+      "accidental_damage": 0.11032090551088244,
+      "escape_of_water": 0.231213011673237,
+      "flood": 0.24415896595530512,
+      "theft": 0.4143071168605755
+     },
+     "relativities_V2": null
+    },
+    "B": {
+     "excess_factor_line": 1.0151700378174122,
+     "excess_factors": {
+      "peril": {
+       "accidental_damage": 1.0,
+       "escape_of_water": 1.001151865168158,
+       "flood": 1.059615254855598,
+       "theft": 1.0011323064773938
+      },
+      "group": {
+       "large": 1.059615254855598,
+       "other": 1.000972729596523
+      }
+     },
+     "trends": [
+      {
+       "peril": "accidental_damage",
+       "freq_trend_fitted": 0.013280287911905164,
+       "freq_trend": 0.013280287911905164,
+       "sev_trend_fitted": 0.010982393657377854,
+       "sev_trend": 0.010982393657377854,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.015562416326300031,
+       "freq_2022": 0.01495497352329176,
+       "freq_2023": 0.015954524579076475,
+       "sev_2021": 771.4384900591081,
+       "sev_2022": 761.6248503937009,
+       "sev_2023": 787.9460955194486
+      },
+      {
+       "peril": "escape_of_water",
+       "freq_trend_fitted": 0.006017466004889727,
+       "freq_trend": 0.006017466004889727,
+       "sev_trend_fitted": 0.032854632469157874,
+       "sev_trend": 0.032854632469157874,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.009081560521419578,
+       "freq_2022": 0.009255597786856161,
+       "freq_2023": 0.009194099873588366,
+       "sev_2021": 2609.1019429097605,
+       "sev_2022": 2718.8267430025444,
+       "sev_2023": 2783.9632733504714
+      },
+      {
+       "peril": "flood",
+       "freq_trend_fitted": 0.03544425855584121,
+       "freq_trend": 0.03544425855584121,
+       "sev_trend_fitted": 0.0318143882923263,
+       "sev_trend": 0.0318143882923263,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.00288502613249517,
+       "freq_2022": 0.0027476329307885125,
+       "freq_2023": 0.0030829414688945092,
+       "sev_2021": 8903.698782608695,
+       "sev_2022": 8675.765428571429,
+       "sev_2023": 9457.779283887468
+      },
+      {
+       "peril": "theft",
+       "freq_trend_fitted": 0.034041046072673,
+       "freq_trend": 0.034041046072673,
+       "sev_trend_fitted": 0.026384283746879955,
+       "sev_trend": 0.026384283746879955,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.012200733702349139,
+       "freq_2022": 0.013015929712135296,
+       "freq_2023": 0.013063628410926603,
+       "sev_2021": 3485.67694996573,
+       "sev_2022": 3462.5412907117006,
+       "sev_2023": 3666.7042874323515
+      }
+     ],
+     "indication": [
+      {
+       "peril": "accidental_damage",
+       "indicated_capped_lc": 12.572334778236076,
+       "lc_2021": 12.906185190597025,
+       "lc_2022": 11.952895626593541,
+       "lc_2023": 12.878152443230258
+      },
+      {
+       "peril": "escape_of_water",
+       "indicated_capped_lc": 26.786485554324788,
+       "lc_2021": 26.581880254307528,
+       "lc_2022": 27.16911247525308,
+       "lc_2023": 26.59606840449462
+      },
+      {
+       "peril": "flood",
+       "indicated_capped_lc": 29.86632096031017,
+       "lc_2021": 31.326012901056583,
+       "lc_2022": 27.20966043772208,
+       "lc_2023": 31.15177218632699
+      },
+      {
+       "peril": "theft",
+       "indicated_capped_lc": 50.81422314430015,
+       "lc_2021": 50.84127085811639,
+       "lc_2022": 50.76515297312528,
+       "lc_2023": 50.83788527103136
+      }
+     ],
+     "level": {
+      "V2_large": {
+       "factor": 0.9390329300871809,
+       "model_projection": 1.0683862842525966,
+       "gap": -0.12107358178592353,
+       "model_lc_last_year": 31.805403200862557,
+       "indicated_lc": 29.86632096031017,
+       "group_trend": 0.06838628425259663
+      },
+      "V2_other": {
+       "factor": 1.0089972862325305,
+       "model_projection": 1.0495660299727156,
+       "gap": -0.03865287421815644,
+       "model_lc_last_year": 89.36896531561136,
+       "indicated_lc": 90.17304347686101,
+       "group_trend": 0.049566029972715656
+      },
+      "V3_large": {
+       "factor": 0.9184863098011425,
+       "model_projection": 1.0683862842525966,
+       "gap": -0.14030503448134257,
+       "model_lc_last_year": 32.51689289389234,
+       "indicated_lc": 29.86632096031017,
+       "group_trend": 0.06838628425259663
+      },
+      "V3_other": {
+       "factor": 1.010405820536134,
+       "model_projection": 1.0495660299727156,
+       "gap": -0.037310858315031115,
+       "model_lc_last_year": 89.24438244923616,
+       "indicated_lc": 90.17304347686101,
+       "group_trend": 0.049566029972715656
+      }
+     },
+     "weather_elasticities": {
+      "escape_of_water": {
+       "variable": "freezing_days",
+       "b": 0.009529955682965824
+      }
+     },
+     "cost_share": {
+      "accidental_damage": 0.1091170508997415,
+      "escape_of_water": 0.22613404110768012,
+      "flood": 0.25269855471536806,
+      "theft": 0.41205035327721035
+     },
+     "relativities_V2": null
+    },
+    "final": {
+     "excess_factor_line": 1.0179848606621604,
+     "excess_factors": {
+      "peril": {
+       "accidental_damage": 1.0,
+       "escape_of_water": 1.0008522517599163,
+       "flood": 1.0726623950316276,
+       "theft": 1.0017579172330975
+      },
+      "group": {
+       "large": 1.0726623950316276,
+       "other": 1.0012362663884238
+      }
+     },
+     "trends": [
+      {
+       "peril": "accidental_damage",
+       "freq_trend_fitted": 0.011666261979685677,
+       "freq_trend": 0.011666261979685677,
+       "sev_trend_fitted": 0.021864172197974208,
+       "sev_trend": 0.021864172197974208,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.015562416326300031,
+       "freq_2022": 0.01495497352329176,
+       "freq_2023": 0.015954524579076475,
+       "freq_2024": 0.01581876803396041,
+       "sev_2021": 771.4384900591081,
+       "sev_2022": 761.6248503937009,
+       "sev_2023": 787.9460955194486,
+       "sev_2024": 819.3827920081967
+      },
+      {
+       "peril": "escape_of_water",
+       "freq_trend_fitted": 0.020632643060208622,
+       "freq_trend": 0.020632643060208622,
+       "sev_trend_fitted": 0.026367486114461602,
+       "sev_trend": 0.026367486114461602,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.009081560521419578,
+       "freq_2022": 0.009255597786856161,
+       "freq_2023": 0.009194099873588366,
+       "freq_2024": 0.009740728676688551,
+       "sev_2021": 2609.1019429097605,
+       "sev_2022": 2718.8267430025444,
+       "sev_2023": 2783.9632733504714,
+       "sev_2024": 2824.5643425605535
+      },
+      {
+       "peril": "flood",
+       "freq_trend_fitted": -0.01352024113986039,
+       "freq_trend": -0.01352024113986039,
+       "sev_trend_fitted": 0.03875122459797309,
+       "sev_trend": 0.03875122459797309,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.00288502613249517,
+       "freq_2022": 0.0027476329307885125,
+       "freq_2023": 0.0030829414688945092,
+       "freq_2024": 0.0026319765073834914,
+       "sev_2021": 8903.698782608695,
+       "sev_2022": 8675.765428571429,
+       "sev_2023": 9457.779283887468,
+       "sev_2024": 9819.92202492212
+      },
+      {
+       "peril": "theft",
+       "freq_trend_fitted": 0.03217055950012071,
+       "freq_trend": 0.03217055950012071,
+       "sev_trend_fitted": 0.0463098407306084,
+       "sev_trend": 0.0463098407306084,
+       "bounded": false,
+       "sev_step_level": null,
+       "freq_2021": 0.012200733702349139,
+       "freq_2022": 0.013015929712135296,
+       "freq_2023": 0.013063628410926603,
+       "freq_2024": 0.0135635488009597,
+       "sev_2021": 3485.67694996573,
+       "sev_2022": 3462.5412907117006,
+       "sev_2023": 3666.7042874323515,
+       "sev_2024": 3962.8032804232803
+      }
+     ],
+     "indication": [
+      {
+       "peril": "accidental_damage",
+       "indicated_capped_lc": 13.276052936505584,
+       "lc_2021": 13.711977472207934,
+       "lc_2022": 12.583981547141432,
+       "lc_2023": 13.435110854692732,
+       "lc_2024": 13.399541438875179
+      },
+      {
+       "peril": "escape_of_water",
+       "indicated_capped_lc": 28.593106821187654,
+       "lc_2021": 28.532569907918727,
+       "lc_2022": 28.92697544097889,
+       "lc_2023": 28.087778970648774,
+       "lc_2024": 28.82141233889002
+      },
+      {
+       "peril": "flood",
+       "indicated_capped_lc": 27.759210999366353,
+       "lc_2021": 28.32168707418147,
+       "lc_2022": 25.648719980342186,
+       "lc_2023": 30.616384890355747,
+       "lc_2024": 26.484377842796498
+      },
+      {
+       "peril": "theft",
+       "indicated_capped_lc": 57.12309911253883,
+       "lc_2021": 57.852241811757594,
+       "lc_2022": 56.768247636954776,
+       "lc_2023": 55.86801743592556,
+       "lc_2024": 58.04804873420444
+      }
+     ],
+     "level": {
+      "V2_large": {
+       "factor": 0.8616652748615383,
+       "model_projection": 1.0247070575570831,
+       "gap": -0.15911062726964997,
+       "model_lc_last_year": 32.21577079780429,
+       "indicated_lc": 27.759210999366353,
+       "group_trend": 0.024707057557083134
+      },
+      "V2_other": {
+       "factor": 1.0475764447098215,
+       "model_projection": 1.0644102877284545,
+       "gap": -0.015815182559497765,
+       "model_lc_last_year": 94.49645357160824,
+       "indicated_lc": 98.99225887023206,
+       "group_trend": 0.06441028772845453
+      },
+      "V3_large": {
+       "factor": 0.8449183189504873,
+       "model_projection": 1.0247070575570831,
+       "gap": -0.17545379167702313,
+       "model_lc_last_year": 32.85431310549329,
+       "indicated_lc": 27.759210999366353,
+       "group_trend": 0.024707057557083134
+      },
+      "V3_other": {
+       "factor": 1.0469676742358907,
+       "model_projection": 1.0644102877284545,
+       "gap": -0.016387114718505624,
+       "model_lc_last_year": 94.5513995381755,
+       "indicated_lc": 98.99225887023206,
+       "group_trend": 0.06441028772845453
+      }
+     },
+     "weather_elasticities": {
+      "escape_of_water": {
+       "variable": "freezing_days",
+       "b": 0.008946724613936152
+      }
+     },
+     "cost_share": {
+      "accidental_damage": 0.10818795799800801,
+      "escape_of_water": 0.2233292072442938,
+      "flood": 0.2470830688583301,
+      "theft": 0.421399765899368
+     },
+     "relativities_V2": {
+      "large": [
+       {
+        "factor": "region",
+        "level": "R01",
+        "relativity": 1.0
+       },
+       {
+        "factor": "region",
+        "level": "R02",
+        "relativity": 1.0693597806173791
+       },
+       {
+        "factor": "region",
+        "level": "R03",
+        "relativity": 1.0337286011571833
+       },
+       {
+        "factor": "region",
+        "level": "R04",
+        "relativity": 0.8326077388738244
+       },
+       {
+        "factor": "region",
+        "level": "R05",
+        "relativity": 0.7917994261540364
+       },
+       {
+        "factor": "region",
+        "level": "R06",
+        "relativity": 0.5373714144967924
+       },
+       {
+        "factor": "region",
+        "level": "R07",
+        "relativity": 1.630352331216678
+       },
+       {
+        "factor": "region",
+        "level": "R08",
+        "relativity": 0.768366980502547
+       },
+       {
+        "factor": "region",
+        "level": "R09",
+        "relativity": 0.8902238759277109
+       },
+       {
+        "factor": "region",
+        "level": "R10",
+        "relativity": 0.7848803197493334
+       },
+       {
+        "factor": "region",
+        "level": "R11",
+        "relativity": 0.7615959352480178
+       },
+       {
+        "factor": "region",
+        "level": "R12",
+        "relativity": 1.3754408433858498
+       },
+       {
+        "factor": "urban",
+        "level": "suburban",
+        "relativity": 1.0
+       },
+       {
+        "factor": "urban",
+        "level": "dense_urban",
+        "relativity": 0.895585306842195
+       },
+       {
+        "factor": "urban",
+        "level": "rural",
+        "relativity": 1.2536924679252202
+       },
+       {
+        "factor": "urban",
+        "level": "urban",
+        "relativity": 1.0236644225168932
+       },
+       {
+        "factor": "pay",
+        "level": "annual",
+        "relativity": 1.0
+       },
+       {
+        "factor": "pay",
+        "level": "monthly",
+        "relativity": 1.1402892719424331
+       },
+       {
+        "factor": "missed",
+        "level": "0",
+        "relativity": 1.0
+       },
+       {
+        "factor": "missed",
+        "level": "1",
+        "relativity": 1.7722041558671386
+       },
+       {
+        "factor": "missed",
+        "level": "2+",
+        "relativity": 1.1517756261879541
+       },
+       {
+        "factor": "credit",
+        "level": "B",
+        "relativity": 1.0
+       },
+       {
+        "factor": "credit",
+        "level": "A",
+        "relativity": 0.9099155964836974
+       },
+       {
+        "factor": "credit",
+        "level": "C",
+        "relativity": 1.1600900790180273
+       },
+       {
+        "factor": "credit",
+        "level": "D",
+        "relativity": 0.9228018483949454
+       },
+       {
+        "factor": "credit",
+        "level": "E",
+        "relativity": 1.0793064041208984
+       },
+       {
+        "factor": "channel",
+        "level": "direct",
+        "relativity": 1.0
+       },
+       {
+        "factor": "channel",
+        "level": "broker",
+        "relativity": 1.2625694778242098
+       },
+       {
+        "factor": "channel",
+        "level": "comparison_site",
+        "relativity": 1.4099589687180505
+       },
+       {
+        "factor": "new_bus",
+        "level": "False",
+        "relativity": 1.0
+       },
+       {
+        "factor": "new_bus",
+        "level": "True",
+        "relativity": 0.7250166182900419
+       },
+       {
+        "factor": "age",
+        "level": "(29.0, 39.0]",
+        "relativity": 1.0
+       },
+       {
+        "factor": "age",
+        "level": "(-0.001, 20.0]",
+        "relativity": 0.8240916248290503
+       },
+       {
+        "factor": "age",
+        "level": "(20.0, 24.0]",
+        "relativity": 1.3674699391681089
+       },
+       {
+        "factor": "age",
+        "level": "(24.0, 29.0]",
+        "relativity": 0.9806504850376281
+       },
+       {
+        "factor": "age",
+        "level": "(39.0, 49.0]",
+        "relativity": 1.0342625010470003
+       },
+       {
+        "factor": "age",
+        "level": "(49.0, 59.0]",
+        "relativity": 0.7804219272606685
+       },
+       {
+        "factor": "age",
+        "level": "(59.0, 69.0]",
+        "relativity": 1.2204275413217154
+       },
+       {
+        "factor": "age",
+        "level": "(69.0, 79.0]",
+        "relativity": 0.6924842301815297
+       },
+       {
+        "factor": "age",
+        "level": "(79.0, 200.0]",
+        "relativity": 0.8377698989535791
+       },
+       {
+        "factor": "yr",
+        "level": "2023",
+        "relativity": 1.0
+       },
+       {
+        "factor": "yr",
+        "level": "2021",
+        "relativity": 0.8249638106726481
+       },
+       {
+        "factor": "yr",
+        "level": "2022",
+        "relativity": 0.7779019774448592
+       },
+       {
+        "factor": "yr",
+        "level": "2024",
+        "relativity": 1.0717419549771257
+       },
+       {
+        "factor": "si",
+        "level": "(-inf, 18600.0]",
+        "relativity": 1.0
+       },
+       {
+        "factor": "si",
+        "level": "(18600.0, 24000.0]",
+        "relativity": 1.1198497469201962
+       },
+       {
+        "factor": "si",
+        "level": "(24000.0, 29000.0]",
+        "relativity": 1.0513911030496197
+       },
+       {
+        "factor": "si",
+        "level": "(29000.0, 33900.0]",
+        "relativity": 1.5911156244840834
+       },
+       {
+        "factor": "si",
+        "level": "(33900.0, 38900.0]",
+        "relativity": 2.452674443208267
+       },
+       {
+        "factor": "si",
+        "level": "(38900.0, 44400.0]",
+        "relativity": 2.2360219527252294
+       },
+       {
+        "factor": "si",
+        "level": "(44400.0, 50700.0]",
+        "relativity": 3.0060763888824837
+       },
+       {
+        "factor": "si",
+        "level": "(50700.0, 58900.0]",
+        "relativity": 3.0933418334607836
+       },
+       {
+        "factor": "si",
+        "level": "(58900.0, 71900.0]",
+        "relativity": 2.6414796959228215
+       },
+       {
+        "factor": "si",
+        "level": "(71900.0, inf]",
+        "relativity": 2.943731107692056
+       },
+       {
+        "factor": "ptype",
+        "level": "semi_detached",
+        "relativity": 1.0
+       },
+       {
+        "factor": "ptype",
+        "level": "detached",
+        "relativity": 1.1183749557500753
+       },
+       {
+        "factor": "ptype",
+        "level": "flat",
+        "relativity": 0.492747450961349
+       },
+       {
+        "factor": "ptype",
+        "level": "terraced",
+        "relativity": 1.014476785318478
+       },
+       {
+        "factor": "flood",
+        "level": "1.0",
+        "relativity": 1.0
+       },
+       {
+        "factor": "flood",
+        "level": "2.0",
+        "relativity": 4.889818192302067
+       },
+       {
+        "factor": "flood",
+        "level": "3.0",
+        "relativity": 20.64015242009967
+       },
+       {
+        "factor": "flood",
+        "level": "4.0",
+        "relativity": 62.98422165517878
+       },
+       {
+        "factor": "flood",
+        "level": "5.0",
+        "relativity": 214.2904312736281
+       },
+       {
+        "factor": "flood",
+        "level": "blank",
+        "relativity": 38.03888300606854
+       },
+       {
+        "factor": "ad_cover",
+        "level": "False",
+        "relativity": 1.0
+       },
+       {
+        "factor": "ad_cover",
+        "level": "True",
+        "relativity": 1.1729698168889178
+       },
+       {
+        "factor": "tenure",
+        "level": "owner",
+        "relativity": 1.0
+       },
+       {
+        "factor": "tenure",
+        "level": "renter",
+        "relativity": 1.3071847340450644
+       },
+       {
+        "factor": "security",
+        "level": "standard",
+        "relativity": 1.0
+       },
+       {
+        "factor": "security",
+        "level": "alarm_and_locks",
+        "relativity": 0.808640833421337
+       },
+       {
+        "factor": "security",
+        "level": "blank",
+        "relativity": 0.021030793744248027
+       },
+       {
+        "factor": "security",
+        "level": "locks",
+        "relativity": 0.7495296478870827
+       },
+       {
+        "factor": "hvi",
+        "level": "0.0",
+        "relativity": 1.0
+       },
+       {
+        "factor": "hvi",
+        "level": "1.0",
+        "relativity": 1.1135980470747302
+       },
+       {
+        "factor": "hvi",
+        "level": "2.0",
+        "relativity": 0.8861097087520137
+       },
+       {
+        "factor": "hvi",
+        "level": "3.0",
+        "relativity": 1.4227283568459794
+       },
+       {
+        "factor": "hvi",
+        "level": "4.0",
+        "relativity": 0.9829413705302144
+       },
+       {
+        "factor": "hvi",
+        "level": "blank",
+        "relativity": 0.02324421756021388
+       },
+       {
+        "factor": "bike",
+        "level": "False",
+        "relativity": 1.0
+       },
+       {
+        "factor": "bike",
+        "level": "True",
+        "relativity": 1.188560736482668
+       }
+      ],
+      "other": [
+       {
+        "factor": "region",
+        "level": "R01",
+        "relativity": 1.0
+       },
+       {
+        "factor": "region",
+        "level": "R02",
+        "relativity": 1.217159062838756
+       },
+       {
+        "factor": "region",
+        "level": "R03",
+        "relativity": 1.3329959457290013
+       },
+       {
+        "factor": "region",
+        "level": "R04",
+        "relativity": 1.0875891095505854
+       },
+       {
+        "factor": "region",
+        "level": "R05",
+        "relativity": 0.9488472292430172
+       },
+       {
+        "factor": "region",
+        "level": "R06",
+        "relativity": 0.8743041982269454
+       },
+       {
+        "factor": "region",
+        "level": "R07",
+        "relativity": 1.4177255736132566
+       },
+       {
+        "factor": "region",
+        "level": "R08",
+        "relativity": 0.8354037636768471
+       },
+       {
+        "factor": "region",
+        "level": "R09",
+        "relativity": 1.110705616805868
+       },
+       {
+        "factor": "region",
+        "level": "R10",
+        "relativity": 1.0009839021532985
+       },
+       {
+        "factor": "region",
+        "level": "R11",
+        "relativity": 1.103854916519438
+       },
+       {
+        "factor": "region",
+        "level": "R12",
+        "relativity": 1.2101673534784099
+       },
+       {
+        "factor": "urban",
+        "level": "suburban",
+        "relativity": 1.0
+       },
+       {
+        "factor": "urban",
+        "level": "dense_urban",
+        "relativity": 1.4807191919970877
+       },
+       {
+        "factor": "urban",
+        "level": "rural",
+        "relativity": 0.9474236090037811
+       },
+       {
+        "factor": "urban",
+        "level": "urban",
+        "relativity": 1.1625441852449412
+       },
+       {
+        "factor": "pay",
+        "level": "annual",
+        "relativity": 1.0
+       },
+       {
+        "factor": "pay",
+        "level": "monthly",
+        "relativity": 1.0813007840095656
+       },
+       {
+        "factor": "missed",
+        "level": "0",
+        "relativity": 1.0
+       },
+       {
+        "factor": "missed",
+        "level": "1",
+        "relativity": 1.2575174380993661
+       },
+       {
+        "factor": "missed",
+        "level": "2+",
+        "relativity": 1.2793119912474367
+       },
+       {
+        "factor": "credit",
+        "level": "B",
+        "relativity": 1.0
+       },
+       {
+        "factor": "credit",
+        "level": "A",
+        "relativity": 0.9796929819245749
+       },
+       {
+        "factor": "credit",
+        "level": "C",
+        "relativity": 1.0323470466295506
+       },
+       {
+        "factor": "credit",
+        "level": "D",
+        "relativity": 0.9939026791706154
+       },
+       {
+        "factor": "credit",
+        "level": "E",
+        "relativity": 1.2371150536701963
+       },
+       {
+        "factor": "channel",
+        "level": "direct",
+        "relativity": 1.0
+       },
+       {
+        "factor": "channel",
+        "level": "broker",
+        "relativity": 1.0713672106299488
+       },
+       {
+        "factor": "channel",
+        "level": "comparison_site",
+        "relativity": 1.1704760662620268
+       },
+       {
+        "factor": "new_bus",
+        "level": "False",
+        "relativity": 1.0
+       },
+       {
+        "factor": "new_bus",
+        "level": "True",
+        "relativity": 1.0833138928972263
+       },
+       {
+        "factor": "age",
+        "level": "(29.0, 39.0]",
+        "relativity": 1.0
+       },
+       {
+        "factor": "age",
+        "level": "(-0.001, 20.0]",
+        "relativity": 1.2935256413351388
+       },
+       {
+        "factor": "age",
+        "level": "(20.0, 24.0]",
+        "relativity": 1.3267865723004997
+       },
+       {
+        "factor": "age",
+        "level": "(24.0, 29.0]",
+        "relativity": 1.1978299695764232
+       },
+       {
+        "factor": "age",
+        "level": "(39.0, 49.0]",
+        "relativity": 0.7898489184214187
+       },
+       {
+        "factor": "age",
+        "level": "(49.0, 59.0]",
+        "relativity": 0.8706640183266582
+       },
+       {
+        "factor": "age",
+        "level": "(59.0, 69.0]",
+        "relativity": 0.9237217346689104
+       },
+       {
+        "factor": "age",
+        "level": "(69.0, 79.0]",
+        "relativity": 1.070202997171228
+       },
+       {
+        "factor": "age",
+        "level": "(79.0, 200.0]",
+        "relativity": 1.1383107644526473
+       },
+       {
+        "factor": "yr",
+        "level": "2023",
+        "relativity": 1.0
+       },
+       {
+        "factor": "yr",
+        "level": "2021",
+        "relativity": 0.9045637056604734
+       },
+       {
+        "factor": "yr",
+        "level": "2022",
+        "relativity": 0.9265159212489209
+       },
+       {
+        "factor": "yr",
+        "level": "2024",
+        "relativity": 1.0377416538637698
+       },
+       {
+        "factor": "si",
+        "level": "(-inf, 18600.0]",
+        "relativity": 1.0
+       },
+       {
+        "factor": "si",
+        "level": "(18600.0, 24000.0]",
+        "relativity": 1.3759169830079716
+       },
+       {
+        "factor": "si",
+        "level": "(24000.0, 29000.0]",
+        "relativity": 1.6090535475535956
+       },
+       {
+        "factor": "si",
+        "level": "(29000.0, 33900.0]",
+        "relativity": 1.738431312097222
+       },
+       {
+        "factor": "si",
+        "level": "(33900.0, 38900.0]",
+        "relativity": 1.9072560427572731
+       },
+       {
+        "factor": "si",
+        "level": "(38900.0, 44400.0]",
+        "relativity": 2.1300304267655537
+       },
+       {
+        "factor": "si",
+        "level": "(44400.0, 50700.0]",
+        "relativity": 2.5270813942964923
+       },
+       {
+        "factor": "si",
+        "level": "(50700.0, 58900.0]",
+        "relativity": 2.858178121329751
+       },
+       {
+        "factor": "si",
+        "level": "(58900.0, 71900.0]",
+        "relativity": 2.924494214908298
+       },
+       {
+        "factor": "si",
+        "level": "(71900.0, inf]",
+        "relativity": 3.8833979510490866
+       },
+       {
+        "factor": "ptype",
+        "level": "semi_detached",
+        "relativity": 1.0
+       },
+       {
+        "factor": "ptype",
+        "level": "detached",
+        "relativity": 0.9664565850753454
+       },
+       {
+        "factor": "ptype",
+        "level": "flat",
+        "relativity": 0.9547490749743844
+       },
+       {
+        "factor": "ptype",
+        "level": "terraced",
+        "relativity": 0.9975953368137292
+       },
+       {
+        "factor": "flood",
+        "level": "1.0",
+        "relativity": 1.0
+       },
+       {
+        "factor": "flood",
+        "level": "2.0",
+        "relativity": 1.011176819507444
+       },
+       {
+        "factor": "flood",
+        "level": "3.0",
+        "relativity": 1.006269040846323
+       },
+       {
+        "factor": "flood",
+        "level": "4.0",
+        "relativity": 1.015505235056616
+       },
+       {
+        "factor": "flood",
+        "level": "5.0",
+        "relativity": 0.9839650056060804
+       },
+       {
+        "factor": "flood",
+        "level": "blank",
+        "relativity": 1.112002471225064
+       },
+       {
+        "factor": "ad_cover",
+        "level": "False",
+        "relativity": 1.0
+       },
+       {
+        "factor": "ad_cover",
+        "level": "True",
+        "relativity": 1.2551279421483208
+       },
+       {
+        "factor": "tenure",
+        "level": "owner",
+        "relativity": 1.0
+       },
+       {
+        "factor": "tenure",
+        "level": "renter",
+        "relativity": 1.1258931005839525
+       },
+       {
+        "factor": "security",
+        "level": "standard",
+        "relativity": 1.0
+       },
+       {
+        "factor": "security",
+        "level": "alarm_and_locks",
+        "relativity": 0.8712039727134959
+       },
+       {
+        "factor": "security",
+        "level": "blank",
+        "relativity": 0.005789416696862525
+       },
+       {
+        "factor": "security",
+        "level": "locks",
+        "relativity": 1.0023273414232041
+       },
+       {
+        "factor": "hvi",
+        "level": "0.0",
+        "relativity": 1.0
+       },
+       {
+        "factor": "hvi",
+        "level": "1.0",
+        "relativity": 1.105952409834001
+       },
+       {
+        "factor": "hvi",
+        "level": "2.0",
+        "relativity": 1.166686216051948
+       },
+       {
+        "factor": "hvi",
+        "level": "3.0",
+        "relativity": 1.2046168357962816
+       },
+       {
+        "factor": "hvi",
+        "level": "4.0",
+        "relativity": 1.3307684334711092
+       },
+       {
+        "factor": "hvi",
+        "level": "blank",
+        "relativity": 0.2670594098175193
+       },
+       {
+        "factor": "bike",
+        "level": "False",
+        "relativity": 1.0
+       },
+       {
+        "factor": "bike",
+        "level": "True",
+        "relativity": 0.9770956389936911
+       }
+      ]
+     }
+    }
+   }
+  },
+  "tests": {
+   "V1_vs_V0": {
+    "A": {
+     "motor": {
+      "gain": 32147.854578894745,
+      "d2_ref": 0.0480634939772,
+      "d2_cand": 0.049319220535385844,
+      "boot": {
+       "gain": 32147.854578894752,
+       "rel_gain": 0.0013191284820374097,
+       "lo": 8841.569623386999,
+       "hi": 55740.17270377869,
+       "share_b_better": 0.994,
+       "groups": 200376,
+       "n_boot": 2000,
+       "boot_seed": 0
+      }
+     },
+     "buildings": {
+      "gain": 606.5109145673305,
+      "d2_ref": 0.06529066282340057,
+      "d2_cand": 0.06532205076987008,
+      "boot": {
+       "gain": 606.5109145673289,
+       "rel_gain": 3.3580435351684126e-05,
+       "lo": -11079.075625548805,
+       "hi": 11453.624793675332,
+       "share_b_better": 0.5625,
+       "groups": 150454,
+       "n_boot": 2000,
+       "boot_seed": 0
+      }
+     },
+     "contents": {
+      "gain": 70.16645271878588,
+      "d2_ref": 0.06332087735369474,
+      "d2_cand": 0.06332767458409394,
+      "boot": {
+       "gain": 70.16645271878588,
+       "rel_gain": 7.25673310614792e-06,
+       "lo": -2765.0627169153713,
+       "hi": 2863.704470785442,
+       "share_b_better": 0.525,
+       "groups": 150626,
+       "n_boot": 2000,
+       "boot_seed": 0
+      }
+     },
+     "all": {
+      "gain": 32824.53194618086,
+      "d2_ref": 0.09966135108998597,
+      "d2_cand": 0.1002285787812367,
+      "boot": {
+       "gain": 32824.53194618086,
+       "rel_gain": 0.0006300159300474404,
+       "lo": 6688.116451392436,
+       "hi": 58428.87880422387,
+       "share_b_better": 0.9915,
+       "groups": 317735,
+       "n_boot": 2000,
+       "boot_seed": 0
+      }
+     }
+    },
+    "B": {
+     "motor": {
+      "gain": 36364.666893593945,
+      "d2_ref": 0.053356688209162395,
+      "d2_cand": 0.054871541422266024
+     },
+     "buildings": {
+      "gain": 15427.216113201313,
+      "d2_ref": 0.060421490654732346,
+      "d2_cand": 0.06121158221257683
+     },
+     "contents": {
+      "gain": 1251.9100119917882,
+      "d2_ref": 0.054000869759911585,
+      "d2_cand": 0.05412250180617095
+     },
+     "all": {
+      "gain": 53043.793018787044,
+      "d2_ref": 0.09405972381357164,
+      "d2_cand": 0.09500554045796328
+     }
+    },
+    "verdict": {
+     "motor": {
+      "keep": true,
+      "scorings_better": 2,
+      "gain_by_scoring": {
+       "A": 32147.854578894745,
+       "B": 36364.666893593945
+      },
+      "a_interval": [
+       8841.569623386999,
+       55740.17270377869
+      ]
+     },
+     "buildings": {
+      "keep": false,
+      "scorings_better": 2,
+      "gain_by_scoring": {
+       "A": 606.5109145673305,
+       "B": 15427.216113201313
+      },
+      "a_interval": [
+       -11079.075625548805,
+       11453.624793675332
+      ]
+     },
+     "contents": {
+      "keep": false,
+      "scorings_better": 2,
+      "gain_by_scoring": {
+       "A": 70.16645271878588,
+       "B": 1251.9100119917882
+      },
+      "a_interval": [
+       -2765.0627169153713,
+       2863.704470785442
+      ]
+     },
+     "all": {
+      "keep": true,
+      "scorings_better": 2,
+      "gain_by_scoring": {
+       "A": 32824.53194618086,
+       "B": 53043.793018787044
+      },
+      "a_interval": [
+       6688.116451392436,
+       58428.87880422387
+      ]
+     }
+    }
+   },
+   "V2_vs_V1": {
+    "A": {
+     "motor": {
+      "gain": -2967.3423185849624,
+      "d2_ref": 0.049319220535385844,
+      "d2_cand": 0.04920331324995475,
+      "boot": {
+       "gain": -2967.342318584961,
+       "rel_gain": -0.00012192029957358683,
+       "lo": -11943.083642825222,
+       "hi": 5632.124279253164,
+       "share_b_better": 0.252,
+       "groups": 200376,
+       "n_boot": 2000,
+       "boot_seed": 0
+      }
+     },
+     "buildings": {
+      "gain": -21808.749819184806,
+      "d2_ref": 0.06532205076987008,
+      "d2_cand": 0.06419341177021853,
+      "boot": {
+       "gain": -21808.749819184803,
+       "rel_gain": -0.0012075164505392524,
+       "lo": -53543.719130768266,
+       "hi": 9037.01487598148,
+       "share_b_better": 0.0845,
+       "groups": 150454,
+       "n_boot": 2000,
+       "boot_seed": 0
+      }
+     },
+     "contents": {
+      "gain": -29820.62042088028,
+      "d2_ref": 0.06332767458409394,
+      "d2_cand": 0.06043886348146432,
+      "boot": {
+       "gain": -29820.620420880274,
+       "rel_gain": -0.003084121334904416,
+       "lo": -60375.07237122804,
+       "hi": 573.4962339364442,
+       "share_b_better": 0.0265,
+       "groups": 150626,
+       "n_boot": 2000,
+       "boot_seed": 0
+      }
+     },
+     "all": {
+      "gain": -54596.71255865003,
+      "d2_ref": 0.1002285787812367,
+      "d2_cand": 0.09928511468964507,
+      "boot": {
+       "gain": -54596.71255865003,
+       "rel_gain": -0.0010485597445555623,
+       "lo": -99283.69158283273,
+       "hi": -11519.330065273905,
+       "share_b_better": 0.0065,
+       "groups": 317735,
+       "n_boot": 2000,
+       "boot_seed": 0
+      }
+     }
+    },
+    "B": {
+     "motor": {
+      "gain": 1924.7967627237203,
+      "d2_ref": 0.054871541422266024,
+      "d2_cand": 0.05495172322536368
+     },
+     "buildings": {
+      "gain": -8093.022952621525,
+      "d2_ref": 0.06121158221257683,
+      "d2_cand": 0.06079710502723179
+     },
+     "contents": {
+      "gain": -22711.983733853285,
+      "d2_ref": 0.05412250180617095,
+      "d2_cand": 0.05191586951655236
+     },
+     "all": {
+      "gain": -28880.209923751096,
+      "d2_ref": 0.09500554045796328,
+      "d2_cand": 0.09449058137067223
+     }
+    },
+    "verdict": {
+     "motor": {
+      "keep": false,
+      "scorings_better": 1,
+      "gain_by_scoring": {
+       "A": -2967.3423185849624,
+       "B": 1924.7967627237203
+      },
+      "a_interval": [
+       -11943.083642825222,
+       5632.124279253164
+      ]
+     },
+     "buildings": {
+      "keep": false,
+      "scorings_better": 0,
+      "gain_by_scoring": {
+       "A": -21808.749819184806,
+       "B": -8093.022952621525
+      },
+      "a_interval": [
+       -53543.719130768266,
+       9037.01487598148
+      ]
+     },
+     "contents": {
+      "keep": false,
+      "scorings_better": 0,
+      "gain_by_scoring": {
+       "A": -29820.62042088028,
+       "B": -22711.983733853285
+      },
+      "a_interval": [
+       -60375.07237122804,
+       573.4962339364442
+      ]
+     },
+     "all": {
+      "keep": false,
+      "scorings_better": 0,
+      "gain_by_scoring": {
+       "A": -54596.71255865003,
+       "B": -28880.209923751096
+      },
+      "a_interval": [
+       -99283.69158283273,
+       -11519.330065273905
+      ]
+     }
+    }
+   },
+   "V2_vs_V0": {
+    "A": {
+     "motor": {
+      "gain": 29180.512260309784,
+      "d2_ref": 0.0480634939772,
+      "d2_cand": 0.04920331324995475,
+      "boot": {
+       "gain": 29180.512260309784,
+       "rel_gain": 0.0011973690110035286,
+       "lo": 4004.6024477522737,
+       "hi": 55086.91490856499,
+       "share_b_better": 0.9865,
+       "groups": 200376,
+       "n_boot": 2000,
+       "boot_seed": 0
+      }
+     },
+     "buildings": {
+      "gain": -21202.23890461748,
+      "d2_ref": 0.06529066282340057,
+      "d2_cand": 0.06419341177021853,
+      "boot": {
+       "gain": -21202.238904617472,
+       "rel_gain": -0.0011738954662594652,
+       "lo": -54874.215321541145,
+       "hi": 12869.316035660138,
+       "share_b_better": 0.105,
+       "groups": 150454,
+       "n_boot": 2000,
+       "boot_seed": 0
+      }
+     },
+     "contents": {
+      "gain": -29750.453968161488,
+      "d2_ref": 0.06332087735369474,
+      "d2_cand": 0.06043886348146432,
+      "boot": {
+       "gain": -29750.453968161488,
+       "rel_gain": -0.0030768422211528736,
+       "lo": -59852.85741036411,
+       "hi": 695.5836628316695,
+       "share_b_better": 0.027,
+       "groups": 150626,
+       "n_boot": 2000,
+       "boot_seed": 0
+      }
+     },
+     "all": {
+      "gain": -21772.180612469172,
+      "d2_ref": 0.09966135108998597,
+      "d2_cand": 0.09928511468964507,
+      "boot": {
+       "gain": -21772.180612469172,
+       "rel_gain": -0.0004178832051654455,
+       "lo": -71819.91359942057,
+       "hi": 27819.387521535144,
+       "share_b_better": 0.2055,
+       "groups": 317735,
+       "n_boot": 2000,
+       "boot_seed": 0
+      }
+     }
+    },
+    "B": {
+     "motor": {
+      "gain": 38289.463656317675,
+      "d2_ref": 0.053356688209162395,
+      "d2_cand": 0.05495172322536368
+     },
+     "buildings": {
+      "gain": 7334.193160579791,
+      "d2_ref": 0.060421490654732346,
+      "d2_cand": 0.06079710502723179
+     },
+     "contents": {
+      "gain": -21460.0737218615,
+      "d2_ref": 0.054000869759911585,
+      "d2_cand": 0.05191586951655236
+     },
+     "all": {
+      "gain": 24163.58309503596,
+      "d2_ref": 0.09405972381357164,
+      "d2_cand": 0.09449058137067223
+     }
+    },
+    "verdict": {
+     "motor": {
+      "keep": true,
+      "scorings_better": 2,
+      "gain_by_scoring": {
+       "A": 29180.512260309784,
+       "B": 38289.463656317675
+      },
+      "a_interval": [
+       4004.6024477522737,
+       55086.91490856499
+      ]
+     },
+     "buildings": {
+      "keep": false,
+      "scorings_better": 1,
+      "gain_by_scoring": {
+       "A": -21202.23890461748,
+       "B": 7334.193160579791
+      },
+      "a_interval": [
+       -54874.215321541145,
+       12869.316035660138
+      ]
+     },
+     "contents": {
+      "keep": false,
+      "scorings_better": 0,
+      "gain_by_scoring": {
+       "A": -29750.453968161488,
+       "B": -21460.0737218615
+      },
+      "a_interval": [
+       -59852.85741036411,
+       695.5836628316695
+      ]
+     },
+     "all": {
+      "keep": false,
+      "scorings_better": 1,
+      "gain_by_scoring": {
+       "A": -21772.180612469172,
+       "B": 24163.58309503596
+      },
+      "a_interval": [
+       -71819.91359942057,
+       27819.387521535144
+      ]
+     }
+    }
+   },
+   "V3_vs_V2": {
+    "A": {
+     "motor": {
+      "gain": -43604.80563632469,
+      "d2_ref": 0.04920331324995475,
+      "d2_cand": 0.047500067007886115,
+      "boot": {
+       "gain": -43604.80563632468,
+       "rel_gain": -0.001791388491150896,
+       "lo": -68446.98492848128,
+       "hi": -18901.359369443402,
+       "share_b_better": 0.0005,
+       "groups": 200376,
+       "n_boot": 2000,
+       "boot_seed": 0
+      }
+     },
+     "buildings": {
+      "gain": -51182.00846662889,
+      "d2_ref": 0.06419341177021853,
+      "d2_cand": 0.06154465788405461,
+      "boot": {
+       "gain": -51182.0084666289,
+       "rel_gain": -0.002830450137324106,
+       "lo": -110862.07126913189,
+       "hi": 6811.983289070062,
+       "share_b_better": 0.0435,
+       "groups": 150454,
+       "n_boot": 2000,
+       "boot_seed": 0
+      }
+     },
+     "contents": {
+      "gain": -30332.268689816938,
+      "d2_ref": 0.06043886348146432,
+      "d2_cand": 0.057500487507980425,
+      "boot": {
+       "gain": -30332.268689816934,
+       "rel_gain": -0.003127391991085943,
+       "lo": -53466.602972217675,
+       "hi": -7201.723170073113,
+       "share_b_better": 0.0035,
+       "groups": 150626,
+       "n_boot": 2000,
+       "boot_seed": 0
+      }
+     },
+     "all": {
+      "gain": -125119.08279277052,
+      "d2_ref": 0.09928511468964507,
+      "d2_cand": 0.0971229815454373,
+      "boot": {
+       "gain": -125119.08279277054,
+       "rel_gain": -0.002400463431292012,
+       "lo": -194096.4239327898,
+       "hi": -57575.581502202214,
+       "share_b_better": 0.0,
+       "groups": 317735,
+       "n_boot": 2000,
+       "boot_seed": 0
+      }
+     }
+    },
+    "B": {
+     "motor": {
+      "gain": -4618.644677165798,
+      "d2_ref": 0.05495172322536368,
+      "d2_cand": 0.05475932303784503
+     },
+     "buildings": {
+      "gain": -33119.77592378542,
+      "d2_ref": 0.06079710502723179,
+      "d2_cand": 0.059100904289323686
+     },
+     "contents": {
+      "gain": -23310.691930835936,
+      "d2_ref": 0.05191586951655236,
+      "d2_cand": 0.049651068426929124
+     },
+     "all": {
+      "gain": -61049.11253178716,
+      "d2_ref": 0.09449058137067223,
+      "d2_cand": 0.09340202296502698
+     }
+    },
+    "verdict": {
+     "motor": {
+      "keep": false,
+      "scorings_better": 0,
+      "gain_by_scoring": {
+       "A": -43604.80563632469,
+       "B": -4618.644677165798
+      },
+      "a_interval": [
+       -68446.98492848128,
+       -18901.359369443402
+      ]
+     },
+     "buildings": {
+      "keep": false,
+      "scorings_better": 0,
+      "gain_by_scoring": {
+       "A": -51182.00846662889,
+       "B": -33119.77592378542
+      },
+      "a_interval": [
+       -110862.07126913189,
+       6811.983289070062
+      ]
+     },
+     "contents": {
+      "keep": false,
+      "scorings_better": 0,
+      "gain_by_scoring": {
+       "A": -30332.268689816938,
+       "B": -23310.691930835936
+      },
+      "a_interval": [
+       -53466.602972217675,
+       -7201.723170073113
+      ]
+     },
+     "all": {
+      "keep": false,
+      "scorings_better": 0,
+      "gain_by_scoring": {
+       "A": -125119.08279277052,
+       "B": -61049.11253178716
+      },
+      "a_interval": [
+       -194096.4239327898,
+       -57575.581502202214
+      ]
+     }
+    }
+   },
+   "V4_vs_V3": {
+    "A": {
+     "motor": {
+      "gain": 900.9556757036942,
+      "d2_ref": 0.047500067007886115,
+      "d2_cand": 0.04753525921540813,
+      "boot": {
+       "gain": 900.9556757036937,
+       "rel_gain": 3.694720209744036e-05,
+       "lo": -1897.56511878856,
+       "hi": 3645.770066619878,
+       "share_b_better": 0.7405,
+       "groups": 200376,
+       "n_boot": 2000,
+       "boot_seed": 0
+      }
+     },
+     "buildings": {
+      "gain": 458.41863687067666,
+      "d2_ref": 0.06154465788405461,
+      "d2_cand": 0.061568381809361084,
+      "boot": {
+       "gain": 458.41863687067564,
+       "rel_gain": 2.5279759453498868e-05,
+       "lo": -10008.609688857816,
+       "hi": 11147.215694788496,
+       "share_b_better": 0.5485,
+       "groups": 150454,
+       "n_boot": 2000,
+       "boot_seed": 0
+      }
+     },
+     "contents": {
+      "gain": 301.1360923653832,
+      "d2_ref": 0.057500487507980425,
+      "d2_cand": 0.05752965944587962,
+      "boot": {
+       "gain": 301.1360923653835,
+       "rel_gain": 3.0951674258027485e-05,
+       "lo": -796.2222558198805,
+       "hi": 1400.8898464765193,
+       "share_b_better": 0.675,
+       "groups": 150626,
+       "n_boot": 2000,
+       "boot_seed": 0
+      }
+     },
+     "all": {
+      "gain": 1660.5104049397555,
+      "d2_ref": 0.0971229815454373,
+      "d2_cand": 0.09715167616581566,
+      "boot": {
+       "gain": 1660.5104049397542,
+       "rel_gain": 3.178131660437798e-05,
+       "lo": -9460.79730722258,
+       "hi": 12820.640315475395,
+       "share_b_better": 0.598,
+       "groups": 317735,
+       "n_boot": 2000,
+       "boot_seed": 0
+      }
+     }
+    },
+    "B": {
+     "motor": {
+      "gain": -37.53797083172037,
+      "d2_ref": 0.05475932303784503,
+      "d2_cand": 0.05475775930797788
+     },
+     "buildings": {
+      "gain": -4421.378208784976,
+      "d2_ref": 0.059100904289323686,
+      "d2_cand": 0.05887446722049883
+     },
+     "contents": {
+      "gain": -2585.1508552961504,
+      "d2_ref": 0.049651068426929124,
+      "d2_cand": 0.04939990246020087
+     },
+     "all": {
+      "gain": -7044.067034912845,
+      "d2_ref": 0.09340202296502698,
+      "d2_cand": 0.09327642116570856
+     }
+    },
+    "verdict": {
+     "motor": {
+      "keep": false,
+      "scorings_better": 1,
+      "gain_by_scoring": {
+       "A": 900.9556757036942,
+       "B": -37.53797083172037
+      },
+      "a_interval": [
+       -1897.56511878856,
+       3645.770066619878
+      ]
+     },
+     "buildings": {
+      "keep": false,
+      "scorings_better": 1,
+      "gain_by_scoring": {
+       "A": 458.41863687067666,
+       "B": -4421.378208784976
+      },
+      "a_interval": [
+       -10008.609688857816,
+       11147.215694788496
+      ]
+     },
+     "contents": {
+      "keep": false,
+      "scorings_better": 1,
+      "gain_by_scoring": {
+       "A": 301.1360923653832,
+       "B": -2585.1508552961504
+      },
+      "a_interval": [
+       -796.2222558198805,
+       1400.8898464765193
+      ]
+     },
+     "all": {
+      "keep": false,
+      "scorings_better": 1,
+      "gain_by_scoring": {
+       "A": 1660.5104049397555,
+       "B": -7044.067034912845
+      },
+      "a_interval": [
+       -9460.79730722258,
+       12820.640315475395
+      ]
+     }
+    }
+   },
+   "V4_vs_V2": {
+    "A": {
+     "motor": {
+      "gain": -42703.84996062099,
+      "d2_ref": 0.04920331324995475,
+      "d2_cand": 0.04753525921540813,
+      "boot": {
+       "gain": -42703.84996062098,
+       "rel_gain": -0.0017543751022608381,
+       "lo": -67950.68104022484,
+       "hi": -17821.51990982362,
+       "share_b_better": 0.0005,
+       "groups": 200376,
+       "n_boot": 2000,
+       "boot_seed": 0
+      }
+     },
+     "buildings": {
+      "gain": -50723.58982975822,
+      "d2_ref": 0.06419341177021853,
+      "d2_cand": 0.061568381809361084,
+      "boot": {
+       "gain": -50723.589829758224,
+       "rel_gain": -0.0028050988247719905,
+       "lo": -110425.15025162975,
+       "hi": 8760.307669790647,
+       "share_b_better": 0.0505,
+       "groups": 150454,
+       "n_boot": 2000,
+       "boot_seed": 0
+      }
+     },
+     "contents": {
+      "gain": -30031.13259745155,
+      "d2_ref": 0.06043886348146432,
+      "d2_cand": 0.05752965944587962,
+      "boot": {
+       "gain": -30031.132597451553,
+       "rel_gain": -0.0030963435188097305,
+       "lo": -53107.53362130251,
+       "hi": -7293.805268817497,
+       "share_b_better": 0.004,
+       "groups": 150626,
+       "n_boot": 2000,
+       "boot_seed": 0
+      }
+     },
+     "all": {
+      "gain": -123458.57238783078,
+      "d2_ref": 0.09928511468964507,
+      "d2_cand": 0.09715167616581566,
+      "boot": {
+       "gain": -123458.57238783076,
+       "rel_gain": -0.0023686058247993267,
+       "lo": -194492.59891376446,
+       "hi": -56161.48052942346,
+       "share_b_better": 0.0005,
+       "groups": 317735,
+       "n_boot": 2000,
+       "boot_seed": 0
+      }
+     }
+    },
+    "B": {
+     "motor": {
+      "gain": -4656.182647997519,
+      "d2_ref": 0.05495172322536368,
+      "d2_cand": 0.05475775930797788
+     },
+     "buildings": {
+      "gain": -37541.154132570395,
+      "d2_ref": 0.06079710502723179,
+      "d2_cand": 0.05887446722049883
+     },
+     "contents": {
+      "gain": -25895.842786132085,
+      "d2_ref": 0.05191586951655236,
+      "d2_cand": 0.04939990246020087
+     },
+     "all": {
+      "gain": -68093.1795667,
+      "d2_ref": 0.09449058137067223,
+      "d2_cand": 0.09327642116570856
+     }
+    },
+    "verdict": {
+     "motor": {
+      "keep": false,
+      "scorings_better": 0,
+      "gain_by_scoring": {
+       "A": -42703.84996062099,
+       "B": -4656.182647997519
+      },
+      "a_interval": [
+       -67950.68104022484,
+       -17821.51990982362
+      ]
+     },
+     "buildings": {
+      "keep": false,
+      "scorings_better": 0,
+      "gain_by_scoring": {
+       "A": -50723.58982975822,
+       "B": -37541.154132570395
+      },
+      "a_interval": [
+       -110425.15025162975,
+       8760.307669790647
+      ]
+     },
+     "contents": {
+      "keep": false,
+      "scorings_better": 0,
+      "gain_by_scoring": {
+       "A": -30031.13259745155,
+       "B": -25895.842786132085
+      },
+      "a_interval": [
+       -53107.53362130251,
+       -7293.805268817497
+      ]
+     },
+     "all": {
+      "keep": false,
+      "scorings_better": 0,
+      "gain_by_scoring": {
+       "A": -123458.57238783078,
+       "B": -68093.1795667
+      },
+      "a_interval": [
+       -194492.59891376446,
+       -56161.48052942346
+      ]
+     }
+    }
+   }
+  },
+  "levels": {
+   "A": {
+    "buildings": {
+     "L_none": 0.9612837823226348,
+     "L_trend": 1.0064934518547133,
+     "L_ind": 0.9896503756825887,
+     "L_ind_V4": 0.9764080344426251
+    },
+    "contents": {
+     "L_none": 0.9368599561707368,
+     "L_trend": 0.9533868655219782,
+     "L_ind": 0.9401104035228488,
+     "L_ind_V4": 0.9370799759635596
+    },
+    "motor": {
+     "L_none": 1.0558208561745384,
+     "L_trend": 1.1064453895699229,
+     "L_ind": 1.1053771376434078,
+     "L_ind_V4": 1.107026771644826
+    },
+    "all": {
+     "L_none": 1.0121111401416596,
+     "L_trend": 1.0576899016455765,
+     "L_ind": 1.0500401291597365,
+     "L_ind_V4": 1.046114358996196
+    }
+   },
+   "B": {
+    "buildings": {
+     "L_none": 0.9125975888126017,
+     "L_trend": 0.9659309782729478,
+     "L_ind": 0.971713933060834,
+     "L_ind_V4": 0.973215474500101
+    },
+    "contents": {
+     "L_none": 1.0041811782465089,
+     "L_trend": 1.058964626904735,
+     "L_ind": 0.9945907446518786,
+     "L_ind_V4": 1.0002266085307767
+    },
+    "motor": {
+     "L_none": 0.9184066244750662,
+     "L_trend": 0.9411757437021554,
+     "L_ind": 0.9396041482577818,
+     "L_ind_V4": 0.9421565631346169
+    },
+    "all": {
+     "L_none": 0.9249378350143147,
+     "L_trend": 0.9625108777056224,
+     "L_ind": 0.9573289330687983,
+     "L_ind_V4": 0.9597980100307236
+    }
+   }
+  }
+ },
+ "meta": {
+  "created": "2026-10-18T23:42:06",
+  "git_commit": "7543227",
+  "seeds": null,
+  "versions": {
+   "python": "3.14.5",
+   "numpy": "2.5.3",
+   "pandas": "3.0.5",
+   "scipy": "1.18.1",
+   "sklearn": "1.9.1",
+   "lightgbm": "4.7.0",
+   "xgboost": "3.4.1",
+   "catboost": "1.2.10"
+  }
+ }
+}

@@ -99,16 +99,26 @@ def row_completion(rows: pd.DataFrame, line: str, curves: dict, weights: dict, s
     return out
 
 
-def row_targets(rows: pd.DataFrame, claims: pd.DataFrame, line: str) -> pd.DataFrame:
-    """Net cost and claim count per row, in total and by peril; zero for rows without a claim."""
+def row_targets(rows: pd.DataFrame, claims: pd.DataFrame, line: str, cap: float | None = None) -> pd.DataFrame:
+    """Net cost and claim count per row, in total and by peril; zero for rows without a claim.
+
+    With `cap`, also each claim's cost capped at `cap` (C1), summed per peril (`costc_<peril>`) and in total (`costc`).
+    """
     m = dr.match_claims_to_rows(rows, claims, line)
-    m = m[~m["repudiated"]]
+    m = m[~m["repudiated"]].copy()
     cost = m.pivot_table(index="row_id", columns="peril", values="net_cost", aggfunc="sum", fill_value=0.0)
     cnt = m.pivot_table(index="row_id", columns="peril", values="claim_id", aggfunc="count", fill_value=0)
     out = pd.DataFrame(index=rows["row_id"])
-    out = out.join(cost.add_prefix("cost_")).join(cnt.add_prefix("n_")).fillna(0.0)
+    out = out.join(cost.add_prefix("cost_")).join(cnt.add_prefix("n_"))
+    if cap is not None:
+        m["capped"] = m["net_cost"].clip(upper=cap)
+        capped = m.pivot_table(index="row_id", columns="peril", values="capped", aggfunc="sum", fill_value=0.0)
+        out = out.join(capped.add_prefix("costc_"))
+    out = out.fillna(0.0)
     out["cost"] = out.filter(regex="^cost_").sum(axis=1)
     out["n_claims"] = out.filter(regex="^n_").sum(axis=1)
+    if cap is not None:
+        out["costc"] = out.filter(regex="^costc_").sum(axis=1)
     return out.reset_index()
 
 
