@@ -62,7 +62,7 @@ Evidence: `decisions/phase5_checkin1.md`, `outputs/phase5_steps123*.json` and `o
 6. **Step 8 (J-model).** Fit non-negative family weights out of time and score them on rows not used to fit them. The within-family blend is the challenger.
 7. **Check-in 3:** freeze the model; build a second submission file for the actuary to upload, and log it in `decisions/submissions.md`.
 8. **Phase 6: tail and referral.** `refer_disagreement` is still open and needs a written value. Add a minimum segment size to the referral rule (X3); write the threshold first.
-9. **Phase 7.** Open the hold-out once with a recorded reason, as `docs`/`validation_design.md` section 6 describes. At the final refit on all data, show X1: the 11.9M bodily injury claim is in the hold-out, and it lifts the motor load from about 2.8% to about 5.5%. The actuary confirms it then.
+9. **Phase 7.** Open the hold-out once with a recorded reason, as `decisions/validation_design.md` section 6 describes. At the final refit on all data, show X1: the 11.9M bodily injury claim is in the hold-out, and it lifts the motor load from about 2.8% to about 5.5%. The actuary confirms it then.
 10. **Phase 8.** Write-up (5 pages), video script, and the notebook or report via `notebooks/build_notebook.py`. Run the independent review (`/review`).
 
 ## Code map
