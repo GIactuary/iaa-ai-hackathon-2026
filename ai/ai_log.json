@@ -303,7 +303,7 @@
       "ai_answer": "The AI confirmed that scaling matters only for the penalised GLM: its elastic-net penalty acted on raw coefficients, so rare levels and small-scale terms were penalised unevenly. Trees and the EBM split on order and are unaffected; the W2 GLM's penalty is negligible.",
       "challenge": "The actuary raised it: \"the optimization also works better if you do Standardization (Z-score) divides by the standard deviation instead of the range - are we trying that\".",
       "test": "A standardised elastic-net GLM was added to family F1 as its own candidate, tuned on the same inner folds and grids, and the run was restarted before any out-of-time score had been computed.",
-      "result": "Pending: filled in when step 7 completes.",
+      "result": "Standardised, the penalty tuning chose a strong lasso in contents (alpha 0.01, L1 only) where the unscaled GLM chose almost none (1e-6). Out of time the standardised contents GLM is level with the W2 GLM on 2023 (-1,675 against -1,231 unscaled) and 50,180 better than the unscaled one on 2024 (+3,392 against -46,788). Its spline version is family F1's pick in contents: +13,776 on 2023 [-939, 27,773], +15,576 on 2024 against the W2 GLM. In motor and buildings both forms chose the same lasso and the unscaled one tuned marginally better.",
       "decision": "Added to the step 7 design as F1 candidate (d) (decisions/phase5_step7_design.md section 7); the inner folds choose between scaled and unscaled.",
       "effect": "The spline GLM, the carried-candidate tests and the motor frequency x severity GLM use whichever scaling tunes better.",
       "section": "3.9"
@@ -321,6 +321,20 @@
       "decision": "The actuary chose P8-R2 (a): remaining contents blanks are priced at the exposure-weighted average of the known levels, and he uploads w2_glm_v1u.csv.",
       "effect": "scripts/submit_w2.py prices the remaining contents blanks at the average of the known levels by default and keeps the P8-R form behind --own-level. The same treatment is to be carried into the frozen model.",
       "section": "3.10"
+    },
+    {
+      "id": "D23",
+      "stage": "5. Step 7: motor frequency x severity in the penalised GLM",
+      "role": "Modeller",
+      "proposed_by": "AI",
+      "question": "Does frequency x severity per peril beat the per-line model within each family in motor (M1 (a))?",
+      "ai_answer": "The AI's design reused each family's per-line settings for its per-peril frequency and severity models. For the penalised GLM that carried a penalty tuned on the Tweedie rate scale (alpha 0.01, L1) onto Poisson and gamma fits, where the same alpha is far stronger. It flattened almost every relativity: the motor predictions span about 330 to 635 per row.",
+      "challenge": "",
+      "test": "The implausible result (-1,466,913 on 2023 against the same family's per-line GLM) was traced by comparing the spread of the predictions with the W2 GLM and with step 6's unpenalised frequency x severity, whose log predictions correlate 0.998 with the line GLM against 0.81 here.",
+      "result": "The penalised GLM's frequency x severity test is invalid and is set aside. The valid GLM evidence on that structure is step 6's (motor +12,541 on 2023 [-12,076, 34,902], +35,947 on 2024; it failed the keep rule). The EBM and LightGBM versions, which tune their own stopping, are unaffected: EBM +40,237 [9,211, 69,872] and +43,761 against the per-line EBM.",
+      "decision": "Reported at check-in 4; no decision rests on the invalid test.",
+      "effect": "The GLM stays per line in motor on the step 6 evidence.",
+      "section": "3.11"
     }
   ]
 }
