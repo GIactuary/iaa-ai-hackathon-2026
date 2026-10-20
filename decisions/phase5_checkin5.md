@@ -1,47 +1,50 @@
-# Phase 5 check-in 5: family weights and the freeze (2026-10-20)
+# Phase 5 check-in 5: family weights and the frozen model (2026-10-20)
 
-Run: `scripts/phase5_step8.py`, evidence in `outputs/phase5_step8.json`. Design written and committed before any step 7 result was seen: `decisions/phase5_step8_design.md` (4334a9c). Family columns set from the check-in 4 verdicts (D24). Weights are fitted on one scoring and scored on the other (cross-fitted); keep rule as before.
+Run: `scripts/phase5_step8.py`, evidence in `outputs/phase5_step8.json`. Design written and committed before any step 7 result was seen: `decisions/phase5_step8_design.md` (4334a9c). Family columns follow the check-in 4 verdicts (N1, N2): motor uses the EBM and LightGBM by peril and boosting from the GLM with the held-over factors; buildings uses boosting from the GLM with the held-over factors; contents uses each family's tuned model.
 
 ## Result in one line
 
-The weighted blend of the families beats the W2 GLM: across lines +92,357 on 2023 [46,571, 139,010] and +114,384 on 2024. It passes in motor and buildings; contents is a near miss.
+A weighted mix of the families beats the W2 GLM: across lines +92,357 on 2023 [46,571, 139,010] and +114,384 on 2024, passing in motor and buildings; contents saves in both years but its 2023 interval crosses zero. Each year is scored by weights fitted on the other year only.
 
-## The blend against the W2 GLM (cross-fitted, arithmetic mix)
+## How the weights were tested
 
-| Line | A saved [95%] | B saved | Keep |
-|---|---|---|---|
-| Motor | +37,467 [3,827, 73,728] | +45,313 | Yes |
-| Buildings | +42,006 [18,729, 62,383] | +52,783 | Yes |
-| Contents | +12,884 [−1,734, 26,978] | +16,288 | No (interval) |
-| All lines | +92,357 [46,571, 139,010] | +114,384 | Yes |
+Weights fitted on the 2023 predictions score 2024, and weights fitted on 2024 score 2023, so no year is scored by weights fitted on it. Weights are non-negative and sum to one per line; every family's prediction is first rescaled to the actual total, so the weights decide ranking only.
 
-Ranking D², all lines: W2 GLM 10.51% (A) and 10.12% (B); blend 10.67% and 10.33%.
+## The blend against the W2 GLM (cross-fitted)
 
-Against each single family, across lines, the blend passes against all four (F4, the closest: +40,684 [497, 82,611], +51,414).
+Deviance saved, A with its 95% customer-bootstrap interval, then B.
 
-## Weights
-
-| Line | Family | Fitted on 2023 | Fitted on 2024 | Pooled (for 2025) |
+| Blend | Motor | Buildings | Contents | All lines |
 |---|---|---|---|---|
-| Motor | EBM per peril (F3) | 0.455 | 0.800 | 0.666 |
-| Motor | GLM + boosted correction (F4) | 0.454 | 0.200 | 0.334 |
-| Motor | LightGBM per peril (F2) | 0.091 | 0.000 | 0.000 |
-| Buildings | GLM + boosted correction (F4) | 0.679 | 0.962 | 0.798 |
-| Buildings | CatBoost (F2) | 0.321 | 0.038 | 0.202 |
-| Contents | Spline GLM (F1) | 0.974 | 0.830 | 0.910 |
-| Contents | LightGBM (F2) | 0.017 | 0.094 | 0.058 |
-| Contents | EBM (F3) | 0.009 | 0.076 | 0.032 |
+| Arithmetic mix of families | +37,467 [3,827, 73,728], +45,313: passes | +42,006 [18,728, 62,383], +52,783: passes | +12,884 [−1,734, 26,978], +16,288 | +92,357 [46,571, 139,010], +114,384: passes |
+| Geometric mix of families | +37,496 [3,509, 74,095], +44,015: passes | +45,329 [22,372, 66,041], +55,648: passes | +12,890 [−1,689, 27,112], +15,920 | +95,715 [49,310, 142,446], +115,583: passes |
 
-Every other weight is zero in all three fits, including the W2 GLM's in every line: its information reaches the blend through F4, which starts from it.
+Geometric against arithmetic: motor +29 [−993, 1,029], −1,298; buildings +3,323 [424, 6,188], +2,865 (passes); contents +6 [−877, 751], −368; all lines +3,358 [284, 6,566], +1,199 (passes).
 
-**Flagged swings (design section 4).** Buildings CatBoost (0.321 to 0.038) and motor F4 (0.454 to 0.200). The cross-fitted scores, which use the other year's weights, still pass, so the blend is not fragile to the swing.
+**Within-family blend (J-model (b)), every candidate weighted:** worse than the family blend, −36,174 across lines on 2023 [−80,645, 8,566] and −74,487 on 2024. J-model (a) stands: one model per family.
 
-## Challengers
+Ranking D², all lines: W2 GLM 10.51% (A) and 10.12% (B); family blend 10.67% and 10.33%. Per line, A then B: motor 5.68% to 5.83% and 6.35% to 6.54%; buildings 6.90% to 7.11% and 6.63% to 6.90%; contents 6.51% to 6.63% and 5.83% to 5.99%.
 
-- **Within-family blend** (every candidate weighted): worse than the family blend, −36,174 on 2023 [−80,645, 8,566] and −74,487 on 2024 across lines. Not kept.
-- **Geometric mix**: +3,358 [284, 6,566] and +1,200 across lines; passes in buildings (+3,323 [424, 6,188], +2,865), not in motor (+29, −1,298) or contents (+7, −368). Weights almost the same as the arithmetic mix.
+## The weights
+
+Arithmetic mix; weights below 0.005 not shown.
+
+| Line | Fitted on 2023 | Fitted on 2024 | Pooled, for 2025 |
+|---|---|---|---|
+| Motor | EBM by peril 0.455, boosted GLM 0.454, LightGBM by peril 0.091 | EBM by peril 0.800, boosted GLM 0.200 | EBM by peril 0.666, boosted GLM 0.334 |
+| Buildings | boosted GLM 0.679, CatBoost 0.321 | boosted GLM 0.962, CatBoost 0.038 | boosted GLM 0.798, CatBoost 0.202 |
+| Contents | penalised GLM 0.974, LightGBM 0.017, EBM 0.009 | penalised GLM 0.830, LightGBM 0.094, EBM 0.076 | penalised GLM 0.910, LightGBM 0.058, EBM 0.032 |
+
+The W2 GLM itself takes no weight once boosting from the GLM is available: that model is the GLM times a small correction. Flagged under the design: buildings' CatBoost weight moves from 0.321 to 0.038 between the two years, and motor's EBM from 0.455 to 0.800.
+
+## What each line's price would be
+
+- **Motor:** two-thirds the EBM by peril (frequency and severity curves per peril, read factor by factor), one-third the GLM times its boosted correction.
+- **Buildings:** four-fifths the GLM times its boosted correction (led by elevation, voluntary excess, flood zone and history), one-fifth CatBoost.
+- **Contents:** under O1 (a), the W2 GLM as now; under O1 (b), nine-tenths the standardised spline GLM.
 
 ## Cards for the actuary (round 1)
 
-- **O1.** Freeze the blend as the Part 1 model (the final price), or keep the W2 GLM.
-- **O2.** Arithmetic mix everywhere, or geometric in buildings where it passes.
+- **O1.** The frozen model per line: the blend in motor and buildings, the W2 GLM in contents.
+- **O2.** The form of the mix: geometric in every line where a blend is used.
+- **O3.** The weights for 2025: pooled over 2023 and 2024, as designed.

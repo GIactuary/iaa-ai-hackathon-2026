@@ -114,6 +114,8 @@ def run() -> None:
         "blend vs W2 GLM": test(frames, "ref", "blend:families|arith", th),
         "within-family blend vs blend": test(frames, "blend:families|arith", "blend:within|arith", th),
         "geometric vs arithmetic": test(frames, "blend:families|arith", "blend:families|geo", th),
+        "geo vs W2 GLM": test(frames, "ref", "blend:families|geo", th),
+        "within geo vs W2 GLM": test(frames, "ref", "blend:within|geo", th),
         **{f"blend vs {fam}": test(frames, f"fam:{fam}", "blend:families|arith", th) for fam in ("F1", "F2", "F3", "F4")},
     }
     d2 = {}

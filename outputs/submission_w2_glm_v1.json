@@ -1,0 +1,69 @@
+{
+ "submission_w2": {
+  "file": "outputs\\submissions\\w2_glm_v1.csv",
+  "rows": 626639,
+  "by_line": {
+   "motor": {
+    "rows": 254986,
+    "excess_factor": 1.0313220733785247,
+    "off_balance": 1.0129272716979858,
+    "weather_2025": 0.9996312620756347,
+    "indication_capped_lc": 552.5306748666374,
+    "model_lc_2024_normal": 545.4791181013634,
+    "line_trend": 0.023812616646272468,
+    "c4_gap": -0.01063216527253208,
+    "c4_band": 0.03,
+    "predicted": 111164237.10483867,
+    "written": 119197760.278899,
+    "predicted_over_written": 0.9326034050030514,
+    "mean_per_exposure": 555.8667654872298
+   },
+   "buildings": {
+    "rows": 184155,
+    "excess_factor": 1.0222030964793336,
+    "off_balance": 1.0649720113097483,
+    "weather_2025": 1.0006322127157812,
+    "indication_capped_lc": 487.40332884583916,
+    "model_lc_2024_normal": 457.66773555523736,
+    "line_trend": 0.06883517157180616,
+    "c4_gap": -0.0036143648382909177,
+    "c4_band": 0.03,
+    "predicted": 77400977.64017293,
+    "written": 55281833.345675,
+    "predicted_over_written": 1.4001159685893165,
+    "mean_per_exposure": 515.1688228719256
+   },
+   "contents": {
+    "rows": 187498,
+    "excess_factor": 1.0179848606621604,
+    "off_balance": 1.0441160618587715,
+    "weather_2025": 0.9971956852496049,
+    "indication_capped_lc": 127.1850906398218,
+    "model_lc_2024_normal": 121.8112576617225,
+    "line_trend": 0.05723047621306492,
+    "c4_gap": -0.012404498970998601,
+    "c4_band": 0.03,
+    "predicted": 19534000.514065117,
+    "written": 23173281.150816,
+    "predicted_over_written": 0.8429535889602437,
+    "mean_per_exposure": 130.119301891573
+   }
+  },
+  "own_level": true
+ },
+ "meta": {
+  "created": "2026-10-19T23:05:11",
+  "git_commit": "9355607",
+  "seeds": null,
+  "versions": {
+   "python": "3.14.5",
+   "numpy": "2.5.3",
+   "pandas": "3.0.5",
+   "scipy": "1.18.1",
+   "sklearn": "1.9.1",
+   "lightgbm": "4.7.0",
+   "xgboost": "3.4.1",
+   "catboost": "1.2.10"
+  }
+ }
+}

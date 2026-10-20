@@ -177,41 +177,65 @@ td.neg { color: var(--bad); }
 <div class="wrap">
   <header>
     <span class="eyebrow">IAA AI Hackathon 2026 · Part 1 · Phase 5 · Check-in 5 · Round 1 · 20 Oct 2026</span>
-    <h1>The blend of families, and the freeze</h1>
+    <h1>The frozen model: how much of each family</h1>
     <p class="lede" id="lede">LEDE</p>
   </header>
 
   <section aria-labelledby="h-settled">
     <span class="eyebrow">Settled at check-in 4 · all (a)</span>
-    <h2 id="h-settled">The families that go into the weights</h2>
+    <h2 id="h-settled">The families that go into the mix</h2>
     <div class="resolved">
-      <div><span class="cid">N1</span><span>Held-over factors in the boosted correction, motor and buildings</span></div>
-      <div><span class="cid">N2</span><span>Motor: EBM and LightGBM per peril; GLM per line</span></div>
+      <div><span class="cid">N1</span><span>Boosting from the GLM takes the held-over factors in motor and buildings</span></div>
+      <div><span class="cid">N2</span><span>Motor: the EBM and LightGBM work peril by peril</span></div>
       <div><span class="cid">N3</span><span>A boosted correction may enter the final price</span></div>
     </div>
-    <p class="how"><b>How the tests on this page read.</b> The weights for each line are fitted on one year's out-of-time predictions and scored on the other year's: weights fitted on 2024 score 2023 (scoring A), and weights fitted on 2023 score 2024 (scoring B). No row is scored by weights fitted on it. "Saved" is the drop in total Tweedie deviance against the W2 GLM, at a common level per line; the keep rule is as before. <!--EX-->Example: in buildings the blend saves 42,006 on A, interval 18,728 to 62,383, and 52,783 on B, so it passes.<!--END EX--></p>
+    <p class="how"><b>How every test on this page reads.</b> Each mix is scored on a year its weights never saw: weights fitted on 2023 predict 2024, and weights fitted on 2024 predict 2023. "Saved" is the drop in total Tweedie deviance against the W2 GLM, with every line held at its actual total, so only ranking counts. The keep rule needs a saving in both years and a 95% customer-bootstrap interval on 2023 above zero. <!--EX-->Example: in buildings the mix saves 42,006 on 2023, interval 18,728 to 62,383, and 52,783 on 2024, so it passes.<!--END EX--></p>
   </section>
 
   <!--STEP8-->
   <section aria-labelledby="h-s8a">
     <span class="eyebrow">Step 8 · family weights (J-model)</span>
-    <h2 id="h-s8a">The blend beats the W2 GLM in motor and buildings</h2>
-    <div class="tbl wide"><table><thead><tr><th>Test</th><th>Line</th><th class="r">A: saved</th><th class="r">A: 95% interval</th><th class="r">B: saved</th><th>Passes</th></tr></thead><tbody id="t8b"></tbody></table></div>
-    <p class="how"><b>How to read this.</b> The blend is a weighted average of the families' prices in each line. In motor it saves 37,467 on 2023 (interval 3,827 to 73,728) and 45,313 on 2024. Motor ranking D² moves from 6.35% to 6.54% on 2024, buildings from 6.63% to 6.90%. Across lines it also beats every single family, the closest being the GLM with the boosted correction (+40,684 on 2023, interval 497 to 82,611).</p>
+    <h2 id="h-s8a">What the mix means for a price</h2>
+    <p>Each line's 2025 price would be a weighted average of the family models that earned weight. The weights are fitted on past years' predictions and must sum to one. In pricing terms:</p>
+    <ul class="facts">
+      <li><b>Motor:</b> about two-thirds the EBM by peril (one curve per factor, per peril, for frequency and for severity) and one-third the GLM times its small boosted correction.</li>
+      <li><b>Buildings:</b> about four-fifths the GLM times its boosted correction (led by elevation, voluntary excess, flood zone and history) and one-fifth CatBoost.</li>
+      <li><b>Contents:</b> nine-tenths the standardised spline GLM if the mix is used there; otherwise the W2 GLM as now.</li>
+    </ul>
+    <p class="how"><b>How to read this.</b> Take a motor policy where the EBM by peril says 600 and the corrected GLM says 450, with weights 0.664 and 0.336. The arithmetic mix charges 0.664 × 600 + 0.336 × 450 = 549.5. The geometric mix charges 600<sup>0.664</sup> × 450<sup>0.336</sup> = 544.6: it averages relativities the way a rating plan multiplies them. The W2 GLM itself takes no weight, because the boosted model already is the GLM times a correction.</p>
   </section>
 
   <section aria-labelledby="h-s8b">
-    <span class="eyebrow">What the 2025 price is made of</span>
-    <h2 id="h-s8b">Weights by line</h2>
-    <div class="tbl wide"><table><thead><tr><th>Line</th><th>Model</th><th class="r">Fitted on 2023</th><th class="r">Fitted on 2024</th><th class="r">Both years (2025)</th></tr></thead><tbody><tr><td>Motor</td><td>LightGBM per peril</td><td class="r num">0.091</td><td class="r num">0.000</td><td class="r num">0.000</td></tr><tr><td>Motor</td><td>EBM per peril</td><td class="r num">0.455</td><td class="r num">0.800</td><td class="r num">0.666</td></tr><tr><td>Motor</td><td>GLM + boosted correction</td><td class="r num">0.454</td><td class="r num">0.200</td><td class="r num">0.334</td></tr><tr><td>Buildings</td><td>CatBoost</td><td class="r num">0.321</td><td class="r num">0.038</td><td class="r num">0.202</td></tr><tr><td>Buildings</td><td>GLM + boosted correction</td><td class="r num">0.679</td><td class="r num">0.962</td><td class="r num">0.798</td></tr><tr><td>Contents</td><td>Spline GLM</td><td class="r num">0.974</td><td class="r num">0.830</td><td class="r num">0.910</td></tr><tr><td>Contents</td><td>LightGBM</td><td class="r num">0.017</td><td class="r num">0.094</td><td class="r num">0.058</td></tr><tr><td>Contents</td><td>EBM</td><td class="r num">0.009</td><td class="r num">0.076</td><td class="r num">0.032</td></tr></tbody></table></div>
-    <p class="how"><b>How to read this.</b> A 2025 motor policy is priced 67% from the per-peril EBM and 33% from the GLM with its boosted correction; a buildings policy 80% from the GLM with its correction and 20% from CatBoost; a contents policy 91% from the spline GLM. The W2 GLM itself has weight zero because the boosted correction starts from it, so it reaches every motor and buildings price through that model. Two weights swing between the years (buildings CatBoost, motor correction); the scores above use the other year's weights and still pass, so the blend does not depend on the exact split.</p>
+    <span class="eyebrow">Result</span>
+    <h2 id="h-s8b">The mix beats the GLM in motor and buildings</h2>
+    <div class="tbl wide"><table><thead><tr><th>Mix against the W2 GLM</th><th>Line</th><th class="r">2023: saved</th><th class="r">2023: 95% interval</th><th class="r">2024: saved</th><th>Passes</th></tr></thead><tbody id="t8a"></tbody></table></div>
+    <p class="how"><b>How to read this.</b> Each 2023 figure uses weights fitted on 2024 only, and each 2024 figure weights fitted on 2023 only, so neither year scores its own weights. Across lines, ranking D² moves from 10.51% to 10.67% on 2023 and from 10.12% to 10.33% on 2024. Contents saves 12,884 and 16,288, but its 2023 interval runs from −1,734 to 26,978.</p>
+    <p class="how"><b>Weighting every candidate instead of one per family</b> does worse: −36,174 across lines on 2023 and −74,487 on 2024 against the family mix. One model per family stands (J-model (a)).</p>
   </section>
 
   <section aria-labelledby="h-s8c">
-    <span class="eyebrow">Challengers</span>
-    <h2 id="h-s8c">Weighting every candidate does worse; a geometric mix is a hair better in buildings</h2>
-    <div class="tbl wide"><table><thead><tr><th>Challenger against the blend</th><th>Line</th><th class="r">A: saved</th><th class="r">A: 95% interval</th><th class="r">B: saved</th><th>Passes</th></tr></thead><tbody id="t8c"></tbody></table></div>
-    <p class="how"><b>How to read this.</b> Weighting every tuned candidate rather than one per family overfits the weights: −36,174 on 2023 and −74,487 on 2024 across lines. A geometric mix (averaging log prices) passes in buildings by 3,323 on 2023 and 2,865 on 2024, and makes no difference in motor or contents.</p>
+    <span class="eyebrow">How the models are mixed · card O2</span>
+    <h2 id="h-s8c">Geometric and arithmetic mixes are nearly level</h2>
+    <div class="tbl wide"><table><thead><tr><th>Test</th><th>Line</th><th class="r">2023: saved</th><th class="r">2023: 95% interval</th><th class="r">2024: saved</th><th>Passes</th></tr></thead><tbody id="t8g"></tbody></table></div>
+    <p class="how"><b>How to read this.</b> The geometric mix gains 3,323 in buildings on 2023 (interval 424 to 6,188) and 2,865 on 2024. In motor and contents the two differ by less than 1,300 either way, which is noise.</p>
+  </section>
+
+  <section aria-labelledby="h-s8d">
+    <span class="eyebrow">Which weights price 2025 · card O3</span>
+    <h2 id="h-s8d">The weights move between years</h2>
+    <div class="tbl wide"><table><thead><tr><th>Line</th><th>Fitted on 2023</th><th>Fitted on 2024</th><th>Pooled (the design's choice)</th></tr></thead><tbody><tr><td>Motor</td><td>EBM by peril 0.455, GLM × boosted correction 0.454, LightGBM by peril 0.091</td><td>EBM by peril 0.800, GLM × boosted correction 0.200</td><td><b>EBM by peril 0.666, GLM × boosted correction 0.334</b></td></tr><tr><td>Buildings</td><td>GLM × boosted correction 0.679, CatBoost 0.321</td><td>GLM × boosted correction 0.962, CatBoost 0.038</td><td><b>GLM × boosted correction 0.798, CatBoost 0.202</b></td></tr><tr><td>Contents</td><td>standardised spline GLM 0.974, LightGBM 0.017, EBM 0.009</td><td>standardised spline GLM 0.830, LightGBM 0.094, EBM 0.076</td><td><b>standardised spline GLM 0.910, LightGBM 0.058, EBM 0.032</b></td></tr></tbody></table></div>
+    <p class="how"><b>How to read this.</b> In buildings, CatBoost earns 0.32 of the price on 2023's evidence but under 0.04 on 2024's; pooled, it gets 0.20. Motor's EBM moves from 0.46 to 0.80. The design said to flag a weight that swings like this; pooling both years is the steadier estimate.</p>
+  </section>
+
+  <section aria-labelledby="h-s8e">
+    <span class="eyebrow">After the verdicts</span>
+    <h2 id="h-s8e">What freezing the model involves</h2>
+    <ul class="facts">
+      <li>Fit each chosen family model on every non-hold-out row of 2021 to 2024 and predict the 2025 rows.</li>
+      <li>Mix them with the chosen weights, then apply the decided level: the line excess factor, the off-balance to the weather-normalised indication, and the 2025 weather as one factor per line.</li>
+      <li>Price blank contents fields at the average of the known levels (P8-R2) in every model, check the lowest and highest prices, and write the second submission file for you to upload.</li>
+      <li>Then phase 6: the referral rule and model-disagreement threshold, written before they run.</li>
+    </ul>
   </section>
 <!--END STEP8-->
 
@@ -224,7 +248,7 @@ td.neg { color: var(--bad); }
 
   <section aria-labelledby="h-flow">
     <span class="eyebrow">Where we are · click a step to leave a note on it</span>
-    <h2 id="h-flow">Step 8 done; next, the freeze and the final file</h2>
+    <h2 id="h-flow">Step 8 done; after your verdicts, the frozen model is fitted and priced for 2025</h2>
     <div class="legend"><span><span class="swatch"></span>Step</span><span><span class="swatch new"></span>Check-in with you</span></div>
     <div class="diagram" id="diagram"></div>
     <div class="note-box" id="noteBox" hidden>
@@ -249,9 +273,9 @@ td.neg { color: var(--bad); }
 (function () {
   "use strict";
   var ROUND = 1;
-  /*DATA*/var TABLES = {"t8b": [{"name": "Blend against the W2 GLM", "line": "Motor", "a": 37467.01659369635, "lo": 3826.832729499456, "hi": 73728.08232007302, "b": 45313.35216686051, "keep": true}, {"name": "", "line": "Buildings", "a": 42005.94611013637, "lo": 18728.451634575802, "hi": 62383.294553436004, "b": 52782.7340363279, "keep": true}, {"name": "", "line": "Contents", "a": 12883.564892324965, "lo": -1733.6102356138776, "hi": 26977.814670343225, "b": 16287.55811775885, "keep": false}, {"name": "", "line": "All lines", "a": 92356.52759615768, "lo": 46571.41079699129, "hi": 139009.80166954725, "b": 114383.64432094726, "keep": true}], "t8c": [{"name": "Every candidate weighted", "line": "Motor", "a": -28537.264849100466, "lo": -51541.96739831336, "hi": -5341.469692706632, "b": -34959.59107442215, "keep": false}, {"name": "", "line": "Buildings", "a": -4842.798045450997, "lo": -41517.465298179835, "hi": 32076.56311878135, "b": -39527.81306605389, "keep": false}, {"name": "", "line": "Contents", "a": -2793.7126149816186, "lo": -9931.065657241339, "hi": 4469.524759263832, "b": 0.0064433042500584015, "keep": false}, {"name": "", "line": "All lines", "a": -36173.77550953308, "lo": -80645.43286412553, "hi": 8565.504047719252, "b": -74487.3976971718, "keep": false}, {"name": "Geometric mix", "line": "Motor", "a": 29.024348319106707, "lo": -992.5945785925129, "hi": 1029.3512824742409, "b": -1298.0526476647274, "keep": false}, {"name": "", "line": "Buildings", "a": 3322.6593633967086, "lo": 423.7808537534803, "hi": 6188.027378106436, "b": 2865.420824080251, "keep": true}, {"name": "", "line": "Contents", "a": 6.45470289924765, "lo": -876.5805197287694, "hi": 751.0438712035252, "b": -367.89341776570654, "keep": false}, {"name": "", "line": "All lines", "a": 3358.138414615064, "lo": 284.30895103615273, "hi": 6566.357622537605, "b": 1199.474758649816, "keep": true}]};
-  var LEDE = "Weighting the families beats the W2 GLM: across lines the blend saves +92,357 on 2023 (interval 46,571 to 139,010) and +114,384 on 2024, scored each time with weights fitted on the other year. It passes in motor and buildings; contents is a near miss. Ranking D² across lines moves from 10.51% to 10.67% on 2023 and from 10.12% to 10.33% on 2024. Two calls: freeze the blend, and the form of the mix.";
-  var DECS = [{"id": "O1", "door": "one", "q": "Freeze the blend as the Part 1 model?", "stakes": "<b>In plain terms:</b> this sets the price you submit. The blend prices more accurately than the W2 GLM in both test years (+92,357 and +114,384 across lines), at the cost of explaining each price as a weighted mix: in motor two-thirds per-peril EBM and one-third GLM with its correction; in buildings mostly the GLM with its correction; contents mostly the spline GLM. The freeze is due by the end of 21 October; the final file refits each family on 2021 to 2024 and applies the decided level (excess factor, off-balance to the indication, 2025 weather) and the P8-R2 blank rule to every family.", "opts": [{"k": "A", "n": "Freeze the blend", "d": "Each family is refitted on 2021 to 2024 and mixed with the pooled weights; the level chain is applied to the blend line by line.", "c": "A layered explanation: GLM relativities, the correction table, and the weights.", "f": "The pure GLM as the submitted price."}, {"k": "B", "n": "Freeze the W2 GLM", "d": "The submitted price is the GLM already uploaded as w2_glm_v1u.", "c": "Gives up 92,357 on 2023 and 114,384 on 2024.", "f": "The blend."}], "rec": "A", "why": "It passes the keep rule against the GLM on weights it never saw, in motor, buildings and across lines, and every part of it has been explained at check-ins 3 and 4."}, {"id": "O2", "door": "easy", "q": "Mix the models by plain weighted average everywhere, or by weighted log average in buildings?", "stakes": "<b>In plain terms:</b> a plain average reads as \"so much of each model's price\"; a log average multiplies the models' prices, each raised to its weight. In buildings the log average ranks a little better (+3,323 on 2023, interval 424 to 6,188; +2,865 on 2024) and passes the keep rule; in motor and contents it makes no difference.", "opts": [{"k": "A", "n": "Plain weighted average everywhere", "d": "One form, the easiest to explain.", "c": "Gives up a small passed gain in buildings.", "f": "Nothing."}, {"k": "B", "n": "Log average in buildings, plain elsewhere", "d": "What the keep rule says, line by line.", "c": "Two forms to describe.", "f": "Nothing."}], "rec": "B", "why": "The rule written before the results says a challenger that passes replaces the default; the weights are almost the same, so the explanation barely changes."}];/*END DATA*/
+  /*DATA*/var TABLES = {"t8a": [{"name": "Arithmetic mix", "line": "Motor", "a": 37467.01659369635, "lo": 3826.832729499456, "hi": 73728.08232007302, "b": 45313.35216686051, "keep": true}, {"name": "", "line": "Buildings", "a": 42005.94611013637, "lo": 18728.451634575802, "hi": 62383.294553436004, "b": 52782.7340363279, "keep": true}, {"name": "", "line": "Contents", "a": 12883.564892324965, "lo": -1733.6102356138776, "hi": 26977.814670343225, "b": 16287.55811775885, "keep": false}, {"name": "", "line": "All lines", "a": 92356.52759615768, "lo": 46571.41079699129, "hi": 139009.80166954725, "b": 114383.64432094726, "keep": true}, {"name": "Geometric mix", "line": "Motor", "a": 37496.04094201546, "lo": 3508.7114901325226, "hi": 74094.6221849617, "b": 44015.299519195774, "keep": true}, {"name": "", "line": "Buildings", "a": 45328.60547353308, "lo": 22371.661589362466, "hi": 66040.53430976775, "b": 55648.154860408154, "keep": true}, {"name": "", "line": "Contents", "a": 12890.01959522421, "lo": -1688.72879809605, "hi": 27112.322634039298, "b": 15919.664699993147, "keep": false}, {"name": "", "line": "All lines", "a": 95714.66601077275, "lo": 49310.21666182948, "hi": 142445.84553781545, "b": 115583.11907959708, "keep": true}], "t8g": [{"name": "Geometric against arithmetic", "line": "Motor", "a": 29.024348319106707, "lo": -992.5945785925129, "hi": 1029.3512824742409, "b": -1298.0526476647274, "keep": false}, {"name": "", "line": "Buildings", "a": 3322.6593633967086, "lo": 423.7808537534803, "hi": 6188.027378106436, "b": 2865.420824080251, "keep": true}, {"name": "", "line": "Contents", "a": 6.45470289924765, "lo": -876.5805197287694, "hi": 751.0438712035252, "b": -367.89341776570654, "keep": false}, {"name": "", "line": "All lines", "a": 3358.138414615064, "lo": 284.30895103615273, "hi": 6566.357622537605, "b": 1199.474758649816, "keep": true}]};
+  var LEDE = "Mixing the families prices both test years better than the GLM alone, each year scored by weights fitted on the other: across lines +92,357 on 2023 (interval 46,571 to 139,010) and +114,384 on 2024. It passes in motor and buildings; contents saves in both years but its 2023 interval crosses zero. Three calls freeze the model: which lines use the mix, how the models are mixed, and which weights price 2025.";
+  var DECS = [{"id": "O1", "door": "costly", "q": "Which lines use the mix of families, and which keep the W2 GLM?", "stakes": "<b>This fixes the model you submit.</b> In plain terms: the mix prices next year's claims better than the GLM by spreading each line's price across models that see different patterns. Motor +37,467 on 2023 (interval 3,827 to 73,728) and +45,313 on 2024; buildings +42,006 and +52,783; contents +12,884 (interval −1,734 to 26,978) and +16,288.", "opts": [{"k": "A", "n": "The mix in motor and buildings; the W2 GLM in contents", "d": "Follows the keep rule line by line, as at check-ins 3 and 4.", "c": "Contents gives up a saving that shows in both years but is not proven.", "f": "Nothing; contents can join later."}, {"k": "B", "n": "The mix in all three lines", "d": "Contents would be nine-tenths the standardised spline GLM; the across-lines test passes, the same reasoning as L3.", "c": "Relies on the across-lines evidence for contents.", "f": "Nothing."}, {"k": "C", "n": "The W2 GLM everywhere (the file now on the leaderboard)", "d": "The simplest model to explain: one GLM per line.", "c": "Gives up 92,357 on 2023 and 114,384 on 2024 across lines.", "f": "The families."}], "rec": "A", "why": "It takes the gain where it is proven and keeps the plain GLM where it is not, as every earlier check-in did."}, {"id": "O2", "door": "easy", "q": "Mix the models geometrically (like a rating plan) or arithmetically (like a weighted average of premiums)?", "stakes": "In plain terms: the geometric mix averages the models' relativities, so the result still reads as a rating plan; the arithmetic mix averages their premiums. Geometric gains +3,358 across lines on 2023 (interval 284 to 6,566) and +1,199 on 2024, all of it in buildings; motor and contents are level within 1,300.", "opts": [{"k": "A", "n": "Geometric wherever the mix is used", "d": "Passes across lines and in buildings; reads as a rating plan.", "c": "None in practice.", "f": "Nothing."}, {"k": "B", "n": "Arithmetic everywhere (the design's first form)", "d": "The simplest to state as a share of each model's premium.", "c": "Gives up a small, passed gain.", "f": "Nothing."}, {"k": "C", "n": "Geometric in buildings only", "d": "The strict per-line rule.", "c": "Two forms to explain.", "f": "Nothing."}], "rec": "A", "why": "It passes the rule across lines, costs nothing elsewhere, and keeps the final price in the multiplicative form of a rating plan, as with L3's across-lines reading."}, {"id": "O3", "door": "easy", "q": "Which weights price 2025: both years pooled, or the latest year only?", "stakes": "In plain terms: the weights say how much of each model goes into the price, and they moved between years. Buildings' CatBoost share is 0.32 on 2023's evidence and under 0.04 on 2024's; motor's EBM 0.46 and 0.80. Pooling both years uses all the evidence; the latest year reflects the most recent mix.", "opts": [{"k": "A", "n": "Pooled over 2023 and 2024 (as designed)", "d": "The steadier estimate, from twice the rows.", "c": "Less weight on the latest year.", "f": "Nothing."}, {"k": "B", "n": "The 2024 fit only", "d": "The most recent experience.", "c": "Rests on one year; buildings' CatBoost nearly disappears.", "f": "Nothing."}, {"k": "C", "n": "The average of the two yearly fits", "d": "Treats the two years equally.", "c": "Close to (A) in practice.", "f": "Nothing."}], "rec": "A", "why": "It was the rule written before any result, and it uses both years' evidence on weights that are noisy year to year."}];/*END DATA*/
 
   var STEPS = [
     { id: "level", t: "1-3 Cap, level", s: "C1 to C6", isNew: false },
@@ -262,8 +286,8 @@ td.neg { color: var(--bad); }
     { id: "structure", t: "6 Structure", s: "P3, K2", isNew: false },
     { id: "check3", t: "Check-in 3", s: "M1 to M3, done", isNew: true },
     { id: "families", t: "7 Families", s: "N1 to N3, done", isNew: false },
-    { id: "weights", t: "8 Weights", s: "check-in 5: here", isNew: false, here: true },
-    { id: "check4", t: "Check-in 5", s: "freeze 21 Oct", isNew: true },
+    { id: "weights", t: "8 Weights", s: "J-model", isNew: false },
+    { id: "check4", t: "Check-in 5", s: "you are here", isNew: true, here: true },
     { id: "tail", t: "Phase 6 tail", s: "referral, X3", isNew: false },
     { id: "holdout", t: "Hold-out, review", s: "phases 7, 8", isNew: false }
   ];
@@ -390,7 +414,7 @@ td.neg { color: var(--bad); }
     var sp = byId("statePill"); sp.className = "pill state-" + state.status;
     sp.textContent = state.status === "final" ? "Final" : state.status === "submitted" ? "Sent to Claude" : "Draft";
     var open = IDS.filter(function (id) { return done.indexOf(id) < 0; }), bt = byId("blockedText");
-    if (state.status === "final") bt.textContent = "Finalized. Claude records the verdicts and builds the frozen file.";
+    if (state.status === "final") bt.textContent = "Finalized. Claude records the verdicts and builds the frozen model.";
     else if (state.status === "submitted") bt.textContent = "Sent. Type anything in the chat so Claude reads the verdicts.";
     else if (open.length === 0) bt.textContent = "Every card has a verdict. Send to Claude when ready.";
     else bt.textContent = "Waiting on you: " + open.join(", ") + ".";
