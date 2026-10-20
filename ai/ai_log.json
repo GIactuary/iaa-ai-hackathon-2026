@@ -335,6 +335,20 @@
       "decision": "Reported at check-in 4; no decision rests on the invalid test.",
       "effect": "The GLM stays per line in motor on the step 6 evidence.",
       "section": "3.11"
+    },
+    {
+      "id": "D24",
+      "stage": "5. Check-in 4: model families",
+      "role": "Appointed actuary",
+      "proposed_by": "AI",
+      "question": "Three calls: where the held-over factors go in the boosted correction (N1), the motor structure within the families (N2), and whether a boosted correction may enter the final price (N3).",
+      "ai_answer": "The AI recommended (a) on all three. Each card led with the trade-off in plain pricing terms: a more accurate price against a price read from an adjustment table beside the GLM relativities. The AI disclosed its penalised-GLM frequency x severity error (D23) and the contents blank defect (D22).",
+      "challenge": "",
+      "test": "Step 7 under the keep rule, design committed first: four families tuned on inner folds of 2021-2022 only, scored on 2023 and 2024 against the W2 GLM; the held-over factors added to each family; motor per peril within each family.",
+      "result": "No family beats the W2 GLM alone; plain boosting loses 242,328 on 2023 across lines. Boosting from the GLM with the held-over factors beats it: +57,963 on 2023 [23,812, 89,927] and +77,222 on 2024 across lines, and passes in buildings alone (+36,006 [10,603, 58,867], +66,267). Per peril passes within the EBM (+40,237 [9,211, 69,872]) and LightGBM in motor.",
+      "decision": "The actuary chose (a) on N1, N2 and N3 on the check-in 4 page, with no notes.",
+      "effect": "Step 8 weights the families with F4 including the held-over factors in motor and buildings, per-peril EBM and LightGBM in motor, and the boosted correction allowed into the final price.",
+      "section": "3.12"
     }
   ]
 }

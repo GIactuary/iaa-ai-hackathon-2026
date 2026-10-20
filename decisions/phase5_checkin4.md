@@ -61,3 +61,12 @@ Standardised, the penalty tuning chose a strong lasso in contents (α 0.01, L1 o
 - **N1.** Boosting from the GLM: the held-over factors join its model in motor and buildings, where they pass; contents keeps the base.
 - **N2.** Motor: the EBM and LightGBM use frequency × severity per peril; the GLM stays per line.
 - **N3.** Whether the final price may include a boosted correction on top of the GLM, if the step 8 weights favour it.
+
+## Verdicts (actuary, 2026-10-20, check-in 4 round 1)
+
+N1 (a), N2 (a), N3 (a): the recommendations, with no notes. Exchange D24.
+
+What changes for step 8:
+- **F4 (boosting from the GLM)** uses the held-over factors in motor and buildings; contents keeps the F4 base.
+- **Motor:** the EBM (F3) and LightGBM (F2) use frequency × severity per peril; the GLM stays per line.
+- **The boosted correction may enter the final price**, explained as the GLM times an adjustment by factor.

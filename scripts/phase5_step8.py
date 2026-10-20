@@ -28,7 +28,11 @@ from src.thresholds import load_thresholds
 ROOT = Path(__file__).resolve().parents[1]
 OUT, WORK7, WORK = ROOT / "outputs", ROOT / "data" / "work" / "phase5_step7", ROOT / "data" / "work" / "phase5_step8"
 P = 1.5
-FAMILY_COLS = {l: {"F1": "F1", "F2": "F2", "F3": "F3", "F4": "F4"} for l in dr.LINES}
+# Check-in 4 verdicts (D24): N1 (a) F4 with the held-over factors in motor and buildings; N2 (a) per-peril EBM and
+# LightGBM in motor; N3 (a) the boosted correction may enter the final price
+FAMILY_COLS = {"motor": {"F1": "F1", "F2": "FS:lgb", "F3": "FS:ebm", "F4": "F4+all"},
+               "buildings": {"F1": "F1", "F2": "F2", "F3": "F3", "F4": "F4+all"},
+               "contents": {"F1": "F1", "F2": "F2", "F3": "F3", "F4": "F4"}}
 CANDIDATES = ["ref", "cand:glum", "cand:glum_std", "cand:glum_spline", "cand:lgb", "cand:cat", "cand:ebm", "cand:f4"]
 
 
