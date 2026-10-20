@@ -1,0 +1,503 @@
+<title>Phase 7 Check-in Seven</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: the check-in 1 filing-memo column, status strip on top, evidence first, decision cards, sticky action bar at the foot. */
+:root {
+  --paper: #f5f7f8;
+  --surface: #ffffff;
+  --ink: #16202a;
+  --muted: #56636f;
+  --line: #d8dee4;
+  --accent: #0c6767;
+  --accent-weak: #e2f0ef;
+  --door: #8f5300;
+  --door-bg: #fbeed6;
+  --good: #23704a;
+  --good-bg: #e2f2e9;
+  --bad: #a3332b;
+  --bad-bg: #f9e3e1;
+  --font-display: "Newsreader", "Iowan Old Style", Georgia, serif;
+  --font-body: "Public Sans", "Segoe UI", system-ui, sans-serif;
+  --font-data: "JetBrains Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  --step--1: 0.8125rem;
+  --step-0: 0.9375rem;
+  --step-1: 1.125rem;
+  --step-2: 1.45rem;
+  --step-3: 2.1rem;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #10161b; --surface: #172028; --ink: #e5eaee; --muted: #9ba8b3; --line: #2b3742;
+    --accent: #5ab8b1; --accent-weak: #16302f; --door: #eab35d; --door-bg: #34270f;
+    --good: #6fcf9c; --good-bg: #133022; --bad: #f08a80; --bad-bg: #3a1a17; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #10161b; --surface: #172028; --ink: #e5eaee; --muted: #9ba8b3; --line: #2b3742;
+  --accent: #5ab8b1; --accent-weak: #16302f; --door: #eab35d; --door-bg: #34270f;
+  --good: #6fcf9c; --good-bg: #133022; --bad: #f08a80; --bad-bg: #3a1a17; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--paper); color: var(--ink); font-family: var(--font-body); font-size: var(--step-0);
+  line-height: 1.55; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0 96px;
+}
+.wrap { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 40px; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 600; text-wrap: balance; margin: 0; line-height: 1.2; }
+h1 { font-size: var(--step-3); }
+h2 { font-size: var(--step-2); }
+h3 { font-size: var(--step-1); font-family: var(--font-body); font-weight: 600; }
+p { margin: 0; max-width: 68ch; }
+.eyebrow { font-size: var(--step--1); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.mono, code { font-family: var(--font-data); font-size: 0.86em; }
+.num { font-variant-numeric: tabular-nums; }
+section { display: flex; flex-direction: column; gap: 14px; }
+.status { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--paper); border-bottom: 1px solid var(--line); padding-block: 10px; margin: 0 calc(-1 * max(16px, env(safe-area-inset-left, 0px))); padding-inline: max(16px, env(safe-area-inset-left, 0px)); }
+.status-in { max-width: 900px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: center; font-size: var(--step--1); }
+.pill { display: inline-flex; align-items: center; gap: 6px; padding: 2px 10px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); font-weight: 600; white-space: nowrap; }
+.pill.state-submitted { color: var(--accent); border-color: var(--accent); }
+.pill.state-final { color: var(--good); border-color: var(--good); background: var(--good-bg); }
+.blocked { color: var(--muted); min-width: 0; }
+header { display: flex; flex-direction: column; gap: 12px; padding-top: 28px; }
+.lede { font-size: var(--step-1); max-width: 64ch; }
+.formula { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 18px 20px; display: flex; flex-direction: column; gap: 12px; }
+.formula .eq { font-family: var(--font-data); font-size: 0.95rem; overflow-x: auto; white-space: nowrap; padding-bottom: 4px; }
+.terms { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px 18px; font-size: var(--step--1); }
+.terms div { min-width: 0; }
+.terms b { display: block; font-family: var(--font-data); font-weight: 500; color: var(--accent); }
+.diagram { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); padding: 8px; }
+.diagram svg { display: block; min-width: 860px; width: 100%; height: auto; }
+.node rect { fill: var(--surface); stroke: var(--line); stroke-width: 1.2; }
+.node.new rect { fill: var(--accent-weak); stroke: var(--accent); }
+.node.here rect { stroke: var(--accent); stroke-width: 2.4; }
+.node text { fill: var(--ink); font-family: var(--font-body); font-size: 12.5px; }
+.node text.sub { fill: var(--muted); font-size: 10.5px; }
+.node.noted rect { stroke-width: 2.4; }
+.node { cursor: pointer; }
+.node:hover rect, .node:focus rect { stroke: var(--accent); stroke-width: 2; }
+.node:focus { outline: none; }
+.edge { stroke: var(--muted); stroke-width: 1.2; fill: none; }
+.arrowhead { fill: var(--muted); }
+.legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: var(--step--1); color: var(--muted); align-items: center; }
+.swatch { display: inline-block; width: 12px; height: 12px; border-radius: 2px; border: 1px solid var(--line); vertical-align: -2px; margin-right: 4px; background: var(--surface); }
+.swatch.new { background: var(--accent-weak); border-color: var(--accent); }
+.note-box { display: flex; flex-direction: column; gap: 8px; background: var(--surface); border: 1px solid var(--accent); border-radius: 6px; padding: 12px 14px; }
+.note-list { display: flex; flex-direction: column; gap: 6px; font-size: var(--step--1); padding: 0; margin: 0; list-style: none; }
+.note-list li { border-left: 2px solid var(--accent); padding-left: 10px; }
+.note-list .anchor { font-family: var(--font-data); color: var(--accent); margin-right: 6px; }
+.legend-doors { display: flex; flex-wrap: wrap; gap: 10px; font-size: var(--step--1); color: var(--muted); }
+.cards { display: flex; flex-direction: column; gap: 18px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 18px 20px; display: flex; flex-direction: column; gap: 12px; }
+.card.decided { border-color: var(--good); }
+.card.rejected { border-color: var(--bad); }
+.card-top { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: baseline; }
+.cid { font-family: var(--font-data); font-weight: 500; color: var(--accent); }
+.door { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; padding: 1px 8px; border-radius: 3px; }
+.door.one { color: var(--door); background: var(--door-bg); }
+.door.costly { color: var(--door); border: 1px solid var(--door); }
+.door.easy { color: var(--muted); border: 1px solid var(--line); }
+.verdict-chip { margin-left: auto; font-size: var(--step--1); font-weight: 600; }
+.verdict-chip.ok { color: var(--good); }
+.verdict-chip.rej { color: var(--bad); }
+.verdict-chip.none { color: var(--muted); }
+.q { font-size: var(--step-1); font-weight: 600; }
+.stakes { font-size: var(--step--1); color: var(--muted); max-width: 72ch; }
+.stakes b { color: var(--ink); font-weight: 600; }
+.opts { display: flex; flex-direction: column; gap: 8px; border: 0; padding: 0; margin: 0; }
+.opts legend { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.opt { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; border: 1px solid var(--line); border-radius: 5px; padding: 10px 12px; cursor: pointer; }
+.opt:hover { border-color: var(--muted); }
+.opt.rec { border-color: var(--accent); }
+.opt input { margin: 4px 0 0; accent-color: var(--accent); width: 16px; height: 16px; }
+.opt input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.opt .body { min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+.opt .name { font-weight: 600; }
+.opt .name .k { font-family: var(--font-data); color: var(--muted); margin-right: 6px; }
+.opt .tag { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--accent); margin-left: 6px; }
+.opt .det { font-size: var(--step--1); color: var(--muted); }
+.opt .det span { color: var(--ink); font-weight: 600; }
+.opt.reject { border-style: dashed; }
+.rec-line { font-size: var(--step--1); background: var(--accent-weak); border-radius: 4px; padding: 8px 12px; }
+.rec-line b { color: var(--accent); }
+.card textarea { width: 100%; min-height: 56px; resize: vertical; font: inherit; font-size: var(--step--1); color: var(--ink); background: var(--paper); border: 1px solid var(--line); border-radius: 4px; padding: 8px 10px; }
+.card textarea:focus-visible, .note-box textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.card-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: var(--step--1); color: var(--muted); }
+button { font: inherit; font-size: var(--step--1); font-weight: 600; border-radius: 4px; padding: 7px 14px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; }
+button:hover:not(:disabled) { border-color: var(--accent); }
+button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+button.primary { background: var(--accent); border-color: var(--accent); color: var(--surface); }
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+.note-box textarea { width: 100%; min-height: 60px; font: inherit; font-size: var(--step--1); color: var(--ink); background: var(--paper); border: 1px solid var(--line); border-radius: 4px; padding: 8px 10px; }
+.tbl { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: var(--step--1); }
+th, td { text-align: left; vertical-align: top; padding: 8px 12px; border-bottom: 1px solid var(--line); }
+th { font-weight: 600; color: var(--muted); font-size: 0.75rem; letter-spacing: 0.05em; text-transform: uppercase; white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+td.k { font-family: var(--font-data); color: var(--accent); white-space: nowrap; }
+.tbl.wide table { min-width: 720px; }
+th.r, td.r { text-align: right; }
+td.pass { color: var(--good); font-weight: 600; }
+td.fail { color: var(--bad); font-weight: 600; }
+td.neg { color: var(--bad); }
+.bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 6; background: var(--surface); border-top: 1px solid var(--line); padding-bottom: env(safe-area-inset-bottom, 0px); padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.bar-in { max-width: 900px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 8px 10px; align-items: center; padding-block: 10px; }
+.bar-msg { font-size: var(--step--1); color: var(--muted); flex: 1 1 220px; min-width: 0; }
+.bar-msg.err { color: var(--bad); }
+.locked .opt, .locked textarea { pointer-events: none; opacity: 0.75; }
+@media (prefers-reduced-motion: no-preference) { .card, .opt { transition: border-color 0.15s ease; } }
+@media (max-width: 520px) { .verdict-chip { margin-left: 0; width: 100%; } h1 { font-size: 1.75rem; } }
+.changes { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 6px; max-width: 72ch; }
+.resolved { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 6px 18px; font-size: var(--step--1); }
+.resolved div { display: grid; grid-template-columns: 5.5em 1fr; gap: 8px; padding: 6px 0; border-bottom: 1px solid var(--line); min-width: 0; }
+.facts { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 6px; max-width: 72ch; font-size: var(--step--1); }
+.how { font-size: var(--step--1); color: var(--muted); border-left: 2px solid var(--accent); padding-left: 12px; }
+.how b { color: var(--ink); }
+.wrong { font-size: var(--step--1); background: var(--bad-bg); border-left: 3px solid var(--bad); border-radius: 0 4px 4px 0; padding: 10px 14px; display: flex; flex-direction: column; gap: 6px; }
+.wrong b { color: var(--bad); }
+.evidence { display: flex; flex-direction: column; gap: 10px; }
+.kept { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font-size: 0.78rem; padding: 2px 8px; border-radius: 3px; border: 1px solid var(--line); background: var(--paper); }
+.chip.in { border-color: var(--good); color: var(--good); background: var(--good-bg); }
+.chip.out { color: var(--muted); text-decoration: line-through; }
+</style>
+
+<div class="status" role="status">
+  <div class="status-in">
+    <span class="pill" id="roundPill">Round 1</span>
+    <span class="pill" id="countPill">0 decided</span>
+    <span class="pill" id="statePill">Draft</span>
+    <span class="blocked" id="blockedText">Waiting on you.</span>
+  </div>
+</div>
+
+<div class="wrap">
+  <header>
+    <span class="eyebrow">IAA AI Hackathon 2026 · Part 1 · Phase 7 · Check-in 7 · Round 1 · 20 Oct 2026</span>
+    <h1>The hold-out, and the final file</h1>
+    <p class="lede" id="lede">LEDE</p>
+  </header>
+
+  <section aria-labelledby="h-settled">
+    <span class="eyebrow">Settled at check-in 6 · registered as Q1 and Q2</span>
+    <h2 id="h-settled">The referral rule</h2>
+    <div class="resolved">
+      <div><span class="cid">Q1</span><span>Motor disagreement rows at the GLM's price; property keeps the blend</span></div>
+      <div><span class="cid">Q2</span><span>Size and thin-segment rows keep the blend; all listed for review</span></div>
+    </div>
+    <p class="how"><b>How the hold-out test reads.</b> The 73,227 customers locked away on 18 October were scored once: the frozen pipeline was fitted on everyone else's 2021 to 2022 (or 2023) rows and priced the locked customers' 2023 (or 2024) rows. "Saved" is the drop in total Tweedie deviance against the W2 GLM, at a common level per line; the keep rule is as before. <!--EX-->Example: in contents the blend saves 7,714 on A, interval 1,770 to 14,838, and 7,913 on B, so it passes.<!--END EX--></p>
+  </section>
+
+  <!--P7-->
+  <section aria-labelledby="h-p7a">
+    <span class="eyebrow">Phase 7 · the hold-out, opened once</span>
+    <h2 id="h-p7a">The blend beats the GLM on customers it never saw</h2>
+    <div class="tbl wide"><table><thead><tr><th>Hold-out test</th><th>Line</th><th class="r">A: saved</th><th class="r">A: 95% interval</th><th class="r">B: saved</th><th>Passes</th></tr></thead><tbody id="t7h"></tbody></table></div>
+    <div class="tbl wide"><table><thead><tr><th>Ranking D², hold-out</th><th class="r">2023 plain GLM</th><th class="r">2023 W2 GLM</th><th class="r">2023 blend</th><th class="r">2024 plain GLM</th><th class="r">2024 W2 GLM</th><th class="r">2024 blend</th></tr></thead><tbody><tr><td>Motor</td><td class="r num">5.61%</td><td class="r num">3.94%</td><td class="r num">4.33%</td><td class="r num">3.45%</td><td class="r num">4.35%</td><td class="r num">4.43%</td></tr><tr><td>Buildings</td><td class="r num">4.41%</td><td class="r num">5.44%</td><td class="r num">5.71%</td><td class="r num">6.00%</td><td class="r num">7.29%</td><td class="r num">7.48%</td></tr><tr><td>Contents</td><td class="r num">7.51%</td><td class="r num">7.85%</td><td class="r num">8.28%</td><td class="r num">5.04%</td><td class="r num">5.14%</td><td class="r num">5.59%</td></tr><tr><td>All lines</td><td class="r num">12.66%</td><td class="r num">12.15%</td><td class="r num">12.49%</td><td class="r num">8.98%</td><td class="r num">9.84%</td><td class="r num">10.03%</td></tr></tbody></table></div>
+    <p class="how"><b>How to read this.</b> The hold-out is 15% of customers, so its intervals are wider than the earlier tests'; every line still saves in both years, and the total passes. The plain GLM (the 18 October baseline) looks best in motor 2023 for one reason: the 11.9M bodily injury claim is in those rows and is 43.8% of their cost. A model fitted to uncapped cost leans toward the rows that produce it. Without that one row, motor 2023 ranking D² is 4.30% for the plain GLM, 4.76% for the W2 GLM and 4.77% for the blend.</p>
+    <div class="tbl"><table><thead><tr><th>Level: priced over actual</th><th class="r">2024</th><th class="r">2024 claims</th><th class="r">2023</th></tr></thead><tbody><tr><td>Motor</td><td class="r num">1.01</td><td class="r num">3,502</td><td class="r num">0.66</td></tr><tr><td>Buildings</td><td class="r num">0.90</td><td class="r num">957</td><td class="r num">1.07</td></tr><tr><td>Contents</td><td class="r num">1.13</td><td class="r num">825</td><td class="r num">0.95</td></tr></tbody></table></div>
+    <p class="how"><b>How to read this.</b> 2024 is the reading that matters, because 2023 is scored without the completion adjustment. A ratio of 1.01 in motor means the decided level chain priced the hold-out's 2024 motor rows 1% above what they cost. Property moves by about 10% either way on fewer than 1,000 claims, most likely the lumpiness of property claims rather than a level error; the 2025 level comes from the indication on all four years.</p>
+  </section>
+
+  <section aria-labelledby="h-p7b">
+    <span class="eyebrow">The final refit on all customers</span>
+    <h2 id="h-p7b">Claims history for every customer, and the large claim in the load</h2>
+    <div class="tbl"><table><thead><tr><th>Line</th><th class="r">2025 total, frozen</th><th class="r">Refit, all customers</th><th class="r">Change</th><th class="r">C4 gap</th></tr></thead><tbody><tr><td>Motor</td><td class="r num">111.2M</td><td class="r num">113.7M</td><td class="r num">+2.3%</td><td class="r num">-1.40%</td></tr><tr><td>Buildings</td><td class="r num">77.4M</td><td class="r num">79.1M</td><td class="r num">+2.2%</td><td class="r num">-0.13%</td></tr><tr><td>Contents</td><td class="r num">19.6M</td><td class="r num">19.3M</td><td class="r num">-1.7%</td><td class="r num">-1.50%</td></tr></tbody></table></div>
+    <p class="how"><b>How to read this.</b> The refit adds 15% more data and gives the locked customers' 2025 rows their own claims history: rows with a past claim rise by a median 14% in motor, 36% in buildings and 27% in contents, and claim-free rows fall. Motor's total rises 2.3%, mostly from the 11.9M claim entering the large-loss load (card U1). Every line stays inside the ±3% band against the indication.</p>
+    <div class="wrong">
+      <b>Where I was wrong (D28)</b>
+      <span>I had stated that every claim costs something, but checked it on the non-hold-out customers only. The hold-out holds one closed nil claim (0.02 incurred, 0.02 recovered), which stopped a severity fit in the refit. Nil claims are now left out of the per-peril models; that changes nothing in the frozen model, and the frozen file was rebuilt and checked identical.</span>
+    </div>
+  </section>
+<!--END P7-->
+
+  <section aria-labelledby="h-dec">
+    <span class="eyebrow">Decisions</span>
+    <h2 id="h-dec">Calls for you</h2>
+    <div class="legend-doors"><span class="door one">One-way</span> hard to undo once work starts <span class="door costly">Costly</span> undoable, at half a day or more of rework <span class="door easy">Reversible</span> cheap to change later</div>
+    <div class="cards" id="cards"></div>
+  </section>
+
+  <section aria-labelledby="h-flow">
+    <span class="eyebrow">Where we are · click a step to leave a note on it</span>
+    <h2 id="h-flow">Hold-out opened and passed; next, the write-up and the review</h2>
+    <div class="legend"><span><span class="swatch"></span>Step</span><span><span class="swatch new"></span>Check-in with you</span></div>
+    <div class="diagram" id="diagram"></div>
+    <div class="note-box" id="noteBox" hidden>
+      <label for="noteText"><span class="eyebrow">Note on</span> <b id="noteAnchorLabel"></b></label>
+      <textarea id="noteText" placeholder="What should change at this step?"></textarea>
+      <div class="card-actions"><button class="primary" id="noteSave" type="button">Save note</button><button id="noteCancel" type="button">Cancel</button><span id="noteMsg"></span></div>
+    </div>
+    <ul class="note-list" id="noteList"></ul>
+  </section>
+</div>
+
+<div class="bar">
+  <div class="bar-in">
+    <span class="bar-msg" id="barMsg">Verdicts save as you choose them. When done, click Send to Claude, then type anything in the chat so Claude picks them up.</span>
+    <button type="button" id="copyBtn">Copy for Claude</button>
+    <button type="button" id="finalBtn">Finalize</button>
+    <button type="button" class="primary" id="sendBtn">Send to Claude</button>
+  </div>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var ROUND = 1;
+  /*DATA*/var TABLES = {"t7h": [{"name": "Blend against the W2 GLM", "line": "Motor", "a": 24249.58391180561, "lo": -11753.126669076762, "hi": 83955.15074050981, "b": 3566.760034885788, "keep": false}, {"name": "", "line": "Buildings", "a": 9285.629368856647, "lo": -1609.6210279623228, "hi": 19385.045926562005, "b": 6922.836304415965, "keep": false}, {"name": "", "line": "Contents", "a": 7714.329815564167, "lo": 1769.5263551361156, "hi": 14837.965345964036, "b": 7913.210083984184, "keep": true}, {"name": "", "line": "All lines", "a": 41249.54309622642, "lo": 2449.5874382749143, "hi": 103419.73455223253, "b": 18402.806423285932, "keep": true}]};
+  var LEDE = "On customers no model had seen, the frozen blend beats the W2 GLM in every line in both years: across lines +41,250 on 2023 (interval 2,450 to 103,420) and +18,403 on 2024. The model holds up. The refit on all customers then puts their claims history into the 2025 price, and the 11.9M bodily injury claim into the motor load. Two calls: confirm that claim's place in the load, and choose the final file.";
+  var DECS = [{"id": "U1", "door": "costly", "q": "Confirm the 11.9M bodily injury claim in the motor large-loss load?", "stakes": "<b>In plain terms:</b> one claim is 50% of all motor cost above the 100k cap over four years. With it, the motor large-loss load is 5.8%; without it, 2.9%. That moves the 2025 motor total from about 110.6M to 113.7M. In October you judged it a genuine catastrophic injury claim (X1 (a)), to be confirmed once its effect was shown.", "opts": [{"k": "A", "n": "Confirm X1 (a): keep its excess in the motor load", "d": "A real loss of this kind can recur; spreading it over every policy-year is the large-loss load doing its job.", "c": "Motor prices about 2.8% higher than without it.", "f": "Nothing."}, {"k": "B", "n": "Leave its excess out as a one-off", "d": "Treats the claim as unrepresentative of 2025.", "c": "Reverses X1 (a) and under-prices the large-loss exposure if such a claim recurs; J1 says under-pricing is the costlier error.", "f": "Nothing."}], "rec": "A", "why": "The evidence in phase 2 pointed to a real catastrophic injury claim, and four years is a short window for losses of this size: leaving it out would assume it cannot happen again."}, {"id": "U2", "door": "one", "q": "Which file is the final Part 1 submission?", "stakes": "<b>In plain terms:</b> the refit is the same frozen model, fitted on every customer, so the 15% of customers locked away for the test now price with their own claims history. The hold-out test, on exactly that model trained without them, passed: +41,250 on 2023 and +18,403 on 2024 against the GLM.", "opts": [{"k": "A", "n": "blend_final_all_v2: the frozen pipeline refitted on all customers", "d": "More data, and every customer's history in the price.", "c": "Its public score is not yet known.", "f": "Nothing."}, {"k": "B", "n": "blend_frozen_v2, as uploaded", "d": "Public 0.12830.", "c": "Prices 12.7% of 2025 rows without their own claims history.", "f": "Nothing."}], "rec": "A", "why": "It is the validated pipeline with no part of the data held back, which is how a frozen model is put into production."}];/*END DATA*/
+
+  var STEPS = [
+    { id: "level", t: "1-3 Cap, level", s: "C1 to C6", isNew: false },
+    { id: "check1", t: "Check-in 1", s: "K1 to K4, done", isNew: true },
+    { id: "history", t: "4 Claims history", s: "C7", isNew: false },
+    { id: "features", t: "5 Features", s: "C8", isNew: false },
+    { id: "check2", t: "Check-in 2", s: "L1 to L8, done", isNew: true },
+    { id: "structure", t: "6 Structure", s: "P3, K2", isNew: false },
+    { id: "check3", t: "Check-in 3", s: "M1 to M3, done", isNew: true },
+    { id: "families", t: "7 Families", s: "N1 to N3, done", isNew: false },
+    { id: "weights", t: "8 Weights", s: "O1, O2, done", isNew: false },
+    { id: "check4", t: "Frozen", s: "blend_frozen_v1", isNew: true },
+    { id: "tail", t: "Phase 6 tail", s: "Q1, Q2, done", isNew: false },
+    { id: "holdout", t: "Hold-out, review", s: "check-in 7: here", isNew: false, here: true }
+  ];
+
+  function fmt(x) { var s = Math.round(Math.abs(x)).toLocaleString("en-GB"); return (x < 0 ? "−" : "") + s; }
+  function rowsHtml(list, withLine) {
+    return list.map(function (r) {
+      var cls = r.keep ? "pass" : "fail";
+      return "<tr><td>" + r.name + "</td>" + (withLine ? "<td>" + r.line + "</td>" : "") +
+        '<td class="r num' + (r.a < 0 ? " neg" : "") + '">' + fmt(r.a) + '</td><td class="r num">' + fmt(r.lo) + " to " + fmt(r.hi) +
+        '</td><td class="r num' + (r.b < 0 ? " neg" : "") + '">' + fmt(r.b) + '</td><td class="' + cls + '">' + (r.label || (r.keep ? "Yes" : "No")) + "</td></tr>";
+    }).join("");
+  }
+  function fill(id, list, withLine) { var el = document.getElementById(id); if (el) el.innerHTML = rowsHtml(list, withLine); }
+  Object.keys(TABLES).forEach(function (k) { fill(k, TABLES[k], TABLES[k].length && TABLES[k][0].line !== undefined); });
+  document.getElementById("lede").innerHTML = LEDE;
+
+  var DECISIONS = DECS;
+  var IDS = DECISIONS.map(function (d) { return d.id; });
+  var state = { verdicts: {}, notes: [], status: "draft", round: ROUND, locked: false };
+  var db = null, writeChains = {}, noteTimers = {}, noteAnchor = null;
+
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  function byId(id) { return document.getElementById(id); }
+  function decision(id) { for (var i = 0; i < DECISIONS.length; i++) if (DECISIONS[i].id === id) return DECISIONS[i]; return null; }
+
+  function drawDiagram() {
+    var W = 860, bw = 124, bh = 54, gap = (W - 20 - 6 * bw) / 5, y1 = 20, y2 = 130;
+    var parts = ['<svg viewBox="0 0 ' + W + ' 200" role="img" aria-label="Phase 5 steps from cap and load to the hold-out, check-in 3 marked"><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrowhead" d="M0,0 L10,5 L0,10 z"/></marker></defs>'];
+    var pos = STEPS.map(function (s, i) { var row = i < 6 ? 0 : 1, col = row === 0 ? i : 11 - i; return { x: 10 + col * (bw + gap), y: row === 0 ? y1 : y2, row: row }; });
+    for (var i = 0; i < STEPS.length - 1; i++) {
+      var a = pos[i], b = pos[i + 1];
+      if (a.row === b.row) {
+        var dir = a.row === 0 ? 1 : -1, x1 = dir > 0 ? a.x + bw : a.x, x2 = dir > 0 ? b.x : b.x + bw, yy = a.y + bh / 2;
+        parts.push('<path class="edge" d="M' + x1 + ',' + yy + ' L' + (x2 - 2 * dir) + ',' + yy + '" marker-end="url(#ah)"/>');
+      } else {
+        var xx = a.x + bw / 2;
+        parts.push('<path class="edge" d="M' + xx + ',' + (a.y + bh) + ' L' + xx + ',' + (b.y - 2) + '" marker-end="url(#ah)"/>');
+      }
+    }
+    STEPS.forEach(function (s, i) {
+      var p = pos[i];
+      parts.push('<g class="node' + (s.isNew ? ' new' : '') + (s.here ? ' here' : '') + '" data-node-id="' + s.id + '" tabindex="0" role="button" aria-label="' + esc(s.t) + ': add a note">' +
+        '<rect x="' + p.x + '" y="' + p.y + '" width="' + bw + '" height="' + bh + '" rx="4"/>' +
+        '<text x="' + (p.x + 10) + '" y="' + (p.y + 23) + '">' + esc(s.t) + '</text>' +
+        '<text class="sub" x="' + (p.x + 10) + '" y="' + (p.y + 41) + '">' + esc(s.s) + '</text></g>');
+    });
+    parts.push('</svg>');
+    byId("diagram").innerHTML = parts.join("");
+    Array.prototype.forEach.call(document.querySelectorAll(".node"), function (g) {
+      g.addEventListener("click", function () { openNote(g.getAttribute("data-node-id")); });
+      g.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openNote(g.getAttribute("data-node-id")); } });
+    });
+  }
+  function stepTitle(id) { for (var i = 0; i < STEPS.length; i++) if (STEPS[i].id === id) return STEPS[i].t; return id; }
+  function openNote(id) {
+    if (state.locked) return;
+    noteAnchor = id; byId("noteAnchorLabel").textContent = stepTitle(id); byId("noteText").value = ""; byId("noteMsg").textContent = "";
+    byId("noteBox").hidden = false; byId("noteText").focus();
+  }
+  function renderNotes() {
+    var notes = state.notes.slice().sort(function (a, b) { return String(a.createdAt).localeCompare(String(b.createdAt)); });
+    byId("noteList").innerHTML = notes.map(function (n) { return '<li><span class="anchor">' + esc(stepTitle(n.anchor)) + '</span>' + esc(n.text) + '</li>'; }).join("");
+    var noted = {}; notes.forEach(function (n) { noted[n.anchor] = true; });
+    Array.prototype.forEach.call(document.querySelectorAll(".node"), function (g) { g.classList.toggle("noted", !!noted[g.getAttribute("data-node-id")]); });
+  }
+
+  function doorLabel(d) { return d === "one" ? "One-way" : d === "costly" ? "Costly" : "Reversible"; }
+  function drawCards() {
+    byId("cards").innerHTML = DECISIONS.map(function (d) {
+      var opts = d.opts.map(function (o) {
+        var rid = "v-" + d.id + "-" + o.k;
+        return '<label class="opt' + (o.k === d.rec ? ' rec' : '') + '" for="' + rid + '">' +
+          '<input type="radio" name="v-' + d.id + '" id="' + rid + '" value="' + o.k + '">' +
+          '<span class="body"><span class="name"><span class="k">' + o.k + '</span>' + esc(o.n) + (o.k === d.rec ? '<span class="tag">Recommended</span>' : '') + '</span>' +
+          '<span class="det">' + o.d + '</span>' +
+          '<span class="det"><span>Costs:</span> ' + esc(o.c) + ' <span>Rules out:</span> ' + esc(o.f) + '</span></span></label>';
+      }).join("");
+      var rj = "v-" + d.id + "-reject";
+      opts += '<label class="opt reject" for="' + rj + '"><input type="radio" name="v-' + d.id + '" id="' + rj + '" value="reject"><span class="body"><span class="name">None of these</span><span class="det">Say why in the note; the card comes back with different options.</span></span></label>';
+      return '<article class="card" id="card-' + d.id + '" aria-labelledby="q-' + d.id + '">' +
+        '<div class="card-top"><span class="cid">' + d.id + '</span><span class="door ' + d.door + '">' + doorLabel(d.door) + '</span><span class="verdict-chip none" id="chip-' + d.id + '">No verdict yet</span></div>' +
+        '<div class="q" id="q-' + d.id + '">' + esc(d.q) + '</div>' +
+        '<p class="stakes">' + d.stakes + '</p>' +
+        (d.evidence ? '<div class="evidence">' + d.evidence + '</div>' : '') +
+        '<fieldset class="opts"><legend>Options for ' + d.id + '</legend>' + opts + '</fieldset>' +
+        '<div class="rec-line"><b>Recommend ' + d.rec + '.</b> ' + esc(d.why) + '</div>' +
+        '<label class="eyebrow" for="n-' + d.id + '">Your note (optional)</label>' +
+        '<textarea id="n-' + d.id + '" placeholder="Reasoning, a condition, or what to change"></textarea>' +
+        '<div class="card-actions"><button type="button" data-accept="' + d.id + '">Accept recommendation</button><span id="save-' + d.id + '"></span></div>' +
+        '</article>';
+    }).join("");
+    DECISIONS.forEach(function (d) {
+      Array.prototype.forEach.call(document.querySelectorAll('input[name="v-' + d.id + '"]'), function (r) {
+        r.addEventListener("change", function () { if (r.checked) setChoice(d.id, r.value); });
+      });
+      byId("n-" + d.id).addEventListener("input", function () {
+        clearTimeout(noteTimers[d.id]);
+        noteTimers[d.id] = setTimeout(function () { setNote(d.id, byId("n-" + d.id).value); }, 600);
+      });
+    });
+    Array.prototype.forEach.call(document.querySelectorAll("[data-accept]"), function (b) {
+      b.addEventListener("click", function () { var id = b.getAttribute("data-accept"), d = decision(id); byId("v-" + id + "-" + d.rec).checked = true; setChoice(id, d.rec); });
+    });
+  }
+  function applyVerdictsToControls() {
+    DECISIONS.forEach(function (d) {
+      var v = state.verdicts[d.id], choice = v && v.choice;
+      if (choice) { var r = byId("v-" + d.id + "-" + choice); if (r && !r.checked) r.checked = true; }
+      var ta = byId("n-" + d.id);
+      if (v && typeof v.note === "string" && document.activeElement !== ta && ta.value !== v.note) ta.value = v.note;
+      var chip = byId("chip-" + d.id), card = byId("card-" + d.id);
+      card.classList.remove("decided", "rejected");
+      if (!choice) { chip.className = "verdict-chip none"; chip.textContent = "No verdict yet"; }
+      else if (choice === "reject") { chip.className = "verdict-chip rej"; chip.textContent = "Rejected: rework"; card.classList.add("rejected"); }
+      else { chip.className = "verdict-chip ok"; chip.textContent = "Chose " + choice + (choice === d.rec ? " (recommended)" : ""); card.classList.add("decided"); }
+    });
+    renderStatus();
+  }
+  function renderStatus() {
+    var done = IDS.filter(function (id) { return state.verdicts[id] && state.verdicts[id].choice; });
+    byId("countPill").textContent = done.length + " of " + IDS.length + " decided";
+    byId("roundPill").textContent = "Round " + state.round;
+    var sp = byId("statePill"); sp.className = "pill state-" + state.status;
+    sp.textContent = state.status === "final" ? "Final" : state.status === "submitted" ? "Sent to Claude" : "Draft";
+    var open = IDS.filter(function (id) { return done.indexOf(id) < 0; }), bt = byId("blockedText");
+    if (state.status === "final") bt.textContent = "Finalized. Claude records the verdicts and readies the final file.";
+    else if (state.status === "submitted") bt.textContent = "Sent. Type anything in the chat so Claude reads the verdicts.";
+    else if (open.length === 0) bt.textContent = "Every card has a verdict. Send to Claude when ready.";
+    else bt.textContent = "Waiting on you: " + open.join(", ") + ".";
+    var locked = state.status === "final"; state.locked = locked;
+    document.body.classList.toggle("locked", locked);
+    byId("sendBtn").disabled = locked; byId("finalBtn").disabled = locked;
+    Array.prototype.forEach.call(document.querySelectorAll("[data-accept]"), function (b) { b.disabled = locked; });
+  }
+  function queueWrite(key, fn) { var prev = writeChains[key] || Promise.resolve(); var next = prev.then(fn, fn); writeChains[key] = next.catch(function () {}); return next; }
+  function saveVerdict(id) {
+    var v = state.verdicts[id], flag = byId("save-" + id);
+    if (!db) { flag.textContent = "Kept on this page only. Use Copy for Claude."; return; }
+    flag.textContent = "Saving…";
+    var body = { decisionId: id, choice: v.choice || null, note: v.note || "", updatedAt: new Date().toISOString() };
+    queueWrite("verdicts/" + id, function () { return db.doc("verdicts/" + id).set(body); })
+      .then(function () { flag.textContent = "Saved"; })
+      .catch(function (e) { flag.textContent = "Not saved: " + (e && e.message ? e.message : "store unavailable") + ". Use Copy for Claude."; });
+  }
+  function setChoice(id, choice) {
+    if (state.locked) return;
+    var v = Object.assign({}, state.verdicts[id] || {}); if (v.choice === choice) return;
+    v.choice = choice; v.note = byId("n-" + id).value; state.verdicts[id] = v; applyVerdictsToControls(); saveVerdict(id);
+  }
+  function setNote(id, text) {
+    if (state.locked) return;
+    var v = Object.assign({}, state.verdicts[id] || {}); if ((v.note || "") === text) return;
+    v.note = text; state.verdicts[id] = v; saveVerdict(id);
+  }
+  function setState(status) {
+    var body = { status: status, round: state.round, submittedAt: new Date().toISOString() };
+    if (!db) { state.status = status; renderStatus(); return Promise.resolve(); }
+    return queueWrite("brief/state", function () { return db.doc("brief/state").set(body); });
+  }
+  function flushNotes() { DECISIONS.forEach(function (d) { if (noteTimers[d.id]) { clearTimeout(noteTimers[d.id]); noteTimers[d.id] = null; setNote(d.id, byId("n-" + d.id).value); } }); }
+  function copyText() {
+    var lines = ["Check-in 7 round " + state.round];
+    DECISIONS.forEach(function (d) {
+      var v = state.verdicts[d.id] || {}, note = (byId("n-" + d.id).value || "").replace(/\s+/g, " ").trim();
+      var c = !v.choice ? "no verdict" : v.choice === d.rec ? "accept (" + d.rec + ")" : v.choice === "reject" ? "reject" : "option " + v.choice;
+      lines.push(d.id + ": " + c + (note ? " | " + note : ""));
+    });
+    state.notes.forEach(function (n) { lines.push("note@" + n.anchor + ": " + n.text); });
+    return lines.join("\n");
+  }
+  function msg(text, isErr) { var m = byId("barMsg"); m.textContent = text; m.classList.toggle("err", !!isErr); }
+  byId("sendBtn").addEventListener("click", function () {
+    flushNotes();
+    setState("submitted").then(function () { msg("Sent. Now type anything in the chat so Claude reads your verdicts."); })
+      .catch(function () { msg("Could not send. Use Copy for Claude and paste into the chat.", true); });
+  });
+  byId("finalBtn").addEventListener("click", function () {
+    flushNotes();
+    var missing = IDS.filter(function (id) { return !(state.verdicts[id] && state.verdicts[id].choice); });
+    if (missing.length) { msg("Finalize needs a verdict on every card. Missing: " + missing.join(", ") + ".", true); return; }
+    var rejected = IDS.filter(function (id) { return state.verdicts[id].choice === "reject"; });
+    if (rejected.length) { msg("Rejected cards need another round first: " + rejected.join(", ") + ". Send to Claude instead.", true); return; }
+    setState("final").then(function () { msg("Finalized. Type anything in the chat and Claude records the verdicts."); })
+      .catch(function () { msg("Could not finalize. Use Copy for Claude and paste into the chat.", true); });
+  });
+  byId("copyBtn").addEventListener("click", function () {
+    var t = copyText();
+    function fallback() {
+      var ta = document.createElement("textarea"); ta.value = t; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.opacity = "0";
+      document.body.appendChild(ta); ta.select(); var ok = false; try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+      document.body.removeChild(ta);
+      msg(ok ? "Copied. Paste it into the chat." : "Copy was blocked. Select your verdicts from the cards and paste them into the chat.", !ok);
+    }
+    try { navigator.clipboard.writeText(t).then(function () { msg("Copied. Paste it into the chat."); }, fallback); } catch (e) { fallback(); }
+  });
+  byId("noteCancel").addEventListener("click", function () { byId("noteBox").hidden = true; noteAnchor = null; });
+  byId("noteSave").addEventListener("click", function () {
+    var text = byId("noteText").value.trim();
+    if (!text || !noteAnchor) { byId("noteMsg").textContent = "Write a note first."; return; }
+    var body = { anchor: noteAnchor, quote: stepTitle(noteAnchor), text: text, createdAt: new Date().toISOString() };
+    if (!db) { state.notes.push(body); renderNotes(); byId("noteBox").hidden = true; msg("Note kept on this page only. Use Copy for Claude."); return; }
+    byId("noteSave").disabled = true;
+    db.collection("notes").add(body).then(function () { byId("noteBox").hidden = true; noteAnchor = null; })
+      .catch(function (e) { byId("noteMsg").textContent = "Not saved: " + (e && e.message ? e.message : "store unavailable"); })
+      .then(function () { byId("noteSave").disabled = false; });
+  });
+
+  drawDiagram(); drawCards(); applyVerdictsToControls(); renderNotes();
+
+  if (window.claude && typeof window.claude.use === "function") {
+    window.claude.use("db").then(function (d) {
+      if (!d) { msg("Saving is not available in this view. Your choices stay on the page; use Copy for Claude."); return; }
+      db = d;
+      db.collection("verdicts").onSnapshot(function (snap) {
+        var next = {};
+        snap.docs.forEach(function (doc) { var b = doc.data(); if (b && IDS.indexOf(doc.id) >= 0) next[doc.id] = { choice: b.choice || null, note: typeof b.note === "string" ? b.note : "" }; });
+        IDS.forEach(function (id) { if (next[id]) state.verdicts[id] = next[id]; });
+        applyVerdictsToControls();
+      }, function () { msg("Lost the connection to saved verdicts. Reload, or use Copy for Claude.", true); });
+      db.collection("notes").onSnapshot(function (snap) {
+        state.notes = snap.docs.map(function (doc) { return doc.data(); }).filter(function (n) { return n && n.text; }); renderNotes();
+      }, function () {});
+      db.doc("brief/state").onSnapshot(function (snap) {
+        var b = snap.exists ? snap.data() : null;
+        state.status = (b && b.round === state.round && (b.status === "submitted" || b.status === "final" || b.status === "draft")) ? b.status : "draft";
+        renderStatus();
+      }, function () {});
+      db.doc("brief/meta").onSnapshot(function (snap) {
+        var b = snap.exists ? snap.data() : null;
+        if (b && typeof b.round === "number" && b.round !== state.round) { state.round = b.round; renderStatus(); }
+      }, function () {});
+    }, function () { msg("Saving is not available in this view. Use Copy for Claude."); });
+  } else {
+    msg("Saving is not available here. Your choices stay on the page; use Copy for Claude.");
+  }
+})();
+</script>
