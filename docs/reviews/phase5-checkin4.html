@@ -1,0 +1,527 @@
+<title>Phase 5 Check-in Four</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: the check-in 1 filing-memo column, status strip on top, evidence first, decision cards, sticky action bar at the foot. */
+:root {
+  --paper: #f5f7f8;
+  --surface: #ffffff;
+  --ink: #16202a;
+  --muted: #56636f;
+  --line: #d8dee4;
+  --accent: #0c6767;
+  --accent-weak: #e2f0ef;
+  --door: #8f5300;
+  --door-bg: #fbeed6;
+  --good: #23704a;
+  --good-bg: #e2f2e9;
+  --bad: #a3332b;
+  --bad-bg: #f9e3e1;
+  --font-display: "Newsreader", "Iowan Old Style", Georgia, serif;
+  --font-body: "Public Sans", "Segoe UI", system-ui, sans-serif;
+  --font-data: "JetBrains Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  --step--1: 0.8125rem;
+  --step-0: 0.9375rem;
+  --step-1: 1.125rem;
+  --step-2: 1.45rem;
+  --step-3: 2.1rem;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #10161b; --surface: #172028; --ink: #e5eaee; --muted: #9ba8b3; --line: #2b3742;
+    --accent: #5ab8b1; --accent-weak: #16302f; --door: #eab35d; --door-bg: #34270f;
+    --good: #6fcf9c; --good-bg: #133022; --bad: #f08a80; --bad-bg: #3a1a17; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #10161b; --surface: #172028; --ink: #e5eaee; --muted: #9ba8b3; --line: #2b3742;
+  --accent: #5ab8b1; --accent-weak: #16302f; --door: #eab35d; --door-bg: #34270f;
+  --good: #6fcf9c; --good-bg: #133022; --bad: #f08a80; --bad-bg: #3a1a17; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--paper); color: var(--ink); font-family: var(--font-body); font-size: var(--step-0);
+  line-height: 1.55; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0 96px;
+}
+.wrap { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 40px; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 600; text-wrap: balance; margin: 0; line-height: 1.2; }
+h1 { font-size: var(--step-3); }
+h2 { font-size: var(--step-2); }
+h3 { font-size: var(--step-1); font-family: var(--font-body); font-weight: 600; }
+p { margin: 0; max-width: 68ch; }
+.eyebrow { font-size: var(--step--1); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.mono, code { font-family: var(--font-data); font-size: 0.86em; }
+.num { font-variant-numeric: tabular-nums; }
+section { display: flex; flex-direction: column; gap: 14px; }
+.status { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--paper); border-bottom: 1px solid var(--line); padding-block: 10px; margin: 0 calc(-1 * max(16px, env(safe-area-inset-left, 0px))); padding-inline: max(16px, env(safe-area-inset-left, 0px)); }
+.status-in { max-width: 900px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: center; font-size: var(--step--1); }
+.pill { display: inline-flex; align-items: center; gap: 6px; padding: 2px 10px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); font-weight: 600; white-space: nowrap; }
+.pill.state-submitted { color: var(--accent); border-color: var(--accent); }
+.pill.state-final { color: var(--good); border-color: var(--good); background: var(--good-bg); }
+.blocked { color: var(--muted); min-width: 0; }
+header { display: flex; flex-direction: column; gap: 12px; padding-top: 28px; }
+.lede { font-size: var(--step-1); max-width: 64ch; }
+.formula { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 18px 20px; display: flex; flex-direction: column; gap: 12px; }
+.formula .eq { font-family: var(--font-data); font-size: 0.95rem; overflow-x: auto; white-space: nowrap; padding-bottom: 4px; }
+.terms { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px 18px; font-size: var(--step--1); }
+.terms div { min-width: 0; }
+.terms b { display: block; font-family: var(--font-data); font-weight: 500; color: var(--accent); }
+.diagram { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); padding: 8px; }
+.diagram svg { display: block; min-width: 860px; width: 100%; height: auto; }
+.node rect { fill: var(--surface); stroke: var(--line); stroke-width: 1.2; }
+.node.new rect { fill: var(--accent-weak); stroke: var(--accent); }
+.node.here rect { stroke: var(--accent); stroke-width: 2.4; }
+.node text { fill: var(--ink); font-family: var(--font-body); font-size: 12.5px; }
+.node text.sub { fill: var(--muted); font-size: 10.5px; }
+.node.noted rect { stroke-width: 2.4; }
+.node { cursor: pointer; }
+.node:hover rect, .node:focus rect { stroke: var(--accent); stroke-width: 2; }
+.node:focus { outline: none; }
+.edge { stroke: var(--muted); stroke-width: 1.2; fill: none; }
+.arrowhead { fill: var(--muted); }
+.legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: var(--step--1); color: var(--muted); align-items: center; }
+.swatch { display: inline-block; width: 12px; height: 12px; border-radius: 2px; border: 1px solid var(--line); vertical-align: -2px; margin-right: 4px; background: var(--surface); }
+.swatch.new { background: var(--accent-weak); border-color: var(--accent); }
+.note-box { display: flex; flex-direction: column; gap: 8px; background: var(--surface); border: 1px solid var(--accent); border-radius: 6px; padding: 12px 14px; }
+.note-list { display: flex; flex-direction: column; gap: 6px; font-size: var(--step--1); padding: 0; margin: 0; list-style: none; }
+.note-list li { border-left: 2px solid var(--accent); padding-left: 10px; }
+.note-list .anchor { font-family: var(--font-data); color: var(--accent); margin-right: 6px; }
+.legend-doors { display: flex; flex-wrap: wrap; gap: 10px; font-size: var(--step--1); color: var(--muted); }
+.cards { display: flex; flex-direction: column; gap: 18px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 18px 20px; display: flex; flex-direction: column; gap: 12px; }
+.card.decided { border-color: var(--good); }
+.card.rejected { border-color: var(--bad); }
+.card-top { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: baseline; }
+.cid { font-family: var(--font-data); font-weight: 500; color: var(--accent); }
+.door { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; padding: 1px 8px; border-radius: 3px; }
+.door.one { color: var(--door); background: var(--door-bg); }
+.door.costly { color: var(--door); border: 1px solid var(--door); }
+.door.easy { color: var(--muted); border: 1px solid var(--line); }
+.verdict-chip { margin-left: auto; font-size: var(--step--1); font-weight: 600; }
+.verdict-chip.ok { color: var(--good); }
+.verdict-chip.rej { color: var(--bad); }
+.verdict-chip.none { color: var(--muted); }
+.q { font-size: var(--step-1); font-weight: 600; }
+.stakes { font-size: var(--step--1); color: var(--muted); max-width: 72ch; }
+.stakes b { color: var(--ink); font-weight: 600; }
+.opts { display: flex; flex-direction: column; gap: 8px; border: 0; padding: 0; margin: 0; }
+.opts legend { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.opt { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; border: 1px solid var(--line); border-radius: 5px; padding: 10px 12px; cursor: pointer; }
+.opt:hover { border-color: var(--muted); }
+.opt.rec { border-color: var(--accent); }
+.opt input { margin: 4px 0 0; accent-color: var(--accent); width: 16px; height: 16px; }
+.opt input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.opt .body { min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+.opt .name { font-weight: 600; }
+.opt .name .k { font-family: var(--font-data); color: var(--muted); margin-right: 6px; }
+.opt .tag { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--accent); margin-left: 6px; }
+.opt .det { font-size: var(--step--1); color: var(--muted); }
+.opt .det span { color: var(--ink); font-weight: 600; }
+.opt.reject { border-style: dashed; }
+.rec-line { font-size: var(--step--1); background: var(--accent-weak); border-radius: 4px; padding: 8px 12px; }
+.rec-line b { color: var(--accent); }
+.card textarea { width: 100%; min-height: 56px; resize: vertical; font: inherit; font-size: var(--step--1); color: var(--ink); background: var(--paper); border: 1px solid var(--line); border-radius: 4px; padding: 8px 10px; }
+.card textarea:focus-visible, .note-box textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.card-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: var(--step--1); color: var(--muted); }
+button { font: inherit; font-size: var(--step--1); font-weight: 600; border-radius: 4px; padding: 7px 14px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; }
+button:hover:not(:disabled) { border-color: var(--accent); }
+button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+button.primary { background: var(--accent); border-color: var(--accent); color: var(--surface); }
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+.note-box textarea { width: 100%; min-height: 60px; font: inherit; font-size: var(--step--1); color: var(--ink); background: var(--paper); border: 1px solid var(--line); border-radius: 4px; padding: 8px 10px; }
+.tbl { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: var(--step--1); }
+th, td { text-align: left; vertical-align: top; padding: 8px 12px; border-bottom: 1px solid var(--line); }
+th { font-weight: 600; color: var(--muted); font-size: 0.75rem; letter-spacing: 0.05em; text-transform: uppercase; white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+td.k { font-family: var(--font-data); color: var(--accent); white-space: nowrap; }
+.tbl.wide table { min-width: 720px; }
+th.r, td.r { text-align: right; }
+td.pass { color: var(--good); font-weight: 600; }
+td.fail { color: var(--bad); font-weight: 600; }
+td.neg { color: var(--bad); }
+.bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 6; background: var(--surface); border-top: 1px solid var(--line); padding-bottom: env(safe-area-inset-bottom, 0px); padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.bar-in { max-width: 900px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 8px 10px; align-items: center; padding-block: 10px; }
+.bar-msg { font-size: var(--step--1); color: var(--muted); flex: 1 1 220px; min-width: 0; }
+.bar-msg.err { color: var(--bad); }
+.locked .opt, .locked textarea { pointer-events: none; opacity: 0.75; }
+@media (prefers-reduced-motion: no-preference) { .card, .opt { transition: border-color 0.15s ease; } }
+@media (max-width: 520px) { .verdict-chip { margin-left: 0; width: 100%; } h1 { font-size: 1.75rem; } }
+.changes { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 6px; max-width: 72ch; }
+.resolved { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 6px 18px; font-size: var(--step--1); }
+.resolved div { display: grid; grid-template-columns: 5.5em 1fr; gap: 8px; padding: 6px 0; border-bottom: 1px solid var(--line); min-width: 0; }
+.facts { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 6px; max-width: 72ch; font-size: var(--step--1); }
+.how { font-size: var(--step--1); color: var(--muted); border-left: 2px solid var(--accent); padding-left: 12px; }
+.how b { color: var(--ink); }
+.wrong { font-size: var(--step--1); background: var(--bad-bg); border-left: 3px solid var(--bad); border-radius: 0 4px 4px 0; padding: 10px 14px; display: flex; flex-direction: column; gap: 6px; }
+.wrong b { color: var(--bad); }
+.evidence { display: flex; flex-direction: column; gap: 10px; }
+.kept { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font-size: 0.78rem; padding: 2px 8px; border-radius: 3px; border: 1px solid var(--line); background: var(--paper); }
+.chip.in { border-color: var(--good); color: var(--good); background: var(--good-bg); }
+.chip.out { color: var(--muted); text-decoration: line-through; }
+</style>
+
+<div class="status" role="status">
+  <div class="status-in">
+    <span class="pill" id="roundPill">Round 1</span>
+    <span class="pill" id="countPill">0 decided</span>
+    <span class="pill" id="statePill">Draft</span>
+    <span class="blocked" id="blockedText">Waiting on you.</span>
+  </div>
+</div>
+
+<div class="wrap">
+  <header>
+    <span class="eyebrow">IAA AI Hackathon 2026 · Part 1 · Phase 5 · Check-in 4 · Round 1 · 20 Oct 2026</span>
+    <h1>Model families: what each adds to the GLM</h1>
+    <p class="lede" id="lede">LEDE</p>
+  </header>
+
+  <section aria-labelledby="h-settled">
+    <span class="eyebrow">Settled at check-in 3</span>
+    <h2 id="h-settled">The frame for step 7</h2>
+    <div class="resolved">
+      <div><span class="cid">M1</span><span>One Tweedie GLM per line; frequency × severity tried in motor only</span></div>
+      <div><span class="cid">M2</span><span>The line excess factor everywhere</span></div>
+      <div><span class="cid">M3</span><span>2025 weather as one factor per line</span></div>
+    </div>
+    <p class="how"><b>How every test on this page reads.</b> Each family's model is fitted on earlier years and scored on a later one, against the W2 GLM. Scoring A fits 2021 to 2022 and scores 2023; scoring B fits 2021 to 2023 and scores 2024. "Saved" is the drop in total Tweedie deviance on the scored year, with every line held at its actual total, so only ranking counts; a negative number means the model ranks worse than the GLM. The keep rule needs a saving in both scorings and a 95% customer-bootstrap interval on A above zero. <!--EX-->Example: the spline GLM in contents saves 13,776 on A, interval −939 to 27,773, and 15,576 on B. The interval crosses zero, so it fails.<!--END EX--></p>
+  </section>
+
+  <!--STEP7-->
+  <section aria-labelledby="h-s7a">
+    <span class="eyebrow">Step 7 · model families (P7, C5)</span>
+    <h2 id="h-s7a">Four families, each tuned on 2021 to 2022 only</h2>
+    <p>Each family was tuned on folds of 2021 and 2022, including the training power from 1.1 to 1.9, and its strongest version chosen there. Only then was it fitted to the earlier years and scored on 2023 and 2024 (<code>decisions/phase5_step7_design.md</code>).</p>
+    <div class="tbl wide"><table>
+      <thead><tr><th>Family</th><th>What it is</th><th>Version chosen on the tuning folds</th></tr></thead>
+      <tbody><tr><td class="k">F1</td><td>A GLM whose relativities are shrunk toward the base, tuned on the inner folds; one version with smooth curves for age, NCB, vehicle value, mileage and sum insured instead of bands</td><td>Motor: spline GLM · Buildings: elastic-net GLM · Contents: spline GLM</td></tr><tr><td class="k">F2</td><td>Boosted trees built from scratch on the same raw fields (LightGBM and CatBoost)</td><td>Motor: CatBoost · Buildings: CatBoost · Contents: LightGBM</td></tr><tr><td class="k">F3</td><td>An EBM: one shape per factor plus a few two-factor interactions, read like a GLM</td><td>Motor: EBM · Buildings: EBM · Contents: EBM</td></tr><tr><td class="k">F4</td><td>Boosted trees that start from the W2 GLM's price and learn only a correction to it</td><td>Motor: LightGBM started from the GLM · Buildings: LightGBM started from the GLM · Contents: LightGBM started from the GLM</td></tr></tbody>
+    </table></div>
+  </section>
+
+  <section aria-labelledby="h-s7b">
+    <span class="eyebrow">Result</span>
+    <h2 id="h-s7b">No family beats the W2 GLM on its own</h2>
+    <div class="tbl wide"><table><thead><tr><th>Family against the W2 GLM</th><th>Line</th><th class="r">A: saved</th><th class="r">A: 95% interval</th><th class="r">B: saved</th><th>Passes</th></tr></thead><tbody id="t7f"></tbody></table></div>
+    <p class="how"><b>How to read this.</b> A negative number means the family prices worse than the GLM. Plain boosted trees lose 242,328 on 2023 across lines; they lost on the tuning folds too, so this is not bad luck in one year. Ranking D² across lines on 2023: W2 GLM 10.51%, penalised GLM 10.53%, EBM 10.41%, boosting from the GLM 10.47%, plain boosting 10.09%. <b>What it means:</b> this book behaves like a multiplicative rating plan, which a GLM captures with few parameters. Trees have to rediscover that structure split by split and lose accuracy doing it.</p>
+  </section>
+
+  <section aria-labelledby="h-s7c">
+    <span class="eyebrow">The held-over factors (L4, L7) · card N1</span>
+    <h2 id="h-s7c">They earn their place as a correction on top of the GLM</h2>
+    <p>History from the customer's other policies and from the address, prior repudiation, years licensed (motor), voluntary excess (property) and river distance and elevation (buildings). At check-in 2 each one nearly passed in the GLM.</p>
+    <div class="tbl wide"><table><thead><tr><th>Held-over factors added</th><th>Line</th><th class="r">A: saved</th><th class="r">A: 95% interval</th><th class="r">B: saved</th><th>Passes</th></tr></thead><tbody id="t7c"></tbody></table></div>
+    <div class="tbl wide"><table><thead><tr><th>Against the W2 GLM</th><th>Line</th><th class="r">A: saved</th><th class="r">A: 95% interval</th><th class="r">B: saved</th><th>Passes</th></tr></thead><tbody id="t7d"></tbody></table></div>
+    <p class="how"><b>How to read this.</b> The first table adds the factors to each family's own model; the second sets boosting from the GLM, with the factors, against the W2 GLM. In buildings it saves 36,006 on 2023 (interval 10,603 to 58,867) and 66,267 on 2024. <b>What the correction is:</b> 8 trees in buildings, moving the GLM's price by about 5% on average, led by elevation m, voluntary excess, flood zone, h p. A home at 2 m elevation or lower gets about ×1.055 on top of the GLM, and higher ground about ×0.97. In motor, 23 trees led by driver age, years licensed, h p, region; in contents, 20 trees led by voluntary excess, h c.</p>
+  </section>
+
+  <section aria-labelledby="h-s7d">
+    <span class="eyebrow">Motor structure (M1) · card N2</span>
+    <h2 id="h-s7d">Per peril helps the EBM and the trees in motor</h2>
+    <div class="tbl wide"><table><thead><tr><th>Motor</th><th>Line</th><th class="r">A: saved</th><th class="r">A: 95% interval</th><th class="r">B: saved</th><th>Passes</th></tr></thead><tbody id="t7m"></tbody></table></div>
+    <p class="how"><b>How to read this.</b> Splitting motor into frequency and severity by peril improves the EBM by 40,237 on 2023 (interval 9,211 to 69,872) and 43,761 on 2024, which passes. The per-peril EBM then ranks close to the W2 GLM: +24,275 and +50,751. For the GLM itself, step 6's test stands: per line stays.</p>
+  </section>
+
+  <section aria-labelledby="h-s7e">
+    <span class="eyebrow">Your suggestion · standardised inputs (D21)</span>
+    <h2 id="h-s7e">Standardising made the penalised GLM work in contents</h2>
+    <p class="how"><b>What it did.</b> With every input scaled to the same spread, the tuning chose a strong penalty in contents that drops weak levels outright; unscaled, it chose almost none. On 2024 the standardised GLM ranks 50,180 better than the unscaled one (+3,392 against −46,788, both against the W2 GLM), and its spline version is the penalised-GLM pick in contents.</p>
+    <div class="wrong">
+      <b>Where I was wrong (logged as D23 and D22)</b>
+      <span>For motor frequency × severity in the penalised GLM, I reused the penalty tuned for the one-model-per-line version. On the frequency and severity scales the same penalty is far stronger, so it flattened almost every relativity and the test lost 1,466,913. That test is set aside; step 6's unpenalised test is the GLM evidence on this structure.</span>
+      <span>Building the interim file, I found that my phase 1 rule had left two contents blank levels too thin to estimate, priced near zero in the 18 October baseline. You chose to price them at the average of the known levels (P8-R2).</span>
+    </div>
+  </section>
+<!--END STEP7-->
+
+  <section aria-labelledby="h-dec">
+    <span class="eyebrow">Decisions</span>
+    <h2 id="h-dec">Calls for you</h2>
+    <div class="legend-doors"><span class="door one">One-way</span> hard to undo once work starts <span class="door costly">Costly</span> undoable, at half a day or more of rework <span class="door easy">Reversible</span> cheap to change later</div>
+    <div class="cards" id="cards"></div>
+  </section>
+
+  <section aria-labelledby="h-flow">
+    <span class="eyebrow">Where we are · click a step to leave a note on it</span>
+    <h2 id="h-flow">Step 7 done; next, the family weights, then the freeze</h2>
+    <div class="legend"><span><span class="swatch"></span>Step</span><span><span class="swatch new"></span>Check-in with you</span></div>
+    <div class="diagram" id="diagram"></div>
+    <div class="note-box" id="noteBox" hidden>
+      <label for="noteText"><span class="eyebrow">Note on</span> <b id="noteAnchorLabel"></b></label>
+      <textarea id="noteText" placeholder="What should change at this step?"></textarea>
+      <div class="card-actions"><button class="primary" id="noteSave" type="button">Save note</button><button id="noteCancel" type="button">Cancel</button><span id="noteMsg"></span></div>
+    </div>
+    <ul class="note-list" id="noteList"></ul>
+  </section>
+</div>
+
+<div class="bar">
+  <div class="bar-in">
+    <span class="bar-msg" id="barMsg">Verdicts save as you choose them. When done, click Send to Claude, then type anything in the chat so Claude picks them up.</span>
+    <button type="button" id="copyBtn">Copy for Claude</button>
+    <button type="button" id="finalBtn">Finalize</button>
+    <button type="button" class="primary" id="sendBtn">Send to Claude</button>
+  </div>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var ROUND = 1;
+  /*DATA*/var TABLES = {"t7f": [{"name": "F1 Penalised GLM", "line": "Motor", "a": 7999.575450907603, "lo": -22857.759002516977, "hi": 39721.892680618315, "b": -905.8520946309341, "keep": false}, {"name": "", "line": "Buildings", "a": -6018.5946414762475, "lo": -20097.46537621153, "hi": 7423.185094482199, "b": -6039.215851718809, "keep": false}, {"name": "", "line": "Contents", "a": 13775.785260940575, "lo": -938.8394207673646, "hi": 27773.364307208973, "b": 15575.671384047986, "keep": false}, {"name": "", "line": "All lines", "a": 15756.76607037193, "lo": -22147.56545347981, "hi": 52439.518565105805, "b": 8630.603437698252, "keep": false}, {"name": "F2 Plain boosting", "line": "Motor", "a": -123475.99615170449, "lo": -187660.95028684044, "hi": -62713.3506020513, "b": -80697.62106963112, "keep": false}, {"name": "", "line": "Buildings", "a": -42945.10600476815, "lo": -136038.62776646542, "hi": 50722.29104081665, "b": -84103.09109065984, "keep": false}, {"name": "", "line": "Contents", "a": -75906.68413582185, "lo": -114413.04666350246, "hi": -39460.28904671971, "b": -40447.67389540805, "keep": false}, {"name": "", "line": "All lines", "a": -242327.78629229448, "lo": -365672.0991023126, "hi": -118968.27262557013, "b": -205248.38605569903, "keep": false}, {"name": "F3 EBM", "line": "Motor", "a": -15961.66666637214, "lo": -57458.94303767668, "hi": 27681.100799543405, "b": 6990.102136915795, "keep": false}, {"name": "", "line": "Buildings", "a": -15599.527314547291, "lo": -73646.49310977157, "hi": 41476.83061873853, "b": -21966.46465015203, "keep": false}, {"name": "", "line": "Contents", "a": -25145.63982264803, "lo": -53013.303918098216, "hi": 118.80326327291368, "b": -11200.093153372638, "keep": false}, {"name": "", "line": "All lines", "a": -56706.83380356747, "lo": -128409.59639557004, "hi": 19327.535350473583, "b": -26176.455666608876, "keep": false}, {"name": "F4 Boosting from the GLM", "line": "Motor", "a": -6689.728680031644, "lo": -18021.35332853448, "hi": 4804.617734922681, "b": -3782.0412580668367, "keep": false}, {"name": "", "line": "Buildings", "a": -14228.988124978427, "lo": -37175.05853896099, "hi": 8833.088089616087, "b": -13.067039534176729, "keep": false}, {"name": "", "line": "Contents", "a": -2976.4282158293604, "lo": -16819.681983862563, "hi": 8219.419760006349, "b": -337.18459151617935, "keep": false}, {"name": "", "line": "All lines", "a": -23895.145020839434, "lo": -53008.37749696174, "hi": 4391.163295398955, "b": -4132.292889117196, "keep": false}], "t7c": [{"name": "Added to F4", "line": "Motor", "a": 25331.91688216679, "lo": 9713.510548679655, "hi": 41088.717366280674, "b": 821.0429953036855, "keep": true}, {"name": "", "line": "Buildings", "a": 50235.45429410834, "lo": 20218.49966492657, "hi": 78191.81509679598, "b": 66280.49069902815, "keep": true}, {"name": "", "line": "Contents", "a": 6290.438517904105, "lo": -7795.949990235243, "hi": 20515.886013745883, "b": 14252.332643686615, "keep": false}, {"name": "", "line": "All lines", "a": 81857.80969417925, "lo": 42576.71583484587, "hi": 118529.16758421391, "b": 81353.86633801844, "keep": true}, {"name": "Added to F1 (GLM)", "line": "Motor", "a": 21812.679739621293, "lo": -16410.430849349297, "hi": 55501.2334822803, "b": 24494.858373432475, "keep": false}, {"name": "", "line": "Buildings", "a": -22618.742176240616, "lo": -97756.50895621319, "hi": 48779.18471146886, "b": 117044.9526276049, "keep": false}, {"name": "", "line": "Contents", "a": 7961.716823970391, "lo": -29660.485762723503, "hi": 37207.538183721925, "b": 15244.301309169081, "keep": false}, {"name": "", "line": "All lines", "a": 7155.654387351056, "lo": -88446.82589105105, "hi": 92743.71043698784, "b": 156784.11231020643, "keep": false}], "t7d": [{"name": "F4 with the held-over factors", "line": "Motor", "a": 18642.18820213515, "lo": 3002.4784261523705, "hi": 34324.13997706719, "b": -2960.998262763147, "keep": false}, {"name": "", "line": "Buildings", "a": 36006.46616912991, "lo": 10602.536260881981, "hi": 58866.68712811608, "b": 66267.42365949397, "keep": true}, {"name": "", "line": "Contents", "a": 3314.0103020747474, "lo": -13845.402497121473, "hi": 18804.520318440773, "b": 13915.148052170436, "keep": false}, {"name": "", "line": "All lines", "a": 57962.664673339794, "lo": 23812.0950675577, "hi": 89926.96872691496, "b": 77221.57344890125, "keep": true}], "t7m": [{"name": "EBM: per peril vs per line", "line": "Motor", "a": 40236.858104750936, "lo": 9211.267864214191, "hi": 69872.46014930437, "b": 43760.78674446051, "keep": true}, {"name": "LightGBM: per peril vs per line", "line": "Motor", "a": 101832.77658666238, "lo": 51574.221316983334, "hi": 156911.75297092376, "b": 67975.4029066586, "keep": true}, {"name": "EBM per peril vs W2 GLM", "line": "Motor", "a": 24275.191438378813, "lo": -17227.116039510092, "hi": 68485.5426176946, "b": 50750.888881376304, "keep": false}]};
+  var LEDE = "The W2 GLM is hard to beat: no model family beats it on its own, and plain boosted trees rank well below it in every line. One combination does beat it: the GLM with a small boosted correction that uses the factors you sent on to step 7. Across lines it saves +57,963 on 2023 (interval 23,812 to 89,927) and +77,222 on 2024, and it passes in buildings by itself. Three calls: where those factors go, the motor structure, and whether a boosted correction may enter the final price.";
+  var DECS = [{"id": "N3", "door": "costly", "q": "May the final price include a small boosted correction on top of the GLM?", "stakes": "<b>The trade-off in plain terms:</b> the GLM alone is a rating plan you can read factor by factor. Adding the correction makes the price more accurate, but each price becomes the GLM's price times an adjustment that depends on several factors at once, so it is read from a table rather than one relativity per factor. Across lines the correction saves +57,963 on 2023 (interval 23,812 to 89,927) and +77,222 on 2024. It is small: about 5% in buildings, led by elevation, voluntary excess and flood zone. Step 8's weights then decide how much of it the final price uses.", "opts": [{"k": "A", "n": "Allow it, explained as the GLM times an adjustment by factor", "d": "The step 8 weights may give it weight; the write-up shows the GLM relativities and, beside them, how much the correction moves the price by elevation, flood zone, excess and age.", "c": "One more layer to explain.", "f": "Nothing."}, {"k": "B", "n": "GLM family only", "d": "The final price stays a pure rating plan.", "c": "Gives up a tested saving of 57,963 on 2023 and 77,222 on 2024.", "f": "The boosted correction."}], "rec": "A", "why": "It passed the keep rule against the GLM, it is small and driven by factors with a clear risk reason, and it can be shown as an adjustment table beside the relativities."}, {"id": "N1", "door": "easy", "q": "Where do the held-over factors go in the boosted correction?", "stakes": "<b>In plain terms:</b> the factors you sent on to step 7 help only once a model can combine them with the GLM. Added to the boosted correction they pass in motor (+25,332, interval 9,714 to 41,089; +821 on 2024) and buildings (+50,235, interval 20,218 to 78,192; +66,280 on 2024), but not in contents (+6,290, interval −7,796 to 20,516).", "opts": [{"k": "A", "n": "Add them in motor and buildings; contents keeps the base correction", "d": "Follows the keep rule line by line.", "c": "None.", "f": "Nothing."}, {"k": "B", "n": "Add them in all three lines", "d": "One rule everywhere, as at L3.", "c": "Contents takes factors that did not pass there.", "f": "Nothing."}, {"k": "C", "n": "Leave them out", "d": "The correction uses W2's factors only.", "c": "Gives up the passed saving in motor and buildings.", "f": "Nothing."}], "rec": "A", "why": "It is what the keep rule says, line by line."}, {"id": "N2", "door": "easy", "q": "In motor, should the EBM and the trees model each peril's frequency and severity?", "stakes": "<b>In plain terms:</b> splitting motor by peril lets each model learn, for example, that young drivers claim more often but not more expensively. It improves the EBM by 40,237 on 2023 (interval 9,211 to 69,872) and LightGBM by 101,833; both pass. The GLM stays per line on step 6's evidence.", "opts": [{"k": "A", "n": "Per peril for the EBM and LightGBM in motor; the GLM per line", "d": "Each family uses the motor structure that tested better for it.", "c": "Ten models per family in motor.", "f": "Nothing."}, {"k": "B", "n": "Per line everywhere", "d": "One structure throughout.", "c": "Gives up two passed improvements.", "f": "Nothing."}], "rec": "A", "why": "It is the M1 rule applied: the structure that passes within each family."}];/*END DATA*/
+
+  var STEPS = [
+    { id: "level", t: "1-3 Cap, level", s: "C1 to C6", isNew: false },
+    { id: "check1", t: "Check-in 1", s: "K1 to K4, done", isNew: true },
+    { id: "history", t: "4 Claims history", s: "C7", isNew: false },
+    { id: "features", t: "5 Features", s: "C8", isNew: false },
+    { id: "check2", t: "Check-in 2", s: "L1 to L8, done", isNew: true },
+    { id: "structure", t: "6 Structure", s: "P3, K2", isNew: false },
+    { id: "check3", t: "Check-in 3", s: "M1 to M3, done", isNew: true },
+    { id: "families", t: "7 Families", s: "check-in 4: here", isNew: false, here: true },
+    { id: "weights", t: "8 Weights", s: "J-model", isNew: false },
+    { id: "check4", t: "Check-in 5", s: "freeze 21 Oct", isNew: true },
+    { id: "tail", t: "Phase 6 tail", s: "referral, X3", isNew: false },
+    { id: "holdout", t: "Hold-out, review", s: "phases 7, 8", isNew: false }
+  ];
+
+  function fmt(x) { var s = Math.round(Math.abs(x)).toLocaleString("en-GB"); return (x < 0 ? "−" : "") + s; }
+  function rowsHtml(list, withLine) {
+    return list.map(function (r) {
+      var cls = r.keep ? "pass" : "fail";
+      return "<tr><td>" + r.name + "</td>" + (withLine ? "<td>" + r.line + "</td>" : "") +
+        '<td class="r num' + (r.a < 0 ? " neg" : "") + '">' + fmt(r.a) + '</td><td class="r num">' + fmt(r.lo) + " to " + fmt(r.hi) +
+        '</td><td class="r num' + (r.b < 0 ? " neg" : "") + '">' + fmt(r.b) + '</td><td class="' + cls + '">' + (r.label || (r.keep ? "Yes" : "No")) + "</td></tr>";
+    }).join("");
+  }
+  function fill(id, list, withLine) { var el = document.getElementById(id); if (el) el.innerHTML = rowsHtml(list, withLine); }
+  Object.keys(TABLES).forEach(function (k) { fill(k, TABLES[k], TABLES[k].length && TABLES[k][0].line !== undefined); });
+  document.getElementById("lede").innerHTML = LEDE;
+
+  var DECISIONS = DECS;
+  var IDS = DECISIONS.map(function (d) { return d.id; });
+  var state = { verdicts: {}, notes: [], status: "draft", round: ROUND, locked: false };
+  var db = null, writeChains = {}, noteTimers = {}, noteAnchor = null;
+
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  function byId(id) { return document.getElementById(id); }
+  function decision(id) { for (var i = 0; i < DECISIONS.length; i++) if (DECISIONS[i].id === id) return DECISIONS[i]; return null; }
+
+  function drawDiagram() {
+    var W = 860, bw = 124, bh = 54, gap = (W - 20 - 6 * bw) / 5, y1 = 20, y2 = 130;
+    var parts = ['<svg viewBox="0 0 ' + W + ' 200" role="img" aria-label="Phase 5 steps from cap and load to the hold-out, check-in 3 marked"><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrowhead" d="M0,0 L10,5 L0,10 z"/></marker></defs>'];
+    var pos = STEPS.map(function (s, i) { var row = i < 6 ? 0 : 1, col = row === 0 ? i : 11 - i; return { x: 10 + col * (bw + gap), y: row === 0 ? y1 : y2, row: row }; });
+    for (var i = 0; i < STEPS.length - 1; i++) {
+      var a = pos[i], b = pos[i + 1];
+      if (a.row === b.row) {
+        var dir = a.row === 0 ? 1 : -1, x1 = dir > 0 ? a.x + bw : a.x, x2 = dir > 0 ? b.x : b.x + bw, yy = a.y + bh / 2;
+        parts.push('<path class="edge" d="M' + x1 + ',' + yy + ' L' + (x2 - 2 * dir) + ',' + yy + '" marker-end="url(#ah)"/>');
+      } else {
+        var xx = a.x + bw / 2;
+        parts.push('<path class="edge" d="M' + xx + ',' + (a.y + bh) + ' L' + xx + ',' + (b.y - 2) + '" marker-end="url(#ah)"/>');
+      }
+    }
+    STEPS.forEach(function (s, i) {
+      var p = pos[i];
+      parts.push('<g class="node' + (s.isNew ? ' new' : '') + (s.here ? ' here' : '') + '" data-node-id="' + s.id + '" tabindex="0" role="button" aria-label="' + esc(s.t) + ': add a note">' +
+        '<rect x="' + p.x + '" y="' + p.y + '" width="' + bw + '" height="' + bh + '" rx="4"/>' +
+        '<text x="' + (p.x + 10) + '" y="' + (p.y + 23) + '">' + esc(s.t) + '</text>' +
+        '<text class="sub" x="' + (p.x + 10) + '" y="' + (p.y + 41) + '">' + esc(s.s) + '</text></g>');
+    });
+    parts.push('</svg>');
+    byId("diagram").innerHTML = parts.join("");
+    Array.prototype.forEach.call(document.querySelectorAll(".node"), function (g) {
+      g.addEventListener("click", function () { openNote(g.getAttribute("data-node-id")); });
+      g.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openNote(g.getAttribute("data-node-id")); } });
+    });
+  }
+  function stepTitle(id) { for (var i = 0; i < STEPS.length; i++) if (STEPS[i].id === id) return STEPS[i].t; return id; }
+  function openNote(id) {
+    if (state.locked) return;
+    noteAnchor = id; byId("noteAnchorLabel").textContent = stepTitle(id); byId("noteText").value = ""; byId("noteMsg").textContent = "";
+    byId("noteBox").hidden = false; byId("noteText").focus();
+  }
+  function renderNotes() {
+    var notes = state.notes.slice().sort(function (a, b) { return String(a.createdAt).localeCompare(String(b.createdAt)); });
+    byId("noteList").innerHTML = notes.map(function (n) { return '<li><span class="anchor">' + esc(stepTitle(n.anchor)) + '</span>' + esc(n.text) + '</li>'; }).join("");
+    var noted = {}; notes.forEach(function (n) { noted[n.anchor] = true; });
+    Array.prototype.forEach.call(document.querySelectorAll(".node"), function (g) { g.classList.toggle("noted", !!noted[g.getAttribute("data-node-id")]); });
+  }
+
+  function doorLabel(d) { return d === "one" ? "One-way" : d === "costly" ? "Costly" : "Reversible"; }
+  function drawCards() {
+    byId("cards").innerHTML = DECISIONS.map(function (d) {
+      var opts = d.opts.map(function (o) {
+        var rid = "v-" + d.id + "-" + o.k;
+        return '<label class="opt' + (o.k === d.rec ? ' rec' : '') + '" for="' + rid + '">' +
+          '<input type="radio" name="v-' + d.id + '" id="' + rid + '" value="' + o.k + '">' +
+          '<span class="body"><span class="name"><span class="k">' + o.k + '</span>' + esc(o.n) + (o.k === d.rec ? '<span class="tag">Recommended</span>' : '') + '</span>' +
+          '<span class="det">' + o.d + '</span>' +
+          '<span class="det"><span>Costs:</span> ' + esc(o.c) + ' <span>Rules out:</span> ' + esc(o.f) + '</span></span></label>';
+      }).join("");
+      var rj = "v-" + d.id + "-reject";
+      opts += '<label class="opt reject" for="' + rj + '"><input type="radio" name="v-' + d.id + '" id="' + rj + '" value="reject"><span class="body"><span class="name">None of these</span><span class="det">Say why in the note; the card comes back with different options.</span></span></label>';
+      return '<article class="card" id="card-' + d.id + '" aria-labelledby="q-' + d.id + '">' +
+        '<div class="card-top"><span class="cid">' + d.id + '</span><span class="door ' + d.door + '">' + doorLabel(d.door) + '</span><span class="verdict-chip none" id="chip-' + d.id + '">No verdict yet</span></div>' +
+        '<div class="q" id="q-' + d.id + '">' + esc(d.q) + '</div>' +
+        '<p class="stakes">' + d.stakes + '</p>' +
+        (d.evidence ? '<div class="evidence">' + d.evidence + '</div>' : '') +
+        '<fieldset class="opts"><legend>Options for ' + d.id + '</legend>' + opts + '</fieldset>' +
+        '<div class="rec-line"><b>Recommend ' + d.rec + '.</b> ' + esc(d.why) + '</div>' +
+        '<label class="eyebrow" for="n-' + d.id + '">Your note (optional)</label>' +
+        '<textarea id="n-' + d.id + '" placeholder="Reasoning, a condition, or what to change"></textarea>' +
+        '<div class="card-actions"><button type="button" data-accept="' + d.id + '">Accept recommendation</button><span id="save-' + d.id + '"></span></div>' +
+        '</article>';
+    }).join("");
+    DECISIONS.forEach(function (d) {
+      Array.prototype.forEach.call(document.querySelectorAll('input[name="v-' + d.id + '"]'), function (r) {
+        r.addEventListener("change", function () { if (r.checked) setChoice(d.id, r.value); });
+      });
+      byId("n-" + d.id).addEventListener("input", function () {
+        clearTimeout(noteTimers[d.id]);
+        noteTimers[d.id] = setTimeout(function () { setNote(d.id, byId("n-" + d.id).value); }, 600);
+      });
+    });
+    Array.prototype.forEach.call(document.querySelectorAll("[data-accept]"), function (b) {
+      b.addEventListener("click", function () { var id = b.getAttribute("data-accept"), d = decision(id); byId("v-" + id + "-" + d.rec).checked = true; setChoice(id, d.rec); });
+    });
+  }
+  function applyVerdictsToControls() {
+    DECISIONS.forEach(function (d) {
+      var v = state.verdicts[d.id], choice = v && v.choice;
+      if (choice) { var r = byId("v-" + d.id + "-" + choice); if (r && !r.checked) r.checked = true; }
+      var ta = byId("n-" + d.id);
+      if (v && typeof v.note === "string" && document.activeElement !== ta && ta.value !== v.note) ta.value = v.note;
+      var chip = byId("chip-" + d.id), card = byId("card-" + d.id);
+      card.classList.remove("decided", "rejected");
+      if (!choice) { chip.className = "verdict-chip none"; chip.textContent = "No verdict yet"; }
+      else if (choice === "reject") { chip.className = "verdict-chip rej"; chip.textContent = "Rejected: rework"; card.classList.add("rejected"); }
+      else { chip.className = "verdict-chip ok"; chip.textContent = "Chose " + choice + (choice === d.rec ? " (recommended)" : ""); card.classList.add("decided"); }
+    });
+    renderStatus();
+  }
+  function renderStatus() {
+    var done = IDS.filter(function (id) { return state.verdicts[id] && state.verdicts[id].choice; });
+    byId("countPill").textContent = done.length + " of " + IDS.length + " decided";
+    byId("roundPill").textContent = "Round " + state.round;
+    var sp = byId("statePill"); sp.className = "pill state-" + state.status;
+    sp.textContent = state.status === "final" ? "Final" : state.status === "submitted" ? "Sent to Claude" : "Draft";
+    var open = IDS.filter(function (id) { return done.indexOf(id) < 0; }), bt = byId("blockedText");
+    if (state.status === "final") bt.textContent = "Finalized. Claude records the verdicts and moves to step 8.";
+    else if (state.status === "submitted") bt.textContent = "Sent. Type anything in the chat so Claude reads the verdicts.";
+    else if (open.length === 0) bt.textContent = "Every card has a verdict. Send to Claude when ready.";
+    else bt.textContent = "Waiting on you: " + open.join(", ") + ".";
+    var locked = state.status === "final"; state.locked = locked;
+    document.body.classList.toggle("locked", locked);
+    byId("sendBtn").disabled = locked; byId("finalBtn").disabled = locked;
+    Array.prototype.forEach.call(document.querySelectorAll("[data-accept]"), function (b) { b.disabled = locked; });
+  }
+  function queueWrite(key, fn) { var prev = writeChains[key] || Promise.resolve(); var next = prev.then(fn, fn); writeChains[key] = next.catch(function () {}); return next; }
+  function saveVerdict(id) {
+    var v = state.verdicts[id], flag = byId("save-" + id);
+    if (!db) { flag.textContent = "Kept on this page only. Use Copy for Claude."; return; }
+    flag.textContent = "Saving…";
+    var body = { decisionId: id, choice: v.choice || null, note: v.note || "", updatedAt: new Date().toISOString() };
+    queueWrite("verdicts/" + id, function () { return db.doc("verdicts/" + id).set(body); })
+      .then(function () { flag.textContent = "Saved"; })
+      .catch(function (e) { flag.textContent = "Not saved: " + (e && e.message ? e.message : "store unavailable") + ". Use Copy for Claude."; });
+  }
+  function setChoice(id, choice) {
+    if (state.locked) return;
+    var v = Object.assign({}, state.verdicts[id] || {}); if (v.choice === choice) return;
+    v.choice = choice; v.note = byId("n-" + id).value; state.verdicts[id] = v; applyVerdictsToControls(); saveVerdict(id);
+  }
+  function setNote(id, text) {
+    if (state.locked) return;
+    var v = Object.assign({}, state.verdicts[id] || {}); if ((v.note || "") === text) return;
+    v.note = text; state.verdicts[id] = v; saveVerdict(id);
+  }
+  function setState(status) {
+    var body = { status: status, round: state.round, submittedAt: new Date().toISOString() };
+    if (!db) { state.status = status; renderStatus(); return Promise.resolve(); }
+    return queueWrite("brief/state", function () { return db.doc("brief/state").set(body); });
+  }
+  function flushNotes() { DECISIONS.forEach(function (d) { if (noteTimers[d.id]) { clearTimeout(noteTimers[d.id]); noteTimers[d.id] = null; setNote(d.id, byId("n-" + d.id).value); } }); }
+  function copyText() {
+    var lines = ["Check-in 4 round " + state.round];
+    DECISIONS.forEach(function (d) {
+      var v = state.verdicts[d.id] || {}, note = (byId("n-" + d.id).value || "").replace(/\s+/g, " ").trim();
+      var c = !v.choice ? "no verdict" : v.choice === d.rec ? "accept (" + d.rec + ")" : v.choice === "reject" ? "reject" : "option " + v.choice;
+      lines.push(d.id + ": " + c + (note ? " | " + note : ""));
+    });
+    state.notes.forEach(function (n) { lines.push("note@" + n.anchor + ": " + n.text); });
+    return lines.join("\n");
+  }
+  function msg(text, isErr) { var m = byId("barMsg"); m.textContent = text; m.classList.toggle("err", !!isErr); }
+  byId("sendBtn").addEventListener("click", function () {
+    flushNotes();
+    setState("submitted").then(function () { msg("Sent. Now type anything in the chat so Claude reads your verdicts."); })
+      .catch(function () { msg("Could not send. Use Copy for Claude and paste into the chat.", true); });
+  });
+  byId("finalBtn").addEventListener("click", function () {
+    flushNotes();
+    var missing = IDS.filter(function (id) { return !(state.verdicts[id] && state.verdicts[id].choice); });
+    if (missing.length) { msg("Finalize needs a verdict on every card. Missing: " + missing.join(", ") + ".", true); return; }
+    var rejected = IDS.filter(function (id) { return state.verdicts[id].choice === "reject"; });
+    if (rejected.length) { msg("Rejected cards need another round first: " + rejected.join(", ") + ". Send to Claude instead.", true); return; }
+    setState("final").then(function () { msg("Finalized. Type anything in the chat and Claude records the verdicts."); })
+      .catch(function () { msg("Could not finalize. Use Copy for Claude and paste into the chat.", true); });
+  });
+  byId("copyBtn").addEventListener("click", function () {
+    var t = copyText();
+    function fallback() {
+      var ta = document.createElement("textarea"); ta.value = t; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.opacity = "0";
+      document.body.appendChild(ta); ta.select(); var ok = false; try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+      document.body.removeChild(ta);
+      msg(ok ? "Copied. Paste it into the chat." : "Copy was blocked. Select your verdicts from the cards and paste them into the chat.", !ok);
+    }
+    try { navigator.clipboard.writeText(t).then(function () { msg("Copied. Paste it into the chat."); }, fallback); } catch (e) { fallback(); }
+  });
+  byId("noteCancel").addEventListener("click", function () { byId("noteBox").hidden = true; noteAnchor = null; });
+  byId("noteSave").addEventListener("click", function () {
+    var text = byId("noteText").value.trim();
+    if (!text || !noteAnchor) { byId("noteMsg").textContent = "Write a note first."; return; }
+    var body = { anchor: noteAnchor, quote: stepTitle(noteAnchor), text: text, createdAt: new Date().toISOString() };
+    if (!db) { state.notes.push(body); renderNotes(); byId("noteBox").hidden = true; msg("Note kept on this page only. Use Copy for Claude."); return; }
+    byId("noteSave").disabled = true;
+    db.collection("notes").add(body).then(function () { byId("noteBox").hidden = true; noteAnchor = null; })
+      .catch(function (e) { byId("noteMsg").textContent = "Not saved: " + (e && e.message ? e.message : "store unavailable"); })
+      .then(function () { byId("noteSave").disabled = false; });
+  });
+
+  drawDiagram(); drawCards(); applyVerdictsToControls(); renderNotes();
+
+  if (window.claude && typeof window.claude.use === "function") {
+    window.claude.use("db").then(function (d) {
+      if (!d) { msg("Saving is not available in this view. Your choices stay on the page; use Copy for Claude."); return; }
+      db = d;
+      db.collection("verdicts").onSnapshot(function (snap) {
+        var next = {};
+        snap.docs.forEach(function (doc) { var b = doc.data(); if (b && IDS.indexOf(doc.id) >= 0) next[doc.id] = { choice: b.choice || null, note: typeof b.note === "string" ? b.note : "" }; });
+        IDS.forEach(function (id) { if (next[id]) state.verdicts[id] = next[id]; });
+        applyVerdictsToControls();
+      }, function () { msg("Lost the connection to saved verdicts. Reload, or use Copy for Claude.", true); });
+      db.collection("notes").onSnapshot(function (snap) {
+        state.notes = snap.docs.map(function (doc) { return doc.data(); }).filter(function (n) { return n && n.text; }); renderNotes();
+      }, function () {});
+      db.doc("brief/state").onSnapshot(function (snap) {
+        var b = snap.exists ? snap.data() : null;
+        state.status = (b && b.round === state.round && (b.status === "submitted" || b.status === "final" || b.status === "draft")) ? b.status : "draft";
+        renderStatus();
+      }, function () {});
+      db.doc("brief/meta").onSnapshot(function (snap) {
+        var b = snap.exists ? snap.data() : null;
+        if (b && typeof b.round === "number" && b.round !== state.round) { state.round = b.round; renderStatus(); }
+      }, function () {});
+    }, function () { msg("Saving is not available in this view. Use Copy for Claude."); });
+  } else {
+    msg("Saving is not available here. Your choices stay on the page; use Copy for Claude.");
+  }
+})();
+</script>
