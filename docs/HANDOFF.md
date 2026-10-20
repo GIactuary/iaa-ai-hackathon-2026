@@ -145,3 +145,11 @@ Evidence: `decisions/phase5_checkin1.md`, `outputs/phase5_steps123*.json` and `o
 - **U1 (a):** X1 confirmed; the 11.9M claim is in the motor load (excess factor 1.058).
 - **U2 (a):** the final Part 1 submission is `outputs/submissions/blend_final_all_v2.csv`. Rebuild it with `P7_ALL=1` runs of `scripts/submit_w2.py`, `scripts/freeze_build.py` and `scripts/apply_referral.py`. The actuary uploads it and selects it as final on Kaggle (rule 2.2.b).
 - **Next: phase 8.** Write-up (5 pages), video script, notebook via `notebooks/build_notebook.py` with the AI log rendered (D1 to D29), clean rerun check, then `/review` in a fresh context.
+
+## Update: the Part 2 kit (2026-10-20)
+
+- Design `decisions/part2_kit_design.md`; runbook `docs/PART2_RUNBOOK.md`.
+- `src/market.py` reads `config/<MARKET>.json`; `config/part1.json` reproduces all six Part 1 files byte for byte. Other markets work in `data/work/markets/<name>` and `outputs/markets/<name>`.
+- `scripts/what_changed.py` (with `src/drift.py`, tests in `tests/test_drift.py`) found all six changes planted in a synthetic market (`scripts/make_test_market.py`, `config/test_market.json`).
+- `scripts/run_market.py` runs lock, build, what_changed, history, fast weights (`scripts/fast_weights.py`), level, blend and referral in about 32 minutes on that market.
+- The Part 1 write-up draft is in `docs/writeup/` (session part1-writeup; page https://claude.ai/artifact/AXXHWySJgnp9TnU8BkTa4N).

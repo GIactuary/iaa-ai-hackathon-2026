@@ -36,4 +36,4 @@ WEATHER_ADJUSTED = CFG["weather_adjusted"]
 SIZE_CHECKS = {l: [(m, tuple(s)) for m, s in v] for l, v in CFG["size_checks"].items()}
 if NAME != "part1":
     WORK.mkdir(parents=True, exist_ok=True)
-    OUT.mkdir(parents=True, exist_ok=True)
+    (OUT / "submissions").mkdir(parents=True, exist_ok=True)
