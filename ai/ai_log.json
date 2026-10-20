@@ -361,7 +361,7 @@
       "test": "Step 8, design committed before any step 7 result: non-negative weights per line fitted on 2023 and scored on 2024, and the reverse; challengers a within-family blend and a geometric mix.",
       "result": "The blend beats the W2 GLM across lines: +92,357 on 2023 [46,571, 139,010] and +114,384 on 2024; it passes in motor and buildings, contents is a near miss. Ranking D2 across lines 10.51% to 10.67% (2023) and 10.12% to 10.33% (2024). The geometric mix passes only in buildings (+3,323 [424, 6,188], +2,865). The within-family blend loses (-36,174, -74,487).",
       "decision": "The actuary chose O1 (a) and O2 (b) on the check-in 5 page, with no notes.",
-      "effect": "The frozen model: per line, the pooled-weight blend of the families refitted on 2021-2024 (motor 0.666 per-peril EBM and 0.334 GLM with boosted correction; buildings 0.798 GLM with boosted correction and 0.202 CatBoost, log average; contents 0.910 spline GLM, 0.058 LightGBM and 0.032 EBM), times the decided level chain.",
+      "effect": "The frozen model: per line, the pooled-weight blend of the families refitted on 2021-2024 (motor 0.666 per-peril EBM and 0.334 GLM with boosted correction; buildings, log average, 0.788 GLM with boosted correction and 0.212 CatBoost; contents 0.910 spline GLM, 0.058 LightGBM and 0.032 EBM), times the decided level chain.",
       "section": "3.13"
     }
   ]
