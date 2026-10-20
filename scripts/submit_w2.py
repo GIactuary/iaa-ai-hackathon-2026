@@ -27,14 +27,17 @@ from src.glm import TweedieGLM, band, cat, features, fit_edges
 from src.thresholds import load_thresholds
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT, WORK4 = ROOT / "outputs", ROOT / "data" / "work" / "phase5_step4"
+import os
+# Phase 7 final refit: P7_ALL=1 fits on every customer (hold-out opened 2026-10-20), with the all-customer history
+ALL = os.environ.get("P7_ALL") == "1"
+OUT, WORK4 = ROOT / "outputs", ROOT / "data" / "work" / ("phase5_step4_all" if ALL else "phase5_step4")
 FIT_YEARS = (2021, 2022, 2023, 2024)
 # Blanks that stay blank after recovery from the same policy are UNKNOWN (decisions/missing_values.md: they claim like
 # everyone else). Where their own level is too thin to estimate, a 2025 row with the blank is priced at the average
 # of the known levels, weighted by training exposure. Pass --own-level to keep the P8-R rule (own level) instead.
 UNKNOWN_AVERAGE = {"contents": ["security", "hvi"]}
 OWN_LEVEL = "--own-level" in sys.argv
-NAME = "w2_glm_v1" if OWN_LEVEL else "w2_glm_v1u"
+NAME = ("w2_glm_v1" if OWN_LEVEL else "w2_glm_v1u") + ("_all" if ALL else "")
 
 
 def average_over_unknown(m, F: pd.DataFrame, Ft: pd.DataFrame, expo: np.ndarray, factors: list[str]) -> np.ndarray:
@@ -97,7 +100,7 @@ def run() -> None:
     sub, info = [], {}
     for line in dr.LINES:
         tr, te = data[line]
-        tr = tr[~tr["holdout"] & tr["yr"].isin(FIT_YEARS)].reset_index(drop=True)
+        tr = tr[(ALL | ~tr["holdout"]) & tr["yr"].isin(FIT_YEARS)].reset_index(drop=True)
         te = te.reset_index(drop=True)
         h = hist[hist["line"] == line].drop(columns="line").drop_duplicates("row_id").set_index("row_id")
         edges = fit_edges(tr, line)
@@ -106,14 +109,14 @@ def run() -> None:
         e, c = tr["exposure"].to_numpy(), tr["completion"].to_numpy()
         m = TweedieGLM().fit(Ft, tr["costc"], e * c)
         # check: the same relativities as the step 5 loader's final fit of W2
-        from scripts.phase5_step5 import fit_score, load_plan, spec_columns
+        from scripts.phase5_step5 import fit_score, load_plan, spec_columns   # check on the frozen (non-hold-out) fit only
         full = {l: d[0][~d[0]["holdout"]] for l, d in data.items()}
         P = load_plan(line, "final", th, full, weather)
         ref = fit_score(P, spec_columns(P, dict.fromkeys(KEPT[line]), DROP[line]))[0].relativities()
         mine = m.relativities()
         a = ref.assign(factor=ref["factor"].str.split(":").str[-1]).set_index(["factor", "level"])["relativity"]
         b = mine.set_index(["factor", "level"])["relativity"]
-        assert set(a.index) == set(b.index) and np.allclose(a.loc[b.index], b, rtol=1e-6), f"{line}: W2 relativities differ"
+        assert ALL or (set(a.index) == set(b.index) and np.allclose(a.loc[b.index], b, rtol=1e-6)), f"{line}: W2 relativities differ"
         rate_te = m.rate(Fe) if OWN_LEVEL or line not in UNKNOWN_AVERAGE else average_over_unknown(m, Fe, Ft, e, UNKNOWN_AVERAGE[line])
         elf = float(tr["cost"].sum() / tr["costc"].sum())
         # level: weather-normalised indication for 2025 against the model's 2024 level at normal weather

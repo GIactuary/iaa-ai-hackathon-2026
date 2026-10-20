@@ -24,7 +24,10 @@ from src.thresholds import load_thresholds
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "outputs"
-SRC, NAME = "blend_frozen_v1", "blend_frozen_v2"
+import os
+ALL = os.environ.get("P7_ALL") == "1"
+SRC, NAME = ("blend_final_all_v1", "blend_final_all_v2") if ALL else ("blend_frozen_v1", "blend_frozen_v2")
+W2FILE = "w2_glm_v1u_all.csv" if ALL else "w2_glm_v1u.csv"
 GLM_FALLBACK = ("motor",)
 
 
@@ -32,11 +35,11 @@ def run() -> None:
     th = load_thresholds()
     lim = 1 + th["refer_disagreement"]
     sub = pd.read_csv(OUT / "submissions" / f"{SRC}.csv", dtype={"row_id": str})
-    w2 = pd.read_csv(OUT / "submissions" / "w2_glm_v1u.csv", dtype={"row_id": str}).set_index("row_id")["prediction"]
+    w2 = pd.read_csv(OUT / "submissions" / W2FILE, dtype={"row_id": str}).set_index("row_id")["prediction"]
     sub = sub.set_index("row_id")
     info = {}
     for line in GLM_FALLBACK:
-        fp = pd.read_parquet(ROOT / "data" / "work" / "freeze" / f"family_preds_{line}.parquet").set_index("row_id")
+        fp = pd.read_parquet(ROOT / "data" / "work" / "freeze" / f"family_preds_{line}{'_all' if ALL else ''}.parquet").set_index("row_id")
         fam = fp[[c for c in fp.columns if c.startswith("fam:")]].to_numpy()
         assert np.allclose(fp["blend"], sub.loc[fp.index, "prediction"], rtol=1e-6, atol=1e-3), "family predictions do not match the frozen file"
         flag = disagreement(fam, fp["blend"].to_numpy()) > lim

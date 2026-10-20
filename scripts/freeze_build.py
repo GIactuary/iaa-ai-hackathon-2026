@@ -29,7 +29,7 @@ import pandas as pd
 
 import scripts.phase5_step7 as s7
 from scripts.phase5_step4 import hist_columns
-from scripts.submit_w2 import FIT_YEARS, WORK4, w2_frame
+from scripts.submit_w2 import ALL, FIT_YEARS, WORK4, w2_frame
 from src import build, data_rules as dr, level as lv
 from src.evidence import write_evidence
 from src.families import as_category, as_string
@@ -38,7 +38,7 @@ from src.thresholds import load_thresholds
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT, WORK7 = ROOT / "outputs", ROOT / "data" / "work" / "phase5_step7"
-NAME = "blend_frozen_v1"
+NAME = "blend_final_all_v1" if ALL else "blend_frozen_v1"     # P7_ALL=1: the phase 7 refit on every customer
 MIX = {"motor": "arith", "buildings": "geo", "contents": "arith"}
 # step 8 family column -> how to build it here
 COLMAP = {"motor": {"FS:ebm": ("fs", "ebm"), "F4+all": ("f4", True)},
@@ -52,10 +52,10 @@ def log(*a):
     print(time.strftime("%H:%M:%S"), *a, flush=True)
 
 
-def frames(df: pd.DataFrame, line: str, edges, h, ks, fit: np.ndarray, test: np.ndarray) -> dict:
+def frames(df: pd.DataFrame, line: str, edges, h, ks, fit: np.ndarray, test: np.ndarray, last: int = max(FIT_YEARS)) -> dict:
     """W2 GLM frame, tree frame (with the held-over raw fields) and spline frame for training and 2025 rows together."""
     G = w2_frame(df, line, edges, h, ks)
-    G.loc[test, "yr"] = str(max(FIT_YEARS))
+    G.loc[test, "yr"] = str(last)
     gcat = [c for c in G.columns if not pd.api.types.is_float_dtype(G[c])]
     G = as_category(G, gcat)
     hc = hist_columns(h.reindex(df["row_id"]).reset_index(drop=True), ks, line)
@@ -63,7 +63,7 @@ def frames(df: pd.DataFrame, line: str, edges, h, ks, fit: np.ndarray, test: np.
     T = df[num].astype(float).copy()
     T["h_p"] = G["h_p"].to_numpy()
     T["yr"] = df["yr"].astype(float).to_numpy()
-    T.loc[test, "yr"] = float(max(FIT_YEARS))
+    T.loc[test, "yr"] = float(last)
     for c in cat:
         T[c] = df[c].to_numpy()
     for _, (tcols, _g) in s7.CARRIED[line].items():
@@ -108,6 +108,53 @@ def collapse(pred: np.ndarray, orig: np.ndarray, w: np.ndarray, n: int) -> np.nd
     return np.bincount(orig, weights=pred * w, minlength=n) / np.bincount(orig, weights=w, minlength=n)
 
 
+def family_predictions(line: str, tr: pd.DataFrame, te0: pd.DataFrame, h, ks, tuned: dict, th, score_year: int, last: int) -> dict:
+    """Fit every family of the frozen blend on `tr` and price the rows of `te0` at the year `last` (cost per row, before
+    any level). Remaining contents blanks are averaged over the known values (P8-R2). Key "ref" is the W2 GLM."""
+    te, orig, wgt = expand_blanks(te0, tr, line)
+    df = pd.concat([tr, te.assign(yr=score_year)], ignore_index=True)
+    fit = np.r_[np.ones(len(tr), bool), np.zeros(len(te), bool)]
+    test = ~fit
+    Fr = frames(df, line, fit_edges(tr, line), h, ks, fit, test, last)
+    e = df["exposure"].to_numpy()
+    ec = e * df["completion"].to_numpy()
+    y = df["costc"].to_numpy()
+    D = dict(tcat_used=[], line=line)
+    Gw = Fr["G"].drop(columns=[c for c in ("h_c", "h_a", "h_r") if c in Fr["G"]])
+    g = TweedieGLM().fit(Gw[fit], y[fit], ec[fit])
+    init = np.log(g.rate(Gw))
+    preds = {"ref": collapse(np.exp(init[test]) * e[test], orig, wgt, len(te0))}
+    for col, (kind, carried) in COLMAP[line].items():
+        if kind == "fs":
+            X = Fr["Ts"][Fr["tbase"]]
+            b = tuned["ebm"]["best"]
+            tot = np.zeros(int(test.sum()))
+            for p in lv.perils_of(tr):
+                n = df[f"n_{p}"].fillna(0).to_numpy().astype(float)
+                ecp = e * df[f"completion_{p}"].to_numpy()
+                cm = fit & (n > 0)
+                mf = s7.make("ebm", b["power"], b["setting"], th, D, objective="poisson").fit(X[fit], n[fit], ecp[fit])
+                ms = s7.make("ebm", b["power"], b["setting"], th, D, objective="gamma").fit(X[cm], df.loc[cm, f"costc_{p}"].to_numpy(), n[cm], weight=n[cm])
+                tot += mf.rate(X[test]) * ms.rate(X[test])
+                log(line, "EBM per peril", p)
+            rate = tot
+        else:
+            b = tuned[kind]["best"]
+            if kind == "glum_spline":
+                X = Fr["S"][[c for c in Fr["S"].columns if c not in ("h_c", "h_a", "h_r") and not c.startswith(("m_ylic", "g_volx", "b_dist", "b_elev"))]]
+            else:
+                cols = Fr["tbase"] + (Fr["carried"] if carried else [])
+                X = (Fr["Ts"] if kind in ("cat", "ebm") else Fr["T"])[cols]
+                D["tcat_used"] = [c for c in X.columns if c in Fr["tcat"]]
+            m = s7.make(kind, b["power"], b["setting"], th, D, n_trees=s7.n_trees_of(tuned, kind))
+            ia, ib = (init[fit], init[test]) if kind == "f4" else (None, None)
+            m.fit(X[fit], y[fit], ec[fit], init=ia)
+            rate = m.rate(X[test], init=ib)
+            log(line, col, kind, "fitted", "trees", getattr(m, "best_iter_", None))
+        preds[col] = collapse(rate * e[test], orig, wgt, len(te0))
+    return preds
+
+
 def run() -> None:
     th = load_thresholds()
     data = build.build_all()
@@ -116,7 +163,7 @@ def run() -> None:
         r["k"] = r["k_poisson_gamma"]
     hist = pd.read_parquet(WORK4 / "history_final.parquet")
     S8 = json.loads((OUT / "phase5_step8.json").read_text())["phase5_step8"]
-    w2 = pd.read_csv(OUT / "submissions" / "w2_glm_v1u.csv")
+    w2 = pd.read_csv(OUT / "submissions" / ("w2_glm_v1u_all.csv" if ALL else "w2_glm_v1u.csv"))
     w2["row_id"] = w2["row_id"].astype(str)
     sub, info = [], {}
     for line in ("contents", "buildings", "motor"):          # quickest first, so an error shows early
@@ -126,50 +173,11 @@ def run() -> None:
         weights = {c: w / sum(weights.values()) for c, w in weights.items()}
         assert set(weights) == set(COLMAP[line]), (line, weights)
         tr, te0 = data[line]
-        tr = tr[~tr["holdout"] & tr["yr"].isin(FIT_YEARS)].reset_index(drop=True)
+        tr = tr[(ALL | ~tr["holdout"]) & tr["yr"].isin(FIT_YEARS)].reset_index(drop=True)
         te0 = te0.reset_index(drop=True)
-        te, orig, wgt = expand_blanks(te0, tr, line)
-        df = pd.concat([tr, te.assign(yr=2025)], ignore_index=True)
-        fit = np.r_[np.ones(len(tr), bool), np.zeros(len(te), bool)]
-        test = ~fit
         h = hist[hist["line"] == line].drop(columns="line").drop_duplicates("row_id").set_index("row_id")
-        Fr = frames(df, line, fit_edges(tr, line), h, ks, fit, test)
-        e = df["exposure"].to_numpy()
-        ec = e * df["completion"].to_numpy()
-        y = df["costc"].to_numpy()
-        D = dict(tcat_used=[], line=line)
-        g = TweedieGLM().fit(Fr["G"][fit].drop(columns=[c for c in ("h_c", "h_a", "h_r") if c in Fr["G"]]), y[fit], ec[fit])
-        Gw = Fr["G"].drop(columns=[c for c in ("h_c", "h_a", "h_r") if c in Fr["G"]])
-        init = np.log(g.rate(Gw))
-        preds = {}
-        for col, (kind, carried) in COLMAP[line].items():
-            if kind == "fs":
-                X = Fr["Ts"][Fr["tbase"]]
-                b = tuned["ebm"]["best"]
-                tot = np.zeros(int(test.sum()))
-                for p in lv.perils_of(tr):
-                    n = df[f"n_{p}"].fillna(0).to_numpy().astype(float)
-                    ecp = e * df[f"completion_{p}"].to_numpy()
-                    cm = fit & (n > 0)
-                    mf = s7.make("ebm", b["power"], b["setting"], th, D, objective="poisson").fit(X[fit], n[fit], ecp[fit])
-                    ms = s7.make("ebm", b["power"], b["setting"], th, D, objective="gamma").fit(X[cm], df.loc[cm, f"costc_{p}"].to_numpy(), n[cm], weight=n[cm])
-                    tot += mf.rate(X[test]) * ms.rate(X[test])
-                    log(line, "EBM per peril", p)
-                rate = tot
-            else:
-                b = tuned[kind]["best"]
-                if kind == "glum_spline":
-                    X = Fr["S"][[c for c in Fr["S"].columns if c not in ("h_c", "h_a", "h_r") and not c.startswith(("m_ylic", "g_volx", "b_dist", "b_elev"))]]
-                else:
-                    cols = Fr["tbase"] + (Fr["carried"] if carried else [])
-                    X = (Fr["Ts"] if kind in ("cat", "ebm") else Fr["T"])[cols]
-                    D["tcat_used"] = [c for c in X.columns if c in Fr["tcat"]]
-                m = s7.make(kind, b["power"], b["setting"], th, D, n_trees=s7.n_trees_of(tuned, kind))
-                ia, ib = (init[fit], init[test]) if kind == "f4" else (None, None)
-                m.fit(X[fit], y[fit], ec[fit], init=ia)
-                rate = m.rate(X[test], init=ib)
-                log(line, col, kind, "fitted", "trees", getattr(m, "best_iter_", None))
-            preds[col] = collapse(rate * e[test], orig, wgt, len(te0))
+        preds = family_predictions(line, tr, te0, h, ks, tuned, th, 2025, max(FIT_YEARS))
+        preds.pop("ref")
         target = w2.merge(te0[["row_id"]].astype(str), on="row_id")
         assert len(target) == len(te0)
         T_line = float(target["prediction"].sum())
@@ -182,7 +190,7 @@ def run() -> None:
         # each family's 2025 prices at the blend's total, kept for the phase 6 disagreement referral and the ranges
         (ROOT / "data" / "work" / "freeze").mkdir(parents=True, exist_ok=True)
         pd.DataFrame({"row_id": te0["row_id"].astype(str), "blend": bl, **{f"fam:{c}": shaped[c] for c in weights}}).to_parquet(
-            ROOT / "data" / "work" / "freeze" / f"family_preds_{line}.parquet")
+            ROOT / "data" / "work" / "freeze" / f"family_preds_{line}{'_all' if ALL else ''}.parquet")
         w2p = te0[["row_id"]].astype(str).merge(w2, on="row_id", how="left")["prediction"].to_numpy()
         info[line] = dict(weights=weights, mix=MIX[line], total=T_line, rows=len(te0),
                           corr_log_with_w2=float(np.corrcoef(np.log(bl), np.log(w2p))[0, 1]),
