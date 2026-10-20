@@ -391,6 +391,20 @@
       "decision": "No change to the frozen model; phase 7 next.",
       "effect": "None to the price. The test and its result are recorded in decisions/phase5_checkin5.md.",
       "section": "3.14"
+    },
+    {
+      "id": "D28",
+      "stage": "7. Final refit on all customers: a nil claim",
+      "role": "Modeller",
+      "proposed_by": "AI",
+      "question": "Refit the frozen pipeline on all customers once the hold-out was opened.",
+      "ai_answer": "The AI's step 6 design stated that every net cost is positive, but it had checked this on non-hold-out customers only. The hold-out holds one closed nil claim (CL45729785: 0.02 incurred, 0.02 recovered), which stopped the per-peril gamma severity fit in the refit.",
+      "challenge": "",
+      "test": "Every claim in the full data was checked for net cost of zero or less; the frozen build was rerun after the fix and compared byte for byte.",
+      "result": "One nil claim, in the hold-out, in motor own damage. Leaving nil claims out of the per-peril frequency and severity changes nothing in the frozen model (frozen file byte-identical) and lets the refit run.",
+      "decision": "No judgment needed: a nil claim has no severity, so it is not counted as a claim that costs something.",
+      "effect": "scripts/freeze_build.py counts only claims with positive cost in the per-peril models; the refit file blend_final_all_v2 was built.",
+      "section": "4.2"
     }
   ]
 }

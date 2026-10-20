@@ -1,0 +1,69 @@
+{
+ "submission_w2": {
+  "file": "outputs\\submissions\\w2_glm_v1u_all.csv",
+  "rows": 626639,
+  "by_line": {
+   "motor": {
+    "rows": 254986,
+    "excess_factor": 1.0583700771575504,
+    "off_balance": 1.0087910352583762,
+    "weather_2025": 0.9996454338264892,
+    "indication_capped_lc": 549.4230616941022,
+    "model_lc_2024_normal": 544.6351548449094,
+    "line_trend": 0.023098214655206645,
+    "c4_gap": -0.013984170035573618,
+    "c4_band": 0.03,
+    "predicted": 113709315.18155998,
+    "written": 119197760.278899,
+    "predicted_over_written": 0.953955132340598,
+    "mean_per_exposure": 568.5931994129654
+   },
+   "buildings": {
+    "rows": 184155,
+    "excess_factor": 1.0215251441275606,
+    "off_balance": 1.0764125394751918,
+    "weather_2025": 1.000346732076499,
+    "indication_capped_lc": 499.5619555410536,
+    "model_lc_2024_normal": 464.0989743436253,
+    "line_trend": 0.07779983319333081,
+    "c4_gap": -0.0012871533984456507,
+    "c4_band": 0.03,
+    "predicted": 79129927.98429164,
+    "written": 55281833.345675,
+    "predicted_over_written": 1.4313911676824373,
+    "mean_per_exposure": 526.676446428367
+   },
+   "contents": {
+    "rows": 187498,
+    "excess_factor": 1.0188421606599514,
+    "off_balance": 1.0357633296080944,
+    "weather_2025": 0.9972505000531763,
+    "indication_capped_lc": 125.02468792063824,
+    "model_lc_2024_normal": 120.70777594331739,
+    "line_trend": 0.0515506814783016,
+    "c4_gap": -0.015013400826304424,
+    "c4_band": 0.03,
+    "predicted": 19283567.211766887,
+    "written": 23173281.150816,
+    "predicted_over_written": 0.8321466039386423,
+    "mean_per_exposure": 128.45112304403054
+   }
+  },
+  "own_level": false
+ },
+ "meta": {
+  "created": "2026-10-20T12:07:47",
+  "git_commit": "6133244",
+  "seeds": null,
+  "versions": {
+   "python": "3.14.5",
+   "numpy": "2.5.3",
+   "pandas": "3.0.5",
+   "scipy": "1.18.1",
+   "sklearn": "1.9.1",
+   "lightgbm": "4.7.0",
+   "xgboost": "3.4.1",
+   "catboost": "1.2.10"
+  }
+ }
+}

@@ -130,7 +130,9 @@ def family_predictions(line: str, tr: pd.DataFrame, te0: pd.DataFrame, h, ks, tu
             b = tuned["ebm"]["best"]
             tot = np.zeros(int(test.sum()))
             for p in lv.perils_of(tr):
-                n = df[f"n_{p}"].fillna(0).to_numpy().astype(float)
+                # claims that cost something: a nil claim (net cost 0) has no severity; one hold-out motor claim
+                # (CL45729785) is the only case, so the frozen non-hold-out fits are unchanged
+                n = np.where(df[f"costc_{p}"].fillna(0).to_numpy() > 0, df[f"n_{p}"].fillna(0).to_numpy(), 0.0).astype(float)
                 ecp = e * df[f"completion_{p}"].to_numpy()
                 cm = fit & (n > 0)
                 mf = s7.make("ebm", b["power"], b["setting"], th, D, objective="poisson").fit(X[fit], n[fit], ecp[fit])
