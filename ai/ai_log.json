@@ -318,7 +318,7 @@
       "challenge": "",
       "test": "A scan of every W2 factor level that 2025 rows use, against its training exposure and claims; the blank rows' prices were then compared with known rows and with the phase 1 frequency check.",
       "result": "Two thin levels, both in contents: security blank (31 policy-years, 0 claims, relativity 0.0048, 674 rows of 2025) and high-value items blank (33 policy-years, 1 claim, 0.24, 683 rows). Priced at the exposure-weighted average of the known levels, their median rates are 108 and 111 a year against 105 for known rows; contents' total rises 0.4%. Motor's blank vehicle age (306 policy-years, 51 claims) is estimable.",
-      "decision": "Open: register P8-R2 put to the actuary, with both files prepared.",
+      "decision": "The actuary chose P8-R2 (a): remaining contents blanks are priced at the exposure-weighted average of the known levels, and he uploads w2_glm_v1u.csv.",
       "effect": "scripts/submit_w2.py prices the remaining contents blanks at the average of the known levels by default and keeps the P8-R form behind --own-level. The same treatment is to be carried into the frozen model.",
       "section": "3.10"
     }
