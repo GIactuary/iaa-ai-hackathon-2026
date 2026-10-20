@@ -405,6 +405,20 @@
       "decision": "No judgment needed: a nil claim has no severity, so it is not counted as a claim that costs something.",
       "effect": "scripts/freeze_build.py counts only claims with positive cost in the per-peril models; the refit file blend_final_all_v2 was built.",
       "section": "4.2"
+    },
+    {
+      "id": "D29",
+      "stage": "7. Check-in 7: the hold-out and the final file",
+      "role": "Appointed actuary",
+      "proposed_by": "AI",
+      "question": "Confirm the 11.9M bodily injury claim in the motor large-loss load now that its effect is known (U1), and choose the final submission (U2).",
+      "ai_answer": "The AI showed the hold-out result (the blend beats the W2 GLM in every line and year on 73,227 unseen customers: +41,250 on 2023 [2,450, 103,420], +18,403 on 2024), explained why the plain GLM looks best in motor 2023 (one claim is 43.8% of that cost), and recommended confirming X1 (a) and submitting the refit on all customers.",
+      "challenge": "",
+      "test": "Phase 7 design written before the hold-out was opened; the hold-out opened once with the reason recorded; the frozen pipeline fitted without the hold-out and scored on it; then refitted on all customers.",
+      "result": "The claim is 11.8M of the 23.7M of motor cost above the cap over 2021-2024: the motor excess factor is 1.058 with it and 1.029 without, the 2025 motor total 113.7M against about 110.6M. The refit restores claims history to 12.7% of 2025 rows; every line stays inside the C4 band.",
+      "decision": "The actuary chose U1 (a) and U2 (a) on the check-in 7 page, with no notes.",
+      "effect": "X1 (a) confirmed. blend_final_all_v2.csv is the final Part 1 submission.",
+      "section": "4.3"
     }
   ]
 }

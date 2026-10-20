@@ -138,3 +138,10 @@ Evidence: `decisions/phase5_checkin1.md`, `outputs/phase5_steps123*.json` and `o
 - Referral rule run under thresholds written first (`decisions/phase6_design.md`; refer_disagreement 0.3, refer_min_segment 100). Q1 (a), Q2 (a) decided (D26; cards P1 and P2 on the page). Page: https://claude.ai/artifact/AqYBZKnd3DSWkWRnwKf9LB.
 - The candidate final file is `blend_frozen_v2.csv` (`scripts/freeze_build.py`, then `scripts/phase6_referral.py`, then `scripts/apply_referral.py`). blend_frozen_v1 scored 0.12821 public (8th).
 - Next: phase 7, opening the hold-out once with a recorded reason (`decisions/validation_design.md` section 6), and X1 at the final refit. Then phase 8: the write-up, the notebook via `notebooks/build_notebook.py`, and `/review`.
+
+## Update after check-in 7 (2026-10-20): hold-out passed, final file chosen
+
+- **Hold-out** opened once on 2026-10-20 at 11:46 (reason in `data/work/holdout_lock.json`). The frozen blend beats the W2 GLM in every line and year on unseen customers (`decisions/phase7_checkin7.md`, `outputs/phase7_holdout.json`).
+- **U1 (a):** X1 confirmed; the 11.9M claim is in the motor load (excess factor 1.058).
+- **U2 (a):** the final Part 1 submission is `outputs/submissions/blend_final_all_v2.csv`. Rebuild it with `P7_ALL=1` runs of `scripts/submit_w2.py`, `scripts/freeze_build.py` and `scripts/apply_referral.py`. The actuary uploads it and selects it as final on Kaggle (rule 2.2.b).
+- **Next: phase 8.** Write-up (5 pages), video script, notebook via `notebooks/build_notebook.py` with the AI log rendered (D1 to D29), clean rerun check, then `/review` in a fresh context.

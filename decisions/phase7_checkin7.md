@@ -38,3 +38,10 @@ The step 6 design stated that every net cost is positive. That was checked on no
 
 - **U1.** Confirm X1 (a) now that its effect is known: the motor load with the 11.9M claim.
 - **U2.** The final submission: the refit on all customers, or the frozen file.
+
+## Verdicts (actuary, 2026-10-20, check-in 7 round 1)
+
+U1 (a), U2 (a), with no notes. Exchange D29.
+
+- **X1 confirmed:** the 11.9M bodily injury claim stays in the motor large-loss load (excess factor 1.058).
+- **The final Part 1 submission is `blend_final_all_v2.csv`:** the frozen pipeline refitted on all customers, with P8-R2 and the referral rule.
