@@ -179,6 +179,10 @@ def run() -> None:
         else:
             bl = sum(w * shaped[c] for c, w in weights.items())
         bl = bl * (T_line / bl.sum())
+        # each family's 2025 prices at the blend's total, kept for the phase 6 disagreement referral and the ranges
+        (ROOT / "data" / "work" / "freeze").mkdir(parents=True, exist_ok=True)
+        pd.DataFrame({"row_id": te0["row_id"].astype(str), "blend": bl, **{f"fam:{c}": shaped[c] for c in weights}}).to_parquet(
+            ROOT / "data" / "work" / "freeze" / f"family_preds_{line}.parquet")
         w2p = te0[["row_id"]].astype(str).merge(w2, on="row_id", how="left")["prediction"].to_numpy()
         info[line] = dict(weights=weights, mix=MIX[line], total=T_line, rows=len(te0),
                           corr_log_with_w2=float(np.corrcoef(np.log(bl), np.log(w2p))[0, 1]),
