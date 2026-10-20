@@ -307,6 +307,20 @@
       "decision": "Added to the step 7 design as F1 candidate (d) (decisions/phase5_step7_design.md section 7); the inner folds choose between scaled and unscaled.",
       "effect": "The spline GLM, the carried-candidate tests and the motor frequency x severity GLM use whichever scaling tunes better.",
       "section": "3.9"
+    },
+    {
+      "id": "D22",
+      "stage": "5. Interim submission: contents blanks priced near zero",
+      "role": "Modeller",
+      "proposed_by": "AI",
+      "question": "The actuary asked for an interim submission to check direction; building it, the AI checked the lowest prices in the file.",
+      "ai_answer": "The AI's phase 1 rule gave blanks that remain after recovery their own level (P8-R). It did not check whether that level had enough exposure to be estimated. For contents security level it had 31 policy-years and no claims, so the GLM priced it at 0.0048 of the base and 674 rows of 2025 at about 0.6 a year. The same defect is in the baseline submitted on 18 October.",
+      "challenge": "",
+      "test": "A scan of every W2 factor level that 2025 rows use, against its training exposure and claims; the blank rows' prices were then compared with known rows and with the phase 1 frequency check.",
+      "result": "Two thin levels, both in contents: security blank (31 policy-years, 0 claims, relativity 0.0048, 674 rows of 2025) and high-value items blank (33 policy-years, 1 claim, 0.24, 683 rows). Priced at the exposure-weighted average of the known levels, their median rates are 108 and 111 a year against 105 for known rows; contents' total rises 0.4%. Motor's blank vehicle age (306 policy-years, 51 claims) is estimable.",
+      "decision": "Open: register P8-R2 put to the actuary, with both files prepared.",
+      "effect": "scripts/submit_w2.py prices the remaining contents blanks at the average of the known levels by default and keeps the P8-R form behind --own-level. The same treatment is to be carried into the frozen model.",
+      "section": "3.10"
     }
   ]
 }
