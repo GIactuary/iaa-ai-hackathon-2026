@@ -45,3 +45,11 @@ Every other weight is zero in all three fits, including the W2 GLM's in every li
 
 - **O1.** Freeze the blend as the Part 1 model (the final price), or keep the W2 GLM.
 - **O2.** Arithmetic mix everywhere, or geometric in buildings where it passes.
+
+## Verdicts (actuary, 2026-10-20, check-in 5 round 1)
+
+O1 (a), O2 (b), with no notes. Exchange D25.
+
+- **The frozen Part 1 model is the blend** in all three lines, each family refitted on 2021 to 2024 and mixed with the pooled weights. The decided level chain applies per line: the line excess factor, the off-balance to the weather-normalised 2025 indication, the 2025 weather as one factor per line. P8-R2 applies to every family.
+- **Mix:** a weighted log average in buildings, a plain weighted average in motor and contents.
+- A forked session drafted a different check-in 5 (O1 to O3, a second page) at the same time; the actuary decided on this page and had that draft reverted (0bfc720).
