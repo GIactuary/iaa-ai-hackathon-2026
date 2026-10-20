@@ -33,6 +33,34 @@ MODULES = ["__init__", "thresholds", "validation", "evidence", "exhibits"]
 TOKEN = re.compile(r"\{\{\s*([\w.]+)\s*(?:\|\s*([^}]*?))?\s*\}\}")
 MARK = "PLACEHOLDER"
 
+# The AI log numbers its "section" field in working order (3.6 is phase 5 steps 1 to 3, 4.1 is phase 6, ...), which
+# does not match the notebook's filing sections. Each log section is shown in the notebook section that discusses it;
+# a log section not listed here is shown under its own number.
+PLACEMENT = {
+    "3.4": "3.5",    # D11 validation design and keep rule -> Validation
+    "3.5": "3.4",    # D12 baselines -> Model development
+    "3.6": "3.4",    # D14 to D16 thresholds, cap, trend, level, weather -> Model development
+    "3.7": "3.3",    # D17 to D19 claims history and features -> Rating variables
+    "3.8": "3.4",    # D20 model structure
+    "3.9": "3.4",    # D21 standardised inputs
+    "3.10": "3.2",   # D22 contents blanks -> Data (missing values)
+    "3.11": "3.4",   # D23 penalised per-peril GLM
+    "3.12": "3.4",   # D24 model families
+    "3.13": "3.6",   # D25 the frozen blend -> Rating plan
+    "3.14": "3.10",  # D27 runway to the leader -> Competitive comparison
+    "4.1": "3.8",    # D26 referral -> Impact and referrals
+    "4.2": "3.5",    # D28 nil claim at the final refit -> Validation
+    "4.3": "3.5",    # D29 hold-out and final file -> Validation
+}
+
+
+def section_key(s: str) -> tuple:
+    return tuple(int(p) if p.isdigit() else p for p in str(s).split("."))
+
+
+def log_section(entry: dict) -> str:
+    return str(entry.get("section", "")).strip().split(" ")[0]
+
 
 class BuildError(RuntimeError):
     pass
@@ -107,8 +135,12 @@ def build(evidence_path: Path | None, out_path: Path, root: Path = ROOT, log_pat
             c.metadata.update({"_kg_hide-input": True, "jupyter": {"source_hidden": True}})
         cells.append(c)
 
+    log_sections = sorted({log_section(e) for e in entries}, key=section_key)
+
     def cards(section):
-        code(f'cards_for(AI_LOG, "{section}");')
+        here = [s for s in log_sections if PLACEMENT.get(s, s) == section]
+        if here:
+            code("\n".join(f'cards_for(AI_LOG, "{s}");' for s in here))
 
     # ============================================================================ title and summary
     md(f"""
@@ -310,9 +342,8 @@ print("Numbers in the text match this run." if not diff else f"{len(diff)} numbe
     nb.metadata.update({"kernelspec": {"name": "python3", "display_name": "Python 3", "language": "python"},
                         "language_info": {"name": "python"}})
     placeholders = sum(MARK in c.source and not c.source.startswith("%%writefile") for c in cells)
-    card_sections = {e.get("section", "") for e in entries}
     shown = {"2", "3.1", "3.2", "3.3", "3.4", "3.5", "3.6", "3.7", "3.8", "3.9", "3.10", "4", "5"}
-    orphans = sorted(s for s in card_sections if str(s).strip().split(" ")[0] not in shown)
+    orphans = [s for s in log_sections if PLACEMENT.get(s, s) not in shown]
     report = dict(cells=len(cells), placeholders=placeholders, pending=sorted(set(pending)), entries=len(entries),
                   orphan_sections=orphans, evidence=str(evidence_path) if ev else None)
     if strict and (placeholders or pending or orphans):
