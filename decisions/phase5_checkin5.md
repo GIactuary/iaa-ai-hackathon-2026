@@ -53,3 +53,7 @@ O1 (a), O2 (b), with no notes. Exchange D25.
 - **The frozen Part 1 model is the blend** in all three lines, each family refitted on 2021 to 2024 and mixed with the pooled weights. The decided level chain applies per line: the line excess factor, the off-balance to the weather-normalised 2025 indication, the 2025 weather as one factor per line. P8-R2 applies to every family.
 - **Mix:** a weighted log average in buildings, a plain weighted average in motor and contents.
 - A forked session drafted a different check-in 5 (O1 to O3, a second page) at the same time; the actuary decided on this page and had that draft reverted (0bfc720).
+
+## Per-peril EBM in property (step 7 design section 8; tested 2026-10-20 after the freeze, at the actuary's request)
+
+Stage 1 fails in both lines, so stages 2 and 3 do not run and the frozen model stands. Against the per-line EBM: contents −16,027 on 2023 [−43,505, 9,334], +5,411 on 2024; buildings −40,535 [−99,080, 11,802], +7,257. Against the W2 GLM: contents −41,173 [−72,132, −12,784], −5,789; buildings −56,135 [−138,176, 20,454], −14,709. Splitting property by peril divides too few claims, as the GLM showed in step 6. Evidence: `outputs/phase5_step7b.json`; exchange D27.

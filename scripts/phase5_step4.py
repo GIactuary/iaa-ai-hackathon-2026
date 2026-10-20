@@ -27,7 +27,9 @@ from src.glm import TweedieGLM, band, cat, features, fit_edges, quantile_edges
 from src.thresholds import load_thresholds
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT, WORK = ROOT / "outputs", ROOT / "data" / "work" / "phase5_step4"
+# Phase 7: P5_HOLDOUT=include builds the history on every customer, hold-out included, into its own folder
+INCLUDE_HOLDOUT = os.environ.get("P5_HOLDOUT") == "include"
+OUT, WORK = ROOT / "outputs", ROOT / "data" / "work" / ("phase5_step4_all" if INCLUDE_HOLDOUT else "phase5_step4")
 PLANS = {"A": dict(fit_years=(2021, 2022), score_year=2023), "B": dict(fit_years=(2021, 2022, 2023), score_year=2024),
          "final": dict(fit_years=(2021, 2022, 2023, 2024), score_year=None)}
 PROPERTY = ("buildings", "contents")
@@ -39,7 +41,7 @@ P_VARIANTS = ("P-raw", "P-band", "P-avg", "P-mult", "P-group")
 
 def _train(line):
     tr = build.build_all()[line][0]
-    return tr[~tr["holdout"]].reset_index(drop=True)
+    return tr.reset_index(drop=True) if INCLUDE_HOLDOUT else tr[~tr["holdout"]].reset_index(drop=True)
 
 
 def prepare(plan_name: str) -> dict:

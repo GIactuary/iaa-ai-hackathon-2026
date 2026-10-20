@@ -377,6 +377,20 @@
       "decision": "The actuary chose (a) on both cards on the check-in 6 page, with no notes.",
       "effect": "blend_frozen_v2.csv: 2,321 motor rows at the W2 GLM's price, the motor line rescaled to its decided total (other motor rows +0.13%), property unchanged; 62,767 rows listed for underwriting review.",
       "section": "4.1"
+    },
+    {
+      "id": "D27",
+      "stage": "5. After the freeze: is there runway to the leader?",
+      "role": "Modeller",
+      "proposed_by": "Actuary",
+      "question": "\"Do we have a runway to catch up to the leader, or we have done everything that we could?\"",
+      "ai_answer": "The AI measured the public board's noise: the gap between two models on a one-third sample moves by about 0.0006 for closely related models, more for different ones, against a gap to the leader of 0.0017. It named the largest remaining lever (the phase 7 refit on all customers restores claims history to 12.7% of 2025 rows, about 13,800 of them with a past claim), advised against probing the public board to infer the 2025 level, and proposed one untested model: the EBM per peril in property.",
+      "challenge": "The actuary chose to run the test before phase 7.",
+      "test": "Step 7 design section 8, written before it ran: per-peril EBM in buildings and contents against the per-line EBM on the keep rule, then the weights, then the frozen blend.",
+      "result": "Fails at stage 1 in both lines: contents -16,027 on 2023 [-43,505, 9,334], +5,411 on 2024; buildings -40,535 [-99,080, 11,802], +7,257. Against the W2 GLM it is worse still. The frozen model stands.",
+      "decision": "No change to the frozen model; phase 7 next.",
+      "effect": "None to the price. The test and its result are recorded in decisions/phase5_checkin5.md.",
+      "section": "3.14"
     }
   ]
 }
