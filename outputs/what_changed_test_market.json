@@ -1,0 +1,7438 @@
+{
+ "what_changed": {
+  "files_added": [],
+  "files_removed": [],
+  "files": {
+   "addresses": {
+    "rows_ref": 575983,
+    "rows_new": 575983,
+    "schema": {
+     "added": [],
+     "removed": [],
+     "retyped": {}
+    },
+    "shifts": {
+     "basement": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "False": [
+        0.8497,
+        0.8497
+       ],
+       "True": [
+        0.1503,
+        0.1503
+       ]
+      }
+     },
+     "bedrooms": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       1.0,
+       1.0,
+       2.0,
+       3.0,
+       4.0,
+       5.0,
+       5.0
+      ],
+      "q_new": [
+       1.0,
+       1.0,
+       2.0,
+       3.0,
+       4.0,
+       5.0,
+       5.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "distance_to_river_km": {
+      "kind": "number",
+      "blank_ref": 0.02495386148549523,
+      "blank_new": 0.02495386148549523,
+      "q_ref": [
+       0.08,
+       0.24,
+       1.04,
+       2.37,
+       4.43,
+       8.62,
+       12.44
+      ],
+      "q_new": [
+       0.08,
+       0.24,
+       1.04,
+       2.37,
+       4.43,
+       8.62,
+       12.44
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "elevation_m": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.4,
+       1.1,
+       3.9,
+       8.1,
+       14.9,
+       32.8,
+       63.3
+      ],
+      "q_new": [
+       0.4,
+       1.1,
+       3.9,
+       8.1,
+       14.9,
+       32.8,
+       63.3
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "energy_rating": {
+      "kind": "category",
+      "blank_ref": 0.025075392850136203,
+      "blank_new": 0.025075392850136203,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 8,
+      "n_levels_new": 8,
+      "largest_moves": {
+       "C": [
+        0.1963,
+        0.1963
+       ],
+       "B": [
+        0.1923,
+        0.1923
+       ],
+       "D": [
+        0.1665,
+        0.1665
+       ],
+       "A": [
+        0.1562,
+        0.1562
+       ],
+       "E": [
+        0.1132,
+        0.1132
+       ]
+      }
+     },
+     "flood_zone": {
+      "kind": "number",
+      "blank_ref": 0.029207459247929193,
+      "blank_new": 0.029207459247929193,
+      "q_ref": [
+       1.0,
+       1.0,
+       1.0,
+       1.0,
+       2.0,
+       4.0,
+       5.0
+      ],
+      "q_new": [
+       1.0,
+       1.0,
+       1.0,
+       1.0,
+       2.0,
+       4.0,
+       5.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "listed_building": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "False": [
+        0.97,
+        0.97
+       ],
+       "True": [
+        0.03,
+        0.03
+       ]
+      }
+     },
+     "property_type": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 4,
+      "n_levels_new": 4,
+      "largest_moves": {
+       "semi_detached": [
+        0.3,
+        0.3
+       ],
+       "terraced": [
+        0.2503,
+        0.2503
+       ],
+       "detached": [
+        0.25,
+        0.25
+       ],
+       "flat": [
+        0.1998,
+        0.1998
+       ]
+      }
+     },
+     "region": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 12,
+      "n_levels_new": 12,
+      "largest_moves": {
+       "R01": [
+        0.1616,
+        0.1616
+       ],
+       "R12": [
+        0.0997,
+        0.0997
+       ],
+       "R03": [
+        0.0974,
+        0.0974
+       ],
+       "R10": [
+        0.0942,
+        0.0942
+       ],
+       "R11": [
+        0.0852,
+        0.0852
+       ]
+      }
+     },
+     "roof_type": {
+      "kind": "category",
+      "blank_ref": 0.02500247403135162,
+      "blank_new": 0.02500247403135162,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 3,
+      "n_levels_new": 3,
+      "largest_moves": {
+       "pitched": [
+        0.8771,
+        0.8771
+       ],
+       "flat": [
+        0.0979,
+        0.0979
+       ],
+       "(blank)": [
+        0.025,
+        0.025
+       ]
+      }
+     },
+     "soil_type": {
+      "kind": "category",
+      "blank_ref": 0.024986848570183497,
+      "blank_new": 0.024986848570183497,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 6,
+      "n_levels_new": 6,
+      "largest_moves": {
+       "clay": [
+        0.4054,
+        0.4054
+       ],
+       "rock": [
+        0.1432,
+        0.1432
+       ],
+       "sand": [
+        0.1423,
+        0.1423
+       ],
+       "loam": [
+        0.1421,
+        0.1421
+       ],
+       "chalk": [
+        0.1419,
+        0.1419
+       ]
+      }
+     },
+     "solar_panels": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "False": [
+        0.9005,
+        0.9005
+       ],
+       "True": [
+        0.0995,
+        0.0995
+       ]
+      }
+     },
+     "trees_within_5m": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "False": [
+        0.8787,
+        0.8787
+       ],
+       "True": [
+        0.1213,
+        0.1213
+       ]
+      }
+     },
+     "urban_density": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 4,
+      "n_levels_new": 4,
+      "largest_moves": {
+       "suburban": [
+        0.4491,
+        0.4491
+       ],
+       "urban": [
+        0.2508,
+        0.2508
+       ],
+       "rural": [
+        0.1993,
+        0.1993
+       ],
+       "dense_urban": [
+        0.1008,
+        0.1008
+       ]
+      }
+     },
+     "year_built": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       1865.0,
+       1878.0,
+       1932.0,
+       1965.0,
+       1995.0,
+       2018.0,
+       2021.0
+      ],
+      "q_new": [
+       1865.0,
+       1878.0,
+       1932.0,
+       1965.0,
+       1995.0,
+       2018.0,
+       2021.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     }
+    },
+    "detectors": {
+     "address_id_lengths": {
+      "8": 575983
+     },
+     "post_event_columns_present": []
+    },
+    "detectors_ref": {
+     "address_id_lengths": {
+      "8": 575983
+     },
+     "post_event_columns_present": []
+    }
+   },
+   "claims": {
+    "rows_ref": 163150,
+    "rows_new": 163150,
+    "schema": {
+     "added": [],
+     "removed": [],
+     "retyped": {}
+    },
+    "shifts": {
+     "incurred_to_date": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       91.7245,
+       664.38,
+       1859.755,
+       4564.5475,
+       15930.342,
+       48700.7398
+      ],
+      "q_new": [
+       0.0,
+       91.7245,
+       664.38,
+       1859.755,
+       4564.5475,
+       15930.342,
+       48700.7398
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "line": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 3,
+      "n_levels_new": 3,
+      "largest_moves": {
+       "motor": [
+        0.6902,
+        0.6902
+       ],
+       "buildings": [
+        0.1621,
+        0.1621
+       ],
+       "contents": [
+        0.1477,
+        0.1477
+       ]
+      }
+     },
+     "loss_date": {
+      "kind": "date",
+      "min_ref": "2020-12-01 00:00:00",
+      "max_ref": "2024-12-29 00:00:00",
+      "min_new": "2020-12-01 00:00:00",
+      "max_new": "2024-12-29 00:00:00"
+     },
+     "paid_to_date": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       75.008,
+       593.58,
+       1702.4,
+       4207.2075,
+       13943.5215,
+       41999.5913
+      ],
+      "q_new": [
+       0.0,
+       75.008,
+       593.58,
+       1702.4,
+       4207.2075,
+       13943.5215,
+       41999.5913
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "peril": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 11,
+      "n_levels_new": 11,
+      "largest_moves": {
+       "own_damage": [
+        0.3001,
+        0.3001
+       ],
+       "third_party_prop": [
+        0.2073,
+        0.2073
+       ],
+       "glass_hail": [
+        0.0964,
+        0.0964
+       ],
+       "escape_of_water": [
+        0.0953,
+        0.0953
+       ],
+       "theft": [
+        0.088,
+        0.088
+       ]
+      }
+     },
+     "recoveries": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       1058.512,
+       4151.9358
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       1058.512,
+       4151.9358
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "report_date": {
+      "kind": "date",
+      "min_ref": "2021-01-02 00:00:00",
+      "max_ref": "2024-12-30 00:00:00",
+      "min_new": "2020-12-26 00:00:00",
+      "max_new": "2024-12-30 00:00:00"
+     },
+     "status": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 3,
+      "n_levels_new": 3,
+      "largest_moves": {
+       "closed": [
+        0.9273,
+        0.9273
+       ],
+       "open": [
+        0.0622,
+        0.0622
+       ],
+       "repudiated": [
+        0.0105,
+        0.0105
+       ]
+      }
+     }
+    },
+    "detectors": {
+     "policy_id_lengths": {
+      "9": 163150
+     },
+     "claim_id_lengths": {
+      "10": 162546,
+      "11": 604
+     },
+     "post_event_columns_present": [
+      "repairer_id",
+      "third_party_id"
+     ]
+    },
+    "detectors_ref": {
+     "policy_id_lengths": {
+      "9": 163150
+     },
+     "claim_id_lengths": {
+      "10": 162546,
+      "11": 604
+     },
+     "post_event_columns_present": [
+      "repairer_id",
+      "third_party_id"
+     ]
+    }
+   },
+   "customers": {
+    "rows_ref": 545240,
+    "rows_new": 545240,
+    "schema": {
+     "added": [],
+     "removed": [],
+     "retyped": {}
+    },
+    "shifts": {
+     "campaign_code": {
+      "kind": "category",
+      "blank_ref": 0.5118571638177684,
+      "blank_new": 0.5118571638177684,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 16,
+      "n_levels_new": 16,
+      "largest_moves": {
+       "(blank)": [
+        0.5119,
+        0.5119
+       ],
+       "CMP01": [
+        0.0331,
+        0.0331
+       ],
+       "CMP03": [
+        0.0327,
+        0.0327
+       ],
+       "CMP05": [
+        0.0327,
+        0.0327
+       ],
+       "CMP06": [
+        0.0327,
+        0.0327
+       ]
+      }
+     },
+     "credit_band": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 5,
+      "n_levels_new": 5,
+      "largest_moves": {
+       "B": [
+        0.2987,
+        0.2987
+       ],
+       "A": [
+        0.2509,
+        0.2509
+       ],
+       "C": [
+        0.2496,
+        0.2496
+       ],
+       "D": [
+        0.1204,
+        0.1204
+       ],
+       "E": [
+        0.0804,
+        0.0804
+       ]
+      }
+     },
+     "customer_since_year": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       2006.0,
+       2007.0,
+       2013.0,
+       2020.0,
+       2023.0,
+       2025.0,
+       2025.0
+      ],
+      "q_new": [
+       2006.0,
+       2007.0,
+       2013.0,
+       2020.0,
+       2023.0,
+       2025.0,
+       2025.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "date_of_birth": {
+      "kind": "date",
+      "min_ref": "1933-01-01 00:00:00",
+      "max_ref": "2007-12-29 00:00:00",
+      "min_new": "1933-01-01 00:00:00",
+      "max_new": "2007-12-29 00:00:00"
+     },
+     "document_preference": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 3,
+      "n_levels_new": 3,
+      "largest_moves": {
+       "email": [
+        0.6019,
+        0.6019
+       ],
+       "app": [
+        0.2491,
+        0.2491
+       ],
+       "post": [
+        0.1491,
+        0.1491
+       ]
+      }
+     },
+     "email_domain": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 5,
+      "n_levels_new": 5,
+      "largest_moves": {
+       "inboxly": [
+        0.2007,
+        0.2007
+       ],
+       "netbox": [
+        0.2002,
+        0.2002
+       ],
+       "posthub": [
+        0.2,
+        0.2
+       ],
+       "other": [
+        0.1995,
+        0.1995
+       ],
+       "mailone": [
+        0.1995,
+        0.1995
+       ]
+      }
+     },
+     "household_size": {
+      "kind": "number",
+      "blank_ref": 0.024657031765827894,
+      "blank_new": 0.024657031765827894,
+      "q_ref": [
+       1.0,
+       1.0,
+       1.0,
+       2.0,
+       3.0,
+       5.0,
+       7.0
+      ],
+      "q_new": [
+       1.0,
+       1.0,
+       1.0,
+       2.0,
+       3.0,
+       5.0,
+       7.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "licence_points": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       6.0,
+       9.0
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       6.0,
+       9.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "marital_status": {
+      "kind": "category",
+      "blank_ref": 0.025240261169393294,
+      "blank_new": 0.025240261169393294,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 5,
+      "n_levels_new": 5,
+      "largest_moves": {
+       "married": [
+        0.4555,
+        0.4555
+       ],
+       "single": [
+        0.3994,
+        0.3994
+       ],
+       "divorced": [
+        0.0804,
+        0.0804
+       ],
+       "widowed": [
+        0.0395,
+        0.0395
+       ],
+       "(blank)": [
+        0.0252,
+        0.0252
+       ]
+      }
+     },
+     "marketing_consent": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "True": [
+        0.5506,
+        0.5506
+       ],
+       "False": [
+        0.4494,
+        0.4494
+       ]
+      }
+     },
+     "marketing_segment": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 12,
+      "n_levels_new": 12,
+      "largest_moves": {
+       "young_affluent": [
+        0.1536,
+        0.1536
+       ],
+       "midlife_affluent": [
+        0.1341,
+        0.1341
+       ],
+       "senior_affluent": [
+        0.131,
+        0.131
+       ],
+       "mature_affluent": [
+        0.1309,
+        0.1309
+       ],
+       "young_mainstream": [
+        0.07,
+        0.07
+       ]
+      }
+     },
+     "occupation": {
+      "kind": "category",
+      "blank_ref": 0.024690044750935367,
+      "blank_new": 0.024690044750935367,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 21,
+      "n_levels_new": 21,
+      "largest_moves": {
+       "Retired": [
+        0.1809,
+        0.1809
+       ],
+       "Student": [
+        0.0735,
+        0.0735
+       ],
+       "Hairdresser": [
+        0.0438,
+        0.0438
+       ],
+       "Care worker": [
+        0.0429,
+        0.0429
+       ],
+       "Nurse": [
+        0.0428,
+        0.0428
+       ]
+      }
+     },
+     "previous_insurer": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 40,
+      "n_levels_new": 40,
+      "largest_moves": {
+       "INS08": [
+        0.0254,
+        0.0254
+       ],
+       "INS28": [
+        0.0254,
+        0.0254
+       ],
+       "INS34": [
+        0.0254,
+        0.0254
+       ],
+       "INS11": [
+        0.0253,
+        0.0253
+       ],
+       "INS01": [
+        0.0253,
+        0.0253
+       ]
+      }
+     },
+     "prior_claims_5y": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       1.0,
+       1.0,
+       2.0
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       1.0,
+       1.0,
+       2.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "years_at_address": {
+      "kind": "number",
+      "blank_ref": 0.025128383830973516,
+      "blank_new": 0.025128383830973516,
+      "q_ref": [
+       1.0,
+       1.0,
+       3.0,
+       6.0,
+       10.0,
+       17.0,
+       24.0
+      ],
+      "q_new": [
+       1.0,
+       1.0,
+       3.0,
+       6.0,
+       10.0,
+       17.0,
+       24.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     }
+    },
+    "detectors": {
+     "customer_id_lengths": {
+      "8": 545240
+     },
+     "post_event_columns_present": []
+    },
+    "detectors_ref": {
+     "customer_id_lengths": {
+      "8": 545240
+     },
+     "post_event_columns_present": []
+    }
+   },
+   "policies_buildings": {
+    "rows_ref": 707726,
+    "rows_new": 707726,
+    "schema": {
+     "added": [],
+     "removed": [],
+     "retyped": {}
+    },
+    "shifts": {
+     "accidental_damage_cover": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "False": [
+        0.6007,
+        0.6007
+       ],
+       "True": [
+        0.3993,
+        0.3993
+       ]
+      }
+     },
+     "channel": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 3,
+      "n_levels_new": 3,
+      "largest_moves": {
+       "direct": [
+        0.3993,
+        0.3993
+       ],
+       "comparison_site": [
+        0.35,
+        0.35
+       ],
+       "broker": [
+        0.2507,
+        0.2507
+       ]
+      }
+     },
+     "compulsory_excess": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       350.0,
+       350.0,
+       350.0,
+       350.0,
+       350.0,
+       350.0,
+       350.0
+      ],
+      "q_new": [
+       350.0,
+       350.0,
+       350.0,
+       350.0,
+       350.0,
+       350.0,
+       350.0
+      ]
+     },
+     "construction_type": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 11,
+      "n_levels_new": 11,
+      "largest_moves": {
+       "Brick": [
+        0.6444,
+        0.6444
+       ],
+       "non_standard": [
+        0.0961,
+        0.0961
+       ],
+       "stone": [
+        0.0773,
+        0.0773
+       ],
+       "W": [
+        0.0598,
+        0.0598
+       ],
+       "T": [
+        0.055,
+        0.055
+       ]
+      }
+     },
+     "customer_service_contacts": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       1.0,
+       2.0,
+       4.0
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       1.0,
+       2.0,
+       4.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "days_quote_to_inception": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       4.0,
+       13.0,
+       22.0,
+       29.0,
+       30.0
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       4.0,
+       13.0,
+       22.0,
+       29.0,
+       30.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "days_unoccupied": {
+      "kind": "number",
+      "blank_ref": 0.024850012575488255,
+      "blank_new": 0.024850012575488255,
+      "q_ref": [
+       0.0,
+       0.0,
+       3.0,
+       7.0,
+       11.0,
+       31.0,
+       102.0
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       3.0,
+       7.0,
+       11.0,
+       31.0,
+       102.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "discount_applied": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.05,
+       0.1,
+       0.1
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.05,
+       0.1,
+       0.1
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "exposure": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0274,
+       0.1397,
+       0.7644,
+       1.0,
+       1.0,
+       1.0,
+       1.0
+      ],
+      "q_new": [
+       0.0274,
+       0.1397,
+       0.7644,
+       1.0,
+       1.0,
+       1.0,
+       1.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "missed_payments_12m": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       1.0,
+       2.0
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       1.0,
+       2.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "mortgage": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "True": [
+        0.5518,
+        0.5518
+       ],
+       "False": [
+        0.4482,
+        0.4482
+       ]
+      }
+     },
+     "new_business": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "False": [
+        0.8542,
+        0.8542
+       ],
+       "True": [
+        0.1458,
+        0.1458
+       ]
+      }
+     },
+     "occupancy": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "owner_occupied": [
+        0.9005,
+        0.9005
+       ],
+       "let": [
+        0.0995,
+        0.0995
+       ]
+      }
+     },
+     "payment_method": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "annual": [
+        0.549,
+        0.549
+       ],
+       "monthly": [
+        0.451,
+        0.451
+       ]
+      }
+     },
+     "period_end": {
+      "kind": "date",
+      "min_ref": "2021-01-01 00:00:00",
+      "max_ref": "2024-12-30 00:00:00",
+      "min_new": "2021-01-01 00:00:00",
+      "max_new": "2024-12-30 00:00:00"
+     },
+     "period_start": {
+      "kind": "date",
+      "min_ref": "2021-01-01 00:00:00",
+      "max_ref": "2024-12-29 00:00:00",
+      "min_new": "2021-01-01 00:00:00",
+      "max_new": "2024-12-29 00:00:00"
+     },
+     "policyholder_age": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       18.0,
+       20.0,
+       30.0,
+       49.0,
+       69.0,
+       85.0,
+       89.0
+      ],
+      "q_new": [
+       18.0,
+       20.0,
+       30.0,
+       49.0,
+       69.0,
+       85.0,
+       89.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "renewal_count": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       1.0,
+       6.0,
+       11.0,
+       16.0,
+       17.0
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       1.0,
+       6.0,
+       11.0,
+       16.0,
+       17.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "renewal_decision": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 5,
+      "n_levels_new": 5,
+      "largest_moves": {
+       "renewed": [
+        0.8424,
+        0.8424
+       ],
+       "lapsed_by_customer": [
+        0.0758,
+        0.0758
+       ],
+       "mid_term_change": [
+        0.0384,
+        0.0384
+       ],
+       "cancelled": [
+        0.038,
+        0.038
+       ],
+       "declined_by_insurer": [
+        0.0054,
+        0.0054
+       ]
+      }
+     },
+     "smoke_alarms": {
+      "kind": "category",
+      "blank_ref": 0.025245645913814105,
+      "blank_new": 0.025245645913814105,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 3,
+      "n_levels_new": 3,
+      "largest_moves": {
+       "True": [
+        0.8283,
+        0.8283
+       ],
+       "False": [
+        0.1465,
+        0.1465
+       ],
+       "(blank)": [
+        0.0252,
+        0.0252
+       ]
+      }
+     },
+     "sum_insured": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       70000.0,
+       96000.0,
+       167000.0,
+       223000.0,
+       288000.0,
+       403000.0,
+       512000.0
+      ],
+      "q_new": [
+       84000.0,
+       115200.0,
+       200400.0,
+       267600.0,
+       345600.0,
+       484800.0,
+       619200.0
+      ],
+      "psi": 0.1924702209080867,
+      "beyond_ref_max": 3.10854765827453e-05,
+      "below_ref_min": 0.0
+     },
+     "voluntary_excess": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       250.0,
+       500.0,
+       1000.0
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       250.0,
+       500.0,
+       1000.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "written_premium": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       92.58,
+       119.05,
+       170.74,
+       216.66,
+       294.06,
+       1050.9175,
+       1906.9125
+      ],
+      "q_new": [
+       92.58,
+       119.05,
+       170.74,
+       216.66,
+       294.06,
+       1050.9175,
+       1906.9125
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     }
+    },
+    "detectors": {
+     "exposure_above_1": 3044,
+     "exposure_equals_day_count": 656,
+     "exposure_zero_or_less": 0,
+     "sum_insured_above_10x_ref_p99": 1693,
+     "row_id_lengths": {
+      "9": 707726
+     },
+     "policy_id_lengths": {
+      "9": 707726
+     },
+     "customer_id_lengths": {
+      "8": 707726
+     },
+     "address_id_lengths": {
+      "8": 707726
+     },
+     "duplicated_row_id": 0,
+     "post_event_columns_present": [
+      "renewal_decision",
+      "customer_service_contacts"
+     ],
+     "construction_type_undocumented": {}
+    },
+    "detectors_ref": {
+     "exposure_above_1": 3044,
+     "exposure_equals_day_count": 656,
+     "exposure_zero_or_less": 0,
+     "sum_insured_above_10x_ref_p99": 1395,
+     "row_id_lengths": {
+      "9": 707726
+     },
+     "policy_id_lengths": {
+      "9": 707726
+     },
+     "customer_id_lengths": {
+      "8": 707726
+     },
+     "address_id_lengths": {
+      "8": 707726
+     },
+     "duplicated_row_id": 0,
+     "post_event_columns_present": [
+      "renewal_decision",
+      "customer_service_contacts"
+     ],
+     "construction_type_undocumented": {}
+    }
+   },
+   "policies_contents": {
+    "rows_ref": 721617,
+    "rows_new": 721617,
+    "schema": {
+     "added": [],
+     "removed": [],
+     "retyped": {}
+    },
+    "shifts": {
+     "accidental_damage_cover": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "False": [
+        0.5505,
+        0.5505
+       ],
+       "True": [
+        0.4495,
+        0.4495
+       ]
+      }
+     },
+     "bicycle_cover": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "False": [
+        0.8506,
+        0.8506
+       ],
+       "True": [
+        0.1494,
+        0.1494
+       ]
+      }
+     },
+     "channel": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 3,
+      "n_levels_new": 3,
+      "largest_moves": {
+       "direct": [
+        0.3983,
+        0.3983
+       ],
+       "comparison_site": [
+        0.3504,
+        0.3504
+       ],
+       "broker": [
+        0.2513,
+        0.2513
+       ]
+      }
+     },
+     "compulsory_excess": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       350.0,
+       350.0,
+       350.0,
+       350.0,
+       350.0,
+       350.0,
+       350.0
+      ],
+      "q_new": [
+       350.0,
+       350.0,
+       350.0,
+       350.0,
+       350.0,
+       350.0,
+       350.0
+      ]
+     },
+     "customer_service_contacts": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       1.0,
+       2.0,
+       4.0
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       1.0,
+       2.0,
+       4.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "days_quote_to_inception": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       4.0,
+       13.0,
+       22.0,
+       29.0,
+       30.0
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       4.0,
+       13.0,
+       22.0,
+       29.0,
+       30.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "discount_applied": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.05,
+       0.1,
+       0.1
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.05,
+       0.1,
+       0.1
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "exposure": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0247,
+       0.1233,
+       0.6986,
+       1.0,
+       1.0,
+       1.0,
+       1.0
+      ],
+      "q_new": [
+       0.0247,
+       0.1233,
+       0.6986,
+       1.0,
+       1.0,
+       1.0,
+       1.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "high_value_items": {
+      "kind": "number",
+      "blank_ref": 0.025065928324859307,
+      "blank_new": 0.025065928324859307,
+      "q_ref": [
+       0.0,
+       0.0,
+       0.0,
+       1.0,
+       2.0,
+       5.0,
+       5.0
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       0.0,
+       1.0,
+       2.0,
+       5.0,
+       5.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "lodgers": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "False": [
+        0.9502,
+        0.9502
+       ],
+       "True": [
+        0.0498,
+        0.0498
+       ]
+      }
+     },
+     "missed_payments_12m": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       1.0,
+       2.0
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       1.0,
+       2.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "new_business": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "False": [
+        0.8542,
+        0.8542
+       ],
+       "True": [
+        0.1458,
+        0.1458
+       ]
+      }
+     },
+     "payment_method": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "annual": [
+        0.5491,
+        0.5491
+       ],
+       "monthly": [
+        0.4509,
+        0.4509
+       ]
+      }
+     },
+     "period_end": {
+      "kind": "date",
+      "min_ref": "2021-01-01 00:00:00",
+      "max_ref": "2024-12-30 00:00:00",
+      "min_new": "2021-01-01 00:00:00",
+      "max_new": "2024-12-30 00:00:00"
+     },
+     "period_start": {
+      "kind": "date",
+      "min_ref": "2021-01-01 00:00:00",
+      "max_ref": "2024-12-29 00:00:00",
+      "min_new": "2021-01-01 00:00:00",
+      "max_new": "2024-12-29 00:00:00"
+     },
+     "policyholder_age": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       18.0,
+       20.0,
+       30.0,
+       49.0,
+       69.0,
+       85.0,
+       89.0
+      ],
+      "q_new": [
+       18.0,
+       20.0,
+       30.0,
+       49.0,
+       69.0,
+       85.0,
+       89.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "renewal_count": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       1.0,
+       6.0,
+       11.0,
+       16.0,
+       17.0
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       1.0,
+       6.0,
+       11.0,
+       16.0,
+       17.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "renewal_decision": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 5,
+      "n_levels_new": 5,
+      "largest_moves": {
+       "renewed": [
+        0.8302,
+        0.8302
+       ],
+       "lapsed_by_customer": [
+        0.075,
+        0.075
+       ],
+       "mid_term_change": [
+        0.0561,
+        0.0561
+       ],
+       "cancelled": [
+        0.0375,
+        0.0375
+       ],
+       "declined_by_insurer": [
+        0.0012,
+        0.0012
+       ]
+      }
+     },
+     "security_level": {
+      "kind": "category",
+      "blank_ref": 0.025064542548193847,
+      "blank_new": 0.025064542548193847,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 4,
+      "n_levels_new": 4,
+      "largest_moves": {
+       "standard": [
+        0.342,
+        0.342
+       ],
+       "alarm_and_locks": [
+        0.3405,
+        0.3405
+       ],
+       "locks": [
+        0.2924,
+        0.2924
+       ],
+       "(blank)": [
+        0.0251,
+        0.0251
+       ]
+      }
+     },
+     "sum_insured": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       10900.0,
+       15300.0,
+       26600.0,
+       39000.0,
+       54600.0,
+       85000.0,
+       117100.0
+      ],
+      "q_new": [
+       10900.0,
+       15300.0,
+       26600.0,
+       39000.0,
+       54600.0,
+       85000.0,
+       117100.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "tenure": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "owner": [
+        0.6998,
+        0.6998
+       ],
+       "renter": [
+        0.3002,
+        0.3002
+       ]
+      }
+     },
+     "voluntary_excess": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       0.0,
+       250.0,
+       250.0,
+       1000.0,
+       1000.0
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       0.0,
+       250.0,
+       250.0,
+       1000.0,
+       1000.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "works_from_home": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "False": [
+        0.7493,
+        0.7493
+       ],
+       "True": [
+        0.2507,
+        0.2507
+       ]
+      }
+     },
+     "written_premium": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       48.94,
+       63.58,
+       96.02,
+       127.48,
+       165.7,
+       237.68,
+       305.31
+      ],
+      "q_new": [
+       48.94,
+       63.58,
+       96.02,
+       127.48,
+       165.7,
+       237.68,
+       305.31
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     }
+    },
+    "detectors": {
+     "exposure_above_1": 3088,
+     "exposure_equals_day_count": 729,
+     "exposure_zero_or_less": 0,
+     "sum_insured_above_10x_ref_p99": 1402,
+     "row_id_lengths": {
+      "9": 721617
+     },
+     "policy_id_lengths": {
+      "9": 721617
+     },
+     "customer_id_lengths": {
+      "8": 721512,
+      "7": 99,
+      "6": 6
+     },
+     "address_id_lengths": {
+      "8": 721617
+     },
+     "duplicated_row_id": 0,
+     "post_event_columns_present": [
+      "renewal_decision",
+      "customer_service_contacts"
+     ]
+    },
+    "detectors_ref": {
+     "exposure_above_1": 3088,
+     "exposure_equals_day_count": 729,
+     "exposure_zero_or_less": 0,
+     "sum_insured_above_10x_ref_p99": 1402,
+     "row_id_lengths": {
+      "9": 721617
+     },
+     "policy_id_lengths": {
+      "9": 721617
+     },
+     "customer_id_lengths": {
+      "8": 721617
+     },
+     "address_id_lengths": {
+      "8": 721617
+     },
+     "duplicated_row_id": 0,
+     "post_event_columns_present": [
+      "renewal_decision",
+      "customer_service_contacts"
+     ]
+    }
+   },
+   "policies_motor": {
+    "rows_ref": 979968,
+    "rows_new": 979968,
+    "schema": {
+     "added": [],
+     "removed": [],
+     "retyped": {}
+    },
+    "shifts": {
+     "annual_mileage": {
+      "kind": "number",
+      "blank_ref": 0.025216129506269593,
+      "blank_new": 0.025216129506269593,
+      "q_ref": [
+       0.0,
+       5000.0,
+       9500.0,
+       10000.0,
+       15000.0,
+       20000.0,
+       30000.0
+      ],
+      "q_new": [
+       0.0,
+       5000.0,
+       9500.0,
+       10000.0,
+       15000.0,
+       20000.0,
+       30000.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "body_type": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 5,
+      "n_levels_new": 5,
+      "largest_moves": {
+       "hatchback": [
+        0.3787,
+        0.3787
+       ],
+       "saloon": [
+        0.2111,
+        0.2111
+       ],
+       "suv": [
+        0.2108,
+        0.2108
+       ],
+       "estate": [
+        0.1233,
+        0.1233
+       ],
+       "coupe": [
+        0.0761,
+        0.0761
+       ]
+      }
+     },
+     "channel": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 3,
+      "n_levels_new": 3,
+      "largest_moves": {
+       "direct": [
+        0.4008,
+        0.4008
+       ],
+       "comparison_site": [
+        0.3498,
+        0.3498
+       ],
+       "broker": [
+        0.2494,
+        0.2494
+       ]
+      }
+     },
+     "compulsory_excess": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       250.0,
+       250.0,
+       250.0,
+       250.0,
+       250.0,
+       250.0,
+       250.0
+      ],
+      "q_new": [
+       250.0,
+       250.0,
+       250.0,
+       250.0,
+       250.0,
+       250.0,
+       250.0
+      ]
+     },
+     "cover_type": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 3,
+      "n_levels_new": 3,
+      "largest_moves": {
+       "comprehensive": [
+        0.8191,
+        0.8191
+       ],
+       "third_party_fire_theft": [
+        0.0909,
+        0.0909
+       ],
+       "third_party_only": [
+        0.09,
+        0.09
+       ]
+      }
+     },
+     "customer_service_contacts": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       1.0,
+       3.0,
+       6.0
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       1.0,
+       3.0,
+       6.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "days_quote_to_inception": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       4.0,
+       13.0,
+       22.0,
+       29.0,
+       30.0
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       4.0,
+       13.0,
+       22.0,
+       29.0,
+       30.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "discount_applied": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.05,
+       0.1,
+       0.1
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.05,
+       0.1,
+       0.1
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "driver_age": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       18.0,
+       20.0,
+       30.0,
+       50.0,
+       69.0,
+       85.0,
+       89.0
+      ],
+      "q_new": [
+       18.0,
+       20.0,
+       30.0,
+       50.0,
+       69.0,
+       85.0,
+       89.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "driver_assist": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "False": [
+        0.6988,
+        0.6988
+       ],
+       "True": [
+        0.3012,
+        0.3012
+       ]
+      }
+     },
+     "engine_size_cc": {
+      "kind": "number",
+      "blank_ref": 0.02519878200104493,
+      "blank_new": 0.02519878200104493,
+      "q_ref": [
+       1100.0,
+       1400.0,
+       1800.0,
+       2100.0,
+       2400.0,
+       2800.0,
+       3100.0
+      ],
+      "q_new": [
+       1100.0,
+       1400.0,
+       1800.0,
+       2100.0,
+       2400.0,
+       2800.0,
+       3100.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "exposure": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0219,
+       0.1096,
+       0.6384,
+       1.0,
+       1.0,
+       1.0,
+       1.0
+      ],
+      "q_new": [
+       0.0219,
+       0.1096,
+       0.6384,
+       1.0,
+       1.0,
+       1.0,
+       1.0
+      ],
+      "psi": 1.346284957076696e-07,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "fuel_type": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 4,
+      "n_levels_new": 4,
+      "largest_moves": {
+       "petrol": [
+        0.5057,
+        0.5057
+       ],
+       "diesel": [
+        0.276,
+        0.276
+       ],
+       "hybrid": [
+        0.1378,
+        0.1378
+       ],
+       "electric": [
+        0.0805,
+        0.0805
+       ]
+      }
+     },
+     "missed_payments_12m": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       1.0,
+       2.0
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       1.0,
+       2.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "named_young_driver": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "False": [
+        0.9466,
+        0.9466
+       ],
+       "True": [
+        0.0534,
+        0.0534
+       ]
+      }
+     },
+     "ncb_years": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       3.0,
+       7.0,
+       12.0,
+       15.0,
+       15.0
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       3.0,
+       7.0,
+       12.0,
+       15.0,
+       15.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "new_business": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "False": [
+        0.8546,
+        0.8546
+       ],
+       "True": [
+        0.1454,
+        0.1454
+       ]
+      }
+     },
+     "overnight_parking": {
+      "kind": "category",
+      "blank_ref": 0.024869179401776385,
+      "blank_new": 0.024869179401776385,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 4,
+      "n_levels_new": 4,
+      "largest_moves": {
+       "driveway": [
+        0.4886,
+        0.4886
+       ],
+       "street": [
+        0.2922,
+        0.2922
+       ],
+       "garage": [
+        0.1943,
+        0.1943
+       ],
+       "(blank)": [
+        0.0249,
+        0.0249
+       ]
+      }
+     },
+     "payment_method": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "annual": [
+        0.5489,
+        0.5489
+       ],
+       "monthly": [
+        0.4511,
+        0.4511
+       ]
+      }
+     },
+     "period_end": {
+      "kind": "date",
+      "min_ref": "2021-01-01 00:00:00",
+      "max_ref": "2024-12-30 00:00:00",
+      "min_new": "2021-01-01 00:00:00",
+      "max_new": "2024-12-30 00:00:00"
+     },
+     "period_start": {
+      "kind": "date",
+      "min_ref": "2021-01-01 00:00:00",
+      "max_ref": "2024-12-29 00:00:00",
+      "min_new": "2021-01-01 00:00:00",
+      "max_new": "2024-12-29 00:00:00"
+     },
+     "renewal_count": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       1.0,
+       6.0,
+       11.0,
+       16.0,
+       17.0
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       1.0,
+       6.0,
+       11.0,
+       16.0,
+       17.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "renewal_decision": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 5,
+      "n_levels_new": 5,
+      "largest_moves": {
+       "renewed": [
+        0.8096,
+        0.8096
+       ],
+       "mid_term_change": [
+        0.074,
+        0.074
+       ],
+       "lapsed_by_customer": [
+        0.0731,
+        0.0731
+       ],
+       "cancelled": [
+        0.0367,
+        0.0367
+       ],
+       "declined_by_insurer": [
+        0.0065,
+        0.0065
+       ]
+      }
+     },
+     "seats": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       2.0,
+       4.0,
+       5.0,
+       5.0,
+       5.0,
+       7.0,
+       7.0
+      ],
+      "q_new": [
+       2.0,
+       4.0,
+       5.0,
+       5.0,
+       5.0,
+       7.0,
+       7.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "telematics_opt_in": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "False": [
+        0.8758,
+        0.8758
+       ],
+       "True": [
+        0.1242,
+        0.1242
+       ]
+      }
+     },
+     "telematics_score": {
+      "kind": "number",
+      "blank_ref": 0.8757663515543365,
+      "blank_new": 0.8757663515543365,
+      "q_ref": [
+       25.0,
+       35.0,
+       50.0,
+       60.0,
+       70.0,
+       85.0,
+       95.0
+      ],
+      "q_new": [
+       25.0,
+       35.0,
+       50.0,
+       60.0,
+       70.0,
+       85.0,
+       95.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "transmission": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "manual": [
+        0.549,
+        0.549
+       ],
+       "automatic": [
+        0.451,
+        0.451
+       ]
+      }
+     },
+     "vehicle_age": {
+      "kind": "number",
+      "blank_ref": 0.024926324124869382,
+      "blank_new": 0.024926324124869382,
+      "q_ref": [
+       1.0,
+       2.0,
+       5.0,
+       7.0,
+       10.0,
+       16.0,
+       22.0
+      ],
+      "q_new": [
+       1.0,
+       2.0,
+       5.0,
+       7.0,
+       10.0,
+       16.0,
+       22.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "vehicle_colour": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 8,
+      "n_levels_new": 8,
+      "largest_moves": {
+       "grey": [
+        0.1258,
+        0.1258
+       ],
+       "silver": [
+        0.1257,
+        0.1257
+       ],
+       "black": [
+        0.125,
+        0.125
+       ],
+       "red": [
+        0.125,
+        0.125
+       ],
+       "green": [
+        0.1249,
+        0.1249
+       ]
+      }
+     },
+     "vehicle_use": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 3,
+      "n_levels_new": 3,
+      "largest_moves": {
+       "social": [
+        0.4516,
+        0.4516
+       ],
+       "commuting": [
+        0.4495,
+        0.4495
+       ],
+       "business": [
+        0.0988,
+        0.0988
+       ]
+      }
+     },
+     "vehicle_value_group": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       2.0,
+       5.0,
+       8.0,
+       11.0,
+       14.0,
+       17.0,
+       19.0
+      ],
+      "q_new": [
+       2.0,
+       5.0,
+       8.0,
+       11.0,
+       14.0,
+       17.0,
+       19.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "voluntary_excess": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       0.0,
+       250.0,
+       500.0,
+       1000.0,
+       1000.0
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       0.0,
+       250.0,
+       500.0,
+       1000.0,
+       1000.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "written_premium": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       261.8867,
+       317.34,
+       403.18,
+       479.54,
+       600.95,
+       1181.22,
+       1511.0233
+      ],
+      "q_new": [
+       261.8867,
+       317.34,
+       403.18,
+       479.54,
+       600.95,
+       1181.22,
+       1511.0233
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "years_licensed": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       1.0,
+       9.0,
+       28.0,
+       48.0,
+       64.0,
+       69.0
+      ],
+      "q_new": [
+       0.0,
+       1.0,
+       9.0,
+       28.0,
+       48.0,
+       64.0,
+       69.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     }
+    },
+    "detectors": {
+     "exposure_above_1": 4489,
+     "exposure_equals_day_count": 1434,
+     "exposure_zero_or_less": 0,
+     "row_id_lengths": {
+      "9": 979968
+     },
+     "policy_id_lengths": {
+      "9": 979968
+     },
+     "customer_id_lengths": "7 different lengths",
+     "address_id_lengths": {
+      "8": 979968
+     },
+     "duplicated_row_id": 0,
+     "post_event_columns_present": [
+      "renewal_decision",
+      "customer_service_contacts"
+     ]
+    },
+    "detectors_ref": {
+     "exposure_above_1": 3991,
+     "exposure_equals_day_count": 934,
+     "exposure_zero_or_less": 0,
+     "row_id_lengths": {
+      "9": 979968
+     },
+     "policy_id_lengths": {
+      "9": 979968
+     },
+     "customer_id_lengths": "7 different lengths",
+     "address_id_lengths": {
+      "8": 979968
+     },
+     "duplicated_row_id": 0,
+     "post_event_columns_present": [
+      "renewal_decision",
+      "customer_service_contacts"
+     ]
+    }
+   },
+   "sample_submission": {
+    "rows_ref": 626639,
+    "rows_new": 626639,
+    "schema": {
+     "added": [],
+     "removed": [],
+     "retyped": {}
+    },
+    "shifts": {
+     "prediction": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     }
+    },
+    "detectors": {
+     "row_id_lengths": {
+      "9": 626639
+     },
+     "duplicated_row_id": 0,
+     "post_event_columns_present": []
+    },
+    "detectors_ref": {
+     "row_id_lengths": {
+      "9": 626639
+     },
+     "duplicated_row_id": 0,
+     "post_event_columns_present": []
+    }
+   },
+   "test_buildings": {
+    "rows_ref": 184155,
+    "rows_new": 184155,
+    "schema": {
+     "added": [],
+     "removed": [],
+     "retyped": {}
+    },
+    "shifts": {
+     "accidental_damage_cover": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "False": [
+        0.6004,
+        0.6004
+       ],
+       "True": [
+        0.3996,
+        0.3996
+       ]
+      }
+     },
+     "channel": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 3,
+      "n_levels_new": 3,
+      "largest_moves": {
+       "direct": [
+        0.3997,
+        0.3997
+       ],
+       "comparison_site": [
+        0.3501,
+        0.3501
+       ],
+       "broker": [
+        0.2502,
+        0.2502
+       ]
+      }
+     },
+     "compulsory_excess": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       350.0,
+       350.0,
+       350.0,
+       350.0,
+       350.0,
+       350.0,
+       350.0
+      ],
+      "q_new": [
+       350.0,
+       350.0,
+       350.0,
+       350.0,
+       350.0,
+       350.0,
+       350.0
+      ]
+     },
+     "construction_type": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 9,
+      "n_levels_new": 9,
+      "largest_moves": {
+       "Brick": [
+        0.6429,
+        0.6429
+       ],
+       "W": [
+        0.1146,
+        0.1146
+       ],
+       "non_standard": [
+        0.0968,
+        0.0968
+       ],
+       "stone": [
+        0.0778,
+        0.0778
+       ],
+       "brick": [
+        0.0351,
+        0.0351
+       ]
+      }
+     },
+     "customer_service_contacts": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       1.0,
+       2.0,
+       2.0
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       1.0,
+       2.0,
+       2.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "days_quote_to_inception": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       4.0,
+       13.0,
+       22.0,
+       29.0,
+       30.0
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       4.0,
+       13.0,
+       22.0,
+       29.0,
+       30.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "days_unoccupied": {
+      "kind": "number",
+      "blank_ref": 0.024902935027558307,
+      "blank_new": 0.024902935027558307,
+      "q_ref": [
+       0.0,
+       0.0,
+       3.0,
+       7.0,
+       11.0,
+       14.0,
+       102.0
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       3.0,
+       7.0,
+       11.0,
+       14.0,
+       102.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "discount_applied": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.05,
+       0.1,
+       0.1
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.05,
+       0.1,
+       0.1
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "exposure": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0247,
+       0.126,
+       0.6849,
+       1.0,
+       1.0,
+       1.0,
+       1.0
+      ],
+      "q_new": [
+       0.0247,
+       0.126,
+       0.6849,
+       1.0,
+       1.0,
+       1.0,
+       1.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "missed_payments_12m": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       1.0,
+       2.0
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       1.0,
+       2.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "mortgage": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "True": [
+        0.5505,
+        0.5505
+       ],
+       "False": [
+        0.4495,
+        0.4495
+       ]
+      }
+     },
+     "new_business": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "False": [
+        0.8485,
+        0.8485
+       ],
+       "True": [
+        0.1515,
+        0.1515
+       ]
+      }
+     },
+     "occupancy": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "owner_occupied": [
+        0.9009,
+        0.9009
+       ],
+       "let": [
+        0.0991,
+        0.0991
+       ]
+      }
+     },
+     "payment_method": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "annual": [
+        0.5474,
+        0.5474
+       ],
+       "monthly": [
+        0.4526,
+        0.4526
+       ]
+      }
+     },
+     "period_end": {
+      "kind": "date",
+      "min_ref": "2025-01-01 00:00:00",
+      "max_ref": "2025-12-31 00:00:00",
+      "min_new": "2025-01-01 00:00:00",
+      "max_new": "2025-12-31 00:00:00"
+     },
+     "period_start": {
+      "kind": "date",
+      "min_ref": "2025-01-01 00:00:00",
+      "max_ref": "2025-12-30 00:00:00",
+      "min_new": "2025-01-01 00:00:00",
+      "max_new": "2025-12-30 00:00:00"
+     },
+     "policyholder_age": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       19.0,
+       21.0,
+       29.0,
+       48.0,
+       70.0,
+       87.0,
+       91.0
+      ],
+      "q_new": [
+       19.0,
+       21.0,
+       29.0,
+       48.0,
+       70.0,
+       87.0,
+       91.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "renewal_count": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       1.0,
+       3.0,
+       10.0,
+       18.0,
+       19.0
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       1.0,
+       3.0,
+       10.0,
+       18.0,
+       19.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "smoke_alarms": {
+      "kind": "category",
+      "blank_ref": 0.024989818359534087,
+      "blank_new": 0.024989818359534087,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 3,
+      "n_levels_new": 3,
+      "largest_moves": {
+       "True": [
+        0.8281,
+        0.8281
+       ],
+       "False": [
+        0.1469,
+        0.1469
+       ],
+       "(blank)": [
+        0.025,
+        0.025
+       ]
+      }
+     },
+     "sum_insured": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       74000.0,
+       102000.0,
+       180000.0,
+       240000.0,
+       310000.0,
+       432000.0,
+       550000.0
+      ],
+      "q_new": [
+       74000.0,
+       102000.0,
+       180000.0,
+       240000.0,
+       310000.0,
+       432000.0,
+       550000.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "voluntary_excess": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       0.0,
+       250.0,
+       250.0,
+       500.0,
+       1000.0
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       0.0,
+       250.0,
+       250.0,
+       500.0,
+       1000.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "written_premium": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       107.77,
+       138.07,
+       197.05,
+       248.85,
+       336.52,
+       1185.086,
+       2008.7724
+      ],
+      "q_new": [
+       107.77,
+       138.07,
+       197.05,
+       248.85,
+       336.52,
+       1185.086,
+       2008.7724
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     }
+    },
+    "detectors": {
+     "exposure_above_1": 0,
+     "exposure_equals_day_count": 0,
+     "exposure_zero_or_less": 0,
+     "sum_insured_above_10x_ref_p99": 370,
+     "row_id_lengths": {
+      "9": 184155
+     },
+     "policy_id_lengths": {
+      "9": 184155
+     },
+     "customer_id_lengths": {
+      "8": 184155
+     },
+     "address_id_lengths": {
+      "8": 184155
+     },
+     "duplicated_row_id": 0,
+     "post_event_columns_present": [
+      "customer_service_contacts"
+     ],
+     "construction_type_undocumented": {}
+    },
+    "detectors_ref": {
+     "exposure_above_1": 0,
+     "exposure_equals_day_count": 0,
+     "exposure_zero_or_less": 0,
+     "sum_insured_above_10x_ref_p99": 370,
+     "row_id_lengths": {
+      "9": 184155
+     },
+     "policy_id_lengths": {
+      "9": 184155
+     },
+     "customer_id_lengths": {
+      "8": 184155
+     },
+     "address_id_lengths": {
+      "8": 184155
+     },
+     "duplicated_row_id": 0,
+     "post_event_columns_present": [
+      "customer_service_contacts"
+     ],
+     "construction_type_undocumented": {}
+    }
+   },
+   "test_contents": {
+    "rows_ref": 187498,
+    "rows_new": 187498,
+    "schema": {
+     "added": [],
+     "removed": [],
+     "retyped": {}
+    },
+    "shifts": {
+     "accidental_damage_cover": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "False": [
+        0.55,
+        0.55
+       ],
+       "True": [
+        0.45,
+        0.45
+       ]
+      }
+     },
+     "bicycle_cover": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "False": [
+        0.8504,
+        0.8504
+       ],
+       "True": [
+        0.1496,
+        0.1496
+       ]
+      }
+     },
+     "channel": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 3,
+      "n_levels_new": 3,
+      "largest_moves": {
+       "direct": [
+        0.3994,
+        0.3994
+       ],
+       "comparison_site": [
+        0.3497,
+        0.3497
+       ],
+       "broker": [
+        0.2509,
+        0.2509
+       ]
+      }
+     },
+     "compulsory_excess": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       350.0,
+       350.0,
+       350.0,
+       350.0,
+       350.0,
+       350.0,
+       350.0
+      ],
+      "q_new": [
+       350.0,
+       350.0,
+       350.0,
+       350.0,
+       350.0,
+       350.0,
+       350.0
+      ]
+     },
+     "customer_service_contacts": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       1.0,
+       2.0,
+       2.0
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       1.0,
+       2.0,
+       2.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "days_quote_to_inception": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       4.0,
+       13.0,
+       22.0,
+       29.0,
+       30.0
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       4.0,
+       13.0,
+       22.0,
+       29.0,
+       30.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "discount_applied": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.05,
+       0.1,
+       0.1
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.05,
+       0.1,
+       0.1
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "exposure": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0219,
+       0.1123,
+       0.6301,
+       1.0,
+       1.0,
+       1.0,
+       1.0
+      ],
+      "q_new": [
+       0.0219,
+       0.1123,
+       0.6301,
+       1.0,
+       1.0,
+       1.0,
+       1.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "high_value_items": {
+      "kind": "number",
+      "blank_ref": 0.02510426777885631,
+      "blank_new": 0.02510426777885631,
+      "q_ref": [
+       0.0,
+       0.0,
+       0.0,
+       1.0,
+       2.0,
+       5.0,
+       5.0
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       0.0,
+       1.0,
+       2.0,
+       5.0,
+       5.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "lodgers": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "False": [
+        0.9508,
+        0.9508
+       ],
+       "True": [
+        0.0492,
+        0.0492
+       ]
+      }
+     },
+     "missed_payments_12m": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       1.0,
+       2.0
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       1.0,
+       2.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "new_business": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "False": [
+        0.8484,
+        0.8484
+       ],
+       "True": [
+        0.1516,
+        0.1516
+       ]
+      }
+     },
+     "payment_method": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "annual": [
+        0.5483,
+        0.5483
+       ],
+       "monthly": [
+        0.4517,
+        0.4517
+       ]
+      }
+     },
+     "period_end": {
+      "kind": "date",
+      "min_ref": "2025-01-01 00:00:00",
+      "max_ref": "2025-12-31 00:00:00",
+      "min_new": "2025-01-01 00:00:00",
+      "max_new": "2025-12-31 00:00:00"
+     },
+     "period_start": {
+      "kind": "date",
+      "min_ref": "2025-01-01 00:00:00",
+      "max_ref": "2025-12-30 00:00:00",
+      "min_new": "2025-01-01 00:00:00",
+      "max_new": "2025-12-30 00:00:00"
+     },
+     "policyholder_age": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       19.0,
+       21.0,
+       29.0,
+       48.0,
+       70.0,
+       87.0,
+       91.0
+      ],
+      "q_new": [
+       19.0,
+       21.0,
+       29.0,
+       48.0,
+       70.0,
+       87.0,
+       91.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "renewal_count": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       1.0,
+       3.0,
+       10.0,
+       18.0,
+       19.0
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       1.0,
+       3.0,
+       10.0,
+       18.0,
+       19.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "security_level": {
+      "kind": "category",
+      "blank_ref": 0.024944266072171435,
+      "blank_new": 0.024944266072171435,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 4,
+      "n_levels_new": 4,
+      "largest_moves": {
+       "standard": [
+        0.3414,
+        0.3414
+       ],
+       "alarm_and_locks": [
+        0.3403,
+        0.3403
+       ],
+       "locks": [
+        0.2934,
+        0.2934
+       ],
+       "(blank)": [
+        0.0249,
+        0.0249
+       ]
+      }
+     },
+     "sum_insured": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       11500.0,
+       16000.0,
+       27900.0,
+       40900.0,
+       57300.0,
+       89100.0,
+       122300.0
+      ],
+      "q_new": [
+       11500.0,
+       16000.0,
+       27900.0,
+       40900.0,
+       57300.0,
+       89100.0,
+       122300.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "tenure": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "owner": [
+        0.6995,
+        0.6995
+       ],
+       "renter": [
+        0.3005,
+        0.3005
+       ]
+      }
+     },
+     "voluntary_excess": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       0.0,
+       250.0,
+       250.0,
+       500.0,
+       1000.0
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       0.0,
+       250.0,
+       250.0,
+       500.0,
+       1000.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "works_from_home": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "False": [
+        0.749,
+        0.749
+       ],
+       "True": [
+        0.251,
+        0.251
+       ]
+      }
+     },
+     "written_premium": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       55.9897,
+       72.73,
+       109.5025,
+       145.08,
+       188.19,
+       268.63,
+       343.4203
+      ],
+      "q_new": [
+       55.9897,
+       72.73,
+       109.5025,
+       145.08,
+       188.19,
+       268.63,
+       343.4203
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     }
+    },
+    "detectors": {
+     "exposure_above_1": 0,
+     "exposure_equals_day_count": 0,
+     "exposure_zero_or_less": 0,
+     "sum_insured_above_10x_ref_p99": 360,
+     "row_id_lengths": {
+      "9": 187498
+     },
+     "policy_id_lengths": {
+      "9": 187498
+     },
+     "customer_id_lengths": {
+      "8": 187498
+     },
+     "address_id_lengths": {
+      "8": 187498
+     },
+     "duplicated_row_id": 0,
+     "post_event_columns_present": [
+      "customer_service_contacts"
+     ]
+    },
+    "detectors_ref": {
+     "exposure_above_1": 0,
+     "exposure_equals_day_count": 0,
+     "exposure_zero_or_less": 0,
+     "sum_insured_above_10x_ref_p99": 360,
+     "row_id_lengths": {
+      "9": 187498
+     },
+     "policy_id_lengths": {
+      "9": 187498
+     },
+     "customer_id_lengths": {
+      "8": 187498
+     },
+     "address_id_lengths": {
+      "8": 187498
+     },
+     "duplicated_row_id": 0,
+     "post_event_columns_present": [
+      "customer_service_contacts"
+     ]
+    }
+   },
+   "test_motor": {
+    "rows_ref": 254986,
+    "rows_new": 254986,
+    "schema": {
+     "added": [],
+     "removed": [
+      "telematics_score"
+     ],
+     "retyped": {}
+    },
+    "shifts": {
+     "annual_mileage": {
+      "kind": "number",
+      "blank_ref": 0.02459350709450715,
+      "blank_new": 0.02459350709450715,
+      "q_ref": [
+       0.0,
+       5000.0,
+       9500.0,
+       10000.0,
+       15000.0,
+       20000.0,
+       30000.0
+      ],
+      "q_new": [
+       0.0,
+       5000.0,
+       9500.0,
+       10000.0,
+       15000.0,
+       20000.0,
+       30000.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "body_type": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 5,
+      "n_levels_new": 5,
+      "largest_moves": {
+       "hatchback": [
+        0.3912,
+        0.3912
+       ],
+       "suv": [
+        0.2044,
+        0.2044
+       ],
+       "saloon": [
+        0.2037,
+        0.2037
+       ],
+       "estate": [
+        0.1199,
+        0.1199
+       ],
+       "coupe": [
+        0.0808,
+        0.0808
+       ]
+      }
+     },
+     "channel": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 3,
+      "n_levels_new": 3,
+      "largest_moves": {
+       "direct": [
+        0.401,
+        0.401
+       ],
+       "comparison_site": [
+        0.3489,
+        0.3489
+       ],
+       "broker": [
+        0.2501,
+        0.2501
+       ]
+      }
+     },
+     "compulsory_excess": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       250.0,
+       250.0,
+       250.0,
+       250.0,
+       250.0,
+       250.0,
+       250.0
+      ],
+      "q_new": [
+       250.0,
+       250.0,
+       250.0,
+       250.0,
+       250.0,
+       250.0,
+       250.0
+      ]
+     },
+     "cover_type": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 3,
+      "n_levels_new": 3,
+      "largest_moves": {
+       "comprehensive": [
+        0.8139,
+        0.8139
+       ],
+       "third_party_fire_theft": [
+        0.0931,
+        0.0931
+       ],
+       "third_party_only": [
+        0.0931,
+        0.0931
+       ]
+      }
+     },
+     "customer_service_contacts": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       1.0,
+       2.0,
+       2.0
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       1.0,
+       2.0,
+       2.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "days_quote_to_inception": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       4.0,
+       13.0,
+       22.0,
+       29.0,
+       30.0
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       4.0,
+       13.0,
+       22.0,
+       29.0,
+       30.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "discount_applied": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.05,
+       0.1,
+       0.1
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.05,
+       0.1,
+       0.1
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "driver_age": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       19.0,
+       21.0,
+       29.0,
+       48.0,
+       70.0,
+       87.0,
+       91.0
+      ],
+      "q_new": [
+       19.0,
+       21.0,
+       29.0,
+       48.0,
+       70.0,
+       87.0,
+       91.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "driver_assist": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "False": [
+        0.6987,
+        0.6987
+       ],
+       "True": [
+        0.3013,
+        0.3013
+       ]
+      }
+     },
+     "engine_size_cc": {
+      "kind": "number",
+      "blank_ref": 0.02525628858054952,
+      "blank_new": 0.02525628858054952,
+      "q_ref": [
+       1100.0,
+       1400.0,
+       1800.0,
+       2100.0,
+       2400.0,
+       2800.0,
+       3100.0
+      ],
+      "q_new": [
+       1100.0,
+       1400.0,
+       1800.0,
+       2100.0,
+       2400.0,
+       2800.0,
+       3100.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "exposure": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0192,
+       0.0986,
+       0.5753,
+       1.0,
+       1.0,
+       1.0,
+       1.0
+      ],
+      "q_new": [
+       0.0192,
+       0.0986,
+       0.5753,
+       1.0,
+       1.0,
+       1.0,
+       1.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "fuel_type": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.10701634855156386,
+      "new_levels": [
+       "hydrogen"
+      ],
+      "vanished_levels": [],
+      "n_levels_ref": 4,
+      "n_levels_new": 5,
+      "largest_moves": {
+       "hydrogen": [
+        0.0,
+        0.0202
+       ],
+       "petrol": [
+        0.505,
+        0.4946
+       ],
+       "diesel": [
+        0.2762,
+        0.2708
+       ],
+       "hybrid": [
+        0.1384,
+        0.1357
+       ],
+       "electric": [
+        0.0804,
+        0.0787
+       ]
+      }
+     },
+     "missed_payments_12m": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       1.0,
+       2.0
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       1.0,
+       2.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "named_young_driver": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "False": [
+        0.9488,
+        0.9488
+       ],
+       "True": [
+        0.0512,
+        0.0512
+       ]
+      }
+     },
+     "ncb_years": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       1.0,
+       4.0,
+       8.0,
+       13.0,
+       15.0,
+       15.0
+      ],
+      "q_new": [
+       0.0,
+       1.0,
+       4.0,
+       8.0,
+       13.0,
+       15.0,
+       15.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "new_business": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "False": [
+        0.8475,
+        0.8475
+       ],
+       "True": [
+        0.1525,
+        0.1525
+       ]
+      }
+     },
+     "overnight_parking": {
+      "kind": "category",
+      "blank_ref": 0.025091573655024197,
+      "blank_new": 0.025091573655024197,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 4,
+      "n_levels_new": 4,
+      "largest_moves": {
+       "driveway": [
+        0.4868,
+        0.4868
+       ],
+       "street": [
+        0.2937,
+        0.2937
+       ],
+       "garage": [
+        0.1944,
+        0.1944
+       ],
+       "(blank)": [
+        0.0251,
+        0.0251
+       ]
+      }
+     },
+     "payment_method": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "annual": [
+        0.5489,
+        0.5489
+       ],
+       "monthly": [
+        0.4511,
+        0.4511
+       ]
+      }
+     },
+     "period_end": {
+      "kind": "date",
+      "min_ref": "2025-01-01 00:00:00",
+      "max_ref": "2025-12-31 00:00:00",
+      "min_new": "2025-01-01 00:00:00",
+      "max_new": "2025-12-31 00:00:00"
+     },
+     "period_start": {
+      "kind": "date",
+      "min_ref": "2025-01-01 00:00:00",
+      "max_ref": "2025-12-30 00:00:00",
+      "min_new": "2025-01-01 00:00:00",
+      "max_new": "2025-12-30 00:00:00"
+     },
+     "renewal_count": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       1.0,
+       3.0,
+       10.0,
+       18.0,
+       19.0
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       1.0,
+       3.0,
+       10.0,
+       18.0,
+       19.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "seats": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       2.0,
+       2.0,
+       5.0,
+       5.0,
+       5.0,
+       7.0,
+       7.0
+      ],
+      "q_new": [
+       2.0,
+       2.0,
+       5.0,
+       5.0,
+       5.0,
+       7.0,
+       7.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "telematics_opt_in": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "False": [
+        0.8672,
+        0.8672
+       ],
+       "True": [
+        0.1328,
+        0.1328
+       ]
+      }
+     },
+     "transmission": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "manual": [
+        0.5497,
+        0.5497
+       ],
+       "automatic": [
+        0.4503,
+        0.4503
+       ]
+      }
+     },
+     "vehicle_age": {
+      "kind": "number",
+      "blank_ref": 0.02476998737185571,
+      "blank_new": 0.02476998737185571,
+      "q_ref": [
+       2.0,
+       3.0,
+       6.0,
+       9.0,
+       12.0,
+       18.0,
+       23.0
+      ],
+      "q_new": [
+       2.0,
+       3.0,
+       6.0,
+       9.0,
+       12.0,
+       18.0,
+       23.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "vehicle_colour": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 8,
+      "n_levels_new": 8,
+      "largest_moves": {
+       "grey": [
+        0.1256,
+        0.1256
+       ],
+       "silver": [
+        0.1254,
+        0.1254
+       ],
+       "green": [
+        0.1253,
+        0.1253
+       ],
+       "red": [
+        0.1252,
+        0.1252
+       ],
+       "white": [
+        0.1249,
+        0.1249
+       ]
+      }
+     },
+     "vehicle_use": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 3,
+      "n_levels_new": 3,
+      "largest_moves": {
+       "social": [
+        0.4517,
+        0.4517
+       ],
+       "commuting": [
+        0.4489,
+        0.4489
+       ],
+       "business": [
+        0.0994,
+        0.0994
+       ]
+      }
+     },
+     "vehicle_value_group": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       2.0,
+       5.0,
+       8.0,
+       11.0,
+       14.0,
+       17.0,
+       19.0
+      ],
+      "q_new": [
+       2.0,
+       5.0,
+       8.0,
+       11.0,
+       14.0,
+       17.0,
+       19.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "voluntary_excess": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       0.0,
+       250.0,
+       500.0,
+       1000.0,
+       1000.0
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       0.0,
+       250.0,
+       500.0,
+       1000.0,
+       1000.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "written_premium": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       282.87,
+       345.02,
+       437.83,
+       516.92,
+       637.7475,
+       1263.59,
+       1619.936
+      ],
+      "q_new": [
+       282.87,
+       345.02,
+       437.83,
+       516.92,
+       637.7475,
+       1263.59,
+       1619.936
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "years_licensed": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       2.0,
+       8.0,
+       27.0,
+       49.0,
+       66.0,
+       71.0
+      ],
+      "q_new": [
+       0.0,
+       2.0,
+       8.0,
+       27.0,
+       49.0,
+       66.0,
+       71.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     }
+    },
+    "detectors": {
+     "exposure_above_1": 0,
+     "exposure_equals_day_count": 0,
+     "exposure_zero_or_less": 0,
+     "row_id_lengths": {
+      "9": 254986
+     },
+     "policy_id_lengths": {
+      "9": 254986
+     },
+     "customer_id_lengths": "7 different lengths",
+     "address_id_lengths": {
+      "8": 254986
+     },
+     "duplicated_row_id": 0,
+     "post_event_columns_present": [
+      "customer_service_contacts"
+     ]
+    },
+    "detectors_ref": {
+     "exposure_above_1": 0,
+     "exposure_equals_day_count": 0,
+     "exposure_zero_or_less": 0,
+     "row_id_lengths": {
+      "9": 254986
+     },
+     "policy_id_lengths": {
+      "9": 254986
+     },
+     "customer_id_lengths": "7 different lengths",
+     "address_id_lengths": {
+      "8": 254986
+     },
+     "duplicated_row_id": 0,
+     "post_event_columns_present": [
+      "customer_service_contacts"
+     ]
+    }
+   },
+   "weather": {
+    "rows_ref": 2879915,
+    "rows_new": 2879915,
+    "schema": {
+     "added": [],
+     "removed": [],
+     "retyped": {}
+    },
+    "shifts": {
+     "dry_summer_index": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.033,
+       0.355,
+       0.542,
+       0.724,
+       0.904,
+       0.982
+      ],
+      "q_new": [
+       0.0,
+       0.033,
+       0.355,
+       0.542,
+       0.724,
+       0.904,
+       0.982
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "freezing_days": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       3.0,
+       21.0,
+       36.0,
+       55.0,
+       72.0,
+       82.0
+      ],
+      "q_new": [
+       0.0,
+       3.0,
+       21.0,
+       36.0,
+       55.0,
+       72.0,
+       82.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "hail_days": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       1.0,
+       3.0,
+       6.0,
+       9.0,
+       14.0,
+       18.0
+      ],
+      "q_new": [
+       0.0,
+       1.0,
+       3.0,
+       6.0,
+       9.0,
+       14.0,
+       18.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "mean_temperature_c": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       5.6,
+       6.9,
+       9.8,
+       13.2,
+       15.6,
+       17.5,
+       18.6
+      ],
+      "q_new": [
+       5.6,
+       6.9,
+       9.8,
+       13.2,
+       15.6,
+       17.5,
+       18.6
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "rainfall_mm": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       574.0,
+       649.0,
+       839.0,
+       1012.0,
+       1223.0,
+       1545.0,
+       1774.0
+      ],
+      "q_new": [
+       574.0,
+       649.0,
+       839.0,
+       1012.0,
+       1223.0,
+       1545.0,
+       1774.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "wildfire_index": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       0.053,
+       0.147,
+       0.238,
+       0.375,
+       0.461
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       0.053,
+       0.147,
+       0.238,
+       0.375,
+       0.461
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "wind_exposure_index": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       1.0,
+       2.8,
+       4.7,
+       6.3,
+       7.8,
+       8.8
+      ],
+      "q_new": [
+       0.0,
+       1.0,
+       2.8,
+       4.7,
+       6.3,
+       7.8,
+       8.8
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "year": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       2021.0,
+       2021.0,
+       2022.0,
+       2023.0,
+       2024.0,
+       2025.0,
+       2025.0
+      ],
+      "q_new": [
+       2021.0,
+       2021.0,
+       2022.0,
+       2023.0,
+       2024.0,
+       2025.0,
+       2025.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     }
+    },
+    "detectors": {
+     "address_id_lengths": {
+      "8": 2879915
+     },
+     "post_event_columns_present": []
+    },
+    "detectors_ref": {
+     "address_id_lengths": {
+      "8": 2879915
+     },
+     "post_event_columns_present": []
+    }
+   }
+  },
+  "train_test": {
+   "buildings": {
+    "rows_train": 707726,
+    "rows_test": 184155,
+    "shifts": {
+     "accidental_damage_cover": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 5.877884038579173e-07,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "True": [
+        0.3993,
+        0.3996
+       ],
+       "False": [
+        0.6007,
+        0.6004
+       ]
+      }
+     },
+     "channel": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 1.4085217433410508e-06,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 3,
+      "n_levels_new": 3,
+      "largest_moves": {
+       "broker": [
+        0.2507,
+        0.2502
+       ],
+       "direct": [
+        0.3993,
+        0.3997
+       ],
+       "comparison_site": [
+        0.35,
+        0.3501
+       ]
+      }
+     },
+     "compulsory_excess": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       350.0,
+       350.0,
+       350.0,
+       350.0,
+       350.0,
+       350.0,
+       350.0
+      ],
+      "q_new": [
+       350.0,
+       350.0,
+       350.0,
+       350.0,
+       350.0,
+       350.0,
+       350.0
+      ]
+     },
+     "construction_type": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.39380313362274083,
+      "new_levels": [],
+      "vanished_levels": [
+       "T",
+       "t"
+      ],
+      "n_levels_ref": 11,
+      "n_levels_new": 9,
+      "largest_moves": {
+       "T": [
+        0.055,
+        0.0
+       ],
+       "W": [
+        0.0598,
+        0.1146
+       ],
+       "w": [
+        0.0032,
+        0.0063
+       ],
+       "t": [
+        0.0029,
+        0.0
+       ],
+       "Brick": [
+        0.6444,
+        0.6429
+       ]
+      }
+     },
+     "customer_service_contacts": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       1.0,
+       2.0,
+       4.0
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       1.0,
+       2.0,
+       2.0
+      ],
+      "psi": 0.002825161556278201,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "days_quote_to_inception": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       4.0,
+       13.0,
+       22.0,
+       29.0,
+       30.0
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       4.0,
+       13.0,
+       22.0,
+       29.0,
+       30.0
+      ],
+      "psi": 4.072629523425283e-05,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "days_unoccupied": {
+      "kind": "number",
+      "blank_ref": 0.024850012575488255,
+      "blank_new": 0.024902935027558307,
+      "q_ref": [
+       0.0,
+       0.0,
+       3.0,
+       7.0,
+       11.0,
+       31.0,
+       102.0
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       3.0,
+       7.0,
+       11.0,
+       14.0,
+       102.0
+      ],
+      "psi": 1.4350606705270382e-05,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "discount_applied": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.05,
+       0.1,
+       0.1
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.05,
+       0.1,
+       0.1
+      ],
+      "psi": 2.8421364744200942e-05,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "exposure": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0274,
+       0.1397,
+       0.7644,
+       1.0,
+       1.0,
+       1.0,
+       1.0
+      ],
+      "q_new": [
+       0.0247,
+       0.126,
+       0.6849,
+       1.0,
+       1.0,
+       1.0,
+       1.0
+      ],
+      "psi": 0.006285262725589286,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "missed_payments_12m": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       1.0,
+       2.0
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       1.0,
+       2.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "mortgage": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 6.965810143458441e-06,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "False": [
+        0.4482,
+        0.4495
+       ],
+       "True": [
+        0.5518,
+        0.5505
+       ]
+      }
+     },
+     "new_business": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.00025552181045089274,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "False": [
+        0.8542,
+        0.8485
+       ],
+       "True": [
+        0.1458,
+        0.1515
+       ]
+      }
+     },
+     "occupancy": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 1.7405130048323105e-06,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "let": [
+        0.0995,
+        0.0991
+       ],
+       "owner_occupied": [
+        0.9005,
+        0.9009
+       ]
+      }
+     },
+     "payment_method": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 1.0395488108915773e-05,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "annual": [
+        0.549,
+        0.5474
+       ],
+       "monthly": [
+        0.451,
+        0.4526
+       ]
+      }
+     },
+     "period_end": {
+      "kind": "date",
+      "min_ref": "2021-01-01 00:00:00",
+      "max_ref": "2024-12-30 00:00:00",
+      "min_new": "2025-01-01 00:00:00",
+      "max_new": "2025-12-31 00:00:00"
+     },
+     "period_start": {
+      "kind": "date",
+      "min_ref": "2021-01-01 00:00:00",
+      "max_ref": "2024-12-29 00:00:00",
+      "min_new": "2025-01-01 00:00:00",
+      "max_new": "2025-12-30 00:00:00"
+     },
+     "policyholder_age": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       18.0,
+       20.0,
+       30.0,
+       49.0,
+       69.0,
+       85.0,
+       89.0
+      ],
+      "q_new": [
+       19.0,
+       21.0,
+       29.0,
+       48.0,
+       70.0,
+       87.0,
+       91.0
+      ],
+      "psi": 0.021344275066761655,
+      "beyond_ref_max": 0.000939426026988135,
+      "below_ref_min": 0.0
+     },
+     "renewal_count": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       1.0,
+       6.0,
+       11.0,
+       16.0,
+       17.0
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       1.0,
+       3.0,
+       10.0,
+       18.0,
+       19.0
+      ],
+      "psi": 0.14796326454179873,
+      "beyond_ref_max": 0.027542016236322662,
+      "below_ref_min": 0.0
+     },
+     "smoke_alarms": {
+      "kind": "category",
+      "blank_ref": 0.025245645913814105,
+      "blank_new": 0.024989818359534087,
+      "psi": 3.7484897041854364e-06,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 3,
+      "n_levels_new": 3,
+      "largest_moves": {
+       "False": [
+        0.1465,
+        0.1469
+       ],
+       "(blank)": [
+        0.0252,
+        0.025
+       ],
+       "True": [
+        0.8283,
+        0.8281
+       ]
+      }
+     },
+     "sum_insured": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       84000.0,
+       115200.0,
+       200400.0,
+       267600.0,
+       345600.0,
+       484800.0,
+       619200.0
+      ],
+      "q_new": [
+       74000.0,
+       102000.0,
+       180000.0,
+       240000.0,
+       310000.0,
+       432000.0,
+       550000.0
+      ],
+      "psi": 0.07707714385405845,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 2.7151041242431648e-05
+     },
+     "voluntary_excess": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       250.0,
+       500.0,
+       1000.0
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       0.0,
+       250.0,
+       250.0,
+       500.0,
+       1000.0
+      ],
+      "psi": 5.898850485215648e-07,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "written_premium": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       92.58,
+       119.05,
+       170.74,
+       216.66,
+       294.06,
+       1050.9175,
+       1906.9125
+      ],
+      "q_new": [
+       107.77,
+       138.07,
+       197.05,
+       248.85,
+       336.52,
+       1185.086,
+       2008.7724
+      ],
+      "psi": 0.12797875827944521,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     }
+    },
+    "sizes": [],
+    "unseen_levels": {}
+   },
+   "contents": {
+    "rows_train": 721617,
+    "rows_test": 187498,
+    "shifts": {
+     "accidental_damage_cover": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 9.14350351118055e-07,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "False": [
+        0.5505,
+        0.55
+       ],
+       "True": [
+        0.4495,
+        0.45
+       ]
+      }
+     },
+     "bicycle_cover": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 3.516865696784247e-07,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "False": [
+        0.8506,
+        0.8504
+       ],
+       "True": [
+        0.1494,
+        0.1496
+       ]
+      }
+     },
+     "channel": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 5.874706590702741e-06,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 3,
+      "n_levels_new": 3,
+      "largest_moves": {
+       "direct": [
+        0.3983,
+        0.3994
+       ],
+       "comparison_site": [
+        0.3504,
+        0.3497
+       ],
+       "broker": [
+        0.2513,
+        0.2509
+       ]
+      }
+     },
+     "compulsory_excess": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       350.0,
+       350.0,
+       350.0,
+       350.0,
+       350.0,
+       350.0,
+       350.0
+      ],
+      "q_new": [
+       350.0,
+       350.0,
+       350.0,
+       350.0,
+       350.0,
+       350.0,
+       350.0
+      ]
+     },
+     "customer_service_contacts": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       1.0,
+       2.0,
+       4.0
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       1.0,
+       2.0,
+       2.0
+      ],
+      "psi": 0.0016316276887885272,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "days_quote_to_inception": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       4.0,
+       13.0,
+       22.0,
+       29.0,
+       30.0
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       4.0,
+       13.0,
+       22.0,
+       29.0,
+       30.0
+      ],
+      "psi": 6.902255617224462e-05,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "discount_applied": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.05,
+       0.1,
+       0.1
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.05,
+       0.1,
+       0.1
+      ],
+      "psi": 4.844883402229401e-05,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "exposure": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0247,
+       0.1233,
+       0.6986,
+       1.0,
+       1.0,
+       1.0,
+       1.0
+      ],
+      "q_new": [
+       0.0219,
+       0.1123,
+       0.6301,
+       1.0,
+       1.0,
+       1.0,
+       1.0
+      ],
+      "psi": 0.005435770010006929,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "high_value_items": {
+      "kind": "number",
+      "blank_ref": 0.025065928324859307,
+      "blank_new": 0.02510426777885631,
+      "q_ref": [
+       0.0,
+       0.0,
+       0.0,
+       1.0,
+       2.0,
+       5.0,
+       5.0
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       0.0,
+       1.0,
+       2.0,
+       5.0,
+       5.0
+      ],
+      "psi": 8.720733461783858e-06,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "lodgers": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 6.824809688769172e-06,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "False": [
+        0.9502,
+        0.9508
+       ],
+       "True": [
+        0.0498,
+        0.0492
+       ]
+      }
+     },
+     "missed_payments_12m": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       1.0,
+       2.0
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       1.0,
+       2.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "new_business": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.00026760216661237584,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "True": [
+        0.1458,
+        0.1516
+       ],
+       "False": [
+        0.8542,
+        0.8484
+       ]
+      }
+     },
+     "payment_method": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 2.4279305687244283e-06,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "annual": [
+        0.5491,
+        0.5483
+       ],
+       "monthly": [
+        0.4509,
+        0.4517
+       ]
+      }
+     },
+     "period_end": {
+      "kind": "date",
+      "min_ref": "2021-01-01 00:00:00",
+      "max_ref": "2024-12-30 00:00:00",
+      "min_new": "2025-01-01 00:00:00",
+      "max_new": "2025-12-31 00:00:00"
+     },
+     "period_start": {
+      "kind": "date",
+      "min_ref": "2021-01-01 00:00:00",
+      "max_ref": "2024-12-29 00:00:00",
+      "min_new": "2025-01-01 00:00:00",
+      "max_new": "2025-12-30 00:00:00"
+     },
+     "policyholder_age": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       18.0,
+       20.0,
+       30.0,
+       49.0,
+       69.0,
+       85.0,
+       89.0
+      ],
+      "q_new": [
+       19.0,
+       21.0,
+       29.0,
+       48.0,
+       70.0,
+       87.0,
+       91.0
+      ],
+      "psi": 0.02162070678208718,
+      "beyond_ref_max": 0.001120011946794099,
+      "below_ref_min": 0.0
+     },
+     "renewal_count": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       1.0,
+       6.0,
+       11.0,
+       16.0,
+       17.0
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       1.0,
+       3.0,
+       10.0,
+       18.0,
+       19.0
+      ],
+      "psi": 0.14890160867866042,
+      "beyond_ref_max": 0.02766429508581425,
+      "below_ref_min": 0.0
+     },
+     "security_level": {
+      "kind": "category",
+      "blank_ref": 0.025064542548193847,
+      "blank_new": 0.024944266072171435,
+      "psi": 4.928846931945874e-06,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 4,
+      "n_levels_new": 4,
+      "largest_moves": {
+       "locks": [
+        0.2924,
+        0.2934
+       ],
+       "standard": [
+        0.342,
+        0.3414
+       ],
+       "alarm_and_locks": [
+        0.3405,
+        0.3403
+       ],
+       "(blank)": [
+        0.0251,
+        0.0249
+       ]
+      }
+     },
+     "sum_insured": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       10900.0,
+       15300.0,
+       26600.0,
+       39000.0,
+       54600.0,
+       85000.0,
+       117100.0
+      ],
+      "q_new": [
+       11500.0,
+       16000.0,
+       27900.0,
+       40900.0,
+       57300.0,
+       89100.0,
+       122300.0
+      ],
+      "psi": 0.008604774102408357,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "tenure": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 4.3192337640084626e-07,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "renter": [
+        0.3002,
+        0.3005
+       ],
+       "owner": [
+        0.6998,
+        0.6995
+       ]
+      }
+     },
+     "voluntary_excess": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       0.0,
+       250.0,
+       250.0,
+       1000.0,
+       1000.0
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       0.0,
+       250.0,
+       250.0,
+       500.0,
+       1000.0
+      ],
+      "psi": 6.515178889093904e-08,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "works_from_home": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 3.966810541717183e-07,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "False": [
+        0.7493,
+        0.749
+       ],
+       "True": [
+        0.2507,
+        0.251
+       ]
+      }
+     },
+     "written_premium": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       48.94,
+       63.58,
+       96.02,
+       127.48,
+       165.7,
+       237.68,
+       305.31
+      ],
+      "q_new": [
+       55.9897,
+       72.73,
+       109.5025,
+       145.08,
+       188.19,
+       268.63,
+       343.4203
+      ],
+      "psi": 0.1006256454123219,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     }
+    },
+    "sizes": [],
+    "unseen_levels": {}
+   },
+   "motor": {
+    "rows_train": 979968,
+    "rows_test": 254986,
+    "shifts": {
+     "annual_mileage": {
+      "kind": "number",
+      "blank_ref": 0.025216129506269593,
+      "blank_new": 0.02459350709450715,
+      "q_ref": [
+       0.0,
+       5000.0,
+       9500.0,
+       10000.0,
+       15000.0,
+       20000.0,
+       30000.0
+      ],
+      "q_new": [
+       0.0,
+       5000.0,
+       9500.0,
+       10000.0,
+       15000.0,
+       20000.0,
+       30000.0
+      ],
+      "psi": 4.78356614497853e-05,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "body_type": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0012514030479792609,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 5,
+      "n_levels_new": 5,
+      "largest_moves": {
+       "hatchback": [
+        0.3787,
+        0.3912
+       ],
+       "saloon": [
+        0.2111,
+        0.2037
+       ],
+       "suv": [
+        0.2108,
+        0.2044
+       ],
+       "coupe": [
+        0.0761,
+        0.0808
+       ],
+       "estate": [
+        0.1233,
+        0.1199
+       ]
+      }
+     },
+     "channel": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 4.6009753462354716e-06,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 3,
+      "n_levels_new": 3,
+      "largest_moves": {
+       "comparison_site": [
+        0.3498,
+        0.3489
+       ],
+       "broker": [
+        0.2494,
+        0.2501
+       ],
+       "direct": [
+        0.4008,
+        0.401
+       ]
+      }
+     },
+     "compulsory_excess": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       250.0,
+       250.0,
+       250.0,
+       250.0,
+       250.0,
+       250.0,
+       250.0
+      ],
+      "q_new": [
+       250.0,
+       250.0,
+       250.0,
+       250.0,
+       250.0,
+       250.0,
+       250.0
+      ]
+     },
+     "cover_type": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0001860967383018753,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 3,
+      "n_levels_new": 3,
+      "largest_moves": {
+       "comprehensive": [
+        0.8191,
+        0.8139
+       ],
+       "third_party_only": [
+        0.09,
+        0.0931
+       ],
+       "third_party_fire_theft": [
+        0.0909,
+        0.0931
+       ]
+      }
+     },
+     "customer_service_contacts": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       1.0,
+       3.0,
+       6.0
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       1.0,
+       2.0,
+       2.0
+      ],
+      "psi": 0.08575927484558891,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "days_quote_to_inception": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       4.0,
+       13.0,
+       22.0,
+       29.0,
+       30.0
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       4.0,
+       13.0,
+       22.0,
+       29.0,
+       30.0
+      ],
+      "psi": 4.560180208842943e-05,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "discount_applied": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.05,
+       0.1,
+       0.1
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.05,
+       0.1,
+       0.1
+      ],
+      "psi": 2.722347894496485e-05,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "driver_age": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       18.0,
+       20.0,
+       30.0,
+       50.0,
+       69.0,
+       85.0,
+       89.0
+      ],
+      "q_new": [
+       19.0,
+       21.0,
+       29.0,
+       48.0,
+       70.0,
+       87.0,
+       91.0
+      ],
+      "psi": 0.021270041142640656,
+      "beyond_ref_max": 0.0010235856086216499,
+      "below_ref_min": 0.0
+     },
+     "driver_assist": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 4.2460761454948336e-08,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "True": [
+        0.3012,
+        0.3013
+       ],
+       "False": [
+        0.6988,
+        0.6987
+       ]
+      }
+     },
+     "engine_size_cc": {
+      "kind": "number",
+      "blank_ref": 0.02519878200104493,
+      "blank_new": 0.02525628858054952,
+      "q_ref": [
+       1100.0,
+       1400.0,
+       1800.0,
+       2100.0,
+       2400.0,
+       2800.0,
+       3100.0
+      ],
+      "q_new": [
+       1100.0,
+       1400.0,
+       1800.0,
+       2100.0,
+       2400.0,
+       2800.0,
+       3100.0
+      ],
+      "psi": 0.0002632627314418512,
+      "beyond_ref_max": 4.023400094952242e-06,
+      "below_ref_min": 4.023400094952242e-06
+     },
+     "exposure": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0219,
+       0.1096,
+       0.6384,
+       1.0,
+       1.0,
+       1.0,
+       1.0
+      ],
+      "q_new": [
+       0.0192,
+       0.0986,
+       0.5753,
+       1.0,
+       1.0,
+       1.0,
+       1.0
+      ],
+      "psi": 0.0055162895745613436,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "fuel_type": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.10702133008224339,
+      "new_levels": [
+       "hydrogen"
+      ],
+      "vanished_levels": [],
+      "n_levels_ref": 4,
+      "n_levels_new": 5,
+      "largest_moves": {
+       "hydrogen": [
+        0.0,
+        0.0202
+       ],
+       "petrol": [
+        0.5057,
+        0.4946
+       ],
+       "diesel": [
+        0.276,
+        0.2708
+       ],
+       "hybrid": [
+        0.1378,
+        0.1357
+       ],
+       "electric": [
+        0.0805,
+        0.0787
+       ]
+      }
+     },
+     "missed_payments_12m": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       1.0,
+       2.0
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       1.0,
+       2.0
+      ],
+      "psi": 0.0,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "named_young_driver": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 9.53187666445739e-05,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "True": [
+        0.0534,
+        0.0512
+       ],
+       "False": [
+        0.9466,
+        0.9488
+       ]
+      }
+     },
+     "ncb_years": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       3.0,
+       7.0,
+       12.0,
+       15.0,
+       15.0
+      ],
+      "q_new": [
+       0.0,
+       1.0,
+       4.0,
+       8.0,
+       13.0,
+       15.0,
+       15.0
+      ],
+      "psi": 0.032115555610340206,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "new_business": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.0003905594369173415,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "False": [
+        0.8546,
+        0.8475
+       ],
+       "True": [
+        0.1454,
+        0.1525
+       ]
+      }
+     },
+     "overnight_parking": {
+      "kind": "category",
+      "blank_ref": 0.024869179401776385,
+      "blank_new": 0.025091573655024197,
+      "psi": 1.6941314192800055e-05,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 4,
+      "n_levels_new": 4,
+      "largest_moves": {
+       "driveway": [
+        0.4886,
+        0.4868
+       ],
+       "street": [
+        0.2922,
+        0.2937
+       ],
+       "(blank)": [
+        0.0249,
+        0.0251
+       ],
+       "garage": [
+        0.1943,
+        0.1944
+       ]
+      }
+     },
+     "payment_method": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 2.699643137477432e-10,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "annual": [
+        0.5489,
+        0.5489
+       ],
+       "monthly": [
+        0.4511,
+        0.4511
+       ]
+      }
+     },
+     "period_end": {
+      "kind": "date",
+      "min_ref": "2021-01-01 00:00:00",
+      "max_ref": "2024-12-30 00:00:00",
+      "min_new": "2025-01-01 00:00:00",
+      "max_new": "2025-12-31 00:00:00"
+     },
+     "period_start": {
+      "kind": "date",
+      "min_ref": "2021-01-01 00:00:00",
+      "max_ref": "2024-12-29 00:00:00",
+      "min_new": "2025-01-01 00:00:00",
+      "max_new": "2025-12-30 00:00:00"
+     },
+     "renewal_count": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       1.0,
+       6.0,
+       11.0,
+       16.0,
+       17.0
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       1.0,
+       3.0,
+       10.0,
+       18.0,
+       19.0
+      ],
+      "psi": 0.1497379018492962,
+      "beyond_ref_max": 0.027758386734957997,
+      "below_ref_min": 0.0
+     },
+     "seats": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       2.0,
+       4.0,
+       5.0,
+       5.0,
+       5.0,
+       7.0,
+       7.0
+      ],
+      "q_new": [
+       2.0,
+       2.0,
+       5.0,
+       5.0,
+       5.0,
+       7.0,
+       7.0
+      ],
+      "psi": 4.4518032653958394e-06,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "telematics_opt_in": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 0.000654144305056002,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "False": [
+        0.8758,
+        0.8672
+       ],
+       "True": [
+        0.1242,
+        0.1328
+       ]
+      }
+     },
+     "transmission": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 2.1140185629947807e-06,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 2,
+      "n_levels_new": 2,
+      "largest_moves": {
+       "automatic": [
+        0.451,
+        0.4503
+       ],
+       "manual": [
+        0.549,
+        0.5497
+       ]
+      }
+     },
+     "vehicle_age": {
+      "kind": "number",
+      "blank_ref": 0.024926324124869382,
+      "blank_new": 0.02476998737185571,
+      "q_ref": [
+       1.0,
+       2.0,
+       5.0,
+       7.0,
+       10.0,
+       16.0,
+       22.0
+      ],
+      "q_new": [
+       2.0,
+       3.0,
+       6.0,
+       9.0,
+       12.0,
+       18.0,
+       23.0
+      ],
+      "psi": 0.15003169546414413,
+      "beyond_ref_max": 0.0013914022600233242,
+      "below_ref_min": 0.0
+     },
+     "vehicle_colour": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 1.5202354367215755e-05,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 8,
+      "n_levels_new": 8,
+      "largest_moves": {
+       "white": [
+        0.124,
+        0.1249
+       ],
+       "other": [
+        0.1248,
+        0.124
+       ],
+       "green": [
+        0.1249,
+        0.1253
+       ],
+       "silver": [
+        0.1257,
+        0.1254
+       ],
+       "black": [
+        0.125,
+        0.1248
+       ]
+      }
+     },
+     "vehicle_use": {
+      "kind": "category",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "psi": 3.859475852658983e-06,
+      "new_levels": [],
+      "vanished_levels": [],
+      "n_levels_ref": 3,
+      "n_levels_new": 3,
+      "largest_moves": {
+       "commuting": [
+        0.4495,
+        0.4489
+       ],
+       "business": [
+        0.0988,
+        0.0994
+       ],
+       "social": [
+        0.4516,
+        0.4517
+       ]
+      }
+     },
+     "vehicle_value_group": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       2.0,
+       5.0,
+       8.0,
+       11.0,
+       14.0,
+       17.0,
+       19.0
+      ],
+      "q_new": [
+       2.0,
+       5.0,
+       8.0,
+       11.0,
+       14.0,
+       17.0,
+       19.0
+      ],
+      "psi": 0.0003014716971020986,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "voluntary_excess": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       0.0,
+       0.0,
+       250.0,
+       500.0,
+       1000.0,
+       1000.0
+      ],
+      "q_new": [
+       0.0,
+       0.0,
+       0.0,
+       250.0,
+       500.0,
+       1000.0,
+       1000.0
+      ],
+      "psi": 2.2346759734577107e-06,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     },
+     "written_premium": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       261.8867,
+       317.34,
+       403.18,
+       479.54,
+       600.95,
+       1181.22,
+       1511.0233
+      ],
+      "q_new": [
+       282.87,
+       345.02,
+       437.83,
+       516.92,
+       637.7475,
+       1263.59,
+       1619.936
+      ],
+      "psi": 0.0824368714537232,
+      "beyond_ref_max": 2.353070364647471e-05,
+      "below_ref_min": 0.0
+     },
+     "years_licensed": {
+      "kind": "number",
+      "blank_ref": 0.0,
+      "blank_new": 0.0,
+      "q_ref": [
+       0.0,
+       1.0,
+       9.0,
+       28.0,
+       48.0,
+       64.0,
+       69.0
+      ],
+      "q_new": [
+       0.0,
+       2.0,
+       8.0,
+       27.0,
+       49.0,
+       66.0,
+       71.0
+      ],
+      "psi": 0.03732817267594456,
+      "beyond_ref_max": 0.0,
+      "below_ref_min": 0.0
+     }
+    },
+    "sizes": [
+     {
+      "measure": "vehicle_value_group",
+      "segment": [],
+      "referred": 0
+     },
+     {
+      "measure": "engine_size_cc",
+      "segment": [],
+      "referred": 0
+     },
+     {
+      "measure": "annual_mileage",
+      "segment": [],
+      "referred": 0
+     }
+    ],
+    "unseen_levels": {
+     "fuel_type": [
+      "hydrogen"
+     ]
+    }
+   }
+  },
+  "claims": {
+   "ref": {
+    "claims": 163150,
+    "repudiated_share": 0.01048728164266013,
+    "open_share": 0.0621942997241802,
+    "nil_or_negative": 1,
+    "peril_mix": {
+     "buildings|accidental_damage": 0.1455,
+     "buildings|escape_of_water": 0.3834,
+     "buildings|fire": 0.0422,
+     "buildings|flood": 0.0844,
+     "buildings|storm": 0.2956,
+     "buildings|subsidence": 0.0489,
+     "contents|accidental_damage": 0.3824,
+     "contents|escape_of_water": 0.2272,
+     "contents|flood": 0.0682,
+     "contents|theft": 0.3222,
+     "motor|bodily_injury": 0.0682,
+     "motor|glass_hail": 0.1415,
+     "motor|own_damage": 0.4368,
+     "motor|theft": 0.0554,
+     "motor|third_party_prop": 0.2982
+    },
+    "by_accident_year": {
+     "buildings|2020": {
+      "claims": 46.0,
+      "mean_cost": 5174.5
+     },
+     "buildings|2021": {
+      "claims": 6204.0,
+      "mean_cost": 8715.7
+     },
+     "buildings|2022": {
+      "claims": 6797.0,
+      "mean_cost": 9059.3
+     },
+     "buildings|2023": {
+      "claims": 6824.0,
+      "mean_cost": 9519.3
+     },
+     "buildings|2024": {
+      "claims": 6571.0,
+      "mean_cost": 10250.2
+     },
+     "contents|2020": {
+      "claims": 29.0,
+      "mean_cost": 3654.0
+     },
+     "contents|2021": {
+      "claims": 5588.0,
+      "mean_cost": 2664.5
+     },
+     "contents|2022": {
+      "claims": 6032.0,
+      "mean_cost": 2662.4
+     },
+     "contents|2023": {
+      "claims": 6165.0,
+      "mean_cost": 2848.0
+     },
+     "contents|2024": {
+      "claims": 5988.0,
+      "mean_cost": 2925.2
+     },
+     "motor|2020": {
+      "claims": 196.0,
+      "mean_cost": 3857.6
+     },
+     "motor|2021": {
+      "claims": 27390.0,
+      "mean_cost": 3870.0
+     },
+     "motor|2022": {
+      "claims": 29725.0,
+      "mean_cost": 3931.8
+     },
+     "motor|2023": {
+      "claims": 28019.0,
+      "mean_cost": 4191.1
+     },
+     "motor|2024": {
+      "claims": 25864.0,
+      "mean_cost": 3505.5
+     }
+    },
+    "report_lag_days": {
+     "buildings": [
+      9.0,
+      34.0,
+      239.0
+     ],
+     "contents": [
+      6.0,
+      23.0,
+      63.0
+     ],
+     "motor": [
+      9.0,
+      42.0,
+      377.0
+     ]
+    },
+    "negative_lag": 0,
+    "screen_hits": [
+     {
+      "claim_id": "CL30973963",
+      "line": "motor",
+      "peril": "bodily_injury",
+      "net_cost": 11894276.93,
+      "z": 5.23
+     }
+    ]
+   },
+   "new": {
+    "claims": 163150,
+    "repudiated_share": 0.01048728164266013,
+    "open_share": 0.0621942997241802,
+    "nil_or_negative": 1,
+    "peril_mix": {
+     "buildings|accidental_damage": 0.1455,
+     "buildings|escape_of_water": 0.3834,
+     "buildings|fire": 0.0422,
+     "buildings|flood": 0.0844,
+     "buildings|storm": 0.2956,
+     "buildings|subsidence": 0.0489,
+     "contents|accidental_damage": 0.3824,
+     "contents|escape_of_water": 0.2272,
+     "contents|flood": 0.0682,
+     "contents|theft": 0.3222,
+     "motor|bodily_injury": 0.0682,
+     "motor|glass_hail": 0.1415,
+     "motor|own_damage": 0.4368,
+     "motor|theft": 0.0554,
+     "motor|third_party_prop": 0.2982
+    },
+    "by_accident_year": {
+     "buildings|2020": {
+      "claims": 46.0,
+      "mean_cost": 5174.5
+     },
+     "buildings|2021": {
+      "claims": 6204.0,
+      "mean_cost": 8715.7
+     },
+     "buildings|2022": {
+      "claims": 6797.0,
+      "mean_cost": 9059.3
+     },
+     "buildings|2023": {
+      "claims": 6824.0,
+      "mean_cost": 9519.3
+     },
+     "buildings|2024": {
+      "claims": 6571.0,
+      "mean_cost": 10250.2
+     },
+     "contents|2020": {
+      "claims": 29.0,
+      "mean_cost": 3654.0
+     },
+     "contents|2021": {
+      "claims": 5588.0,
+      "mean_cost": 2664.5
+     },
+     "contents|2022": {
+      "claims": 6032.0,
+      "mean_cost": 2662.4
+     },
+     "contents|2023": {
+      "claims": 6165.0,
+      "mean_cost": 2848.0
+     },
+     "contents|2024": {
+      "claims": 5988.0,
+      "mean_cost": 2925.2
+     },
+     "motor|2020": {
+      "claims": 196.0,
+      "mean_cost": 3857.6
+     },
+     "motor|2021": {
+      "claims": 27390.0,
+      "mean_cost": 3870.0
+     },
+     "motor|2022": {
+      "claims": 29725.0,
+      "mean_cost": 3931.8
+     },
+     "motor|2023": {
+      "claims": 28019.0,
+      "mean_cost": 4191.1
+     },
+     "motor|2024": {
+      "claims": 25864.0,
+      "mean_cost": 3505.5
+     }
+    },
+    "report_lag_days": {
+     "buildings": [
+      9.0,
+      34.0,
+      239.0
+     ],
+     "contents": [
+      6.0,
+      23.0,
+      63.0
+     ],
+     "motor": [
+      9.0,
+      42.0,
+      377.0
+     ]
+    },
+    "negative_lag": 50,
+    "screen_hits": [
+     {
+      "claim_id": "CL30973963",
+      "line": "motor",
+      "peril": "bodily_injury",
+      "net_cost": 11894276.93,
+      "z": 5.23
+     }
+    ]
+   }
+  }
+ },
+ "meta": {
+  "created": "2026-10-20T13:24:02",
+  "git_commit": "880983d",
+  "seeds": null,
+  "versions": {
+   "python": "3.14.5",
+   "numpy": "2.5.3",
+   "pandas": "3.0.5",
+   "scipy": "1.18.1",
+   "sklearn": "1.9.1",
+   "lightgbm": "4.7.0",
+   "xgboost": "3.4.1",
+   "catboost": "1.2.10"
+  }
+ }
+}
