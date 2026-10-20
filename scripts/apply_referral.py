@@ -18,12 +18,13 @@ import numpy as np
 import pandas as pd
 
 from scripts.phase6_referral import disagreement
+from src import market
 from src import data_rules as dr
 from src.evidence import write_evidence
 from src.thresholds import load_thresholds
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "outputs"
+OUT = market.OUT
 import os
 ALL = os.environ.get("P7_ALL") == "1"
 SRC, NAME = ("blend_final_all_v1", "blend_final_all_v2") if ALL else ("blend_frozen_v1", "blend_frozen_v2")
@@ -39,7 +40,7 @@ def run() -> None:
     sub = sub.set_index("row_id")
     info = {}
     for line in GLM_FALLBACK:
-        fp = pd.read_parquet(ROOT / "data" / "work" / "freeze" / f"family_preds_{line}{'_all' if ALL else ''}.parquet").set_index("row_id")
+        fp = pd.read_parquet(market.WORK / "freeze" / f"family_preds_{line}{'_all' if ALL else ''}.parquet").set_index("row_id")
         fam = fp[[c for c in fp.columns if c.startswith("fam:")]].to_numpy()
         assert np.allclose(fp["blend"], sub.loc[fp.index, "prediction"], rtol=1e-6, atol=1e-3), "family predictions do not match the frozen file"
         flag = disagreement(fam, fp["blend"].to_numpy()) > lim

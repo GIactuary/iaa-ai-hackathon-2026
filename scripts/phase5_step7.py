@@ -28,6 +28,7 @@ from scripts.phase5_l8_check import DROP, KEPT
 from scripts.phase5_step4 import hist_columns
 from scripts.phase5_step5 import load_plan, spec_columns
 from scripts.phase5_step6 import test
+from src import market
 from src import build, data_rules as dr, level as lv, validation as v
 from src.evidence import write_evidence
 from src.families import EBM, LGB, Cat, GlumGLM, as_category, as_string
@@ -35,7 +36,7 @@ from src.glm import TweedieGLM
 from src.thresholds import load_thresholds
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT, WORK, WORK4 = ROOT / "outputs", ROOT / "data" / "work" / "phase5_step7", ROOT / "data" / "work" / "phase5_step4"
+OUT, WORK, WORK4 = market.OUT, market.WORK / "phase5_step7", market.WORK / "phase5_step4"
 THREADS = int(os.environ.get("P7_THREADS", "4"))
 SMOKE = bool(os.environ.get("P7_SMOKE"))
 

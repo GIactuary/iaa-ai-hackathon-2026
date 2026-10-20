@@ -23,13 +23,14 @@ from scripts.phase4_baselines import PlainGLM, features as v0_features
 from scripts.phase5_step6 import test
 from scripts.phase6_referral import disagreement
 from scripts.submit_w2 import w2_frame
+from src import market
 from src import build, data_rules as dr, level as lv, validation as v, weather as wx
 from src.evidence import write_evidence
 from src.glm import TweedieGLM, fit_edges
 from src.thresholds import load_thresholds
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT, W4, W4A, W7 = ROOT / "outputs", ROOT / "data" / "work" / "phase5_step4", ROOT / "data" / "work" / "phase5_step4_all", ROOT / "data" / "work" / "phase5_step7"
+OUT, W4, W4A, W7 = market.OUT, market.WORK / "phase5_step4", market.WORK / "phase5_step4_all", market.WORK / "phase5_step7"
 PLANS = {"A": ((2021, 2022), 2023), "B": ((2021, 2022, 2023), 2024)}
 
 
@@ -114,7 +115,7 @@ def run() -> None:
                                        "ref": ref, "blend": bl, "v0": v0p, **{f"fam:{c}": fam[c] for c in weights}}))
             log(s, line, "scored", len(te0), "rows")
         frames[s] = pd.concat(parts, ignore_index=True)
-        frames[s].to_parquet(ROOT / "data" / "work" / f"phase7_holdout_{s}.parquet")
+        frames[s].to_parquet(market.WORK / f"phase7_holdout_{s}.parquet")
     tests = {"blend vs W2 GLM": test(frames, "ref", "blend", th), "W2 GLM vs plain GLM": test(frames, "v0", "ref", th),
              "blend vs plain GLM": test(frames, "v0", "blend", th)}
     d2 = {}

@@ -12,14 +12,15 @@ import numpy as np
 import pandas as pd
 
 from src import data_rules as dr, targets as tg, validation as v
+from src import market
 from src.thresholds import load_thresholds
 
 ROOT = Path(__file__).resolve().parents[1]
-CACHE = ROOT / "data" / "work" / "lines"
-LOCK = ROOT / "data" / "work" / "holdout_lock.json"
+CACHE = market.WORK / "lines"
+LOCK = market.WORK / "holdout_lock.json"
 CUSTOMER_COLS = ["customer_id", "credit_band", "licence_points", "prior_claims_5y", "date_of_birth", "household_size",
                  "years_at_address", "customer_since_year", "occupation", "marital_status"]
-LARGE_LOSS_PERILS = {"motor": ("bodily_injury",), "buildings": ("fire", "flood"), "contents": ("flood",)}
+LARGE_LOSS_PERILS = market.LARGE_LOSS_PERILS
 
 
 def _cap(th, line):

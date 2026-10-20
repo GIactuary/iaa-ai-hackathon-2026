@@ -16,9 +16,8 @@ from sklearn.linear_model import PoissonRegressor
 
 from src.glm import WEATHER_VARS
 
-ADJUSTED = {"buildings": {"storm": "wind_exposure_index", "subsidence": "dry_summer_index", "escape_of_water": "freezing_days"},
-            "contents": {"escape_of_water": "freezing_days"},
-            "motor": {"glass_hail": "hail_days"}}
+from src import market
+ADJUSTED = market.WEATHER_ADJUSTED
 
 
 def normals(weather: pd.DataFrame, years) -> pd.DataFrame:

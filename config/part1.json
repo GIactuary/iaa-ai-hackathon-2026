@@ -1,0 +1,23 @@
+{
+  "name": "part1",
+  "description": "Part 1 market (IAA AI Hackathon 2026). Every value here reproduces the Part 1 code exactly.",
+  "raw_dir": "data/raw",
+  "thresholds_file": "decisions/thresholds.md",
+  "lines": ["motor", "buildings", "contents"],
+  "valuation": "2024-12-31",
+  "grid_start": "2021-01-01",
+  "curve_year": 2021,
+  "share_years": [2021, 2022],
+  "fit_years": [2021, 2022, 2023, 2024],
+  "target_year": 2025,
+  "scorings": {"A": {"fit_years": [2021, 2022], "score_year": 2023, "completion": false},
+               "B": {"fit_years": [2021, 2022, 2023], "score_year": 2024, "completion": true}},
+  "large_loss_perils": {"motor": ["bodily_injury"], "buildings": ["fire", "flood"], "contents": ["flood"]},
+  "step_perils": [["motor", "bodily_injury", 2023]],
+  "weather_adjusted": {"buildings": {"storm": "wind_exposure_index", "subsidence": "dry_summer_index", "escape_of_water": "freezing_days"},
+                       "contents": {"escape_of_water": "freezing_days"},
+                       "motor": {"glass_hail": "hail_days"}},
+  "size_checks": {"buildings": [["sum_insured", ["property_type", "bedrooms"]]],
+                  "contents": [["sum_insured", ["tenure", "bedrooms"]]],
+                  "motor": [["vehicle_value_group", []], ["engine_size_cc", []], ["annual_mileage", []]]}
+}

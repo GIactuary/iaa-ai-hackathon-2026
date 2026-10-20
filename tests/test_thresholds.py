@@ -22,9 +22,9 @@ def test_refuses_undated_open_and_missing(thresholds_path):
 
 
 def test_repo_file_parses():
-    """The real decisions file parses; agreed thresholds read back, and open ones stay unusable until set and dated."""
+    """The real decisions file parses and agreed thresholds read back (refer_disagreement was set in phase 6, so the
+    open-row behaviour is covered by the synthetic-file tests in this module)."""
     t = load_thresholds(DEFAULT_PATH)
     assert t["holdout_share"] == pytest.approx(0.15)
     assert t["screen_z"] == 4
-    with pytest.raises(ThresholdError, match="still open"):
-        t["refer_disagreement"]
+    assert t["refer_disagreement"] == pytest.approx(0.3)

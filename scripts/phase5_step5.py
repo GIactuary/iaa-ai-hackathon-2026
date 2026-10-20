@@ -21,13 +21,14 @@ import pandas as pd
 from joblib import Parallel, delayed
 
 from scripts.phase5_step4 import PLANS, hist_columns
+from src import market
 from src import build, data_rules as dr, history as hs, validation as v, weather as wx
 from src.evidence import write_evidence
 from src.glm import TweedieGLM, band, cat, features, fit_edges, quantile_edges
 from src.thresholds import load_thresholds
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT, WORK4, WORK = ROOT / "outputs", ROOT / "data" / "work" / "phase5_step4", ROOT / "data" / "work" / "phase5_step5"
+OUT, WORK4, WORK = market.OUT, market.WORK / "phase5_step4", market.WORK / "phase5_step5"
 # Claims-history pieces in the base, per line: those that passed step 4 (outputs/phase5_step4.json), provisional
 # until the actuary's check-in 2 verdict
 BASE_PIECES = json.loads((WORK4 / "base_pieces.json").read_text()) if (WORK4 / "base_pieces.json").exists() else {}

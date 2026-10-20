@@ -21,6 +21,7 @@ import numpy as np
 import pandas as pd
 from joblib import Parallel, delayed
 
+from src import market
 from src import build, data_rules as dr, history as hs, validation as v
 from src.evidence import write_evidence
 from src.glm import TweedieGLM, band, cat, features, fit_edges, quantile_edges
@@ -29,9 +30,9 @@ from src.thresholds import load_thresholds
 ROOT = Path(__file__).resolve().parents[1]
 # Phase 7: P5_HOLDOUT=include builds the history on every customer, hold-out included, into its own folder
 INCLUDE_HOLDOUT = os.environ.get("P5_HOLDOUT") == "include"
-OUT, WORK = ROOT / "outputs", ROOT / "data" / "work" / ("phase5_step4_all" if INCLUDE_HOLDOUT else "phase5_step4")
-PLANS = {"A": dict(fit_years=(2021, 2022), score_year=2023), "B": dict(fit_years=(2021, 2022, 2023), score_year=2024),
-         "final": dict(fit_years=(2021, 2022, 2023, 2024), score_year=None)}
+OUT, WORK = market.OUT, market.WORK / ("phase5_step4_all" if INCLUDE_HOLDOUT else "phase5_step4")
+PLANS = {**{k: dict(fit_years=s["fit_years"], score_year=s["score_year"]) for k, s in market.SCORINGS.items()},
+         "final": dict(fit_years=market.FIT_YEARS, score_year=None)}
 PROPERTY = ("buildings", "contents")
 PIECES = ("H-P", "H-C", "H-A", "H-D", "H-R")
 K_EST = os.environ.get("P5_K", "np")          # "np": non-parametric Bühlmann-Straub (run 1); "pg": Poisson-gamma (run 2)
@@ -83,7 +84,7 @@ def prepare(plan_name: str) -> dict:
         rows = tr if sy is None else tr[tr["yr"].isin(fy + (sy,))]
         if sy is None:
             te = build.build_all()[line][1]
-            rows = pd.concat([tr, te.assign(yr=2025)], ignore_index=True)
+            rows = pd.concat([tr, te.assign(yr=market.TARGET_YEAR)], ignore_index=True)
         t = rows[["row_id", "policy_id", "customer_id", "address_id"]].copy()
         t["c"] = np.minimum(hs.day(rows["period_start"]), data_end)
         tgt[line] = t

@@ -21,12 +21,13 @@ import pandas as pd
 from scipy.optimize import minimize
 
 from scripts.phase5_step6 import test
+from src import market
 from src import data_rules as dr, validation as v
 from src.evidence import write_evidence
 from src.thresholds import load_thresholds
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT, WORK7, WORK = ROOT / "outputs", ROOT / "data" / "work" / "phase5_step7", ROOT / "data" / "work" / "phase5_step8"
+OUT, WORK7, WORK = market.OUT, market.WORK / "phase5_step7", market.WORK / "phase5_step8"
 P = 1.5
 # Check-in 4 verdicts (D24): N1 (a) F4 with the held-over factors in motor and buildings; N2 (a) per-peril EBM and
 # LightGBM in motor; N3 (a) the boosted correction may enter the final price

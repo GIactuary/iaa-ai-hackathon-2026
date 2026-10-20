@@ -25,13 +25,14 @@ from joblib import Parallel, delayed
 
 from scripts.phase5_l8_check import DROP, KEPT
 from scripts.phase5_step5 import load_plan, spec_columns
+from src import market
 from src import build, data_rules as dr, level as lv, validation as v, weather as wx
 from src.evidence import write_evidence
 from src.glm import TweedieGLM
 from src.thresholds import load_thresholds
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT, WORK = ROOT / "outputs", ROOT / "data" / "work" / "phase5_step6"
+OUT, WORK = market.OUT, market.WORK / "phase5_step6"
 MODELS = ("S1-L", "S2-L", "S2-P", "S3-L", "S3-P", "S4-L", "S4-P")
 FORMS = ("bare", "priced")
 PERIL_STRUCTS = ("S2", "S3", "S4")

@@ -10,7 +10,8 @@ import re
 from dataclasses import dataclass
 from pathlib import Path
 
-DEFAULT_PATH = Path(__file__).resolve().parents[1] / "decisions" / "thresholds.md"
+from src import market
+DEFAULT_PATH = market.THRESHOLDS            # decisions/thresholds.md for Part 1
 
 
 class ThresholdError(KeyError):

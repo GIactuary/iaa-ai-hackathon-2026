@@ -11,8 +11,9 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-RAW = Path(__file__).resolve().parents[1] / "data" / "raw"
-LINES = ("motor", "buildings", "contents")
+from src import market
+RAW = market.RAW                      # data/raw for Part 1
+LINES = market.LINES
 ID_COLS = ("row_id", "policy_id", "customer_id", "address_id", "claim_id", "repairer_id", "third_party_id")
 
 # Outcomes or measures taken during the row: never rating inputs (brief section 7; data_rules.md R7)

@@ -9,11 +9,8 @@ import numpy as np
 import pandas as pd
 
 # Size measures and the segments they are compared within (agreed with the actuary, thresholds.md refer_size_ratio)
-SIZE_CHECKS = {
-    "buildings": [("sum_insured", ("property_type", "bedrooms"))],
-    "contents": [("sum_insured", ("tenure", "bedrooms"))],
-    "motor": [("vehicle_value_group", ()), ("engine_size_cc", ()), ("annual_mileage", ())],
-}
+from src import market
+SIZE_CHECKS = market.SIZE_CHECKS
 
 
 def claim_screen(matched_claims: pd.DataFrame, z: float) -> pd.DataFrame:

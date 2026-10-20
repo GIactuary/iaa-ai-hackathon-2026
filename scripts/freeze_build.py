@@ -30,6 +30,7 @@ import pandas as pd
 import scripts.phase5_step7 as s7
 from scripts.phase5_step4 import hist_columns
 from scripts.submit_w2 import ALL, FIT_YEARS, WORK4, w2_frame
+from src import market
 from src import build, data_rules as dr, level as lv
 from src.evidence import write_evidence
 from src.families import as_category, as_string
@@ -37,7 +38,7 @@ from src.glm import TweedieGLM, fit_edges
 from src.thresholds import load_thresholds
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT, WORK7 = ROOT / "outputs", ROOT / "data" / "work" / "phase5_step7"
+OUT, WORK7 = market.OUT, market.WORK / "phase5_step7"
 NAME = "blend_final_all_v1" if ALL else "blend_frozen_v1"     # P7_ALL=1: the phase 7 refit on every customer
 MIX = {"motor": "arith", "buildings": "geo", "contents": "arith"}
 # step 8 family column -> how to build it here
@@ -173,12 +174,12 @@ def run() -> None:
         wk = S8["weights"][line][f"families|{MIX[line]}"]
         weights = {c: w for c, w in zip(wk["cols"], wk["pooled"]) if w > 1e-9}     # solver zeros come back as 1e-17
         weights = {c: w / sum(weights.values()) for c, w in weights.items()}
-        assert set(weights) == set(COLMAP[line]), (line, weights)
+        assert set(weights) <= set(COLMAP[line]), (line, weights)     # a family the weights drop is simply not mixed in
         tr, te0 = data[line]
         tr = tr[(ALL | ~tr["holdout"]) & tr["yr"].isin(FIT_YEARS)].reset_index(drop=True)
         te0 = te0.reset_index(drop=True)
         h = hist[hist["line"] == line].drop(columns="line").drop_duplicates("row_id").set_index("row_id")
-        preds = family_predictions(line, tr, te0, h, ks, tuned, th, 2025, max(FIT_YEARS))
+        preds = family_predictions(line, tr, te0, h, ks, tuned, th, market.TARGET_YEAR, max(FIT_YEARS))
         preds.pop("ref")
         target = w2.merge(te0[["row_id"]].astype(str), on="row_id")
         assert len(target) == len(te0)
@@ -190,9 +191,9 @@ def run() -> None:
             bl = sum(w * shaped[c] for c, w in weights.items())
         bl = bl * (T_line / bl.sum())
         # each family's 2025 prices at the blend's total, kept for the phase 6 disagreement referral and the ranges
-        (ROOT / "data" / "work" / "freeze").mkdir(parents=True, exist_ok=True)
+        (market.WORK / "freeze").mkdir(parents=True, exist_ok=True)
         pd.DataFrame({"row_id": te0["row_id"].astype(str), "blend": bl, **{f"fam:{c}": shaped[c] for c in weights}}).to_parquet(
-            ROOT / "data" / "work" / "freeze" / f"family_preds_{line}{'_all' if ALL else ''}.parquet")
+            market.WORK / "freeze" / f"family_preds_{line}{'_all' if ALL else ''}.parquet")
         w2p = te0[["row_id"]].astype(str).merge(w2, on="row_id", how="left")["prediction"].to_numpy()
         info[line] = dict(weights=weights, mix=MIX[line], total=T_line, rows=len(te0),
                           corr_log_with_w2=float(np.corrcoef(np.log(bl), np.log(w2p))[0, 1]),

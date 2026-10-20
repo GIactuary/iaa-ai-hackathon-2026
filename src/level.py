@@ -13,7 +13,8 @@ from __future__ import annotations
 import numpy as np
 import pandas as pd
 
-STEP_PERILS = {("motor", "bodily_injury"): 2023}
+from src import market
+STEP_PERILS = market.STEP_PERILS
 
 
 def perils_of(df: pd.DataFrame) -> list[str]:

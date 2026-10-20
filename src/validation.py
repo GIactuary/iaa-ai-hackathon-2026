@@ -223,8 +223,8 @@ def drop_one_verdict(score_with: dict[int, float], score_without: dict[int, floa
 # and a paired bootstrap that resamples customers.
 
 TWEEDIE_POWER = 1.5
-SCORINGS = {"A": dict(fit_years=(2021, 2022), score_year=2023, completion=False),
-            "B": dict(fit_years=(2021, 2022, 2023), score_year=2024, completion=True)}
+from src import market
+SCORINGS = market.SCORINGS
 
 
 def tweedie_unit_deviance(y, mu, power: float = TWEEDIE_POWER) -> np.ndarray:

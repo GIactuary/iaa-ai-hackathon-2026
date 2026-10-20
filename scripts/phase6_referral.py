@@ -21,12 +21,13 @@ import pandas as pd
 from scripts.phase5_step6 import test
 from scripts.phase5_step8 import FAMILY_COLS, common
 from scripts.submit_w2 import FIT_YEARS
+from src import market
 from src import build, data_rules as dr, screens, validation as v
 from src.evidence import write_evidence
 from src.thresholds import load_thresholds
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT, WORK = ROOT / "outputs", ROOT / "data" / "work" / "phase6"
+OUT, WORK = market.OUT, market.WORK / "phase6"
 MIX = {"motor": "arith", "buildings": "geo", "contents": "arith"}
 
 
@@ -62,7 +63,7 @@ def run() -> None:
             res["size"][f"{line}:{measure}"] = dict(r1=int(len(r1)), r2=int(len(thin)) if seg else 0)
     # R3 on the 2025 rows, and the ranges
     for line in dr.LINES:
-        fp = pd.read_parquet(ROOT / "data" / "work" / "freeze" / f"family_preds_{line}.parquet")
+        fp = pd.read_parquet(market.WORK / "freeze" / f"family_preds_{line}.parquet")
         fam = fp[[c for c in fp.columns if c.startswith("fam:")]].to_numpy()
         dis = disagreement(fam, fp["blend"].to_numpy())
         flag = dis > lim
@@ -74,8 +75,14 @@ def run() -> None:
         res["referrals_2025"][line] = dict(rows=int(len(fp)), r3=int(flag.sum()), r3_share=float(flag.mean()))
     # Out of time: R3 as a warning sign, and treatments T1 and T2 against T0
     frames = {}
+    if not (market.WORK / "phase5_step8" / "blend_A.parquet").exists():
+        # fast mode has no cross-fitted step 8 frames: the out-of-time treatment tests are Part 1 evidence
+        pd.DataFrame(ref_rows).to_csv(WORK / "referrals_2025.csv", index=False)
+        write_evidence({"phase6": res}, OUT / "phase6.json")
+        print("referral list written; no step 8 frames, so no out-of-time treatment tests", flush=True)
+        return
     for s, wkey in (("A", "fit_B"), ("B", "fit_A")):        # each year scored by weights fitted on the other
-        f = pd.read_parquet(ROOT / "data" / "work" / "phase5_step8" / f"blend_{s}.parquet")
+        f = pd.read_parquet(market.WORK / "phase5_step8" / f"blend_{s}.parquet")
         parts = []
         for line in dr.LINES:
             d = f[f["line"] == line].copy()

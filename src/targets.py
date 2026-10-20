@@ -16,11 +16,12 @@ import numpy as np
 import pandas as pd
 
 from src import data_rules as dr
+from src import market
 
-VALUATION = pd.Timestamp("2024-12-31")
-CURVE_YEAR = 2021
-SHARE_YEARS = (2021, 2022)
-GRID_START = pd.Timestamp("2021-01-01")
+VALUATION = market.VALUATION
+CURVE_YEAR = market.CURVE_YEAR
+SHARE_YEARS = market.SHARE_YEARS
+GRID_START = market.GRID_START
 
 
 def _non_repudiated(claims: pd.DataFrame) -> pd.DataFrame:
