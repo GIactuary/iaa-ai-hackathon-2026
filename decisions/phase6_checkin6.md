@@ -39,5 +39,12 @@ Highest over lowest family price per 2025 row: median 1.07 in motor, 1.17 in bui
 
 ## Cards for the actuary (round 1)
 
-- **P1.** Treatment of model disagreement.
-- **P2.** Treatment of the size and thin-segment referrals.
+- **Q1** (card P1 on the page). Treatment of model disagreement.
+- **Q2** (card P2 on the page). Treatment of the size and thin-segment referrals.
+
+## Verdicts (actuary, 2026-10-20, check-in 6 round 1)
+
+Cards P1 and P2 on the page are register items Q1 and Q2: the AI first reused the IDs P1 and P2, which phase 0 decisions already hold, and renamed them when recording. Q1 (a), Q2 (a), with no notes. Exchange D26.
+
+- **Applied by `scripts/apply_referral.py`**, which writes `blend_frozen_v2.csv` from `blend_frozen_v1.csv`. The 2,321 motor rows where the families disagree by more than 30% take the W2 GLM's price, a median 0.84 of the blend's. The motor line is then rescaled to its decided 2025 total, so the other motor rows rise by 0.13%. Buildings and contents are unchanged.
+- **Review list:** every R1, R2 and R3 row of 2025 (62,767 rows) is in `data/work/phase6/referrals_2025.csv` for underwriting review. The R1 and R2 rows keep the blend price.

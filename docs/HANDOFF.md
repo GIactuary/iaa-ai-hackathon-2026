@@ -135,6 +135,6 @@ Evidence: `decisions/phase5_checkin1.md`, `outputs/phase5_steps123*.json` and `o
 
 ## Update after check-in 6 (2026-10-20): phase 6 done
 
-- Referral rule run under thresholds written first (`decisions/phase6_design.md`; refer_disagreement 0.3, refer_min_segment 100). P1 (a), P2 (a) decided (D26). Page: https://claude.ai/artifact/AqYBZKnd3DSWkWRnwKf9LB.
+- Referral rule run under thresholds written first (`decisions/phase6_design.md`; refer_disagreement 0.3, refer_min_segment 100). Q1 (a), Q2 (a) decided (D26; cards P1 and P2 on the page). Page: https://claude.ai/artifact/AqYBZKnd3DSWkWRnwKf9LB.
 - The candidate final file is `blend_frozen_v2.csv` (`scripts/freeze_build.py`, then `scripts/phase6_referral.py`, then `scripts/apply_referral.py`). blend_frozen_v1 scored 0.12821 public (8th).
 - Next: phase 7, opening the hold-out once with a recorded reason (`decisions/validation_design.md` section 6), and X1 at the final refit. Then phase 8: the write-up, the notebook via `notebooks/build_notebook.py`, and `/review`.

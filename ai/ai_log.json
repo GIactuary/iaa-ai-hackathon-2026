@@ -363,6 +363,20 @@
       "decision": "The actuary chose O1 (a) and O2 (b) on the check-in 5 page, with no notes.",
       "effect": "The frozen model: per line, the pooled-weight blend of the families refitted on 2021-2024 (motor 0.666 per-peril EBM and 0.334 GLM with boosted correction; buildings, log average, 0.788 GLM with boosted correction and 0.212 CatBoost; contents 0.910 spline GLM, 0.058 LightGBM and 0.032 EBM), times the decided level chain.",
       "section": "3.13"
+    },
+    {
+      "id": "D26",
+      "stage": "6. Check-in 6: referral and treatment",
+      "role": "Appointed actuary",
+      "proposed_by": "AI",
+      "question": "How should 2025 rows be treated where the model families disagree by more than 30% (Q1), or that sit beyond or at a thin edge of the size evidence (Q2)?",
+      "ai_answer": "The AI reported that disagreement is not a warning sign in this data: flagged rows were no less reliable out of time. It recommended the W2 GLM's price on flagged motor rows, where that passed the keep rule, keeping the blend in property; and keeping the blend on size referrals, since the models do not use the thin segments (property type and bedrooms were dropped at L8). It first labelled the cards P1 and P2, IDs already held by phase 0 decisions, and renamed them Q1 and Q2 when recording.",
+      "challenge": "",
+      "test": "Phase 6 under thresholds written first (refer_disagreement 0.3, refer_min_segment 100): flags on the frozen model's 2025 family predictions; out of time on the step 8 cross-fitted frames, the blend's error on flagged rows against the rest, and two coded treatments against keeping the blend.",
+      "result": "2025 flags: motor 0.9%, buildings 15.6%, contents 16.9%. Out of time the blend's deviance per unit of cost is no higher on flagged rows. The highest family price loses (-52,357 across lines on 2023); the W2 GLM's price passes in motor (+18,782 [7,077, 31,902], +1,478) and loses in property. Size referrals: 2 rows beyond the evidence edge, 55 in segments under 100 training rows.",
+      "decision": "The actuary chose (a) on both cards on the check-in 6 page, with no notes.",
+      "effect": "blend_frozen_v2.csv: 2,321 motor rows at the W2 GLM's price, the motor line rescaled to its decided total (other motor rows +0.13%), property unchanged; 62,767 rows listed for underwriting review.",
+      "section": "4.1"
     }
   ]
 }
