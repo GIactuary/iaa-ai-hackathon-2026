@@ -62,3 +62,14 @@ New rows in `decisions/thresholds.md`, written 2026-10-19 before any step 7 run:
 - **Knock-on.** The spline variant (c), the carried-candidate tests and the motor frequency × severity GLM use whichever of (b) and (d) has the lower inner-fold deviance.
 - **Where it does not apply.** The tree families and the EBM split on order, so scaling an input changes nothing. The W2 GLM has an almost negligible penalty (α = 1e-5), so scaling changes only how fast it converges.
 - **What had already run.** Contents had finished tuning LightGBM, F4, the unscaled elastic-net GLM and the EBM, and was part way through CatBoost. No out-of-time score had been computed. Finished tuning results are kept; tuning now checkpoints every trial.
+
+## 8. Amendment (2026-10-20, after the freeze, before the test runs): per-peril EBM in property
+
+**Why.** In motor, frequency × severity per peril improved the EBM by +40,237 on 2023 [9,211, 69,872] and +43,761 on 2024, and that model now carries two-thirds of the motor price. Under M1 (a) the split was tried only in motor, because the GLM version lost in property (step 6). The EBM has never been tried per peril in buildings or contents. The actuary asked for this test before phase 7 (2026-10-20).
+
+**Test, in three stages, each on the keep rule:**
+1. **Model.** Per line (buildings, contents), the EBM per peril is built exactly as in motor (section 3): a Poisson frequency and a gamma severity per peril, with the line's tuned EBM setting, summed, times the line excess factor. Scorings A and B. It is compared with the per-line EBM.
+2. **Weights.** Only in a line where stage 1 passes, step 8 is rerun with the per-peril EBM standing for F3, by the step 8 design unchanged (cross-fitted weights, the decided mix: log average in buildings, plain in contents).
+3. **Adoption.** The new blend replaces the frozen blend in that line only if it passes the keep rule against the frozen blend, both cross-fitted.
+
+If a line fails at any stage, the frozen model stands there. No threshold is new.
