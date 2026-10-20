@@ -122,3 +122,13 @@ Evidence: `decisions/phase5_checkin1.md`, `outputs/phase5_steps123*.json` and `o
 - **Weather (M3 b).** The 2025 weather enters as one exposure-weighted factor per line, not row by row. Apply it when the final pricing chain is assembled.
 - **Code.** `scripts/phase5_step6.py` fits the structures (`fit_plan`); `TweedieGLM.fit` takes a `weight` for gamma severity (ec = n, weight = n). The full run took about 35 minutes with 4 workers.
 - **Next: step 7 (families, P7, C5)**, then step 8 (weights), then the freeze by the end of 21 October.
+
+## Update after check-ins 4 and 5 (2026-10-20): the model is frozen
+
+- **Step 7** (families) and **step 8** (weights) are done; check-ins 4 and 5 decided N1 to N3 (a), O1 (a) and O2 (b) (D24, D25). Pages: https://claude.ai/artifact/Fa2ytmQAp5sZwCHycqR4oQ and https://claude.ai/artifact/LHMvjWt3Pzr7bbVX8CaUgK.
+- **Frozen model:** `scripts/freeze_build.py` writes `outputs/submissions/blend_frozen_v1.csv`. Per line, the families are refitted on 2021-2024 and mixed with the pooled step 8 weights; line totals come from the decided level chain (`scripts/submit_w2.py`, file `w2_glm_v1u.csv`).
+- **Interim submission:** w2_glm_v1u scored 0.12695 public (10th; leader 0.12996).
+- **P8-R2** (D22): contents blanks left after recovery are priced at the known-level average in every family.
+- **Errors logged:** D22 (the thin blank levels) and D23 (penalised per-peril GLM penalty).
+- A forked session drafted a different check-in 5; it was reverted (0bfc720). Only this session's check-in 5 stands.
+- **Next: phase 6 (tail and referral, `refer_disagreement` still open), phase 7 (open the hold-out once), phase 8 (write-up, notebook, review).** At the final refit, rebuild the claims history on all customers (hold-out customers' 2025 history is empty until phase 7).
