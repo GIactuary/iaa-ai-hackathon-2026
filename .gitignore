@@ -14,3 +14,6 @@ data/raw/*
 
 # submission files hold test row ids (competition data): kept out of the repository
 outputs/submissions/
+outputs/markets/*/submissions/
+# Part 2 competition data, as for Part 1
+data/raw_part2/

@@ -1,0 +1,69 @@
+{
+ "submission_w2": {
+  "file": "outputs\\markets\\test_market\\submissions\\w2_glm_v1u.csv",
+  "rows": 626639,
+  "by_line": {
+   "motor": {
+    "rows": 254986,
+    "excess_factor": 1.0649438891020218,
+    "off_balance": 1.0077160767838829,
+    "weather_2025": 0.9996244223578037,
+    "indication_capped_lc": 550.3860434006988,
+    "model_lc_2024_normal": 546.1717403152395,
+    "line_trend": 0.021874389293639135,
+    "c4_gap": -0.013855237647694585,
+    "c4_band": 0.03,
+    "predicted": 114489274.36282954,
+    "written": 119197760.278899,
+    "predicted_over_written": 0.9604985370106573,
+    "mean_per_exposure": 572.4933151210009
+   },
+   "buildings": {
+    "rows": 184155,
+    "excess_factor": 1.0210615105514291,
+    "off_balance": 1.0809969618078725,
+    "weather_2025": 1.000741367028683,
+    "indication_capped_lc": 507.67505866173286,
+    "model_lc_2024_normal": 469.6359717909761,
+    "line_trend": 0.08310511943219558,
+    "c4_gap": -0.001946401680225085,
+    "c4_band": 0.03,
+    "predicted": 71119609.77233669,
+    "written": 55281833.345675,
+    "predicted_over_written": 1.2864915193320152,
+    "mean_per_exposure": 473.36101902812516
+   },
+   "contents": {
+    "rows": 187498,
+    "excess_factor": 1.0186180288291828,
+    "off_balance": 1.0302590463486947,
+    "weather_2025": 0.9970897690804614,
+    "indication_capped_lc": 121.66571292689298,
+    "model_lc_2024_normal": 118.09235100442379,
+    "line_trend": 0.04106292823760265,
+    "c4_gap": -0.010377741437011534,
+    "c4_band": 0.03,
+    "predicted": 18750350.097358026,
+    "written": 23173281.150816,
+    "predicted_over_written": 0.8091366076011108,
+    "mean_per_exposure": 124.89927309739197
+   }
+  },
+  "own_level": false
+ },
+ "meta": {
+  "created": "2026-10-20T14:18:38",
+  "git_commit": "89fb551",
+  "seeds": null,
+  "versions": {
+   "python": "3.14.5",
+   "numpy": "2.5.3",
+   "pandas": "3.0.5",
+   "scipy": "1.18.1",
+   "sklearn": "1.9.1",
+   "lightgbm": "4.7.0",
+   "xgboost": "3.4.1",
+   "catboost": "1.2.10"
+  }
+ }
+}

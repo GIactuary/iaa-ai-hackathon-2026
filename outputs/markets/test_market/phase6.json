@@ -1,0 +1,85 @@
+{
+ "phase6": {
+  "size": {
+   "motor:vehicle_value_group": {
+    "r1": 0,
+    "r2": 0
+   },
+   "motor:engine_size_cc": {
+    "r1": 0,
+    "r2": 0
+   },
+   "motor:annual_mileage": {
+    "r1": 0,
+    "r2": 0
+   },
+   "buildings:sum_insured": {
+    "r1": 0,
+    "r2": 12
+   },
+   "contents:sum_insured": {
+    "r1": 1,
+    "r2": 36
+   }
+  },
+  "oot": {},
+  "ranges": {
+   "motor": {
+    "width_quantiles": {
+     "q50": 1.0732372086809612,
+     "q90": 1.208174350018304,
+     "q99": 1.4515314881127512
+    },
+    "blend_inside": 1.0
+   },
+   "buildings": {
+    "width_quantiles": {
+     "q50": 1.1779380680763911,
+     "q90": 1.5004991771090626,
+     "q99": 1.9367575995098174
+    },
+    "blend_inside": 0.9430534060981238
+   },
+   "contents": {
+    "width_quantiles": {
+     "q50": 1.178180969774977,
+     "q90": 1.4125110887168397,
+     "q99": 1.7862904774805146
+    },
+    "blend_inside": 1.0
+   }
+  },
+  "referrals_2025": {
+   "motor": {
+    "rows": 254986,
+    "r3": 947,
+    "r3_share": 0.003713929392201925
+   },
+   "buildings": {
+    "rows": 184155,
+    "r3": 34435,
+    "r3_share": 0.18698922103662677
+   },
+   "contents": {
+    "rows": 187498,
+    "r3": 26805,
+    "r3_share": 0.14296152492293251
+   }
+  }
+ },
+ "meta": {
+  "created": "2026-10-20T14:28:15",
+  "git_commit": "89fb551",
+  "seeds": null,
+  "versions": {
+   "python": "3.14.5",
+   "numpy": "2.5.3",
+   "pandas": "3.0.5",
+   "scipy": "1.18.1",
+   "sklearn": "1.9.1",
+   "lightgbm": "4.7.0",
+   "xgboost": "3.4.1",
+   "catboost": "1.2.10"
+  }
+ }
+}
