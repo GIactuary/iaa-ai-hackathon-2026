@@ -132,3 +132,9 @@ Evidence: `decisions/phase5_checkin1.md`, `outputs/phase5_steps123*.json` and `o
 - **Errors logged:** D22 (the thin blank levels) and D23 (penalised per-peril GLM penalty).
 - A forked session drafted a different check-in 5; it was reverted (0bfc720). Only this session's check-in 5 stands.
 - **Next: phase 6 (tail and referral, `refer_disagreement` still open), phase 7 (open the hold-out once), phase 8 (write-up, notebook, review).** At the final refit, rebuild the claims history on all customers (hold-out customers' 2025 history is empty until phase 7).
+
+## Update after check-in 6 (2026-10-20): phase 6 done
+
+- Referral rule run under thresholds written first (`decisions/phase6_design.md`; refer_disagreement 0.3, refer_min_segment 100). P1 (a), P2 (a) decided (D26). Page: https://claude.ai/artifact/AqYBZKnd3DSWkWRnwKf9LB.
+- The candidate final file is `blend_frozen_v2.csv` (`scripts/freeze_build.py`, then `scripts/phase6_referral.py`, then `scripts/apply_referral.py`). blend_frozen_v1 scored 0.12821 public (8th).
+- Next: phase 7, opening the hold-out once with a recorded reason (`decisions/validation_design.md` section 6), and X1 at the final refit. Then phase 8: the write-up, the notebook via `notebooks/build_notebook.py`, and `/review`.

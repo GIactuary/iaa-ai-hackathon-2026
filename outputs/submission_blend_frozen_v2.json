@@ -1,0 +1,34 @@
+{
+ "apply_referral": {
+  "source": "blend_frozen_v1",
+  "file": "outputs\\submissions\\blend_frozen_v2.csv",
+  "by_line": {
+   "motor": {
+    "rows": 254986,
+    "replaced": 2321,
+    "share": 0.009102460527244633,
+    "ratio_on_replaced": [
+     0.7060565692174579,
+     0.8372859334884473,
+     1.380237457373694
+    ],
+    "total": 111164237.11139998
+   }
+  }
+ },
+ "meta": {
+  "created": "2026-10-20T11:23:29",
+  "git_commit": "9416cba",
+  "seeds": null,
+  "versions": {
+   "python": "3.14.5",
+   "numpy": "2.5.3",
+   "pandas": "3.0.5",
+   "scipy": "1.18.1",
+   "sklearn": "1.9.1",
+   "lightgbm": "4.7.0",
+   "xgboost": "3.4.1",
+   "catboost": "1.2.10"
+  }
+ }
+}
