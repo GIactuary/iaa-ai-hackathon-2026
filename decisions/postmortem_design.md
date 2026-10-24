@@ -70,3 +70,15 @@ The scored actuals have the same flaw as the fitting target (open claims without
 - A group that fails stays out, and the write-up says so with the number. That is still useful: it rules out an explanation for the gap.
 
 Script: `scripts/postmortem.py`. Evidence: `outputs/postmortem.json`.
+
+## Amendment, written 2026-10-24 after the first results and before these runs
+
+**What the first results showed that the design did not foresee.** PM2 and PM3 lost heavily in motor (PM2 −414,287 on A, −368,362 on B), and the largest input in the PM3 motor tree was `make_model`, 300 levels entered as a native LightGBM category. Step 5 found make-model a true null (M7, D18: about 3% spread in frequency, nothing in cost), so the tree was splitting on noise. The motor PM2 and PM3 results measure the overfitting of a 300-level category, not the value of the fenced fields. That is a flaw in this design, not evidence.
+
+**PM2m and PM3m.** PM2 and PM3 without `make_model`, settings chosen as before. Same keep rule.
+
+**PM6, what the premium knows.** PM4 passed in buildings. Before the premium is put to the actuary as an input (J-prem), we need to know whether its information is already in our fields, which would mean a modelling gap we can close without the premium, or is information our fields lack. Per line and scoring:
+- A LightGBM regression (squared error) of log written premium on the PM3m inputs, fitted on the fitting rows only (no claims information enters it). Its R² on the scored rows is reported.
+- The log premium splits into the part our fields predict (`lwp_hat`) and the remainder (`lwp_res`).
+- The W2 GLM plus each part as one numeric term, against the W2 GLM, under the keep rule.
+- Reading: if `lwp_hat` carries the gain, the information is in our fields and our models miss it; if `lwp_res` carries it, the premium holds information we cannot get any other way. The largest inputs of the premium model (mean absolute SHAP) are reported.

@@ -419,6 +419,20 @@
       "decision": "The actuary chose U1 (a) and U2 (a) on the check-in 7 page, with no notes.",
       "effect": "X1 (a) confirmed. blend_final_all_v2.csv is the final Part 1 submission.",
       "section": "4.3"
+    },
+    {
+      "id": "D30",
+      "stage": "Part 1 post-mortem and Part 2 preparation",
+      "role": "Modeller",
+      "proposed_by": "AI",
+      "question": "Actuary, after the private board closed at 0.13641 (15th; first 0.13923): \"what did we do that could not get us to the top ... is it worth following up from here\", then \"should i run this or not ... I dont know how to make decision on what basis\".",
+      "ai_answer": "Read the Part 1 record and named three fences that carry into Part 2: the trees saw only GLM-vetted inputs, no address weather entered any model, and the current premium was never tested (J-prem (c) was planned as a challenger and never run); plus open motor claims carrying no recoveries (about 1.5% on accident year 2024). Recommended running a time-boxed post-mortem alongside Part 2 setup, on a stated basis: the answer changes Part 2 settings, it is cheaper on Part 1's built data than later in the Part 2 window, and nothing locked can be harmed.",
+      "challenge": "",
+      "test": "",
+      "result": "",
+      "decision": "Actuary: \"okay you do your part I will prep for week 2 with files in another session\". The AI runs the post-mortem; the actuary prepares the Part 2 files separately.",
+      "effect": "Design written and committed before any test ran (decisions/postmortem_design.md): LightGBM reference against weather, wider inputs and premium variants (PM1 to PM4) under the Part 1 keep rule, recoveries measured as PM5; script scripts/postmortem.py.",
+      "section": "4.3"
     }
   ]
 }
