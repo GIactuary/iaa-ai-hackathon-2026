@@ -447,6 +447,20 @@
       "decision": "None yet. Y1 to Y4 put to the actuary in decisions/judgment_register.md.",
       "effect": "decisions/postmortem_results.md; recommendations for Part 2's inputs, a proposed recoveries data rule, and weather left out.",
       "section": "4.3"
+    },
+    {
+      "id": "D32",
+      "stage": "Part 1 post-mortem and Part 2 preparation",
+      "role": "Appointed actuary",
+      "proposed_by": "AI",
+      "question": "How should Part 2 be built in light of the post-mortem: the premium as our fields predict it (Y1), wider tree inputs (Y2), recoveries on open claims (Y3), weather (Y4)?",
+      "ai_answer": "Recommended (a) on all four: the predicted part of the premium as one GLM term and a tree input, retested on Part 2; every legitimate field for the trees with the family weights deciding; deduct expected recoveries on open claims if Part 2's claims show the same pattern; keep weather as one factor per line.",
+      "challenge": "",
+      "test": "",
+      "result": "",
+      "decision": "Actuary chose (a) on Y1 to Y4 on the post-mortem brief, with no notes, and finalized it on 2026-10-24. Y1 reverses J-prem (a) for Part 2, subject to the keep rule on Part 2's data.",
+      "effect": "Part 2 build settings fixed in docs/specs/SPEC_part2_settings.md; the judgment register records Y1 to Y4 as decided.",
+      "section": "4.3"
     }
   ]
 }
