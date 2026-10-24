@@ -433,6 +433,20 @@
       "decision": "Actuary: \"okay you do your part I will prep for week 2 with files in another session\". The AI runs the post-mortem; the actuary prepares the Part 2 files separately.",
       "effect": "Design written and committed before any test ran (decisions/postmortem_design.md): LightGBM reference against weather, wider inputs and premium variants (PM1 to PM4) under the Part 1 keep rule, recoveries measured as PM5; script scripts/postmortem.py.",
       "section": "4.3"
+    },
+    {
+      "id": "D31",
+      "stage": "Part 1 post-mortem and Part 2 preparation",
+      "role": "Modeller",
+      "proposed_by": "AI",
+      "question": "Which of the fenced inputs explains the gap to the top of the Part 1 board (D30)?",
+      "ai_answer": "Before testing, the AI ranked missing address weather as the second most likely cause, after the trees' restricted inputs. It was wrong about weather. Its first wide-input design was also flawed: it let LightGBM split on make_model, a 300-level code step 5 had shown to be noise.",
+      "challenge": "",
+      "test": "Keep-rule tests on Part 1 scorings A and B (decisions/postmortem_design.md and its amendment, both committed before their runs): weather, every legitimate field, the premium as input and offset, and the premium split into the part our fields predict and the remainder; recoveries on open claims measured.",
+      "result": "Weather failed (own-year -62,438 [-149,559, 26,546], -5,623 across lines). The first wide test lost 414,287 in motor through make_model; without it, +150,968 [35,279, 274,886], +54,819 across lines, no line alone. The premium part our fields predict passed in buildings (+110,298 [62,978, 164,210], +123,815), the remainder added nothing: the incumbent prices flood geography our models missed. Open-claim recoveries make the 2025 motor indication 1.28% too high.",
+      "decision": "None yet. Y1 to Y4 put to the actuary in decisions/judgment_register.md.",
+      "effect": "decisions/postmortem_results.md; recommendations for Part 2's inputs, a proposed recoveries data rule, and weather left out.",
+      "section": "4.3"
     }
   ]
 }

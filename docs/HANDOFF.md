@@ -153,3 +153,10 @@ Evidence: `decisions/phase5_checkin1.md`, `outputs/phase5_steps123*.json` and `o
 - `scripts/what_changed.py` (with `src/drift.py`, tests in `tests/test_drift.py`) found all six changes planted in a synthetic market (`scripts/make_test_market.py`, `config/test_market.json`).
 - `scripts/run_market.py` runs lock, build, what_changed, history, fast weights (`scripts/fast_weights.py`), level, blend and referral in about 32 minutes on that market.
 - The Part 1 write-up draft is in `docs/writeup/` (session part1-writeup; page https://claude.ai/artifact/AXXHWySJgnp9TnU8BkTa4N).
+
+## Update: Part 1 post-mortem (2026-10-24)
+
+- Part 1 closed at 0.13641 private, 15th; first place 0.13923. Places 5 to 20 sit within 0.0019.
+- Post-mortem design `decisions/postmortem_design.md` (with an amendment), results `decisions/postmortem_results.md`, evidence `outputs/postmortem.json`, script `scripts/postmortem.py`. Exchanges D30 and D31.
+- Main finding: the incumbent premium, as predicted from our own fields, lifts buildings clearly (flood geography our models missed); the unpredictable remainder adds nothing. Wider tree inputs help a little across lines; weather adds nothing; open motor claims without recoveries make the motor indication 1.28% too high.
+- **Before the Part 2 configuration is set**, the actuary decides Y1 to Y4 in `decisions/judgment_register.md`. None of them is in `scripts/run_market.py` yet.

@@ -16,6 +16,7 @@ scoring A's customer-grouped inner folds, and reused on B.
 Run one line:  .venv/Scripts/python.exe -I scripts/postmortem.py motor     (PM_THREADS, default 4)
 Run the tests: .venv/Scripts/python.exe -I scripts/postmortem.py tests
 Recoveries on open claims (PM5, a measurement): .venv/Scripts/python.exe -I scripts/postmortem.py recoveries
+The amendment (PM2m, PM3m, PM6), then the tests again: .venv/Scripts/python.exe -I scripts/postmortem.py amend
 """
 from __future__ import annotations
 
@@ -88,12 +89,13 @@ def frames(line: str, name: str, weather: pd.DataFrame) -> dict:
     X["discount_applied"] = tr["discount_applied"].to_numpy(float)
     wx = [f"wx_{c}" for c in WEATHER_VARS]
     nm = [f"norm_{c}" for c in WEATHER_VARS]
+    widem = [c for c in wide if c != "make_model"]
     cols = {"R": ref, "PM1a": ref + wx, "PM1b": ref + wx + nm, "PM2": ref + wide, "PM3": ref + wide + wx + nm,
-            "PM4a": ref + ["lwp", "discount_applied"], "PM4b": ref}
+            "PM4a": ref + ["lwp", "discount_applied"], "PM4b": ref, "PM2m": ref + widem, "PM3m": ref + widem + wx + nm}
     return dict(D=D, X=X, cols=cols, wide=wide)
 
 
-def choose(line: str, F: dict, th, power: float) -> dict:
+def choose(line: str, F: dict, th, power: float, variants=VARIANTS) -> dict:
     """Setting and tree count for every variant, on fold 1 of scoring A's fitting rows (seed 11)."""
     path = WORK / f"settings_{line}.json"
     done = json.loads(path.read_text()) if path.exists() else {}
@@ -105,7 +107,7 @@ def choose(line: str, F: dict, th, power: float) -> dict:
     a, b = v.make_folds(len(fi), [seed], n_folds=int(th["inner_folds"]), groups=cust)[seed][0]
     a, b = fi[a], fi[b]
     y, ec = tr["costc"].to_numpy(), (tr["exposure"] * tr["completion"]).to_numpy()
-    for var in VARIANTS:
+    for var in variants:
         if var in done:
             continue
         Xv = X[F["cols"][var]]
@@ -124,7 +126,7 @@ def choose(line: str, F: dict, th, power: float) -> dict:
     return done
 
 
-def out_of_time(line: str, name: str, F: dict, th, power: float, settings: dict) -> pd.DataFrame:
+def out_of_time(line: str, name: str, F: dict, th, power: float, settings: dict, variants=VARIANTS) -> pd.DataFrame:
     D, X = F["D"], F["X"]
     tr, fit, sc = D["tr"], D["fit"], D["sc"]
     e, c = tr["exposure"].to_numpy(), tr["completion"].to_numpy()
@@ -132,7 +134,7 @@ def out_of_time(line: str, name: str, F: dict, th, power: float, settings: dict)
     cs = c[sc] if v.SCORINGS[name]["completion"] else 1.0
     f = pd.DataFrame({"line": line, "customer_id": tr.loc[sc, "customer_id"].to_numpy(), "y": tr.loc[sc, "cost"].to_numpy(),
                       "exposure": e[sc]})
-    for var in VARIANTS:
+    for var in variants:
         b = settings[var]["best"]
         Xv = X[F["cols"][var]]
         init = X["lwp"].to_numpy() if var == "PM4b" else None
@@ -140,8 +142,10 @@ def out_of_time(line: str, name: str, F: dict, th, power: float, settings: dict)
         m.fit(Xv[fit], y[fit], ec[fit], init=None if init is None else init[fit])
         f[var] = m.rate(Xv[sc], init=None if init is None else init[sc]) * D["elf"] * e[sc] * cs
         log(line, name, var, "fitted")
-        if var == "PM3" and name == "A":
-            explain(line, m, Xv, sc, F["wide"])
+        if var in ("PM3", "PM3m") and name == "A":
+            explain(line, m, Xv, sc, F["wide"], suffix="" if var == "PM3" else "_m")
+    if variants != VARIANTS:
+        return f
     G = D["G"][D["w2"]]
     g = TweedieGLM().fit(G[fit], y[fit], ec[fit])
     f["glm"] = g.rate(G[sc]) * D["elf"] * e[sc] * cs
@@ -152,12 +156,12 @@ def out_of_time(line: str, name: str, F: dict, th, power: float, settings: dict)
     return f
 
 
-def explain(line, m, Xv, sc, wide):
+def explain(line, m, Xv, sc, wide, suffix=""):
     rng = np.random.default_rng(0)
     take = rng.choice(np.flatnonzero(sc), size=min(20000, int(sc.sum())), replace=False)
     ctb = np.abs(m.contrib(Xv.iloc[take])[:, :-1]).mean(axis=0)
     top = sorted(zip(Xv.columns, map(float, ctb)), key=lambda t: -t[1])
-    (WORK / f"explain_{line}.json").write_text(json.dumps(dict(top=top[:25], wide=wide), indent=1))
+    (WORK / f"explain_{line}{suffix}.json").write_text(json.dumps(dict(top=top[:25], wide=wide), indent=1))
 
 
 def run_line(line: str) -> None:
@@ -181,18 +185,92 @@ def run_line(line: str) -> None:
     log(line, "done")
 
 
+AMEND = ("PM2m", "PM3m")
+
+
+def premium_parts(line: str, name: str, F: dict) -> dict:
+    """PM6: log written premium split into the part the PM3m inputs predict and the remainder, the premium model
+    fitted on the fitting rows only; the W2 GLM plus each part as one numeric term, priced on the scored rows."""
+    import lightgbm as lgb
+    th = load_thresholds()
+    D, X = F["D"], F["X"]
+    tr, fit, sc = D["tr"], D["fit"], D["sc"]
+    Xp, lwp = X[F["cols"]["PM3m"]], X["lwp"].to_numpy()
+    fi = np.flatnonzero(fit)
+    seed = int(th["split_seed_1"])
+    a, b = v.make_folds(len(fi), [seed], n_folds=int(th["inner_folds"]),
+                        groups=pd.factorize(tr["customer_id"].to_numpy()[fi])[0])[seed][0]
+    pm = lgb.LGBMRegressor(n_estimators=int(th["max_trees"]), learning_rate=th["gbm_learning_rate"], num_leaves=63,
+                           min_child_samples=100, subsample=0.8, subsample_freq=1, colsample_bytree=0.8,
+                           n_jobs=THREADS, random_state=0, verbose=-1)
+    pm.fit(Xp.iloc[fi[a]], lwp[fi[a]], eval_set=[(Xp.iloc[fi[b]], lwp[fi[b]])],
+           callbacks=[lgb.early_stopping(int(th["early_stop_rounds"]), verbose=False)])
+    hat = pm.predict(Xp, num_iteration=pm.best_iteration_)
+    res = lwp - hat
+    r2 = float(1 - np.var(res[sc]) / np.var(lwp[sc]))
+    e, c = tr["exposure"].to_numpy(), tr["completion"].to_numpy()
+    ec, y = e * c, tr["costc"].to_numpy()
+    cs = c[sc] if v.SCORINGS[name]["completion"] else 1.0
+    G = D["G"][D["w2"]]
+    out = {}
+    for col, x in (("glm_phat", hat), ("glm_pres", res)):
+        Gx = G.copy(); Gx["lwp_part"] = x
+        g = TweedieGLM().fit(Gx[fit], y[fit], ec[fit])
+        out[col] = g.rate(Gx[sc]) * D["elf"] * e[sc] * cs
+    info = dict(r2_scored=r2, trees=int(pm.best_iteration_))
+    if name == "A":
+        rng = np.random.default_rng(0)
+        take = rng.choice(np.flatnonzero(sc), size=min(20000, int(sc.sum())), replace=False)
+        ctb = np.abs(pm.predict(Xp.iloc[take], pred_contrib=True, num_iteration=pm.best_iteration_)[:, :-1]).mean(axis=0)
+        info["top"] = sorted(zip(Xp.columns, map(float, ctb)), key=lambda t: -t[1])[:20]
+    return dict(cols=out, info=info)
+
+
+def amend_line(line: str) -> None:
+    """The amendment (design, last section): PM2m, PM3m and PM6, added to the saved scored rows."""
+    th = load_thresholds()
+    power = json.loads((market.WORK / "phase5_step7" / f"tune_{line}_lgb.json").read_text())["best"]["power"]
+    weather = dr.read_raw("weather")
+    info, settings = {}, None
+    for name in ("A", "B"):
+        path = WORK / f"{line}_{name}.parquet"
+        f = pd.read_parquet(path)
+        if all(c in f.columns for c in (*AMEND, "glm_phat", "glm_pres")):
+            continue
+        F = frames(line, name, weather)
+        if settings is None:
+            settings = choose(line, F if name == "A" else frames(line, "A", weather), th, power, AMEND)
+        g = out_of_time(line, name, F, th, power, settings, AMEND)
+        for var in AMEND:
+            f[var] = g[var].to_numpy()
+        pp = premium_parts(line, name, F)
+        for col, x in pp["cols"].items():
+            f[col] = x
+        info[name] = pp["info"]
+        log(line, name, "premium model R2 on scored rows", round(pp["info"]["r2_scored"], 4))
+        f.to_parquet(path)
+    if info:
+        (WORK / f"premium_{line}.json").write_text(json.dumps(info, default=float, indent=1))
+    log(line, "amendment done")
+
+
 def run_tests() -> None:
     th = load_thresholds()
     fr = {s: pd.concat([pd.read_parquet(WORK / f"{l}_{s}.parquet") for l in dr.LINES], ignore_index=True) for s in v.SCORINGS}
-    tests = {f"{var} vs R": test(fr, "R", var, th) for var in VARIANTS if var != "R"}
+    amended = all(c in fr["A"].columns for c in (*AMEND, "glm_phat", "glm_pres"))
+    cols = (*VARIANTS, *(AMEND if amended else ()), "glm", "glm_prem", *(("glm_phat", "glm_pres") if amended else ()))
+    tests = {f"{var} vs R": test(fr, "R", var, th) for var in cols if var.startswith("PM")}
     tests["R vs W2 GLM"] = test(fr, "glm", "R", th)
     tests["PM4c: W2 GLM + premium vs W2 GLM"] = test(fr, "glm", "glm_prem", th)
+    if amended:
+        tests["PM6: W2 GLM + predicted premium vs W2 GLM"] = test(fr, "glm", "glm_phat", th)
+        tests["PM6: W2 GLM + premium remainder vs W2 GLM"] = test(fr, "glm", "glm_pres", th)
     d2 = {}
     for s, f in fr.items():
         for ln in list(dr.LINES) + ["all"]:
             d = f if ln == "all" else f[f["line"] == ln]
             yy = d["y"].to_numpy()
-            for col in (*VARIANTS, "glm", "glm_prem"):
+            for col in cols:
                 mu = v.rescale_to_total(d[col].to_numpy(), yy, by=d["line"].to_numpy())
                 d2.setdefault(s, {}).setdefault(ln, {})[col] = float(v.d2_tweedie(yy, mu, d["exposure"]))
     for key, t in tests.items():
@@ -203,7 +281,11 @@ def run_tests() -> None:
     settings = {l: json.loads((WORK / f"settings_{l}.json").read_text()) for l in dr.LINES}
     explain_ = {l: json.loads((WORK / f"explain_{l}.json").read_text()) for l in dr.LINES}
     rec = json.loads((WORK / "recoveries.json").read_text()) if (WORK / "recoveries.json").exists() else None
-    write_evidence({"postmortem": dict(tests=tests, ranking_d2=d2, settings=settings, explain=explain_, recoveries=rec)},
+    extra = {}
+    if amended:
+        extra = dict(explain_m={l: json.loads((WORK / f"explain_{l}_m.json").read_text()) for l in dr.LINES},
+                     premium={l: json.loads((WORK / f"premium_{l}.json").read_text()) for l in dr.LINES})
+    write_evidence({"postmortem": dict(tests=tests, ranking_d2=d2, settings=settings, explain=explain_, recoveries=rec, **extra)},
                    OUT / "postmortem.json")
 
 
@@ -256,5 +338,8 @@ if __name__ == "__main__":
         run_tests()
     elif arg == "recoveries":
         recoveries()
+    elif arg == "amend":
+        for ln in sys.argv[2:] or dr.LINES:
+            amend_line(ln)
     else:
         run_line(arg)
