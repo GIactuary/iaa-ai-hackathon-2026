@@ -1,0 +1,2601 @@
+{
+ "y2t_threshold_test": {
+  "selection_ci": 0.95,
+  "emerging_v1": {
+   "all_candidates": {
+    "total": {
+     "R0": 20526.90499574035,
+     "N4": 20495.978727471236,
+     "N5": 20487.07011475644,
+     "N6": 20554.917348946008,
+     "N7": 20479.822542805625,
+     "N20": 20491.77815035889,
+     "N100": 20740.841300355343,
+     "N300": 20848.417476053968,
+     "clean N4": 20543.381827060275,
+     "clean N5": 20519.838935002965,
+     "clean N6": 20514.358283859194,
+     "clean N7": 20512.591534612722,
+     "clean N20": 20618.76583069766,
+     "clean N100": 20591.571173271364,
+     "clean N300": 20775.91967464805
+    },
+    "best": "N7",
+    "vs_best": {
+     "R0": {
+      "gain": 47.08245293472623,
+      "rel_gain": 0.0022936946872651556,
+      "lo": 12.42848763947682,
+      "hi": 82.39740016162654,
+      "share_b_better": 0.9965,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "N4": {
+      "gain": 16.15618466561179,
+      "rel_gain": 0.0007882611940827827,
+      "lo": -16.711305940969904,
+      "hi": 49.48561781576829,
+      "share_b_better": 0.842,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "N5": {
+      "gain": 7.2475719508133665,
+      "rel_gain": 0.0003537632228628476,
+      "lo": -28.226379409543746,
+      "hi": 42.474335193198016,
+      "share_b_better": 0.651,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "N6": {
+      "gain": 75.09480614038165,
+      "rel_gain": 0.003653374268820997,
+      "lo": 42.67416240888502,
+      "hi": 107.70591644277665,
+      "share_b_better": 1.0,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "N7": {
+      "gain": 0.0,
+      "rel_gain": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "share_b_better": 0.0,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "N20": {
+      "gain": 11.955607553263896,
+      "rel_gain": 0.0005834343640429519,
+      "lo": -14.759507419608378,
+      "hi": 39.6733401224135,
+      "share_b_better": 0.816,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "N100": {
+      "gain": 261.01875754971707,
+      "rel_gain": 0.012584771937155952,
+      "lo": 183.37445348056644,
+      "hi": 338.5039820252788,
+      "share_b_better": 1.0,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "N300": {
+      "gain": 368.59493324834307,
+      "rel_gain": 0.01767975596573232,
+      "lo": 274.25146872971186,
+      "hi": 467.4953399783355,
+      "share_b_better": 1.0,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "clean N4": {
+      "gain": 63.559284254649434,
+      "rel_gain": 0.0030939056086144246,
+      "lo": 14.828151098267764,
+      "hi": 107.92778859829025,
+      "share_b_better": 0.997,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "clean N5": {
+      "gain": 40.016392197337574,
+      "rel_gain": 0.0019501318857370355,
+      "lo": -5.774533399426463,
+      "hi": 83.39214648266663,
+      "share_b_better": 0.9545,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "clean N6": {
+      "gain": 34.53574105356789,
+      "rel_gain": 0.0016834911711930466,
+      "lo": -5.030747568648444,
+      "hi": 74.42615602960258,
+      "share_b_better": 0.9485,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "clean N7": {
+      "gain": 32.7689918070935,
+      "rel_gain": 0.0015975061830583162,
+      "lo": -6.667466084663475,
+      "hi": 70.41112674565842,
+      "share_b_better": 0.9515,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "clean N20": {
+      "gain": 138.94328789203522,
+      "rel_gain": 0.006738681113744135,
+      "lo": 90.44286784044307,
+      "hi": 187.0482536022361,
+      "share_b_better": 1.0,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "clean N100": {
+      "gain": 111.74863046573756,
+      "rel_gain": 0.0054269113087782005,
+      "lo": 42.773102323117804,
+      "hi": 180.1864065899877,
+      "share_b_better": 0.9985,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "clean N300": {
+      "gain": 296.097131842419,
+      "rel_gain": 0.014251938613515794,
+      "lo": 204.76025552897133,
+      "hi": 394.3991429563012,
+      "share_b_better": 1.0,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     }
+    },
+    "vs_r0": {
+     "N4": {
+      "gain": 30.926268269114434,
+      "rel_gain": 0.001506621104132947,
+      "lo": -8.59683101284308,
+      "hi": 70.76539711798152,
+      "share_b_better": 0.9355,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "N5": {
+      "gain": 39.834880983912875,
+      "rel_gain": 0.001940617983674559,
+      "lo": -3.485022178923444,
+      "hi": 82.94813845579715,
+      "share_b_better": 0.9615,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "N6": {
+      "gain": -28.01235320565542,
+      "rel_gain": -0.0013646652143354497,
+      "lo": -67.09723387413071,
+      "hi": 10.299364011109658,
+      "share_b_better": 0.083,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "N7": {
+      "gain": 47.08245293472623,
+      "rel_gain": 0.0022936946872651556,
+      "lo": 12.42848763947682,
+      "hi": 82.39740016162654,
+      "share_b_better": 0.9965,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "N20": {
+      "gain": 35.12684538146233,
+      "rel_gain": 0.0017112587303712708,
+      "lo": -2.714329775262795,
+      "hi": 71.16199226717627,
+      "share_b_better": 0.9635,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "N100": {
+      "gain": -213.93630461499083,
+      "rel_gain": -0.01042223874760398,
+      "lo": -294.1927376719264,
+      "hi": -133.61530006158932,
+      "share_b_better": 0.0,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "N300": {
+      "gain": -321.51248031361683,
+      "rel_gain": -0.01566297892353161,
+      "lo": -426.97595576618056,
+      "hi": -225.12621397369367,
+      "share_b_better": 0.0,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "clean N4": {
+      "gain": -16.476831319923196,
+      "rel_gain": -0.0008026943819997409,
+      "lo": -64.23680690280636,
+      "hi": 32.00380789169932,
+      "share_b_better": 0.2395,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "clean N5": {
+      "gain": 7.06606073738867,
+      "rel_gain": 0.00034423410342937657,
+      "lo": -35.13916450029455,
+      "hi": 53.53351412770911,
+      "share_b_better": 0.611,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "clean N6": {
+      "gain": 12.546711881158345,
+      "rel_gain": 0.0006112325206241262,
+      "lo": -31.547297569568574,
+      "hi": 57.91222552451904,
+      "share_b_better": 0.709,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "clean N7": {
+      "gain": 14.31346112763272,
+      "rel_gain": 0.000697302449180867,
+      "lo": -24.232117787989587,
+      "hi": 56.6093009648643,
+      "share_b_better": 0.7725,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "clean N20": {
+      "gain": -91.86083495730898,
+      "rel_gain": -0.004475142988013611,
+      "lo": -138.55650748939394,
+      "hi": -42.26919155234304,
+      "share_b_better": 0.0,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "clean N100": {
+      "gain": -64.66617753101133,
+      "rel_gain": -0.003150313091254164,
+      "lo": -136.3162076557072,
+      "hi": 7.334750808965198,
+      "share_b_better": 0.0405,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "clean N300": {
+      "gain": -249.0146789076928,
+      "rel_gain": -0.01213113613374092,
+      "lo": -354.548734132726,
+      "hi": -152.8781450773518,
+      "share_b_better": 0.0,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     }
+    },
+    "per_line": {
+     "motor": {
+      "R0": 13509.333695376305,
+      "N4": 13486.537005690543,
+      "N5": 13472.472836184012,
+      "N6": 13519.655839772637,
+      "N7": 13484.487980495185,
+      "N20": 13496.443588048449,
+      "N100": 13656.948397484262,
+      "N300": 13764.524573182887,
+      "clean N4": 13526.3396169093,
+      "clean N5": 13485.36501523455,
+      "clean N6": 13472.922613542183,
+      "clean N7": 13494.501254082805,
+      "clean N20": 13600.675550167747,
+      "clean N100": 13549.225457858096,
+      "clean N300": 13733.573959234776
+     },
+     "buildings": {
+      "R0": 3437.148959412368,
+      "N4": 3438.207930938834,
+      "N5": 3444.209738244336,
+      "N6": 3470.170943286256,
+      "N7": 3437.148959412368,
+      "N20": 3437.148959412368,
+      "N100": 3481.399111678348,
+      "N300": 3481.399111678348,
+      "clean N4": 3438.207930938834,
+      "clean N5": 3444.209738244336,
+      "clean N6": 3470.170943286256,
+      "clean N7": 3437.148959412368,
+      "clean N20": 3437.148959412368,
+      "clean N100": 3459.2601490212055,
+      "clean N300": 3459.2601490212055
+     },
+     "contents": {
+      "R0": 3580.4223409516785,
+      "N4": 3571.2337908418594,
+      "N5": 3570.387540328091,
+      "N6": 3565.090565887115,
+      "N7": 3558.185602898072,
+      "N20": 3558.185602898072,
+      "N100": 3602.4937911927327,
+      "N300": 3602.4937911927327,
+      "clean N4": 3578.8342792121407,
+      "clean N5": 3590.2641815240772,
+      "clean N6": 3571.2647270307552,
+      "clean N7": 3580.941321117546,
+      "clean N20": 3580.941321117546,
+      "clean N100": 3583.0855663920634,
+      "clean N300": 3583.0855663920634
+     }
+    }
+   },
+   "main": {
+    "total": {
+     "R0": 20526.90499574035,
+     "N4": 20495.978727471236,
+     "N5": 20487.07011475644,
+     "N6": 20554.917348946008,
+     "N7": 20479.822542805625,
+     "N20": 20491.77815035889,
+     "N100": 20740.841300355343,
+     "N300": 20848.417476053968
+    },
+    "best": "N7",
+    "vs_best": {
+     "R0": {
+      "gain": 47.08245293472623,
+      "rel_gain": 0.0022936946872651556,
+      "lo": 12.42848763947682,
+      "hi": 82.39740016162654,
+      "share_b_better": 0.9965,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "N4": {
+      "gain": 16.15618466561179,
+      "rel_gain": 0.0007882611940827827,
+      "lo": -16.711305940969904,
+      "hi": 49.48561781576829,
+      "share_b_better": 0.842,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "N5": {
+      "gain": 7.2475719508133665,
+      "rel_gain": 0.0003537632228628476,
+      "lo": -28.226379409543746,
+      "hi": 42.474335193198016,
+      "share_b_better": 0.651,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "N6": {
+      "gain": 75.09480614038165,
+      "rel_gain": 0.003653374268820997,
+      "lo": 42.67416240888502,
+      "hi": 107.70591644277665,
+      "share_b_better": 1.0,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "N7": {
+      "gain": 0.0,
+      "rel_gain": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "share_b_better": 0.0,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "N20": {
+      "gain": 11.955607553263896,
+      "rel_gain": 0.0005834343640429519,
+      "lo": -14.759507419608378,
+      "hi": 39.6733401224135,
+      "share_b_better": 0.816,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "N100": {
+      "gain": 261.01875754971707,
+      "rel_gain": 0.012584771937155952,
+      "lo": 183.37445348056644,
+      "hi": 338.5039820252788,
+      "share_b_better": 1.0,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "N300": {
+      "gain": 368.59493324834307,
+      "rel_gain": 0.01767975596573232,
+      "lo": 274.25146872971186,
+      "hi": 467.4953399783355,
+      "share_b_better": 1.0,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     }
+    },
+    "vs_r0": {
+     "N4": {
+      "gain": 30.926268269114434,
+      "rel_gain": 0.001506621104132947,
+      "lo": -8.59683101284308,
+      "hi": 70.76539711798152,
+      "share_b_better": 0.9355,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "N5": {
+      "gain": 39.834880983912875,
+      "rel_gain": 0.001940617983674559,
+      "lo": -3.485022178923444,
+      "hi": 82.94813845579715,
+      "share_b_better": 0.9615,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "N6": {
+      "gain": -28.01235320565542,
+      "rel_gain": -0.0013646652143354497,
+      "lo": -67.09723387413071,
+      "hi": 10.299364011109658,
+      "share_b_better": 0.083,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "N7": {
+      "gain": 47.08245293472623,
+      "rel_gain": 0.0022936946872651556,
+      "lo": 12.42848763947682,
+      "hi": 82.39740016162654,
+      "share_b_better": 0.9965,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "N20": {
+      "gain": 35.12684538146233,
+      "rel_gain": 0.0017112587303712708,
+      "lo": -2.714329775262795,
+      "hi": 71.16199226717627,
+      "share_b_better": 0.9635,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "N100": {
+      "gain": -213.93630461499083,
+      "rel_gain": -0.01042223874760398,
+      "lo": -294.1927376719264,
+      "hi": -133.61530006158932,
+      "share_b_better": 0.0,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "N300": {
+      "gain": -321.51248031361683,
+      "rel_gain": -0.01566297892353161,
+      "lo": -426.97595576618056,
+      "hi": -225.12621397369367,
+      "share_b_better": 0.0,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     }
+    },
+    "per_line": {
+     "motor": {
+      "R0": 13509.333695376305,
+      "N4": 13486.537005690543,
+      "N5": 13472.472836184012,
+      "N6": 13519.655839772637,
+      "N7": 13484.487980495185,
+      "N20": 13496.443588048449,
+      "N100": 13656.948397484262,
+      "N300": 13764.524573182887
+     },
+     "buildings": {
+      "R0": 3437.148959412368,
+      "N4": 3438.207930938834,
+      "N5": 3444.209738244336,
+      "N6": 3470.170943286256,
+      "N7": 3437.148959412368,
+      "N20": 3437.148959412368,
+      "N100": 3481.399111678348,
+      "N300": 3481.399111678348
+     },
+     "contents": {
+      "R0": 3580.4223409516785,
+      "N4": 3571.2337908418594,
+      "N5": 3570.387540328091,
+      "N6": 3565.090565887115,
+      "N7": 3558.185602898072,
+      "N20": 3558.185602898072,
+      "N100": 3602.4937911927327,
+      "N300": 3602.4937911927327
+     }
+    }
+   },
+   "chosen": "N4",
+   "chosen_range": [
+    4,
+    4
+   ],
+   "per_line_chosen": {
+    "motor": "N4",
+    "buildings": "N4",
+    "contents": "N6"
+   },
+   "candidates": {
+    "motor": {
+     "R0": {
+      "n_max": null,
+      "clean": false,
+      "encode": [],
+      "raw_codes": [
+       "driver_age_band",
+       "body_type",
+       "transmission",
+       "vehicle_colour",
+       "fuel_type",
+       "driver_assist",
+       "cover_type",
+       "overnight_parking",
+       "vehicle_use",
+       "named_young_driver",
+       "channel",
+       "payment_method",
+       "new_business",
+       "region",
+       "urban_density",
+       "soil_type",
+       "property_type",
+       "roof_type",
+       "basement",
+       "trees_within_5m",
+       "listed_building",
+       "energy_rating",
+       "solar_panels",
+       "marital_status"
+      ],
+      "dropped": [
+       "make_model",
+       "occupation"
+      ],
+      "setting": {
+       "leaves": 15,
+       "min_leaf": 100
+      },
+      "trees": 402
+     },
+     "N4": {
+      "n_max": 4,
+      "clean": false,
+      "encode": [
+       "driver_age_band",
+       "make_model",
+       "body_type",
+       "vehicle_colour",
+       "region",
+       "soil_type",
+       "energy_rating",
+       "occupation"
+      ],
+      "raw_codes": [
+       "transmission",
+       "fuel_type",
+       "driver_assist",
+       "cover_type",
+       "overnight_parking",
+       "vehicle_use",
+       "named_young_driver",
+       "channel",
+       "payment_method",
+       "new_business",
+       "urban_density",
+       "property_type",
+       "roof_type",
+       "basement",
+       "trees_within_5m",
+       "listed_building",
+       "solar_panels",
+       "marital_status"
+      ],
+      "dropped": [],
+      "setting": {
+       "leaves": 15,
+       "min_leaf": 100
+      },
+      "trees": 313
+     },
+     "N5": {
+      "n_max": 5,
+      "clean": false,
+      "encode": [
+       "make_model",
+       "vehicle_colour",
+       "region",
+       "energy_rating",
+       "occupation"
+      ],
+      "raw_codes": [
+       "driver_age_band",
+       "body_type",
+       "transmission",
+       "fuel_type",
+       "driver_assist",
+       "cover_type",
+       "overnight_parking",
+       "vehicle_use",
+       "named_young_driver",
+       "channel",
+       "payment_method",
+       "new_business",
+       "urban_density",
+       "soil_type",
+       "property_type",
+       "roof_type",
+       "basement",
+       "trees_within_5m",
+       "listed_building",
+       "solar_panels",
+       "marital_status"
+      ],
+      "dropped": [],
+      "setting": {
+       "leaves": 15,
+       "min_leaf": 400
+      },
+      "trees": 235
+     },
+     "N6": {
+      "n_max": 6,
+      "clean": false,
+      "encode": [
+       "make_model",
+       "vehicle_colour",
+       "energy_rating",
+       "occupation"
+      ],
+      "raw_codes": [
+       "driver_age_band",
+       "body_type",
+       "transmission",
+       "fuel_type",
+       "driver_assist",
+       "cover_type",
+       "overnight_parking",
+       "vehicle_use",
+       "named_young_driver",
+       "channel",
+       "payment_method",
+       "new_business",
+       "region",
+       "urban_density",
+       "soil_type",
+       "property_type",
+       "roof_type",
+       "basement",
+       "trees_within_5m",
+       "listed_building",
+       "solar_panels",
+       "marital_status"
+      ],
+      "dropped": [],
+      "setting": {
+       "leaves": 15,
+       "min_leaf": 100
+      },
+      "trees": 371
+     },
+     "N7": {
+      "n_max": 7,
+      "clean": false,
+      "encode": [
+       "make_model",
+       "vehicle_colour",
+       "occupation"
+      ],
+      "raw_codes": [
+       "driver_age_band",
+       "body_type",
+       "transmission",
+       "fuel_type",
+       "driver_assist",
+       "cover_type",
+       "overnight_parking",
+       "vehicle_use",
+       "named_young_driver",
+       "channel",
+       "payment_method",
+       "new_business",
+       "region",
+       "urban_density",
+       "soil_type",
+       "property_type",
+       "roof_type",
+       "basement",
+       "trees_within_5m",
+       "listed_building",
+       "energy_rating",
+       "solar_panels",
+       "marital_status"
+      ],
+      "dropped": [],
+      "setting": {
+       "leaves": 15,
+       "min_leaf": 100
+      },
+      "trees": 343
+     },
+     "N20": {
+      "n_max": 20,
+      "clean": false,
+      "encode": [
+       "make_model",
+       "occupation"
+      ],
+      "raw_codes": [
+       "driver_age_band",
+       "body_type",
+       "transmission",
+       "vehicle_colour",
+       "fuel_type",
+       "driver_assist",
+       "cover_type",
+       "overnight_parking",
+       "vehicle_use",
+       "named_young_driver",
+       "channel",
+       "payment_method",
+       "new_business",
+       "region",
+       "urban_density",
+       "soil_type",
+       "property_type",
+       "roof_type",
+       "basement",
+       "trees_within_5m",
+       "listed_building",
+       "energy_rating",
+       "solar_panels",
+       "marital_status"
+      ],
+      "dropped": [],
+      "setting": {
+       "leaves": 15,
+       "min_leaf": 100
+      },
+      "trees": 278
+     },
+     "N100": {
+      "n_max": 100,
+      "clean": false,
+      "encode": [
+       "make_model"
+      ],
+      "raw_codes": [
+       "driver_age_band",
+       "body_type",
+       "transmission",
+       "vehicle_colour",
+       "fuel_type",
+       "driver_assist",
+       "cover_type",
+       "overnight_parking",
+       "vehicle_use",
+       "named_young_driver",
+       "channel",
+       "payment_method",
+       "new_business",
+       "region",
+       "urban_density",
+       "soil_type",
+       "property_type",
+       "roof_type",
+       "basement",
+       "trees_within_5m",
+       "listed_building",
+       "energy_rating",
+       "solar_panels",
+       "occupation",
+       "marital_status"
+      ],
+      "dropped": [],
+      "setting": {
+       "leaves": 15,
+       "min_leaf": 1600
+      },
+      "trees": 494
+     },
+     "N300": {
+      "n_max": 300,
+      "clean": false,
+      "encode": [],
+      "raw_codes": [
+       "driver_age_band",
+       "make_model",
+       "body_type",
+       "transmission",
+       "vehicle_colour",
+       "fuel_type",
+       "driver_assist",
+       "cover_type",
+       "overnight_parking",
+       "vehicle_use",
+       "named_young_driver",
+       "channel",
+       "payment_method",
+       "new_business",
+       "region",
+       "urban_density",
+       "soil_type",
+       "property_type",
+       "roof_type",
+       "basement",
+       "trees_within_5m",
+       "listed_building",
+       "energy_rating",
+       "solar_panels",
+       "occupation",
+       "marital_status"
+      ],
+      "dropped": [],
+      "setting": {
+       "leaves": 15,
+       "min_leaf": 1600
+      },
+      "trees": 157
+     },
+     "clean N4": {
+      "n_max": 4,
+      "clean": true,
+      "encode": [
+       "driver_age_band",
+       "make_model",
+       "body_type",
+       "vehicle_colour",
+       "region",
+       "soil_type",
+       "energy_rating",
+       "occupation"
+      ],
+      "raw_codes": [
+       "transmission",
+       "fuel_type",
+       "driver_assist",
+       "cover_type",
+       "overnight_parking",
+       "vehicle_use",
+       "named_young_driver",
+       "channel",
+       "payment_method",
+       "new_business",
+       "urban_density",
+       "property_type",
+       "roof_type",
+       "basement",
+       "trees_within_5m",
+       "listed_building",
+       "solar_panels",
+       "marital_status"
+      ],
+      "dropped": [],
+      "setting": {
+       "leaves": 15,
+       "min_leaf": 400
+      },
+      "trees": 433
+     },
+     "clean N5": {
+      "n_max": 5,
+      "clean": true,
+      "encode": [
+       "make_model",
+       "vehicle_colour",
+       "region",
+       "energy_rating",
+       "occupation"
+      ],
+      "raw_codes": [
+       "driver_age_band",
+       "body_type",
+       "transmission",
+       "fuel_type",
+       "driver_assist",
+       "cover_type",
+       "overnight_parking",
+       "vehicle_use",
+       "named_young_driver",
+       "channel",
+       "payment_method",
+       "new_business",
+       "urban_density",
+       "soil_type",
+       "property_type",
+       "roof_type",
+       "basement",
+       "trees_within_5m",
+       "listed_building",
+       "solar_panels",
+       "marital_status"
+      ],
+      "dropped": [],
+      "setting": {
+       "leaves": 15,
+       "min_leaf": 400
+      },
+      "trees": 341
+     },
+     "clean N6": {
+      "n_max": 6,
+      "clean": true,
+      "encode": [
+       "make_model",
+       "vehicle_colour",
+       "energy_rating",
+       "occupation"
+      ],
+      "raw_codes": [
+       "driver_age_band",
+       "body_type",
+       "transmission",
+       "fuel_type",
+       "driver_assist",
+       "cover_type",
+       "overnight_parking",
+       "vehicle_use",
+       "named_young_driver",
+       "channel",
+       "payment_method",
+       "new_business",
+       "region",
+       "urban_density",
+       "soil_type",
+       "property_type",
+       "roof_type",
+       "basement",
+       "trees_within_5m",
+       "listed_building",
+       "solar_panels",
+       "marital_status"
+      ],
+      "dropped": [],
+      "setting": {
+       "leaves": 15,
+       "min_leaf": 400
+      },
+      "trees": 215
+     },
+     "clean N7": {
+      "n_max": 7,
+      "clean": true,
+      "encode": [
+       "make_model",
+       "vehicle_colour",
+       "occupation"
+      ],
+      "raw_codes": [
+       "driver_age_band",
+       "body_type",
+       "transmission",
+       "fuel_type",
+       "driver_assist",
+       "cover_type",
+       "overnight_parking",
+       "vehicle_use",
+       "named_young_driver",
+       "channel",
+       "payment_method",
+       "new_business",
+       "region",
+       "urban_density",
+       "soil_type",
+       "property_type",
+       "roof_type",
+       "basement",
+       "trees_within_5m",
+       "listed_building",
+       "energy_rating",
+       "solar_panels",
+       "marital_status"
+      ],
+      "dropped": [],
+      "setting": {
+       "leaves": 15,
+       "min_leaf": 400
+      },
+      "trees": 328
+     },
+     "clean N20": {
+      "n_max": 20,
+      "clean": true,
+      "encode": [
+       "make_model",
+       "occupation"
+      ],
+      "raw_codes": [
+       "driver_age_band",
+       "body_type",
+       "transmission",
+       "vehicle_colour",
+       "fuel_type",
+       "driver_assist",
+       "cover_type",
+       "overnight_parking",
+       "vehicle_use",
+       "named_young_driver",
+       "channel",
+       "payment_method",
+       "new_business",
+       "region",
+       "urban_density",
+       "soil_type",
+       "property_type",
+       "roof_type",
+       "basement",
+       "trees_within_5m",
+       "listed_building",
+       "energy_rating",
+       "solar_panels",
+       "marital_status"
+      ],
+      "dropped": [],
+      "setting": {
+       "leaves": 31,
+       "min_leaf": 400
+      },
+      "trees": 341
+     },
+     "clean N100": {
+      "n_max": 100,
+      "clean": true,
+      "encode": [
+       "make_model"
+      ],
+      "raw_codes": [
+       "driver_age_band",
+       "body_type",
+       "transmission",
+       "vehicle_colour",
+       "fuel_type",
+       "driver_assist",
+       "cover_type",
+       "overnight_parking",
+       "vehicle_use",
+       "named_young_driver",
+       "channel",
+       "payment_method",
+       "new_business",
+       "region",
+       "urban_density",
+       "soil_type",
+       "property_type",
+       "roof_type",
+       "basement",
+       "trees_within_5m",
+       "listed_building",
+       "energy_rating",
+       "solar_panels",
+       "occupation",
+       "marital_status"
+      ],
+      "dropped": [],
+      "setting": {
+       "leaves": 15,
+       "min_leaf": 1600
+      },
+      "trees": 391
+     },
+     "clean N300": {
+      "n_max": 300,
+      "clean": true,
+      "encode": [],
+      "raw_codes": [
+       "driver_age_band",
+       "make_model",
+       "body_type",
+       "transmission",
+       "vehicle_colour",
+       "fuel_type",
+       "driver_assist",
+       "cover_type",
+       "overnight_parking",
+       "vehicle_use",
+       "named_young_driver",
+       "channel",
+       "payment_method",
+       "new_business",
+       "region",
+       "urban_density",
+       "soil_type",
+       "property_type",
+       "roof_type",
+       "basement",
+       "trees_within_5m",
+       "listed_building",
+       "energy_rating",
+       "solar_panels",
+       "occupation",
+       "marital_status"
+      ],
+      "dropped": [],
+      "setting": {
+       "leaves": 15,
+       "min_leaf": 1600
+      },
+      "trees": 181
+     }
+    },
+    "buildings": {
+     "R0": {
+      "n_max": null,
+      "clean": false,
+      "encode": [],
+      "raw_codes": [
+       "policyholder_age_band",
+       "construction_type",
+       "occupancy",
+       "smoke_alarms",
+       "accidental_damage_cover",
+       "mortgage",
+       "channel",
+       "payment_method",
+       "new_business",
+       "region",
+       "urban_density",
+       "soil_type",
+       "property_type",
+       "roof_type",
+       "basement",
+       "trees_within_5m",
+       "listed_building",
+       "energy_rating",
+       "solar_panels",
+       "marital_status"
+      ],
+      "dropped": [
+       "occupation"
+      ],
+      "setting": {
+       "leaves": 15,
+       "min_leaf": 100
+      },
+      "trees": 41
+     },
+     "N4": {
+      "n_max": 4,
+      "clean": false,
+      "encode": [
+       "policyholder_age_band",
+       "region",
+       "soil_type",
+       "energy_rating",
+       "occupation"
+      ],
+      "raw_codes": [
+       "construction_type",
+       "occupancy",
+       "smoke_alarms",
+       "accidental_damage_cover",
+       "mortgage",
+       "channel",
+       "payment_method",
+       "new_business",
+       "urban_density",
+       "property_type",
+       "roof_type",
+       "basement",
+       "trees_within_5m",
+       "listed_building",
+       "solar_panels",
+       "marital_status"
+      ],
+      "dropped": [],
+      "setting": {
+       "leaves": 15,
+       "min_leaf": 100
+      },
+      "trees": 41
+     },
+     "N5": {
+      "n_max": 5,
+      "clean": false,
+      "encode": [
+       "region",
+       "energy_rating",
+       "occupation"
+      ],
+      "raw_codes": [
+       "policyholder_age_band",
+       "construction_type",
+       "occupancy",
+       "smoke_alarms",
+       "accidental_damage_cover",
+       "mortgage",
+       "channel",
+       "payment_method",
+       "new_business",
+       "urban_density",
+       "soil_type",
+       "property_type",
+       "roof_type",
+       "basement",
+       "trees_within_5m",
+       "listed_building",
+       "solar_panels",
+       "marital_status"
+      ],
+      "dropped": [],
+      "setting": {
+       "leaves": 15,
+       "min_leaf": 100
+      },
+      "trees": 31
+     },
+     "N6": {
+      "n_max": 6,
+      "clean": false,
+      "encode": [
+       "energy_rating",
+       "occupation"
+      ],
+      "raw_codes": [
+       "policyholder_age_band",
+       "construction_type",
+       "occupancy",
+       "smoke_alarms",
+       "accidental_damage_cover",
+       "mortgage",
+       "channel",
+       "payment_method",
+       "new_business",
+       "region",
+       "urban_density",
+       "soil_type",
+       "property_type",
+       "roof_type",
+       "basement",
+       "trees_within_5m",
+       "listed_building",
+       "solar_panels",
+       "marital_status"
+      ],
+      "dropped": [],
+      "setting": {
+       "leaves": 63,
+       "min_leaf": 100
+      },
+      "trees": 16
+     },
+     "N7": {
+      "n_max": 7,
+      "clean": false,
+      "encode": [
+       "occupation"
+      ],
+      "raw_codes": [
+       "policyholder_age_band",
+       "construction_type",
+       "occupancy",
+       "smoke_alarms",
+       "accidental_damage_cover",
+       "mortgage",
+       "channel",
+       "payment_method",
+       "new_business",
+       "region",
+       "urban_density",
+       "soil_type",
+       "property_type",
+       "roof_type",
+       "basement",
+       "trees_within_5m",
+       "listed_building",
+       "energy_rating",
+       "solar_panels",
+       "marital_status"
+      ],
+      "dropped": [],
+      "setting": {
+       "leaves": 15,
+       "min_leaf": 100
+      },
+      "trees": 41
+     },
+     "N20": {
+      "n_max": 20,
+      "clean": false,
+      "encode": [
+       "occupation"
+      ],
+      "raw_codes": [
+       "policyholder_age_band",
+       "construction_type",
+       "occupancy",
+       "smoke_alarms",
+       "accidental_damage_cover",
+       "mortgage",
+       "channel",
+       "payment_method",
+       "new_business",
+       "region",
+       "urban_density",
+       "soil_type",
+       "property_type",
+       "roof_type",
+       "basement",
+       "trees_within_5m",
+       "listed_building",
+       "energy_rating",
+       "solar_panels",
+       "marital_status"
+      ],
+      "dropped": [],
+      "setting": {
+       "leaves": 15,
+       "min_leaf": 100
+      },
+      "trees": 41
+     },
+     "N100": {
+      "n_max": 100,
+      "clean": false,
+      "encode": [],
+      "raw_codes": [
+       "policyholder_age_band",
+       "construction_type",
+       "occupancy",
+       "smoke_alarms",
+       "accidental_damage_cover",
+       "mortgage",
+       "channel",
+       "payment_method",
+       "new_business",
+       "region",
+       "urban_density",
+       "soil_type",
+       "property_type",
+       "roof_type",
+       "basement",
+       "trees_within_5m",
+       "listed_building",
+       "energy_rating",
+       "solar_panels",
+       "occupation",
+       "marital_status"
+      ],
+      "dropped": [],
+      "setting": {
+       "leaves": 15,
+       "min_leaf": 400
+      },
+      "trees": 56
+     },
+     "N300": {
+      "n_max": 300,
+      "clean": false,
+      "encode": [],
+      "raw_codes": [
+       "policyholder_age_band",
+       "construction_type",
+       "occupancy",
+       "smoke_alarms",
+       "accidental_damage_cover",
+       "mortgage",
+       "channel",
+       "payment_method",
+       "new_business",
+       "region",
+       "urban_density",
+       "soil_type",
+       "property_type",
+       "roof_type",
+       "basement",
+       "trees_within_5m",
+       "listed_building",
+       "energy_rating",
+       "solar_panels",
+       "occupation",
+       "marital_status"
+      ],
+      "dropped": [],
+      "setting": {
+       "leaves": 15,
+       "min_leaf": 400
+      },
+      "trees": 56
+     },
+     "clean N4": {
+      "n_max": 4,
+      "clean": true,
+      "encode": [
+       "policyholder_age_band",
+       "region",
+       "soil_type",
+       "energy_rating",
+       "occupation"
+      ],
+      "raw_codes": [
+       "construction_type",
+       "occupancy",
+       "smoke_alarms",
+       "accidental_damage_cover",
+       "mortgage",
+       "channel",
+       "payment_method",
+       "new_business",
+       "urban_density",
+       "property_type",
+       "roof_type",
+       "basement",
+       "trees_within_5m",
+       "listed_building",
+       "solar_panels",
+       "marital_status"
+      ],
+      "dropped": [],
+      "setting": {
+       "leaves": 15,
+       "min_leaf": 100
+      },
+      "trees": 41
+     },
+     "clean N5": {
+      "n_max": 5,
+      "clean": true,
+      "encode": [
+       "region",
+       "energy_rating",
+       "occupation"
+      ],
+      "raw_codes": [
+       "policyholder_age_band",
+       "construction_type",
+       "occupancy",
+       "smoke_alarms",
+       "accidental_damage_cover",
+       "mortgage",
+       "channel",
+       "payment_method",
+       "new_business",
+       "urban_density",
+       "soil_type",
+       "property_type",
+       "roof_type",
+       "basement",
+       "trees_within_5m",
+       "listed_building",
+       "solar_panels",
+       "marital_status"
+      ],
+      "dropped": [],
+      "setting": {
+       "leaves": 15,
+       "min_leaf": 100
+      },
+      "trees": 31
+     },
+     "clean N6": {
+      "n_max": 6,
+      "clean": true,
+      "encode": [
+       "energy_rating",
+       "occupation"
+      ],
+      "raw_codes": [
+       "policyholder_age_band",
+       "construction_type",
+       "occupancy",
+       "smoke_alarms",
+       "accidental_damage_cover",
+       "mortgage",
+       "channel",
+       "payment_method",
+       "new_business",
+       "region",
+       "urban_density",
+       "soil_type",
+       "property_type",
+       "roof_type",
+       "basement",
+       "trees_within_5m",
+       "listed_building",
+       "solar_panels",
+       "marital_status"
+      ],
+      "dropped": [],
+      "setting": {
+       "leaves": 63,
+       "min_leaf": 100
+      },
+      "trees": 16
+     },
+     "clean N7": {
+      "n_max": 7,
+      "clean": true,
+      "encode": [
+       "occupation"
+      ],
+      "raw_codes": [
+       "policyholder_age_band",
+       "construction_type",
+       "occupancy",
+       "smoke_alarms",
+       "accidental_damage_cover",
+       "mortgage",
+       "channel",
+       "payment_method",
+       "new_business",
+       "region",
+       "urban_density",
+       "soil_type",
+       "property_type",
+       "roof_type",
+       "basement",
+       "trees_within_5m",
+       "listed_building",
+       "energy_rating",
+       "solar_panels",
+       "marital_status"
+      ],
+      "dropped": [],
+      "setting": {
+       "leaves": 15,
+       "min_leaf": 100
+      },
+      "trees": 41
+     },
+     "clean N20": {
+      "n_max": 20,
+      "clean": true,
+      "encode": [
+       "occupation"
+      ],
+      "raw_codes": [
+       "policyholder_age_band",
+       "construction_type",
+       "occupancy",
+       "smoke_alarms",
+       "accidental_damage_cover",
+       "mortgage",
+       "channel",
+       "payment_method",
+       "new_business",
+       "region",
+       "urban_density",
+       "soil_type",
+       "property_type",
+       "roof_type",
+       "basement",
+       "trees_within_5m",
+       "listed_building",
+       "energy_rating",
+       "solar_panels",
+       "marital_status"
+      ],
+      "dropped": [],
+      "setting": {
+       "leaves": 15,
+       "min_leaf": 100
+      },
+      "trees": 41
+     },
+     "clean N100": {
+      "n_max": 100,
+      "clean": true,
+      "encode": [],
+      "raw_codes": [
+       "policyholder_age_band",
+       "construction_type",
+       "occupancy",
+       "smoke_alarms",
+       "accidental_damage_cover",
+       "mortgage",
+       "channel",
+       "payment_method",
+       "new_business",
+       "region",
+       "urban_density",
+       "soil_type",
+       "property_type",
+       "roof_type",
+       "basement",
+       "trees_within_5m",
+       "listed_building",
+       "energy_rating",
+       "solar_panels",
+       "occupation",
+       "marital_status"
+      ],
+      "dropped": [],
+      "setting": {
+       "leaves": 15,
+       "min_leaf": 400
+      },
+      "trees": 71
+     },
+     "clean N300": {
+      "n_max": 300,
+      "clean": true,
+      "encode": [],
+      "raw_codes": [
+       "policyholder_age_band",
+       "construction_type",
+       "occupancy",
+       "smoke_alarms",
+       "accidental_damage_cover",
+       "mortgage",
+       "channel",
+       "payment_method",
+       "new_business",
+       "region",
+       "urban_density",
+       "soil_type",
+       "property_type",
+       "roof_type",
+       "basement",
+       "trees_within_5m",
+       "listed_building",
+       "energy_rating",
+       "solar_panels",
+       "occupation",
+       "marital_status"
+      ],
+      "dropped": [],
+      "setting": {
+       "leaves": 15,
+       "min_leaf": 400
+      },
+      "trees": 71
+     }
+    },
+    "contents": {
+     "R0": {
+      "n_max": null,
+      "clean": false,
+      "encode": [],
+      "raw_codes": [
+       "policyholder_age_band",
+       "tenure",
+       "security_level",
+       "accidental_damage_cover",
+       "works_from_home",
+       "lodgers",
+       "bicycle_cover",
+       "channel",
+       "payment_method",
+       "new_business",
+       "region",
+       "urban_density",
+       "soil_type",
+       "property_type",
+       "roof_type",
+       "basement",
+       "trees_within_5m",
+       "listed_building",
+       "energy_rating",
+       "solar_panels",
+       "marital_status"
+      ],
+      "dropped": [
+       "occupation"
+      ],
+      "setting": {
+       "leaves": 63,
+       "min_leaf": 100
+      },
+      "trees": 32
+     },
+     "N4": {
+      "n_max": 4,
+      "clean": false,
+      "encode": [
+       "policyholder_age_band",
+       "region",
+       "soil_type",
+       "energy_rating",
+       "occupation"
+      ],
+      "raw_codes": [
+       "tenure",
+       "security_level",
+       "accidental_damage_cover",
+       "works_from_home",
+       "lodgers",
+       "bicycle_cover",
+       "channel",
+       "payment_method",
+       "new_business",
+       "urban_density",
+       "property_type",
+       "roof_type",
+       "basement",
+       "trees_within_5m",
+       "listed_building",
+       "solar_panels",
+       "marital_status"
+      ],
+      "dropped": [],
+      "setting": {
+       "leaves": 31,
+       "min_leaf": 400
+      },
+      "trees": 44
+     },
+     "N5": {
+      "n_max": 5,
+      "clean": false,
+      "encode": [
+       "region",
+       "energy_rating",
+       "occupation"
+      ],
+      "raw_codes": [
+       "policyholder_age_band",
+       "tenure",
+       "security_level",
+       "accidental_damage_cover",
+       "works_from_home",
+       "lodgers",
+       "bicycle_cover",
+       "channel",
+       "payment_method",
+       "new_business",
+       "urban_density",
+       "soil_type",
+       "property_type",
+       "roof_type",
+       "basement",
+       "trees_within_5m",
+       "listed_building",
+       "solar_panels",
+       "marital_status"
+      ],
+      "dropped": [],
+      "setting": {
+       "leaves": 15,
+       "min_leaf": 400
+      },
+      "trees": 44
+     },
+     "N6": {
+      "n_max": 6,
+      "clean": false,
+      "encode": [
+       "energy_rating",
+       "occupation"
+      ],
+      "raw_codes": [
+       "policyholder_age_band",
+       "tenure",
+       "security_level",
+       "accidental_damage_cover",
+       "works_from_home",
+       "lodgers",
+       "bicycle_cover",
+       "channel",
+       "payment_method",
+       "new_business",
+       "region",
+       "urban_density",
+       "soil_type",
+       "property_type",
+       "roof_type",
+       "basement",
+       "trees_within_5m",
+       "listed_building",
+       "solar_panels",
+       "marital_status"
+      ],
+      "dropped": [],
+      "setting": {
+       "leaves": 31,
+       "min_leaf": 400
+      },
+      "trees": 44
+     },
+     "N7": {
+      "n_max": 7,
+      "clean": false,
+      "encode": [
+       "occupation"
+      ],
+      "raw_codes": [
+       "policyholder_age_band",
+       "tenure",
+       "security_level",
+       "accidental_damage_cover",
+       "works_from_home",
+       "lodgers",
+       "bicycle_cover",
+       "channel",
+       "payment_method",
+       "new_business",
+       "region",
+       "urban_density",
+       "soil_type",
+       "property_type",
+       "roof_type",
+       "basement",
+       "trees_within_5m",
+       "listed_building",
+       "energy_rating",
+       "solar_panels",
+       "marital_status"
+      ],
+      "dropped": [],
+      "setting": {
+       "leaves": 31,
+       "min_leaf": 400
+      },
+      "trees": 58
+     },
+     "N20": {
+      "n_max": 20,
+      "clean": false,
+      "encode": [
+       "occupation"
+      ],
+      "raw_codes": [
+       "policyholder_age_band",
+       "tenure",
+       "security_level",
+       "accidental_damage_cover",
+       "works_from_home",
+       "lodgers",
+       "bicycle_cover",
+       "channel",
+       "payment_method",
+       "new_business",
+       "region",
+       "urban_density",
+       "soil_type",
+       "property_type",
+       "roof_type",
+       "basement",
+       "trees_within_5m",
+       "listed_building",
+       "energy_rating",
+       "solar_panels",
+       "marital_status"
+      ],
+      "dropped": [],
+      "setting": {
+       "leaves": 31,
+       "min_leaf": 400
+      },
+      "trees": 58
+     },
+     "N100": {
+      "n_max": 100,
+      "clean": false,
+      "encode": [],
+      "raw_codes": [
+       "policyholder_age_band",
+       "tenure",
+       "security_level",
+       "accidental_damage_cover",
+       "works_from_home",
+       "lodgers",
+       "bicycle_cover",
+       "channel",
+       "payment_method",
+       "new_business",
+       "region",
+       "urban_density",
+       "soil_type",
+       "property_type",
+       "roof_type",
+       "basement",
+       "trees_within_5m",
+       "listed_building",
+       "energy_rating",
+       "solar_panels",
+       "occupation",
+       "marital_status"
+      ],
+      "dropped": [],
+      "setting": {
+       "leaves": 31,
+       "min_leaf": 100
+      },
+      "trees": 17
+     },
+     "N300": {
+      "n_max": 300,
+      "clean": false,
+      "encode": [],
+      "raw_codes": [
+       "policyholder_age_band",
+       "tenure",
+       "security_level",
+       "accidental_damage_cover",
+       "works_from_home",
+       "lodgers",
+       "bicycle_cover",
+       "channel",
+       "payment_method",
+       "new_business",
+       "region",
+       "urban_density",
+       "soil_type",
+       "property_type",
+       "roof_type",
+       "basement",
+       "trees_within_5m",
+       "listed_building",
+       "energy_rating",
+       "solar_panels",
+       "occupation",
+       "marital_status"
+      ],
+      "dropped": [],
+      "setting": {
+       "leaves": 31,
+       "min_leaf": 100
+      },
+      "trees": 17
+     },
+     "clean N4": {
+      "n_max": 4,
+      "clean": true,
+      "encode": [
+       "policyholder_age_band",
+       "region",
+       "soil_type",
+       "energy_rating",
+       "occupation"
+      ],
+      "raw_codes": [
+       "tenure",
+       "security_level",
+       "accidental_damage_cover",
+       "works_from_home",
+       "lodgers",
+       "bicycle_cover",
+       "channel",
+       "payment_method",
+       "new_business",
+       "urban_density",
+       "property_type",
+       "roof_type",
+       "basement",
+       "trees_within_5m",
+       "listed_building",
+       "solar_panels",
+       "marital_status"
+      ],
+      "dropped": [],
+      "setting": {
+       "leaves": 15,
+       "min_leaf": 100
+      },
+      "trees": 56
+     },
+     "clean N5": {
+      "n_max": 5,
+      "clean": true,
+      "encode": [
+       "region",
+       "energy_rating",
+       "occupation"
+      ],
+      "raw_codes": [
+       "policyholder_age_band",
+       "tenure",
+       "security_level",
+       "accidental_damage_cover",
+       "works_from_home",
+       "lodgers",
+       "bicycle_cover",
+       "channel",
+       "payment_method",
+       "new_business",
+       "urban_density",
+       "soil_type",
+       "property_type",
+       "roof_type",
+       "basement",
+       "trees_within_5m",
+       "listed_building",
+       "solar_panels",
+       "marital_status"
+      ],
+      "dropped": [],
+      "setting": {
+       "leaves": 63,
+       "min_leaf": 100
+      },
+      "trees": 44
+     },
+     "clean N6": {
+      "n_max": 6,
+      "clean": true,
+      "encode": [
+       "energy_rating",
+       "occupation"
+      ],
+      "raw_codes": [
+       "policyholder_age_band",
+       "tenure",
+       "security_level",
+       "accidental_damage_cover",
+       "works_from_home",
+       "lodgers",
+       "bicycle_cover",
+       "channel",
+       "payment_method",
+       "new_business",
+       "region",
+       "urban_density",
+       "soil_type",
+       "property_type",
+       "roof_type",
+       "basement",
+       "trees_within_5m",
+       "listed_building",
+       "solar_panels",
+       "marital_status"
+      ],
+      "dropped": [],
+      "setting": {
+       "leaves": 31,
+       "min_leaf": 400
+      },
+      "trees": 41
+     },
+     "clean N7": {
+      "n_max": 7,
+      "clean": true,
+      "encode": [
+       "occupation"
+      ],
+      "raw_codes": [
+       "policyholder_age_band",
+       "tenure",
+       "security_level",
+       "accidental_damage_cover",
+       "works_from_home",
+       "lodgers",
+       "bicycle_cover",
+       "channel",
+       "payment_method",
+       "new_business",
+       "region",
+       "urban_density",
+       "soil_type",
+       "property_type",
+       "roof_type",
+       "basement",
+       "trees_within_5m",
+       "listed_building",
+       "energy_rating",
+       "solar_panels",
+       "marital_status"
+      ],
+      "dropped": [],
+      "setting": {
+       "leaves": 15,
+       "min_leaf": 100
+      },
+      "trees": 39
+     },
+     "clean N20": {
+      "n_max": 20,
+      "clean": true,
+      "encode": [
+       "occupation"
+      ],
+      "raw_codes": [
+       "policyholder_age_band",
+       "tenure",
+       "security_level",
+       "accidental_damage_cover",
+       "works_from_home",
+       "lodgers",
+       "bicycle_cover",
+       "channel",
+       "payment_method",
+       "new_business",
+       "region",
+       "urban_density",
+       "soil_type",
+       "property_type",
+       "roof_type",
+       "basement",
+       "trees_within_5m",
+       "listed_building",
+       "energy_rating",
+       "solar_panels",
+       "marital_status"
+      ],
+      "dropped": [],
+      "setting": {
+       "leaves": 15,
+       "min_leaf": 100
+      },
+      "trees": 39
+     },
+     "clean N100": {
+      "n_max": 100,
+      "clean": true,
+      "encode": [],
+      "raw_codes": [
+       "policyholder_age_band",
+       "tenure",
+       "security_level",
+       "accidental_damage_cover",
+       "works_from_home",
+       "lodgers",
+       "bicycle_cover",
+       "channel",
+       "payment_method",
+       "new_business",
+       "region",
+       "urban_density",
+       "soil_type",
+       "property_type",
+       "roof_type",
+       "basement",
+       "trees_within_5m",
+       "listed_building",
+       "energy_rating",
+       "solar_panels",
+       "occupation",
+       "marital_status"
+      ],
+      "dropped": [],
+      "setting": {
+       "leaves": 15,
+       "min_leaf": 400
+      },
+      "trees": 73
+     },
+     "clean N300": {
+      "n_max": 300,
+      "clean": true,
+      "encode": [],
+      "raw_codes": [
+       "policyholder_age_band",
+       "tenure",
+       "security_level",
+       "accidental_damage_cover",
+       "works_from_home",
+       "lodgers",
+       "bicycle_cover",
+       "channel",
+       "payment_method",
+       "new_business",
+       "region",
+       "urban_density",
+       "soil_type",
+       "property_type",
+       "roof_type",
+       "basement",
+       "trees_within_5m",
+       "listed_building",
+       "energy_rating",
+       "solar_panels",
+       "occupation",
+       "marital_status"
+      ],
+      "dropped": [],
+      "setting": {
+       "leaves": 15,
+       "min_leaf": 400
+      },
+      "trees": 73
+     }
+    }
+   },
+   "levels": {
+    "driver_age_band": 5,
+    "make_model": 300,
+    "body_type": 5,
+    "transmission": 2,
+    "vehicle_colour": 8,
+    "fuel_type": 4,
+    "driver_assist": 2,
+    "cover_type": 3,
+    "overnight_parking": 3,
+    "vehicle_use": 3,
+    "named_young_driver": 2,
+    "channel": 3,
+    "payment_method": 2,
+    "new_business": 2,
+    "region": 6,
+    "urban_density": 4,
+    "soil_type": 5,
+    "property_type": 4,
+    "roof_type": 2,
+    "basement": 2,
+    "trees_within_5m": 2,
+    "listed_building": 2,
+    "energy_rating": 7,
+    "solar_panels": 2,
+    "occupation": 80,
+    "marital_status": 4,
+    "policyholder_age_band": 5,
+    "construction_type": 4,
+    "occupancy": 2,
+    "smoke_alarms": 2,
+    "accidental_damage_cover": 2,
+    "mortgage": 2,
+    "tenure": 2,
+    "security_level": 3,
+    "works_from_home": 2,
+    "lodgers": 2,
+    "bicycle_cover": 2
+   }
+  },
+  "emerging_v2": {
+   "scores": {
+    "total": {
+     "R0": 39882.33106348368,
+     "N4": 39888.741342077614,
+     "N5": 39876.14996402654,
+     "N6": 39879.65379896824,
+     "N7": 39875.78424671227,
+     "N20": 39868.27539531982,
+     "N100": 40189.07503231517,
+     "N300": 40529.19320795875,
+     "clean N4": 39867.48623834979,
+     "clean N5": 39870.37811361937,
+     "clean N6": 39862.27176794861,
+     "clean N7": 39863.630193713005,
+     "clean N20": 39865.77893462159,
+     "clean N100": 39944.28151339902,
+     "clean N300": 40333.369849943054
+    },
+    "best": "N20",
+    "vs_best": {
+     "R0": {
+      "gain": 14.055668163858158,
+      "rel_gain": 0.00035242845112249587,
+      "lo": -13.709128418444543,
+      "hi": 40.28125574586321,
+      "share_b_better": 0.8405,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "N4": {
+      "gain": 20.46594675779168,
+      "rel_gain": 0.0005130757719898942,
+      "lo": -15.293594646557558,
+      "hi": 54.7013757460297,
+      "share_b_better": 0.8715,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "N5": {
+      "gain": 7.874568706717827,
+      "rel_gain": 0.0001974756518325292,
+      "lo": -22.236011965782364,
+      "hi": 39.98669832428645,
+      "share_b_better": 0.689,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "N6": {
+      "gain": 11.378403648417777,
+      "rel_gain": 0.0002853185161981561,
+      "lo": -17.109490627448174,
+      "hi": 41.63612879133651,
+      "share_b_better": 0.7835,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "N7": {
+      "gain": 7.508851392440912,
+      "rel_gain": 0.00018830604925494377,
+      "lo": -12.906235773414698,
+      "hi": 29.09181986287666,
+      "share_b_better": 0.7455,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "N20": {
+      "gain": 0.0,
+      "rel_gain": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "share_b_better": 0.0,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "N100": {
+      "gain": 320.79963699535233,
+      "rel_gain": 0.007982259774264628,
+      "lo": 239.6669555441947,
+      "hi": 400.6808618206488,
+      "share_b_better": 1.0,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "N300": {
+      "gain": 660.9178126389284,
+      "rel_gain": 0.01630720377895762,
+      "lo": 550.9897370988435,
+      "hi": 766.2134507590403,
+      "share_b_better": 1.0,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     }
+    },
+    "vs_r0": {
+     "N4": {
+      "gain": -6.41027859393353,
+      "rel_gain": -0.00016072978742716446,
+      "lo": -44.516150955081926,
+      "hi": 30.385910815844188,
+      "share_b_better": 0.3635,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "N5": {
+      "gain": 6.181099457140334,
+      "rel_gain": 0.00015498340473884078,
+      "lo": -29.582406849534145,
+      "hi": 38.821745995609454,
+      "share_b_better": 0.621,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "N6": {
+      "gain": 2.6772645154403847,
+      "rel_gain": 6.712908809614922e-05,
+      "lo": -30.677666174817332,
+      "hi": 35.55241828318245,
+      "share_b_better": 0.548,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "N7": {
+      "gain": 6.546816771417255,
+      "rel_gain": 0.00016415331292938214,
+      "lo": -24.18778878809796,
+      "hi": 36.1597531903655,
+      "share_b_better": 0.6685,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "N20": {
+      "gain": 14.055668163858158,
+      "rel_gain": 0.00035242845112249587,
+      "lo": -13.709128418444543,
+      "hi": 40.28125574586321,
+      "share_b_better": 0.8405,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "N100": {
+      "gain": -306.7439688314941,
+      "rel_gain": -0.0076912246764921244,
+      "lo": -395.6385506863362,
+      "hi": -222.2540116424991,
+      "share_b_better": 0.0,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "N300": {
+      "gain": -646.8621444750702,
+      "rel_gain": -0.016219266207018128,
+      "lo": -758.8827292733768,
+      "hi": -532.5042299843554,
+      "share_b_better": 0.0,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "clean N4": {
+      "gain": 14.844825133888472,
+      "rel_gain": 0.00037221558364426737,
+      "lo": -25.22764633931596,
+      "hi": 53.9592200064317,
+      "share_b_better": 0.763,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "clean N5": {
+      "gain": 11.952949864303493,
+      "rel_gain": 0.0002997053969908903,
+      "lo": -26.968317713205558,
+      "hi": 47.8559183699568,
+      "share_b_better": 0.742,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "clean N6": {
+      "gain": 20.059295535070724,
+      "rel_gain": 0.0005029619633601869,
+      "lo": -15.086854406237249,
+      "hi": 55.026947361112065,
+      "share_b_better": 0.8665,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "clean N7": {
+      "gain": 18.70086977067207,
+      "rel_gain": 0.00046890112167477125,
+      "lo": -14.24517987772632,
+      "hi": 51.13140035350621,
+      "share_b_better": 0.865,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "clean N20": {
+      "gain": 16.552128862095167,
+      "rel_gain": 0.0004150241076868829,
+      "lo": -13.006268348222608,
+      "hi": 45.53252085597519,
+      "share_b_better": 0.8645,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "clean N100": {
+      "gain": -61.950449915343945,
+      "rel_gain": -0.001553330717222441,
+      "lo": -127.0893434340629,
+      "hi": 2.809419790429103,
+      "share_b_better": 0.028,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     },
+     "clean N300": {
+      "gain": -451.0387864593746,
+      "rel_gain": -0.011309238312610728,
+      "lo": -554.3294249860945,
+      "hi": -347.5902908240792,
+      "share_b_better": 0.0,
+      "groups": 36768,
+      "n_boot": 2000,
+      "boot_seed": 0
+     }
+    },
+    "per_line": {
+     "motor": {
+      "R0": 26304.09988405707,
+      "N4": 26286.824789919337,
+      "N5": 26281.2773142874,
+      "N6": 26286.79049269687,
+      "N7": 26295.023992953982,
+      "N20": 26287.515141561544,
+      "N100": 26469.95801732894,
+      "N300": 26810.07619297252,
+      "clean N4": 26283.1173073889,
+      "clean N5": 26272.963087213575,
+      "clean N6": 26269.878303294576,
+      "clean N7": 26290.75408654552,
+      "clean N20": 26292.902827454098,
+      "clean N100": 26316.99029454709,
+      "clean N300": 26706.07863109112
+     },
+     "buildings": {
+      "R0": 6690.136005824355,
+      "N4": 6703.242345210705,
+      "N5": 6703.508528365162,
+      "N6": 6694.910288612944,
+      "N7": 6691.3160100256155,
+      "N20": 6691.3160100256155,
+      "N100": 6749.758063166415,
+      "N300": 6749.758063166415,
+      "clean N4": 6698.381814932425,
+      "clean N5": 6702.756289026845,
+      "clean N6": 6697.662706851882,
+      "clean N7": 6688.298544991718,
+      "clean N20": 6688.298544991718,
+      "clean N100": 6711.775115523712,
+      "clean N300": 6711.775115523712
+     },
+     "contents": {
+      "R0": 6888.09517360226,
+      "N4": 6898.674206947574,
+      "N5": 6891.364121373979,
+      "N6": 6897.9530176584285,
+      "N7": 6889.4442437326625,
+      "N20": 6889.4442437326625,
+      "N100": 6969.358951819816,
+      "N300": 6969.358951819816,
+      "clean N4": 6885.987116028468,
+      "clean N5": 6894.658737378954,
+      "clean N6": 6894.730757802152,
+      "clean N7": 6884.577562175772,
+      "clean N20": 6884.577562175772,
+      "clean N100": 6915.516103328223,
+      "clean N300": 6915.516103328223
+     }
+    }
+   },
+   "chosen": "N4"
+  },
+  "consistent": true
+ },
+ "meta": {
+  "created": "2026-10-26T14:32:11",
+  "git_commit": "00e5efb",
+  "seeds": null,
+  "versions": {
+   "python": "3.14.5",
+   "numpy": "2.5.3",
+   "pandas": "3.0.5",
+   "scipy": "1.18.1",
+   "sklearn": "1.9.1",
+   "lightgbm": "4.7.0",
+   "xgboost": "3.4.1",
+   "catboost": "1.2.10"
+  }
+ }
+}

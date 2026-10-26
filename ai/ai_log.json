@@ -498,10 +498,10 @@
       "question": "Y2-T: how many levels may a code have and still enter the trees as a raw category? The AI recommended 20 on the decision brief (https://claude.ai/artifact/33tSXGP97CsbFQtFSUAuW3, round 1).",
       "ai_answer": "Recommended 20: in the emerging market, occupation in buildings and contents has 77 of 80 levels under 30 claims and no measurable frequency spread, while every code at or below 20 levels has hundreds of claims per level.",
       "challenge": "Actuary, no verdict: \"I believe here we need to make a decision based on what is the level that will keep the prediction power as much at the same time dont give us diminishing returns- model computations should not be considered - if there a way to optimize the level statistically we may do that exercise too. come back to me i will make my decision\"",
-      "test": "Pre-registered threshold test (decisions/y2t_threshold_test_design.md), committed before it ran: candidate thresholds scored out of time and by cross-validation, with a selection rule (lowest threshold within the 95% interval of the best).",
-      "result": "",
+      "test": "Pre-registered threshold test (decisions/y2t_threshold_test_design.md, committed before it ran): thresholds 4 to 300 scored on emerging claim frequency, out of time (fit 2023, score 2024) and by five-fold customer-grouped cross-validation over 2023-2024 with three seeds; key totals recomputed independently.",
+      "result": "Thresholds of 80 or more (occupation raw) are clearly worse in both designs (+261 and +321 over the best; +369 and +661 with make_model raw as well). Thresholds 4 to 20 cannot be told apart (gaps 7 to 21, against about 100 between seeds). The pre-registered rule picks 4; the AI recommends 20 against its own rule, because the gain comes only from encoding the two codes with many levels and 4 gains nothing (decisions/y2t_threshold_test_results.md). The full Part 1 run, restarted on 12 threads at the actuary's instruction, would take several days.",
       "decision": "Pending: the actuary decides Y2-T after the test.",
-      "effect": "Y2-T stays open. Evidence script scripts/y2_code_evidence.py; the encoder now gives zero to a code with no between-level variance.",
+      "effect": "Y2-T brief round 2 published with the results; the decision stays with the actuary.",
       "section": "4.3"
     }
   ]

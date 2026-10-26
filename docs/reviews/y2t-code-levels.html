@@ -3,7 +3,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: one reading column of a filing memo; the evidence table and chart break wider; the verdict panel closes the page */
+/* Layout: one reading column of a filing memo; the results table and chart break wider; the verdict panel closes the page */
 :root {
   --bg: #f5f7fa; --surface: #ffffff; --ink: #18212e; --muted: #5b6676; --rule: #d9dfe7;
   --accent: #1f5f8b; --accent-soft: #e3eef6; --good: #2f7a4f; --good-soft: #e4f2ea; --warn: #9a5b12; --warn-soft: #f8eedf; --bad: #a33a2f; --bad-soft: #f8e6e3;
@@ -27,7 +27,6 @@ h3 { font-size: 1.05rem; font-weight: 600; }
 p { margin: 0; }
 .stack { display: grid; gap: 12px; }
 .eyebrow { font-family: var(--f-mono); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
-.mono { font-family: var(--f-mono); font-size: 0.9em; }
 code { font-family: var(--f-mono); font-size: 0.86em; background: var(--accent-soft); padding: 1px 5px; border-radius: 3px; }
 .strip { display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center; padding: 12px 16px; border: 1px solid var(--rule); border-radius: 6px; background: var(--surface); font-size: 0.9rem; }
 .pill { font-family: var(--f-mono); font-size: 0.78rem; padding: 2px 8px; border-radius: 999px; border: 1px solid currentColor; white-space: nowrap; }
@@ -35,25 +34,28 @@ code { font-family: var(--f-mono); font-size: 0.86em; background: var(--accent-s
 .pill.done { color: var(--good); background: var(--good-soft); }
 .pill.door { color: var(--accent); background: var(--accent-soft); }
 .lede { font-size: 1.08rem; }
-.chain { display: grid; gap: 0; border-left: 2px solid var(--rule); padding-left: 18px; }
-.chain > div { position: relative; padding-block: 6px; }
-.chain > div::before { content: ""; position: absolute; left: -24px; top: 15px; width: 10px; height: 10px; border-radius: 50%; background: var(--surface); border: 2px solid var(--accent); }
-.chain .when { font-family: var(--f-mono); font-size: 0.78rem; color: var(--muted); }
+.changed { border: 1px solid var(--rule); border-radius: 6px; background: var(--surface); padding: 14px 18px; display: grid; gap: 8px; }
+.quote { border-left: 3px solid var(--rule); padding: 4px 0 4px 14px; color: var(--muted); font-style: italic; }
+ul { margin: 0; padding-left: 1.2em; display: grid; gap: 6px; }
 .table-scroll { overflow-x: auto; border: 1px solid var(--rule); border-radius: 6px; background: var(--surface); }
 table { border-collapse: collapse; width: 100%; font-size: 0.88rem; font-variant-numeric: tabular-nums; }
 th, td { padding: 8px 10px; text-align: right; border-bottom: 1px solid var(--rule); white-space: nowrap; }
 th { font-family: var(--f-mono); font-size: 0.72rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); font-weight: 500; vertical-align: bottom; }
 td:first-child, th:first-child, td:nth-child(2), th:nth-child(2) { text-align: left; }
+td:nth-child(2) { white-space: normal; min-width: 18ch; }
 tr.grp td { background: var(--bg); font-family: var(--f-mono); font-size: 0.75rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); text-align: left; }
-tr.cross td { background: var(--warn-soft); }
-.tag { font-family: var(--f-mono); font-size: 0.72rem; padding: 1px 6px; border-radius: 3px; }
-.tag.enc { color: var(--warn); border: 1px solid var(--warn); }
-.tag.raw { color: var(--muted); border: 1px solid var(--rule); }
+tr.bad td { background: var(--bad-soft); }
+tr.rec td { background: var(--accent-soft); }
+.tag { font-family: var(--f-mono); font-size: 0.72rem; padding: 1px 6px; border-radius: 3px; border: 1px solid currentColor; }
+.tag.enc { color: var(--warn); }
+.tag.raw { color: var(--muted); }
 .note { border-left: 3px solid var(--accent); background: var(--accent-soft); padding: 12px 16px; border-radius: 0 6px 6px 0; display: grid; gap: 8px; font-size: 0.95rem; }
 .chart { border: 1px solid var(--rule); border-radius: 6px; background: var(--surface); padding: 16px; overflow-x: auto; }
-.chart svg { display: block; min-width: 560px; width: 100%; height: auto; }
+.chart svg { display: block; min-width: 600px; width: 100%; height: auto; }
 .chart text { font-family: var(--f-mono); fill: var(--muted); font-size: 11px; }
 .chart .lbl { fill: var(--ink); font-size: 12px; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 18px; font-family: var(--f-mono); font-size: 0.78rem; color: var(--muted); }
+.legend i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: -1px; }
 .options { display: grid; gap: 14px; }
 .opt { border: 1px solid var(--rule); border-radius: 6px; background: var(--surface); padding: 16px 18px; display: grid; gap: 10px; }
 .opt.rec { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
@@ -63,6 +65,9 @@ tr.cross td { background: var(--warn-soft); }
 .opt dd { margin: 0; min-width: 0; }
 @media (max-width: 560px) { .opt dl { grid-template-columns: 1fr; gap: 2px; } .opt dd { margin-bottom: 8px; } }
 .rec-box { border: 1px solid var(--accent); border-radius: 6px; padding: 16px 18px; background: var(--surface); display: grid; gap: 10px; }
+details { border: 1px solid var(--rule); border-radius: 6px; background: var(--surface); padding: 12px 16px; }
+details > summary { cursor: pointer; font-family: var(--f-display); font-weight: 600; font-size: 1.05rem; }
+details[open] > summary { margin-bottom: 12px; }
 .verdict { border: 1px solid var(--rule); border-radius: 6px; background: var(--surface); padding: 18px; display: grid; gap: 14px; }
 .choices { display: grid; gap: 8px; }
 .choice { display: flex; gap: 10px; align-items: flex-start; padding: 10px 12px; border: 1px solid var(--rule); border-radius: 6px; cursor: pointer; }
@@ -73,208 +78,208 @@ textarea { width: 100%; box-sizing: border-box; min-height: 90px; font: inherit;
 button { font: inherit; font-weight: 500; font-size: 0.95rem; padding: 9px 16px; border-radius: 6px; border: 1px solid var(--accent); background: var(--surface); color: var(--accent); cursor: pointer; }
 button.primary { background: var(--accent); color: var(--surface); }
 button:disabled { opacity: 0.5; cursor: not-allowed; }
-button:focus-visible, .choice:focus-within, textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+button:focus-visible, .choice:focus-within, textarea:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .status { font-size: 0.88rem; color: var(--muted); }
 .locked .choice, .locked textarea { pointer-events: none; opacity: 0.75; }
-ul { margin: 0; padding-left: 1.2em; display: grid; gap: 6px; }
 </style>
 
 <div class="wrap">
   <header class="stack">
     <div class="eyebrow">IAA hackathon 2026 · Part 2 build · register Y2-T</div>
     <h1>How many levels may a code have and still enter the trees raw?</h1>
-    <div class="strip" id="strip">
-      <span>Round <strong id="round">1</strong></span>
+    <div class="strip">
+      <span>Round <strong id="round">2</strong></span>
       <span class="pill open" id="state-pill">1 decision open</span>
       <span class="pill door">Two-way door: one number in the thresholds file</span>
       <span class="status" id="blocked">Waiting on: your verdict below</span>
     </div>
   </header>
 
+  <section class="changed col">
+    <div class="eyebrow">Changed since round 1</div>
+    <p>Your round 1 note, no option chosen:</p>
+    <p class="quote">"I believe here we need to make a decision based on what is the level that will keep the prediction power as much at the same time dont give us diminishing returns- model computations should not be considered - if there a way to optimize the level statistically we may do that exercise too. come back to me i will make my decision"</p>
+    <ul>
+      <li>I wrote and committed a test design before anything ran (<code>decisions/y2t_threshold_test_design.md</code>, commit 00e5efb). It scores every candidate threshold on how well it predicts claim frequency on data the model has not seen.</li>
+      <li>The emerging market was run two ways: <strong>out of time</strong> (fit 2023, score 2024) and <strong>cross-validation</strong> (five customer-grouped folds over 2023-2024, repeated with three seeds). Results are below, rechecked with separate code.</li>
+      <li>My recommendation stays at 20, now on test results. The rule I wrote before the run picks 4. I explain below why I think the rule was wrong.</li>
+      <li>The full Part 1 run is too slow to finish before the deadline. Its status is at the end of the page.</li>
+    </ul>
+  </section>
+
   <section class="stack col">
-    <p class="lede"><strong>Recommendation: 20 levels.</strong> In the emerging market, make_model and occupation are then entered as one credibility-weighted number each, and every other code enters raw. The deciding fact: in buildings and contents, occupation has 80 levels, 77 of them with fewer than 30 claims, and no measurable difference in claim frequency between them. As a raw category, the trees would have 80 chances to split on noise. Encoded, it carries a value of about zero.</p>
+    <p class="lede"><strong>Recommendation: 20 levels.</strong> The level matters at one boundary only. Let occupation in raw (any threshold of 80 or more) and prediction gets clearly worse in both tests. Anywhere from 4 to 20 the tests cannot tell the thresholds apart: the differences are smaller than the spread between repeated fits of the same model. 20 is the best threshold in cross-validation and within reach of the best out of time, and it encodes only the two codes where raw entry is shown to hurt.</p>
   </section>
 
   <section class="stack">
-    <h2>Why this decision has come up</h2>
-    <div class="chain col">
-      <div><div class="when">24 Oct · D32 · decided</div><p>You chose Y2 (a): the tree families get every legitimate field, not only the ones the GLM vetted, and the family weights decide how much the trees count. One condition came with it: a code with many levels enters only credibility-encoded, and the level count is written in the thresholds file before the run that uses it.</p></div>
-      <div><div class="when">Part 1 post-mortem · the evidence behind the condition</div><p>Entered raw, make_model (300 levels) lost 414,287 of deviance in motor (PM2). With make_model removed, the same wide inputs passed across lines (PM2m), and occupation was in them raw at 20 levels.</p></div>
-      <div><div class="when">25 Oct · D34 · built</div><p>The Y2 field list is now built from the data (<code>src/fields.py</code>), with a reason recorded for every excluded column. Building it on the emerging market showed two codes far above anything Part 1 tested raw: make_model at 300 levels and occupation at 80, because occupation is free text here. The threshold decides which side of the line they fall on.</p></div>
-    </div>
-  </section>
-
-  <section class="stack">
-    <h2>What the emerging data says about these codes</h2>
-    <p class="col">For each code, the table shows how much data a level has and how far a credibility estimate would trust a level's own experience. The figures use claim frequency, which needs no large-loss cap, on the 2023-2024 training rows. Each year counts as one observation of a level (Bühlmann-Straub). Part 1 is shown below for comparison.</p>
+    <h2>What the tests show</h2>
     <div class="table-scroll">
       <table>
-        <thead><tr><th>Code</th><th>Line</th><th>Levels</th><th>Claims per level<br>(median)</th><th>Levels under<br>30 claims</th><th>Credibility of a<br>typical level, Z</th><th>Spread the data<br>supports</th><th>At 20</th></tr></thead>
+        <thead><tr><th>Threshold</th><th>Encoded in the emerging market</th><th>Out of time<br>over best [95%]</th><th>Cross-validation<br>over best [95%]</th><th>Cross-validation<br>vs leaving both out</th></tr></thead>
         <tbody>
-          <tr class="grp"><td colspan="8">Emerging market (2023-2024)</td></tr>
-          <tr class="cross"><td>make_model</td><td>motor</td><td>300</td><td>23</td><td>245</td><td>0.29</td><td>14%</td><td><span class="tag enc">encoded</span></td></tr>
-          <tr class="cross"><td>occupation, as typed</td><td>motor</td><td>80 + blank</td><td>49</td><td>16</td><td>0.51</td><td>15%</td><td><span class="tag enc">encoded</span></td></tr>
-          <tr><td>occupation, cleaned</td><td>motor</td><td>40 + blank</td><td>179</td><td>13</td><td>0.75</td><td>14%</td><td><span class="tag enc">encoded</span></td></tr>
-          <tr class="cross"><td>occupation, as typed</td><td>buildings</td><td>80 + blank</td><td>7</td><td>77</td><td>0.00</td><td>none</td><td><span class="tag enc">encoded</span></td></tr>
-          <tr><td>occupation, cleaned</td><td>buildings</td><td>40 + blank</td><td>22</td><td>27</td><td>0.01</td><td>2%</td><td><span class="tag enc">encoded</span></td></tr>
-          <tr class="cross"><td>occupation, as typed</td><td>contents</td><td>80 + blank</td><td>8</td><td>77</td><td>0.02</td><td>4%</td><td><span class="tag enc">encoded</span></td></tr>
-          <tr><td>occupation, cleaned</td><td>contents</td><td>40 + blank</td><td>21</td><td>27</td><td>0.16</td><td>8%</td><td><span class="tag enc">encoded</span></td></tr>
-          <tr><td>energy_rating</td><td>buildings</td><td>8</td><td>130</td><td>0</td><td>0.82</td><td>29%</td><td><span class="tag raw">raw</span></td></tr>
-          <tr><td>energy_rating</td><td>contents</td><td>8</td><td>135</td><td>0</td><td>0.58</td><td>6%</td><td><span class="tag raw">raw</span></td></tr>
-          <tr><td>region</td><td>motor</td><td>6</td><td>1,247</td><td>0</td><td>0.26</td><td>3%</td><td><span class="tag raw">raw</span></td></tr>
-          <tr><td>vehicle_colour</td><td>motor</td><td>8</td><td>876</td><td>0</td><td>0.10</td><td>1%</td><td><span class="tag raw">raw</span></td></tr>
-          <tr class="grp"><td colspan="8">Part 1, developed market (2021-2024), for comparison</td></tr>
-          <tr><td>make_model</td><td>motor</td><td>300</td><td>370</td><td>0</td><td>0.36</td><td>4%</td><td><span class="tag enc">encoded</span></td></tr>
-          <tr><td>occupation</td><td>motor</td><td>20 + blank</td><td>4,294</td><td>0</td><td>0.98</td><td>20%</td><td><span class="tag raw">raw</span></td></tr>
-          <tr><td>occupation</td><td>buildings</td><td>20 + blank</td><td>1,063</td><td>0</td><td>0.00</td><td>none</td><td><span class="tag raw">raw</span></td></tr>
-          <tr><td>occupation</td><td>contents</td><td>20 + blank</td><td>926</td><td>0</td><td>0.91</td><td>10%</td><td><span class="tag raw">raw</span></td></tr>
+          <tr><td>4</td><td>every code over 4 levels: adds age band, body type, soil, region, energy rating, colour</td><td>+16 [−17, +50]</td><td>+21 [−15, +55]</td><td>−6</td></tr>
+          <tr><td>5</td><td>make_model, occupation, colour, region, energy rating</td><td>+7 [−28, +43]</td><td>+8 [−22, +40]</td><td>+6</td></tr>
+          <tr><td>6</td><td>make_model, occupation, colour, energy rating</td><td>+75 [+43, +108]</td><td>+11 [−17, +42]</td><td>+3</td></tr>
+          <tr><td>7</td><td>make_model, occupation, colour</td><td>best</td><td>+8 [−13, +29]</td><td>+7</td></tr>
+          <tr class="rec"><td>20</td><td>make_model, occupation</td><td>+12 [−15, +40]</td><td>best</td><td>+14</td></tr>
+          <tr><td>leave out</td><td>make_model and occupation not used at all</td><td>+47 [+12, +82]</td><td>+14 [−14, +40]</td><td></td></tr>
+          <tr class="bad"><td>100</td><td>make_model only; occupation raw, 80 levels</td><td>+261 [+183, +339]</td><td>+321 [+240, +401]</td><td>−307</td></tr>
+          <tr class="bad"><td>300</td><td>nothing; make_model raw too</td><td>+369 [+274, +468]</td><td>+661 [+551, +766]</td><td>−647</td></tr>
         </tbody>
       </table>
     </div>
     <div class="note col">
       <strong>How to read this</strong>
-      <p>Z is the weight a credibility estimate gives a level's own claim experience; the rest goes to the line average. "Spread the data supports" is how far apart the levels' true frequencies are, after the noise in their experience is taken out. Shaded rows are the codes the tree would actually see as typed.</p>
-      <p>Example: emerging motor occupation, cleaned, has 40 occupations with a median of 179 claims each. The data supports occupation frequencies about 14% apart, and a typical occupation's experience gets Z = 0.75, three quarters of the weight. That is a real rating signal, and the encoding keeps it. In buildings, the same field as typed has a median of 7 claims per occupation and no measurable spread at all (Z = 0), so the encoded value is zero for every occupation.</p>
-      <p>A code with few levels is safe raw even without signal: emerging vehicle colour has 8 levels of about 876 claims each, too large for a tree to find much noise in. The risk is many thin levels.</p>
+      <p>Each figure is extra claim-frequency deviance against the best threshold in that test, summed over motor, buildings and contents. Lower is better, and 0 is the best. The 95% interval resamples customers. An interval that includes zero means the threshold cannot be told apart from the best.</p>
+      <p>Example: in cross-validation, threshold 100 lets occupation in raw. It sits 321 above the best, with an interval of 240 to 401, far from zero. It is also 307 worse than not using occupation or make_model at all. Threshold 4 sits 21 above the best (−15 to +55), so it is indistinguishable from the best, yet it is 6 worse than not using the two codes at all.</p>
+      <p>Scale: the best total is about 39,870, so the gaps among thresholds 4 to 20 are 0.02% to 0.05% of it. Refitting the same threshold with another seed moves its total by about 100. Threshold 20 scored 39,831, 39,840 and 39,934.</p>
     </div>
-  </section>
-
-  <section class="stack">
-    <h3>Typical-level credibility of each code a tree would see, emerging market</h3>
-    <div class="chart" role="img" aria-label="Bar chart of the credibility Z of a typical level for each code: make_model motor 0.29, occupation as typed motor 0.51, buildings 0.00, contents 0.02; energy rating buildings 0.82, contents 0.58; region motor 0.26; vehicle colour motor 0.10.">
-      <svg viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <g id="bars"></g>
-      </svg>
+    <h3>Extra deviance over the best, with 95% intervals</h3>
+    <div class="chart" role="img" aria-label="Dot and interval chart of extra deviance over the best threshold, out of time and cross-validation. Thresholds 4 to 20 sit between 0 and 21 with intervals crossing zero, except threshold 6 out of time at 75. Thresholds 100 and 300 sit at 261 to 661, off the scale.">
+      <svg viewBox="0 0 700 330" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g id="ci"></g></svg>
     </div>
-    <p class="status col">Codes above 20 levels are marked in amber. Two of the three amber bars are close to zero, which means the tree would get many thin levels and almost no signal from them.</p>
+    <div class="legend"><span><i style="background:var(--accent)"></i>Out of time (fit 2023, score 2024)</span><span><i style="background:var(--warn)"></i>Cross-validation (3 seeds)</span><span>Arrows: off the scale, value shown</span></div>
   </section>
 
   <section class="stack">
     <h2>The options</h2>
     <div class="options">
-      <article class="opt rec" id="opt-a">
+      <article class="opt rec">
         <div class="opt-head"><h3>(a) 20 levels</h3><span class="pill done">Recommended</span></div>
         <dl>
-          <dt>Does</dt><dd>Emerging: make_model and occupation are encoded; every other code (8 levels or fewer) enters raw. Part 1: only make_model is encoded. Every value from 8 to 39 gives the same emerging split.</dd>
-          <dt>Costs</dt><dd>Nothing to build; it is the default the code already runs. Occupation enters the trees as one number. The trees can still combine it with age band or cover, but they cannot single out one occupation the encoding treats as average.</dd>
-          <dt>Breaks</dt><dd>Nothing found. Where occupation carries signal (motor), the encoding keeps about three quarters of it at the typical level. Where it carries none (property), the encoding carries none either.</dd>
-          <dt>Closes</dt><dd>Nothing. The keep rule and the family weights still decide whether the wider trees are used at all.</dd>
+          <dt>Does</dt><dd>Encodes make_model and occupation; every code with 8 levels or fewer enters raw. Any value from 8 to 79 gives the same model in the emerging market.</dd>
+          <dt>Evidence</dt><dd>Best in cross-validation; within reach of the best out of time (+12, −15 to +40). Ahead of 4 in every cross-validation seed (by 44, 16 and 1). Beats leaving the codes out by 14 in cross-validation and by 35 out of time.</dd>
+          <dt>Costs</dt><dd>None measured. Inside Part 1's evidence: occupation raw at 20 levels passed there.</dd>
         </dl>
       </article>
-      <article class="opt" id="opt-b">
-        <div class="opt-head"><h3>(b) 100 levels</h3></div>
+      <article class="opt">
+        <div class="opt-head"><h3>(b) 4 levels, the rule written before the test</h3></div>
         <dl>
-          <dt>Does</dt><dd>Only make_model is encoded. Occupation enters raw, at 80 levels as typed (40 if the cleaning rule is adopted).</dd>
-          <dt>Costs</dt><dd>In buildings and contents, 77 of the 80 raw occupations have fewer than 30 claims and the field shows no signal. LightGBM's own smoothing of categories is weaker than the credibility weighting, so the trees can fit splits there that will not hold in 2025.</dd>
-          <dt>Breaks</dt><dd>It goes beyond the Part 1 evidence: no code above 20 levels was ever tested raw. The one code that was, make_model at 300, lost 414,287.</dd>
-          <dt>Closes</dt><dd>Nothing. Its one advantage is in motor, where the trees could split on individual occupations without shrinkage, and Z = 0.51 to 0.75 says those levels are only partly credible.</dd>
+          <dt>Does</dt><dd>Also encodes every five- to eight-level code: driver and policyholder age band, body type, soil, region, energy rating, colour.</dd>
+          <dt>Evidence</dt><dd>The pre-registered rule picks it in both tests, because it is the lowest threshold within reach of the best. It is still the weakest of the encoded thresholds in cross-validation, and below leaving the two codes out (−6).</dd>
+          <dt>Costs</dt><dd>The tree no longer sees age bands and regions as bands. Each becomes one smoothed number, which is harder to read in the write-up, and the tests show nothing gained in return.</dd>
         </dl>
       </article>
-      <article class="opt" id="opt-c">
-        <div class="opt-head"><h3>(c) Another value</h3></div>
+      <article class="opt">
+        <div class="opt-head"><h3>(c) 7 levels</h3></div>
         <dl>
-          <dt>Does</dt><dd>Any value from 8 to 39 behaves exactly like (a) on the emerging data. Below 8, low-level codes such as vehicle colour and energy rating would be encoded as well, and energy rating in buildings is a strong raw signal (Z = 0.82, levels 29% apart). From 40 to 79, cleaned occupation would enter raw and the as-typed version would be encoded, so the result would hinge on the cleaning decision.</dd>
-          <dt>Costs</dt><dd>A choice between values that give the same result, or one that ties two decisions together.</dd>
+          <dt>Does</dt><dd>Encodes vehicle colour as well as make_model and occupation.</dd>
+          <dt>Evidence</dt><dd>Best out of time; +8 in cross-validation. Indistinguishable from 20 in both. Colour carries almost no signal (levels about 1% apart in round 1), so encoding it changes little either way.</dd>
         </dl>
       </article>
     </div>
+    <p class="status col">Thresholds of 80 or more are not offered: both tests reject them, with intervals far from zero.</p>
   </section>
 
   <section class="stack col">
-    <h2>Why I went with 20</h2>
+    <h2>Why I recommend against the rule I wrote</h2>
     <div class="rec-box">
-      <p><strong>When I proposed it, the reason was Part 1:</strong> let a code enter raw only as far as Part 1 saw a raw code work (occupation at 20 levels), and no further.</p>
-      <p><strong>The emerging data now gives a second reason.</strong> The codes above the line are exactly the ones whose levels are thin. make_model has a median of 23 claims per level, and occupation in property 7 to 8. Below the line, every code has hundreds of claims per level. So 20 separates thin codes from thick ones in this market, not only in Part 1.</p>
-      <p><strong>What would change my mind:</strong> evidence that a code above 20 levels has many levels that each carry a credible, distinct signal the encoding flattens. Motor occupation comes closest, at Z = 0.75 once cleaned, and the encoding keeps three quarters of that.</p>
-      <p><strong>Related decisions, kept separate:</strong> occupation cleaning (check-in item 5) changes how many levels occupation has, but not which side of 20 it falls on. Gender is still out of the tree inputs until you rule on it.</p>
+      <p><strong>The rule assumed the lowest threshold is the most economical model</strong>, because it encodes the most codes. So when every threshold from 4 to 20 came out tied, it picked 4.</p>
+      <p><strong>The results contradict that assumption.</strong> All the gain comes from encoding the two codes with many levels. Encoding the small codes as well buys nothing in either test, and it costs readability: an age band stops being a band in the tree. The point of diminishing returns runs the other way from what the rule assumed. Raising the threshold to 80 or more loses heavily, and lowering it below 20 gains nothing.</p>
+      <p><strong>So 20 is the lowest threshold that does all the useful work.</strong> It encodes exactly the codes where raw entry is shown to hurt, and nothing else.</p>
+      <p><strong>Two related findings:</strong></p>
+      <ul>
+        <li><strong>Cleaning occupation</strong> (trimming spaces, ignoring case) makes no measurable difference once it is encoded. Check-in item 5 can be decided on readability alone.</li>
+        <li><strong>The gain from the two codes is small.</strong> Cross-validation puts it at +14 (interval −14 to +40). The family weights and the keep rule will decide whether the wider trees are used at all.</li>
+      </ul>
     </div>
   </section>
+
+  <details class="col">
+    <summary>Part 1 run: status</summary>
+    <p>At your instruction I restarted the full Part 1 run on 12 threads: two scorings, two targets, seven candidates, and a nine-setting search on about 830,000 motor rows. Its first two motor candidates took 22 minutes and about 4 hours. At that pace it needs several days, past the Part 2 deadline of 30 October, and it has produced no result yet. It is still running. I recommend stopping it and deciding on the two emerging tests; tell me in your note.</p>
+  </details>
+
+  <details class="col">
+    <summary>Round 1 evidence: how much data each level has</summary>
+    <p>From round 1 (claim frequency, Bühlmann-Straub across levels, each year one period): make_model has 300 levels, with 245 under 30 claims. Occupation as typed has 80 levels; in motor it carries real signal (typical-level credibility Z = 0.51, or 0.75 once cleaned), and in buildings and contents almost none (77 of 80 levels under 30 claims, Z about 0). Every code at or below 8 levels has hundreds of claims per level. Full table: <code>outputs/y2_code_evidence.json</code>.</p>
+  </details>
 
   <section class="stack" id="verdict-section">
     <h2>Your verdict</h2>
     <div class="verdict" id="verdict">
       <div class="choices" role="radiogroup" aria-label="Verdict on Y2-T">
-        <label class="choice"><input type="radio" name="choice" id="c-a" value="a"><span><strong>(a) Confirm 20 levels</strong>, the recommendation</span></label>
-        <label class="choice"><input type="radio" name="choice" id="c-b" value="b"><span><strong>(b) 100 levels</strong>: only make_model encoded</span></label>
-        <label class="choice"><input type="radio" name="choice" id="c-c" value="c"><span><strong>(c) Another value</strong>: give it in the note</span></label>
-        <label class="choice"><input type="radio" name="choice" id="c-r" value="reject"><span><strong>Reject the framing</strong>: say what is missing in the note</span></label>
+        <label class="choice"><input type="radio" name="choice" id="c-a" value="a"><span><strong>(a) 20 levels</strong>, the recommendation</span></label>
+        <label class="choice"><input type="radio" name="choice" id="c-b" value="b"><span><strong>(b) 4 levels</strong>, the pre-registered rule</span></label>
+        <label class="choice"><input type="radio" name="choice" id="c-c" value="c"><span><strong>(c) 7 levels</strong></span></label>
+        <label class="choice"><input type="radio" name="choice" id="c-r" value="reject"><span><strong>None of these</strong>: say what you want in the note</span></label>
       </div>
-      <label for="note" class="eyebrow">Note (optional for (a))</label>
-      <textarea id="note" placeholder="Your reasoning, a different value, or anything the card missed"></textarea>
+      <label for="note" class="eyebrow">Note (your round 1 note is kept here; replace or add to it)</label>
+      <textarea id="note" placeholder="Your reasoning, and whether to stop the Part 1 run"></textarea>
       <div class="actions">
         <button class="primary" id="send" type="button">Send to Claude</button>
         <button id="finalize" type="button">Finalize</button>
         <button id="copy" type="button" hidden>Copy for Claude</button>
         <span class="status" id="save-status" aria-live="polite"></span>
       </div>
-      <p class="status">Sending stores your verdict on this page. It does not wake the session, so after you send, type anything in the chat (for example "sent") and I will read it from here.</p>
+      <p class="status">Sending stores your verdict on this page. It does not wake the session, so after you send, type anything in the chat and I will read it from here.</p>
     </div>
   </section>
 </div>
 
 <script>
 (function () {
-  // Bar chart: Z of a typical level for codes a tree would see as typed (emerging)
+  // Dot-and-interval chart: extra deviance over the best, out of time (V1) and cross-validation (V2)
   const rows = [
-    ["make_model · motor", 0.29, 300], ["occupation · motor", 0.51, 80], ["occupation · buildings", 0.00, 80],
-    ["occupation · contents", 0.02, 80], ["energy_rating · buildings", 0.82, 8], ["energy_rating · contents", 0.58, 8],
-    ["region · motor", 0.26, 6], ["vehicle_colour · motor", 0.10, 8]];
-  const g = document.getElementById("bars"), ns = "http://www.w3.org/2000/svg";
-  const x0 = 200, x1 = 600, top = 14, h = 26, step = 32;
+    ["4", [16, -17, 50], [21, -15, 55]], ["5", [7, -28, 43], [8, -22, 40]], ["6", [75, 43, 108], [11, -17, 42]],
+    ["7", [0, 0, 0], [8, -13, 29]], ["20", [12, -15, 40], [0, 0, 0]], ["leave out", [47, 12, 82], [14, -14, 40]],
+    ["100", [261, 183, 339], [321, 240, 401]], ["300", [369, 274, 468], [661, 551, 766]]];
+  const g = document.getElementById("ci"), ns = "http://www.w3.org/2000/svg";
+  const lo = -40, hi = 120, x0 = 130, x1 = 640, top = 16, step = 36;
+  const X = v => x0 + (Math.max(lo, Math.min(hi, v)) - lo) / (hi - lo) * (x1 - x0);
   const el = (n, a, t) => { const e = document.createElementNS(ns, n); for (const k in a) e.setAttribute(k, a[k]); if (t != null) e.textContent = t; g.appendChild(e); return e; };
-  [0, 0.25, 0.5, 0.75, 1].forEach(v => {
-    const x = x0 + v * (x1 - x0);
-    el("line", { x1: x, x2: x, y1: top - 4, y2: top + rows.length * step, stroke: "var(--rule)", "stroke-width": 1 });
-    el("text", { x, y: top + rows.length * step + 16, "text-anchor": "middle" }, v.toFixed(2));
+  const yEnd = top + rows.length * step;
+  [-40, 0, 40, 80, 120].forEach(v => {
+    el("line", { x1: X(v), x2: X(v), y1: top - 6, y2: yEnd, stroke: v === 0 ? "var(--muted)" : "var(--rule)", "stroke-width": v === 0 ? 1.2 : 1 });
+    el("text", { x: X(v), y: yEnd + 16, "text-anchor": "middle" }, (v > 0 ? "+" : "") + v);
   });
-  rows.forEach(([name, z, lv], i) => {
-    const y = top + i * step;
-    el("text", { x: x0 - 10, y: y + h / 2 + 4, "text-anchor": "end", class: "lbl" }, name);
-    const w = Math.max(z * (x1 - x0), 2);
-    el("rect", { x: x0, y, width: w, height: h, rx: 2, fill: lv > 20 ? "var(--warn)" : "var(--accent)", opacity: 0.85 });
-    el("text", { x: x0 + w + 6, y: y + h / 2 + 4 }, z.toFixed(2) + (lv > 20 ? "  (" + lv + " levels)" : ""));
+  el("text", { x: (x0 + x1) / 2, y: yEnd + 34, "text-anchor": "middle" }, "extra deviance over the best (0 = best)");
+  rows.forEach(([name, a, b], i) => {
+    const y = top + i * step + 10;
+    el("text", { x: x0 - 12, y: y + 8, "text-anchor": "end", class: "lbl" }, name === "leave out" ? "leave both out" : "threshold " + name);
+    [[a, "var(--accent)", 0], [b, "var(--warn)", 12]].forEach(([[c, l, h], col, dy]) => {
+      const yy = y + dy;
+      if (c > hi) {
+        el("line", { x1: X(hi) - 24, x2: X(hi), y1: yy, y2: yy, stroke: col, "stroke-width": 2 });
+        el("path", { d: `M${X(hi)},${yy - 4} L${X(hi) + 7},${yy} L${X(hi)},${yy + 4} Z`, fill: col });
+        el("text", { x: X(hi) - 28, y: yy + 4, "text-anchor": "end" }, "+" + c);
+        return;
+      }
+      if (h > l) el("line", { x1: X(l), x2: X(h), y1: yy, y2: yy, stroke: col, "stroke-width": 2 });
+      el("circle", { cx: X(c), cy: yy, r: 4.5, fill: col });
+    });
   });
-  el("text", { x: (x0 + x1) / 2, y: top + rows.length * step + 34, "text-anchor": "middle" }, "Z, credibility of a typical level");
 
-  // Verdict store
-  const ID = "Y2-T", ROUND = 1;
+  // Verdict store (same contract as round 1; round 2)
+  const ID = "Y2-T", ROUND = 2;
   const $ = id => document.getElementById(id);
   const radios = Array.from(document.querySelectorAll('input[name="choice"]'));
   const note = $("note"), status = $("save-status"), verdictBox = $("verdict");
   let db = null, last = { choice: null, note: "" }, timer = null, writing = Promise.resolve(), finalState = false;
-
   const current = () => ({ choice: (radios.find(r => r.checked) || {}).value || null, note: note.value });
   const say = t => { status.textContent = t; };
   const lock = () => { finalState = true; verdictBox.classList.add("locked"); radios.forEach(r => r.disabled = true); note.readOnly = true; $("send").disabled = true; $("finalize").disabled = true;
     $("state-pill").textContent = "Finalized"; $("state-pill").className = "pill done"; $("blocked").textContent = "Nothing is waiting on you"; };
   const apply = v => { if (!v) return; radios.forEach(r => r.checked = r.value === v.choice); if (document.activeElement !== note) note.value = v.note || ""; last = { choice: v.choice || null, note: v.note || "" }; };
-
   function save() {
     const v = current();
     if (!db || finalState || (v.choice === last.choice && v.note === last.note)) return;
     last = v;
-    writing = writing.then(() => db.doc("verdicts/" + ID).set({ decisionId: ID, choice: v.choice, note: v.note, updatedAt: new Date().toISOString() }))
+    writing = writing.then(() => db.doc("verdicts/" + ID).set({ decisionId: ID, choice: v.choice, note: v.note, round: ROUND, updatedAt: new Date().toISOString() }))
       .then(() => say("Saved"), e => say("Not saved: " + (e && e.message ? e.message : "the store refused the write")));
   }
   radios.forEach(r => r.addEventListener("change", save));
   note.addEventListener("input", () => { clearTimeout(timer); timer = setTimeout(save, 600); });
-
-  function compact() {
-    const v = current();
-    return ID + ": " + (v.choice === "a" ? "accept" : v.choice ? "option " + v.choice : "no choice") + (v.note ? " - " + v.note.replace(/\s+/g, " ") : "");
-  }
-
+  const compact = () => { const v = current(); return ID + ": " + (v.choice === "a" ? "accept" : v.choice ? "option " + v.choice : "no choice") + (v.note ? " - " + v.note.replace(/\s+/g, " ") : ""); };
   $("send").addEventListener("click", async () => {
-    const v = current();
-    if (!v.choice) { say("Pick an option first."); return; }
+    if (!current().choice) { say("Pick an option first."); return; }
     if (!db) return;
     clearTimeout(timer); save(); await writing;
     try { await db.doc("brief/state").set({ status: "submitted", round: ROUND, submittedAt: new Date().toISOString() }); say("Sent. Type anything in the chat so I pick it up."); $("blocked").textContent = "Waiting on: Claude to read round " + ROUND; }
     catch (e) { say("Not sent: " + (e && e.message ? e.message : "the store refused the write")); }
   });
   $("finalize").addEventListener("click", async () => {
-    const v = current();
-    if (!v.choice) { say("Finalize needs a verdict on Y2-T first."); return; }
+    if (!current().choice) { say("Finalize needs a verdict on Y2-T first."); return; }
     if (!db) return;
     clearTimeout(timer); save(); await writing;
     try { await db.doc("brief/state").set({ status: "final", round: ROUND, submittedAt: new Date().toISOString() }); lock(); say("Finalized. Type anything in the chat so I pick it up."); }
@@ -282,18 +287,15 @@ ul { margin: 0; padding-left: 1.2em; display: grid; gap: 6px; }
   });
   $("copy").addEventListener("click", () => {
     const text = compact();
-    const done = () => say("Copied. Paste it into the chat.");
-    try { navigator.clipboard.writeText(text).then(done, () => { note.value = text; note.select(); say("Copy refused: the text is selected in the note box."); }); }
+    try { navigator.clipboard.writeText(text).then(() => say("Copied. Paste it into the chat."), () => { note.value = text; note.select(); say("Copy refused: the text is selected in the note box."); }); }
     catch (e) { note.value = text; note.select(); say("Copy refused: the text is selected in the note box."); }
   });
-
   (async () => {
     try { db = await (window.claude && window.claude.use ? window.claude.use("db") : null); } catch (e) { db = null; }
     if (!db) { $("send").hidden = true; $("finalize").hidden = true; $("copy").hidden = false; say("Saving is not available in this view: use Copy for Claude."); return; }
     db.doc("verdicts/" + ID).onSnapshot(s => { if (s.exists) apply(s.data()); }, () => {});
     db.doc("brief/state").onSnapshot(s => {
       const d = s.exists ? s.data() : null;
-      if (d && d.round) $("round").textContent = d.round;
       if (d && d.status === "final") lock();
       else if (d && d.status === "submitted" && d.round === ROUND) $("blocked").textContent = "Waiting on: Claude to read round " + ROUND;
     }, () => {});
