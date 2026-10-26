@@ -33,7 +33,7 @@ def commands(market: str) -> dict[str, list[list[str]]]:
     return {
         "lock": [code("from scripts.run_market import lock; lock()")],
         "build": [code("from src import build; build.build_all(rebuild=True); print('built')")],
-        "what_changed": [PY + ["scripts/what_changed.py", "--new", "{raw}", "--name", market]],
+        "what_changed": [PY + ["scripts/what_changed.py", "--new", "{raw}", "--name", market, "--codes", "{codes}"]],
         "history": [code("import json; import scripts.phase5_step4 as s4; ks = {n: s4.prepare(n) for n in s4.PLANS}; "
                          "(s4.WORK / 'k.json').write_text(json.dumps(ks, indent=1))")],
         "weights": [PY + ["scripts/fast_weights.py"]],
@@ -79,7 +79,7 @@ def main() -> None:
         todo.remove("what_changed")
     for stage in todo:
         for i, cmd in enumerate(commands(market)[stage]):
-            cmd = [c.replace("{raw}", str(mk.RAW)) for c in cmd]
+            cmd = [c.replace("{raw}", str(mk.RAW)).replace("{codes}", mk.CFG.get("codes", "developed")) for c in cmd]
             t = time.time()
             log = logs / f"{stage}{i or ''}.log"
             with open(log, "w", encoding="utf-8") as fh:

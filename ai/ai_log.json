@@ -461,6 +461,20 @@
       "decision": "Actuary chose (a) on Y1 to Y4 on the post-mortem brief, with no notes, and finalized it on 2026-10-24. Y1 reverses J-prem (a) for Part 2, subject to the keep rule on Part 2's data.",
       "effect": "Part 2 build settings fixed in docs/specs/SPEC_part2_settings.md; the judgment register records Y1 to Y4 as decided.",
       "section": "4.3"
+    },
+    {
+      "id": "D33",
+      "stage": "Part 2 build: Y3 recoveries (data rule R10)",
+      "role": "Data steward",
+      "proposed_by": "Actuary",
+      "question": "Actuary: \"Yes, start the Y1 to Y4 build with Y3: propose the recovery-pattern criterion for the thresholds file first, then rule R10. Keep gender out of the trees until I rule on it.\"",
+      "ai_answer": "Proposed two thresholds: R10 applies only if at most 1% of open claims already carry a recovery (rec_open_max_share 0.01), and a peril's rate is used only on at least 100 closed claims (rec_min_closed 100). Both were written after the claims had been inspected, so they rest on invariance: the result is the same for any value from 0 up and from 1 to 356 on both markets.",
+      "challenge": "",
+      "test": "Built R10 switched off by default and rebuilt Part 1, comparing file hashes; reproduced the post-mortem's PM5 on Part 1; then measured the rule on the emerging market (scripts/r10_recoveries.py).",
+      "result": "Part 1 lines rebuild byte-identical. On Part 1 R10 matches PM5 (own damage 23.59%, theft 4.01%, motor 2024 overstated 1.52%). Emerging: 0 of 1,056 open claims carry a recovery, own damage 23.98%, theft 3.93%, motor 2024 overstated 1.28%, property unchanged.",
+      "decision": "R10 built and recorded. The actuary confirmed both thresholds on 2026-10-25: \"Confirm Y3-T (a): rec_open_max_share 0.01 and rec_min_closed 100.\" Gender stays out of the tree inputs until the actuary rules on it.",
+      "effect": "decisions/thresholds_part2.md created (Part 1 rows copied with dates cleared, R10 rows dated 2026-10-25); R10 in src/data_rules.py and src/build.py behind the config flag open_recoveries; decisions/data_rules.md R10. The Part 2 change in the 2025 indication waits for re-confirmed caps and trend bounds.",
+      "section": "4.3"
     }
   ]
 }

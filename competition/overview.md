@@ -33,7 +33,7 @@ Tweedie D² score with power 1.5 (higher is better): the share of Tweedie devian
 
 ## Submission file
 
-One CSV covering every row of `test_motor`, `test_buildings` and `test_contents`, header `row_id,prediction`, prediction in CU, zero or above. See `sample_submission.parquet`. Five submissions a day; one final submission may be selected (otherwise the best public score is used).
+One CSV covering every row of `test_motor`, `test_buildings` and `test_contents`, header `row_id,prediction`, prediction in CU, zero or above. See `sample_submission.parquet`. Ten submissions a day (the rules first said five; the host confirmed ten on the forum); one final submission may be selected (otherwise the best public score is used).
 
 ## Final deliverables (end of Part 2, through a form to be published)
 

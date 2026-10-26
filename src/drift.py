@@ -6,6 +6,7 @@
   deciles or levels; new and vanished levels.
 - `detectors`: the Part 1 traps as tests (exposure entered in days, sum insured unit errors, identifier length,
   duplicated row ids, outcome or post-event columns present, undocumented codes).
+- `market_files`: the sample submission against the test rows, reference policies against the test files, the expense table.
 - `claims_summary`: peril mix, frequency and severity by accident year, report delays, repudiation and open shares,
   and the largest claims on the log-cost screen.
 """
@@ -110,6 +111,29 @@ def detectors(df: pd.DataFrame, ref: pd.DataFrame | None = None, documented: dic
         if c in df.columns:
             bad = df[c].dropna().astype("string").str.lower()
             out[f"{c}_undocumented"] = {str(k): int(v) for k, v in bad[~bad.isin(levels)].value_counts().head(10).items()}
+    return out
+
+
+def market_files(files: dict[str, pd.DataFrame]) -> dict:
+    """Checks on the files a market adds beyond the core tables: the sample submission covers the test rows exactly,
+    reference policies are test rows of the line they claim, and the expense table as given."""
+    tests = {s[len("test_"):]: df for s, df in files.items() if s.startswith("test_") and "row_id" in df.columns}
+    test_ids = {l: set(df["row_id"].astype("string")) for l, df in tests.items()}
+    all_ids = set().union(*test_ids.values()) if test_ids else set()
+    out = {}
+    if "sample_submission" in files and tests:
+        ids = files["sample_submission"]["row_id"].astype("string")
+        out["sample_submission"] = dict(rows=int(len(ids)), test_rows=int(sum(len(df) for df in tests.values())),
+                                        duplicated=int(ids.duplicated().sum()), not_in_test=int((~ids.isin(all_ids)).sum()),
+                                        test_rows_missing=int(len(all_ids - set(ids))))
+    if "reference_policies" in files and tests:
+        r = files["reference_policies"]
+        found = r["row_id"].astype("string").isin(all_ids)
+        own_line = [str(i) in test_ids.get(str(l), set()) for i, l in zip(r["row_id"], r.get("line", pd.Series([None] * len(r))))]
+        out["reference_policies"] = dict(rows=int(len(r)), by_line={str(k): int(v) for k, v in r["line"].value_counts().items()} if "line" in r else {},
+                                         in_test=int(found.sum()), in_own_line_test=int(sum(own_line)))
+    if "expenses" in files:
+        out["expenses"] = files["expenses"].astype(object).where(files["expenses"].notna(), None).to_dict("records")
     return out
 
 

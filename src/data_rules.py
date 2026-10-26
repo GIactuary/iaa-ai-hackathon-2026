@@ -178,6 +178,51 @@ def match_claims_to_rows(rows: pd.DataFrame, claims: pd.DataFrame, line: str) ->
     return m
 
 
+def open_recovery_rates(claims: pd.DataFrame, years: tuple, min_closed: float) -> pd.DataFrame:
+    """R10 evidence. By line and peril: closed, non-repudiated claims with a loss date in `years`, their recovery rate
+    (recoveries over incurred), and whether the rate rests on at least `min_closed` claims and so may be applied."""
+    c = claims[(claims["status"] == "closed") & claims["loss_date"].dt.year.isin(years)]
+    g = c.groupby(["line", "peril"])
+    out = pd.DataFrame({"closed": g.size(), "with_recovery": g["recoveries"].apply(lambda s: int((s > 0).sum())),
+                        "recoveries": g["recoveries"].sum(), "incurred": g["incurred_to_date"].sum()})
+    out["rate"] = (out["recoveries"] / out["incurred"]).where(out["incurred"] > 0, 0.0)
+    out["applied"] = out["closed"] >= min_closed
+    return out
+
+
+def add_open_recoveries(claims: pd.DataFrame, years: tuple, max_open_share: float, min_closed: float) -> tuple[pd.DataFrame, dict]:
+    """R10 (Y3, decided 2026-10-24, exchange D32). Recoveries are booked only when a claim settles, so a claim open at
+    the valuation date shows none. Each open claim's expected recovery, its incurred times its peril's closed-claim
+    rate (`open_recovery_rates`), is added to `recoveries`; the recorded value is kept in `recoveries_recorded` and
+    adjusted claims are flagged `dq_recovery_expected`. Net cost then falls everywhere it is read (targets, peril
+    shares, the level chain).
+
+    The rule does nothing, and says why in the report, when more than `max_open_share` of open, non-repudiated claims
+    already carry a recovery: recoveries are then not booked only at settlement."""
+    c = claims.copy()
+    c["recoveries_recorded"] = c["recoveries"]
+    is_open = c["status"].eq("open")
+    share = float((c.loc[is_open, "recoveries"] > 0).mean()) if is_open.any() else 0.0
+    rates = open_recovery_rates(c, years, min_closed)
+    report = dict(open_claims=int(is_open.sum()), open_with_recovery=int((c.loc[is_open, "recoveries"] > 0).sum()),
+                  open_with_recovery_share=share, max_open_share=max_open_share, min_closed=min_closed, years=list(years),
+                  rates={f"{l}|{p}": dict(r) for (l, p), r in rates.iterrows()})
+    c["dq_recovery_expected"] = False
+    if share > max_open_share:
+        report.update(applied=False, reason=f"{share:.2%} of open claims already carry a recovery (limit {max_open_share:.2%})")
+        return c, report
+    rate = rates.loc[rates["applied"], "rate"]
+    key = pd.MultiIndex.from_arrays([c["line"], c["peril"]])
+    r = pd.Series(rate.reindex(key).to_numpy(), index=c.index).fillna(0.0)
+    exp = np.where(is_open, c["incurred_to_date"] * r, 0.0)
+    c["recoveries"] = c["recoveries"] + exp
+    c["dq_recovery_expected"] = exp > 0
+    thin = rates[~rates["applied"] & (rates["recoveries"] > 0)]
+    report.update(applied=True, claims_adjusted=int(c["dq_recovery_expected"].sum()), expected_recoveries=float(exp.sum()),
+                  not_applied_thin=[f"{l}|{p}" for l, p in thin.index])
+    return c, report
+
+
 def unmatched_claims(rows: pd.DataFrame, claims: pd.DataFrame, line: str) -> pd.DataFrame:
     matched = match_claims_to_rows(rows, claims, line)["claim_id"]
     cl = claims[claims["line"] == line]

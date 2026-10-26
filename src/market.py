@@ -34,6 +34,8 @@ LARGE_LOSS_PERILS = {l: tuple(p) for l, p in CFG["large_loss_perils"].items()}
 STEP_PERILS = {(l, p): int(y) for l, p, y in CFG["step_perils"]}
 WEATHER_ADJUSTED = CFG["weather_adjusted"]
 SIZE_CHECKS = {l: [(m, tuple(s)) for m, s in v] for l, v in CFG["size_checks"].items()}
+# Data rule R10 (expected recoveries on open claims, Y3): off unless the market's config turns it on, so Part 1 reproduces
+OPEN_RECOVERIES = bool(CFG.get("open_recoveries", False))
 if NAME != "part1":
     WORK.mkdir(parents=True, exist_ok=True)
     (OUT / "submissions").mkdir(parents=True, exist_ok=True)

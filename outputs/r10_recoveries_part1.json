@@ -1,0 +1,262 @@
+{
+ "r10_recoveries": {
+  "report": {
+   "open_claims": 10147,
+   "open_with_recovery": 0,
+   "open_with_recovery_share": 0.0,
+   "max_open_share": 0.01,
+   "min_closed": 100.0,
+   "years": [
+    2021,
+    2022,
+    2023,
+    2024
+   ],
+   "rates": {
+    "buildings|accidental_damage": {
+     "closed": 3770,
+     "with_recovery": 0,
+     "recoveries": 0.0,
+     "incurred": 4554469.08,
+     "rate": 0.0,
+     "applied": true
+    },
+    "buildings|escape_of_water": {
+     "closed": 9428,
+     "with_recovery": 0,
+     "recoveries": 0.0,
+     "incurred": 53148055.8,
+     "rate": 0.0,
+     "applied": true
+    },
+    "buildings|fire": {
+     "closed": 966,
+     "with_recovery": 0,
+     "recoveries": 0.0,
+     "incurred": 51448594.11,
+     "rate": 0.0,
+     "applied": true
+    },
+    "buildings|flood": {
+     "closed": 1992,
+     "with_recovery": 0,
+     "recoveries": 0.0,
+     "incurred": 61252297.51,
+     "rate": 0.0,
+     "applied": true
+    },
+    "buildings|storm": {
+     "closed": 7445,
+     "with_recovery": 0,
+     "recoveries": 0.0,
+     "incurred": 25508009.21,
+     "rate": 0.0,
+     "applied": true
+    },
+    "buildings|subsidence": {
+     "closed": 902,
+     "with_recovery": 0,
+     "recoveries": 0.0,
+     "incurred": 20807479.65,
+     "rate": 0.0,
+     "applied": true
+    },
+    "contents|accidental_damage": {
+     "closed": 8903,
+     "with_recovery": 0,
+     "recoveries": 0.0,
+     "incurred": 6926070.21,
+     "rate": 0.0,
+     "applied": true
+    },
+    "contents|escape_of_water": {
+     "closed": 5166,
+     "with_recovery": 0,
+     "recoveries": 0.0,
+     "incurred": 14096660.48,
+     "rate": 0.0,
+     "applied": true
+    },
+    "contents|flood": {
+     "closed": 1493,
+     "with_recovery": 0,
+     "recoveries": 0.0,
+     "incurred": 14662518.09,
+     "rate": 0.0,
+     "applied": true
+    },
+    "contents|theft": {
+     "closed": 7401,
+     "with_recovery": 0,
+     "recoveries": 0.0,
+     "incurred": 26867574.82,
+     "rate": 0.0,
+     "applied": true
+    },
+    "motor|bodily_injury": {
+     "closed": 4681,
+     "with_recovery": 0,
+     "recoveries": 0.0,
+     "incurred": 97836509.07000001,
+     "rate": 0.0,
+     "applied": true
+    },
+    "motor|glass_hail": {
+     "closed": 15474,
+     "with_recovery": 0,
+     "recoveries": 0.0,
+     "incurred": 16796449.52,
+     "rate": 0.0,
+     "applied": true
+    },
+    "motor|own_damage": {
+     "closed": 46488,
+     "with_recovery": 13976,
+     "recoveries": 26091691.88,
+     "incurred": 110582964.08,
+     "rate": 0.2359467581382993,
+     "applied": true
+    },
+    "motor|theft": {
+     "closed": 5903,
+     "with_recovery": 777,
+     "recoveries": 1543676.79,
+     "incurred": 38470362.19,
+     "rate": 0.04012639086619424,
+     "applied": true
+    },
+    "motor|third_party_prop": {
+     "closed": 31011,
+     "with_recovery": 0,
+     "recoveries": 0.0,
+     "incurred": 112856229.05,
+     "rate": 0.0,
+     "applied": true
+    }
+   },
+   "applied": true,
+   "claims_adjusted": 2236,
+   "expected_recoveries": 1367863.7570872733,
+   "not_applied_thin": []
+  },
+  "by_line": {
+   "motor": [
+    {
+     "accident_year": 2021,
+     "net_recorded": 105897646.52,
+     "net_adjusted": 105897646.52,
+     "expected_recoveries": 0.0,
+     "overstatement": 0.0,
+     "open_share_of_incurred": 0.0594613041825971
+    },
+    {
+     "accident_year": 2022,
+     "net_recorded": 116723185.03,
+     "net_adjusted": 116721950.8172533,
+     "expected_recoveries": 1234.212746694684,
+     "overstatement": 1.0573955781693877e-05,
+     "open_share_of_incurred": 0.10043916041360709
+    },
+    {
+     "accident_year": 2023,
+     "net_recorded": 117307703.7,
+     "net_adjusted": 117300647.81572439,
+     "expected_recoveries": 7055.884275615215,
+     "overstatement": 6.0152133914041005e-05,
+     "open_share_of_incurred": 0.23758819011194612
+    },
+    {
+     "accident_year": 2024,
+     "net_recorded": 90666976.89,
+     "net_adjusted": 89309506.07002494,
+     "expected_recoveries": 1357470.8199750632,
+     "overstatement": 0.015199622970825867,
+     "open_share_of_incurred": 0.3424213922831167
+    }
+   ],
+   "buildings": [
+    {
+     "accident_year": 2021,
+     "net_recorded": 54052834.19,
+     "net_adjusted": 54052834.19,
+     "expected_recoveries": 0.0,
+     "overstatement": 0.0,
+     "open_share_of_incurred": 0.007197409642434145
+    },
+    {
+     "accident_year": 2022,
+     "net_recorded": 61529331.08,
+     "net_adjusted": 61529331.08,
+     "expected_recoveries": 0.0,
+     "overstatement": 0.0,
+     "open_share_of_incurred": 0.02631832999930608
+    },
+    {
+     "accident_year": 2023,
+     "net_recorded": 64832471.23,
+     "net_adjusted": 64832471.23,
+     "expected_recoveries": 0.0,
+     "overstatement": 0.0,
+     "open_share_of_incurred": 0.0810706104561981
+    },
+    {
+     "accident_year": 2024,
+     "net_recorded": 67353949.55,
+     "net_adjusted": 67353949.55,
+     "expected_recoveries": 0.0,
+     "overstatement": 0.0,
+     "open_share_of_incurred": 0.3554165913051494
+    }
+   ],
+   "contents": [
+    {
+     "accident_year": 2021,
+     "net_recorded": 14870108.25,
+     "net_adjusted": 14870108.25,
+     "expected_recoveries": 0.0,
+     "overstatement": 0.0,
+     "open_share_of_incurred": 0.0
+    },
+    {
+     "accident_year": 2022,
+     "net_recorded": 16040968.62,
+     "net_adjusted": 16040968.62,
+     "expected_recoveries": 0.0,
+     "overstatement": 0.0,
+     "open_share_of_incurred": 0.0
+    },
+    {
+     "accident_year": 2023,
+     "net_recorded": 17539466.93,
+     "net_adjusted": 17539466.93,
+     "expected_recoveries": 0.0,
+     "overstatement": 0.0,
+     "open_share_of_incurred": 0.014037402104785632
+    },
+    {
+     "accident_year": 2024,
+     "net_recorded": 17516035.05,
+     "net_adjusted": 17516035.05,
+     "expected_recoveries": 0.0,
+     "overstatement": 0.0,
+     "open_share_of_incurred": 0.1839304477756226
+    }
+   ]
+  }
+ },
+ "meta": {
+  "created": "2026-10-25T15:11:56",
+  "git_commit": "55f1d19",
+  "seeds": null,
+  "versions": {
+   "python": "3.14.5",
+   "numpy": "2.5.3",
+   "pandas": "3.0.5",
+   "scipy": "1.18.1",
+   "sklearn": "1.9.1",
+   "lightgbm": "4.7.0",
+   "xgboost": "3.4.1",
+   "catboost": "1.2.10"
+  }
+ }
+}

@@ -36,6 +36,17 @@ def test_planted_changes_are_found():
     assert drift.schema_diff(a, b)["added"] == ["new_col"]
 
 
+def test_market_files_checks():
+    tm, tb = pd.DataFrame({"row_id": ["M1", "M2"]}), pd.DataFrame({"row_id": ["B1"]})
+    sub = pd.DataFrame({"row_id": ["M1", "M2", "X9"], "prediction": 0.0})
+    ref = pd.DataFrame({"row_id": ["M1", "B1", "M2"], "line": ["motor", "buildings", "buildings"]})
+    exp = pd.DataFrame({"item": ["fixed", "commission_comparison_site"], "emerging": [85.0, np.nan]})
+    m = drift.market_files({"test_motor": tm, "test_buildings": tb, "sample_submission": sub, "reference_policies": ref, "expenses": exp})
+    assert m["sample_submission"] == dict(rows=3, test_rows=3, duplicated=0, not_in_test=1, test_rows_missing=1)
+    assert m["reference_policies"]["in_test"] == 3 and m["reference_policies"]["in_own_line_test"] == 2
+    assert m["expenses"][1]["emerging"] is None
+
+
 def test_psi_reference_values():
     assert drift.psi([0.5, 0.5], [0.5, 0.5]) == 0.0
     assert abs(drift.psi([0.5, 0.5], [0.7, 0.3]) - ((0.2) * np.log(0.7 / 0.5) + (-0.2) * np.log(0.3 / 0.5))) < 1e-12

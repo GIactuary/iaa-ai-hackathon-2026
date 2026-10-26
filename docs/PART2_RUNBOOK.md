@@ -4,15 +4,15 @@ What to do when the Part 2 files arrive. Design: `decisions/part2_kit_design.md`
 
 ## Day one, first hour
 
-1. **Files.** Put the Part 2 files, exactly as downloaded, in `data/raw_part2/` (never edit them). Check the rules page for anything new on external data, AI use and deliverables (`/intake`).
+1. **Files.** Put the Part 2 files, exactly as downloaded, in `data/raw_part2/` (never edit them). The archive unpacks to `developed/` (the Part 1 files, byte-identical) and `emerging/` (the new market); hashes in `competition/data_manifest_part2.json`. Check the rules page for anything new on external data, AI use and deliverables (`/intake`).
 2. **What changed.** Run the report against Part 1, before anything else:
 
    ```
-   .venv/Scripts/python.exe -I scripts/what_changed.py --new data/raw_part2 --name part2
+   .venv/Scripts/python.exe -I scripts/what_changed.py --ref data/raw_part2/developed --new data/raw_part2/emerging --name part2 --codes emerging
    ```
 
    It writes `outputs/what_changed_part2.md`: files and columns added or removed, the largest distribution shifts, the Part 1 traps re-tested (exposure in days, sum insured unit errors, lost id padding, undocumented codes, post-event columns), claims patterns, and training against test rows. Bring it to the actuary as the first Part 2 check-in.
-3. **Configuration.** Copy `config/part1.json` to `config/part2.json`, set `"name": "part2"`, `"raw_dir": "data/raw_part2"`, and change every value the report shows is different: lines and perils, valuation date, years, large-loss perils, step perils, weather perils, size segments. Copy `decisions/thresholds.md` to `decisions/thresholds_part2.md`, point `"thresholds_file"` at it, and clear the dates of every threshold the actuary has not re-confirmed for the new market: the code refuses an undated one.
+3. **Configuration.** Copy `config/part1.json` to `config/part2.json`, set `"name": "part2"`, `"raw_dir": "data/raw_part2/emerging"`, `"codes": "emerging"` (the documented code set `scripts/what_changed.py` checks against), `"open_recoveries": true` (rule R10, Y3), and change every value the report shows is different: lines and perils, valuation date, years, large-loss perils, step perils, weather perils, size segments. `decisions/thresholds_part2.md` already exists (2026-10-25): every Part 1 row is copied with its date cleared, and the R10 rows are dated. Point `"thresholds_file"` at it, and date each row only once the actuary re-confirms it for the new market: the code refuses an undated one.
 
 ## Then
 

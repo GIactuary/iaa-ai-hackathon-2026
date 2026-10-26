@@ -1,0 +1,212 @@
+{
+ "r10_recoveries": {
+  "report": {
+   "open_claims": 1056,
+   "open_with_recovery": 0,
+   "open_with_recovery_share": 0.0,
+   "max_open_share": 0.01,
+   "min_closed": 100.0,
+   "years": [
+    2023,
+    2024
+   ],
+   "rates": {
+    "buildings|accidental_damage": {
+     "closed": 120,
+     "with_recovery": 0,
+     "recoveries": 0.0,
+     "incurred": 108834.69,
+     "rate": 0.0,
+     "applied": true
+    },
+    "buildings|escape_of_water": {
+     "closed": 230,
+     "with_recovery": 0,
+     "recoveries": 0.0,
+     "incurred": 855100.43,
+     "rate": 0.0,
+     "applied": true
+    },
+    "buildings|fire": {
+     "closed": 60,
+     "with_recovery": 0,
+     "recoveries": 0.0,
+     "incurred": 4011720.43,
+     "rate": 0.0,
+     "applied": false
+    },
+    "buildings|flood": {
+     "closed": 59,
+     "with_recovery": 0,
+     "recoveries": 0.0,
+     "incurred": 1417638.57,
+     "rate": 0.0,
+     "applied": false
+    },
+    "buildings|storm": {
+     "closed": 406,
+     "with_recovery": 0,
+     "recoveries": 0.0,
+     "incurred": 1058083.2,
+     "rate": 0.0,
+     "applied": true
+    },
+    "buildings|subsidence": {
+     "closed": 24,
+     "with_recovery": 0,
+     "recoveries": 0.0,
+     "incurred": 382157.02999999997,
+     "rate": 0.0,
+     "applied": false
+    },
+    "contents|accidental_damage": {
+     "closed": 316,
+     "with_recovery": 0,
+     "recoveries": 0.0,
+     "incurred": 199883.9,
+     "rate": 0.0,
+     "applied": true
+    },
+    "contents|escape_of_water": {
+     "closed": 166,
+     "with_recovery": 0,
+     "recoveries": 0.0,
+     "incurred": 350920.27999999997,
+     "rate": 0.0,
+     "applied": true
+    },
+    "contents|flood": {
+     "closed": 77,
+     "with_recovery": 0,
+     "recoveries": 0.0,
+     "incurred": 646549.48,
+     "rate": 0.0,
+     "applied": false
+    },
+    "contents|theft": {
+     "closed": 380,
+     "with_recovery": 0,
+     "recoveries": 0.0,
+     "incurred": 1152139.12,
+     "rate": 0.0,
+     "applied": true
+    },
+    "motor|bodily_injury": {
+     "closed": 189,
+     "with_recovery": 0,
+     "recoveries": 0.0,
+     "incurred": 1805146.37,
+     "rate": 0.0,
+     "applied": true
+    },
+    "motor|glass_hail": {
+     "closed": 1297,
+     "with_recovery": 0,
+     "recoveries": 0.0,
+     "incurred": 984664.17,
+     "rate": 0.0,
+     "applied": true
+    },
+    "motor|own_damage": {
+     "closed": 2449,
+     "with_recovery": 706,
+     "recoveries": 841752.01,
+     "incurred": 3510424.56,
+     "rate": 0.23978638355925813,
+     "applied": true
+    },
+    "motor|theft": {
+     "closed": 356,
+     "with_recovery": 44,
+     "recoveries": 58260.34,
+     "incurred": 1482632.2,
+     "rate": 0.03929520753697377,
+     "applied": true
+    },
+    "motor|third_party_prop": {
+     "closed": 1919,
+     "with_recovery": 0,
+     "recoveries": 0.0,
+     "incurred": 4624394.11,
+     "rate": 0.0,
+     "applied": true
+    }
+   },
+   "applied": true,
+   "claims_adjusted": 257,
+   "expected_recoveries": 97336.8134953081,
+   "not_applied_thin": []
+  },
+  "by_line": {
+   "motor": [
+    {
+     "accident_year": 2023,
+     "net_recorded": 8162761.21,
+     "net_adjusted": 8162580.79472501,
+     "expected_recoveries": 180.41527498979121,
+     "overstatement": 2.2102724558191554e-05,
+     "open_share_of_incurred": 0.16761990876212016
+    },
+    {
+     "accident_year": 2024,
+     "net_recorded": 7693126.75,
+     "net_adjusted": 7595970.351779682,
+     "expected_recoveries": 97156.39822031837,
+     "overstatement": 0.01279051835655932,
+     "open_share_of_incurred": 0.35792675375943667
+    }
+   ],
+   "buildings": [
+    {
+     "accident_year": 2023,
+     "net_recorded": 5848688.1,
+     "net_adjusted": 5848688.1,
+     "expected_recoveries": 0.0,
+     "overstatement": 0.0,
+     "open_share_of_incurred": 0.07492437663071827
+    },
+    {
+     "accident_year": 2024,
+     "net_recorded": 3710061.21,
+     "net_adjusted": 3710061.21,
+     "expected_recoveries": 0.0,
+     "overstatement": 0.0,
+     "open_share_of_incurred": 0.3468960691352044
+    }
+   ],
+   "contents": [
+    {
+     "accident_year": 2023,
+     "net_recorded": 1285654.53,
+     "net_adjusted": 1285654.53,
+     "expected_recoveries": 0.0,
+     "overstatement": 0.0,
+     "open_share_of_incurred": 0.0
+    },
+    {
+     "accident_year": 2024,
+     "net_recorded": 1297699.77,
+     "net_adjusted": 1297699.77,
+     "expected_recoveries": 0.0,
+     "overstatement": 0.0,
+     "open_share_of_incurred": 0.180212346034399
+    }
+   ]
+  }
+ },
+ "meta": {
+  "created": "2026-10-25T15:11:40",
+  "git_commit": "55f1d19",
+  "seeds": null,
+  "versions": {
+   "python": "3.14.5",
+   "numpy": "2.5.3",
+   "pandas": "3.0.5",
+   "scipy": "1.18.1",
+   "sklearn": "1.9.1",
+   "lightgbm": "4.7.0",
+   "xgboost": "3.4.1",
+   "catboost": "1.2.10"
+  }
+ }
+}

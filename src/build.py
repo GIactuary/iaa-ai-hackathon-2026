@@ -1,11 +1,13 @@
 """Model-ready rows for each line, built once and cached in data/work/lines/ (regenerable, kept out of git).
 
-Each training row carries: the repaired and recovered policy fields (data_rules R1 to R9), address and customer
+Each training row carries: the repaired and recovered policy fields (data_rules R1 to R9; R10, expected recoveries on
+open claims, when the market's config turns it on), address and customer
 fields, the hold-out flag, reporting completion (cost-weighted, count-weighted and per peril; P10), and targets by
 peril, uncapped and capped at the line's agreed cap (C1). Test rows carry the same inputs with completion 1.
 """
 from __future__ import annotations
 
+import json
 from pathlib import Path
 
 import numpy as np
@@ -34,6 +36,10 @@ def build_all(rebuild: bool = False) -> dict[str, tuple[pd.DataFrame, pd.DataFra
         return {l: (pd.read_parquet(a), pd.read_parquet(b)) for l, (a, b) in paths.items()}
     th = load_thresholds()
     claims = dr.read_raw("claims")
+    if market.OPEN_RECOVERIES:
+        claims, rep = dr.add_open_recoveries(claims, market.FIT_YEARS, th["rec_open_max_share"], th["rec_min_closed"])
+        CACHE.mkdir(parents=True, exist_ok=True)
+        (CACHE / "open_recoveries.json").write_text(json.dumps(rep, indent=1, default=float), encoding="utf-8")
     curves, weights = tg.delay_curves(claims), tg.incidence_weights(claims)
     cshares, nshares = tg.peril_cost_shares(claims), tg.peril_count_shares(claims)
     ad, cu = dr.read_raw("addresses"), dr.read_raw("customers")

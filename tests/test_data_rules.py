@@ -153,3 +153,35 @@ def test_real_files_repair_cleanly(line):
     for col in dr.RECOVERABLE[line]:
         assert tr2[col].isna().sum() < 0.5 * tr[col].isna().sum()
         assert tr2.loc[tr2[f"dq_{col}_recovered"], col].notna().all()
+
+
+def _claims(status, peril, incurred, recoveries, year=2023):
+    n = len(status)
+    return pd.DataFrame({"claim_id": [f"C{i}" for i in range(n)], "line": "motor", "peril": peril, "status": status,
+                         "loss_date": pd.Timestamp(f"{year}-06-01"), "incurred_to_date": incurred, "recoveries": recoveries})
+
+
+def test_open_recoveries_applied_at_peril_rate():
+    # own damage: closed claims recover 25% of incurred; theft has too few closed claims for its rate to be used
+    st = ["closed"] * 4 + ["open", "open", "closed", "open", "repudiated"]
+    pe = ["own_damage"] * 6 + ["theft", "theft", "own_damage"]
+    c = _claims(st, pe, [100.0, 300.0, 200.0, 200.0, 400.0, 0.0, 50.0, 80.0, 90.0], [0, 100, 50, 50, 0, 0, 10, 0, 0])
+    out, rep = dr.add_open_recoveries(c, (2023,), max_open_share=0.01, min_closed=2)
+    assert rep["applied"] and rep["not_applied_thin"] == ["motor|theft"]
+    np.testing.assert_allclose(out["recoveries"], [0, 100, 50, 50, 100.0, 0, 10, 0, 0])   # 400 x 0.25 on the open claim
+    assert out["dq_recovery_expected"].tolist() == [False] * 4 + [True] + [False] * 4
+    assert out["recoveries_recorded"].tolist() == c["recoveries"].tolist()
+
+
+def test_open_recoveries_off_when_open_claims_already_recover():
+    c = _claims(["closed", "open", "open"], ["own_damage"] * 3, [100.0, 100.0, 100.0], [20, 5, 0])
+    out, rep = dr.add_open_recoveries(c, (2023,), max_open_share=0.01, min_closed=1)
+    assert not rep["applied"] and "50.00%" in rep["reason"]
+    assert out["recoveries"].tolist() == [20, 5, 0] and not out["dq_recovery_expected"].any()
+
+
+def test_open_recoveries_rate_uses_only_the_given_years():
+    c = pd.concat([_claims(["closed"], ["own_damage"], [100.0], [50.0], year=2020),
+                   _claims(["closed", "open"], ["own_damage"] * 2, [100.0, 100.0], [10.0, 0.0])], ignore_index=True)
+    out, _ = dr.add_open_recoveries(c, (2023,), max_open_share=0.01, min_closed=1)
+    assert out["recoveries"].iloc[-1] == pytest.approx(10.0)

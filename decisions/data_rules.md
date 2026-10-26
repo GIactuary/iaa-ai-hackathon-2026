@@ -190,3 +190,26 @@ It stays a candidate rating variable and must pass the phase 5 drop-one test lik
 - **The relativity for one missed payment is stable.** Fitted on each year alone it runs 1.13 to 1.32 in every line.
 - **The three-or-more level is noisy.** It runs from 0.96 to 1.42 and holds only 0.3% of rows. The form will be any missed payment as a yes/no, or 0, 1 and 2 or more, settled in the phase 5 test.
 - **Credit band and missed payments share signal; they do not double-count.** Motor credit band E falls from 1.31 to 1.23 once missed payments enters. The joint fit splits the shared signal.
+
+## R10. Expected recoveries on claims open at the valuation date (Part 2, Y3)
+
+Decided by the actuary on 2026-10-24 (register Y3, option (a), exchange D32), from the Part 1 post-mortem (PM5, `decisions/postmortem_results.md`). Built on 2026-10-25 (exchange D33). Code: `add_open_recoveries` in `src/data_rules.py`, applied in `src/build.py` when the market's config sets `"open_recoveries": true`. It is off for Part 1, so `config/part1.json` still reproduces the Part 1 files. Measured by `scripts/r10_recoveries.py`.
+
+- **Rule.** Each open claim's expected recovery is added to `recoveries`. The expected recovery is the claim's incurred times its peril's recovery rate: recoveries over incurred, on closed non-repudiated claims with a loss date in the market's fitting years. The recorded value is kept in `recoveries_recorded`, and adjusted claims are flagged `dq_recovery_expected`. Net cost (R6) falls wherever it is read: row targets, peril cost shares, and the level chain.
+- **Pattern check.** The rule applies only if no more than `rec_open_max_share` (1%) of open claims already carry a recovery. A peril's rate is applied only if it rests on at least `rec_min_closed` (100) closed claims. Both thresholds are in `decisions/thresholds_part2.md`. Otherwise the rule does nothing and its report (`open_recoveries.json` in the market's build cache) says why.
+- **Evidence.** The host confirmed on the Kaggle forum that recoveries are booked only at settlement. Both markets show it.
+
+| | Part 1 (2021-2024) | Emerging (2023-2024) |
+|---|---|---|
+| Open claims carrying a recovery | 0 of 10,147 | 0 of 1,056 |
+| Motor own damage: closed claims, share with a recovery, rate | 46,488, 30.1%, 23.59% | 2,449, 28.8%, 23.98% |
+| Motor theft: closed claims, share with a recovery, rate | 5,903, 13.2%, 4.01% | 356, 12.4%, 3.93% |
+| Other perils | no recoveries | no recoveries |
+| Motor net cost overstated, latest accident year | 2024: 1.52% | 2024: 1.28% |
+| Motor net cost overstated, year before | 2023: 0.006% | 2023: 0.002% |
+
+How to read this: emerging motor 2024 claims are recorded at 1.28% more net cost than they will settle for, because 35.8% of that year's incurred is on open claims with no recoveries booked yet. A quarter of an open own-damage claim's incurred is expected back. The year before is barely affected, since its open claims are mostly bodily injury, which never recovers. Property lines do not change.
+
+- **Part 1 check.** On the Part 1 files the rule reproduces the post-mortem's PM5: rates 23.59% and 4.01% against 23.6% and 4.01%, and motor 2024 1.5200% against 1.52%. The rates differ in the fourth decimal because PM5 took claims matched to rows, while R10 takes the fitting years from the claims file.
+- **Still to measure.** The change in each line's 2025 indication. On Part 1 the motor indication fell 1.28%, more than the 2024 share alone, because the overstated 2024 severity also steepens the own-damage trend. The Part 2 figure needs the emerging market's caps and trend bounds, which are not yet re-confirmed in `decisions/thresholds_part2.md`. It is reported by the Part 2 build once they are.
+- **Hold-out.** The rate uses every customer's closed claims, like the R2 sum-insured cutoff. It is a rule fixed from the data, not a fitted model parameter.
