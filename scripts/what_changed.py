@@ -24,8 +24,9 @@ from src.thresholds import load_thresholds
 ROOT = Path(__file__).resolve().parents[1]
 # Documented codes by market. Developed: the Part 1 data page levels plus the variants rule R3 maps. Emerging: the
 # local construction codes listed on the Part 2 data page (BRK, STN, WOD, MIX).
-DOCUMENTED = {"developed": {"construction_type": set(CONSTRUCTION_MAP)},
+DOCUMENTED = {"developed": {"construction_type": {"brick", "stone", "non_standard", "t", "w"}},
               "emerging": {"construction_type": {"brk", "stn", "wod", "mix"}}}
+assert set().union(*(d["construction_type"] for d in DOCUMENTED.values())) == set(CONSTRUCTION_MAP)
 
 
 def read_folder(path: Path) -> dict[str, pd.DataFrame]:

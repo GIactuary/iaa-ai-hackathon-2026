@@ -42,6 +42,7 @@ The data page documents brick, stone, timber and non-standard. The data holds 11
   - The share is the same each year (11.4% and 11.5%).
   - All 18,218 T-coded houses that renewed at the same address in 2023 became W. Every other code at the same address kept its level in 100% of cases.
 - **Reading.** This is a coding change in 2023. Kept as two levels, a model would read the year effect into construction, and the test file would only ever see W.
+- **Emerging market (2026-10-25).** The Part 2 data page lists local codes BRK, STN, WOD and MIX. They map to brick, stone, timber and non-standard. All four appear clean, with no spelling variants, and the mapped mix matches Part 1 to a tenth of a percent (`decisions/part2_checkin1.md`). The host confirmed the 2023 system change on the forum.
 
 ## R4. Motor customer ids are padded back to eight digits
 

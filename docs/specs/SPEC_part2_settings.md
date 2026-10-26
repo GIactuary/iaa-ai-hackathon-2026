@@ -41,3 +41,12 @@ Every setting below is still tested on Part 2's own data under the keep rule bef
 - **The flood-geography challenger (Y1 option D).** Not chosen. The recommendation suggested running it beside (a). It runs only if the actuary asks.
 - **Two thresholds still to be written and dated** before the runs that use them: the Y2 level count, and any Part 2 recovery-pattern criterion for Y3.
 - **Fast mode.** With wider trees, Part 1's tuned tree settings may no longer fit. Whether to run the full step 7 tuning on Part 2 is the actuary's call; the runbook lists its cost.
+
+## Build status (2026-10-25)
+
+- **Y3 built.** Rule R10 (`decisions/data_rules.md`), thresholds confirmed (register Y3-T, D33). It switches on with `"open_recoveries": true` in the market config. On the emerging data, motor 2024 net cost falls 1.28%. The change in the 2025 indication is measured by the Part 2 build once the caps and trend bounds are re-confirmed.
+- **Y2 built, not yet run.** `src/fields.py` picks the tree inputs from the data, with a reason for every exclusion. Codes with more than `code_levels_max` levels are credibility-encoded against the W2 GLM's expected cost, out of fold for fitting rows. It switches on with `"tree_inputs": "wide"` in the market config, in `scripts/freeze_build.py`, and so in `scripts/fast_weights.py`. Part 1 frames are identical with it present. Gender is not merged in the build at all, so it is in no family, until the actuary rules on it (D33). `code_levels_max` is proposed at 20 and undated (register Y2-T).
+- **What blocks the first Part 2 run of Y2 (and Y1):**
+  1. **The W2 GLM's columns** (`src/glm.py`) use Part 1 fields the emerging market lacks: driver and policyholder age, credit band, annual mileage, telematics. The GLM needs an emerging specification (age bands, no credit or mileage) before any family can be fitted, because the trees are scored against it and started from it.
+  2. **Validation design.** Part 1's keep rule needs two out-of-time scorings. The emerging market has 2023 and 2024 only. A scoring fitted on 2023 alone also cannot estimate the credibility constant of an encoded code, because that needs two or more years per level.
+  3. **The thresholds** in `decisions/thresholds_part2.md` (caps, trend bounds, hold-out, keep rule) are undated until re-confirmed for the emerging market.

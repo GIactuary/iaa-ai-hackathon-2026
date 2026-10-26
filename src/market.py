@@ -36,6 +36,9 @@ WEATHER_ADJUSTED = CFG["weather_adjusted"]
 SIZE_CHECKS = {l: [(m, tuple(s)) for m, s in v] for l, v in CFG["size_checks"].items()}
 # Data rule R10 (expected recoveries on open claims, Y3): off unless the market's config turns it on, so Part 1 reproduces
 OPEN_RECOVERIES = bool(CFG.get("open_recoveries", False))
+# Tree inputs (Y2): "part1" keeps the step 7 field lists (Part 1 reproduces); "wide" gives every legitimate field (src/fields.py)
+TREE_INPUTS = CFG.get("tree_inputs", "part1")
+assert TREE_INPUTS in ("part1", "wide"), TREE_INPUTS
 if NAME != "part1":
     WORK.mkdir(parents=True, exist_ok=True)
     (OUT / "submissions").mkdir(parents=True, exist_ok=True)

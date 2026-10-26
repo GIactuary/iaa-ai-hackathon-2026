@@ -51,7 +51,9 @@ def build_all(rebuild: bool = False) -> dict[str, tuple[pd.DataFrame, pd.DataFra
         tr, te = dr.recover_from_history(tr, te, line)
         frames = []
         for df in (tr, te):
-            df = df.merge(ad, on="address_id", how="left").merge(cu[CUSTOMER_COLS], on="customer_id", how="left")
+            # a market without a field (the emerging market has no credit band or date of birth) merges the rest;
+            # gender is not on the list, so it stays out until the actuary rules on it (exchange D33)
+            df = df.merge(ad, on="address_id", how="left").merge(cu[[c for c in CUSTOMER_COLS if c in cu.columns]], on="customer_id", how="left")
             comp = tg.row_completion(df, line, curves, weights, cshares)
             df = df.join(comp)
             df["completion_count"] = tg.row_completion(df, line, curves, weights, nshares)["completion"]

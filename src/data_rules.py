@@ -21,8 +21,10 @@ NEVER_INPUTS = ("renewal_decision", "customer_service_contacts")
 # Marketing and identity fields kept out of the rating plan, used only in the proxy test (P6)
 EXCLUDED_FROM_PLAN = ("surname", "email_domain", "marketing_segment", "campaign_code", "branch_id",
                       "marketing_consent", "document_preference")
-# Documented levels of construction_type (data page) and the codes that map to them (data_rules.md R3)
-CONSTRUCTION_MAP = {"brick": "brick", "stone": "stone", "non_standard": "non_standard", "t": "timber", "w": "timber"}
+# Documented levels of construction_type (data page) and the codes that map to them (data_rules.md R3). The emerging
+# market's local codes are listed on the Part 2 data page: BRK brick, STN stone, WOD timber, MIX mixed or non-standard
+CONSTRUCTION_MAP = {"brick": "brick", "stone": "stone", "non_standard": "non_standard", "t": "timber", "w": "timber",
+                    "brk": "brick", "stn": "stone", "wod": "timber", "mix": "non_standard"}
 
 DAY_COUNT_TOL = 0.5      # an exposure within half a day of the row's day count was entered in days
 YEAR_BASIS_TOL = 0.0006  # exposures are given to 4 decimals; this separates days/365 from days/360 for every row

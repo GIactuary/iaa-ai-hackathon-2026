@@ -31,7 +31,7 @@ import scripts.phase5_step7 as s7
 from scripts.phase5_step4 import hist_columns
 from scripts.submit_w2 import ALL, FIT_YEARS, WORK4, w2_frame
 from src import market
-from src import build, data_rules as dr, level as lv
+from src import build, data_rules as dr, fields, level as lv
 from src.evidence import write_evidence
 from src.families import as_category, as_string
 from src.glm import TweedieGLM, fit_edges
@@ -60,19 +60,27 @@ def frames(df: pd.DataFrame, line: str, edges, h, ks, fit: np.ndarray, test: np.
     gcat = [c for c in G.columns if not pd.api.types.is_float_dtype(G[c])]
     G = as_category(G, gcat)
     hc = hist_columns(h.reindex(df["row_id"]).reset_index(drop=True), ks, line)
-    num, cat = s7.RAW_NUM["all"] + s7.RAW_NUM[line], s7.RAW_CAT["all"] + s7.RAW_CAT[line]
+    carried = [c for t, _ in s7.CARRIED[line].values() for c in t]
+    fl = None
+    if market.TREE_INPUTS == "wide":
+        # Y2: every legitimate field (src/fields.py); codes with many levels are encoded in family_predictions,
+        # once the W2 GLM's expected cost exists. The carried raw fields are already among them; history is kept.
+        fl = fields.tree_fields(df[fit], load_thresholds()["code_levels_max"])
+        num, cat = fl["num"], fl["cat"]
+        carried = [c for c in carried if c in ("h_c", "h_a", "h_r")]
+    else:
+        num, cat = s7.RAW_NUM["all"] + s7.RAW_NUM[line], s7.RAW_CAT["all"] + s7.RAW_CAT[line]
     T = df[num].astype(float).copy()
     T["h_p"] = G["h_p"].to_numpy()
     T["yr"] = df["yr"].astype(float).to_numpy()
     T.loc[test, "yr"] = float(last)
     for c in cat:
         T[c] = df[c].to_numpy()
-    for _, (tcols, _g) in s7.CARRIED[line].items():
-        for c in tcols:
-            T[c] = hc[c].to_numpy() if c in ("h_c", "h_a", "h_r") else df[c].astype(float).to_numpy()
+    for c in carried:
+        T[c] = hc[c].to_numpy() if c in ("h_c", "h_a", "h_r") else df[c].astype(float).to_numpy()
     tcat = cat + ["h_r"]
     out = dict(G=G, T=as_category(T, tcat), Ts=as_string(T, tcat), tcat=tcat, tbase=num + ["h_p", "yr"] + cat,
-               carried=[c for t, _ in s7.CARRIED[line].values() for c in t])
+               carried=carried, fields=fl)
     if line in s7.SPLINES:
         from sklearn.preprocessing import SplineTransformer
         th = load_thresholds()
@@ -125,6 +133,14 @@ def family_predictions(line: str, tr: pd.DataFrame, te0: pd.DataFrame, h, ks, tu
     g = TweedieGLM().fit(Gw[fit], y[fit], ec[fit])
     init = np.log(g.rate(Gw))
     preds = {"ref": collapse(np.exp(init[test]) * e[test], orig, wgt, len(te0))}
+    if Fr["fields"]:
+        # Y2: each code with many levels enters as its credibility-weighted log mod of capped cost against the W2 GLM
+        for c in Fr["fields"]["encode"]:
+            enc, _k = fields.credibility_encode(df[c], df["yr"].to_numpy(), y, np.exp(init) * ec, fit,
+                                                df["customer_id"].astype(str).to_numpy(), int(th["split_seed_1"]))
+            for f in ("T", "Ts"):
+                Fr[f][f"enc_{c}"] = enc
+            Fr["tbase"].append(f"enc_{c}")
     for col, (kind, carried) in COLMAP[line].items():
         if kind == "fs":
             X = Fr["Ts"][Fr["tbase"]]
