@@ -500,8 +500,8 @@
       "challenge": "Actuary, no verdict: \"I believe here we need to make a decision based on what is the level that will keep the prediction power as much at the same time dont give us diminishing returns- model computations should not be considered - if there a way to optimize the level statistically we may do that exercise too. come back to me i will make my decision\"",
       "test": "Pre-registered threshold test (decisions/y2t_threshold_test_design.md, committed before it ran): thresholds 4 to 300 scored on emerging claim frequency, out of time (fit 2023, score 2024) and by five-fold customer-grouped cross-validation over 2023-2024 with three seeds; key totals recomputed independently.",
       "result": "Thresholds of 80 or more (occupation raw) are clearly worse in both designs (+261 and +321 over the best; +369 and +661 with make_model raw as well). Thresholds 4 to 20 cannot be told apart (gaps 7 to 21, against about 100 between seeds). The pre-registered rule picks 4; the AI recommends 20 against its own rule, because the gain comes only from encoding the two codes with many levels and 4 gains nothing (decisions/y2t_threshold_test_results.md). The full Part 1 run, restarted on 12 threads at the actuary's instruction, would take several days.",
-      "decision": "Pending: the actuary decides Y2-T after the test.",
-      "effect": "Y2-T brief round 2 published with the results; the decision stays with the actuary.",
+      "decision": "Actuary chose (a), code_levels_max 20, on the Y2-T brief round 2 and finalized it on 2026-10-27, with no new note. This sets aside the pre-registered selection rule, which picked 4, in favour of the AI's recommendation of 20: the lowest threshold that encodes exactly the codes where raw entry was shown to hurt.",
+      "effect": "code_levels_max dated 2026-10-27 in decisions/thresholds_part2.md; register Y2-T decided. In the emerging market, make_model and occupation enter the trees as credibility-weighted values and every other category enters raw. The departure from the pre-registered rule is recorded in decisions/y2t_threshold_test_results.md.",
       "section": "4.3"
     }
   ]

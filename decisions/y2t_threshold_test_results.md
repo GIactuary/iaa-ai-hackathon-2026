@@ -41,6 +41,10 @@ So the point of diminishing returns runs the other way from what the rule assume
 
 This departs from the pre-registered rule, and it is stated as such for the actuary's decision.
 
+## Decision
+
+The actuary chose 20 on 27 October 2026 (Y2-T brief round 2, finalized; register Y2-T, exchange D35). `code_levels_max` is dated in `decisions/thresholds_part2.md`.
+
 ## Part 1 run
 
 The full Part 1 run (two scorings, two targets, seven candidates, nine-setting search on about 830,000 motor rows) was restarted on 12 threads on the actuary's instruction. Its first two motor candidates took 22 minutes and about 4 hours. At that pace the run needs several days, beyond the Part 2 deadline. It adds no result to this file.
