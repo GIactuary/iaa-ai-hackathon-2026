@@ -514,8 +514,22 @@
       "challenge": "The AI had diagnosed the run as slow because of the model search and recommended stopping it; the actuary's question led to the profile that found the real cause.",
       "test": "make_folds now passes integer codes in sorted id order. Folds checked identical to scikit-learn's on synthetic ids (unit test) and on real Part 1 and emerging customer ids, three seeds. The Part 1 run was split into twelve units and run as four parallel workers; the rerun's motor claim-count unit was compared with the old run's log, and the emerging results recomputed.",
       "result": "Run finished in 36 minutes instead of several days. Motor claim count matches the old log line for line; emerging results identical. Part 1: make_model raw clearly worse in all four scorings; claim count 4 to 20 tie; on capped cost, occupation (20 levels) and region (12) raw are worse than encoded in both scorings (threshold 20 against 11: +141,386 [+60,091, +220,561] in A). This contradicts the recorded reason for 20, though in the emerging market any value from 8 to 79 gives the same model.",
-      "decision": "Pending: the actuary decides Y2-T2 (keep 20 with a corrected reason, or set 11).",
+      "decision": "The actuary set code_levels_max to 11 under Y2-T2 (exchange D37).",
       "effect": "src/validation.py make_folds in linear time (same folds); scripts/y2t_threshold_test.py Part 1 by unit; Part 1 results in decisions/y2t_threshold_test_results.md; register Y2-T2 opened.",
+      "section": "4.3"
+    },
+    {
+      "id": "D37",
+      "stage": "Part 2 build: Y2 tree inputs, code-level threshold",
+      "role": "Appointed actuary",
+      "proposed_by": "AI",
+      "question": "Y2-T2: after the Part 1 threshold results contradicted the recorded reason for code_levels_max 20, keep 20 with a corrected reason or set 11?",
+      "ai_answer": "Recommended (b) 11: it encodes every code with 12 or more levels, which Part 1's capped-cost results support in both scorings, and gives the same emerging model as 20. The threshold then rests on both markets' evidence instead of a reason the test contradicts.",
+      "challenge": "",
+      "test": "Part 1 threshold run, four scorings (D36); emerging field split checked at 11 and 20.",
+      "result": "At 11 and at 20 the emerging market encodes make_model and occupation and leaves every other code raw, in every line.",
+      "decision": "Actuary: \"Y2-T2 (b): set code_levels_max to 11, the value Part 1's cost evidence supports. Same emerging model.\"",
+      "effect": "code_levels_max 11 in decisions/thresholds_part2.md (dated 2026-10-27); register Y2-T2 decided and Y2-T annotated; results file and spec updated.",
       "section": "4.3"
     }
   ]

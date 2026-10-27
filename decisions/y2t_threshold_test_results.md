@@ -69,3 +69,5 @@ How to read this: in scoring A on capped cost, threshold 20 leaves occupation (2
 - **Pre-registered rule on Part 1:** picks 4, 5, 4 and 4 (A count, A cost, B count, B cost).
 
 What this means for the emerging market: none of its codes has between 9 and 79 levels, so any threshold from 8 to 79 gives the same model as 20 (make_model and occupation encoded, every other code raw). Part 1's cost evidence supports that model: raw codes of 7 or 8 levels did no harm, and codes of 12 levels or more did. It contradicts one part of the reason recorded for the value 20, that "occupation raw at 20 levels passed in Part 1" (PM2m). On this test it did not, on capped cost.
+
+**Decision (Y2-T2).** The actuary set `code_levels_max` to 11 on 27 October 2026 (exchange D37): encode every code with 12 or more levels, the value Part 1's cost evidence supports. The emerging model is the same as at 20.
