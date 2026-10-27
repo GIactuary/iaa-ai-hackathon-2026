@@ -42,6 +42,10 @@ def make_folds(n: int, seeds, n_folds: int = N_FOLDS, strata=None, groups=None) 
     groups: records that must stay together (for example several rows of one policy).
     """
     idx = np.arange(n)
+    if groups is not None:
+        # Integer codes in sorted order of the ids: scikit-learn then forms exactly the same folds, but its
+        # membership test runs in linear time. On string ids it is quadratic (about 20 minutes at 400,000 rows).
+        groups = pd.factorize(np.asarray(groups), sort=True)[0]
     out = {}
     for s in seeds:
         if groups is not None and strata is not None:

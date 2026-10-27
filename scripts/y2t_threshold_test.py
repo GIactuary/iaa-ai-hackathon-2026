@@ -5,8 +5,9 @@ Each candidate threshold N is a regime: the codes with more than N levels enter 
 number (src/fields.py), the rest as raw categories. R0 leaves the codes above 20 levels out altogether.
   emerging V1  out of time, fit 2023, score 2024, claim count (Poisson)          - the selection
   emerging V2  customer-grouped five-fold cross-validation over 2023-2024, seeds 11, 22, 33, claim count
-  part1        scorings A and B, claim count and capped cost (Tweedie 1.5)
-Run: .venv/Scripts/python.exe -I scripts/y2t_threshold_test.py [emerging_v1|emerging_v2|part1|select]  (Y2T_THREADS, default 4)
+  part1        scorings A and B, claim count and capped cost (Tweedie 1.5); twelve units (line:scoring:target), one
+               file each in data/work/y2t/part1/, so several processes can share them: part1 motor:A:cost buildings:B:count
+Run: .venv/Scripts/python.exe -I scripts/y2t_threshold_test.py [emerging_v1|emerging_v2|part1 [units]|select]  (Y2T_THREADS, default 4)
 """
 from __future__ import annotations
 
@@ -210,21 +211,48 @@ def emerging_v2() -> dict:
     return out
 
 
-def part1() -> dict:
+PART1_SCORINGS = {"A": ((2021, 2022), 2023, False), "B": ((2021, 2022, 2023), 2024, True)}
+PART1_UNITS = [f"{line}:{s}:{target}" for line in dr.LINES for s in PART1_SCORINGS for target in ("count", "cost")]
+
+
+def part1_file(unit: str) -> Path:
+    return WORK / "part1" / (unit.replace(":", "_") + ".json")
+
+
+def part1(units: list[str] | None = None) -> None:
+    """Fit the given units (line:scoring:target; default all twelve), one file each, skipping units already on disk.
+    Units are independent, so several processes can each take a share of them."""
+    units = units or PART1_UNITS
+    assert set(units) <= set(PART1_UNITS), sorted(set(units) - set(PART1_UNITS))
+    rows = {}
+    for unit in units:
+        if part1_file(unit).exists():
+            log("part1", unit, "already on disk, skipped")
+            continue
+        line, s, target = unit.split(":")
+        df = rows.setdefault(line, part1_rows(line))
+        fit_years, score_year, completion = PART1_SCORINGS[s]
+        fit, score = df["yr"].isin(fit_years).to_numpy(), (df["yr"] == score_year).to_numpy()
+        sc = df.loc[score]
+        r = run_split("part1", f"{line} {s}", df, fit, score, target, df["yr"].to_numpy(), with_clean=False)
+        e = (sc["exposure"] * (sc["completion_count" if target == "count" else "completion"] if completion else 1.0)).to_numpy(float)
+        rec = dict(levels=levels(df, fit), y=sc["y_n" if target == "count" else "y_c"].tolist(), ec=e.tolist(),
+                   customer=sc["customer_id"].astype(str).tolist(), cands=with_mu(r, e))
+        part1_file(unit).parent.mkdir(parents=True, exist_ok=True)
+        tmp = part1_file(unit).with_suffix(".tmp")
+        tmp.write_text(json.dumps(rec, default=float))
+        tmp.replace(part1_file(unit))                     # a unit is on disk only once it is complete
+        log("part1", unit, "written")
+
+
+def part1_results() -> dict | None:
+    """All twelve units as {line: {"scoring|target": record}}, or None while any is missing."""
+    if not all(part1_file(u).exists() for u in PART1_UNITS):
+        return None
     out = {}
-    for line in dr.LINES:
-        df = part1_rows(line)
-        out[line] = {}
-        for s, (fit_years, score_year, completion) in {"A": ((2021, 2022), 2023, False), "B": ((2021, 2022, 2023), 2024, True)}.items():
-            fit, score = df["yr"].isin(fit_years).to_numpy(), (df["yr"] == score_year).to_numpy()
-            sc = df.loc[score]
-            for target in ("count", "cost"):
-                r = run_split("part1", f"{line} {s}", df, fit, score, target, df["yr"].to_numpy(), with_clean=False)
-                e = (sc["exposure"] * (sc["completion_count" if target == "count" else "completion"] if completion else 1.0)).to_numpy(float)
-                out[line][f"{s}|{target}"] = dict(levels=levels(df, fit), y=sc["y_n" if target == "count" else "y_c"].tolist(), ec=e.tolist(),
-                                                  customer=sc["customer_id"].astype(str).tolist(),
-                                                  cands=with_mu(r, e))
-    (WORK / "part1.json").write_text(json.dumps(out, default=float))
+    for unit in PART1_UNITS:
+        line, s, target = unit.split(":")
+        out.setdefault(line, {})[f"{s}|{target}"] = json.loads(part1_file(unit).read_text())
     return out
 
 
@@ -307,8 +335,7 @@ def select() -> dict:
         nm2 = {n: nmax.get(n) for n in names if n in nmax}
         res["emerging_v2"] = dict(scores=sc2, chosen=pick(sc2, nm2))
         res["consistent"] = res["emerging_v2"]["chosen"] == chosen
-    if (WORK / "part1.json").exists():
-        p1 = json.loads((WORK / "part1.json").read_text())
+    if (p1 := part1_results()) is not None:
         res["part1"] = {}
         for key in ("A|count", "A|cost", "B|count", "B|cost"):
             blocks = [dict(line=l, y=d[key]["y"], customer=d[key]["customer"], cands={n: c["mu"] for n, c in d[key]["cands"].items()}) for l, d in p1.items()]
@@ -322,4 +349,7 @@ def select() -> dict:
 
 
 if __name__ == "__main__":
-    {"emerging_v1": emerging_v1, "emerging_v2": emerging_v2, "part1": part1, "select": select}[sys.argv[1]]()
+    if sys.argv[1] == "part1":
+        part1(sys.argv[2:])
+    else:
+        {"emerging_v1": emerging_v1, "emerging_v2": emerging_v2, "select": select}[sys.argv[1]]()

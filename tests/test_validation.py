@@ -34,6 +34,18 @@ def test_grouped_and_stratified_folds():
                     assert not set(groups[a]) & set(groups[b])
 
 
+def test_string_group_ids_give_the_folds_scikit_learn_gives_them():
+    from sklearn.model_selection import GroupKFold, StratifiedGroupKFold
+    rng = np.random.default_rng(3)
+    groups = np.array([f"C{i:05d}" for i in rng.integers(0, 400, 1200)], dtype=object)
+    strata = rng.integers(0, 2, 1200)
+    for s in SEEDS:
+        want = [b for _, b in GroupKFold(5, shuffle=True, random_state=s).split(np.arange(1200), groups=groups)]
+        assert all(np.array_equal(b, w) for (_, b), w in zip(make_folds(1200, [s], groups=groups)[s], want))
+        want = [b for _, b in StratifiedGroupKFold(5, shuffle=True, random_state=s).split(np.arange(1200), strata, groups)]
+        assert all(np.array_equal(b, w) for (_, b), w in zip(make_folds(1200, [s], strata=strata, groups=groups)[s], want))
+
+
 def test_holdout_locked_once_and_opened_once(tmp_path):
     ids = np.arange(1000, 1500)
     p = tmp_path / "holdout.json"
