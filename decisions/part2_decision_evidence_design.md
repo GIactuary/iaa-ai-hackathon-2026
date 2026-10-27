@@ -35,3 +35,11 @@ Validation:
 Scoring: deviance at a common level per line (each prediction rescaled to the scored rows' actual total), summed over the lines, and D² against the scored rows' mean. Differences between E, D and DE come with 95% paired bootstrap intervals resampling customers (2,000 draws). An interval clear of zero is a difference the data can tell apart from noise.
 
 Outputs: `outputs/part2_decision_evidence.json`.
+
+## Addendum, 27 October, written after the descriptive figures and before these checks
+
+The one-way figures for new business and gender can be confounded with other rating fields, and the large-loss figures differ between the markets by peril. Three further checks, in `scripts/part2_decision_evidence_extra.py`, output `outputs/part2_decision_evidence_extra.json`:
+
+1. **Controlled relativities.** A Poisson GLM of claim count with a log-exposure offset, per line and market, on the main rating factors both markets carry (age band, payment method, missed payments, channel, urban density, and the line's own factors as in `src/glm.py`, less credit band, mileage and telematics), plus `new_business` and, in the emerging market, gender. Reported: the new-business and gender relativities with 95% Wald intervals, and the same for the developed market's new-business relativity.
+2. **Large losses by peril.** For each peril with claims above its line's Part 1 cap: emerging claims above the cap against the number the developed market's exceedance rate would give on emerging's claim count, with the Poisson probability of a count as far from expected; and the excess share (cost above cap over capped cost) in each market.
+3. **Deviation from the design, fixed:** the first run left region out of E and DE because it took only fields both markets carry, and region has 12 levels in the developed market. The rerun gives region to E and DE as designed; the first run's output is kept in `data/work/p2e/run1_without_region.json`.
