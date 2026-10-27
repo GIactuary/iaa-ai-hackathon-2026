@@ -1,0 +1,169 @@
+{
+ "part2_decision_evidence_extra": {
+  "controlled": {
+   "motor": {
+    "emerging": {
+     "new_bus=1": {
+      "relativity": 1.1618683786725177,
+      "lo": 1.0734855691277756,
+      "hi": 1.2575279707355091
+     },
+     "gender=M": {
+      "relativity": 1.3259305489121447,
+      "lo": 1.2639121475895978,
+      "hi": 1.390992106446094
+     }
+    },
+    "developed": {
+     "new_bus=1": {
+      "relativity": 1.1506659399178765,
+      "lo": 1.128903425793645,
+      "hi": 1.1728479824182172
+     }
+    }
+   },
+   "buildings": {
+    "emerging": {
+     "new_bus=1": {
+      "relativity": 0.9371335466228565,
+      "lo": 0.7419420638939171,
+      "hi": 1.183676363619008
+     },
+     "gender=M": {
+      "relativity": 1.1159050083681703,
+      "lo": 0.9886938304914937,
+      "hi": 1.2594839264670417
+     }
+    },
+    "developed": {
+     "new_bus=1": {
+      "relativity": 1.1018947658899487,
+      "lo": 1.0563271773053668,
+      "hi": 1.149428038188842
+     }
+    }
+   },
+   "contents": {
+    "emerging": {
+     "new_bus=1": {
+      "relativity": 1.2898570359040078,
+      "lo": 1.0489226675570014,
+      "hi": 1.5861333008905165
+     },
+     "gender=M": {
+      "relativity": 0.9325638769221096,
+      "lo": 0.823474564563315,
+      "hi": 1.0561047322708512
+     }
+    },
+    "developed": {
+     "new_bus=1": {
+      "relativity": 1.1192279597416632,
+      "lo": 1.0718380572714186,
+      "hi": 1.1687131440885905
+     }
+    }
+   }
+  },
+  "large_by_peril": {
+   "motor": {
+    "bodily_injury": {
+     "emerging_claims": 450,
+     "emerging_above": 3,
+     "developed_claims": 7583,
+     "developed_above": 158,
+     "expected_above_at_developed_rate": 9.376236318079915,
+     "prob_as_far": 0.016240970490632698,
+     "excess_share_emerging": 0.023559599941241956,
+     "excess_share_developed": 0.16974019377203642,
+     "capped_cost_emerging": 4702811.18
+    }
+   },
+   "buildings": {
+    "fire": {
+     "emerging_claims": 70,
+     "emerging_above": 6,
+     "developed_claims": 1115,
+     "developed_above": 63,
+     "expected_above_at_developed_rate": 3.9551569506726456,
+     "prob_as_far": 0.2079008098347919,
+     "excess_share_emerging": 0.15682764862419638,
+     "excess_share_developed": 0.08564874483314314,
+     "capped_cost_emerging": 3758882.73
+    },
+    "flood": {
+     "emerging_claims": 81,
+     "emerging_above": 0,
+     "developed_claims": 2232,
+     "developed_above": 13,
+     "expected_above_at_developed_rate": 0.4717741935483871,
+     "prob_as_far": 0.623894376388527,
+     "excess_share_emerging": 0.0,
+     "excess_share_developed": 0.009615468212919106,
+     "capped_cost_emerging": 2126444.33
+    },
+    "subsidence": {
+     "emerging_claims": 52,
+     "emerging_above": 0,
+     "developed_claims": 1294,
+     "developed_above": 1,
+     "expected_above_at_developed_rate": 0.0401854714064915,
+     "prob_as_far": 0.9606112567080864,
+     "excess_share_emerging": 0.0,
+     "excess_share_developed": 0.0002559145219128315,
+     "capped_cost_emerging": 730709.4099999998
+    }
+   },
+   "contents": {
+    "escape_of_water": {
+     "emerging_claims": 172,
+     "emerging_above": 0,
+     "developed_claims": 5407,
+     "developed_above": 2,
+     "expected_above_at_developed_rate": 0.0636212317366377,
+     "prob_as_far": 0.9383603533495529,
+     "excess_share_emerging": 0.0,
+     "excess_share_developed": 0.0007227536673614239,
+     "capped_cost_emerging": 362989.43000000005
+    },
+    "flood": {
+     "emerging_claims": 86,
+     "emerging_above": 4,
+     "developed_claims": 1624,
+     "developed_above": 93,
+     "expected_above_at_developed_rate": 4.924876847290641,
+     "prob_as_far": 0.4537724485057504,
+     "excess_share_emerging": 0.06238325596113343,
+     "excess_share_developed": 0.07423936536136942,
+     "capped_cost_emerging": 742264.8800000001
+    },
+    "theft": {
+     "emerging_claims": 410,
+     "emerging_above": 0,
+     "developed_claims": 7668,
+     "developed_above": 10,
+     "expected_above_at_developed_rate": 0.5346896191966615,
+     "prob_as_far": 0.5858510988630681,
+     "excess_share_emerging": 0.0,
+     "excess_share_developed": 0.0031506930324730477,
+     "capped_cost_emerging": 1228389.4
+    }
+   }
+  }
+ },
+ "meta": {
+  "created": "2026-10-27T19:50:17",
+  "git_commit": "1acf18e",
+  "seeds": null,
+  "versions": {
+   "python": "3.14.5",
+   "numpy": "2.5.3",
+   "pandas": "3.0.5",
+   "scipy": "1.18.1",
+   "sklearn": "1.9.1",
+   "lightgbm": "4.7.0",
+   "xgboost": "3.4.1",
+   "catboost": "1.2.10"
+  }
+ }
+}

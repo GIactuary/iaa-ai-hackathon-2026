@@ -1,0 +1,750 @@
+<title>Part 2 Decisions</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a filing memo. Context first, then one card per decision in the order the build needs them, each closing on its own verdict control; send and finalize at the end */
+:root {
+  --bg: #f5f7fa; --surface: #ffffff; --ink: #18212e; --muted: #5b6676; --rule: #d9dfe7;
+  --accent: #1f5f8b; --accent-soft: #e3eef6; --good: #2f7a4f; --good-soft: #e4f2ea; --warn: #9a5b12; --warn-soft: #f8eedf; --bad: #a33a2f; --bad-soft: #f8e6e3;
+  --f-display: "IBM Plex Sans Condensed", "Arial Narrow", Arial, sans-serif;
+  --f-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #11161d; --surface: #182029; --ink: #e5eaf0; --muted: #9aa6b5; --rule: #2a3542;
+  --accent: #7db6e0; --accent-soft: #1d3346; --good: #7cc79a; --good-soft: #1b3326; --warn: #e2ac62; --warn-soft: #3a2c17; --bad: #ec8a7e; --bad-soft: #3d201c; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #11161d; --surface: #182029; --ink: #e5eaf0; --muted: #9aa6b5; --rule: #2a3542;
+  --accent: #7db6e0; --accent-soft: #1d3346; --good: #7cc79a; --good-soft: #1b3326; --warn: #e2ac62; --warn-soft: #3a2c17; --bad: #ec8a7e; --bad-soft: #3d201c; color-scheme: dark }
+body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 16px; line-height: 1.6; }
+.wrap { max-width: 980px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 28px 64px; display: grid; gap: 32px; }
+.col { max-width: 70ch; }
+h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; line-height: 1.2; margin: 0; }
+h1 { font-size: 2rem; font-weight: 600; }
+h2 { font-size: 1.4rem; font-weight: 600; }
+h3 { font-size: 1.15rem; font-weight: 600; }
+p { margin: 0; }
+.stack { display: grid; gap: 12px; }
+.eyebrow { font-family: var(--f-mono); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+code { font-family: var(--f-mono); font-size: 0.86em; background: var(--accent-soft); padding: 1px 5px; border-radius: 3px; overflow-wrap: anywhere; }
+.strip { display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center; padding: 12px 16px; border: 1px solid var(--rule); border-radius: 6px; background: var(--surface); font-size: 0.9rem; }
+.pill { font-family: var(--f-mono); font-size: 0.75rem; padding: 2px 8px; border-radius: 999px; border: 1px solid currentColor; white-space: nowrap; }
+.pill.open { color: var(--warn); background: var(--warn-soft); }
+.pill.done { color: var(--good); background: var(--good-soft); }
+.pill.door { color: var(--accent); background: var(--accent-soft); }
+.pill.oneway { color: var(--bad); background: var(--bad-soft); }
+.lede { font-size: 1.08rem; }
+ul, ol { margin: 0; padding-left: 1.2em; display: grid; gap: 6px; }
+.table-scroll { overflow-x: auto; border: 1px solid var(--rule); border-radius: 6px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 0.87rem; font-variant-numeric: tabular-nums; }
+th, td { padding: 7px 10px; text-align: right; border-bottom: 1px solid var(--rule); white-space: nowrap; }
+th { font-family: var(--f-mono); font-size: 0.7rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); font-weight: 500; vertical-align: bottom; }
+td:first-child, th:first-child { text-align: left; }
+td.wrap-cell { white-space: normal; text-align: left; min-width: 22ch; }
+tr.hl td { background: var(--accent-soft); }
+tr.bad td { background: var(--bad-soft); }
+.note { border-left: 3px solid var(--accent); background: var(--accent-soft); padding: 10px 14px; border-radius: 0 6px 6px 0; display: grid; gap: 6px; font-size: 0.93rem; }
+.toc { border: 1px solid var(--rule); border-radius: 6px; background: var(--surface); padding: 14px 18px; display: grid; gap: 10px; }
+.toc ol { gap: 2px; font-size: 0.93rem; }
+.toc a { color: var(--accent); text-decoration: none; }
+.toc a:hover { text-decoration: underline; }
+.toc .st { font-family: var(--f-mono); font-size: 0.72rem; color: var(--muted); margin-left: 6px; }
+.group-head { display: grid; gap: 6px; padding-top: 8px; border-top: 2px solid var(--ink); }
+.card { border: 1px solid var(--rule); border-radius: 8px; background: var(--surface); padding: 20px; display: grid; gap: 16px; scroll-margin-top: 16px; }
+.card-head { display: grid; gap: 8px; }
+.card-head .meta { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; }
+.ref { font-family: var(--f-mono); font-size: 0.8rem; font-weight: 500; color: var(--accent); }
+.sect { display: grid; gap: 8px; }
+.sect > .eyebrow { color: var(--accent); }
+.options { display: grid; gap: 10px; }
+.opt { border: 1px solid var(--rule); border-radius: 6px; padding: 12px 14px; display: grid; gap: 6px; font-size: 0.94rem; }
+.opt.rec { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+.opt-head { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: baseline; }
+.opt .k { font-family: var(--f-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); }
+.rec-box { border-left: 3px solid var(--good); background: var(--good-soft); padding: 10px 14px; border-radius: 0 6px 6px 0; display: grid; gap: 6px; }
+.verdict { border-top: 1px dashed var(--rule); padding-top: 14px; display: grid; gap: 10px; }
+.choices { display: flex; flex-wrap: wrap; gap: 8px; }
+.choice { display: flex; gap: 8px; align-items: center; padding: 7px 12px; border: 1px solid var(--rule); border-radius: 6px; cursor: pointer; font-size: 0.92rem; }
+.choice:has(input:checked) { border-color: var(--accent); background: var(--accent-soft); }
+.choice input { accent-color: var(--accent); margin: 0; }
+textarea { width: 100%; box-sizing: border-box; min-height: 64px; font: inherit; font-size: 0.93rem; padding: 8px 10px; border: 1px solid var(--rule); border-radius: 6px; background: var(--bg); color: var(--ink); resize: vertical; }
+.actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+button { font: inherit; font-weight: 500; font-size: 0.95rem; padding: 9px 16px; border-radius: 6px; border: 1px solid var(--accent); background: var(--surface); color: var(--accent); cursor: pointer; }
+button.primary { background: var(--accent); color: var(--surface); }
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+button:focus-visible, .choice:focus-within, textarea:focus-visible, summary:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.status { font-size: 0.86rem; color: var(--muted); }
+.locked .choice, .locked textarea { pointer-events: none; opacity: 0.75; }
+.final { border: 1px solid var(--accent); border-radius: 8px; background: var(--surface); padding: 20px; display: grid; gap: 12px; }
+details { border: 1px solid var(--rule); border-radius: 6px; background: var(--surface); padding: 10px 14px; }
+details > summary { cursor: pointer; font-weight: 600; }
+details[open] > summary { margin-bottom: 10px; }
+.bar { display: inline-block; height: 9px; border-radius: 2px; background: var(--accent); vertical-align: middle; }
+.bar.alt { background: var(--warn); }
+.bar.e { background: var(--muted); }
+@media (max-width: 560px) { .card { padding: 14px; } h1 { font-size: 1.6rem; } }
+</style>
+
+<div class="wrap">
+  <header class="stack">
+    <div class="eyebrow">IAA hackathon 2026 · Part 2, emerging market · decisions for the appointed actuary</div>
+    <h1>What I need from you to build and submit Part 2</h1>
+    <div class="strip">
+      <span>Round <strong>1</strong></span>
+      <span class="pill open" id="state-pill">15 decisions open</span>
+      <span class="status">Deadline: Friday 30 October, 23:59 EDT</span>
+      <span class="status" id="blocked">Waiting on: your verdicts below</span>
+    </div>
+    <p class="lede col">The emerging market is small: two years of data and about a twentieth of Part 1's rows. Most of what follows is about how much to lean on Part 1 and how to validate on two years. Each card says what the decision is, why it matters to the price, what the data shows, the options, and my recommendation. Pick an option on each card and add a note if you want. You can send a partial set; I start on whatever is decided.</p>
+  </header>
+
+  <section class="stack">
+    <h2>The market in one table</h2>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Line</th><th>Rows 2023</th><th>Claims 2023</th><th>Rows 2024</th><th>Claims 2024</th><th>New business, training</th><th>Test rows</th><th>New business, test</th><th>Part 1 rows (2021-2024)</th><th>Part 1 claims</th></tr></thead>
+        <tbody>
+          <tr><td>Motor</td><td>21,680</td><td>3,557</td><td>25,603</td><td>3,491</td><td>12% / 15%</td><td>90,521</td><td>76%</td><td>979,968</td><td>110,901</td></tr>
+          <tr><td>Buildings</td><td>12,580</td><td>519</td><td>14,867</td><td>537</td><td>12% / 15%</td><td>52,295</td><td>76%</td><td>707,726</td><td>26,375</td></tr>
+          <tr><td>Contents</td><td>15,834</td><td>491</td><td>18,732</td><td>507</td><td>12% / 15%</td><td>66,247</td><td>76%</td><td>721,617</td><td>23,753</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note col"><span><strong>How to read this.</strong> Emerging motor has 7,048 claims over two years. Part 1 has 110,901 motor claims over four, about 16 times as many. Buildings and contents have about 1,000 claims each, against roughly 25,000 in Part 1. The test book is three-quarters new business, against an eighth to a sixth in training.</span></p>
+    <p class="status col">Sources: <code>outputs/part2_decision_evidence.json</code> and <code>outputs/part2_decision_evidence_extra.json</code>, from <code>scripts/part2_decision_evidence.py</code> and <code>scripts/part2_decision_evidence_extra.py</code>. The test design was committed before either ran (<code>decisions/part2_decision_evidence_design.md</code>). Cost figures use Part 1's caps, which are themselves on this page (P2-L), so they are provisional.</p>
+  </section>
+
+  <nav class="toc" aria-label="Decisions on this page">
+    <div class="eyebrow">The 15 decisions, in the order the build needs them</div>
+    <div><strong>A. Needed before the first Part 2 run</strong>
+      <ol>
+        <li><a href="#P2-C">P2-C How much to borrow from Part 1</a><span class="st" data-st="P2-C"></span></li>
+        <li><a href="#P2-V">P2-V How every choice is tested on two years</a><span class="st" data-st="P2-V"></span></li>
+        <li><a href="#P2-H">P2-H Whether to lock a hold-out</a><span class="st" data-st="P2-H"></span></li>
+        <li><a href="#P2-G">P2-G The level GLM's factors</a><span class="st" data-st="P2-G"></span></li>
+        <li><a href="#P2-S">P2-S Gender</a><span class="st" data-st="P2-S"></span></li>
+        <li><a href="#P2-L">P2-L Large-loss caps and excess factors</a><span class="st" data-st="P2-L"></span></li>
+        <li><a href="#P2-T">P2-T Trend</a><span class="st" data-st="P2-T"></span></li>
+        <li><a href="#P2-R">P2-R Reporting development</a><span class="st" data-st="P2-R"></span></li>
+        <li><a href="#P2-TH">P2-TH The other Part 1 thresholds</a><span class="st" data-st="P2-TH"></span></li>
+      </ol>
+    </div>
+    <div><strong>B. Needed before the final file</strong>
+      <ol start="10">
+        <li><a href="#P2-N">P2-N New business</a><span class="st" data-st="P2-N"></span></li>
+        <li><a href="#P2-B">P2-B Blanks</a><span class="st" data-st="P2-B"></span></li>
+        <li><a href="#P2-O">P2-O Occupation cleaning</a><span class="st" data-st="P2-O"></span></li>
+        <li><a href="#P2-F">P2-F Full tuning or fast mode</a><span class="st" data-st="P2-F"></span></li>
+        <li><a href="#P2-P">P2-P Submission plan</a><span class="st" data-st="P2-P"></span></li>
+      </ol>
+    </div>
+    <div><strong>C. Write-up only</strong>
+      <ol start="15">
+        <li><a href="#P2-E">P2-E Comparison-site commission</a><span class="st" data-st="P2-E"></span></li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- ============================== GROUP A ============================== -->
+  <div class="group-head"><div class="eyebrow">Group A</div><h2>Needed before the first Part 2 run</h2></div>
+
+  <article class="card" id="P2-C" data-rec="b">
+    <div class="card-head">
+      <div class="meta"><span class="ref">P2-C</span><span class="pill oneway">Shapes every model</span></div>
+      <h3>How much should the emerging price borrow from Part 1's experience?</h3>
+    </div>
+    <div class="sect"><div class="eyebrow">Why it matters</div>
+      <p>With about 1,000 property claims and 7,000 motor claims, relativities fitted on emerging data alone are noisy. Part 1 has 16 to 25 times as much experience on the same fields. This is the adaptation story the judges asked about, and it decides how every family is built.</p>
+    </div>
+    <div class="sect"><div class="eyebrow">What the data shows</div>
+      <p>I fitted three tree models and scored them on emerging rows they had not seen. <strong>E</strong> uses emerging data only. <strong>D</strong> is fitted on Part 1 data only and applied to emerging rows. <strong>DE</strong> starts from D's prediction and lets the emerging data move it where it has evidence. Every prediction is rescaled to the actual level, so this tests the <em>risk shape</em> (who costs more than whom), not the level.</p>
+      <div class="table-scroll"><table>
+        <thead><tr><th>Model</th><th>Count, out of time</th><th>Count, cross-validation</th><th>Capped cost, out of time</th><th>Capped cost, cross-validation</th></tr></thead>
+        <tbody>
+          <tr><td>E, emerging only</td><td>4.5%</td><td>5.7%</td><td>2.4%</td><td>2.2%</td></tr>
+          <tr class="hl"><td>D, Part 1 only</td><td>6.2%</td><td>6.6%</td><td>6.0%</td><td>5.7%</td></tr>
+          <tr><td>DE, Part 1 start, emerging adjusts</td><td>6.2%</td><td>6.6%</td><td>5.7%</td><td>5.2%</td></tr>
+        </tbody>
+      </table></div>
+      <div class="table-scroll"><table>
+        <thead><tr><th>Comparison (deviance saved, 95% interval)</th><th>Count, out of time</th><th>Count, cross-validation</th><th>Cost, out of time</th><th>Cost, cross-validation</th></tr></thead>
+        <tbody>
+          <tr><td>D over E</td><td>357 [267, 446]</td><td>406 [306, 504]</td><td>180,456 [103,153, 275,451]</td><td>351,073 [252,585, 467,729]</td></tr>
+          <tr><td>DE over D</td><td>11 [−13, 34]</td><td>−2 [−37, 36]</td><td>−14,231 [−28,833, −1,104]</td><td>−42,622 [−72,364, −16,624]</td></tr>
+        </tbody>
+      </table></div>
+      <p class="note"><span><strong>How to read this.</strong> The figures in the first table are D², the share of deviance explained against a flat rate, the same form as the competition metric. On claim count out of time, the emerging-only model explains 4.5% and the Part 1 model 6.2%. In the second table that gap is 357 deviance units, with an interval of 267 to 446, well clear of zero. D beats E in every line, target and test. Letting the emerging data adjust D (DE) adds nothing on frequency and loses a little on cost.</span></p>
+      <p>In pricing terms: Part 1's relativities rank emerging risks better than relativities fitted on emerging's own two years. The emerging data's job is the <em>level</em>, plus whatever is genuinely different (region, gender, the motor large-loss tail on P2-L), each tested on its own.</p>
+      <p class="status">Limits: default tree settings and no tuning. Region, make_model, occupation and gender were left out of D (the regions differ between markets, and the two codes need encoding). This is exploratory evidence for this decision, not a model choice.</p>
+    </div>
+    <div class="options">
+      <div class="opt"><div class="opt-head"><strong>(a) Emerging data only</strong></div><p>Every family is fitted on 2023-2024 emerging rows, as the pipeline stands. Simplest to explain. It gives up the gain in the table: about a quarter of the explained deviance on frequency, and more than half on cost.</p></div>
+      <div class="opt rec"><div class="opt-head"><strong>(b) Part 1 shape, emerging level and additions</strong><span class="pill done">Recommended</span></div><p>Each family's base is fitted on Part 1 rows on the fields both markets share (ages mapped to the emerging bands). The emerging data sets the level through the level chain. Emerging-only terms (region, gender if P2-S allows it, the encoded codes) enter on top, each kept only if it passes the test in P2-V. The family weights are fitted on emerging rows. The write-up explains it as a credibility complement, the way you would price a new territory from the countrywide plan.</p></div>
+      <div class="opt"><div class="opt-head"><strong>(c) Pool both markets in one fit, with a market effect</strong></div><p>One model on both markets' rows, with a market indicator. The data decides how far the markets differ, factor by factor in the GLM and by splits in the trees. Not tested yet. It needs about half a day more to build and test.</p></div>
+    </div>
+    <div class="rec-box"><strong>Recommendation: (b).</strong><span>The test shows Part 1's shape beats emerging's own in every line and in both tests. Letting the emerging data rebuild the shape loses accuracy. (b) uses the larger experience for what it measures well and the emerging data for what only it can measure.</span></div>
+    <div class="verdict" data-id="P2-C">
+      <div class="choices" role="radiogroup" aria-label="Verdict on P2-C">
+        <label class="choice"><input type="radio" name="P2-C" value="a">(a) Emerging only</label>
+        <label class="choice"><input type="radio" name="P2-C" value="b">(b) Part 1 shape</label>
+        <label class="choice"><input type="radio" name="P2-C" value="c">(c) Pool both</label>
+        <label class="choice"><input type="radio" name="P2-C" value="reject">None of these</label>
+      </div>
+      <textarea placeholder="Note (optional)" aria-label="Note on P2-C"></textarea>
+    </div>
+  </article>
+
+  <article class="card" id="P2-V" data-rec="a">
+    <div class="card-head">
+      <div class="meta"><span class="ref">P2-V</span><span class="pill oneway">One-way door: every test uses it</span></div>
+      <h3>How is every choice tested, with only two years of data?</h3>
+    </div>
+    <div class="sect"><div class="eyebrow">Why it matters</div>
+      <p>Every keep-or-drop call in the build goes through this test: features, families, weights, gender, the borrowing in P2-C. Part 1's keep rule needs two out-of-time scorings (fit 2021-2022 and score 2023; fit 2021-2023 and score 2024). The emerging market allows only one: fit 2023 and score 2024.</p>
+    </div>
+    <div class="sect"><div class="eyebrow">What the data shows</div>
+      <ul>
+        <li>The 2024 scoring year holds 3,491 motor, 537 buildings and 507 contents claims.</li>
+        <li>In the Y2-T test, out-of-time scoring alone was noisy. Threshold 6 looked 75 deviance units worse than the best out of time, but tied in cross-validation. Refitting one candidate with a different seed moved its total by about 100.</li>
+        <li>Cross-validation uses both years in every fit, so it has twice the data. But it never scores a later year than it fits, so it cannot catch year-to-year drift.</li>
+        <li>A credibility-encoded code needs two periods per level. With only 2023 fitted, the out-of-time test uses calendar quarters as periods, as Y2-T did.</li>
+      </ul>
+    </div>
+    <div class="options">
+      <div class="opt rec"><div class="opt-head"><strong>(a) Both tests, the interval on cross-validation</strong><span class="pill done">Recommended</span></div><p>Out of time (fit 2023, score 2024 with reporting completion) and customer-grouped five-fold cross-validation over 2023-2024 with seeds 11, 22 and 33. A choice is kept only if it lowers deviance in both, and its 95% paired bootstrap interval on cross-validation lies above zero. This is Part 1's rule with the second scoring replaced.</p></div>
+      <div class="opt"><div class="opt-head"><strong>(b) Out of time only</strong></div><p>Mirrors pricing a later year exactly. On one year of claims many real gains will not clear the interval, so the model stays thinner than the data supports.</p></div>
+      <div class="opt"><div class="opt-head"><strong>(c) Cross-validation only</strong></div><p>The most data per test. It never checks the model against a year it has not seen.</p></div>
+    </div>
+    <div class="rec-box"><strong>Recommendation: (a).</strong><span>It keeps Part 1's structure (two tests, one with a confidence condition) and puts the confidence condition on the test with twice the data. A choice that only works when the years are mixed fails the out-of-time leg.</span></div>
+    <div class="verdict" data-id="P2-V">
+      <div class="choices" role="radiogroup" aria-label="Verdict on P2-V">
+        <label class="choice"><input type="radio" name="P2-V" value="a">(a) Both tests</label>
+        <label class="choice"><input type="radio" name="P2-V" value="b">(b) Out of time only</label>
+        <label class="choice"><input type="radio" name="P2-V" value="c">(c) Cross-validation only</label>
+        <label class="choice"><input type="radio" name="P2-V" value="reject">None of these</label>
+      </div>
+      <textarea placeholder="Note (optional)" aria-label="Note on P2-V"></textarea>
+    </div>
+  </article>
+
+  <article class="card" id="P2-H" data-rec="a">
+    <div class="card-head">
+      <div class="meta"><span class="ref">P2-H</span><span class="pill oneway">One-way door: once drawn and used</span></div>
+      <h3>Do we lock away a hold-out of emerging customers for one final check?</h3>
+    </div>
+    <div class="sect"><div class="eyebrow">Why it matters</div>
+      <p>Part 1 locked 15% of customers and opened them once, before the final file. That untouched check carries the trust and validation criterion (20% of judging). Here it costs data in a market that is already thin.</p>
+    </div>
+    <div class="sect"><div class="eyebrow">What the data shows</div>
+      <p>A 15% hold-out would hold about 520 motor, 80 buildings and 76 contents claims in 2024, and about twice that over both years. That is enough for a level check and a motor D² with a usable interval. Property intervals would be wide.</p>
+    </div>
+    <div class="options">
+      <div class="opt rec"><div class="opt-head"><strong>(a) 15% of customers (seed 2026), opened once, then refit on everything</strong><span class="pill done">Recommended</span></div><p>Locked before any model is fitted, as in Part 1. Every build test runs on the other 85%. After the hold-out is opened once, the final models are refitted on all rows, so the submitted file uses all the data.</p></div>
+      <div class="opt"><div class="opt-head"><strong>(b) No hold-out</strong></div><p>The build uses all rows. The final check is the out-of-time and cross-validation results and the public leaderboard. The public board uses only a third of test rows, and choosing by it would mean tuning to the board.</p></div>
+      <div class="opt"><div class="opt-head"><strong>(c) 10% of customers</strong></div><p>Less data held back, and a weaker final check: about 350 motor and 50 to 55 property claims in 2024.</p></div>
+    </div>
+    <div class="rec-box"><strong>Recommendation: (a).</strong><span>The untouched check is what makes the validation claims believable. Refitting on all rows after the one opening means the price itself is built on all the data.</span></div>
+    <div class="verdict" data-id="P2-H">
+      <div class="choices" role="radiogroup" aria-label="Verdict on P2-H">
+        <label class="choice"><input type="radio" name="P2-H" value="a">(a) 15%, refit after</label>
+        <label class="choice"><input type="radio" name="P2-H" value="b">(b) No hold-out</label>
+        <label class="choice"><input type="radio" name="P2-H" value="c">(c) 10%</label>
+        <label class="choice"><input type="radio" name="P2-H" value="reject">None of these</label>
+      </div>
+      <textarea placeholder="Note (optional)" aria-label="Note on P2-H"></textarea>
+    </div>
+  </article>
+
+  <article class="card" id="P2-G" data-rec="a">
+    <div class="card-head">
+      <div class="meta"><span class="ref">P2-G</span><span class="pill door">Two-way door</span></div>
+      <h3>Which factors go into the level GLM (W2) in the emerging market?</h3>
+    </div>
+    <div class="sect"><div class="eyebrow">Why it matters</div>
+      <p>The W2 GLM sets the level chain, and the tree families start from it. It cannot run now: it uses four Part 1 fields this market does not have.</p>
+    </div>
+    <div class="sect"><div class="eyebrow">What the data shows</div>
+      <ul>
+        <li><strong>Missing here:</strong> exact driver and policyholder age (this market gives five bands: 17-24, 25-34, 35-49, 50-64, 65+), credit band, annual mileage and telematics.</li>
+        <li><strong>Everything else W2 uses is present.</strong> Region has 6 levels (E01 to E06) instead of 12.</li>
+        <li><strong>Claims history:</strong> it exists only for 2024 rows of 2023 customers. The test book is 76% new business, so most 2025 rows have none. Declared prior claims are on every customer.</li>
+      </ul>
+    </div>
+    <div class="options">
+      <div class="opt rec"><div class="opt-head"><strong>(a) Part 1's W2, adapted, then a drop-one test</strong><span class="pill done">Recommended</span></div><p>Age as the five given bands. Credit, mileage and telematics removed. Policy history and declared history kept, and the step 5 additions kept (motor voluntary excess and vehicle age; buildings trees within 5 m with clay soil). Each factor then faces a drop-one test on emerging data under P2-V, and failures are dropped. Under P2-C (b), the relativities come from the Part 1 fit and the emerging data sets the level.</p></div>
+      <div class="opt"><div class="opt-head"><strong>(b) Part 1's W2, adapted, without the drop-one test</strong></div><p>Faster. Carries Part 1's choices into this market untested.</p></div>
+      <div class="opt"><div class="opt-head"><strong>(c) Rebuild the factor list from scratch on emerging data</strong></div><p>The full step 5 selection, on two years of data. The most work, and the selection itself would be noisy at this data size.</p></div>
+    </div>
+    <div class="rec-box"><strong>Recommendation: (a).</strong><span>It starts from a factor list that earned its place on 20 times the data, and still checks each factor against this market.</span></div>
+    <div class="verdict" data-id="P2-G">
+      <div class="choices" role="radiogroup" aria-label="Verdict on P2-G">
+        <label class="choice"><input type="radio" name="P2-G" value="a">(a) Adapted, drop-one tested</label>
+        <label class="choice"><input type="radio" name="P2-G" value="b">(b) Adapted, untested</label>
+        <label class="choice"><input type="radio" name="P2-G" value="c">(c) From scratch</label>
+        <label class="choice"><input type="radio" name="P2-G" value="reject">None of these</label>
+      </div>
+      <textarea placeholder="Note (optional)" aria-label="Note on P2-G"></textarea>
+    </div>
+  </article>
+
+  <article class="card" id="P2-S" data-rec="a">
+    <div class="card-head">
+      <div class="meta"><span class="ref">P2-S</span><span class="pill door">Two-way door; a professional judgment</span></div>
+      <h3>Is gender a rating factor in the emerging market?</h3>
+    </div>
+    <div class="sect"><div class="eyebrow">Why it matters</div>
+      <p>The data page says gender may be used for pricing in this market. Part 1 had no such field. It is held out of every model until you rule (D33).</p>
+    </div>
+    <div class="sect"><div class="eyebrow">What the data shows</div>
+      <div class="table-scroll"><table>
+        <thead><tr><th>Line</th><th>Claims, women / men</th><th>Frequency, women / men</th><th>Cost per policy year, women / men</th><th>Men against women, one-way</th><th>Men against women, other factors held</th></tr></thead>
+        <tbody>
+          <tr class="hl"><td>Motor</td><td>3,105 / 3,943</td><td>0.158 / 0.205</td><td>348 / 462</td><td>1.30 [1.24, 1.36]</td><td>1.33 [1.26, 1.39]</td></tr>
+          <tr><td>Buildings</td><td>506 / 550</td><td>0.043 / 0.047</td><td>378 / 387</td><td>1.10 [0.97, 1.24]</td><td>1.12 [0.99, 1.26]</td></tr>
+          <tr><td>Contents</td><td>518 / 480</td><td>0.036 / 0.033</td><td>99 / 76</td><td>0.93 [0.83, 1.06]</td><td>0.93 [0.82, 1.06]</td></tr>
+        </tbody>
+      </table></div>
+      <p class="note"><span><strong>How to read this.</strong> In motor, men claim 1.33 times as often as women once age band, vehicle, cover, region and the other rating factors are held fixed. The interval (1.26 to 1.39) is far from 1, and the effect is the same size before and after those factors, so they are not standing in for it. In buildings and contents the intervals include 1, so there is no evidence of a difference.</span></p>
+      <p>In pricing terms: with gender excluded, a motor book that is half men would price men about 14% below their expected cost and women about 14% above, unless other factors pick up the difference, and the table shows they don't.</p>
+    </div>
+    <div class="options">
+      <div class="opt rec"><div class="opt-head"><strong>(a) Use gender in motor, where it passes P2-V; not in property</strong><span class="pill done">Recommended</span></div><p>The market's rules allow it, and the signal is large and holds after controls. The write-up adds a fairness exhibit: the price difference it creates and how it was tested. Property has no evidence of an effect, so gender stays out there.</p></div>
+      <div class="opt"><div class="opt-head"><strong>(b) Exclude gender everywhere</strong></div><p>A professional choice that many jurisdictions require by law. It costs motor accuracy and builds in the cross-subsidy above. The write-up would say so and give the size of it.</p></div>
+      <div class="opt"><div class="opt-head"><strong>(c) Keep it out of the price, use it only for checks</strong></div><p>Excluded from every model, but used to test whether other factors act as proxies for it. The same price as (b), with a stronger fairness exhibit.</p></div>
+    </div>
+    <div class="rec-box"><strong>Recommendation: (a).</strong><span>This market permits it and the evidence is strong and confined to motor. This is a professional and fairness call as much as a statistical one, and it is yours. If your standard is to exclude a protected characteristic even where it is permitted, (c) gives the stronger fairness story.</span></div>
+    <div class="verdict" data-id="P2-S">
+      <div class="choices" role="radiogroup" aria-label="Verdict on P2-S">
+        <label class="choice"><input type="radio" name="P2-S" value="a">(a) Motor only, tested</label>
+        <label class="choice"><input type="radio" name="P2-S" value="b">(b) Exclude</label>
+        <label class="choice"><input type="radio" name="P2-S" value="c">(c) Exclude, use for checks</label>
+        <label class="choice"><input type="radio" name="P2-S" value="reject">None of these</label>
+      </div>
+      <textarea placeholder="Note (optional)" aria-label="Note on P2-S"></textarea>
+    </div>
+  </article>
+
+  <article class="card" id="P2-L" data-rec="a">
+    <div class="card-head">
+      <div class="meta"><span class="ref">P2-L</span><span class="pill door">Two-way door</span></div>
+      <h3>Large-loss caps and the excess factor that puts the capped cost back</h3>
+    </div>
+    <div class="sect"><div class="eyebrow">Why it matters</div>
+      <p>The models are fitted on cost capped per claim (Part 1: motor 100,000, buildings 200,000, contents 30,000). The excess above the cap returns through an excess-loss factor (ELF) on the level. The ELF moves each line's level directly: an ELF of 1.05 against 1.01 is 4% on every motor price.</p>
+    </div>
+    <div class="sect"><div class="eyebrow">What the data shows</div>
+      <div class="table-scroll"><table>
+        <thead><tr><th>Peril with claims above the cap</th><th>Emerging claims</th><th>Above the cap: emerging</th><th>Expected at Part 1's rate</th><th>Probability of a count this far off</th><th>Excess share, emerging / Part 1</th></tr></thead>
+        <tbody>
+          <tr class="bad"><td>Motor bodily injury</td><td>450</td><td>3</td><td>9.4</td><td>2%</td><td>2.4% / 17.0%</td></tr>
+          <tr><td>Buildings fire</td><td>70</td><td>6</td><td>4.0</td><td>21%</td><td>15.7% / 8.6%</td></tr>
+          <tr><td>Contents flood</td><td>86</td><td>4</td><td>4.9</td><td>45%</td><td>6.2% / 7.4%</td></tr>
+        </tbody>
+      </table></div>
+      <div class="table-scroll"><table>
+        <thead><tr><th>Excess-loss factor</th><th>Motor</th><th>Buildings</th><th>Contents</th></tr></thead>
+        <tbody>
+          <tr><td>Emerging's own large claims</td><td>1.007</td><td>1.066</td><td>1.018</td></tr>
+          <tr><td>Part 1's excess shares by peril, on emerging's capped cost</td><td>1.051</td><td>1.038</td><td>1.023</td></tr>
+          <tr class="hl"><td>Mixed: own where it differs from Part 1, Part 1 where it agrees</td><td>1.007</td><td>1.038</td><td>1.023</td></tr>
+        </tbody>
+      </table></div>
+      <p class="note"><span><strong>How to read this.</strong> Emerging has 450 motor bodily injury claims. At Part 1's rate of claims above 100,000 we would expect 9.4 of them above the cap; there are 3. A count that low has a 2% chance if the tails were alike, so emerging's bodily injury tail is lighter. That fits its motor claims costing about half Part 1's on average. Fire (6 against 4.0) and flood (4 against 4.9) are consistent with Part 1, and 6 or 4 claims are too few to set a tail on their own.</span></p>
+      <p>The caps themselves matter less, because the ELF returns whatever they cut. Emerging's 99.9th-percentile claim is 59,818 in motor, 337,871 in buildings and 44,253 in contents, so the Part 1 caps cut only the largest few claims.</p>
+    </div>
+    <div class="options">
+      <div class="opt rec"><div class="opt-head"><strong>(a) Part 1 caps; mixed ELF</strong><span class="pill done">Recommended</span></div><p>Motor uses its own tail (ELF 1.007), because emerging's bodily injury tail is shown to be lighter. Buildings and contents use Part 1's excess shares by peril (1.038 and 1.023), because emerging's few large claims agree with them and cannot set a tail alone.</p></div>
+      <div class="opt"><div class="opt-head"><strong>(b) Part 1 caps; emerging's own ELF everywhere</strong></div><p>Buildings goes to 1.066, set by 6 fire claims. That is 2.7% higher on every buildings price than (a).</p></div>
+      <div class="opt"><div class="opt-head"><strong>(c) Part 1 caps; Part 1's excess shares everywhere</strong></div><p>Motor goes to 1.051, applying Part 1's heavier bodily injury tail. That is 4.3% higher on every motor price than (a), against the evidence.</p></div>
+    </div>
+    <div class="rec-box"><strong>Recommendation: (a).</strong><span>It uses each market for what it can show: the emerging data where it shows a real difference, Part 1 where emerging has too few large claims to say anything.</span></div>
+    <div class="verdict" data-id="P2-L">
+      <div class="choices" role="radiogroup" aria-label="Verdict on P2-L">
+        <label class="choice"><input type="radio" name="P2-L" value="a">(a) Mixed ELF</label>
+        <label class="choice"><input type="radio" name="P2-L" value="b">(b) Own ELF</label>
+        <label class="choice"><input type="radio" name="P2-L" value="c">(c) Part 1 ELF</label>
+        <label class="choice"><input type="radio" name="P2-L" value="reject">None of these</label>
+      </div>
+      <textarea placeholder="Note (optional)" aria-label="Note on P2-L"></textarea>
+    </div>
+  </article>
+
+  <article class="card" id="P2-T" data-rec="a">
+    <div class="card-head">
+      <div class="meta"><span class="ref">P2-T</span><span class="pill door">Two-way door</span></div>
+      <h3>Which trend projects 2023-2024 experience to 2025?</h3>
+    </div>
+    <div class="sect"><div class="eyebrow">Why it matters</div>
+      <p>The level chain trends each experience year to 2025, one to two years ahead. Each 1% of annual trend moves the 2025 level by about 1.5%. With two years of data, a fitted trend is one year-on-year change.</p>
+    </div>
+    <div class="sect"><div class="eyebrow">What the data shows</div>
+      <div class="table-scroll"><table>
+        <thead><tr><th>Line</th><th>Emerging 2023 to 2024: frequency / severity</th><th>Part 1 2021 to 2022: frequency / severity</th><th>Part 1 selected annual trend (four years)</th></tr></thead>
+        <tbody>
+          <tr><td>Motor</td><td>−1.4% / +11.5%</td><td>+3.1% / +2.2%</td><td>+2.5%</td></tr>
+          <tr><td>Buildings</td><td>+5.4% / −37.8%</td><td>+2.6% / +4.5%</td><td>+7.6%</td></tr>
+          <tr><td>Contents</td><td>+1.8% / −6.6%</td><td>+1.6% / +1.5%</td><td>+5.6%</td></tr>
+        </tbody>
+      </table></div>
+      <p class="note"><span><strong>How to read this.</strong> Both markets are measured at the same age: claims reported by the end of their accident year, capped. Emerging buildings severity fell 37.8% from 2023 to 2024. On about 500 claims, a swing that size comes from a few large fires, not from a trend. Part 1's selected trends come from four years and about 20 times the claims.</span></p>
+    </div>
+    <div class="options">
+      <div class="opt rec"><div class="opt-head"><strong>(a) Part 1's selected trends by peril, on emerging's own levels</strong><span class="pill done">Recommended</span></div><p>The rate of change is borrowed and the level is the emerging market's own. Bodily injury severity stays a level with no trend, as in Part 1.</p></div>
+      <div class="opt"><div class="opt-head"><strong>(b) Emerging's own two-year trend, held within [−5%, +12%]</strong></div><p>Buildings severity would sit at the −5% bound and motor severity near +11.5%. Each is one year's change.</p></div>
+      <div class="opt"><div class="opt-head"><strong>(c) No trend</strong></div><p>Prices 2025 at the 2023-2024 average level. It understates if the Part 1 trends apply here: by about 4% in motor and 11% in buildings.</p></div>
+    </div>
+    <div class="rec-box"><strong>Recommendation: (a).</strong><span>One year-on-year change is not a trend. Part 1's four years are the better estimate of the rate, and emerging's own data still sets where the line starts.</span></div>
+    <div class="verdict" data-id="P2-T">
+      <div class="choices" role="radiogroup" aria-label="Verdict on P2-T">
+        <label class="choice"><input type="radio" name="P2-T" value="a">(a) Part 1 trends</label>
+        <label class="choice"><input type="radio" name="P2-T" value="b">(b) Own, bounded</label>
+        <label class="choice"><input type="radio" name="P2-T" value="c">(c) No trend</label>
+        <label class="choice"><input type="radio" name="P2-T" value="reject">None of these</label>
+      </div>
+      <textarea placeholder="Note (optional)" aria-label="Note on P2-T"></textarea>
+    </div>
+  </article>
+
+  <article class="card" id="P2-R" data-rec="a">
+    <div class="card-head">
+      <div class="meta"><span class="ref">P2-R</span><span class="pill door">Two-way door</span></div>
+      <h3>Where do the reporting-delay curves come from?</h3>
+    </div>
+    <div class="sect"><div class="eyebrow">Why it matters</div>
+      <p>2024 rows are young at the 31 December 2024 valuation. Their claims are grossed up by the expected share not yet reported. The emerging market's oldest year, 2023, has been observed for at most two years.</p>
+    </div>
+    <div class="sect"><div class="eyebrow">What the data shows</div>
+      <div class="table-scroll"><table>
+        <thead><tr><th>Line</th><th>Reported within 30 days: emerging / Part 1</th><th>90 days</th><th>180 days</th><th>365 days</th><th>Part 1 claims reported after two years</th></tr></thead>
+        <tbody>
+          <tr><td>Motor</td><td>83.8% / 84.1%</td><td>94.7% / 94.8%</td><td>97.0% / 97.1%</td><td>99.1% / 98.9%</td><td>0.6%</td></tr>
+          <tr><td>Buildings</td><td>88.2% / 88.3%</td><td>97.1% / 97.4%</td><td>98.8% / 98.7%</td><td>99.6% / 99.6%</td><td>0.2%</td></tr>
+          <tr><td>Contents</td><td>93.9% / 94.5%</td><td>99.4% / 99.4%</td><td>99.6% / 99.5%</td><td>99.6% / 99.5%</td><td>0.2%</td></tr>
+        </tbody>
+      </table></div>
+      <p class="note"><span><strong>How to read this.</strong> Of emerging motor's 2023 claims reported within two years, 83.8% were reported within 30 days. Part 1's 2021 claims show 84.1%. The two markets report at the same speed at every age. Part 1's longer record adds the 0.2% to 0.6% of claims that arrive after two years, which emerging cannot yet see. The peril mix does differ: storm is 44% of emerging buildings claims against 30% in Part 1.</span></p>
+    </div>
+    <div class="options">
+      <div class="opt rec"><div class="opt-head"><strong>(a) Part 1's delay curves; emerging's own peril mix and seasonality</strong><span class="pill done">Recommended</span></div><p>The curves are the same where both can be seen, and Part 1's cover the late tail. The peril cost shares and the month pattern come from emerging 2023, because they differ.</p></div>
+      <div class="opt"><div class="opt-head"><strong>(b) Everything from emerging 2023</strong></div><p>Misses the late tail (0.2% to 0.6% of claims), so 2024 is slightly understated.</p></div>
+      <div class="opt"><div class="opt-head"><strong>(c) Everything from Part 1</strong></div><p>Weights perils by Part 1's mix, which understates storm.</p></div>
+    </div>
+    <div class="rec-box"><strong>Recommendation: (a).</strong><span>Borrow what is the same (reporting speed) and keep what differs (the peril mix).</span></div>
+    <div class="verdict" data-id="P2-R">
+      <div class="choices" role="radiogroup" aria-label="Verdict on P2-R">
+        <label class="choice"><input type="radio" name="P2-R" value="a">(a) Part 1 curves, own mix</label>
+        <label class="choice"><input type="radio" name="P2-R" value="b">(b) All emerging</label>
+        <label class="choice"><input type="radio" name="P2-R" value="c">(c) All Part 1</label>
+        <label class="choice"><input type="radio" name="P2-R" value="reject">None of these</label>
+      </div>
+      <textarea placeholder="Note (optional)" aria-label="Note on P2-R"></textarea>
+    </div>
+  </article>
+
+  <article class="card" id="P2-TH" data-rec="a">
+    <div class="card-head">
+      <div class="meta"><span class="ref">P2-TH</span><span class="pill door">Two-way door</span></div>
+      <h3>Re-confirm the other Part 1 thresholds for the emerging market</h3>
+    </div>
+    <div class="sect"><div class="eyebrow">Why it matters</div>
+      <p>The code refuses to run on any threshold you have not dated for this market. The caps, trend and hold-out thresholds are on their own cards above; these are the rest.</p>
+    </div>
+    <div class="sect"><div class="eyebrow">What the data shows</div>
+      <div class="table-scroll"><table>
+        <thead><tr><th>Threshold</th><th>Part 1 value</th><th>Emerging evidence or reason</th></tr></thead>
+        <tbody>
+          <tr><td>Sum insured repair multiple (R2)</td><td>10</td><td class="wrap-cell">The same rows are flagged at every multiple from 3 to 50: 53 buildings and 57 contents training rows, and 104 and 135 test rows. The smallest wrong value is 90 and 32 times the largest genuine one.</td></tr>
+          <tr><td>Keep rule: confidence; scorings</td><td>0.95; 2</td><td class="wrap-cell">0.95 carries over. "Better in both scorings" becomes "better in both tests" under P2-V.</td></tr>
+          <tr><td>Inner folds; seeds</td><td>5; 11, 22, 33</td><td class="wrap-cell">Unchanged, so results stay comparable with Part 1.</td></tr>
+          <tr><td>Outlier screen</td><td>4 standard deviations</td><td class="wrap-cell">Screens for investigation, never exclusion.</td></tr>
+          <tr><td>Level check band</td><td>3%</td><td class="wrap-cell">The final level must sit within 3% of the trended indication.</td></tr>
+          <tr><td>Training power grid</td><td>1.1 to 1.9, step 0.1</td><td class="wrap-cell">Scoring stays at 1.5.</td></tr>
+          <tr><td>Referral: size ratio; disagreement; thin segment</td><td>1.25; 30%; 100 rows</td><td class="wrap-cell">The thin-segment rule will refer more rows here because the market is small. The count is reported before any treatment.</td></tr>
+          <tr><td>Tuning settings</td><td>LightGBM rate 0.05, CatBoost 0.1, early stop 100, max trees 3,000, EBM bags 4, spline knots 6</td><td class="wrap-cell">The starting values; full tuning (P2-F) searches around them.</td></tr>
+          <tr><td>Step 5 bands and rounds</td><td>10 quantile bands; 4 drop-one rounds; 10 history bands</td><td class="wrap-cell">Unchanged. The telematics bands are not used: this market has no telematics.</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+    <div class="options">
+      <div class="opt rec"><div class="opt-head"><strong>(a) Re-confirm all as listed</strong><span class="pill done">Recommended</span></div><p>Each is dated 27 October for the emerging market, with the reason shown.</p></div>
+      <div class="opt"><div class="opt-head"><strong>(b) Re-confirm with the changes in my note</strong></div><p>Name the threshold and value in the note.</p></div>
+    </div>
+    <div class="rec-box"><strong>Recommendation: (a).</strong><span>None of these depends on the market's size or mix in a way the evidence shows. The ones that do have their own cards.</span></div>
+    <div class="verdict" data-id="P2-TH">
+      <div class="choices" role="radiogroup" aria-label="Verdict on P2-TH">
+        <label class="choice"><input type="radio" name="P2-TH" value="a">(a) Re-confirm all</label>
+        <label class="choice"><input type="radio" name="P2-TH" value="b">(b) With changes</label>
+        <label class="choice"><input type="radio" name="P2-TH" value="reject">None of these</label>
+      </div>
+      <textarea placeholder="Note (optional)" aria-label="Note on P2-TH"></textarea>
+    </div>
+  </article>
+
+  <!-- ============================== GROUP B ============================== -->
+  <div class="group-head"><div class="eyebrow">Group B</div><h2>Needed before the final file</h2></div>
+
+  <article class="card" id="P2-N" data-rec="a">
+    <div class="card-head">
+      <div class="meta"><span class="ref">P2-N</span><span class="pill door">Two-way door</span></div>
+      <h3>How is the 76% new-business test book priced?</h3>
+    </div>
+    <div class="sect"><div class="eyebrow">Why it matters</div>
+      <p>Training is 12% to 15% new business and the test book is 76%. Whatever relativity new business gets applies to three-quarters of the file.</p>
+    </div>
+    <div class="sect"><div class="eyebrow">What the data shows</div>
+      <div class="table-scroll"><table>
+        <thead><tr><th>Line</th><th>New against renewal, one-way frequency</th><th>Other factors held: emerging</th><th>Other factors held: Part 1</th></tr></thead>
+        <tbody>
+          <tr class="hl"><td>Motor</td><td>1.42 [1.26, 1.59]</td><td>1.16 [1.07, 1.26]</td><td>1.15 [1.13, 1.17]</td></tr>
+          <tr><td>Buildings</td><td>1.24 [0.90, 1.71]</td><td>0.94 [0.74, 1.18]</td><td>1.10 [1.06, 1.15]</td></tr>
+          <tr><td>Contents</td><td>1.24 [0.89, 1.73]</td><td>1.29 [1.05, 1.59]</td><td>1.12 [1.07, 1.17]</td></tr>
+        </tbody>
+      </table></div>
+      <p class="note"><span><strong>How to read this.</strong> On its own, emerging motor new business claims 1.42 times as often as renewals. Most of that is mix: new customers are younger and have less no-claims bonus. With those factors held, the new-business effect is 1.16, the same as Part 1's 1.15. In property the emerging intervals are wide (40 and 37 new-business claims) and both include Part 1's value. The new-business share is the same in every channel (75% to 77%), so channel does not explain the test book.</span></p>
+    </div>
+    <div class="options">
+      <div class="opt rec"><div class="opt-head"><strong>(a) New business as a rating factor, estimated by the models</strong><span class="pill done">Recommended</span></div><p>It is already a factor in W2 and an input to the trees. Under P2-C (b) its relativity starts from Part 1's, and the emerging data moves it only where it passes the test. No separate load.</p></div>
+      <div class="opt"><div class="opt-head"><strong>(b) A separate new-business load on top</strong></div><p>A fixed load per line, credibility-weighted between the emerging and Part 1 relativities. More visible in the write-up, but it double-counts if the models already carry the effect.</p></div>
+      <div class="opt"><div class="opt-head"><strong>(c) No new-business distinction</strong></div><p>Ignores a 15% frequency effect that both markets show in motor.</p></div>
+    </div>
+    <div class="rec-box"><strong>Recommendation: (a).</strong><span>The two markets agree on the motor effect, so it is real and stable. The models already carry it, and the factor form shows it to the reader.</span></div>
+    <div class="verdict" data-id="P2-N">
+      <div class="choices" role="radiogroup" aria-label="Verdict on P2-N">
+        <label class="choice"><input type="radio" name="P2-N" value="a">(a) Rating factor</label>
+        <label class="choice"><input type="radio" name="P2-N" value="b">(b) Separate load</label>
+        <label class="choice"><input type="radio" name="P2-N" value="c">(c) None</label>
+        <label class="choice"><input type="radio" name="P2-N" value="reject">None of these</label>
+      </div>
+      <textarea placeholder="Note (optional)" aria-label="Note on P2-N"></textarea>
+    </div>
+  </article>
+
+  <article class="card" id="P2-B" data-rec="a">
+    <div class="card-head">
+      <div class="meta"><span class="ref">P2-B</span><span class="pill door">Two-way door</span></div>
+      <h3>How are the blanks treated, now that there are five times as many?</h3>
+    </div>
+    <div class="sect"><div class="eyebrow">What the data shows</div>
+      <p>About 11 fields are each blank on about 12% of rows, so 73% to 76% of training rows have at least one blank rating field. Against complete rows, the frequency ratio for rows with a blank is 0.95 [0.90, 1.00] in motor, 1.00 [0.88, 1.15] in buildings and 0.86 [0.75, 0.99] in contents. Field by field, the ratios sit near 1. The clearest exception is buildings days unoccupied (blank 0.76 [0.62, 0.94]). Part 1 also found blanks carried no signal.</p>
+    </div>
+    <div class="options">
+      <div class="opt rec"><div class="opt-head"><strong>(a) Part 1's treatment</strong><span class="pill done">Recommended</span></div><p>Recover a blank from the same policy's other rows where the rules allow. The rest become their own level in the GLM and are handled natively by the trees, so a blank with a signal (days unoccupied) gets its own estimate.</p></div>
+      <div class="opt"><div class="opt-head"><strong>(b) Impute from other fields</strong></div><p>A model per field. It adds steps to explain, and the blanks carry no signal to recover.</p></div>
+      <div class="opt"><div class="opt-head"><strong>(c) Drop rows with blanks</strong></div><p>Removes three-quarters of the data. Not viable.</p></div>
+    </div>
+    <div class="rec-box"><strong>Recommendation: (a).</strong><span>The blanks look random against claims, and their own level captures the one field where they are not.</span></div>
+    <div class="verdict" data-id="P2-B">
+      <div class="choices" role="radiogroup" aria-label="Verdict on P2-B">
+        <label class="choice"><input type="radio" name="P2-B" value="a">(a) Part 1's treatment</label>
+        <label class="choice"><input type="radio" name="P2-B" value="b">(b) Impute</label>
+        <label class="choice"><input type="radio" name="P2-B" value="c">(c) Drop rows</label>
+        <label class="choice"><input type="radio" name="P2-B" value="reject">None of these</label>
+      </div>
+      <textarea placeholder="Note (optional)" aria-label="Note on P2-B"></textarea>
+    </div>
+  </article>
+
+  <article class="card" id="P2-O" data-rec="a">
+    <div class="card-head">
+      <div class="meta"><span class="ref">P2-O</span><span class="pill door">Two-way door</span></div>
+      <h3>How is free-text occupation cleaned?</h3>
+    </div>
+    <div class="sect"><div class="eyebrow">What the data shows</div>
+      <p>There are 80 values as typed, which fall to 40 once spaces are trimmed and case ignored. 11,975 customers (9%) carry a "Self-employed" prefix. Occupation is credibility-encoded either way (it has more than 11 levels). In the Y2-T test, cleaning made no measurable difference: 16.6 against 14.1 over leaving occupation out, inside the noise.</p>
+    </div>
+    <div class="options">
+      <div class="opt rec"><div class="opt-head"><strong>(a) Trim and ignore case (40 levels); self-employed values kept as their own levels</strong><span class="pill done">Recommended</span></div><p>Written as a data rule before use.</p></div>
+      <div class="opt"><div class="opt-head"><strong>(b) As typed (80 levels)</strong></div><p>The same accuracy, with duplicate levels in every exhibit.</p></div>
+      <div class="opt"><div class="opt-head"><strong>(c) (a) plus a separate self-employed flag</strong></div><p>One more input to test under P2-V.</p></div>
+    </div>
+    <div class="rec-box"><strong>Recommendation: (a).</strong><span>The same accuracy as typed, and the exhibits read cleanly.</span></div>
+    <div class="verdict" data-id="P2-O">
+      <div class="choices" role="radiogroup" aria-label="Verdict on P2-O">
+        <label class="choice"><input type="radio" name="P2-O" value="a">(a) Trim and case-fold</label>
+        <label class="choice"><input type="radio" name="P2-O" value="b">(b) As typed</label>
+        <label class="choice"><input type="radio" name="P2-O" value="c">(c) Plus flag</label>
+        <label class="choice"><input type="radio" name="P2-O" value="reject">None of these</label>
+      </div>
+      <textarea placeholder="Note (optional)" aria-label="Note on P2-O"></textarea>
+    </div>
+  </article>
+
+  <article class="card" id="P2-F" data-rec="a">
+    <div class="card-head">
+      <div class="meta"><span class="ref">P2-F</span><span class="pill door">Two-way door</span></div>
+      <h3>Full tuning on emerging data, or fast mode with Part 1's settings?</h3>
+    </div>
+    <div class="sect"><div class="eyebrow">What the data shows</div>
+      <p>Fast mode keeps Part 1's tuned settings and refits the family weights, and its blend scores are apparent, not out of sample. The full run tunes each family on the market's own inner folds and cross-fits the weights. Part 1's full tuning took about 6 hours on 830,000 motor rows. This market is about a twentieth of that size, and under P2-C (b) the Part 1 base fits are shared across tests, so the full run fits comfortably before the deadline.</p>
+    </div>
+    <div class="options">
+      <div class="opt rec"><div class="opt-head"><strong>(a) Full tuning and cross-fitted weights</strong><span class="pill done">Recommended</span></div><p>Every blend score is out of sample, as the rules of this entry require.</p></div>
+      <div class="opt"><div class="opt-head"><strong>(b) Fast mode</strong></div><p>Saves a few hours, but the blend scores reported are apparent.</p></div>
+    </div>
+    <div class="rec-box"><strong>Recommendation: (a).</strong><span>Out of fold or it does not count, and the time is available.</span></div>
+    <div class="verdict" data-id="P2-F">
+      <div class="choices" role="radiogroup" aria-label="Verdict on P2-F">
+        <label class="choice"><input type="radio" name="P2-F" value="a">(a) Full tuning</label>
+        <label class="choice"><input type="radio" name="P2-F" value="b">(b) Fast mode</label>
+        <label class="choice"><input type="radio" name="P2-F" value="reject">None of these</label>
+      </div>
+      <textarea placeholder="Note (optional)" aria-label="Note on P2-F"></textarea>
+    </div>
+  </article>
+
+  <article class="card" id="P2-P" data-rec="a">
+    <div class="card-head">
+      <div class="meta"><span class="ref">P2-P</span><span class="pill door">Two-way door</span></div>
+      <h3>Submission plan for the last three days</h3>
+    </div>
+    <div class="sect"><div class="eyebrow">What the data shows</div>
+      <p>We have no Part 2 submission yet. The board allows 10 a day, and the public score uses about a third of test rows. Top public score after one day: 0.16446. The host's average-cost baseline: 0.07319. One final file is selected per part, and you submit it personally.</p>
+    </div>
+    <div class="options">
+      <div class="opt rec"><div class="opt-head"><strong>(a) An early check file, then the final file chosen on our own validation</strong><span class="pill done">Recommended</span></div><p>A first file from the first complete run (target Wednesday 28 October) checks the scorer, the row count and the level. The model is frozen by Thursday 29 October evening. Friday goes to the write-up, the AI log and the video. The final file is chosen on P2-V and the hold-out, never on the public board.</p></div>
+      <div class="opt"><div class="opt-head"><strong>(b) Submit only the final file</strong></div><p>No early check of the file format or the level against the scorer.</p></div>
+    </div>
+    <div class="rec-box"><strong>Recommendation: (a).</strong><span>One early file removes the risk of a format surprise on Friday. Choosing by our own validation avoids fitting to a third of the rows.</span></div>
+    <div class="verdict" data-id="P2-P">
+      <div class="choices" role="radiogroup" aria-label="Verdict on P2-P">
+        <label class="choice"><input type="radio" name="P2-P" value="a">(a) Early check, then final</label>
+        <label class="choice"><input type="radio" name="P2-P" value="b">(b) Final only</label>
+        <label class="choice"><input type="radio" name="P2-P" value="reject">None of these</label>
+      </div>
+      <textarea placeholder="Note (optional)" aria-label="Note on P2-P"></textarea>
+    </div>
+  </article>
+
+  <!-- ============================== GROUP C ============================== -->
+  <div class="group-head"><div class="eyebrow">Group C</div><h2>Write-up only</h2></div>
+
+  <article class="card" id="P2-E" data-rec="c">
+    <div class="card-head">
+      <div class="meta"><span class="ref">P2-E</span><span class="pill door">Two-way door; no effect on the score</span></div>
+      <h3>What commission applies to comparison-site sales?</h3>
+    </div>
+    <div class="sect"><div class="eyebrow">What the data shows</div>
+      <p>The expense table leaves the emerging comparison-site commission blank, yet 10,458 test rows (5%) come through comparison sites. It affects only the office premium build-up for the 20 reference policies, not the Kaggle score. For comparison, the developed market has comparison site 10% and broker 15%; emerging broker is 20%.</p>
+    </div>
+    <div class="options">
+      <div class="opt"><div class="opt-head"><strong>(a) Use the developed market's 10%</strong></div></div>
+      <div class="opt"><div class="opt-head"><strong>(b) 13.3%: the developed 10% scaled by the broker ratio (20% against 15%)</strong></div></div>
+      <div class="opt rec"><div class="opt-head"><strong>(c) Ask the host on the forum; use (b) meanwhile</strong><span class="pill done">Recommended</span></div><p>Posting on the forum is yours to do. I can draft the question.</p></div>
+    </div>
+    <div class="rec-box"><strong>Recommendation: (c).</strong><span>The host may have left it blank by mistake. (b) is the more consistent stand-in if there is no reply.</span></div>
+    <div class="verdict" data-id="P2-E">
+      <div class="choices" role="radiogroup" aria-label="Verdict on P2-E">
+        <label class="choice"><input type="radio" name="P2-E" value="a">(a) 10%</label>
+        <label class="choice"><input type="radio" name="P2-E" value="b">(b) 13.3%</label>
+        <label class="choice"><input type="radio" name="P2-E" value="c">(c) Ask host, (b) meanwhile</label>
+        <label class="choice"><input type="radio" name="P2-E" value="reject">None of these</label>
+      </div>
+      <textarea placeholder="Note (optional)" aria-label="Note on P2-E"></textarea>
+    </div>
+  </article>
+
+  <details class="col">
+    <summary>Not a decision yet: the weather check (Y4)</summary>
+    <p>Part 2's weather files differ a lot: hail days double and the wildfire index triples. Y4 keeps weather as one factor per line unless the signal of weather against claims is stronger here. I will run that test during the build and bring it to you as a card only if it is stronger.</p>
+  </details>
+
+  <section class="final" id="final">
+    <h2>Send your verdicts</h2>
+    <p>Verdicts save as you pick them. <strong>Send to Claude</strong> tells me a set is ready; partial sets are fine, and I start on whatever is decided. <strong>Finalize</strong> needs a verdict on all 15 cards and locks the page. Neither wakes the session: after you click, type anything in the chat.</p>
+    <div class="actions">
+      <button id="accept-rest" type="button">Accept my recommendation on every card you have not answered</button>
+    </div>
+    <div class="actions">
+      <button class="primary" id="send" type="button">Send to Claude</button>
+      <button id="finalize" type="button">Finalize</button>
+      <button id="copy" type="button" hidden>Copy for Claude</button>
+      <span class="status" id="save-status" aria-live="polite"></span>
+    </div>
+  </section>
+</div>
+
+<script>
+(function () {
+  const ROUND = 1;
+  const $ = id => document.getElementById(id);
+  const boxes = Array.from(document.querySelectorAll(".verdict[data-id]"));
+  const ids = boxes.map(b => b.dataset.id);
+  const recOf = id => document.getElementById(id).dataset.rec;
+  const status = $("save-status");
+  const say = t => { status.textContent = t; };
+  let db = null, finalState = false, writing = Promise.resolve();
+  const last = {}, timers = {};
+  const read = box => ({ choice: (box.querySelector("input:checked") || {}).value || null, note: box.querySelector("textarea").value });
+  const answered = () => ids.filter(id => read(boxes[ids.indexOf(id)]).choice);
+  function refresh() {
+    const done = answered();
+    const open = ids.length - done.length;
+    if (!finalState) { $("state-pill").textContent = open ? open + (open === 1 ? " decision open" : " decisions open") : "All 15 answered"; $("state-pill").className = "pill " + (open ? "open" : "done"); }
+    document.querySelectorAll("[data-st]").forEach(s => { const v = read(boxes[ids.indexOf(s.dataset.st)]).choice; s.textContent = v ? (v === recOf(s.dataset.st) ? "answered: as recommended" : "answered: " + (v === "reject" ? "none of these" : "(" + v + ")")) : "open"; });
+  }
+  function apply(id, v) {
+    const box = boxes[ids.indexOf(id)];
+    if (!box || !v) return;
+    box.querySelectorAll("input").forEach(r => r.checked = r.value === v.choice);
+    const ta = box.querySelector("textarea");
+    if (document.activeElement !== ta) ta.value = v.note || "";
+    last[id] = { choice: v.choice || null, note: v.note || "" };
+    refresh();
+  }
+  function save(id) {
+    const box = boxes[ids.indexOf(id)], v = read(box);
+    refresh();
+    if (!db || finalState) return;
+    const l = last[id] || { choice: null, note: "" };
+    if (v.choice === l.choice && v.note === l.note) return;
+    last[id] = v;
+    writing = writing.then(() => db.doc("verdicts/" + id).set({ decisionId: id, choice: v.choice, note: v.note, round: ROUND, updatedAt: new Date().toISOString() }))
+      .then(() => say("Saved " + id), e => say("Not saved: " + (e && e.message ? e.message : "the store refused the write")));
+  }
+  boxes.forEach(box => {
+    const id = box.dataset.id;
+    box.querySelectorAll("input").forEach(r => r.addEventListener("change", () => save(id)));
+    box.querySelector("textarea").addEventListener("input", () => { clearTimeout(timers[id]); timers[id] = setTimeout(() => save(id), 600); });
+  });
+  const lock = () => { finalState = true; boxes.forEach(b => { b.classList.add("locked"); b.querySelectorAll("input").forEach(r => r.disabled = true); b.querySelector("textarea").readOnly = true; });
+    ["send", "finalize", "accept-rest"].forEach(k => $(k).disabled = true);
+    $("state-pill").textContent = "Finalized"; $("state-pill").className = "pill done"; $("blocked").textContent = "Nothing is waiting on you"; };
+  const flush = async () => { Object.keys(timers).forEach(id => { clearTimeout(timers[id]); save(id); }); await writing; };
+  $("accept-rest").addEventListener("click", () => {
+    let n = 0;
+    boxes.forEach(box => { const id = box.dataset.id; if (!read(box).choice) { const r = box.querySelector('input[value="' + recOf(id) + '"]'); if (r) { r.checked = true; save(id); n++; } } });
+    refresh(); say(n ? "Set " + n + " cards to my recommendation. Review them, then send." : "Every card already has a verdict.");
+  });
+  $("send").addEventListener("click", async () => {
+    if (!answered().length) { say("Pick at least one verdict first."); return; }
+    if (!db) return;
+    await flush();
+    try { await db.doc("brief/state").set({ status: "submitted", round: ROUND, submittedAt: new Date().toISOString() }); say("Sent. Type anything in the chat so I pick it up."); $("blocked").textContent = "Waiting on: Claude to read round " + ROUND; }
+    catch (e) { say("Not sent: " + (e && e.message ? e.message : "the store refused the write")); }
+  });
+  $("finalize").addEventListener("click", async () => {
+    const missing = ids.filter(id => !read(boxes[ids.indexOf(id)]).choice);
+    if (missing.length) { say("Finalize needs every card answered. Still open: " + missing.join(", ")); return; }
+    if (!db) return;
+    await flush();
+    try { await db.doc("brief/state").set({ status: "final", round: ROUND, submittedAt: new Date().toISOString() }); lock(); say("Finalized. Type anything in the chat so I pick it up."); }
+    catch (e) { say("Not finalized: " + (e && e.message ? e.message : "the store refused the write")); }
+  });
+  $("copy").addEventListener("click", () => {
+    const text = ids.map(id => { const v = read(boxes[ids.indexOf(id)]); return id + ": " + (v.choice ? (v.choice === recOf(id) ? "accept" : "option " + v.choice) : "no choice") + (v.note ? " - " + v.note.replace(/\s+/g, " ") : ""); }).join("\n");
+    try { navigator.clipboard.writeText(text).then(() => say("Copied. Paste it into the chat."), () => say("Copy refused by the browser.")); } catch (e) { say("Copy refused by the browser."); }
+  });
+  refresh();
+  (async () => {
+    try { db = await (window.claude && window.claude.use ? window.claude.use("db") : null); } catch (e) { db = null; }
+    if (!db) { $("send").hidden = true; $("finalize").hidden = true; $("copy").hidden = false; say("Saving is not available in this view: use Copy for Claude."); return; }
+    db.collection("verdicts").onSnapshot(snap => { snap.docs.forEach(d => apply(d.id, d.data())); }, () => {});
+    db.doc("brief/state").onSnapshot(s => {
+      const d = s.exists ? s.data() : null;
+      if (d && d.status === "final") lock();
+      else if (d && d.status === "submitted" && d.round === ROUND) $("blocked").textContent = "Waiting on: Claude to read round " + ROUND;
+    }, () => {});
+  })();
+})();
+</script>

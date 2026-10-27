@@ -1,0 +1,2113 @@
+{
+ "part2_decision_evidence": {
+  "descriptive": {
+   "motor": {
+    "size": {
+     "2023": {
+      "rows": 21680,
+      "exposure": 18864.511147945203,
+      "claims": 3557,
+      "new_business": 0.12084870848708487
+     },
+     "2024": {
+      "rows": 25603,
+      "exposure": 20104.027190410958,
+      "claims": 3491,
+      "new_business": 0.15291176815216967
+     },
+     "test": {
+      "rows": 90521,
+      "new_business": 0.7602987152152539
+     }
+    },
+    "new_business": {
+     "table": {
+      "new": {
+       "rows": 2620,
+       "exposure": 1209.5110575342467,
+       "claims": 315,
+       "freq": 0.26043581663665855,
+       "sev": 3280.283619047619,
+       "cost_per_year": 854.3033431265203
+      },
+      "renewal": {
+       "rows": 19060,
+       "exposure": 17655.00009041096,
+       "claims": 3242,
+       "freq": 0.18363069857818026,
+       "sev": 2182.0883312769897,
+       "cost_per_year": 400.69840463168924
+      }
+     },
+     "freq_ratio": {
+      "ratio": 1.4182585953937257,
+      "lo": 1.263335762309346,
+      "hi": 1.5921796116428224
+     },
+     "freq_ratio_by_channel": {
+      "broker": {
+       "ratio": 1.3221122614380452,
+       "lo": 1.1486718559560087,
+       "hi": 1.5217408024592232
+      },
+      "comparison_site": {
+       "ratio": 1.6275506673900024,
+       "lo": 1.0246017194175316,
+       "hi": 2.58531790911644
+      },
+      "direct": {
+       "ratio": 1.6716034862282934,
+       "lo": 1.332414656885612,
+       "hi": 2.097138605261134
+      }
+     }
+    },
+    "blanks": {
+     "share_rows_any": 0.757502696529408,
+     "any": {
+      "ratio": 0.9515722900733291,
+      "lo": 0.9018161983819969,
+      "hi": 1.004073584905654
+     },
+     "per_field": {
+      "vehicle_age": {
+       "share": 0.11852039845187488,
+       "ratio": 0.980072037603131,
+       "lo": 0.9112463400009858,
+       "hi": 1.054096084370022
+      },
+      "engine_size_cc": {
+       "share": 0.12150244273840492,
+       "ratio": 1.033892129875466,
+       "lo": 0.9634558239684043,
+       "hi": 1.1094778915919263
+      },
+      "distance_to_river_km": {
+       "share": 0.12300403950679949,
+       "ratio": 1.0046956618470644,
+       "lo": 0.9356612408895796,
+       "hi": 1.0788235408518272
+      },
+      "household_size": {
+       "share": 0.11619398092337627,
+       "ratio": 0.9715459126170463,
+       "lo": 0.902608817006002,
+       "hi": 1.0457481054238502
+      },
+      "years_at_address": {
+       "share": 0.1189010849565383,
+       "ratio": 0.9491391954839944,
+       "lo": 0.8818625911869821,
+       "hi": 1.0215482790708297
+      },
+      "overnight_parking": {
+       "share": 0.12048727872596916,
+       "ratio": 1.0008299154521079,
+       "lo": 0.9317277346260028,
+       "hi": 1.075057103528148
+      },
+      "soil_type": {
+       "share": 0.12000084597001036,
+       "ratio": 0.9813433154280876,
+       "lo": 0.9127767626026145,
+       "hi": 1.0550604947363857
+      },
+      "roof_type": {
+       "share": 0.12118520398451875,
+       "ratio": 1.0222032487921102,
+       "lo": 0.9520667863247135,
+       "hi": 1.0975064951848552
+      },
+      "energy_rating": {
+       "share": 0.11775902544254806,
+       "ratio": 0.9901112068164436,
+       "lo": 0.9204737277136565,
+       "hi": 1.065017036714898
+      },
+      "marital_status": {
+       "share": 0.12080451747985534,
+       "ratio": 0.9715753841016084,
+       "lo": 0.9037254526943851,
+       "hi": 1.0445193550517475
+      },
+      "occupation": {
+       "share": 0.12042383097519192,
+       "ratio": 0.980666386558447,
+       "lo": 0.9123187521675924,
+       "hi": 1.0541343795035096
+      }
+     }
+    },
+    "gender": {
+     "table": {
+      "F": {
+       "rows": 23912,
+       "exposure": 19687.78095890411,
+       "claims": 3105,
+       "freq": 0.15771203501711628,
+       "sev": 2204.493146537842,
+       "cost_per_year": 347.675100321769
+      },
+      "M": {
+       "rows": 23371,
+       "exposure": 19280.757379452054,
+       "claims": 3943,
+       "freq": 0.20450441455179275,
+       "sev": 2257.2002003550597,
+       "cost_per_year": 461.6074054998008
+      }
+     },
+     "freq_ratio_m_over_f": {
+      "ratio": 1.2966950463203275,
+      "lo": 1.2371273270466556,
+      "hi": 1.3591309531296654
+     }
+    },
+    "large_losses": {
+     "emerging": {
+      "claims": 7076,
+      "above_cap": 3,
+      "share_cost_above_cap": 0.006959943645716092,
+      "p99": 18536.5375,
+      "p999": 59818.40800000118,
+      "max": 155654.85,
+      "by_peril": {
+       "bodily_injury": {
+        "claims": 450,
+        "above": 3,
+        "max": 155654.85
+       },
+       "glass_hail": {
+        "claims": 1350,
+        "above": 0,
+        "max": 5072.91
+       },
+       "own_damage": {
+        "claims": 2682,
+        "above": 0,
+        "max": 10920.9
+       },
+       "theft": {
+        "claims": 390,
+        "above": 0,
+        "max": 29218.55
+       },
+       "third_party_prop": {
+        "claims": 2204,
+        "above": 0,
+        "max": 39709.07
+       }
+      }
+     },
+     "developed": {
+      "claims": 111195,
+      "above_cap": 158,
+      "share_cost_above_cap": 0.05500672592846751,
+      "p99": 35698.05419999994,
+      "p999": 117132.9170599993,
+      "max": 11894276.93,
+      "by_peril": {
+       "bodily_injury": {
+        "claims": 7583,
+        "above": 158,
+        "max": 11894276.93
+       },
+       "glass_hail": {
+        "claims": 15732,
+        "above": 0,
+        "max": 9736.01
+       },
+       "own_damage": {
+        "claims": 48565,
+        "above": 0,
+        "max": 62697.3
+       },
+       "theft": {
+        "claims": 6158,
+        "above": 0,
+        "max": 74682.02
+       },
+       "third_party_prop": {
+        "claims": 33157,
+        "above": 0,
+        "max": 44546.09
+       }
+      }
+     }
+    },
+    "reporting": {
+     "emerging": {
+      "within_30": 0.8375948300084294,
+      "within_90": 0.9466142174768193,
+      "within_180": 0.9699353751053666,
+      "within_365": 0.9907277325091318
+     },
+     "developed": {
+      "within_30": 0.8413380333406771,
+      "within_90": 0.9476389806859074,
+      "within_180": 0.9705882352941176,
+      "within_365": 0.9891679518249247,
+      "reported_after_window_share": 0.005695509309967141
+     }
+    },
+    "one_year_change": {
+     "emerging": {
+      "freq_change": -0.014215466451347525,
+      "sev_change": 0.11454900884088359,
+      "years": [
+       2023,
+       2024
+      ]
+     },
+     "developed": {
+      "freq_change": 0.031092215191325323,
+      "sev_change": 0.02161379718778833,
+      "years": [
+       2021,
+       2022
+      ]
+     }
+    },
+    "developed_rows": 979968,
+    "developed_claims": 110901
+   },
+   "buildings": {
+    "size": {
+     "2023": {
+      "rows": 12580,
+      "exposure": 11372.569327397261,
+      "claims": 519,
+      "new_business": 0.1197933227344992
+     },
+     "2024": {
+      "rows": 14867,
+      "exposure": 12095.436223287672,
+      "claims": 537,
+      "new_business": 0.153292527073384
+     },
+     "test": {
+      "rows": 52295,
+      "new_business": 0.7594607515058801
+     }
+    },
+    "new_business": {
+     "table": {
+      "new": {
+       "rows": 1507,
+       "exposure": 718.5693602739726,
+       "claims": 40,
+       "freq": 0.05566616420264426,
+       "sev": 8851.8515,
+       "cost_per_year": 492.7486190964229
+      },
+      "renewal": {
+       "rows": 11073,
+       "exposure": 10653.999967123287,
+       "claims": 479,
+       "freq": 0.04495963971073073,
+       "sev": 10576.638705636744,
+       "cost_per_year": 475.5218655559974
+      }
+     },
+     "freq_ratio": {
+      "ratio": 1.2381363498639906,
+      "lo": 0.8967518658595618,
+      "hi": 1.7094824992475706
+     },
+     "freq_ratio_by_channel": {
+      "broker": {
+       "ratio": 1.2968396766355226,
+       "lo": 0.8876748149275892,
+       "hi": 1.8946050046866734
+      },
+      "comparison_site": {
+       "ratio": 0.0,
+       "lo": 0.0,
+       "hi": 0.0
+      },
+      "direct": {
+       "ratio": 1.3748025763195924,
+       "lo": 0.7395194499887001,
+       "hi": 2.555824764154437
+      }
+     }
+    },
+    "blanks": {
+     "share_rows_any": 0.7268189601777972,
+     "any": {
+      "ratio": 1.0038075369915544,
+      "lo": 0.8766665821053102,
+      "hi": 1.1493874545796348
+     },
+     "per_field": {
+      "days_unoccupied": {
+       "share": 0.11990381462454913,
+       "ratio": 0.7633886060669544,
+       "lo": 0.6212732952619152,
+       "hi": 0.9380125756526647
+      },
+      "distance_to_river_km": {
+       "share": 0.11906583597478777,
+       "ratio": 1.0503400760421922,
+       "lo": 0.8747154090888337,
+       "hi": 1.2612265245098462
+      },
+      "household_size": {
+       "share": 0.12088752869166029,
+       "ratio": 0.8865870393847738,
+       "lo": 0.7310601859525939,
+       "hi": 1.0752009116470056
+      },
+      "years_at_address": {
+       "share": 0.11928443910081248,
+       "ratio": 1.0093903837022786,
+       "lo": 0.8385486221950641,
+       "hi": 1.2150386032995268
+      },
+      "smoke_alarms": {
+       "share": 0.11899296826611287,
+       "ratio": 0.9768880292300222,
+       "lo": 0.8094508917109626,
+       "hi": 1.1789599979756153
+      },
+      "soil_type": {
+       "share": 0.1209603964003352,
+       "ratio": 0.9277904149807347,
+       "lo": 0.7666762048625595,
+       "hi": 1.1227621891362036
+      },
+      "roof_type": {
+       "share": 0.11943017451816228,
+       "ratio": 1.064918883345565,
+       "lo": 0.8879074564188472,
+       "hi": 1.2772189487853625
+      },
+      "energy_rating": {
+       "share": 0.11866506357707582,
+       "ratio": 0.9549191237139216,
+       "lo": 0.7901842017599882,
+       "hi": 1.153997423390068
+      },
+      "marital_status": {
+       "share": 0.11990381462454913,
+       "ratio": 1.0135104555949501,
+       "lo": 0.8424988227925446,
+       "hi": 1.2192342776165752
+      },
+      "occupation": {
+       "share": 0.12201697817612125,
+       "ratio": 0.9613432568902095,
+       "lo": 0.7970957670228674,
+       "hi": 1.1594351592407366
+      }
+     }
+    },
+    "gender": {
+     "table": {
+      "F": {
+       "rows": 13765,
+       "exposure": 11787.986957534247,
+       "claims": 506,
+       "freq": 0.0429250559762956,
+       "sev": 8794.389604743083,
+       "cost_per_year": 377.4996660609489
+      },
+      "M": {
+       "rows": 13682,
+       "exposure": 11680.018593150686,
+       "claims": 550,
+       "freq": 0.0470889661359381,
+       "sev": 8216.893509090909,
+       "cost_per_year": 386.92502019219137
+      }
+     },
+     "freq_ratio_m_over_f": {
+      "ratio": 1.0970041870636562,
+      "lo": 0.9722410486452439,
+      "hi": 1.2377775944680385
+     }
+    },
+    "large_losses": {
+     "emerging": {
+      "claims": 1059,
+      "above_cap": 6,
+      "share_cost_above_cap": 0.06154582253503556,
+      "p99": 138510.48340000064,
+      "p999": 337871.3052000003,
+      "max": 361092.64,
+      "by_peril": {
+       "accidental_damage": {
+        "claims": 122,
+        "above": 0,
+        "max": 3952.21
+       },
+       "escape_of_water": {
+        "claims": 268,
+        "above": 0,
+        "max": 41892.48
+       },
+       "fire": {
+        "claims": 70,
+        "above": 6,
+        "max": 361092.64
+       },
+       "flood": {
+        "claims": 81,
+        "above": 0,
+        "max": 143433.97
+       },
+       "storm": {
+        "claims": 466,
+        "above": 0,
+        "max": 17966.04
+       },
+       "subsidence": {
+        "claims": 52,
+        "above": 0,
+        "max": 60016.97
+       }
+      }
+     },
+     "developed": {
+      "claims": 26442,
+      "above_cap": 77,
+      "share_cost_above_cap": 0.021034993948426756,
+      "p99": 98992.64160000003,
+      "p999": 271060.61277000717,
+      "max": 631246.21,
+      "by_peril": {
+       "accidental_damage": {
+        "claims": 3848,
+        "above": 0,
+        "max": 11003.06
+       },
+       "escape_of_water": {
+        "claims": 10137,
+        "above": 0,
+        "max": 66585.0
+       },
+       "fire": {
+        "claims": 1115,
+        "above": 63,
+        "max": 631246.21
+       },
+       "flood": {
+        "claims": 2232,
+        "above": 13,
+        "max": 352282.02
+       },
+       "storm": {
+        "claims": 7816,
+        "above": 0,
+        "max": 41282.92
+       },
+       "subsidence": {
+        "claims": 1294,
+        "above": 1,
+        "max": 207874.89
+       }
+      }
+     }
+    },
+    "reporting": {
+     "emerging": {
+      "within_30": 0.882466281310212,
+      "within_90": 0.9710982658959537,
+      "within_180": 0.9884393063583815,
+      "within_365": 0.9961464354527938
+     },
+     "developed": {
+      "within_30": 0.8830560491035374,
+      "within_90": 0.9738329833629462,
+      "within_180": 0.987078016475529,
+      "within_365": 0.9956388305604911,
+      "reported_after_window_share": 0.0020954223081882657
+     }
+    },
+    "one_year_change": {
+     "emerging": {
+      "freq_change": 0.05408547617472448,
+      "sev_change": -0.37808611439929274,
+      "years": [
+       2023,
+       2024
+      ]
+     },
+     "developed": {
+      "freq_change": 0.025602099317753035,
+      "sev_change": 0.0446763510872481,
+      "years": [
+       2021,
+       2022
+      ]
+     }
+    },
+    "developed_rows": 707726,
+    "developed_claims": 26375
+   },
+   "contents": {
+    "size": {
+     "2023": {
+      "rows": 15834,
+      "exposure": 14107.695473972602,
+      "claims": 491,
+      "new_business": 0.11664772009599596
+     },
+     "2024": {
+      "rows": 18732,
+      "exposure": 14950.287426027397,
+      "claims": 507,
+      "new_business": 0.15316036728592783
+     },
+     "test": {
+      "rows": 66247,
+      "new_business": 0.7614080637613779
+     }
+    },
+    "new_business": {
+     "table": {
+      "new": {
+       "rows": 1847,
+       "exposure": 871.6954123287671,
+       "claims": 37,
+       "freq": 0.04244601896108769,
+       "sev": 2323.428918918919,
+       "cost_per_year": 98.6203079471719
+      },
+      "renewal": {
+       "rows": 13987,
+       "exposure": 13236.000061643836,
+       "claims": 454,
+       "freq": 0.0343003927081892,
+       "sev": 2631.286233480176,
+       "cost_per_year": 90.25415113602206
+      }
+     },
+     "freq_ratio": {
+      "ratio": 1.2374790960032864,
+      "lo": 0.8851317814330432,
+      "hi": 1.7300864630188992
+     },
+     "freq_ratio_by_channel": {
+      "broker": {
+       "ratio": 1.178299442452792,
+       "lo": 0.7780072922516116,
+       "hi": 1.784545710447593
+      },
+      "comparison_site": {
+       "ratio": 2.0522643316459153,
+       "lo": 0.6196279597265737,
+       "hi": 6.7972866957207865
+      },
+      "direct": {
+       "ratio": 1.2384881728212493,
+       "lo": 0.6490137061502262,
+       "hi": 2.363359879279773
+      }
+     }
+    },
+    "blanks": {
+     "share_rows_any": 0.7291268876931088,
+     "any": {
+      "ratio": 0.8636757299642541,
+      "lo": 0.75437260503083,
+      "hi": 0.9888160857840297
+     },
+     "per_field": {
+      "high_value_items": {
+       "share": 0.11765897124341838,
+       "ratio": 1.0519404309941947,
+       "lo": 0.8704302835379861,
+       "hi": 1.2713007477892515
+      },
+      "distance_to_river_km": {
+       "share": 0.12107273042874502,
+       "ratio": 1.0775822610237806,
+       "lo": 0.8956424065763873,
+       "hi": 1.2964811857354688
+      },
+      "household_size": {
+       "share": 0.11835329514551872,
+       "ratio": 0.9919733921833714,
+       "lo": 0.8185601629228799,
+       "hi": 1.2021244807298213
+      },
+      "years_at_address": {
+       "share": 0.11945264132384424,
+       "ratio": 0.8780895522858609,
+       "lo": 0.7185342627095901,
+       "hi": 1.0730751501340938
+      },
+      "security_level": {
+       "share": 0.12260602904588323,
+       "ratio": 0.9391724543657195,
+       "lo": 0.7738826160677027,
+       "hi": 1.1397657483524144
+      },
+      "soil_type": {
+       "share": 0.12280854018399584,
+       "ratio": 1.022787315703066,
+       "lo": 0.8479724637899212,
+       "hi": 1.233641347842452
+      },
+      "roof_type": {
+       "share": 0.11884510790950645,
+       "ratio": 0.8936657297832808,
+       "lo": 0.7312801349099903,
+       "hi": 1.0921101209557462
+      },
+      "energy_rating": {
+       "share": 0.116848926690968,
+       "ratio": 0.9317451053714784,
+       "lo": 0.7642872934663071,
+       "hi": 1.1358934641531875
+      },
+      "marital_status": {
+       "share": 0.11977087311230689,
+       "ratio": 0.8539613504266775,
+       "lo": 0.6970244883428066,
+       "hi": 1.0462329519531877
+      },
+      "occupation": {
+       "share": 0.11922120002314412,
+       "ratio": 0.9024660806202917,
+       "lo": 0.739682346916481,
+       "hi": 1.1010740354495865
+      }
+     }
+    },
+    "gender": {
+     "table": {
+      "F": {
+       "rows": 17355,
+       "exposure": 14586.749008219178,
+       "claims": 518,
+       "freq": 0.03551168253516415,
+       "sev": 2786.012142857143,
+       "cost_per_year": 98.93597875625525
+      },
+      "M": {
+       "rows": 17211,
+       "exposure": 14471.233891780821,
+       "claims": 480,
+       "freq": 0.03316925174380769,
+       "sev": 2278.9481458333335,
+       "cost_per_year": 75.59100476022961
+      }
+     },
+     "freq_ratio_m_over_f": {
+      "ratio": 0.934037741269033,
+      "lo": 0.8249653345838814,
+      "hi": 1.0575311052979157
+     }
+    },
+    "large_losses": {
+     "emerging": {
+      "claims": 1003,
+      "above_cap": 4,
+      "share_cost_above_cap": 0.017858083530356634,
+      "p99": 19960.255000000005,
+      "p999": 44252.91540000039,
+      "max": 50884.85,
+      "by_peril": {
+       "accidental_damage": {
+        "claims": 335,
+        "above": 0,
+        "max": 6056.02
+       },
+       "escape_of_water": {
+        "claims": 172,
+        "above": 0,
+        "max": 14516.32
+       },
+       "flood": {
+        "claims": 86,
+        "above": 4,
+        "max": 50884.85
+       },
+       "theft": {
+        "claims": 410,
+        "above": 0,
+        "max": 19967.92
+       }
+      }
+     },
+     "developed": {
+      "claims": 23802,
+      "above_cap": 105,
+      "share_cost_above_cap": 0.01844833325761317,
+      "p99": 22050.30300000001,
+      "p999": 45366.65908000003,
+      "max": 111900.0,
+      "by_peril": {
+       "accidental_damage": {
+        "claims": 9103,
+        "above": 0,
+        "max": 9851.13
+       },
+       "escape_of_water": {
+        "claims": 5407,
+        "above": 2,
+        "max": 35553.42
+       },
+       "flood": {
+        "claims": 1624,
+        "above": 93,
+        "max": 111900.0
+       },
+       "theft": {
+        "claims": 7668,
+        "above": 10,
+        "max": 72188.96
+       }
+      }
+     }
+    },
+    "reporting": {
+     "emerging": {
+      "within_30": 0.9389002036659878,
+      "within_90": 0.9938900203665988,
+      "within_180": 0.9959266802443992,
+      "within_365": 0.9959266802443992
+     },
+     "developed": {
+      "within_30": 0.945480631276901,
+      "within_90": 0.994261119081779,
+      "within_180": 0.995157819225251,
+      "within_365": 0.995157819225251,
+      "reported_after_window_share": 0.0021474588403722263
+     }
+    },
+    "one_year_change": {
+     "emerging": {
+      "freq_change": 0.017927003957602494,
+      "sev_change": -0.06607215192707483,
+      "years": [
+       2023,
+       2024
+      ]
+     },
+     "developed": {
+      "freq_change": 0.016426420074465486,
+      "sev_change": 0.01535538923612978,
+      "years": [
+       2021,
+       2022
+      ]
+     }
+    },
+    "developed_rows": 721617,
+    "developed_claims": 23753
+   }
+  },
+  "carry_over": {
+   "count": {
+    "v1": {
+     "all_lines": {
+      "total": {
+       "E": 20616.092470813128,
+       "D": 20259.47037028645,
+       "DE": 20248.79903601698
+      },
+      "null": 21594.84303461075,
+      "d2": {
+       "E": 0.045323346978208945,
+       "D": 0.0618375721547989,
+       "DE": 0.06233173338821785
+      },
+      "pairs": {
+       "D_vs_E": {
+        "gain": -356.62210052667956,
+        "rel_gain": -0.017602735609994983,
+        "lo": -445.7974252913226,
+        "hi": -266.8165573017988,
+        "share_b_better": 0.0,
+        "groups": 55710,
+        "n_boot": 2000,
+        "boot_seed": 0
+       },
+       "E_vs_DE": {
+        "gain": 367.29343479614624,
+        "rel_gain": 0.017815860853172612,
+        "lo": 286.2947721501429,
+        "hi": 446.02889213214104,
+        "share_b_better": 1.0,
+        "groups": 55710,
+        "n_boot": 2000,
+        "boot_seed": 0
+       },
+       "D_vs_DE": {
+        "gain": 10.671334269466746,
+        "rel_gain": 0.000526733131440487,
+        "lo": -12.477262845191737,
+        "hi": 33.98270624963825,
+        "share_b_better": 0.83,
+        "groups": 55710,
+        "n_boot": 2000,
+        "boot_seed": 0
+       }
+      }
+     },
+     "per_line": {
+      "motor": {
+       "total": {
+        "E": 13568.78746521123,
+        "D": 13376.830456028028,
+        "DE": 13368.425560333319
+       },
+       "null": 14459.325787575302,
+       "d2": {
+        "E": 0.06158920100751175,
+        "D": 0.07486485521181407,
+        "DE": 0.07544613374569509
+       },
+       "pairs": {
+        "D_vs_E": {
+         "gain": -191.95700918320074,
+         "rel_gain": -0.014349962034294811,
+         "lo": -266.67222652991364,
+         "hi": -116.21139369738444,
+         "share_b_better": 0.0,
+         "groups": 23722,
+         "n_boot": 2000,
+         "boot_seed": 0
+        },
+        "E_vs_DE": {
+         "gain": 200.36190487791166,
+         "rel_gain": 0.014766382434069069,
+         "lo": 136.86918617901927,
+         "hi": 266.44960079043216,
+         "share_b_better": 1.0,
+         "groups": 23722,
+         "n_boot": 2000,
+         "boot_seed": 0
+        },
+        "D_vs_DE": {
+         "gain": 8.404895694710916,
+         "rel_gain": 0.0006283174270870273,
+         "lo": -13.400577196145893,
+         "hi": 29.506738255912435,
+         "share_b_better": 0.778,
+         "groups": 23722,
+         "n_boot": 2000,
+         "boot_seed": 0
+        }
+       }
+      },
+      "buildings": {
+       "total": {
+        "E": 3469.447807404645,
+        "D": 3384.4369187955217,
+        "DE": 3378.7986414305374
+       },
+       "null": 3523.0482435198255,
+       "d2": {
+        "E": 0.015214221438429432,
+        "D": 0.039344146075564135,
+        "DE": 0.040944543508484754
+       },
+       "pairs": {
+        "D_vs_E": {
+         "gain": -85.01088860912343,
+         "rel_gain": -0.02511817789748545,
+         "lo": -118.5737028418348,
+         "hi": -50.46488723079202,
+         "share_b_better": 0.0,
+         "groups": 14299,
+         "n_boot": 2000,
+         "boot_seed": 0
+        },
+        "E_vs_DE": {
+         "gain": 90.64916597410792,
+         "rel_gain": 0.026127836764294466,
+         "lo": 56.70018788061275,
+         "hi": 125.06766095734386,
+         "share_b_better": 1.0,
+         "groups": 14299,
+         "n_boot": 2000,
+         "boot_seed": 0
+        },
+        "D_vs_DE": {
+         "gain": 5.638277364984484,
+         "rel_gain": 0.001665942518731026,
+         "lo": 0.5437902406997199,
+         "hi": 10.879497797907218,
+         "share_b_better": 0.987,
+         "groups": 14299,
+         "n_boot": 2000,
+         "boot_seed": 0
+        }
+       }
+      },
+      "contents": {
+       "total": {
+        "E": 3577.8571981972545,
+        "D": 3498.202995462899,
+        "DE": 3501.574834253128
+       },
+       "null": 3612.469003515621,
+       "d2": {
+        "E": 0.009581204789489539,
+        "D": 0.03163100027751642,
+        "DE": 0.030697611288725724
+       },
+       "pairs": {
+        "D_vs_E": {
+         "gain": -79.65420273435535,
+         "rel_gain": -0.022770034454165554,
+         "lo": -113.76667852351842,
+         "hi": -43.12409606046973,
+         "share_b_better": 0.0,
+         "groups": 17689,
+         "n_boot": 2000,
+         "boot_seed": 0
+        },
+        "E_vs_DE": {
+         "gain": 76.2823639441267,
+         "rel_gain": 0.021320684342170635,
+         "lo": 40.66950582074465,
+         "hi": 109.54324057593368,
+         "share_b_better": 1.0,
+         "groups": 17689,
+         "n_boot": 2000,
+         "boot_seed": 0
+        },
+        "D_vs_DE": {
+         "gain": -3.371838790228655,
+         "rel_gain": -0.0009638773949373047,
+         "lo": -6.3928256659172735,
+         "hi": -0.23916048111050853,
+         "share_b_better": 0.019,
+         "groups": 17689,
+         "n_boot": 2000,
+         "boot_seed": 0
+        }
+       }
+      }
+     }
+    },
+    "v2": {
+     "all_lines": {
+      "total": {
+       "E": 39973.960489158926,
+       "D": 39568.45404241525,
+       "DE": 39570.343747889085
+      },
+      "null": 42371.09263219126,
+      "d2": {
+       "E": 0.05657470681346377,
+       "D": 0.0661450629584831,
+       "DE": 0.06610046402660674
+      },
+      "pairs": {
+       "D_vs_E": {
+        "gain": -405.50644674366833,
+        "rel_gain": -0.010248225677682209,
+        "lo": -503.95187659879525,
+        "hi": -306.2958400527835,
+        "share_b_better": 0.0,
+        "groups": 55710,
+        "n_boot": 2000,
+        "boot_seed": 0
+       },
+       "E_vs_DE": {
+        "gain": 403.61674126983877,
+        "rel_gain": 0.01009699154976903,
+        "lo": 318.93864508064877,
+        "hi": 486.7751360288197,
+        "share_b_better": 1.0,
+        "groups": 55710,
+        "n_boot": 2000,
+        "boot_seed": 0
+       },
+       "D_vs_DE": {
+        "gain": -1.8897054738295402,
+        "rel_gain": -4.775787984549201e-05,
+        "lo": -37.0741200645804,
+        "hi": 35.99452414754913,
+        "share_b_better": 0.472,
+        "groups": 55710,
+        "n_boot": 2000,
+        "boot_seed": 0
+       }
+      }
+     },
+     "per_line": {
+      "motor": {
+       "total": {
+        "E": 26377.488059212763,
+        "D": 26166.43596773648,
+        "DE": 26156.79687868631
+       },
+       "null": 28519.60574872209,
+       "d2": {
+        "E": 0.07511035420275092,
+        "D": 0.0825105999612582,
+        "DE": 0.08284858110781046
+       },
+       "pairs": {
+        "D_vs_E": {
+         "gain": -211.05209147628176,
+         "rel_gain": -0.008065756136468545,
+         "lo": -288.62218623097516,
+         "hi": -138.4956748049585,
+         "share_b_better": 0.0,
+         "groups": 23722,
+         "n_boot": 2000,
+         "boot_seed": 0
+        },
+        "E_vs_DE": {
+         "gain": 220.69118052645092,
+         "rel_gain": 0.00836664886478343,
+         "lo": 159.0576416276948,
+         "hi": 282.00325570908893,
+         "share_b_better": 1.0,
+         "groups": 23722,
+         "n_boot": 2000,
+         "boot_seed": 0
+        },
+        "D_vs_DE": {
+         "gain": 9.63908905016911,
+         "rel_gain": 0.0003683760777376873,
+         "lo": -24.821208843688638,
+         "hi": 44.353502418553724,
+         "share_b_better": 0.6985,
+         "groups": 23722,
+         "n_boot": 2000,
+         "boot_seed": 0
+        }
+       }
+      },
+      "buildings": {
+       "total": {
+        "E": 6706.5974086856595,
+        "D": 6600.673904338222,
+        "DE": 6605.716992919012
+       },
+       "null": 6853.337917980356,
+       "d2": {
+        "E": 0.021411538589058865,
+        "D": 0.03686729250271559,
+        "DE": 0.0361314337662656
+       },
+       "pairs": {
+        "D_vs_E": {
+         "gain": -105.92350434743815,
+         "rel_gain": -0.01604737726519425,
+         "lo": -144.94686170649922,
+         "hi": -66.26728121930246,
+         "share_b_better": 0.0,
+         "groups": 14299,
+         "n_boot": 2000,
+         "boot_seed": 0
+        },
+        "E_vs_DE": {
+         "gain": 100.88041576664737,
+         "rel_gain": 0.01504196683045235,
+         "lo": 63.18022167700056,
+         "hi": 138.27803828662698,
+         "share_b_better": 1.0,
+         "groups": 14299,
+         "n_boot": 2000,
+         "boot_seed": 0
+        },
+        "D_vs_DE": {
+         "gain": -5.043088580790768,
+         "rel_gain": -0.0007640263182030932,
+         "lo": -12.12262666718888,
+         "hi": 2.6211492507311243,
+         "share_b_better": 0.1075,
+         "groups": 14299,
+         "n_boot": 2000,
+         "boot_seed": 0
+        }
+       }
+      },
+      "contents": {
+       "total": {
+        "E": 6889.875021260501,
+        "D": 6801.3441703405515,
+        "DE": 6807.829876283759
+       },
+       "null": 6998.148965488817,
+       "d2": {
+        "E": 0.015471797579940993,
+        "D": 0.028122407242086922,
+        "DE": 0.027195632751404908
+       },
+       "pairs": {
+        "D_vs_E": {
+         "gain": -88.53085091994838,
+         "rel_gain": -0.013016669749784994,
+         "lo": -126.18224443935786,
+         "hi": -49.77862967287489,
+         "share_b_better": 0.0,
+         "groups": 17689,
+         "n_boot": 2000,
+         "boot_seed": 0
+        },
+        "E_vs_DE": {
+         "gain": 82.04514497674046,
+         "rel_gain": 0.011908074489532659,
+         "lo": 45.528647778010196,
+         "hi": 118.46353144496376,
+         "share_b_better": 1.0,
+         "groups": 17689,
+         "n_boot": 2000,
+         "boot_seed": 0
+        },
+        "D_vs_DE": {
+         "gain": -6.485705943207887,
+         "rel_gain": -0.0009535917872662427,
+         "lo": -14.53463025457268,
+         "hi": 1.6977273368600727,
+         "share_b_better": 0.0505,
+         "groups": 17689,
+         "n_boot": 2000,
+         "boot_seed": 0
+        }
+       }
+      }
+     }
+    },
+    "trees_v1": {
+     "motor": {
+      "E": 295,
+      "DE": 26,
+      "D": 373
+     },
+     "buildings": {
+      "E": 16,
+      "DE": 4,
+      "D": 202
+     },
+     "contents": {
+      "E": 43,
+      "DE": 4,
+      "D": 220
+     }
+    },
+    "inputs": {
+     "motor": {
+      "D": [
+       "years_licensed",
+       "ncb_years",
+       "vehicle_value_group",
+       "vehicle_age",
+       "engine_size_cc",
+       "seats",
+       "voluntary_excess",
+       "compulsory_excess",
+       "missed_payments_12m",
+       "renewal_count",
+       "days_quote_to_inception",
+       "flood_zone",
+       "distance_to_river_km",
+       "elevation_m",
+       "year_built",
+       "bedrooms",
+       "licence_points",
+       "prior_claims_5y",
+       "household_size",
+       "years_at_address",
+       "customer_since_year",
+       "driver_age_band",
+       "body_type",
+       "transmission",
+       "vehicle_colour",
+       "fuel_type",
+       "driver_assist",
+       "cover_type",
+       "overnight_parking",
+       "vehicle_use",
+       "named_young_driver",
+       "channel",
+       "payment_method",
+       "new_business",
+       "urban_density",
+       "soil_type",
+       "property_type",
+       "roof_type",
+       "basement",
+       "trees_within_5m",
+       "listed_building",
+       "energy_rating",
+       "solar_panels",
+       "marital_status"
+      ],
+      "E": [
+       "years_licensed",
+       "ncb_years",
+       "vehicle_value_group",
+       "vehicle_age",
+       "engine_size_cc",
+       "seats",
+       "voluntary_excess",
+       "compulsory_excess",
+       "missed_payments_12m",
+       "renewal_count",
+       "days_quote_to_inception",
+       "flood_zone",
+       "distance_to_river_km",
+       "elevation_m",
+       "year_built",
+       "bedrooms",
+       "licence_points",
+       "prior_claims_5y",
+       "household_size",
+       "years_at_address",
+       "customer_since_year",
+       "driver_age_band",
+       "body_type",
+       "transmission",
+       "vehicle_colour",
+       "fuel_type",
+       "driver_assist",
+       "cover_type",
+       "overnight_parking",
+       "vehicle_use",
+       "named_young_driver",
+       "channel",
+       "payment_method",
+       "new_business",
+       "urban_density",
+       "soil_type",
+       "property_type",
+       "roof_type",
+       "basement",
+       "trees_within_5m",
+       "listed_building",
+       "energy_rating",
+       "solar_panels",
+       "marital_status",
+       "region"
+      ]
+     },
+     "buildings": {
+      "D": [
+       "sum_insured",
+       "days_unoccupied",
+       "voluntary_excess",
+       "compulsory_excess",
+       "missed_payments_12m",
+       "renewal_count",
+       "days_quote_to_inception",
+       "flood_zone",
+       "distance_to_river_km",
+       "elevation_m",
+       "year_built",
+       "bedrooms",
+       "licence_points",
+       "prior_claims_5y",
+       "household_size",
+       "years_at_address",
+       "customer_since_year",
+       "policyholder_age_band",
+       "construction_type",
+       "occupancy",
+       "smoke_alarms",
+       "accidental_damage_cover",
+       "mortgage",
+       "channel",
+       "payment_method",
+       "new_business",
+       "urban_density",
+       "soil_type",
+       "property_type",
+       "roof_type",
+       "basement",
+       "trees_within_5m",
+       "listed_building",
+       "energy_rating",
+       "solar_panels",
+       "marital_status"
+      ],
+      "E": [
+       "sum_insured",
+       "days_unoccupied",
+       "voluntary_excess",
+       "compulsory_excess",
+       "missed_payments_12m",
+       "renewal_count",
+       "days_quote_to_inception",
+       "flood_zone",
+       "distance_to_river_km",
+       "elevation_m",
+       "year_built",
+       "bedrooms",
+       "licence_points",
+       "prior_claims_5y",
+       "household_size",
+       "years_at_address",
+       "customer_since_year",
+       "policyholder_age_band",
+       "construction_type",
+       "occupancy",
+       "smoke_alarms",
+       "accidental_damage_cover",
+       "mortgage",
+       "channel",
+       "payment_method",
+       "new_business",
+       "urban_density",
+       "soil_type",
+       "property_type",
+       "roof_type",
+       "basement",
+       "trees_within_5m",
+       "listed_building",
+       "energy_rating",
+       "solar_panels",
+       "marital_status",
+       "region"
+      ]
+     },
+     "contents": {
+      "D": [
+       "sum_insured",
+       "high_value_items",
+       "voluntary_excess",
+       "compulsory_excess",
+       "missed_payments_12m",
+       "renewal_count",
+       "days_quote_to_inception",
+       "flood_zone",
+       "distance_to_river_km",
+       "elevation_m",
+       "year_built",
+       "bedrooms",
+       "licence_points",
+       "prior_claims_5y",
+       "household_size",
+       "years_at_address",
+       "customer_since_year",
+       "policyholder_age_band",
+       "tenure",
+       "security_level",
+       "accidental_damage_cover",
+       "works_from_home",
+       "lodgers",
+       "bicycle_cover",
+       "channel",
+       "payment_method",
+       "new_business",
+       "urban_density",
+       "soil_type",
+       "property_type",
+       "roof_type",
+       "basement",
+       "trees_within_5m",
+       "listed_building",
+       "energy_rating",
+       "solar_panels",
+       "marital_status"
+      ],
+      "E": [
+       "sum_insured",
+       "high_value_items",
+       "voluntary_excess",
+       "compulsory_excess",
+       "missed_payments_12m",
+       "renewal_count",
+       "days_quote_to_inception",
+       "flood_zone",
+       "distance_to_river_km",
+       "elevation_m",
+       "year_built",
+       "bedrooms",
+       "licence_points",
+       "prior_claims_5y",
+       "household_size",
+       "years_at_address",
+       "customer_since_year",
+       "policyholder_age_band",
+       "tenure",
+       "security_level",
+       "accidental_damage_cover",
+       "works_from_home",
+       "lodgers",
+       "bicycle_cover",
+       "channel",
+       "payment_method",
+       "new_business",
+       "urban_density",
+       "soil_type",
+       "property_type",
+       "roof_type",
+       "basement",
+       "trees_within_5m",
+       "listed_building",
+       "energy_rating",
+       "solar_panels",
+       "marital_status",
+       "region"
+      ]
+     }
+    }
+   },
+   "cost": {
+    "v1": {
+     "all_lines": {
+      "total": {
+       "E": 4899930.627338869,
+       "D": 4719474.637407734,
+       "DE": 4733705.567018566
+      },
+      "null": 5021296.655086942,
+      "d2": {
+       "E": 0.024170256426718106,
+       "D": 0.06010838203981439,
+       "DE": 0.0572742675494039
+      },
+      "pairs": {
+       "D_vs_E": {
+        "gain": -180455.9899311337,
+        "rel_gain": -0.0382364571897038,
+        "lo": -275451.3807989071,
+        "hi": -103152.66244536127,
+        "share_b_better": 0.0,
+        "groups": 55710,
+        "n_boot": 2000,
+        "boot_seed": 0
+       },
+       "E_vs_DE": {
+        "gain": 166225.06032030232,
+        "rel_gain": 0.033923961982820654,
+        "lo": 87089.25986878155,
+        "hi": 264364.1482908238,
+        "share_b_better": 1.0,
+        "groups": 55710,
+        "n_boot": 2000,
+        "boot_seed": 0
+       },
+       "D_vs_DE": {
+        "gain": -14230.929610831356,
+        "rel_gain": -0.0030153630868218796,
+        "lo": -28832.787274029284,
+        "hi": -1103.5382169757504,
+        "share_b_better": 0.017,
+        "groups": 55710,
+        "n_boot": 2000,
+        "boot_seed": 0
+       }
+      }
+     },
+     "per_line": {
+      "motor": {
+       "total": {
+        "E": 2355609.2891631257,
+        "D": 2330966.370251763,
+        "DE": 2339593.9373587016
+       },
+       "null": 2415416.852479901,
+       "d2": {
+        "E": 0.02476076262172766,
+        "D": 0.03496310880725739,
+        "DE": 0.03139123379194464
+       },
+       "pairs": {
+        "D_vs_E": {
+         "gain": -24642.918911362412,
+         "rel_gain": -0.010571975308550153,
+         "lo": -44125.435459429755,
+         "hi": -3477.5217903409134,
+         "share_b_better": 0.014,
+         "groups": 23722,
+         "n_boot": 2000,
+         "boot_seed": 0
+        },
+        "E_vs_DE": {
+         "gain": 16015.351804423986,
+         "rel_gain": 0.0067988150149101085,
+         "lo": -8074.681399064065,
+         "hi": 37097.49741119545,
+         "share_b_better": 0.9135,
+         "groups": 23722,
+         "n_boot": 2000,
+         "boot_seed": 0
+        },
+        "D_vs_DE": {
+         "gain": -8627.567106938428,
+         "rel_gain": -0.003701283389175015,
+         "lo": -18266.971776549064,
+         "hi": 606.3577678985268,
+         "share_b_better": 0.031,
+         "groups": 23722,
+         "n_boot": 2000,
+         "boot_seed": 0
+        }
+       }
+      },
+      "buildings": {
+       "total": {
+        "E": 1542950.8210361116,
+        "D": 1416575.7975367499,
+        "DE": 1421851.7760892939
+       },
+       "null": 1586666.9124966525,
+       "d2": {
+        "E": 0.027552154214744884,
+        "D": 0.10720026592869503,
+        "DE": 0.10387506987715434
+       },
+       "pairs": {
+        "D_vs_E": {
+         "gain": -126375.02349936152,
+         "rel_gain": -0.08921162123418461,
+         "lo": -217416.2848530608,
+         "hi": -51080.852326783555,
+         "share_b_better": 0.0,
+         "groups": 14299,
+         "n_boot": 2000,
+         "boot_seed": 0
+        },
+        "E_vs_DE": {
+         "gain": 121099.04494681732,
+         "rel_gain": 0.078485356302865,
+         "lo": 45793.0285040444,
+         "hi": 213251.83293817926,
+         "share_b_better": 1.0,
+         "groups": 14299,
+         "n_boot": 2000,
+         "boot_seed": 0
+        },
+        "D_vs_DE": {
+         "gain": -5275.978552544169,
+         "rel_gain": -0.0037244590523983563,
+         "lo": -15046.059056763337,
+         "hi": 3795.391621118559,
+         "share_b_better": 0.1375,
+         "groups": 14299,
+         "n_boot": 2000,
+         "boot_seed": 0
+        }
+       }
+      },
+      "contents": {
+       "total": {
+        "E": 1001370.5171396314,
+        "D": 971932.4696192218,
+        "DE": 972259.8535705706
+       },
+       "null": 1019212.8901103877,
+       "d2": {
+        "E": 0.017506031511065223,
+        "D": 0.0463891508338804,
+        "DE": 0.04606793830357836
+       },
+       "pairs": {
+        "D_vs_E": {
+         "gain": -29438.04752040978,
+         "rel_gain": -0.030288161410990673,
+         "lo": -54297.67918188875,
+         "hi": -5371.993515042622,
+         "share_b_better": 0.0085,
+         "groups": 17689,
+         "n_boot": 2000,
+         "boot_seed": 0
+        },
+        "E_vs_DE": {
+         "gain": 29110.663569061013,
+         "rel_gain": 0.029070821509918503,
+         "lo": 5681.299868454781,
+         "hi": 53562.27386821301,
+         "share_b_better": 0.992,
+         "groups": 17689,
+         "n_boot": 2000,
+         "boot_seed": 0
+        },
+        "D_vs_DE": {
+         "gain": -327.38395134876237,
+         "rel_gain": -0.00033683816682965946,
+         "lo": -3109.733243642044,
+         "hi": 2521.466705407518,
+         "share_b_better": 0.4045,
+         "groups": 17689,
+         "n_boot": 2000,
+         "boot_seed": 0
+        }
+       }
+      }
+     }
+    },
+    "v2": {
+     "all_lines": {
+      "total": {
+       "E": 9869500.96775076,
+       "D": 9518428.314716786,
+       "DE": 9561050.160688583
+      },
+      "null": 10089799.527154801,
+      "d2": {
+       "E": 0.02183378954271087,
+       "D": 0.056628599101525956,
+       "DE": 0.0524043480787888
+      },
+      "pairs": {
+       "D_vs_E": {
+        "gain": -351072.65303397435,
+        "rel_gain": -0.03688346872257978,
+        "lo": -467729.4168721889,
+        "hi": -252585.38347753385,
+        "share_b_better": 0.0,
+        "groups": 55710,
+        "n_boot": 2000,
+        "boot_seed": 0
+       },
+       "E_vs_DE": {
+        "gain": 308450.8070621763,
+        "rel_gain": 0.03125292839729785,
+        "lo": 209147.54315547683,
+        "hi": 418791.0761610136,
+        "share_b_better": 1.0,
+        "groups": 55710,
+        "n_boot": 2000,
+        "boot_seed": 0
+       },
+       "D_vs_DE": {
+        "gain": -42621.84597179809,
+        "rel_gain": -0.004477823918251179,
+        "lo": -72363.54143906917,
+        "hi": -16623.921035525982,
+        "share_b_better": 0.002,
+        "groups": 55710,
+        "n_boot": 2000,
+        "boot_seed": 0
+       }
+      }
+     },
+     "per_line": {
+      "motor": {
+       "total": {
+        "E": 4627786.201855933,
+        "D": 4569044.923176646,
+        "DE": 4581553.572168281
+       },
+       "null": 4758077.707727877,
+       "d2": {
+        "E": 0.027383223619977914,
+        "D": 0.03972881406375772,
+        "DE": 0.03709988495414707
+       },
+       "pairs": {
+        "D_vs_E": {
+         "gain": -58741.27867928722,
+         "rel_gain": -0.012856358312723071,
+         "lo": -85242.94108347793,
+         "hi": -32469.638302754927,
+         "share_b_better": 0.0,
+         "groups": 23722,
+         "n_boot": 2000,
+         "boot_seed": 0
+        },
+        "E_vs_DE": {
+         "gain": 46232.62968765157,
+         "rel_gain": 0.00999022592467871,
+         "lo": 19953.016506593078,
+         "hi": 73736.36819872503,
+         "share_b_better": 0.9995,
+         "groups": 23722,
+         "n_boot": 2000,
+         "boot_seed": 0
+        },
+        "D_vs_DE": {
+         "gain": -12508.648991635653,
+         "rel_gain": -0.0027376944639316363,
+         "lo": -23036.838359967296,
+         "hi": -3315.572102977518,
+         "share_b_better": 0.004,
+         "groups": 23722,
+         "n_boot": 2000,
+         "boot_seed": 0
+        }
+       }
+      },
+      "buildings": {
+       "total": {
+        "E": 3311588.4872643608,
+        "D": 3108378.434574155,
+        "DE": 3135985.043563351
+       },
+       "null": 3363504.582954483,
+       "d2": {
+        "E": 0.01543511965264499,
+        "D": 0.07585128608810354,
+        "DE": 0.06764359428679001
+       },
+       "pairs": {
+        "D_vs_E": {
+         "gain": -203210.05269020557,
+         "rel_gain": -0.06537493968878508,
+         "lo": -309083.6095496048,
+         "hi": -108344.81305417645,
+         "share_b_better": 0.0,
+         "groups": 14299,
+         "n_boot": 2000,
+         "boot_seed": 0
+        },
+        "E_vs_DE": {
+         "gain": 175603.44370101037,
+         "rel_gain": 0.05302695198281505,
+         "lo": 81358.32303384063,
+         "hi": 279113.35979634395,
+         "share_b_better": 1.0,
+         "groups": 14299,
+         "n_boot": 2000,
+         "boot_seed": 0
+        },
+        "D_vs_DE": {
+         "gain": -27606.608989195232,
+         "rel_gain": -0.008881353918213408,
+         "lo": -54209.8446782597,
+         "hi": -4778.437262945555,
+         "share_b_better": 0.0105,
+         "groups": 14299,
+         "n_boot": 2000,
+         "boot_seed": 0
+        }
+       }
+      },
+      "contents": {
+       "total": {
+        "E": 1930126.2786304653,
+        "D": 1841004.9569659836,
+        "DE": 1843511.544956951
+       },
+       "null": 1968217.2364724413,
+       "d2": {
+        "E": 0.019353025233253773,
+        "D": 0.06463325142627818,
+        "DE": 0.06335971924470873
+       },
+       "pairs": {
+        "D_vs_E": {
+         "gain": -89121.32166448154,
+         "rel_gain": -0.048409061218040075,
+         "lo": -122884.23861481954,
+         "hi": -55193.18028281157,
+         "share_b_better": 0.0,
+         "groups": 17689,
+         "n_boot": 2000,
+         "boot_seed": 0
+        },
+        "E_vs_DE": {
+         "gain": 86614.73367351433,
+         "rel_gain": 0.04487516419649622,
+         "lo": 54857.886731402614,
+         "hi": 119511.16813686871,
+         "share_b_better": 1.0,
+         "groups": 17689,
+         "n_boot": 2000,
+         "boot_seed": 0
+        },
+        "D_vs_DE": {
+         "gain": -2506.5879909672144,
+         "rel_gain": -0.0013615324507860783,
+         "lo": -8518.246291872416,
+         "hi": 3474.177925401668,
+         "share_b_better": 0.2125,
+         "groups": 17689,
+         "n_boot": 2000,
+         "boot_seed": 0
+        }
+       }
+      }
+     }
+    },
+    "trees_v1": {
+     "motor": {
+      "E": 31,
+      "DE": 22,
+      "D": 86
+     },
+     "buildings": {
+      "E": 8,
+      "DE": 3,
+      "D": 79
+     },
+     "contents": {
+      "E": 9,
+      "DE": 2,
+      "D": 97
+     }
+    },
+    "inputs": {
+     "motor": {
+      "D": [
+       "years_licensed",
+       "ncb_years",
+       "vehicle_value_group",
+       "vehicle_age",
+       "engine_size_cc",
+       "seats",
+       "voluntary_excess",
+       "compulsory_excess",
+       "missed_payments_12m",
+       "renewal_count",
+       "days_quote_to_inception",
+       "flood_zone",
+       "distance_to_river_km",
+       "elevation_m",
+       "year_built",
+       "bedrooms",
+       "licence_points",
+       "prior_claims_5y",
+       "household_size",
+       "years_at_address",
+       "customer_since_year",
+       "driver_age_band",
+       "body_type",
+       "transmission",
+       "vehicle_colour",
+       "fuel_type",
+       "driver_assist",
+       "cover_type",
+       "overnight_parking",
+       "vehicle_use",
+       "named_young_driver",
+       "channel",
+       "payment_method",
+       "new_business",
+       "urban_density",
+       "soil_type",
+       "property_type",
+       "roof_type",
+       "basement",
+       "trees_within_5m",
+       "listed_building",
+       "energy_rating",
+       "solar_panels",
+       "marital_status"
+      ],
+      "E": [
+       "years_licensed",
+       "ncb_years",
+       "vehicle_value_group",
+       "vehicle_age",
+       "engine_size_cc",
+       "seats",
+       "voluntary_excess",
+       "compulsory_excess",
+       "missed_payments_12m",
+       "renewal_count",
+       "days_quote_to_inception",
+       "flood_zone",
+       "distance_to_river_km",
+       "elevation_m",
+       "year_built",
+       "bedrooms",
+       "licence_points",
+       "prior_claims_5y",
+       "household_size",
+       "years_at_address",
+       "customer_since_year",
+       "driver_age_band",
+       "body_type",
+       "transmission",
+       "vehicle_colour",
+       "fuel_type",
+       "driver_assist",
+       "cover_type",
+       "overnight_parking",
+       "vehicle_use",
+       "named_young_driver",
+       "channel",
+       "payment_method",
+       "new_business",
+       "urban_density",
+       "soil_type",
+       "property_type",
+       "roof_type",
+       "basement",
+       "trees_within_5m",
+       "listed_building",
+       "energy_rating",
+       "solar_panels",
+       "marital_status",
+       "region"
+      ]
+     },
+     "buildings": {
+      "D": [
+       "sum_insured",
+       "days_unoccupied",
+       "voluntary_excess",
+       "compulsory_excess",
+       "missed_payments_12m",
+       "renewal_count",
+       "days_quote_to_inception",
+       "flood_zone",
+       "distance_to_river_km",
+       "elevation_m",
+       "year_built",
+       "bedrooms",
+       "licence_points",
+       "prior_claims_5y",
+       "household_size",
+       "years_at_address",
+       "customer_since_year",
+       "policyholder_age_band",
+       "construction_type",
+       "occupancy",
+       "smoke_alarms",
+       "accidental_damage_cover",
+       "mortgage",
+       "channel",
+       "payment_method",
+       "new_business",
+       "urban_density",
+       "soil_type",
+       "property_type",
+       "roof_type",
+       "basement",
+       "trees_within_5m",
+       "listed_building",
+       "energy_rating",
+       "solar_panels",
+       "marital_status"
+      ],
+      "E": [
+       "sum_insured",
+       "days_unoccupied",
+       "voluntary_excess",
+       "compulsory_excess",
+       "missed_payments_12m",
+       "renewal_count",
+       "days_quote_to_inception",
+       "flood_zone",
+       "distance_to_river_km",
+       "elevation_m",
+       "year_built",
+       "bedrooms",
+       "licence_points",
+       "prior_claims_5y",
+       "household_size",
+       "years_at_address",
+       "customer_since_year",
+       "policyholder_age_band",
+       "construction_type",
+       "occupancy",
+       "smoke_alarms",
+       "accidental_damage_cover",
+       "mortgage",
+       "channel",
+       "payment_method",
+       "new_business",
+       "urban_density",
+       "soil_type",
+       "property_type",
+       "roof_type",
+       "basement",
+       "trees_within_5m",
+       "listed_building",
+       "energy_rating",
+       "solar_panels",
+       "marital_status",
+       "region"
+      ]
+     },
+     "contents": {
+      "D": [
+       "sum_insured",
+       "high_value_items",
+       "voluntary_excess",
+       "compulsory_excess",
+       "missed_payments_12m",
+       "renewal_count",
+       "days_quote_to_inception",
+       "flood_zone",
+       "distance_to_river_km",
+       "elevation_m",
+       "year_built",
+       "bedrooms",
+       "licence_points",
+       "prior_claims_5y",
+       "household_size",
+       "years_at_address",
+       "customer_since_year",
+       "policyholder_age_band",
+       "tenure",
+       "security_level",
+       "accidental_damage_cover",
+       "works_from_home",
+       "lodgers",
+       "bicycle_cover",
+       "channel",
+       "payment_method",
+       "new_business",
+       "urban_density",
+       "soil_type",
+       "property_type",
+       "roof_type",
+       "basement",
+       "trees_within_5m",
+       "listed_building",
+       "energy_rating",
+       "solar_panels",
+       "marital_status"
+      ],
+      "E": [
+       "sum_insured",
+       "high_value_items",
+       "voluntary_excess",
+       "compulsory_excess",
+       "missed_payments_12m",
+       "renewal_count",
+       "days_quote_to_inception",
+       "flood_zone",
+       "distance_to_river_km",
+       "elevation_m",
+       "year_built",
+       "bedrooms",
+       "licence_points",
+       "prior_claims_5y",
+       "household_size",
+       "years_at_address",
+       "customer_since_year",
+       "policyholder_age_band",
+       "tenure",
+       "security_level",
+       "accidental_damage_cover",
+       "works_from_home",
+       "lodgers",
+       "bicycle_cover",
+       "channel",
+       "payment_method",
+       "new_business",
+       "urban_density",
+       "soil_type",
+       "property_type",
+       "roof_type",
+       "basement",
+       "trees_within_5m",
+       "listed_building",
+       "energy_rating",
+       "solar_panels",
+       "marital_status",
+       "region"
+      ]
+     }
+    }
+   }
+  }
+ },
+ "meta": {
+  "created": "2026-10-27T19:52:09",
+  "git_commit": "1acf18e",
+  "seeds": [
+   11,
+   22,
+   33
+  ],
+  "versions": {
+   "python": "3.14.5",
+   "numpy": "2.5.3",
+   "pandas": "3.0.5",
+   "scipy": "1.18.1",
+   "sklearn": "1.9.1",
+   "lightgbm": "4.7.0",
+   "xgboost": "3.4.1",
+   "catboost": "1.2.10"
+  }
+ }
+}
