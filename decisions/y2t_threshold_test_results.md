@@ -45,6 +45,27 @@ This departs from the pre-registered rule, and it is stated as such for the actu
 
 The actuary chose 20 on 27 October 2026 (Y2-T brief round 2, finalized; register Y2-T, exchange D35). `code_levels_max` is dated in `decisions/thresholds_part2.md`.
 
-## Part 1 run
+## Part 1 run (completed 27 October, after the decision)
 
-The full Part 1 run (two scorings, two targets, seven candidates, nine-setting search on about 830,000 motor rows) was restarted on 12 threads on the actuary's instruction. Its first two motor candidates took 22 minutes and about 4 hours. At that pace the run needs several days, beyond the Part 2 deadline. It adds no result to this file.
+The first Part 1 run was slow because of a fault in the fold split, not the model fitting: scikit-learn's grouped split is quadratic on text customer ids, about 20 minutes per call on one core at 400,000 motor rows. `make_folds` now passes integer codes in sorted id order. That gives exactly the same folds (tested, and checked on real customer ids on both markets with all three seeds), and the run finished in 36 minutes as four parallel workers. The rerun's motor claim-count unit matches the old run's log line for line (same setting and trees for all seven candidates), and the emerging results recompute identically.
+
+Part 1's codes: make_model 300 levels, occupation 20, region 12, vehicle colour 8, the rest 7 or fewer. Summed over the three lines; extra deviance over the best candidate, 95% interval; cost is capped cost (Tweedie 1.5).
+
+| Threshold | Encoded (motor) | A count | A cost | B count | B cost |
+|---|---|---|---|---|---|
+| 4 | every code over 4 levels | +28 [−40, +99] | +69,927 [+560, +144,439] | +10 [−27, +48] | best |
+| 5 | make_model, occupation, region, colour, energy rating | +40 [−29, +106] | +4,541 [−43,927, +53,633] | +30 [−13, +72] | +65,325 [+18,593, +109,582] |
+| 7 | make_model, occupation, region, colour | +36 [−30, +100] | +22,516 [−1,532, +43,408] | best | +10,459 [−33,162, +55,194] |
+| 11 | make_model, occupation, region | +9 [−58, +72] | best | +20 [−7, +45] | +8,403 [−37,561, +56,916] |
+| 20 | make_model only; occupation and region raw | best | +141,386 [+60,091, +220,561] | +23 [−31, +71] | +88,928 [+27,466, +153,860] |
+| R0 | make_model left out | +71 [+32, +111] | +132,142 [+53,194, +212,801] | +48 [−7, +96] | +58,125 [−111, +122,650] |
+| 300 | nothing; make_model raw | +687 [+566, +802] | +528,866 [+420,940, +647,703] | +506 [+392, +618] | +330,257 [+248,025, +413,356] |
+
+How to read this: in scoring A on capped cost, threshold 20 leaves occupation (20 levels) and region (12) raw. Its deviance is 141,386 above threshold 11, which encodes them, and the interval (60,091 to 220,561) is clear of zero. In scoring B the same comparison gives +88,928 against the best and +80,525 against threshold 11.
+
+- **make_model raw is clearly worse in all four**, as in the emerging market.
+- **On claim count, 4 to 20 cannot be told apart**, as in the emerging market.
+- **On capped cost, leaving occupation (20 levels) and region (12) raw hurts in both scorings.** Threshold 20 is no better than leaving make_model out (R0). Encoding them (threshold 11 or lower) is best or within reach. Encoding the codes of 7 levels or fewer as well adds nothing consistent: 4 is best in B and clearly worse in A.
+- **Pre-registered rule on Part 1:** picks 4, 5, 4 and 4 (A count, A cost, B count, B cost).
+
+What this means for the emerging market: none of its codes has between 9 and 79 levels, so any threshold from 8 to 79 gives the same model as 20 (make_model and occupation encoded, every other code raw). Part 1's cost evidence supports that model: raw codes of 7 or 8 levels did no harm, and codes of 12 levels or more did. It contradicts one part of the reason recorded for the value 20, that "occupation raw at 20 levels passed in Part 1" (PM2m). On this test it did not, on capped cost.

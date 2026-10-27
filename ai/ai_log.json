@@ -503,6 +503,20 @@
       "decision": "Actuary chose (a), code_levels_max 20, on the Y2-T brief round 2 and finalized it on 2026-10-27, with no new note. This sets aside the pre-registered selection rule, which picked 4, in favour of the AI's recommendation of 20: the lowest threshold that encodes exactly the codes where raw entry was shown to hurt.",
       "effect": "code_levels_max dated 2026-10-27 in decisions/thresholds_part2.md; register Y2-T decided. In the emerging market, make_model and occupation enter the trees as credibility-weighted values and every other category enters raw. The departure from the pre-registered rule is recorded in decisions/y2t_threshold_test_results.md.",
       "section": "4.3"
+    },
+    {
+      "id": "D36",
+      "stage": "Part 2 build: Y2 tree inputs, Part 1 threshold evidence",
+      "role": "Modeller",
+      "proposed_by": "Actuary",
+      "question": "Actuary, on the AI's recommendation to stop the slow Part 1 threshold run: \"can we not spin up multiple sessions or use the PC to run\"",
+      "ai_answer": "More sessions would share the same PC. Profiling showed the run used one core: one thread had 12.7 of 13.8 CPU-hours. The cause was the customer-grouped fold split, quadratic on text customer ids (about 20 minutes per call at 400,000 motor rows), not the model fitting.",
+      "challenge": "The AI had diagnosed the run as slow because of the model search and recommended stopping it; the actuary's question led to the profile that found the real cause.",
+      "test": "make_folds now passes integer codes in sorted id order. Folds checked identical to scikit-learn's on synthetic ids (unit test) and on real Part 1 and emerging customer ids, three seeds. The Part 1 run was split into twelve units and run as four parallel workers; the rerun's motor claim-count unit was compared with the old run's log, and the emerging results recomputed.",
+      "result": "Run finished in 36 minutes instead of several days. Motor claim count matches the old log line for line; emerging results identical. Part 1: make_model raw clearly worse in all four scorings; claim count 4 to 20 tie; on capped cost, occupation (20 levels) and region (12) raw are worse than encoded in both scorings (threshold 20 against 11: +141,386 [+60,091, +220,561] in A). This contradicts the recorded reason for 20, though in the emerging market any value from 8 to 79 gives the same model.",
+      "decision": "Pending: the actuary decides Y2-T2 (keep 20 with a corrected reason, or set 11).",
+      "effect": "src/validation.py make_folds in linear time (same folds); scripts/y2t_threshold_test.py Part 1 by unit; Part 1 results in decisions/y2t_threshold_test_results.md; register Y2-T2 opened.",
+      "section": "4.3"
     }
   ]
 }
