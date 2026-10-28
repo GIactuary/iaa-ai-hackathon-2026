@@ -531,6 +531,20 @@
       "decision": "Actuary: \"Y2-T2 (b): set code_levels_max to 11, the value Part 1's cost evidence supports. Same emerging model.\"",
       "effect": "code_levels_max 11 in decisions/thresholds_part2.md (dated 2026-10-27); register Y2-T2 decided and Y2-T annotated; results file and spec updated.",
       "section": "4.3"
+    },
+    {
+      "id": "D38",
+      "stage": "Part 2 build: decisions before the first run",
+      "role": "Appointed actuary",
+      "proposed_by": "AI",
+      "question": "Fifteen open Part 2 decisions on one brief (https://claude.ai/artifact/1iVTKSXB7d6atT6XvrfWkf, round 1), asked for by the actuary: \"If you need any decision, put all the information that I need to understand to make this decision in an HTML artifact and surface to me\".",
+      "ai_answer": "Recommended, card by card: Part 1's risk shape with the emerging level and emerging-only additions (P2-C (b)); out-of-time and cross-validation tests with the interval on cross-validation (P2-V); a 15% hold-out opened once then refit on all rows (P2-H); Part 1's W2 adapted and drop-one tested (P2-G); gender in motor only, where it passes (P2-S); Part 1 caps with a mixed excess-loss factor (P2-L); Part 1's trends (P2-T); Part 1's delay curves with emerging's peril mix (P2-R); the other thresholds re-confirmed (P2-TH); new business as a modelled factor (P2-N); Part 1's blank treatment (P2-B); occupation trimmed and case-folded (P2-O); full tuning (P2-F); an early check file then the final file chosen on own validation (P2-P); ask the host on the comparison-site commission (P2-E).",
+      "challenge": "P2-E: \"I'm not asking anything on the forum. Can we make any decision here?\" P2-G: \"Here just for what we learned from our findings offered after we submitted the part one submission. If you have already done that, it's good.\"",
+      "test": "Evidence run before the brief, design committed first (decisions/part2_decision_evidence_design.md): carry-over test E, D, DE out of time and by cross-validation; controlled new-business and gender relativities; large losses by peril; reporting speed; one-year change. One deviation found and fixed before the brief: region had been left out of E and DE.",
+      "result": "Part 1's model beat emerging-only on risk shape in every line, target and test (count out of time +357 [267, 446]); emerging adjustment added nothing. Motor new business 1.16 emerging against 1.15 Part 1 with factors held; motor gender 1.33 [1.26, 1.39]; motor bodily injury tail lighter than Part 1's (3 against 9.4 above the cap).",
+      "decision": "The actuary chose the recommendation on 14 cards (P2-C, P2-V, P2-H, P2-G, P2-S, P2-L, P2-T, P2-R, P2-TH, P2-N, P2-B, P2-O, P2-F, P2-P) and asked that P2-E be decided without the forum. The AI found none of the 20 reference policies is sold through a comparison site and put P2-E back with options (a) 10%, (b) 13.3%, (c) 20%.",
+      "effect": "Register P2 items decided except P2-E; 31 thresholds dated for the emerging market in decisions/thresholds_part2.md (tele_quantiles left undated, not used). The Part 2 build follows these settings.",
+      "section": "4.3"
     }
   ]
 }
