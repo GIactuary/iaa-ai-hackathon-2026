@@ -123,3 +123,5 @@ Outputs: `scripts/part2_referral.py`, `outputs/markets/part2/part2_referrals.jso
 Pooled D², K0 against I: H1 0.1508 against 0.1496; H2 0.1222 against 0.1154. The motor premium against K9+K7b: +635 and −1,792. Both pooled intervals include zero. Under the reading rule written before opening, I is worse than K0 in both, so the actuary decides before the final file is built (brief `docs/reviews/part2-holdout-decisions.html`, cards H-F and H-R).
 
 **Referral result (28 October)** (`outputs/markets/part2/part2_referrals.json`). 10 of 209,063 2025 rows: 1 R1 (contents sum insured 117,400, 1.26 times its segment maximum), 9 R2 (5 buildings in a property type and bedrooms segment of 42 training rows, 4 contents in a tenure and bedrooms segment of 39). No motor row is referred.
+
+**Decided (28 October, exchange D44).** H-F (b): the final file is the frozen model with buildings at the check file's shape, `part2_v2_nb-cred_wx-row_mprem_bchk_all.csv`. H-R (a): the 10 referred rows keep the model price and are listed for underwriting review.
