@@ -60,6 +60,17 @@ class Line:
         self.Hd, self.Ht = hazard(dv, w_dv, (2021, 2022, 2023, 2024)), hazard(tr, w_em, market.FIT_YEARS)
         # excess factor per peril (P2-L (a)): motor its own (on the fitting rows of each split), property Part 1's
         self.dev_ratio = {p: float(dv[f"cost_{p}"].sum() / max(dv[f"costc_{p}"].sum(), 1e-9)) for p in self.perils}
+        # own-year weather deviations; a row's normal is the other experience year (never its own weather)
+        self.trx = wx.normals_leave_own_year_out(tr, w_em, market.FIT_YEARS, np.zeros(len(tr), bool))
+        self.h = None                                                    # prior-year claims band, set in main
+
+    def year_factor(self, b: dict, fit: np.ndarray) -> np.ndarray:
+        cc = {p: float(self.tr.loc[fit, f"costc_{p}"].sum()) for p in self.perils}
+        tot = sum(cc.values())
+        f = np.ones(len(self.tr))
+        for p, (wv, coef) in b.items():
+            f += cc[p] / tot * (np.exp(coef * self.trx[f"dev_{wv}"].fillna(0.0).to_numpy()) - 1)
+        return f
 
     def ecp(self, p):
         return self.e * self.tr[f"completion_{p}"].to_numpy(float)
@@ -68,6 +79,29 @@ class Line:
         if self.line == "motor":
             return float(self.tr.loc[fit, f"cost_{p}"].sum() / max(self.tr.loc[fit, f"costc_{p}"].sum(), 1e-9))
         return self.dev_ratio[p]
+
+
+P1_ELASTICITIES = {l: {p: (e["variable"], float(e["b"])) for p, e in d["final"]["elasticities"].items()}
+                   for l, d in __import__("json").loads((ROOT / "outputs" / "phase5_k3k4.json").read_text(encoding="utf-8"))["phase5_k3k4"]["by_line"].items()}
+WIDE_WEATHER = {"motor": {"glass_hail": "hail_days"},
+                "buildings": {"storm": "wind_exposure_index", "subsidence": "dry_summer_index", "escape_of_water": "freezing_days",
+                              "fire": "wildfire_index", "flood": "rainfall_mm"},
+                "contents": {"escape_of_water": "freezing_days", "flood": "rainfall_mm"}}
+
+
+def elasticities(L, fit: np.ndarray, mapping: dict) -> dict:
+    """As src/weather.elasticities, on the given fitting rows and peril-to-measure mapping."""
+    from sklearn.linear_model import PoissonRegressor
+    out = {}
+    d0 = L.trx[fit]
+    for peril, wv in mapping.items():
+        d = d0[["exposure", f"completion_{peril}", f"n_{peril}", f"dev_{wv}"]].dropna()
+        ec = (d["exposure"] * d[f"completion_{peril}"]).to_numpy()
+        x = d[[f"dev_{wv}"]].to_numpy()
+        sd = float(x.std()) or 1.0
+        m = PoissonRegressor(alpha=0.0, max_iter=1000, tol=1e-8).fit(x / sd, d[f"n_{peril}"].to_numpy() / ec, sample_weight=ec)
+        out[peril] = (wv, float(m.coef_[0] / sd))
+    return out
 
 
 def rate_of(m: TweedieGLM, L: Line, F: pd.DataFrame) -> np.ndarray:
@@ -137,6 +171,8 @@ def by_peril(L: Line, rates: dict, fit: np.ndarray, uncapped: set) -> np.ndarray
 
 def layer(L: Line, mu: np.ndarray, F: pd.DataFrame, fit: np.ndarray) -> np.ndarray:
     y = L.tr["costc"].to_numpy(float)
+    if all(F.loc[fit, c].nunique() < 2 for c in F.columns):        # nothing to fit (history out of time: 2023 has no prior year)
+        return mu
     m = TweedieGLM().fit(F[fit], y[fit], mu[fit])
     return mu * m.rate(F)
 
@@ -157,6 +193,21 @@ def candidates(L: Line, P1: dict, fit: np.ndarray, stage: dict) -> dict:
     c["K4_blend"] = blend
     c["K4_tree_contents"] = c["tree"] if L.line == "contents" else inc
     c["K5_gender"] = layer(L, inc, pd.DataFrame({"gender": cat(L.tr["gender"])}), fit) if L.line == "motor" else inc
+    # round 2
+    yf_a = L.year_factor(P1_ELASTICITIES[L.line], fit)
+    yf_b = L.year_factor(elasticities(L, fit, WIDE_WEATHER[L.line]), fit)
+    c["K7a_weather_part1"] = inc * yf_a
+    c["K7b_weather_emerging"] = inc * yf_b
+    c["K8_history"] = layer(L, inc, pd.DataFrame({"h": L.h}), fit)
+    best = {"motor": "K0", "buildings": "K3", "contents": "tree"}[L.line]
+    k9 = c[best]
+    if L.line == "motor":
+        k9 = layer(L, k9, pd.DataFrame({"gender": cat(L.tr["gender"])}), fit)
+    c["K9"] = k9
+    c["K9+K7b"] = k9 * yf_b
+    c["K9+K8"] = layer(L, k9, pd.DataFrame({"h": L.h}), fit)
+    c["K9+K7b+K8"] = layer(L, k9 * yf_b, pd.DataFrame({"h": L.h}), fit)
+    c["K10_nb"] = layer(L, k9 * yf_b, pd.DataFrame({"nb": cat(L.tr["new_business"])}), fit)
     return c
 
 
@@ -231,7 +282,27 @@ def main():
             P1[line] = part1_fits(lines[line])
             cache.write_bytes(pickle.dumps(P1[line]))
         log("Part 1 fits", line)
+    # prior-year claims across lines, fitting rows only (hold-out customers have no fitting rows)
+    allr = pd.concat([L.tr[["customer_id", "yr", "n_claims"]] for L in lines.values()])
+    cy = allr.groupby(["customer_id", "yr"])["n_claims"].sum()
+    for L in lines.values():
+        prev = pd.MultiIndex.from_arrays([L.tr["customer_id"], L.tr["yr"] - 1])
+        n = pd.Series(cy.reindex(prev).to_numpy(), index=L.tr.index)
+        L.h = np.where(n.isna(), "none", np.where(n >= 2, "2+", n.fillna(0).astype(int).astype(str)))
     res, inc = {}, "K0"
+    if "round2" in sys.argv:
+        S = score(lines, P1, {"incumbent": inc})
+        for cand in ("K7a_weather_part1", "K7b_weather_emerging", "K8_history", "K9", "K9+K7b", "K9+K8", "K9+K7b+K8"):
+            cmp = compare(S, inc, cand)
+            res[cand] = dict(against=inc, **cmp)
+            log(cand, "against", inc, {k: (round(x["gain"]), round(x["lo"]), round(x["hi"]), {l: round(g) for l, g in x["per_line"].items()}) for k, x in cmp.items() if k != "passes"}, "passes" if cmp["passes"] else "fails")
+        cmp = compare(S, "K9+K7b", "K10_nb")
+        res["K10_nb"] = dict(against="K9+K7b", **cmp)
+        log("K10_nb against K9+K7b", {k: (round(x["gain"]), round(x["lo"]), round(x["hi"]), {l: round(g) for l, g in x["per_line"].items()}) for k, x in cmp.items() if k != "passes"}, "passes" if cmp["passes"] else "fails")
+        res["d2"] = d2(S)
+        log("D2", {k: {n: round(x, 4) for n, x in d.items()} for k, d in res["d2"].items()})
+        write_evidence({"part2_candidates_round2": res}, market.OUT / "part2_candidates_round2.json")
+        return
     for cand in ("K1", "K2", "K3"):
         S = score(lines, P1, {"incumbent": inc})
         cmp = compare(S, inc, cand)
