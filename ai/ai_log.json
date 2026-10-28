@@ -573,6 +573,20 @@
       "decision": "Actuary chose M2-W (a), M2-N (b), M2-B (a) on 2026-10-28, with no notes.",
       "effect": "Improved file part2_v2_nb-cred_wx-row built by scripts/part2_model_v2.py; Y4 becomes a row-level weather factor for Part 2; the paired check (part2_v2_nb-none_wx-row against part2_v2_nb-cred_wx-row) is run with the rule written before it.",
       "section": "4.3"
+    },
+    {
+      "id": "D41",
+      "stage": "Part 2 build: paired public-board check of the new-business factor (M2-B)",
+      "role": "Appointed actuary",
+      "proposed_by": "AI",
+      "question": "One paired check, rule written before upload (decisions/part2_m2_design.md): keep the credibility-weighted new-business factor unless its public score is lower than the unadjusted file's.",
+      "ai_answer": "The two files differ only in the new-business factor; the paired difference is mostly the 2025 new-business level, which the 2024 tests cannot measure.",
+      "challenge": "The actuary also uploaded the full-emerging-figure variant, outside the planned pair.",
+      "test": "Public leaderboard, about a third of the 2025 test rows.",
+      "result": "Credibility-weighted 0.15312; no adjustment 0.15080; full emerging figure 0.14646; check file 0.14266. Milestone 2's shape and weather add +0.0081; the credibility factor a further +0.0023.",
+      "decision": "Under the pre-written rule the credibility-weighted factor stays. No further variant is chosen on the public board.",
+      "effect": "part2_v2_nb-cred_wx-row is the incumbent file; the write-up reports all three scores and the rule.",
+      "section": "4.3"
     }
   ]
 }

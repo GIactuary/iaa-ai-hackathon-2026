@@ -44,3 +44,5 @@ Round 2 (`outputs/markets/part2/part2_candidates_round2.json`): K9+K7b passes P2
 ## Paired public-board check (M2-B (a)), rule written before either file is uploaded
 
 28 October. Two files differ only in the new-business factor: `part2_v2_nb-none_wx-row.csv` (no adjustment) and `part2_v2_nb-cred_wx-row.csv` (M2-N (b)). The actuary uploads both. **Rule:** keep the credibility-weighted factor unless its public score is lower than the unadjusted file's. Whatever the result, no further variant is chosen on the public board; the comparison and its outcome are reported in the write-up.
+
+**Result (28 October).** Public scores: credibility-weighted 0.15312, no adjustment 0.15080, and a third file the actuary also uploaded, the full emerging figure, 0.14646 (the check file: 0.14266). Under the rule, the credibility-weighted factor stays. The ordering is the one credibility theory predicts: moving all the way to the thin emerging figure loses, ignoring it loses less, the credibility weight scores best. No further choice is made on the public board.
