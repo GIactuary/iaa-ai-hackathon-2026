@@ -559,6 +559,20 @@
       "decision": "Actuary: \"Yes, go with it.\" P2-E (d): the write-up states the rate is not given and not needed; no rate is assumed.",
       "effect": "Register P2-E decided; every card on the Part 2 decisions brief is now decided.",
       "section": "4.3"
+    },
+    {
+      "id": "D40",
+      "stage": "Part 2 build: milestone 2, improving the shape and the 2025 level",
+      "role": "Appointed actuary",
+      "proposed_by": "AI",
+      "question": "After the check file scored 0.14266 (24th; leader 0.17303), the actuary: \"I want to get as close as possible, and I want you to give you the best analytical work.\" Three decisions on the milestone 2 brief (https://claude.ai/artifact/5B3nntbwiuU2oH9F6z17gv).",
+      "ai_answer": "Ten candidates tested under P2-V with the design written before each round. Only K9 plus row-level weather passes. Separately, the 2025 book is 76% new business and the new-business relativity is off in contents (frequency 1.37 [1.10, 1.66]), which the 2024 tests cannot measure. Recommended: adopt the combination with row weather (reopens Y4), a credibility-weighted new-business factor, and one paired public-board check of that factor.",
+      "challenge": "The actuary had questioned whether the check file should be submitted at all (\"I don't want to be like so low in the leaderboard\"); the AI explained it was a check of format and level, not the model, and that only the selected final file counts.",
+      "test": "decisions/part2_m2_design.md rounds 1 to 3; scripts/part2_candidates.py; the gap diagnostic (premium, contacts, seasonality, level) and the new-business check against the model.",
+      "result": "K9 plus row weather: out of time +7,498, cross-validation +37,526 [298, 76,858], pooled D2 0.1402 to 0.1442. Fails: by peril, frequency-severity alone, history (hurts), Part 1 weather responses, the tree alone. Credibility factors: motor 1.125, buildings 0.914, contents 1.118.",
+      "decision": "Actuary chose M2-W (a), M2-N (b), M2-B (a) on 2026-10-28, with no notes.",
+      "effect": "Improved file part2_v2_nb-cred_wx-row built by scripts/part2_model_v2.py; Y4 becomes a row-level weather factor for Part 2; the paired check (part2_v2_nb-none_wx-row against part2_v2_nb-cred_wx-row) is run with the rule written before it.",
+      "section": "4.3"
     }
   ]
 }

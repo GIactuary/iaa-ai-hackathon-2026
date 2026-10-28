@@ -40,3 +40,7 @@ Round 2 adds candidates that bring information the incumbent does not use. Each 
 Round 2 (`outputs/markets/part2/part2_candidates_round2.json`): K9+K7b passes P2-V against K0 (V1 +7,498; V2 +37,526 [298, 76,858]); history (K8) fails and hurts in V2. A direct check after round 2: emerging new business against renewal, actual over the Part 1 base's expected, is 1.37 [1.10, 1.66] on contents frequency (Part 1's W2 dropped new business from contents, L8), 0.97 on motor frequency, 0.88 on buildings. The test book is 76% new business against 14% in the scored 2024 rows, so this matters far more to the 2025 level than the 2024 test can show.
 
 11. **K10, new business layer:** a new-business factor fitted on emerging fitting rows on top of K9+K7b, per line, tested against K9+K7b under P2-V. Reported with each line's fitted relativity.
+
+## Paired public-board check (M2-B (a)), rule written before either file is uploaded
+
+28 October. Two files differ only in the new-business factor: `part2_v2_nb-none_wx-row.csv` (no adjustment) and `part2_v2_nb-cred_wx-row.csv` (M2-N (b)). The actuary uploads both. **Rule:** keep the credibility-weighted factor unless its public score is lower than the unadjusted file's. Whatever the result, no further variant is chosen on the public board; the comparison and its outcome are reported in the write-up.
