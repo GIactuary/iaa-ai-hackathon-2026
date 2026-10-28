@@ -1,0 +1,46 @@
+{
+ "part2_referrals": {
+  "motor:vehicle_value_group": {
+   "r1": 0,
+   "r2": 0,
+   "test_rows": 90521,
+   "training_rows": 1027251
+  },
+  "motor:engine_size_cc": {
+   "r1": 0,
+   "r2": 0,
+   "test_rows": 90521,
+   "training_rows": 1027251
+  },
+  "buildings:sum_insured": {
+   "r1": 0,
+   "r2": 5,
+   "test_rows": 52295,
+   "training_rows": 735173
+  },
+  "contents:sum_insured": {
+   "r1": 1,
+   "r2": 4,
+   "test_rows": 66247,
+   "training_rows": 756183
+  },
+  "referred_rows": 10,
+  "r3": "not applicable: one family per line, no blend to disagree with",
+  "treatment": "model price stands; rows listed for underwriting review (Part 1 Q2 (a), for the actuary to confirm)"
+ },
+ "meta": {
+  "created": "2026-10-28T13:53:14",
+  "git_commit": "635de73",
+  "seeds": null,
+  "versions": {
+   "python": "3.14.5",
+   "numpy": "2.5.3",
+   "pandas": "3.0.5",
+   "scipy": "1.18.1",
+   "sklearn": "1.9.1",
+   "lightgbm": "4.7.0",
+   "xgboost": "3.4.1",
+   "catboost": "1.2.10"
+  }
+ }
+}

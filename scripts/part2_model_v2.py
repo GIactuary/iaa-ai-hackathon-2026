@@ -12,7 +12,8 @@ Shape by line (each fitted on Part 1 rows unless stated, P2-C (b)):
 Level: 2025 indication per line at normal weather, Part 1's trends (P2-T), excess factor mixed (P2-L), applied to the
 shape's 2024 level at normal weather. New business (--nb none | cred | full): the factor of M2-N, with renewals
 rebalanced so each line's total on the fitting rows is unchanged.
-Run: MARKET=part2 .venv/Scripts/python.exe -I scripts/part2_model_v2.py --nb cred --weather row [--all]
+--buildings-check: buildings at the check file's shape (hold-out option, decisions/part2_m2_design.md).
+Run: MARKET=part2 .venv/Scripts/python.exe -I scripts/part2_model_v2.py --nb cred --weather row [--motor-premium] [--buildings-check] [--all]
 """
 from __future__ import annotations
 
@@ -37,6 +38,7 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT = market.OUT
 FULL_CRED = 1082.0          # classical limited-fluctuation standard (M2-N (b))
 MOTOR_PREMIUM = False       # set by --motor-premium
+BUILDINGS_CHECK = False     # set by --buildings-check: the check file's buildings shape (K0), weather one factor per line
 
 
 def glm_rate(m, L, F):
@@ -60,6 +62,9 @@ def shapes(L: Line, te: pd.DataFrame, w_em: pd.DataFrame, fit: np.ndarray) -> tu
         g = cat(L.tr["gender"])
         m = TweedieGLM().fit(pd.DataFrame({"gender": g})[fit], L.tr.loc[fit, "costc"].to_numpy(float), (r_tr * ec)[fit])
         return r_tr * m.rate(pd.DataFrame({"gender": g})), r_te * m.rate(pd.DataFrame({"gender": cat(te["gender"])}))
+    if line == "buildings" and BUILDINGS_CHECK:
+        m = TweedieGLM().fit(L.Fd, dv["costc"], ecd)
+        return glm_rate(m, L, L.Ft), glm_rate(m, L, Fte)
     if line == "buildings":
         Ht = hazard(te, w_em, market.FIT_YEARS)
         r_tr, r_te = np.zeros(len(L.tr)), np.zeros(len(te))
@@ -99,15 +104,15 @@ def shapes(L: Line, te: pd.DataFrame, w_em: pd.DataFrame, fit: np.ndarray) -> tu
     return m.rate(Xt), m.rate(Xe)
 
 
-def run(nb_mode: str, weather_mode: str, all_rows: bool, motor_premium: bool = False) -> None:
-    global MOTOR_PREMIUM
-    MOTOR_PREMIUM = motor_premium
+def run(nb_mode: str, weather_mode: str, all_rows: bool, motor_premium: bool = False, buildings_check: bool = False) -> None:
+    global MOTOR_PREMIUM, BUILDINGS_CHECK
+    MOTOR_PREMIUM, BUILDINGS_CHECK = motor_premium, buildings_check
     th = load_thresholds()
     p1 = part1_level()
     data = build.build_all()
     w_em, w_dv = dr.read_raw("weather"), dr.read_raw("weather", ROOT / "data" / "raw_part2" / "developed")
     norms = wx.normals(w_em, market.FIT_YEARS)
-    tag = f"part2_v2_nb-{nb_mode}_wx-{weather_mode}" + ("_mprem" if motor_premium else "") + ("_all" if all_rows else "")
+    tag = f"part2_v2_nb-{nb_mode}_wx-{weather_mode}" + ("_mprem" if motor_premium else "") + ("_bchk" if buildings_check else "") + ("_all" if all_rows else "")
     sub, info = [], {}
     for line in dr.LINES:
         tr, te = data[line]
@@ -124,7 +129,7 @@ def run(nb_mode: str, weather_mode: str, all_rows: bool, motor_premium: bool = F
         shares = {p: cc[p] / sum(cc.values()) for p in L.perils}
         tex = wx.attach(te, w_em, norms)
         yf_te = wx.year_factor(tex, line, b, shares)
-        if weather_mode == "line":
+        if weather_mode == "line" or (line == "buildings" and buildings_check):
             yf_te = np.full(len(te), float(np.average(yf_te, weights=te["exposure"])))
 
         # new business (M2-N): actual over model, new against renewal, on capped cost, then credibility
@@ -187,5 +192,6 @@ if __name__ == "__main__":
     ap.add_argument("--weather", choices=["row", "line"], default="row")
     ap.add_argument("--all", action="store_true")
     ap.add_argument("--motor-premium", action="store_true")
+    ap.add_argument("--buildings-check", action="store_true")
     a = ap.parse_args()
-    run(a.nb, a.weather, a.all, a.motor_premium)
+    run(a.nb, a.weather, a.all, a.motor_premium, a.buildings_check)

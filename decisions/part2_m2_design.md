@@ -102,3 +102,24 @@ The actuary: "Freeze and open". The model is frozen as I (K9+K7b in buildings an
 - The new-business credibility factor (M2-N) and the level chain are set outside the shape tests, as in P2-V, and are not part of this check.
 
 Outputs: `scripts/part2_holdout.py`, `outputs/markets/part2/part2_holdout.json`.
+
+## Referral rule for the final file, written before it runs, 28 October
+
+The thresholds are Part 1's, re-confirmed for the emerging market (P2-TH): `refer_size_ratio` 1.25, `refer_min_segment` 100, `refer_disagreement` 0.3.
+- **R1, beyond the evidence:** a 2025 row whose size (buildings sum insured by property type and bedrooms; contents sum insured by tenure and bedrooms; motor vehicle value group and engine size on the whole book) exceeds 1.25 times the largest value in its segment among the final model's training rows, or sits in a segment with none. Training rows are every row the final model was fitted on: Part 1's developed rows (the risk shape) and every emerging row (levels and layers).
+- **R2, thin segment:** the row's size segment holds fewer than 100 training rows.
+- **R3, model disagreement:** does not apply. It compares families inside a blend, and the final model prices each line with one family (motor and buildings GLMs, contents tree). Recorded as not applicable rather than replaced with a new test.
+- **Treatment:** Part 1's decided treatment (Q2 (a)): the row keeps the model price and is listed for underwriting review. Prices in the final file do not change; the list goes into the write-up. Carried over for the actuary to confirm.
+
+Outputs: `scripts/part2_referral.py`, `outputs/markets/part2/part2_referrals.json`, the row list in `data/work/markets/part2/referrals_2025.csv` (not committed).
+
+**Hold-out result (28 October, opened once)** (`outputs/markets/part2/part2_holdout.json`). Scored: H1 577 motor, 92 buildings, 65 contents claims; H2 1,168, 197 and 140. I against K0, deviance saved (positive: I better):
+
+| Test | Motor | Buildings | Contents | Pooled [95%] |
+|---|---|---|---|---|
+| H1, hold-out 2024, fitted on 2023 | +1,971 | −769 | −2,189 | −987 [−9,648, 7,430] |
+| H2, every hold-out row | +4,789 | −17,484 | +1,048 | −11,648 [−46,177, 11,635] |
+
+Pooled D², K0 against I: H1 0.1508 against 0.1496; H2 0.1222 against 0.1154. The motor premium against K9+K7b: +635 and −1,792. Both pooled intervals include zero. Under the reading rule written before opening, I is worse than K0 in both, so the actuary decides before the final file is built (brief `docs/reviews/part2-holdout-decisions.html`, cards H-F and H-R).
+
+**Referral result (28 October)** (`outputs/markets/part2/part2_referrals.json`). 10 of 209,063 2025 rows: 1 R1 (contents sum insured 117,400, 1.26 times its segment maximum), 9 R2 (5 buildings in a property type and bedrooms segment of 42 training rows, 4 contents in a tenure and bedrooms segment of 39). No motor row is referred.
