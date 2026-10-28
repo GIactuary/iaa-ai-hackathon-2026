@@ -63,3 +63,10 @@ Round 3 candidates, each against the incumbent K9+K7b (the improved file's shape
 - K13, credibility-weighted codes: −43,451; −16,730. Fails.
 
 **Motor-only Y1 premium (28 October, M2-R).** Measured before any upload (`scripts/part2_motor_premium_check.py`): against K9+K7b, out of time +2,844 [44, 5,469], cross-validation +5,981 [1,547, 10,441]. It passes P2-V on its own, so Y1 (decided (a), subject to the keep rule) enters motor. Expected public gain +0.0006 against twice its paired spread on a third (0.0008), so under M2-R the board cannot judge it; the decision rests on our own validation. Buildings and contents keep the K9+K7b shape (Y1 there failed in round 3).
+
+## Tuning round (P2-F (a)), written before it runs, 28 October
+
+Incumbent **I**: K9+K7b with motor's base replaced by the Y1 premium base (`part2_v2_nb-cred_wx-row_mprem`). Settings are chosen where each model is fitted (Part 1 rows), on fold 1 of five customer-grouped inner folds (seed 11), by Tweedie 1.5 deviance on capped cost at common level, as Part 1's step 7 did; the tuned model is then tested against I on emerging rows under P2-V.
+- **Motor base GLM and buildings attritional peril GLMs:** training Tweedie power from the dated grid (1.1 to 1.9, step 0.1).
+- **Contents tree:** leaves {15, 31, 63} × minimum rows per leaf {100, 400, 1600}, learning rate 0.05, early stopping 100.
+- **T, all tuned settings together,** against I. Kept only if it passes P2-V.

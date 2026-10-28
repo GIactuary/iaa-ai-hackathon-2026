@@ -25,7 +25,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import numpy as np
 import pandas as pd
 
-from scripts.part2_candidates import WIDE_WEATHER, Line, elasticities, hazard, layer
+from scripts.part2_candidates import WIDE_WEATHER, Line, elasticities, hazard, layer, premium_hat
 from scripts.part2_model import BASE_YEAR, average_over_unknown, developed, part1_level, w2_factors
 from src import build, data_rules as dr, fields, level as lv, market, validation as v, weather as wx
 from src.evidence import write_evidence
@@ -36,6 +36,7 @@ from src.thresholds import load_thresholds
 ROOT = Path(__file__).resolve().parents[1]
 OUT = market.OUT
 FULL_CRED = 1082.0          # classical limited-fluctuation standard (M2-N (b))
+MOTOR_PREMIUM = False       # set by --motor-premium
 
 
 def glm_rate(m, L, F):
@@ -49,8 +50,12 @@ def shapes(L: Line, te: pd.DataFrame, w_em: pd.DataFrame, fit: np.ndarray) -> tu
     Fte["yr"] = BASE_YEAR
     ecd = (dv["exposure"] * dv["completion"]).to_numpy(float)
     if line == "motor":
-        base = TweedieGLM().fit(L.Fd, dv["costc"], ecd)
-        r_tr, r_te = glm_rate(base, L, L.Ft), glm_rate(base, L, Fte)
+        Fd, Ft = L.Fd, L.Ft
+        if MOTOR_PREMIUM:                  # Y1 in motor: passed P2-V on its own (decisions/part2_m2_design.md)
+            hd, ht, he = premium_hat(L, [L.tr, te])
+            Fd, Ft, Fte = Fd.assign(lwp_hat=hd), Ft.assign(lwp_hat=ht), Fte.assign(lwp_hat=he)
+        base = TweedieGLM().fit(Fd, dv["costc"], ecd)
+        r_tr, r_te = glm_rate(base, L, Ft), glm_rate(base, L, Fte)
         ec = L.e * L.tr["completion"].to_numpy(float)
         g = cat(L.tr["gender"])
         m = TweedieGLM().fit(pd.DataFrame({"gender": g})[fit], L.tr.loc[fit, "costc"].to_numpy(float), (r_tr * ec)[fit])
@@ -94,13 +99,15 @@ def shapes(L: Line, te: pd.DataFrame, w_em: pd.DataFrame, fit: np.ndarray) -> tu
     return m.rate(Xt), m.rate(Xe)
 
 
-def run(nb_mode: str, weather_mode: str, all_rows: bool) -> None:
+def run(nb_mode: str, weather_mode: str, all_rows: bool, motor_premium: bool = False) -> None:
+    global MOTOR_PREMIUM
+    MOTOR_PREMIUM = motor_premium
     th = load_thresholds()
     p1 = part1_level()
     data = build.build_all()
     w_em, w_dv = dr.read_raw("weather"), dr.read_raw("weather", ROOT / "data" / "raw_part2" / "developed")
     norms = wx.normals(w_em, market.FIT_YEARS)
-    tag = f"part2_v2_nb-{nb_mode}_wx-{weather_mode}" + ("_all" if all_rows else "")
+    tag = f"part2_v2_nb-{nb_mode}_wx-{weather_mode}" + ("_mprem" if motor_premium else "") + ("_all" if all_rows else "")
     sub, info = [], {}
     for line in dr.LINES:
         tr, te = data[line]
@@ -179,5 +186,6 @@ if __name__ == "__main__":
     ap.add_argument("--nb", choices=["none", "cred", "full"], default="cred")
     ap.add_argument("--weather", choices=["row", "line"], default="row")
     ap.add_argument("--all", action="store_true")
+    ap.add_argument("--motor-premium", action="store_true")
     a = ap.parse_args()
-    run(a.nb, a.weather, a.all)
+    run(a.nb, a.weather, a.all, a.motor_premium)
