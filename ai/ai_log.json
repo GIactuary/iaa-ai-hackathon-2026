@@ -601,6 +601,20 @@
       "decision": "Actuary: \"Yes, then tuning\": the rule is adopted (register M2-R), the motor-only premium file is tested on the board under it, then the tuning round runs under P2-V.",
       "effect": "Board use limited to pre-measured, pre-thresholded checks; motor premium threshold written before upload.",
       "section": "4.3"
+    },
+    {
+      "id": "D43",
+      "stage": "Part 2 build: re-rating with credibility",
+      "role": "Appointed actuary",
+      "proposed_by": "Actuary",
+      "question": "Actuary: \"I'm thinking, is there a gain in re-rating this based on GLM? And using credibility factors to apply credibility between part one and part two. Is that a good idea?\"",
+      "ai_answer": "Sound in principle, and already tested in GLM form (K12, one penalty for every factor): the data chose the strongest pull toward Part 1 and the blend still lost; a GLM fitted on emerging rows alone scored D2 -0.33. Motor was the one line where K12 gained (+759; +1,717), so a motor-only re-rate with each factor's own credibility (empirical Bayes on the GLM deviations, customer-clustered standard errors) was worth a clean test. Expected public gain at most +0.0004, far short of the 0.02 gap.",
+      "challenge": "The AI did not expect the idea to close the leaderboard gap and said so before testing; the 0.02 gap is about 200,000 of deviance against a largest passing change of +37,526.",
+      "test": "K14 under P2-V against the incumbent, with the full-weight layer scored beside it (decisions/part2_m2_design.md, K14, written before the run; scripts/part2_motor_rerate.py).",
+      "result": "Credibility re-rate -3,473 [-11,067, 3,925] out of time, -2,619 [-9,928, 4,664] in cross-validation: fails. Full weight -27,245 and -38,983, both intervals below zero. 11 of 17 motor factors get zero credibility; no-claims years shows noise mistaken for signal.",
+      "decision": "Actuary: \"Test motor re-rate\". Under the rule written before the run, the incumbent keeps Part 1's relativities in motor.",
+      "effect": "No change to the model. The Part 1 / blend / emerging-only bracket goes into the write-up as the credibility evidence for keeping Part 1's risk shape.",
+      "section": "4.3"
     }
   ]
 }

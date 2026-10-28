@@ -72,3 +72,21 @@ Incumbent **I**: K9+K7b with motor's base replaced by the Y1 premium base (`part
 - **T, all tuned settings together,** against I. Kept only if it passes P2-V.
 
 **Tuning result (28 October)** (`outputs/markets/part2/part2_tuning.json`). Chosen on Part 1 rows: motor base power 1.4; buildings attritional perils 1.5 (accidental damage), 1.6 (escape of water, subsidence), 1.7 (storm); contents tree 15 leaves, 400 minimum rows, 152 trees. T against I: out of time +317 [−5,449, 6,025]; cross-validation +2,793 [−3,976, 9,604]. Fails P2-V; I keeps Part 1's settings. The gain sits in contents (+506; +3,701); motor and buildings are flat. Pooled D², I: 0.1396 out of time, 0.1448 cross-validation (K0: 0.1374, 0.1402).
+
+## Motor credibility re-rate (K14), written before it runs, 28 October
+
+The actuary asked whether re-rating with a GLM and credibility between Part 1 and the emerging data would gain. K12 tested this with one penalty shared by every factor in every line: it failed overall, and motor was the only line that gained (+759 out of time; +1,717 cross-validation). The actuary: "Test motor re-rate". K14 gives each motor factor its own credibility.
+
+- **Incumbent I** in motor (K11 base with the gender layer and own-year weather); buildings and contents unchanged.
+- **Factors:** every motor W2 factor as built for the emerging rows (less the year) plus region, as in K12. Gender stays as fitted in I.
+- **Step 1, the emerging deviations:** on the fitting rows of each split, one Tweedie 1.5 GLM layer with I as the offset, all factors jointly. Its coefficients are each level's deviation from the incumbent's relativity, against the factor's most common level.
+- **Step 2, their standard errors:** sandwich covariance clustered by customer (robust to a few large claims and to a customer's repeated rows).
+- **Step 3, credibility per factor (empirical Bayes, the Bühlmann form):** for factor f with J non-base levels, the spread of true deviations τ²_f = max(0, mean over levels of (β̂² − se²)). Each level's credibility Z = τ²_f / (τ²_f + se²), and its deviation becomes Z × β̂. A factor whose deviations are no larger than their noise gets τ² = 0 and keeps Part 1's relativities. No penalty or other setting is chosen, so nothing is tuned on the scored rows.
+- **Step 4:** prediction = I × exp(credibility-weighted deviations), rescaled to I's total on the fitting rows. Levels unseen in the fitting rows keep Part 1's relativity.
+- **Rule:** K14 replaces I in motor only if it passes P2-V against I. The full-weight layer (Z = 1, every deviation as fitted) is scored beside it as the other end of the bracket; it is reported, not a candidate.
+- **Board (M2-R):** the expected public gain and its paired spread on random thirds are reported, as for the motor premium.
+- **Exhibit:** each factor's τ² and average Z from a fit on all fitting rows, for the write-up.
+
+Outputs: `scripts/part2_motor_rerate.py`, `outputs/markets/part2/part2_motor_rerate.json`.
+
+**K14 result (28 October)** (`outputs/markets/part2/part2_motor_rerate.json`). Against I: credibility-weighted re-rate out of time −3,473 [−11,067, 3,925], cross-validation −2,619 [−9,928, 4,664]: fails, I stays. The full-weight layer (every emerging deviation taken as fitted): −27,245 [−44,491, −9,658] and −38,983 [−62,282, −15,572], a clear loss. Pooled D², out of time / cross-validation: I 0.1396 / 0.1448, K14 0.1389 / 0.1445, full weight 0.1338 / 0.1407. Board (M2-R): expected public change −0.0003 to −0.0007. The bracket is the one credibility theory predicts when the complement is good and the new data are thin: Part 1's relativities score best, the credibility blend a little worse, full weight much worse. On all fitting rows, 11 of 17 factors get no credibility at all; cover type (mean Z 0.71) and fuel type (0.78) get the most, and no-claims years (0.28) shows why the test fails: its emerging deviations zigzag (0.85, 0.95, 1.23, 0.97, 1.19, 0.78 for 0 to 5 years) with standard errors of 0.11 to 0.16, noise that a factor-level spread estimate from a few levels partly mistakes for signal. K12's small motor gain was measured against the old motor base; the premium term now in I appears to have taken it up.
