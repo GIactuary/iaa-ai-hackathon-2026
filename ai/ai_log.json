@@ -545,6 +545,20 @@
       "decision": "The actuary chose the recommendation on 14 cards (P2-C, P2-V, P2-H, P2-G, P2-S, P2-L, P2-T, P2-R, P2-TH, P2-N, P2-B, P2-O, P2-F, P2-P) and asked that P2-E be decided without the forum. The AI found none of the 20 reference policies is sold through a comparison site and put P2-E back with options (a) 10%, (b) 13.3%, (c) 20%.",
       "effect": "Register P2 items decided except P2-E; 31 thresholds dated for the emerging market in decisions/thresholds_part2.md (tele_quantiles left undated, not used). The Part 2 build follows these settings.",
       "section": "4.3"
+    },
+    {
+      "id": "D39",
+      "stage": "Part 2 build: expense assumptions for the reference policies",
+      "role": "Appointed actuary",
+      "proposed_by": "Actuary",
+      "question": "P2-E, comparison-site commission. Actuary: \"I'm not asking anything on the forum. Can we make any decision here?\" then \"why do we need this? Like the final answer should include the commission and give the premium, or like why do we need it? Are we not just predicting the cost here?\"",
+      "ai_answer": "The Kaggle file is the expected claims cost only; commission enters only the office premium build-up the report must show for 20 reference policies. All 20 are broker (16) or direct (4), whose rates are given, so the missing comparison-site rate is used nowhere. First recommended 13.3% as a stated assumption; revised to stating the rate is not given and not needed.",
+      "challenge": "The actuary's question whether the rate is needed at all led the AI to drop its own recommendation of an assumed 13.3%.",
+      "test": "Channel counts of the 20 reference policies (data/raw_part2/emerging/reference_policies.parquet).",
+      "result": "Broker 16, direct 4, comparison site 0.",
+      "decision": "Actuary: \"Yes, go with it.\" P2-E (d): the write-up states the rate is not given and not needed; no rate is assumed.",
+      "effect": "Register P2-E decided; every card on the Part 2 decisions brief is now decided.",
+      "section": "4.3"
     }
   ]
 }
