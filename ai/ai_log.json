@@ -587,6 +587,20 @@
       "decision": "Under the pre-written rule the credibility-weighted factor stays. No further variant is chosen on the public board.",
       "effect": "part2_v2_nb-cred_wx-row is the incumbent file; the write-up reports all three scores and the rule.",
       "section": "4.3"
+    },
+    {
+      "id": "D42",
+      "stage": "Part 2 build: using submissions to fine-tune",
+      "role": "Appointed actuary",
+      "proposed_by": "Actuary",
+      "question": "Actuary: \"We can do a lot of submissions here, right? So let's try to fine-tune our model. Let's use this opportunity to fine-tune.\"",
+      "ai_answer": "Measured first how noisy the public board is: on random thirds of our 2024 rows one model's D2 spans 0.107 to 0.165, and a buildings change that truly gains +0.0016 looks worse on 39% of thirds, while a motor change (gender, +0.0013) looks worse on 1%. Proposed: judge a variant on the board only if its expected gain exceeds twice its measured paired spread; buildings large-loss changes stay on our own validation.",
+      "challenge": "The AI pushed back on open-ended tuning to the public board, which would fit a third of the rows and can reverse on the private two-thirds.",
+      "test": "Paired public-board spread on 1,000 random thirds (decisions/part2_m2_design.md, round 3 addendum); round 3 candidates under P2-V.",
+      "result": "Round 3: Y1 premium positive in both tests but fails the interval (motor +2,844 and +5,981); penalised layer and credibility codes fail.",
+      "decision": "Actuary: \"Yes, then tuning\": the rule is adopted (register M2-R), the motor-only premium file is tested on the board under it, then the tuning round runs under P2-V.",
+      "effect": "Board use limited to pre-measured, pre-thresholded checks; motor premium threshold written before upload.",
+      "section": "4.3"
     }
   ]
 }
