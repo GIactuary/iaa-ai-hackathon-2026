@@ -70,3 +70,5 @@ Incumbent **I**: K9+K7b with motor's base replaced by the Y1 premium base (`part
 - **Motor base GLM and buildings attritional peril GLMs:** training Tweedie power from the dated grid (1.1 to 1.9, step 0.1).
 - **Contents tree:** leaves {15, 31, 63} × minimum rows per leaf {100, 400, 1600}, learning rate 0.05, early stopping 100.
 - **T, all tuned settings together,** against I. Kept only if it passes P2-V.
+
+**Tuning result (28 October)** (`outputs/markets/part2/part2_tuning.json`). Chosen on Part 1 rows: motor base power 1.4; buildings attritional perils 1.5 (accidental damage), 1.6 (escape of water, subsidence), 1.7 (storm); contents tree 15 leaves, 400 minimum rows, 152 trees. T against I: out of time +317 [−5,449, 6,025]; cross-validation +2,793 [−3,976, 9,604]. Fails P2-V; I keeps Part 1's settings. The gain sits in contents (+506; +3,701); motor and buildings are flat. Pooled D², I: 0.1396 out of time, 0.1448 cross-validation (K0: 0.1374, 0.1402).
