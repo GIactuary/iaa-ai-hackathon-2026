@@ -148,6 +148,96 @@ def part1_fits(L: Line) -> dict:
     return out
 
 
+def common_tree_cols(L: Line) -> list[str]:
+    drop = ("region", "make_model", "occupation", "yr", "holdout", "gender")
+    fe_, fd_ = fields.tree_fields(L.tr, 11), fields.tree_fields(L.dv, 11)
+    return [c for c in fe_["num"] + fe_["cat"] if c in fd_["num"] + fd_["cat"] and c not in drop]
+
+
+def premium_hat(L: Line, frames: list) -> list:
+    """Y1: log written premium as the fields both markets carry predict it, fitted on Part 1 rows only (no claims)."""
+    import lightgbm as lgb
+    cols = common_tree_cols(L)
+    fe_ = fields.tree_fields(L.tr, 11)
+    cats = [c for c in cols if c in fe_["cat"]]
+    both = as_category(pd.concat([L.dv[cols]] + [f[cols] for f in frames], ignore_index=True), cats)
+    Xd = both.iloc[:len(L.dv)].reset_index(drop=True)
+    lwp = np.log(L.dv["written_premium"].to_numpy(float))
+    gd = L.dv["customer_id"].astype(str).to_numpy()
+    a, b = v.make_folds(len(L.dv), [11], n_folds=5, groups=gd)[11][0]
+    m = lgb.LGBMRegressor(n_estimators=3000, learning_rate=0.05, num_leaves=63, min_child_samples=100, subsample=0.8,
+                          subsample_freq=1, colsample_bytree=0.8, n_jobs=4, random_state=0, verbose=-1)
+    m.fit(Xd.iloc[a], lwp[a], eval_set=[(Xd.iloc[b], lwp[b])], callbacks=[lgb.early_stopping(100, verbose=False)])
+    out, start = [m.predict(Xd, num_iteration=m.best_iteration_)], len(L.dv)
+    for f in frames:
+        out.append(m.predict(both.iloc[start:start + len(f)], num_iteration=m.best_iteration_))
+        start += len(f)
+    return out
+
+
+def part1_fits_r3(L: Line) -> dict:
+    """Round 3 (K11): the Part 1 base and its peril models with lwp_hat as one numeric term; the contents tree with it as an input."""
+    dv, line = L.dv, L.line
+    hd, ht = premium_hat(L, [L.tr])
+    lw = np.log(dv["written_premium"].to_numpy(float))
+    r2 = float(1 - np.var(lw - hd) / np.var(lw))
+    Fd, Ft = L.Fd.assign(lwp_hat=hd), L.Ft.assign(lwp_hat=ht)
+    ecd = (dv["exposure"] * dv["completion"]).to_numpy(float)
+    out = {"lwp_tr": ht, "r2_part1": r2}
+    if line == "motor":
+        out["base"] = rate_of(TweedieGLM().fit(Fd, dv["costc"], ecd), L, Ft)
+    elif line == "buildings":
+        per = {}
+        for p in L.perils:
+            ecp = (dv["exposure"] * dv[f"completion_{p}"]).to_numpy(float)
+            keep = {"fire": ["wf"], "flood": ["river", "elev"]}.get(p)
+            if keep:
+                Fd_, Ft_ = pd.concat([Fd, L.Hd[keep]], axis=1), pd.concat([Ft, L.Ht[keep]], axis=1)
+                freq = TweedieGLM(power=1.0).fit(Fd_, dv[f"n_{p}"], ecp)
+                has = ((dv[f"n_{p}"] > 0) & (dv[f"cost_{p}"] > 0)).to_numpy()
+                n = dv.loc[has, f"n_{p}"].to_numpy(float)
+                sev = TweedieGLM(power=2.0).fit(Fd_[has], dv.loc[has, f"cost_{p}"].to_numpy(float), n, weight=n)
+                per[p] = rate_of(freq, L, Ft_) * rate_of(sev, L, Ft_)
+            else:
+                per[p] = rate_of(TweedieGLM().fit(Fd, dv[f"costc_{p}"], ecp), L, Ft)
+        out["peril"] = per
+    else:
+        cols = common_tree_cols(L)
+        fe_ = fields.tree_fields(L.tr, 11)
+        cats = [c for c in cols if c in fe_["cat"]]
+        both = as_category(pd.concat([dv[cols], L.tr[cols]], ignore_index=True), cats)
+        both["lwp_hat"] = np.concatenate([hd, ht])
+        Xd, Xe = both.iloc[:len(dv)].reset_index(drop=True), both.iloc[len(dv):].reset_index(drop=True)
+        gd = dv["customer_id"].astype(str).to_numpy()
+        yd = dv["costc"].to_numpy(float)
+        a, b = v.make_folds(len(dv), [11], n_folds=5, groups=gd)[11][0]
+        m = LGB("tweedie", 1.5, 31, 400, 0.05, 3000, 4, seed=11).fit(Xd.iloc[a], yd[a], ecd[a], val=(Xd.iloc[b], yd[b], ecd[b], None, None))
+        m = LGB("tweedie", 1.5, 31, 400, 0.05, m.best_iter_, 4, seed=11).fit(Xd, yd, ecd)
+        out["tree"] = m.rate(Xe)
+    return out
+
+
+def layer_penalised(L: Line, mu: np.ndarray, F: pd.DataFrame, fit: np.ndarray) -> tuple:
+    """K12: every factor as a deviation from the incumbent, L2-penalised; strength chosen on fold 1 of the fitting rows."""
+    y = L.tr["costc"].to_numpy(float)
+    fi = np.flatnonzero(fit)
+    a, b = v.make_folds(len(fi), [11], n_folds=5, groups=L.tr["customer_id"].astype(str).to_numpy()[fi])[11][0]
+    ia, ib = fi[a], fi[b]
+    best = None
+    for alpha in (1e-5, 1e-4, 1e-3, 1e-2, 1e-1, 1.0):
+        m = TweedieGLM(alpha=alpha).fit(F.iloc[ia], y[ia], mu[ia])
+        pr = mu[ib] * m.rate(F.iloc[ib])
+        pr = pr * y[ib].sum() / pr.sum()
+        d = float(v.tweedie_unit_deviance(y[ib], pr, 1.5).sum())
+        if best is None or d < best[0]:
+            best = (d, alpha)
+    m = TweedieGLM(alpha=best[1]).fit(F[fit], y[fit], mu[fit])
+    return mu * m.rate(F), best[1]
+
+
+ALPHAS = {}
+
+
 # ------------------------------------------------------------------------------------------------ candidates per split
 def line_level(L: Line, rate: np.ndarray, fit: np.ndarray) -> np.ndarray:
     """A one-number-per-line shape (K0, tree): rate x line excess factor x line completion."""
@@ -208,6 +298,25 @@ def candidates(L: Line, P1: dict, fit: np.ndarray, stage: dict) -> dict:
     c["K9+K8"] = layer(L, k9, pd.DataFrame({"h": L.h}), fit)
     c["K9+K7b+K8"] = layer(L, k9 * yf_b, pd.DataFrame({"h": L.h}), fit)
     c["K10_nb"] = layer(L, k9 * yf_b, pd.DataFrame({"nb": cat(L.tr["new_business"])}), fit)
+    if "r3" in P1:
+        r3 = P1["r3"]
+        if L.line == "motor":
+            k11 = layer(L, line_level(L, r3["base"], fit), pd.DataFrame({"gender": cat(L.tr["gender"])}), fit)
+        elif L.line == "buildings":
+            k11 = by_peril(L, r3["peril"], fit, set())
+        else:
+            k11 = line_level(L, r3["tree"], fit)
+        c["K11_premium"] = k11 * yf_b
+        inc9 = c["K9+K7b"]
+        F = L.Ft.drop(columns="yr").assign(region=cat(L.tr["region"]))
+        c["K12_penalised"], ALPHAS[(L.line, int(fit.sum()))] = layer_penalised(L, inc9, F, fit)
+        y = L.tr["costc"].to_numpy(float)
+        E = inc9 * y[fit].sum() / inc9[fit].sum()
+        period = (L.tr["yr"] * 10 + L.tr["period_start"].dt.quarter).to_numpy()
+        codes = ["region", "occupation"] + (["make_model"] if L.line == "motor" else [])
+        groups = L.tr["customer_id"].astype(str).to_numpy()
+        enc = {f"enc_{k}": fields.credibility_encode(L.tr[k], period, y, E, fit, groups, 11)[0] for k in codes}
+        c["K13_cred_codes"] = layer(L, inc9, pd.DataFrame(enc), fit)
     return c
 
 
@@ -290,6 +399,26 @@ def main():
         n = pd.Series(cy.reindex(prev).to_numpy(), index=L.tr.index)
         L.h = np.where(n.isna(), "none", np.where(n >= 2, "2+", n.fillna(0).astype(int).astype(str)))
     res, inc = {}, "K0"
+    if "round3" in sys.argv:
+        for line, L in lines.items():
+            cache = WORK / f"p1r3_{line}.pkl"
+            if cache.exists():
+                P1[line]["r3"] = pickle.loads(cache.read_bytes())
+            else:
+                P1[line]["r3"] = part1_fits_r3(L)
+                cache.write_bytes(pickle.dumps(P1[line]["r3"]))
+            log("round 3 Part 1 fits", line, "premium model R2 on Part 1 rows %.3f" % P1[line]["r3"]["r2_part1"])
+        S = score(lines, P1, {"incumbent": inc})
+        for cand in ("K11_premium", "K12_penalised", "K13_cred_codes"):
+            cmp = compare(S, "K9+K7b", cand)
+            res[cand] = dict(against="K9+K7b", **cmp)
+            log(cand, "against K9+K7b", {k: (round(x["gain"]), round(x["lo"]), round(x["hi"]), {l: round(g) for l, g in x["per_line"].items()}) for k, x in cmp.items() if k != "passes"}, "passes" if cmp["passes"] else "fails")
+        res["d2"] = d2(S)
+        res["alphas"] = {f"{l}|{n}": a for (l, n), a in ALPHAS.items()}
+        keep = ("K0", "K9+K7b", "K11_premium", "K12_penalised", "K13_cred_codes")
+        log("D2", {k: {n: round(x, 4) for n, x in d.items() if n in keep} for k, d in res["d2"].items()})
+        write_evidence({"part2_candidates_round3": res}, market.OUT / "part2_candidates_round3.json")
+        return
     if "round2" in sys.argv:
         S = score(lines, P1, {"incumbent": inc})
         for cand in ("K7a_weather_part1", "K7b_weather_emerging", "K8_history", "K9", "K9+K7b", "K9+K8", "K9+K7b+K8"):
