@@ -90,3 +90,15 @@ The actuary asked whether re-rating with a GLM and credibility between Part 1 an
 Outputs: `scripts/part2_motor_rerate.py`, `outputs/markets/part2/part2_motor_rerate.json`.
 
 **K14 result (28 October)** (`outputs/markets/part2/part2_motor_rerate.json`). Against I: credibility-weighted re-rate out of time −3,473 [−11,067, 3,925], cross-validation −2,619 [−9,928, 4,664]: fails, I stays. The full-weight layer (every emerging deviation taken as fitted): −27,245 [−44,491, −9,658] and −38,983 [−62,282, −15,572], a clear loss. Pooled D², out of time / cross-validation: I 0.1396 / 0.1448, K14 0.1389 / 0.1445, full weight 0.1338 / 0.1407. Board (M2-R): expected public change −0.0003 to −0.0007. The bracket is the one credibility theory predicts when the complement is good and the new data are thin: Part 1's relativities score best, the credibility blend a little worse, full weight much worse. On all fitting rows, 11 of 17 factors get no credibility at all; cover type (mean Z 0.71) and fuel type (0.78) get the most, and no-claims years (0.28) shows why the test fails: its emerging deviations zigzag (0.85, 0.95, 1.23, 0.97, 1.19, 0.78 for 0 to 5 years) with standard errors of 0.11 to 0.16, noise that a factor-level spread estimate from a few levels partly mistakes for signal. K12's small motor gain was measured against the old motor base; the premium term now in I appears to have taken it up.
+
+## Hold-out opening (P2-H), written before it is opened, 28 October
+
+The actuary: "Freeze and open". The model is frozen as I (K9+K7b in buildings and contents; motor's base with the Y1 premium term, the gender layer and own-year weather). The hold-out is opened once, to confirm, not to choose.
+
+- **Frame:** every emerging row, hold-out customers included. Part 1's parts are refitted on Part 1 rows exactly as before; they only predict for the larger frame. Every emerging part (peril levels, layers, weather responses) is fitted on non-hold-out rows only.
+- **H1, out of time:** fit the non-hold-out 2023 rows, score the hold-out customers' 2024 rows. **H2:** fit all non-hold-out rows, score every hold-out row (2023 and 2024).
+- **Metric:** Tweedie 1.5 deviance at a common level per line, as P2-V; D² per line and pooled; paired customer bootstrap (2,000 draws) for I against K0 (the check file's shape) and against K9+K7b (the improved file before the motor premium). Each line's level ratio before rescaling is reported for information.
+- **Reading rule:** if I beats K0 on pooled deviance in at least one of H1 and H2, the final file is I. If I is worse than K0 in both, the actuary decides before any final file is built. Nothing else about the model changes on what the hold-out shows. About 520 motor, 80 buildings and 76 contents claims sit in the hold-out's 2024 rows, so buildings will dominate the swings.
+- The new-business credibility factor (M2-N) and the level chain are set outside the shape tests, as in P2-V, and are not part of this check.
+
+Outputs: `scripts/part2_holdout.py`, `outputs/markets/part2/part2_holdout.json`.
