@@ -1,0 +1,334 @@
+<title>Documentation Decisions</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a filing memo. Context first, then one card per decision in the order the build needs them, each closing on its own verdict control; send and finalize at the end */
+:root {
+  --bg: #f5f7fa; --surface: #ffffff; --ink: #18212e; --muted: #5b6676; --rule: #d9dfe7;
+  --accent: #1f5f8b; --accent-soft: #e3eef6; --good: #2f7a4f; --good-soft: #e4f2ea; --warn: #9a5b12; --warn-soft: #f8eedf; --bad: #a33a2f; --bad-soft: #f8e6e3;
+  --f-display: "IBM Plex Sans Condensed", "Arial Narrow", Arial, sans-serif;
+  --f-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #11161d; --surface: #182029; --ink: #e5eaf0; --muted: #9aa6b5; --rule: #2a3542;
+  --accent: #7db6e0; --accent-soft: #1d3346; --good: #7cc79a; --good-soft: #1b3326; --warn: #e2ac62; --warn-soft: #3a2c17; --bad: #ec8a7e; --bad-soft: #3d201c; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #11161d; --surface: #182029; --ink: #e5eaf0; --muted: #9aa6b5; --rule: #2a3542;
+  --accent: #7db6e0; --accent-soft: #1d3346; --good: #7cc79a; --good-soft: #1b3326; --warn: #e2ac62; --warn-soft: #3a2c17; --bad: #ec8a7e; --bad-soft: #3d201c; color-scheme: dark }
+body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 16px; line-height: 1.6; }
+.wrap { max-width: 980px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 28px 64px; display: grid; gap: 32px; }
+.col { max-width: 70ch; }
+h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; line-height: 1.2; margin: 0; }
+h1 { font-size: 2rem; font-weight: 600; }
+h2 { font-size: 1.4rem; font-weight: 600; }
+h3 { font-size: 1.15rem; font-weight: 600; }
+p { margin: 0; }
+.stack { display: grid; gap: 12px; }
+.eyebrow { font-family: var(--f-mono); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+code { font-family: var(--f-mono); font-size: 0.86em; background: var(--accent-soft); padding: 1px 5px; border-radius: 3px; overflow-wrap: anywhere; }
+.strip { display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center; padding: 12px 16px; border: 1px solid var(--rule); border-radius: 6px; background: var(--surface); font-size: 0.9rem; }
+.pill { font-family: var(--f-mono); font-size: 0.75rem; padding: 2px 8px; border-radius: 999px; border: 1px solid currentColor; white-space: nowrap; }
+.pill.open { color: var(--warn); background: var(--warn-soft); }
+.pill.done { color: var(--good); background: var(--good-soft); }
+.pill.door { color: var(--accent); background: var(--accent-soft); }
+.pill.oneway { color: var(--bad); background: var(--bad-soft); }
+.lede { font-size: 1.08rem; }
+ul, ol { margin: 0; padding-left: 1.2em; display: grid; gap: 6px; }
+.table-scroll { overflow-x: auto; border: 1px solid var(--rule); border-radius: 6px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 0.87rem; font-variant-numeric: tabular-nums; }
+th, td { padding: 7px 10px; text-align: right; border-bottom: 1px solid var(--rule); white-space: nowrap; }
+th { font-family: var(--f-mono); font-size: 0.7rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); font-weight: 500; vertical-align: bottom; }
+td:first-child, th:first-child { text-align: left; }
+td.wrap-cell { white-space: normal; text-align: left; min-width: 22ch; }
+tr.hl td { background: var(--accent-soft); }
+tr.bad td { background: var(--bad-soft); }
+.note { border-left: 3px solid var(--accent); background: var(--accent-soft); padding: 10px 14px; border-radius: 0 6px 6px 0; display: grid; gap: 6px; font-size: 0.93rem; }
+.toc { border: 1px solid var(--rule); border-radius: 6px; background: var(--surface); padding: 14px 18px; display: grid; gap: 10px; }
+.toc ol { gap: 2px; font-size: 0.93rem; }
+.toc a { color: var(--accent); text-decoration: none; }
+.toc a:hover { text-decoration: underline; }
+.toc .st { font-family: var(--f-mono); font-size: 0.72rem; color: var(--muted); margin-left: 6px; }
+.group-head { display: grid; gap: 6px; padding-top: 8px; border-top: 2px solid var(--ink); }
+.card { border: 1px solid var(--rule); border-radius: 8px; background: var(--surface); padding: 20px; display: grid; gap: 16px; scroll-margin-top: 16px; }
+.card-head { display: grid; gap: 8px; }
+.card-head .meta { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; }
+.ref { font-family: var(--f-mono); font-size: 0.8rem; font-weight: 500; color: var(--accent); }
+.sect { display: grid; gap: 8px; }
+.sect > .eyebrow { color: var(--accent); }
+.options { display: grid; gap: 10px; }
+.opt { border: 1px solid var(--rule); border-radius: 6px; padding: 12px 14px; display: grid; gap: 6px; font-size: 0.94rem; }
+.opt.rec { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+.opt-head { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: baseline; }
+.opt .k { font-family: var(--f-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); }
+.rec-box { border-left: 3px solid var(--good); background: var(--good-soft); padding: 10px 14px; border-radius: 0 6px 6px 0; display: grid; gap: 6px; }
+.verdict { border-top: 1px dashed var(--rule); padding-top: 14px; display: grid; gap: 10px; }
+.choices { display: flex; flex-wrap: wrap; gap: 8px; }
+.choice { display: flex; gap: 8px; align-items: center; padding: 7px 12px; border: 1px solid var(--rule); border-radius: 6px; cursor: pointer; font-size: 0.92rem; }
+.choice:has(input:checked) { border-color: var(--accent); background: var(--accent-soft); }
+.choice input { accent-color: var(--accent); margin: 0; }
+textarea { width: 100%; box-sizing: border-box; min-height: 64px; font: inherit; font-size: 0.93rem; padding: 8px 10px; border: 1px solid var(--rule); border-radius: 6px; background: var(--bg); color: var(--ink); resize: vertical; }
+.actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+button { font: inherit; font-weight: 500; font-size: 0.95rem; padding: 9px 16px; border-radius: 6px; border: 1px solid var(--accent); background: var(--surface); color: var(--accent); cursor: pointer; }
+button.primary { background: var(--accent); color: var(--surface); }
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+button:focus-visible, .choice:focus-within, textarea:focus-visible, summary:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.status { font-size: 0.86rem; color: var(--muted); }
+.locked .choice, .locked textarea { pointer-events: none; opacity: 0.75; }
+.final { border: 1px solid var(--accent); border-radius: 8px; background: var(--surface); padding: 20px; display: grid; gap: 12px; }
+details { border: 1px solid var(--rule); border-radius: 6px; background: var(--surface); padding: 10px 14px; }
+details > summary { cursor: pointer; font-weight: 600; }
+details[open] > summary { margin-bottom: 10px; }
+.bar { display: inline-block; height: 9px; border-radius: 2px; background: var(--accent); vertical-align: middle; }
+.bar.alt { background: var(--warn); }
+.bar.e { background: var(--muted); }
+@media (max-width: 560px) { .card { padding: 14px; } h1 { font-size: 1.6rem; } }
+</style>
+
+<div class="wrap">
+  <header class="stack">
+    <div class="eyebrow">IAA hackathon 2026 · documentation · decisions for the appointed actuary</div>
+    <h1>The documentation plan, and four choices it needs</h1>
+    <div class="strip">
+      <span>Round <strong>1</strong></span>
+      <span class="pill open" id="state-pill">4 decisions open</span>
+      <span class="status">Deadline: Friday 30 October, 23:59 EDT</span>
+      <span class="status" id="blocked">Waiting on: your verdicts below</span>
+    </div>
+    <p class="lede col">The model is final. What remains is what the panel reads and watches: a write-up (first 5 pages graded), a video (first 5 minutes graded), and the code repository, all covering both parts. The Part 1 write-up and the Part 1 half of the video are drafted. Four choices below need you. Everything else on the plan I start now.</p>
+  </header>
+
+  <section class="stack">
+    <h2>What the panel grades, and where each deliverable earns it</h2>
+    <div class="table-scroll"><table>
+      <thead><tr><th>Criterion</th><th>Weight</th><th>Where we earn it</th></tr></thead>
+      <tbody>
+        <tr><td>Pricing performance and adaptation</td><td>40%</td><td class="wrap-cell">Both private leaderboards, plus the panel's view of modelling choices, adaptation to the new market, data quality, limitations and uncertainty: write-up sections 2 and 3, video 2:30 to 4:00</td></tr>
+        <tr><td>Effective use of AI</td><td>25%</td><td class="wrap-cell">The AI log (45 exchanges), the exchanges where the AI was wrong or challenged, the briefs you decided on: write-up section 4, video close</td></tr>
+        <tr><td>Trust, validation and guardrails</td><td>20%</td><td class="wrap-cell">Keep rules written before results, the hold-out opened once, the referral list, the fairness exhibit for gender</td></tr>
+        <tr><td>Communication and documentation</td><td>15%</td><td class="wrap-cell">A short, clear write-up and video; a repository that reruns from one command</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section class="stack">
+    <h2>The plan</h2>
+    <div class="table-scroll"><table>
+      <thead><tr><th>Deliverable</th><th>Content</th><th>When</th></tr></thead>
+      <tbody>
+        <tr><td>Write-up, 5 pages</td><td class="wrap-cell">Summary (both parts, half a page). Part 1, condensed from the draft to about 1.75 pages, updated with its private result (0.13641, 15th; first 0.13923). Part 2 in about 2 pages: what we borrowed and what the new market changed, the test rule, what passed and failed, the hold-out and your line-by-line call, the level, the reference policies. Use of AI and guardrails across both parts, 0.75 page. Appendices after page 5: the 20 build-ups, the gender fairness exhibit, the weather responses, the AI log.</td><td>Draft Thursday midday</td></tr>
+        <tr><td>Exhibits</td><td class="wrap-cell">Built by a script from the evidence files, so every number traces to a file: Part 2 evidence ladder, hold-out by line, level chain, new-business credibility, reference-policy build-ups, gender fairness</td><td>Thursday morning</td></tr>
+        <tr><td>Video, 5 minutes</td><td class="wrap-cell">Part 1 half drafted (2:30). Part 2 half: the new market, borrowing with credibility, the hold-out decision, the price for a reference policy, what the AI got wrong. Script and slides from the same exhibits.</td><td>Script Thursday; recording Friday</td></tr>
+        <tr><td>Repository</td><td class="wrap-cell">README with the story and one command per part; data excluded; clean rerun of the final file checked byte for byte; pre-publication scan</td><td>Thursday</td></tr>
+        <tr><td>Independent review</td><td class="wrap-cell">A reviewer that has not seen how the work was built reads the write-up and repository as a judge would</td><td>Thursday evening</td></tr>
+        <tr><td>Submission form</td><td class="wrap-cell">You submit: both prediction files, video, write-up, repository link</td><td>Friday</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <article class="card" id="OP-T" data-rec="a">
+    <div class="card-head">
+      <div class="meta"><span class="ref">OP-T</span><span class="pill door">Reported figure; easily changed</span></div>
+      <h3>Where does premium tax sit in the office premium?</h3>
+    </div>
+    <div class="sect"><div class="eyebrow">Why it matters</div>
+      <p>The report must show, for each of the 20 reference policies, how our risk premium becomes an office premium. The expense table gives: fixed expense 85 CU per policy; variable expense 15%, commission (broker 20%, direct 0%), premium tax 8% and target profit 8%, each as a share of premium; catastrophe reinsurance 12% of property risk premium. I read "property" as both buildings and contents. The only open point is the tax.</p>
+    </div>
+    <div class="options">
+      <div class="opt rec"><div class="opt-head"><strong>(a) Tax in the permissible loss ratio</strong><span class="pill done">Recommended</span></div><p>Office premium = (risk premium + cat load + 85) ÷ (1 − 15% − commission − 8% tax − 8% profit). For a broker policy the divisor is 0.49.</p></div>
+      <div class="opt"><div class="opt-head"><strong>(b) Tax on top</strong></div><p>Office premium = (risk premium + cat load + 85) ÷ (1 − 15% − commission − 8%), then × 1.08. About 7% lower for broker policies: the first motor reference policy reads 2,644 instead of 2,848.</p></div>
+    </div>
+    <div class="rec-box"><strong>Recommendation: (a).</strong><span>The table states the tax as a share of premium, as it does commission and profit, so all three are treated alike. This also matches Canadian rate-filing practice, where premium tax is a variable expense inside the permissible loss ratio.</span></div>
+    <div class="verdict" data-id="OP-T">
+      <div class="choices" role="radiogroup" aria-label="Verdict on OP-T">
+        <label class="choice"><input type="radio" name="OP-T" value="a">(a) In the loss ratio</label>
+        <label class="choice"><input type="radio" name="OP-T" value="b">(b) On top</label>
+        <label class="choice"><input type="radio" name="OP-T" value="reject">None of these</label>
+      </div>
+      <textarea placeholder="Note (optional)" aria-label="Note on OP-T"></textarea>
+    </div>
+  </article>
+
+  <article class="card" id="OP-B" data-rec="a">
+    <div class="card-head">
+      <div class="meta"><span class="ref">OP-B</span><span class="pill door">Reported figure; easily changed</span></div>
+      <h3>On what basis is the build-up shown?</h3>
+    </div>
+    <div class="sect"><div class="eyebrow">Why it matters</div>
+      <p>Four reference policies are short rows: one starts on 22 November (0.11 of a year in 2025), one is cancelled after 25 days. Our prediction is the expected cost for the row's period. The written premium in the data is annual: the 0.11-year row shows 180.72 CU, against 230.80 for a full-year buildings policy. On a period basis, a 25-day contents row would carry the full 85 CU fixed expense.</p>
+    </div>
+    <div class="options">
+      <div class="opt rec"><div class="opt-head"><strong>(a) Annual</strong><span class="pill done">Recommended</span></div><p>Risk premium annualised (prediction ÷ exposure), office premium for a year, set beside the annual written premium.</p></div>
+      <div class="opt"><div class="opt-head"><strong>(b) The row's period, full fixed expense</strong></div><p>The 25-day contents row: risk premium 4.8 CU, office premium 184 CU, mostly the fixed expense.</p></div>
+      <div class="opt"><div class="opt-head"><strong>(c) The row's period, fixed expense pro rata</strong></div><p>Consistent, but cannot be compared with the annual written premium without annualising again.</p></div>
+    </div>
+    <div class="rec-box"><strong>Recommendation: (a).</strong><span>A price is quoted for a year, the fixed expense is per policy per year, and the comparison with the current premium only works like for like.</span></div>
+    <div class="verdict" data-id="OP-B">
+      <div class="choices" role="radiogroup" aria-label="Verdict on OP-B">
+        <label class="choice"><input type="radio" name="OP-B" value="a">(a) Annual</label>
+        <label class="choice"><input type="radio" name="OP-B" value="b">(b) Period, full fixed</label>
+        <label class="choice"><input type="radio" name="OP-B" value="c">(c) Period, pro rata</label>
+        <label class="choice"><input type="radio" name="OP-B" value="reject">None of these</label>
+      </div>
+      <textarea placeholder="Note (optional)" aria-label="Note on OP-B"></textarea>
+    </div>
+  </article>
+
+  <section class="stack">
+    <h2>What (a) and (a) give, and what it says about the acquired book</h2>
+    <div class="table-scroll"><table>
+      <thead><tr><th>Reference policy</th><th>Channel</th><th>Risk premium (annual)</th><th>Cat load</th><th>Office premium</th><th>Written premium</th><th>Office ÷ written</th></tr></thead>
+      <tbody>
+        <tr><td>Motor M00161473 (17-24, diesel)</td><td>broker</td><td>1,310.5</td><td>0</td><td>2,848.0</td><td>1,131.8</td><td>2.5</td></tr>
+        <tr><td>Motor M00118569 (renewal)</td><td>direct</td><td>651.2</td><td>0</td><td>1,066.9</td><td>1,095.5</td><td>1.0</td></tr>
+        <tr><td>Buildings B00229821</td><td>broker</td><td>359.0</td><td>43.1</td><td>994.0</td><td>285.6</td><td>3.5</td></tr>
+        <tr><td>Contents C00259568</td><td>broker</td><td>43.9</td><td>5.3</td><td>273.7</td><td>83.2</td><td>3.3</td></tr>
+        <tr class="hl"><td>Median of the 20, by line</td><td></td><td colspan="2">Risk ÷ written: motor 1.16, buildings 1.77, contents 0.48</td><td colspan="3">Office ÷ written: motor 2.5, buildings 4.2, contents 2.6</td></tr>
+      </tbody>
+    </table></div>
+    <p class="note col"><span><strong>How to read this.</strong> Take the buildings policy: expected claims cost 359.0 CU a year, plus 12% for catastrophe reinsurance (43.1), plus 85 CU fixed expense, is 487.1 CU. Divided by 0.49, the share left after 15% variable expense, 20% commission, 8% tax and 8% profit, gives 994.0 CU, against 285.6 CU charged today. The arithmetic of the host's expense table drives most of this: at a 100% loss ratio before expenses, a broker policy already needs about twice its risk premium plus 173 CU. On the risk premium alone, before any expense, 12 of the 20 already cost more than they are charged, including all 7 buildings policies; no contents policy does. The write-up will say that the acquired broker book is priced far below the technical premium, and that this follows from the given expenses as much as from our model.</span></p>
+  </section>
+
+  <article class="card" id="REPO" data-rec="a">
+    <div class="card-head">
+      <div class="meta"><span class="ref">REPO</span><span class="pill oneway">Public and permanent under your name</span></div>
+      <h3>How is the code repository published?</h3>
+    </div>
+    <div class="sect"><div class="eyebrow">Why it matters</div>
+      <p>The panel grades "a well-structured code repository with version control", and AI tools screen it first. A winner must license the code under an OSI-approved licence. The data may not be redistributed, so it stays out. The repository currently has no remote. Before anything is published I scan the whole history, not just the current files, for data, copies of the host's pages, credentials and anything from outside this entry.</p>
+    </div>
+    <div class="options">
+      <div class="opt rec"><div class="opt-head"><strong>(a) Public GitHub repository, full history, MIT licence</strong><span class="pill done">Recommended</span></div><p>You create it under your account and push it; I prepare the README, licence and scan. The history shows how the work was built: the designs committed before each test run, which is our strongest evidence on guardrails.</p></div>
+      <div class="opt"><div class="opt-head"><strong>(b) Private repository, access for the organisers</strong></div><p>Not permanent or public. Depends on the form accepting a private link, which it may not.</p></div>
+      <div class="opt"><div class="opt-head"><strong>(c) A zipped snapshot without history</strong></div><p>Loses the version control the criterion names.</p></div>
+    </div>
+    <div class="rec-box"><strong>Recommendation: (a).</strong><span>Version control is graded, and the commit history is the proof that rules came before results. The scan protects the data rule and your name.</span></div>
+    <div class="verdict" data-id="REPO">
+      <div class="choices" role="radiogroup" aria-label="Verdict on REPO">
+        <label class="choice"><input type="radio" name="REPO" value="a">(a) Public, MIT</label>
+        <label class="choice"><input type="radio" name="REPO" value="b">(b) Private</label>
+        <label class="choice"><input type="radio" name="REPO" value="c">(c) Zip</label>
+        <label class="choice"><input type="radio" name="REPO" value="reject">None of these</label>
+      </div>
+      <textarea placeholder="Note (optional), for example another licence" aria-label="Note on REPO"></textarea>
+    </div>
+  </article>
+
+  <article class="card" id="VID" data-rec="a">
+    <div class="card-head">
+      <div class="meta"><span class="ref">VID</span><span class="pill door">Shapes Friday's work</span></div>
+      <h3>Who narrates the video?</h3>
+    </div>
+    <div class="options">
+      <div class="opt rec"><div class="opt-head"><strong>(a) You, in your own words, over the exhibits</strong><span class="pill done">Recommended</span></div><p>I write a scene-by-scene script and the slides; you record in one or two takes on Friday. About 45 minutes of your time.</p></div>
+      <div class="opt"><div class="opt-head"><strong>(b) A synthetic voice reading the script</strong></div><p>No time from you, but the appointed actuary's judgment is the story, and a synthetic voice weakens it.</p></div>
+    </div>
+    <div class="rec-box"><strong>Recommendation: (a).</strong><span>The panel is judging an actuary's decisions made with AI. Hearing you explain them is the clearest evidence.</span></div>
+    <div class="verdict" data-id="VID">
+      <div class="choices" role="radiogroup" aria-label="Verdict on VID">
+        <label class="choice"><input type="radio" name="VID" value="a">(a) You narrate</label>
+        <label class="choice"><input type="radio" name="VID" value="b">(b) Synthetic voice</label>
+        <label class="choice"><input type="radio" name="VID" value="reject">None of these</label>
+      </div>
+      <textarea placeholder="Note (optional)" aria-label="Note on VID"></textarea>
+    </div>
+  </article>
+
+  <section class="final" id="final">
+    <h2>Send your verdicts</h2>
+    <p>Verdicts save as you pick them. After <strong>Send to Claude</strong>, type anything in the chat so I pick them up. I am starting the exhibits and the Part 2 draft now; none of it waits on these four.</p>
+    <div class="actions"><button id="accept-rest" type="button">Accept my recommendation on every card you have not answered</button></div>
+    <div class="actions">
+      <button class="primary" id="send" type="button">Send to Claude</button>
+      <button id="finalize" type="button">Finalize</button>
+      <button id="copy" type="button" hidden>Copy for Claude</button>
+      <span class="status" id="save-status" aria-live="polite"></span>
+    </div>
+  </section>
+</div>
+
+<script>
+(function () {
+  const ROUND = 1;
+  const $ = id => document.getElementById(id);
+  const boxes = Array.from(document.querySelectorAll(".verdict[data-id]"));
+  const ids = boxes.map(b => b.dataset.id);
+  const recOf = id => document.getElementById(id).dataset.rec;
+  const status = $("save-status");
+  const say = t => { status.textContent = t; };
+  let db = null, finalState = false, writing = Promise.resolve();
+  const last = {}, timers = {};
+  const read = box => ({ choice: (box.querySelector("input:checked") || {}).value || null, note: box.querySelector("textarea").value });
+  const answered = () => ids.filter(id => read(boxes[ids.indexOf(id)]).choice);
+  function refresh() {
+    const done = answered();
+    const open = ids.length - done.length;
+    if (!finalState) { $("state-pill").textContent = open ? open + (open === 1 ? " decision open" : " decisions open") : "All " + ids.length + " answered"; $("state-pill").className = "pill " + (open ? "open" : "done"); }
+    document.querySelectorAll("[data-st]").forEach(s => { const v = read(boxes[ids.indexOf(s.dataset.st)]).choice; s.textContent = v ? (v === recOf(s.dataset.st) ? "answered: as recommended" : "answered: " + (v === "reject" ? "none of these" : "(" + v + ")")) : "open"; });
+  }
+  function apply(id, v) {
+    const box = boxes[ids.indexOf(id)];
+    if (!box || !v) return;
+    box.querySelectorAll("input").forEach(r => r.checked = r.value === v.choice);
+    const ta = box.querySelector("textarea");
+    if (document.activeElement !== ta) ta.value = v.note || "";
+    last[id] = { choice: v.choice || null, note: v.note || "" };
+    refresh();
+  }
+  function save(id) {
+    const box = boxes[ids.indexOf(id)], v = read(box);
+    refresh();
+    if (!db || finalState) return;
+    const l = last[id] || { choice: null, note: "" };
+    if (v.choice === l.choice && v.note === l.note) return;
+    last[id] = v;
+    writing = writing.then(() => db.doc("verdicts/" + id).set({ decisionId: id, choice: v.choice, note: v.note, round: ROUND, updatedAt: new Date().toISOString() }))
+      .then(() => say("Saved " + id), e => say("Not saved: " + (e && e.message ? e.message : "the store refused the write")));
+  }
+  boxes.forEach(box => {
+    const id = box.dataset.id;
+    box.querySelectorAll("input").forEach(r => r.addEventListener("change", () => save(id)));
+    box.querySelector("textarea").addEventListener("input", () => { clearTimeout(timers[id]); timers[id] = setTimeout(() => save(id), 600); });
+  });
+  const lock = () => { finalState = true; boxes.forEach(b => { b.classList.add("locked"); b.querySelectorAll("input").forEach(r => r.disabled = true); b.querySelector("textarea").readOnly = true; });
+    ["send", "finalize", "accept-rest"].forEach(k => $(k).disabled = true);
+    $("state-pill").textContent = "Finalized"; $("state-pill").className = "pill done"; $("blocked").textContent = "Nothing is waiting on you"; };
+  const flush = async () => { Object.keys(timers).forEach(id => { clearTimeout(timers[id]); save(id); }); await writing; };
+  $("accept-rest").addEventListener("click", () => {
+    let n = 0;
+    boxes.forEach(box => { const id = box.dataset.id; if (!read(box).choice) { const r = box.querySelector('input[value="' + recOf(id) + '"]'); if (r) { r.checked = true; save(id); n++; } } });
+    refresh(); say(n ? "Set " + n + " cards to my recommendation. Review them, then send." : "Every card already has a verdict.");
+  });
+  $("send").addEventListener("click", async () => {
+    if (!answered().length) { say("Pick at least one verdict first."); return; }
+    if (!db) return;
+    await flush();
+    try { await db.doc("brief/state").set({ status: "submitted", round: ROUND, submittedAt: new Date().toISOString() }); say("Sent. Type anything in the chat so I pick it up."); $("blocked").textContent = "Waiting on: Claude to read round " + ROUND; }
+    catch (e) { say("Not sent: " + (e && e.message ? e.message : "the store refused the write")); }
+  });
+  $("finalize").addEventListener("click", async () => {
+    const missing = ids.filter(id => !read(boxes[ids.indexOf(id)]).choice);
+    if (missing.length) { say("Finalize needs every card answered. Still open: " + missing.join(", ")); return; }
+    if (!db) return;
+    await flush();
+    try { await db.doc("brief/state").set({ status: "final", round: ROUND, submittedAt: new Date().toISOString() }); lock(); say("Finalized. Type anything in the chat so I pick it up."); }
+    catch (e) { say("Not finalized: " + (e && e.message ? e.message : "the store refused the write")); }
+  });
+  $("copy").addEventListener("click", () => {
+    const text = ids.map(id => { const v = read(boxes[ids.indexOf(id)]); return id + ": " + (v.choice ? (v.choice === recOf(id) ? "accept" : "option " + v.choice) : "no choice") + (v.note ? " - " + v.note.replace(/\s+/g, " ") : ""); }).join("\n");
+    try { navigator.clipboard.writeText(text).then(() => say("Copied. Paste it into the chat."), () => say("Copy refused by the browser.")); } catch (e) { say("Copy refused by the browser."); }
+  });
+  refresh();
+  (async () => {
+    try { db = await (window.claude && window.claude.use ? window.claude.use("db") : null); } catch (e) { db = null; }
+    if (!db) { $("send").hidden = true; $("finalize").hidden = true; $("copy").hidden = false; say("Saving is not available in this view: use Copy for Claude."); return; }
+    db.collection("verdicts").onSnapshot(snap => { snap.docs.forEach(d => apply(d.id, d.data())); }, () => {});
+    db.doc("brief/state").onSnapshot(s => {
+      const d = s.exists ? s.data() : null;
+      if (d && d.status === "final") lock();
+      else if (d && d.status === "submitted" && d.round === ROUND) $("blocked").textContent = "Waiting on: Claude to read round " + ROUND;
+    }, () => {});
+  })();
+})();
+</script>
