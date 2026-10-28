@@ -125,3 +125,7 @@ Pooled D², K0 against I: H1 0.1508 against 0.1496; H2 0.1222 against 0.1154. Th
 **Referral result (28 October)** (`outputs/markets/part2/part2_referrals.json`). 10 of 209,063 2025 rows: 1 R1 (contents sum insured 117,400, 1.26 times its segment maximum), 9 R2 (5 buildings in a property type and bedrooms segment of 42 training rows, 4 contents in a tenure and bedrooms segment of 39). No motor row is referred.
 
 **Decided (28 October, exchange D44).** H-F (b): the final file is the frozen model with buildings at the check file's shape, `part2_v2_nb-cred_wx-row_mprem_bchk_all.csv`. H-R (a): the 10 referred rows keep the model price and are listed for underwriting review.
+
+## Level study after the final file (28 October, no board use)
+
+The final file scored 0.15455 public (21st; top 0.17353). To see whether the level could explain the gap (`scripts/part2_level_study.py`, `outputs/markets/part2/part2_level_study.json`): the final shape fitted on 2023 predicts 2024, each line at its deviance-optimal level, pooled D² 0.1429. One line's level off by 10% costs 0.0008 (motor), 0.0004 (buildings), 0.0003 (contents); off by 25%, 0.0037, 0.0019, 0.0013. On 1,000 random thirds of the rows, the optimal level found on a third differs from the other two-thirds' by a standard deviation of 9% (motor), 28% (buildings) and 18% (contents). The level cannot explain a 0.019 gap unless it were off by far more than any evidence suggests, and a level read from the public third would carry most of that noise into the private rows.
