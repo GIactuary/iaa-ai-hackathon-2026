@@ -30,10 +30,11 @@ def _non_repudiated(claims: pd.DataFrame) -> pd.DataFrame:
     return c
 
 
-def delay_curves(claims: pd.DataFrame, max_age: int = 2000) -> dict[tuple[str, str], np.ndarray]:
-    """F[age] = share of the peril's accident-year-2021 claims reported within `age` days of loss."""
+def delay_curves(claims: pd.DataFrame, max_age: int = 2000, year: int | None = None) -> dict[tuple[str, str], np.ndarray]:
+    """F[age] = share of the peril's claims of accident year `year` (default the market's curve year) reported within
+    `age` days of loss."""
     c = _non_repudiated(claims)
-    c = c[c["loss_date"].dt.year == CURVE_YEAR]
+    c = c[c["loss_date"].dt.year == (CURVE_YEAR if year is None else year)]
     ages = np.arange(max_age + 1)
     out = {}
     for key, g in c.groupby(["line", "peril"]):

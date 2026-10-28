@@ -122,6 +122,11 @@ def _fill_group(df: pd.DataFrame, col: str, keys: tuple, later_allowed: pd.Serie
     return filled.where(filled.notna(), later.where(later_allowed))
 
 
+def clean_occupation(s: pd.Series) -> pd.Series:
+    """R11 (P2-O, exchange D38): free-text occupation trimmed and case-folded; blanks stay blank."""
+    return s.astype("string").str.strip().str.lower()
+
+
 def recover_from_history(train: pd.DataFrame, test: pd.DataFrame, line: str) -> tuple[pd.DataFrame, pd.DataFrame]:
     """R8. Fill recoverable blanks from other rows of the same policy (and vehicle or address), using training
     rows as donors for test rows. Every filled value is flagged `dq_<col>_recovered`. Rows that stay blank keep
@@ -129,6 +134,8 @@ def recover_from_history(train: pd.DataFrame, test: pd.DataFrame, line: str) -> 
     both = pd.concat([train.assign(_test=False), test.assign(_test=True)], ignore_index=True)
     both = both.sort_values(["policy_id", "period_start", "row_id"], kind="stable")
     for col, (keys, fixed) in RECOVERABLE[line].items():
+        if col not in both.columns:                       # a market without the field (emerging: no annual mileage)
+            continue
         later_allowed = ~both["_test"] if fixed else pd.Series(False, index=both.index)
         new = _fill_group(both, col, keys, later_allowed)
         both[f"dq_{col}_recovered"] = both[col].isna() & new.notna()

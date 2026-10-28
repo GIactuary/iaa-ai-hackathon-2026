@@ -1,0 +1,1294 @@
+{
+ "part2_check_v1": {
+  "file": "outputs\\markets\\part2\\submissions\\part2_check_v1.csv",
+  "rows": 209063,
+  "by_line": {
+   "motor": {
+    "rows": 90521,
+    "base_rows": 979968,
+    "blanks_at_known_average": [
+     "m_vage"
+    ],
+    "shape_v1": {
+     "part1_base": {
+      "deviance": 1928603.746155698,
+      "null": 2025234.4661400733,
+      "d2": 0.04771334954048323
+     },
+     "emerging_own": {
+      "deviance": 1954271.6258377107,
+      "null": 2025234.4661400733,
+      "d2": 0.03503932087310946
+     },
+     "base_over_own": {
+      "gain": 25667.87968201233,
+      "rel_gain": 0.01313424364487185,
+      "lo": 9266.276701259541,
+      "hi": 42536.97948623351,
+      "share_b_better": 0.9985,
+      "groups": 20154,
+      "n_boot": 2000,
+      "boot_seed": 0
+     }
+    },
+    "excess_factor": 1.0014112301154026,
+    "excess_basis": "emerging own",
+    "excess_factor_own": 1.0014112301154026,
+    "off_balance": 0.8131248247051981,
+    "weather_2025": 0.9891597290693958,
+    "indication_capped_lc": 451.40707360699366,
+    "model_lc_2024_normal": 555.1510172754266,
+    "line_trend": 0.024155825642672317,
+    "trends_used": {
+     "freq_trend": {
+      "bodily_injury": -0.01751,
+      "glass_hail": 0.00634,
+      "own_damage": -0.02911,
+      "theft": -0.01245,
+      "third_party_prop": -0.025
+     },
+     "sev_trend": {
+      "bodily_injury": 0.0,
+      "glass_hail": 0.08172,
+      "own_damage": 0.05429,
+      "theft": 0.04069,
+      "third_party_prop": 0.08007
+     }
+    },
+    "trends_emerging_fit": {
+     "freq_trend": {
+      "bodily_injury": 0.03254684345387249,
+      "glass_hail": -0.02903190298542535,
+      "own_damage": -0.05,
+      "theft": -0.05,
+      "third_party_prop": -0.030162080732341945
+     },
+     "sev_trend": {
+      "bodily_injury": 0.0,
+      "glass_hail": 0.053413551471135357,
+      "own_damage": 0.03867996201638291,
+      "theft": 0.12,
+      "third_party_prop": 0.05184615941431936
+     }
+    },
+    "predicted": 44970662.19734475,
+    "written": 53641068.262731,
+    "predicted_over_written": 0.8383625392596754,
+    "mean_per_exposure": 569.1991780320992,
+    "relativities": [
+     {
+      "factor": "urban",
+      "level": "suburban",
+      "relativity": 1.0
+     },
+     {
+      "factor": "urban",
+      "level": "dense_urban",
+      "relativity": 1.1737520588380128
+     },
+     {
+      "factor": "urban",
+      "level": "rural",
+      "relativity": 0.8833606999464825
+     },
+     {
+      "factor": "urban",
+      "level": "urban",
+      "relativity": 1.0507674451616829
+     },
+     {
+      "factor": "pay",
+      "level": "annual",
+      "relativity": 1.0
+     },
+     {
+      "factor": "pay",
+      "level": "monthly",
+      "relativity": 1.135125289426982
+     },
+     {
+      "factor": "missed",
+      "level": "0",
+      "relativity": 1.0
+     },
+     {
+      "factor": "missed",
+      "level": "1",
+      "relativity": 1.2462845742340958
+     },
+     {
+      "factor": "missed",
+      "level": "2+",
+      "relativity": 1.3330321877007383
+     },
+     {
+      "factor": "channel",
+      "level": "direct",
+      "relativity": 1.0
+     },
+     {
+      "factor": "channel",
+      "level": "broker",
+      "relativity": 1.052261857347529
+     },
+     {
+      "factor": "channel",
+      "level": "comparison_site",
+      "relativity": 1.1825881601702897
+     },
+     {
+      "factor": "new_bus",
+      "level": "False",
+      "relativity": 1.0
+     },
+     {
+      "factor": "new_bus",
+      "level": "True",
+      "relativity": 1.191580201596604
+     },
+     {
+      "factor": "age",
+      "level": "65+",
+      "relativity": 1.0
+     },
+     {
+      "factor": "age",
+      "level": "17-24",
+      "relativity": 1.8186971117515376
+     },
+     {
+      "factor": "age",
+      "level": "25-34",
+      "relativity": 1.1893813763776064
+     },
+     {
+      "factor": "age",
+      "level": "35-49",
+      "relativity": 0.9052403326540468
+     },
+     {
+      "factor": "age",
+      "level": "50-64",
+      "relativity": 0.788330866711551
+     },
+     {
+      "factor": "yr",
+      "level": "2024",
+      "relativity": 1.0
+     },
+     {
+      "factor": "yr",
+      "level": "2021",
+      "relativity": 0.921758186291115
+     },
+     {
+      "factor": "yr",
+      "level": "2022",
+      "relativity": 0.9838228032950289
+     },
+     {
+      "factor": "yr",
+      "level": "2023",
+      "relativity": 0.948752363716724
+     },
+     {
+      "factor": "h_d",
+      "level": "0",
+      "relativity": 1.0
+     },
+     {
+      "factor": "h_d",
+      "level": "1",
+      "relativity": 1.2379768487470724
+     },
+     {
+      "factor": "h_d",
+      "level": "2",
+      "relativity": 1.5337229735635698
+     },
+     {
+      "factor": "h_d",
+      "level": "3+",
+      "relativity": 1.849843977447384
+     },
+     {
+      "factor": "ncb",
+      "level": "10",
+      "relativity": 1.0
+     },
+     {
+      "factor": "ncb",
+      "level": "0",
+      "relativity": 2.37167679976502
+     },
+     {
+      "factor": "ncb",
+      "level": "1",
+      "relativity": 1.8823697379096274
+     },
+     {
+      "factor": "ncb",
+      "level": "2",
+      "relativity": 1.6458282493405278
+     },
+     {
+      "factor": "ncb",
+      "level": "3",
+      "relativity": 1.5588105933715741
+     },
+     {
+      "factor": "ncb",
+      "level": "4",
+      "relativity": 1.293380280395649
+     },
+     {
+      "factor": "ncb",
+      "level": "5",
+      "relativity": 1.3404127254461768
+     },
+     {
+      "factor": "ncb",
+      "level": "6",
+      "relativity": 1.1934470404927173
+     },
+     {
+      "factor": "ncb",
+      "level": "7",
+      "relativity": 1.129906662764866
+     },
+     {
+      "factor": "ncb",
+      "level": "8",
+      "relativity": 1.0447475179187347
+     },
+     {
+      "factor": "ncb",
+      "level": "9",
+      "relativity": 1.004615976451917
+     },
+     {
+      "factor": "vvg",
+      "level": "11",
+      "relativity": 1.0
+     },
+     {
+      "factor": "vvg",
+      "level": "1",
+      "relativity": 0.8383821013699408
+     },
+     {
+      "factor": "vvg",
+      "level": "10",
+      "relativity": 0.9611356440835679
+     },
+     {
+      "factor": "vvg",
+      "level": "12",
+      "relativity": 0.9993746178126833
+     },
+     {
+      "factor": "vvg",
+      "level": "13",
+      "relativity": 1.0466457135927811
+     },
+     {
+      "factor": "vvg",
+      "level": "14",
+      "relativity": 1.070043067949741
+     },
+     {
+      "factor": "vvg",
+      "level": "15",
+      "relativity": 1.0209777326589333
+     },
+     {
+      "factor": "vvg",
+      "level": "16",
+      "relativity": 1.1352828319124904
+     },
+     {
+      "factor": "vvg",
+      "level": "17",
+      "relativity": 1.1191335540848315
+     },
+     {
+      "factor": "vvg",
+      "level": "18",
+      "relativity": 1.2052958985583673
+     },
+     {
+      "factor": "vvg",
+      "level": "19",
+      "relativity": 1.2928975863337755
+     },
+     {
+      "factor": "vvg",
+      "level": "2",
+      "relativity": 0.8198002981595751
+     },
+     {
+      "factor": "vvg",
+      "level": "20",
+      "relativity": 1.2873129613947416
+     },
+     {
+      "factor": "vvg",
+      "level": "3",
+      "relativity": 0.8822813286883231
+     },
+     {
+      "factor": "vvg",
+      "level": "4",
+      "relativity": 0.868816570521511
+     },
+     {
+      "factor": "vvg",
+      "level": "5",
+      "relativity": 0.8352515962613605
+     },
+     {
+      "factor": "vvg",
+      "level": "6",
+      "relativity": 0.9099337964723389
+     },
+     {
+      "factor": "vvg",
+      "level": "7",
+      "relativity": 0.9431164466761678
+     },
+     {
+      "factor": "vvg",
+      "level": "8",
+      "relativity": 0.8962941624269283
+     },
+     {
+      "factor": "vvg",
+      "level": "9",
+      "relativity": 0.9305940802790158
+     },
+     {
+      "factor": "cover",
+      "level": "comprehensive",
+      "relativity": 1.0
+     },
+     {
+      "factor": "cover",
+      "level": "third_party_fire_theft",
+      "relativity": 0.7183223645587149
+     },
+     {
+      "factor": "cover",
+      "level": "third_party_only",
+      "relativity": 0.6809487739324809
+     },
+     {
+      "factor": "use",
+      "level": "social",
+      "relativity": 1.0
+     },
+     {
+      "factor": "use",
+      "level": "business",
+      "relativity": 1.2545994371711935
+     },
+     {
+      "factor": "use",
+      "level": "commuting",
+      "relativity": 1.0937673423932908
+     },
+     {
+      "factor": "fuel",
+      "level": "petrol",
+      "relativity": 1.0
+     },
+     {
+      "factor": "fuel",
+      "level": "diesel",
+      "relativity": 1.0252618975888959
+     },
+     {
+      "factor": "fuel",
+      "level": "electric",
+      "relativity": 1.0360633946863218
+     },
+     {
+      "factor": "fuel",
+      "level": "hybrid",
+      "relativity": 1.0169272411255026
+     },
+     {
+      "factor": "points",
+      "level": "(-1.001, 0.0]",
+      "relativity": 1.0
+     },
+     {
+      "factor": "points",
+      "level": "(0.0, 3.0]",
+      "relativity": 1.0685060720564497
+     },
+     {
+      "factor": "points",
+      "level": "(3.0, 6.0]",
+      "relativity": 1.1826379663184587
+     },
+     {
+      "factor": "points",
+      "level": "(6.0, 99.0]",
+      "relativity": 1.172573007929531
+     },
+     {
+      "factor": "young",
+      "level": "False",
+      "relativity": 1.0
+     },
+     {
+      "factor": "young",
+      "level": "True",
+      "relativity": 1.1720543382279724
+     },
+     {
+      "factor": "g_volx",
+      "level": "0",
+      "relativity": 1.0
+     },
+     {
+      "factor": "g_volx",
+      "level": "1000",
+      "relativity": 0.7110572190867168
+     },
+     {
+      "factor": "g_volx",
+      "level": "250",
+      "relativity": 0.9444533143399649
+     },
+     {
+      "factor": "g_volx",
+      "level": "500",
+      "relativity": 0.8154236696462592
+     },
+     {
+      "factor": "m_vage",
+      "level": "(6.0, 10.0]",
+      "relativity": 1.0
+     },
+     {
+      "factor": "m_vage",
+      "level": "(-1.001, 1.0]",
+      "relativity": 1.0749772961152482
+     },
+     {
+      "factor": "m_vage",
+      "level": "(1.0, 3.0]",
+      "relativity": 1.0784336577786242
+     },
+     {
+      "factor": "m_vage",
+      "level": "(10.0, 15.0]",
+      "relativity": 0.9082910787966146
+     },
+     {
+      "factor": "m_vage",
+      "level": "(15.0, 999.0]",
+      "relativity": 0.8361862571289075
+     },
+     {
+      "factor": "m_vage",
+      "level": "(3.0, 6.0]",
+      "relativity": 1.082273477140352
+     },
+     {
+      "factor": "m_vage",
+      "level": "blank",
+      "relativity": 1.351498710603129
+     }
+    ]
+   },
+   "buildings": {
+    "rows": 52295,
+    "base_rows": 707726,
+    "blanks_at_known_average": [
+     "soil"
+    ],
+    "shape_v1": {
+     "part1_base": {
+      "deviance": 1213580.713522298,
+      "null": 1371823.5190781944,
+      "d2": 0.11535215962927114
+     },
+     "emerging_own": {
+      "deviance": 3350810.3752460373,
+      "null": 1371823.5190781944,
+      "d2": -1.4425958067096238
+     },
+     "base_over_own": {
+      "gain": 2137229.6617237385,
+      "rel_gain": 0.6378247117510522,
+      "lo": 163860.19653072025,
+      "hi": 5728543.256724232,
+      "share_b_better": 1.0,
+      "groups": 12105,
+      "n_boot": 2000,
+      "boot_seed": 0
+     }
+    },
+    "excess_factor": 1.0403127279169682,
+    "excess_basis": "Part 1 excess shares by peril on emerging capped cost",
+    "excess_factor_own": 1.0789724948291384,
+    "off_balance": 0.9035978865811836,
+    "weather_2025": 1.008212567946667,
+    "indication_capped_lc": 414.44636509998713,
+    "model_lc_2024_normal": 458.6623887181384,
+    "line_trend": 0.05053200285998199,
+    "trends_used": {
+     "freq_trend": {
+      "accidental_damage": 0.03068,
+      "escape_of_water": 0.01268,
+      "fire": 0.04667,
+      "flood": -0.04385,
+      "storm": 0.03574,
+      "subsidence": 0.06483
+     },
+     "sev_trend": {
+      "accidental_damage": 0.01014,
+      "escape_of_water": 0.08752,
+      "fire": -0.03889,
+      "flood": 0.07352,
+      "storm": 0.08437,
+      "subsidence": 0.05438
+     }
+    },
+    "trends_emerging_fit": {
+     "freq_trend": {
+      "accidental_damage": 0.12,
+      "escape_of_water": 0.08393056786676012,
+      "fire": -0.05,
+      "flood": 0.013090207200005866,
+      "storm": 0.08463472471262934,
+      "subsidence": 0.054172178861915166
+     },
+     "sev_trend": {
+      "accidental_damage": 0.031572215580091934,
+      "escape_of_water": 0.00043185949760493614,
+      "fire": -0.05,
+      "flood": 0.11534694604069085,
+      "storm": 0.07691920287638299,
+      "subsidence": -0.05
+     }
+    },
+    "predicted": 22375262.767136797,
+    "written": 18336468.291276,
+    "predicted_over_written": 1.2202602165097598,
+    "mean_per_exposure": 472.2879177360644,
+    "relativities": [
+     {
+      "factor": "urban",
+      "level": "suburban",
+      "relativity": 1.0
+     },
+     {
+      "factor": "urban",
+      "level": "dense_urban",
+      "relativity": 1.013388643643303
+     },
+     {
+      "factor": "urban",
+      "level": "rural",
+      "relativity": 0.9920418934996375
+     },
+     {
+      "factor": "urban",
+      "level": "urban",
+      "relativity": 1.0625474074482886
+     },
+     {
+      "factor": "pay",
+      "level": "annual",
+      "relativity": 1.0
+     },
+     {
+      "factor": "pay",
+      "level": "monthly",
+      "relativity": 1.1164773916600461
+     },
+     {
+      "factor": "missed",
+      "level": "0",
+      "relativity": 1.0
+     },
+     {
+      "factor": "missed",
+      "level": "1",
+      "relativity": 1.284236456035911
+     },
+     {
+      "factor": "missed",
+      "level": "2+",
+      "relativity": 1.3667429234691149
+     },
+     {
+      "factor": "channel",
+      "level": "direct",
+      "relativity": 1.0
+     },
+     {
+      "factor": "channel",
+      "level": "broker",
+      "relativity": 1.0645028231686493
+     },
+     {
+      "factor": "channel",
+      "level": "comparison_site",
+      "relativity": 1.1811093979035443
+     },
+     {
+      "factor": "new_bus",
+      "level": "False",
+      "relativity": 1.0
+     },
+     {
+      "factor": "new_bus",
+      "level": "True",
+      "relativity": 1.0862507922956306
+     },
+     {
+      "factor": "age",
+      "level": "65+",
+      "relativity": 1.0
+     },
+     {
+      "factor": "age",
+      "level": "17-24",
+      "relativity": 0.9931904474400429
+     },
+     {
+      "factor": "age",
+      "level": "25-34",
+      "relativity": 1.0146626398018639
+     },
+     {
+      "factor": "age",
+      "level": "35-49",
+      "relativity": 0.9473789174481976
+     },
+     {
+      "factor": "age",
+      "level": "50-64",
+      "relativity": 0.9608316175661841
+     },
+     {
+      "factor": "yr",
+      "level": "2023",
+      "relativity": 1.0
+     },
+     {
+      "factor": "yr",
+      "level": "2021",
+      "relativity": 0.9242352710437497
+     },
+     {
+      "factor": "yr",
+      "level": "2022",
+      "relativity": 0.9924207763051266
+     },
+     {
+      "factor": "yr",
+      "level": "2024",
+      "relativity": 1.1178837266708759
+     },
+     {
+      "factor": "h_d",
+      "level": "0",
+      "relativity": 1.0
+     },
+     {
+      "factor": "h_d",
+      "level": "1",
+      "relativity": 1.2047057670242851
+     },
+     {
+      "factor": "h_d",
+      "level": "2",
+      "relativity": 1.7212202375506078
+     },
+     {
+      "factor": "h_d",
+      "level": "3+",
+      "relativity": 2.149738950602739
+     },
+     {
+      "factor": "si",
+      "level": "(-inf, 121000.0]",
+      "relativity": 1.0
+     },
+     {
+      "factor": "si",
+      "level": "(121000.0, 154000.0]",
+      "relativity": 1.3763825476871572
+     },
+     {
+      "factor": "si",
+      "level": "(154000.0, 178000.0]",
+      "relativity": 1.537961854788343
+     },
+     {
+      "factor": "si",
+      "level": "(178000.0, 201000.0]",
+      "relativity": 1.6026153478726328
+     },
+     {
+      "factor": "si",
+      "level": "(201000.0, 223000.0]",
+      "relativity": 2.112814001409983
+     },
+     {
+      "factor": "si",
+      "level": "(223000.0, 246000.0]",
+      "relativity": 2.1450292375373823
+     },
+     {
+      "factor": "si",
+      "level": "(246000.0, 273000.0]",
+      "relativity": 2.202734310767814
+     },
+     {
+      "factor": "si",
+      "level": "(273000.0, 306000.0]",
+      "relativity": 2.460720559770292
+     },
+     {
+      "factor": "si",
+      "level": "(306000.0, 355000.0]",
+      "relativity": 2.3419907912243807
+     },
+     {
+      "factor": "si",
+      "level": "(355000.0, inf]",
+      "relativity": 2.983145094292144
+     },
+     {
+      "factor": "flood",
+      "level": "1.0",
+      "relativity": 1.0
+     },
+     {
+      "factor": "flood",
+      "level": "2.0",
+      "relativity": 1.115189211028102
+     },
+     {
+      "factor": "flood",
+      "level": "3.0",
+      "relativity": 1.4759916613995991
+     },
+     {
+      "factor": "flood",
+      "level": "4.0",
+      "relativity": 3.6385164212431462
+     },
+     {
+      "factor": "flood",
+      "level": "5.0",
+      "relativity": 8.387751794222758
+     },
+     {
+      "factor": "flood",
+      "level": "blank",
+      "relativity": 2.709823657863964
+     },
+     {
+      "factor": "ad_cover",
+      "level": "False",
+      "relativity": 1.0
+     },
+     {
+      "factor": "ad_cover",
+      "level": "True",
+      "relativity": 1.0920966602790478
+     },
+     {
+      "factor": "constr",
+      "level": "brick",
+      "relativity": 1.0
+     },
+     {
+      "factor": "constr",
+      "level": "non_standard",
+      "relativity": 1.3788343925299378
+     },
+     {
+      "factor": "constr",
+      "level": "stone",
+      "relativity": 1.0448644402220244
+     },
+     {
+      "factor": "constr",
+      "level": "timber",
+      "relativity": 1.06278289174014
+     },
+     {
+      "factor": "soil",
+      "level": "clay",
+      "relativity": 1.0
+     },
+     {
+      "factor": "soil",
+      "level": "blank",
+      "relativity": 0.9764763175771427
+     },
+     {
+      "factor": "soil",
+      "level": "chalk",
+      "relativity": 0.9302644070637716
+     },
+     {
+      "factor": "soil",
+      "level": "loam",
+      "relativity": 0.9388565511976719
+     },
+     {
+      "factor": "soil",
+      "level": "rock",
+      "relativity": 0.9116818114989557
+     },
+     {
+      "factor": "soil",
+      "level": "sand",
+      "relativity": 0.9769446705722064
+     },
+     {
+      "factor": "occ",
+      "level": "owner_occupied",
+      "relativity": 1.0
+     },
+     {
+      "factor": "occ",
+      "level": "let",
+      "relativity": 1.3031956863672631
+     },
+     {
+      "factor": "built",
+      "level": "(-0.001, 1919.0]",
+      "relativity": 1.0
+     },
+     {
+      "factor": "built",
+      "level": "(1919.0, 1944.0]",
+      "relativity": 0.9973018596931204
+     },
+     {
+      "factor": "built",
+      "level": "(1944.0, 1969.0]",
+      "relativity": 0.7216572823875993
+     },
+     {
+      "factor": "built",
+      "level": "(1969.0, 1989.0]",
+      "relativity": 0.6853981710774697
+     },
+     {
+      "factor": "built",
+      "level": "(1989.0, 2009.0]",
+      "relativity": 0.6417652778290718
+     },
+     {
+      "factor": "built",
+      "level": "(2009.0, 3000.0]",
+      "relativity": 0.6556468726028871
+     },
+     {
+      "factor": "b_treeclay",
+      "level": "False|False",
+      "relativity": 1.0
+     },
+     {
+      "factor": "b_treeclay",
+      "level": "False|True",
+      "relativity": 1.083917639372629
+     },
+     {
+      "factor": "b_treeclay",
+      "level": "True|False",
+      "relativity": 0.9467183262960006
+     },
+     {
+      "factor": "b_treeclay",
+      "level": "True|True",
+      "relativity": 1.2147024649461615
+     }
+    ]
+   },
+   "contents": {
+    "rows": 66247,
+    "base_rows": 721617,
+    "blanks_at_known_average": [
+     "security",
+     "hvi"
+    ],
+    "shape_v1": {
+     "part1_base": {
+      "deviance": 845036.9584623196,
+      "null": 873002.1132581122,
+      "d2": 0.032033318557986634
+     },
+     "emerging_own": {
+      "deviance": 899439.4775962862,
+      "null": 873002.1132581122,
+      "d2": -0.030283276451081864
+     },
+     "base_over_own": {
+      "gain": 54402.519133966736,
+      "rel_gain": 0.06048491364794789,
+      "lo": 25723.850185698207,
+      "hi": 90261.65625894874,
+      "share_b_better": 1.0,
+      "groups": 15044,
+      "n_boot": 2000,
+      "boot_seed": 0
+     }
+    },
+    "excess_factor": 1.0236283061034124,
+    "excess_basis": "Part 1 excess shares by peril on emerging capped cost",
+    "excess_factor_own": 1.0210838987811488,
+    "off_balance": 0.8414409045642111,
+    "weather_2025": 1.0126645564938108,
+    "indication_capped_lc": 97.99048486262315,
+    "model_lc_2024_normal": 116.45557558599222,
+    "line_trend": 0.05710888914328877,
+    "trends_used": {
+     "freq_trend": {
+      "accidental_damage": 0.01167,
+      "escape_of_water": 0.02722,
+      "flood": -0.01352,
+      "theft": 0.03217
+     },
+     "sev_trend": {
+      "accidental_damage": 0.02186,
+      "escape_of_water": 0.02637,
+      "flood": 0.03875,
+      "theft": 0.04631
+     }
+    },
+    "trends_emerging_fit": {
+     "freq_trend": {
+      "accidental_damage": 0.013802762884994602,
+      "escape_of_water": 0.0725718179729622,
+      "flood": -0.05,
+      "theft": 0.12
+     },
+     "sev_trend": {
+      "accidental_damage": 4.8898676623165827e-05,
+      "escape_of_water": -0.05,
+      "flood": 0.02027184069662802,
+      "theft": 0.031125445840711974
+     }
+    },
+    "predicted": 6157765.291974399,
+    "written": 8078337.3458,
+    "predicted_over_written": 0.7622565174473528,
+    "mean_per_exposure": 104.33993530451058,
+    "relativities": [
+     {
+      "factor": "urban",
+      "level": "suburban",
+      "relativity": 1.0
+     },
+     {
+      "factor": "urban",
+      "level": "dense_urban",
+      "relativity": 1.3773644994865457
+     },
+     {
+      "factor": "urban",
+      "level": "rural",
+      "relativity": 0.9938156370478235
+     },
+     {
+      "factor": "urban",
+      "level": "urban",
+      "relativity": 1.1661778511990026
+     },
+     {
+      "factor": "pay",
+      "level": "annual",
+      "relativity": 1.0
+     },
+     {
+      "factor": "pay",
+      "level": "monthly",
+      "relativity": 1.1079488451600752
+     },
+     {
+      "factor": "missed",
+      "level": "0",
+      "relativity": 1.0
+     },
+     {
+      "factor": "missed",
+      "level": "1",
+      "relativity": 1.3556173564556404
+     },
+     {
+      "factor": "missed",
+      "level": "2+",
+      "relativity": 1.385837978494728
+     },
+     {
+      "factor": "channel",
+      "level": "direct",
+      "relativity": 1.0
+     },
+     {
+      "factor": "channel",
+      "level": "broker",
+      "relativity": 1.0852097719696467
+     },
+     {
+      "factor": "channel",
+      "level": "comparison_site",
+      "relativity": 1.1867079324076824
+     },
+     {
+      "factor": "age",
+      "level": "65+",
+      "relativity": 1.0
+     },
+     {
+      "factor": "age",
+      "level": "17-24",
+      "relativity": 1.2280798011172684
+     },
+     {
+      "factor": "age",
+      "level": "25-34",
+      "relativity": 1.065940902885253
+     },
+     {
+      "factor": "age",
+      "level": "35-49",
+      "relativity": 0.8731297267148919
+     },
+     {
+      "factor": "age",
+      "level": "50-64",
+      "relativity": 0.8648215590203071
+     },
+     {
+      "factor": "yr",
+      "level": "2023",
+      "relativity": 1.0
+     },
+     {
+      "factor": "yr",
+      "level": "2021",
+      "relativity": 0.9015517516234551
+     },
+     {
+      "factor": "yr",
+      "level": "2022",
+      "relativity": 0.9190727748627604
+     },
+     {
+      "factor": "yr",
+      "level": "2024",
+      "relativity": 1.027451925339576
+     },
+     {
+      "factor": "h_d",
+      "level": "0",
+      "relativity": 1.0
+     },
+     {
+      "factor": "h_d",
+      "level": "1",
+      "relativity": 1.2335052317446054
+     },
+     {
+      "factor": "h_d",
+      "level": "2",
+      "relativity": 1.548200611474591
+     },
+     {
+      "factor": "h_d",
+      "level": "3+",
+      "relativity": 2.1403504279014562
+     },
+     {
+      "factor": "si",
+      "level": "(18600.0, 24100.0]",
+      "relativity": 1.0
+     },
+     {
+      "factor": "si",
+      "level": "(-inf, 18600.0]",
+      "relativity": 0.753480712945028
+     },
+     {
+      "factor": "si",
+      "level": "(24100.0, 29000.0]",
+      "relativity": 1.1682201073115477
+     },
+     {
+      "factor": "si",
+      "level": "(29000.0, 33900.0]",
+      "relativity": 1.328218704707554
+     },
+     {
+      "factor": "si",
+      "level": "(33900.0, 38900.0]",
+      "relativity": 1.5243431449800786
+     },
+     {
+      "factor": "si",
+      "level": "(38900.0, 44400.0]",
+      "relativity": 1.6477410488220245
+     },
+     {
+      "factor": "si",
+      "level": "(44400.0, 50700.0]",
+      "relativity": 1.9441422162004434
+     },
+     {
+      "factor": "si",
+      "level": "(50700.0, 58900.0]",
+      "relativity": 2.069872681306784
+     },
+     {
+      "factor": "si",
+      "level": "(58900.0, 71800.0]",
+      "relativity": 2.2195750224704445
+     },
+     {
+      "factor": "si",
+      "level": "(71800.0, inf]",
+      "relativity": 2.7993867431393578
+     },
+     {
+      "factor": "flood",
+      "level": "1.0",
+      "relativity": 1.0
+     },
+     {
+      "factor": "flood",
+      "level": "2.0",
+      "relativity": 1.1139108070649781
+     },
+     {
+      "factor": "flood",
+      "level": "3.0",
+      "relativity": 1.5891944471831176
+     },
+     {
+      "factor": "flood",
+      "level": "4.0",
+      "relativity": 2.7768088176979915
+     },
+     {
+      "factor": "flood",
+      "level": "5.0",
+      "relativity": 7.334295847881342
+     },
+     {
+      "factor": "flood",
+      "level": "blank",
+      "relativity": 2.169419308538621
+     },
+     {
+      "factor": "ad_cover",
+      "level": "False",
+      "relativity": 1.0
+     },
+     {
+      "factor": "ad_cover",
+      "level": "True",
+      "relativity": 1.2123387416494724
+     },
+     {
+      "factor": "tenure",
+      "level": "owner",
+      "relativity": 1.0
+     },
+     {
+      "factor": "tenure",
+      "level": "renter",
+      "relativity": 1.0987221642473968
+     },
+     {
+      "factor": "security",
+      "level": "standard",
+      "relativity": 1.0
+     },
+     {
+      "factor": "security",
+      "level": "alarm_and_locks",
+      "relativity": 0.8597905078462537
+     },
+     {
+      "factor": "security",
+      "level": "blank",
+      "relativity": 0.005429981390085226
+     },
+     {
+      "factor": "security",
+      "level": "locks",
+      "relativity": 0.9501975664893904
+     },
+     {
+      "factor": "hvi",
+      "level": "0.0",
+      "relativity": 1.0
+     },
+     {
+      "factor": "hvi",
+      "level": "1.0",
+      "relativity": 1.107812480287788
+     },
+     {
+      "factor": "hvi",
+      "level": "2.0",
+      "relativity": 1.1267638723191498
+     },
+     {
+      "factor": "hvi",
+      "level": "3.0",
+      "relativity": 1.2098733289453782
+     },
+     {
+      "factor": "hvi",
+      "level": "4.0",
+      "relativity": 1.2801418990238433
+     },
+     {
+      "factor": "hvi",
+      "level": "blank",
+      "relativity": 0.19608104887817798
+     },
+     {
+      "factor": "bike",
+      "level": "False",
+      "relativity": 1.0
+     },
+     {
+      "factor": "bike",
+      "level": "True",
+      "relativity": 1.0046298482688976
+     }
+    ]
+   }
+  }
+ },
+ "meta": {
+  "created": "2026-10-28T09:53:47",
+  "git_commit": "4e52e18",
+  "seeds": null,
+  "versions": {
+   "python": "3.14.5",
+   "numpy": "2.5.3",
+   "pandas": "3.0.5",
+   "scipy": "1.18.1",
+   "sklearn": "1.9.1",
+   "lightgbm": "4.7.0",
+   "xgboost": "3.4.1",
+   "catboost": "1.2.10"
+  }
+ }
+}

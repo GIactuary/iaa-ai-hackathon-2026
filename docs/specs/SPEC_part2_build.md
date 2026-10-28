@@ -1,0 +1,27 @@
+# Part 2 build specification
+
+Every constraint below was decided by the appointed actuary. Sources: the post-mortem brief (Y1 to Y4, D32), Y3-T (D33), Y2-T and Y2-T2 (D35, D37), and the Part 2 decisions brief (https://claude.ai/artifact/1iVTKSXB7d6atT6XvrfWkf, P2-C to P2-P on 2026-10-27, D38; P2-E on 2026-10-28, D39). Evidence: `outputs/part2_decision_evidence.json`, `outputs/part2_decision_evidence_extra.json`. Configuration: `config/part2.json`; thresholds: `decisions/thresholds_part2.md` (all dated except `tele_quantiles`, which is not used).
+
+## Constraints, in the order the build needs them
+
+1. **Data (P2-B, P2-O, P2-R, Y3).** Part 1's data rules R1 to R9; R10 deducts expected recoveries from open claims; R11 trims and case-folds occupation (40 levels). Blanks are recovered from the same policy's rows where the rules allow. Reporting-delay curves come from Part 1's accident year 2021 (`curves_raw_dir`); peril cost shares and seasonality come from emerging 2023. Gender is merged for the motor test only (`customer_extra`).
+2. **Hold-out (P2-H).** 15% of emerging customers, seed 2026, locked on 2026-10-28 (5,515 of 36,768 customers, `data/work/markets/part2/holdout_lock.json`). Every build figure uses the other 85%. The hold-out is opened once before the final file; the final models are then refitted on every row.
+3. **Borrowing (P2-C (b)).** Each family's base is fitted on Part 1 rows, on the fields both markets carry, with ages mapped to the emerging bands. The emerging data sets the level. Emerging-only terms (region, gender in motor, encoded make_model and occupation, the predicted premium of Y1) enter on top, each kept only if it passes P2-V. Family weights are fitted on emerging rows.
+4. **Validation (P2-V).** A choice is kept only if it lowers deviance both out of time (fit 2023, score 2024 with completion) and in customer-grouped five-fold cross-validation over 2023-2024 (seeds 11, 22, 33), and its 95% paired bootstrap interval on cross-validation lies above zero. Codes encoded with only 2023 fitted use calendar quarters as credibility periods.
+5. **Level GLM (P2-G (a)).** Part 1's W2 factors with age as the five emerging bands; credit band, mileage and telematics removed; declared prior claims and the step 5 additions kept; Part 1's L8 drops kept; region left to the emerging layer. Each factor faces a drop-one test on emerging data under P2-V.
+6. **Gender (P2-S (a)).** Motor only, as an emerging addition, kept only if it passes P2-V. The write-up carries a fairness exhibit. Property excludes it.
+7. **Large losses (P2-L (a)).** Part 1's caps. Motor's excess-loss factor from its own large claims; buildings and contents from Part 1's excess shares by peril applied to emerging capped cost.
+8. **Trend (P2-T (a)).** Part 1's selected weather-normalised trends by peril, on emerging levels; bodily injury severity a level with no trend.
+9. **Weather (Y4).** One factor per line for 2025, from the emerging weather file. The elasticities are Part 1's, as part of the shape borrowed under P2-C (b).
+10. **New business (P2-N (a)).** A rating factor in the models, its relativity from the Part 1 base and moved by emerging data only where it passes P2-V. Part 1 dropped it from contents W2 (L8); its return in contents is tested as an emerging addition.
+11. **Tuning (P2-F (a)).** Full tuning of the families and cross-fitted family weights.
+12. **Submission (P2-P (a)).** An early check file, then the final file chosen on P2-V and the hold-out, never on the public board. The actuary submits.
+13. **Expenses (P2-E (d)).** The office premium build-up for the 20 reference policies uses the given broker (20%) and direct (0%) commissions; the write-up states that the comparison-site rate is not given and not needed.
+
+## Build status
+
+**Milestone 1 (2026-10-28): check file `outputs/markets/part2/submissions/part2_check_v1.csv`** (`scripts/part2_model.py`, evidence `outputs/markets/part2/part2_check_v1.json`). The base GLM fitted on Part 1 rows, the emerging level chain, and nothing else. Out of time on emerging 2024 (fitting rows), the base's shape beats an emerging-only GLM fitted on 2023 in every line: motor D² 4.8% against 3.5%, buildings 11.5% against −144%, contents 3.2% against −3.0%, each interval clear of zero.
+
+**Implementation finding, for the actuary.** Part 1 recovered most blanks from history, so some of its blank levels are nearly empty: contents security blank relativity 0.005, high-value items blank 0.196, motor vehicle age blank 1.35. In the emerging test book these blanks cover 9% to 12% of rows. Under P2-B (a), Part 1's own treatment of thin blank levels applies: such a blank is priced at the exposure-weighted average of the factor's known levels (the rule: emerging test blank share more than twice Part 1's). It applies to motor vehicle age, buildings soil, and contents security and high-value items. Flood zone blanks (3% in both markets, informative per `decisions/missing_values.md`) keep their own level. Before the fix, contents D² was −9.7%; after it, 3.2%.
+
+**Milestone 2, next:** the emerging additions under P2-V (region; gender in motor; encoded make_model and occupation; the predicted premium; policy history; blank levels re-estimated on emerging rows; new business in contents), the tree family with a Part 1 base, the drop-one test of the W2 factors, full tuning, cross-fitted family weights, the referral rule, the hold-out opening, and the final refit on every row.

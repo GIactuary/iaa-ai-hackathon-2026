@@ -40,9 +40,16 @@ def build_all(rebuild: bool = False) -> dict[str, tuple[pd.DataFrame, pd.DataFra
         claims, rep = dr.add_open_recoveries(claims, market.FIT_YEARS, th["rec_open_max_share"], th["rec_min_closed"])
         CACHE.mkdir(parents=True, exist_ok=True)
         (CACHE / "open_recoveries.json").write_text(json.dumps(rep, indent=1, default=float), encoding="utf-8")
-    curves, weights = tg.delay_curves(claims), tg.incidence_weights(claims)
+    if "curves_raw_dir" in market.CFG:       # P2-R (a): the delay curves from another market's longer record
+        curves = tg.delay_curves(dr.read_raw("claims", ROOT / market.CFG["curves_raw_dir"]), year=int(market.CFG["curves_year"]))
+    else:
+        curves = tg.delay_curves(claims)
+    weights = tg.incidence_weights(claims)
     cshares, nshares = tg.peril_cost_shares(claims), tg.peril_count_shares(claims)
     ad, cu = dr.read_raw("addresses"), dr.read_raw("customers")
+    if market.CFG.get("occupation_clean"):
+        cu["occupation"] = dr.clean_occupation(cu["occupation"])
+    cust_cols = CUSTOMER_COLS + list(market.CFG.get("customer_extra", []))
     out, custs = {}, []
     for line in dr.LINES:
         tr, te = dr.read_raw(f"policies_{line}"), dr.read_raw(f"test_{line}")
@@ -52,8 +59,8 @@ def build_all(rebuild: bool = False) -> dict[str, tuple[pd.DataFrame, pd.DataFra
         frames = []
         for df in (tr, te):
             # a market without a field (the emerging market has no credit band or date of birth) merges the rest;
-            # gender is not on the list, so it stays out until the actuary rules on it (exchange D33)
-            df = df.merge(ad, on="address_id", how="left").merge(cu[[c for c in CUSTOMER_COLS if c in cu.columns]], on="customer_id", how="left")
+            # gender comes in only through the market's customer_extra (emerging: P2-S, exchange D38)
+            df = df.merge(ad, on="address_id", how="left").merge(cu[[c for c in cust_cols if c in cu.columns]], on="customer_id", how="left")
             comp = tg.row_completion(df, line, curves, weights, cshares)
             df = df.join(comp)
             df["completion_count"] = tg.row_completion(df, line, curves, weights, nshares)["completion"]
