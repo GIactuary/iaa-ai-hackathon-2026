@@ -629,6 +629,20 @@
       "decision": "Actuary (hold-out brief): H-F (b), the frozen model with buildings at the check file's shape; H-R (a), referred rows keep the model price and are listed for underwriting review.",
       "effect": "Final file part2_v2_nb-cred_wx-row_mprem_bchk_all.csv. The buildings fire and flood hazards and buildings row weather leave the final model; the write-up states the choice followed the hold-out.",
       "section": "4.3"
+    },
+    {
+      "id": "D45",
+      "stage": "Part 2 build: the gap to the leaders",
+      "role": "Appointed actuary",
+      "proposed_by": "Actuary",
+      "question": "Actuary, after the final file scored 0.15455 (21st; top 0.17353): \"how did we ended up so behind? ... is it the intelligence that the model is lacking, or is it some of the decision what we made is not optimal? Is there something we can do to close this bridge as much as possible?\"",
+      "ai_answer": "Measured the level first: one line off by 10% costs at most 0.0008 of D2, and the best level on a random third differs from the other two-thirds by 9% (motor) to 28% (buildings), so neither our level nor a level read from the public board explains or closes a 0.019 gap. The 2025 public score matches our 2024 validation, so nothing broke on the test year. Part of the leaders' lead is likely selection on a noisy third (25 to 41 submissions each against our 6). The one untested modelling lever was a boosted correction learned on emerging rows on top of our model (the pooled challenger K6 had been swapped for K12 to save run time).",
+      "challenge": "The AI said it did not expect the correction to close 0.019 and recommended a timebox, with the write-up and video not yet started.",
+      "test": "Level study (scripts/part2_level_study.py); K15 under P2-V on every emerging customer, line by line, design committed before the run (scripts/part2_boosted.py).",
+      "result": "K15 fails in every line; pooled cross-validation -14,876 [-30,421, -943]. Early stopping kept 1 to 57 trees; the correction it learns does not carry to new customers.",
+      "decision": "Actuary: \"do the boosted correction now. And after that, we will go into the documentation\". Under the rule, the final file stands. A study of what better-ranked entries have that we lack is wanted after the deadline, for use beyond this entry.",
+      "effect": "Model final. Evidence for the write-up: no learnable structure is left in the emerging data on top of the final model, so the remaining gap lies in the base borrowed from Part 1, data choices, or board selection.",
+      "section": "4.3"
     }
   ]
 }
