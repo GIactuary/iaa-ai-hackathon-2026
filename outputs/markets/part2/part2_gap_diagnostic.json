@@ -1,0 +1,416 @@
+{
+ "part2_gap_diagnostic": {
+  "perfect": {
+   "base": {
+    "d2": 0.13739372910782777,
+    "d2_by_line": {
+     "motor": 0.09064856465482451,
+     "buildings": 0.11732393066399738,
+     "contents": 0.08272744856388659
+    },
+    "predicted_over_actual": {
+     "motor": 1.0,
+     "buildings": 1.0000000000000002,
+     "contents": 1.0000000000000002
+    }
+   },
+   "base+region": {
+    "d2": 0.12396427511560693,
+    "d2_by_line": {
+     "motor": 0.08924588344252538,
+     "buildings": 0.07858399970168728,
+     "contents": 0.07720511669493224
+    },
+    "predicted_over_actual": {
+     "motor": 0.9999999999999999,
+     "buildings": 0.9999999999999999,
+     "contents": 1.0000000000000002
+    }
+   },
+   "base+region+gender": {
+    "d2": 0.12526363053980605,
+    "d2_by_line": {
+     "motor": 0.09210575953284006,
+     "buildings": 0.07858399970168728,
+     "contents": 0.07720511669493224
+    },
+    "predicted_over_actual": {
+     "motor": 0.9999999999999999,
+     "buildings": 0.9999999999999999,
+     "contents": 1.0000000000000002
+    }
+   },
+   "base+lwp_hat": {
+    "d2": 0.13709925815400692,
+    "d2_by_line": {
+     "motor": 0.09120899073976085,
+     "buildings": 0.11649800798020005,
+     "contents": 0.08122521462448651
+    },
+    "predicted_over_actual": {
+     "motor": 1.0000000000000002,
+     "buildings": 0.9999999999999999,
+     "contents": 1.0000000000000002
+    }
+   },
+   "base+log_premium": {
+    "d2": 0.13747811716889746,
+    "d2_by_line": {
+     "motor": 0.09109598438550748,
+     "buildings": 0.11748599890567557,
+     "contents": 0.08188685653731198
+    },
+    "predicted_over_actual": {
+     "motor": 1.0000000000000002,
+     "buildings": 1.0000000000000002,
+     "contents": 1.0
+    }
+   },
+   "premium_only": {
+    "d2": 0.10552974050003805,
+    "d2_by_line": {
+     "motor": 0.06418352002856953,
+     "buildings": 0.06685348781737388,
+     "contents": 0.05963142032765023
+    },
+    "predicted_over_actual": {
+     "motor": 1.0000000000000002,
+     "buildings": 1.0,
+     "contents": 1.0000000000000002
+    }
+   },
+   "tree_part1": {
+    "d2": 0.13300886500218367,
+    "d2_by_line": {
+     "motor": 0.08576805942604815,
+     "buildings": 0.10290328673344229,
+     "contents": 0.09366830681229699
+    },
+    "predicted_over_actual": {
+     "motor": 1.0,
+     "buildings": 1.0,
+     "contents": 1.0
+    }
+   },
+   "glm_tree_blend": {
+    "d2": 0.13745125809037428,
+    "d2_by_line": {
+     "motor": 0.08974669076842812,
+     "buildings": 0.1133798385812288,
+     "contents": 0.09103043113496767
+    },
+    "predicted_over_actual": {
+     "motor": 0.9999999999999999,
+     "buildings": 1.0,
+     "contents": 0.9999999999999998
+    }
+   },
+   "emerging-only": {
+    "d2": -0.3315955053808737,
+    "d2_by_line": {
+     "motor": 0.07854596282299076,
+     "buildings": -1.379573252045975,
+     "contents": 0.02361159474022223
+    },
+    "predicted_over_actual": {
+     "motor": 0.9999999999999999,
+     "buildings": 0.9999999999999999,
+     "contents": 1.0
+    }
+   },
+   "base+region+gender_over_base": {
+    "gain": -56623.25515290583,
+    "rel_gain": -0.014062149763270127,
+    "lo": -105592.94831972518,
+    "hi": -14941.750898519444,
+    "share_b_better": 0.003,
+    "groups": 47303,
+    "n_boot": 2000,
+    "boot_seed": 0
+   }
+  },
+  "trended_2023": {
+   "base": {
+    "d2": 0.12761254395673938,
+    "d2_by_line": {
+     "motor": 0.09002748952025763,
+     "buildings": 0.08605751752309088,
+     "contents": 0.0824051349181848
+    },
+    "predicted_over_actual": {
+     "motor": 0.9471266168388746,
+     "buildings": 1.5883948053083647,
+     "contents": 1.088126130470937
+    }
+   },
+   "base+region": {
+    "d2": 0.1183971288991289,
+    "d2_by_line": {
+     "motor": 0.08853819465351043,
+     "buildings": 0.06106630815549463,
+     "contents": 0.07740731952964375
+    },
+    "predicted_over_actual": {
+     "motor": 0.947448428872682,
+     "buildings": 1.585788005124663,
+     "contents": 1.0862578162482501
+    }
+   },
+   "base+region+gender": {
+    "d2": 0.11972348618797035,
+    "d2_by_line": {
+     "motor": 0.09145750173987632,
+     "buildings": 0.06106630815549463,
+     "contents": 0.07740731952964375
+    },
+    "predicted_over_actual": {
+     "motor": 0.9479348259350594,
+     "buildings": 1.585788005124663,
+     "contents": 1.0862578162482501
+    }
+   },
+   "base+lwp_hat": {
+    "d2": 0.12703436848934901,
+    "d2_by_line": {
+     "motor": 0.09095426961733233,
+     "buildings": 0.08354895855765299,
+     "contents": 0.08119136897671009
+    },
+    "predicted_over_actual": {
+     "motor": 0.9546863121360926,
+     "buildings": 1.58651108248779,
+     "contents": 1.090801836854066
+    }
+   },
+   "base+log_premium": {
+    "d2": 0.12790140165805342,
+    "d2_by_line": {
+     "motor": 0.09068781278187266,
+     "buildings": 0.08644800266696251,
+     "contents": 0.0817589854557107
+    },
+    "predicted_over_actual": {
+     "motor": 0.9478968727740187,
+     "buildings": 1.5893444476664174,
+     "contents": 1.0989173480188246
+    }
+   },
+   "premium_only": {
+    "d2": 0.0986794813918298,
+    "d2_by_line": {
+     "motor": 0.06420613385114715,
+     "buildings": 0.04543430381540403,
+     "contents": 0.05764122964826601
+    },
+    "predicted_over_actual": {
+     "motor": 1.0027209948771452,
+     "buildings": 1.6524675505278623,
+     "contents": 1.1314815171983574
+    }
+   },
+   "tree_part1": {
+    "d2": 0.12375799054261583,
+    "d2_by_line": {
+     "motor": 0.08524014525223622,
+     "buildings": 0.07370687151959199,
+     "contents": 0.0926614851696359
+    },
+    "predicted_over_actual": {
+     "motor": 0.955620291270062,
+     "buildings": 1.5960546534212512,
+     "contents": 1.0861059591603843
+    }
+   },
+   "glm_tree_blend": {
+    "d2": 0.1274334684737407,
+    "d2_by_line": {
+     "motor": 0.0892516393252194,
+     "buildings": 0.08153807426489823,
+     "contents": 0.0901057182343803
+    },
+    "predicted_over_actual": {
+     "motor": 0.9510680968498488,
+     "buildings": 1.591787801703848,
+     "contents": 1.086977874336637
+    }
+   },
+   "emerging-only": {
+    "d2": -0.2359568331877786,
+    "d2_by_line": {
+     "motor": 0.0782954517776121,
+     "buildings": -1.065207019176765,
+     "contents": 0.02808120883496823
+    },
+    "predicted_over_actual": {
+     "motor": 0.9812278153316135,
+     "buildings": 1.6195601934189183,
+     "contents": 1.0932666272631892
+    }
+   },
+   "base+region+gender_over_base": {
+    "gain": -36826.092422254456,
+    "rel_gain": -0.009043066488541793,
+    "lo": -76444.69569322717,
+    "hi": -4091.6864842124082,
+    "share_b_better": 0.0145,
+    "groups": 47303,
+    "n_boot": 2000,
+    "boot_seed": 0
+   }
+  },
+  "premium_model_r2_2024": {
+   "motor": 0.9485639829836766,
+   "buildings": 0.9179505898032083,
+   "contents": 0.9319706304314271
+  },
+  "tree_part1": {
+   "motor": {
+    "trees": 90,
+    "inputs": [
+     "years_licensed",
+     "ncb_years",
+     "vehicle_value_group",
+     "vehicle_age",
+     "engine_size_cc",
+     "seats",
+     "voluntary_excess",
+     "compulsory_excess",
+     "missed_payments_12m",
+     "renewal_count",
+     "days_quote_to_inception",
+     "flood_zone",
+     "distance_to_river_km",
+     "elevation_m",
+     "year_built",
+     "bedrooms",
+     "licence_points",
+     "prior_claims_5y",
+     "household_size",
+     "years_at_address",
+     "customer_since_year",
+     "driver_age_band",
+     "body_type",
+     "transmission",
+     "vehicle_colour",
+     "fuel_type",
+     "driver_assist",
+     "cover_type",
+     "overnight_parking",
+     "vehicle_use",
+     "named_young_driver",
+     "channel",
+     "payment_method",
+     "new_business",
+     "urban_density",
+     "soil_type",
+     "property_type",
+     "roof_type",
+     "basement",
+     "trees_within_5m",
+     "listed_building",
+     "energy_rating",
+     "solar_panels",
+     "marital_status"
+    ]
+   },
+   "buildings": {
+    "trees": 88,
+    "inputs": [
+     "sum_insured",
+     "days_unoccupied",
+     "voluntary_excess",
+     "compulsory_excess",
+     "missed_payments_12m",
+     "renewal_count",
+     "days_quote_to_inception",
+     "flood_zone",
+     "distance_to_river_km",
+     "elevation_m",
+     "year_built",
+     "bedrooms",
+     "licence_points",
+     "prior_claims_5y",
+     "household_size",
+     "years_at_address",
+     "customer_since_year",
+     "policyholder_age_band",
+     "construction_type",
+     "occupancy",
+     "smoke_alarms",
+     "accidental_damage_cover",
+     "mortgage",
+     "channel",
+     "payment_method",
+     "new_business",
+     "urban_density",
+     "soil_type",
+     "property_type",
+     "roof_type",
+     "basement",
+     "trees_within_5m",
+     "listed_building",
+     "energy_rating",
+     "solar_panels",
+     "marital_status"
+    ]
+   },
+   "contents": {
+    "trees": 95,
+    "inputs": [
+     "sum_insured",
+     "high_value_items",
+     "voluntary_excess",
+     "compulsory_excess",
+     "missed_payments_12m",
+     "renewal_count",
+     "days_quote_to_inception",
+     "flood_zone",
+     "distance_to_river_km",
+     "elevation_m",
+     "year_built",
+     "bedrooms",
+     "licence_points",
+     "prior_claims_5y",
+     "household_size",
+     "years_at_address",
+     "customer_since_year",
+     "policyholder_age_band",
+     "tenure",
+     "security_level",
+     "accidental_damage_cover",
+     "works_from_home",
+     "lodgers",
+     "bicycle_cover",
+     "channel",
+     "payment_method",
+     "new_business",
+     "urban_density",
+     "soil_type",
+     "property_type",
+     "roof_type",
+     "basement",
+     "trees_within_5m",
+     "listed_building",
+     "energy_rating",
+     "solar_panels",
+     "marital_status"
+    ]
+   }
+  }
+ },
+ "meta": {
+  "created": "2026-10-28T10:32:35",
+  "git_commit": "d7b9d4b",
+  "seeds": null,
+  "versions": {
+   "python": "3.14.5",
+   "numpy": "2.5.3",
+   "pandas": "3.0.5",
+   "scipy": "1.18.1",
+   "sklearn": "1.9.1",
+   "lightgbm": "4.7.0",
+   "xgboost": "3.4.1",
+   "catboost": "1.2.10"
+  }
+ }
+}
