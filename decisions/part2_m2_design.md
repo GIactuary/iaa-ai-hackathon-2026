@@ -46,3 +46,13 @@ Round 2 (`outputs/markets/part2/part2_candidates_round2.json`): K9+K7b passes P2
 28 October. Two files differ only in the new-business factor: `part2_v2_nb-none_wx-row.csv` (no adjustment) and `part2_v2_nb-cred_wx-row.csv` (M2-N (b)). The actuary uploads both. **Rule:** keep the credibility-weighted factor unless its public score is lower than the unadjusted file's. Whatever the result, no further variant is chosen on the public board; the comparison and its outcome are reported in the write-up.
 
 **Result (28 October).** Public scores: credibility-weighted 0.15312, no adjustment 0.15080, and a third file the actuary also uploaded, the full emerging figure, 0.14646 (the check file: 0.14266). Under the rule, the credibility-weighted factor stays. The ordering is the one credibility theory predicts: moving all the way to the thin emerging figure loses, ignoring it loses less, the credibility weight scores best. No further choice is made on the public board.
+
+## Round 3 addendum (28 October, written before round 3 runs)
+
+**Public-board noise, measured first** (2024 scored rows, 1,000 random thirds): one model's D² spans 0.107 to 0.165 (90%). Paired differences between two of our files: K9+K7b against K0 true +0.0016, on a third −0.0085 to +0.0102 (looks worse 39% of the time); gender in motor true +0.0013, on a third +0.0004 to +0.0021 (1%); tree in contents true +0.0022, −0.0017 to +0.0057 (17%). Proposed rule for board use, for the actuary: a variant is judged on the board only if its expected public gain exceeds twice its paired public-board spread measured this way; buildings large-loss changes are judged on our own validation only.
+
+Round 3 candidates, each against the incumbent K9+K7b (the improved file's shape) under P2-V:
+
+12. **K11, Y1 as decided (the premium as our fields predict it):** a LightGBM of log written premium on the fields both markets carry, fitted on Part 1 rows without claims; its prediction (lwp_hat) enters the Part 1 base GLM as one numeric term, in every line, replacing the base where the line's incumbent uses it (motor, buildings attritional perils) and as a tree input in contents. In Part 1 this was the post-mortem's largest gain (PM6 buildings +110,298 [62,978, 164,210]).
+13. **K12, pooled (P2-C (c)):** the base GLM fitted on Part 1 rows and emerging fitting rows together with a market factor and the market's interaction with new business, so emerging data moves the factors that it can support; region enters for emerging rows only.
+14. **K13, credibility layers:** region, make_model and occupation each as one credibility-weighted log mod against the incumbent (Bühlmann-Straub, `fields.credibility_encode`, out of fold), in a layer on K9+K7b.
