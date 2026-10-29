@@ -697,7 +697,7 @@
       "test": "None new; N2 (scripts/part2_nb_standard.py), the M2-B board check and the two public scores.",
       "result": "Public: count-standard by-peril file 0.15712, pure-premium by-peril file 0.15657, earlier final file 0.15455.",
       "decision": "Actuary, 2026-10-29: H-NS changed to (a), the count standard; selected part2_v2_nb-cred_wx-row_mprem_mperil_bchk_all.csv as the Part 2 final.",
-      "effect": "Final Part 2 file: motor by peril with the count-standard new-business factor (motor 1.121, buildings 0.951, contents 1.094). The write-up reports the standard, the pure-premium figures beside it, and that the tie between them was broken on the board.",
+      "effect": "Final Part 2 file: motor by peril with the count-standard new-business factor (motor 1.114, buildings 0.950, contents 1.094). The write-up reports the standard, the pure-premium figures beside it, and that the tie between them was broken on the board.",
       "section": "4.3"
     }
   ]

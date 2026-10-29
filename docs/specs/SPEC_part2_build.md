@@ -28,7 +28,7 @@ Every constraint below was decided by the appointed actuary. Sources: the post-m
 - **Motor:** one Part 1 GLM per peril on the W2 factors and the Y1 premium term (lwp_hat), each peril at its own emerging capped-cost level and excess factor (K16); a gender layer fitted on emerging rows; each row's own-year weather.
 - **Buildings:** Part 1's W2 GLM on the whole line, weather one factor per line (Y4). The by-peril shape with fire and flood hazards passed P2-V only inside a pooled combination and failed three of four buildings readings once the hold-out was opened (H-F (b)).
 - **Contents:** Part 1's LightGBM on the fields both markets carry, each row's own-year weather.
-- **All lines:** credibility-weighted new-business factor (M2-N (b)), Z on the claim-count standard (H-NS (a)): motor 1.121, buildings 0.951, contents 1.094; the level chain of milestone 1.
+- **All lines:** credibility-weighted new-business factor (M2-N (b)), Z on the claim-count standard (H-NS (a)): motor 1.114, buildings 0.950, contents 1.094; the level chain of milestone 1.
 - **Hold-out** (opened once, `outputs/markets/part2/part2_holdout.json`): motor and contents gain across every customer, buildings does not.
 - **Referral** (`outputs/markets/part2/part2_referrals.json`): 10 rows listed for review, prices unchanged (H-R (a)); R3 not applicable with one family per line.
 - **Tested and rejected under P2-V:** per-peril pricing in property, claims history, Part 1's weather responses, region and encoded codes, the penalised and per-factor credibility re-rates (K12, K14), Y1 in property, tuning.
