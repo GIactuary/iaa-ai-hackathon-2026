@@ -685,6 +685,20 @@
       "decision": "Actuary, 2026-10-29: H-NS (b), the pure-premium standard in all three lines.",
       "effect": "Final Part 2 file part2_v2_nb-pp_wx-row_mprem_mperil_bchk_all.csv. The write-up states the standard and why.",
       "section": "4.3"
+    },
+    {
+      "id": "D49",
+      "stage": "Part 2 build: choosing the final submission",
+      "role": "Appointed actuary",
+      "proposed_by": "Actuary",
+      "question": "After the pure-premium file scored 0.15657 public against 0.15712 for the same file with the count standard, the actuary: \"Why we are picking the model that gave a lower score?\"",
+      "ai_answer": "Switch to the count standard. The two standards were equally defensible on our validation (N2 could not separate them), and the AI had recommended the count standard before any board reading. The board now pointed the same way twice: the earlier paired check put the count factor 0.0023 above no factor, and the pure-premium factor, between the two, scored 0.00055 below the count factor. Public and private boards are random samples of the same 2025 book, and the factor acts on the 76% that is new business, so a direction seen twice on the public third more likely than not holds on the private rows. The AI also said 0.00055 alone is noise-sized, the expected private difference is small either way, and the change would be made after seeing a board score and must be reported so.",
+      "challenge": "The actuary questioned his own earlier choice of the textbook standard once the board read against it.",
+      "test": "None new; N2 (scripts/part2_nb_standard.py), the M2-B board check and the two public scores.",
+      "result": "Public: count-standard by-peril file 0.15712, pure-premium by-peril file 0.15657, earlier final file 0.15455.",
+      "decision": "Actuary, 2026-10-29: H-NS changed to (a), the count standard; selected part2_v2_nb-cred_wx-row_mprem_mperil_bchk_all.csv as the Part 2 final.",
+      "effect": "Final Part 2 file: motor by peril with the count-standard new-business factor (motor 1.121, buildings 0.951, contents 1.094). The write-up reports the standard, the pure-premium figures beside it, and that the tie between them was broken on the board.",
+      "section": "4.3"
     }
   ]
 }

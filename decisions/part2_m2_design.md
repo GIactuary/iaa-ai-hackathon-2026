@@ -195,3 +195,5 @@ Both fail in every line. Hold-out: K18 H1 −785, H2 +1,589 pooled, inside noise
 **Board (29 October).** The pure-premium file scored 0.15657 public against 0.15712 for the same file with the count standard, the direction of the M2-B check; a move this size is inside the noise of a level read from a third of the rows (level study), so it is weak evidence either way. Which file is selected on Kaggle is the actuary's call.
 
 **Selected (29 October).** The actuary kept H-NS (b) after the board reading and selected `part2_v2_nb-pp_wx-row_mprem_mperil_bchk_all.csv` (public 0.15657) as the Part 2 final submission.
+
+**Changed (29 October, exchange D49).** The actuary asked why the lower-scoring file was selected, and changed H-NS to (a): the two standards were equally defensible on validation, and both board readings on the 2025 book point to the larger new-business factor. Selected as the Part 2 final: `part2_v2_nb-cred_wx-row_mprem_mperil_bchk_all.csv` (public 0.15712). Reported as decided after a board reading.
