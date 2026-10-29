@@ -643,6 +643,20 @@
       "decision": "Actuary: \"do the boosted correction now. And after that, we will go into the documentation\". Under the rule, the final file stands. A study of what better-ranked entries have that we lack is wanted after the deadline, for use beyond this entry.",
       "effect": "Model final. Evidence for the write-up: no learnable structure is left in the emerging data on top of the final model, so the remaining gap lies in the base borrowed from Part 1, data choices, or board selection.",
       "section": "4.3"
+    },
+    {
+      "id": "D46",
+      "stage": "Documentation: office premium and publication",
+      "role": "Filing writer",
+      "proposed_by": "AI",
+      "question": "How the 20 reference-policy build-ups are shown (premium tax, basis), how the code repository is published, and who narrates the video.",
+      "ai_answer": "Documentation brief (https://claude.ai/artifact/DqcGqqF3PL2CdWtCork3zR, rounds 1 and 2). OP-T: premium tax inside the permissible loss ratio with commission and profit, since the expense table states all three as a share of premium (broker divisor 0.49). OP-B: an annual build-up (prediction / exposure) beside the annual written premium; a period basis would load the full 85 CU fixed expense onto a 25-day row. REPO: a public GitHub repository with its full history and an MIT licence, pushed by the actuary after a scan of the whole history for data, host-page copies, credentials and outside content. VID: the actuary narrates over the exhibits. The brief also showed that at the host's expense table the office premium runs about 2.5 times the written premium in motor and contents and 4.2 times in buildings (medians), most of it from the expense arithmetic.",
+      "challenge": "None recorded; the actuary chose the recommendation on all four cards.",
+      "test": "Build-up arithmetic on the 20 reference policies under each option (brief round 1).",
+      "result": "Median office / written premium: motor 2.5, buildings 4.2, contents 2.6; risk premium / written: 1.16, 1.77, 0.48. 12 of the 20 policies already cost more than they are charged on risk premium alone, including all 7 buildings policies.",
+      "decision": "Actuary, brief round 2 (2026-10-29): OP-T (a), OP-B (a), REPO (a), VID (a). H-MP, H-NS and WU in the same round were left open.",
+      "effect": "Office premium = (risk premium + 12% cat load on property + 85) / (1 - 15% - commission - 8% tax - 8% profit), annual basis. Repository to be published by the actuary after the scan, MIT licence. Video script written for the actuary to narrate.",
+      "section": "4.3"
     }
   ]
 }
