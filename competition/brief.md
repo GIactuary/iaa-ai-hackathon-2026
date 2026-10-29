@@ -1,6 +1,6 @@
 # Competition brief: IAA AI Assisted Hackathon 2026, Part 1
 
-Written at intake, 2026-10-17, from `competition/kaggle pages.docx` (the actuary's copy of the Overview, Data and Rules pages, taken 2026-10-17), the notes in `overview.md`, `rules_notes.md`, `data_description.md`, and checks run on `data/raw/` (scripts kept in the session scratchpad; every number below can be regenerated from the raw files). The copied pages hold no separate actuarial pricing guide; the documentation standard we work to is `docs/FILING_TEMPLATE.md` (FSRA guidance, NAIC predictive-model white paper, CIA standards). If the actuary meant another guide, it is added to `competition/` and read before phase 1 closes.
+Written at intake, 2026-10-17, from the actuary's copy of the Overview, Data and Rules pages, taken 2026-10-17 (`competition/kaggle pages.docx`, removed from the repository and its history before publication, register PUB-H, since the host's pages may not be redistributed), the notes in `overview.md`, `rules_notes.md`, `data_description.md`, and checks run on `data/raw/` (scripts kept in the session scratchpad; every number below can be regenerated from the raw files). The copied pages hold no separate actuarial pricing guide; the documentation standard we work to is `docs/FILING_TEMPLATE.md` (FSRA guidance, NAIC predictive-model white paper, CIA standards). If the actuary meant another guide, it is added to `competition/` and read before phase 1 closes.
 
 ## Conclusion first
 

@@ -17,3 +17,10 @@ outputs/submissions/
 outputs/markets/*/submissions/
 # Part 2 competition data, as for Part 1
 data/raw_part2/
+
+# removed from the whole history before publication (register PUB-H, PUB-R): not ours to redistribute
+competition/kaggle pages.docx
+competition/*.docx
+reference/2025/winner_reproduction/
+reference/2025/other_winners/
+reference/2025/results/leaderboard.json

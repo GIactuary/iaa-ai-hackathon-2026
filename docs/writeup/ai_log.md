@@ -1,6 +1,6 @@
 # Appendix E. The AI log
 
-*Rendered from `ai/ai_log.json` by `scripts/build_writeup.py`: 50 exchanges that changed a decision, in order.*
+*Rendered from `ai/ai_log.json` by `scripts/build_writeup.py`: 51 exchanges that changed a decision, in order.*
 
 ### D1. Preparation: modelling approach (Modeller; raised by Actuary)
 
@@ -464,4 +464,13 @@
 **Result.** The figures checked traced correctly. The documents still described the pure-premium file after the actuary had selected the count-standard file at D49; the reproduce command lacked a Part 1 history stage; several sentences overstated the AI log (four reviews where three found it, every card with a challenge where 22 of 49 have none).  
 **Decision.** Documentation fixes applied in session, none changing a decided judgment. Two items in the model session's files (D48/D49 wording, the Part 2 rows of the submissions log) were passed to it. The publication questions from the history scan go to the actuary on the documentation brief, round 3.  
 **Effect.** Exhibits, gender evidence, write-up, video script, README, reproduce.py and the hash file follow the D49 file; the guardrail paragraph names every later use of the hold-out and the board; the review and responses are in outputs/review_2026-10-29.md.  
+
+### D51. Documentation: publication (Filing writer; raised by AI)
+
+**Question.** The scan of the whole git history before publication (register REPO (a)) found a copy of the host's pages and reruns of other teams' 2025 notebooks. How should they leave the repository?  
+**AI answer.** Documentation brief round 3. PUB-H: rewrite both branches with git filter-repo to drop competition/kaggle pages.docx from every commit, keeping commit order, dates and messages, with a full backup and an old-to-new commit map, rather than publish a one-commit repository that gives up the history behind the guardrails. PUB-R: in the same rewrite, drop the reruns of three other teams' 2025 notebooks and the 2025 leaderboard copy, and keep our own 2025 work.  
+**Test.** Full-history scan (docs/publication_scan.md): every path ever committed and every blob's content, checked for data files, row-level data, host-page copies, credentials, employer content and authors.  
+**Result.** No competition data, credentials or employer content in any commit. The host-page copy has been in every commit on intake-and-plan since 18 October; the reruns and the leaderboard copy have been on both branches since the first commit; no 2026 code imports reference/. No commit consists only of the removed paths, so none disappears in the rewrite.  
+**Decision.** Actuary, documentation brief round 3 (2026-10-29), finalized: PUB-H (a), PUB-R (a).  
+**Effect.** History rewritten on both branches to drop the four paths; old-to-new commit hashes in docs/history_commit_map.txt; the paths added to .gitignore; reference/2025/README.md says what was removed and why. Nothing pushed; the actuary pushes.  
 

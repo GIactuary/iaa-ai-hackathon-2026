@@ -8,7 +8,7 @@ We priced 2025 motor, home buildings and home contents twice: for an insurer in 
 
 **Part 1** finished 15th on the private leaderboard at 0.13641 (first 0.13923; places 5 to 20 lie within 0.0019). A blend of model families per line, set to a weather-normalised 2025 level, beat our working GLM on customers locked away until the end. **Part 2** borrows Part 1's risk shape, fitted on a million developed-market rows, and lets the emerging data set the level and add only what it proves: credibility applied to a whole rating plan. On customers locked away until the end, the emerging additions held in motor and lost in buildings, so buildings went back to Part 1's shape alone. Three of four independent AI reviews then found that our own line-by-line rule, applied consistently, also favoured pricing motor by peril. The final file scores 0.15712 on the public leaderboard, against 0.14266 for our first check file.
 
-The actuary decided every judgment on briefs that set out options, evidence and a recommendation. 50 exchanges are logged, including those where the AI was wrong. In Part 1 he proposed the level method himself; in Part 2 he overruled the AI's recommendation on the credibility standard for new business, then returned to it after a board reading.
+The actuary decided every judgment on briefs that set out options, evidence and a recommendation. 51 exchanges are logged, including those where the AI was wrong. In Part 1 he proposed the level method himself; in Part 2 he overruled the AI's recommendation on the credibility standard for new business, then returned to it after a board reading.
 
 ## 1. Part 1: a technical price for an established book
 
@@ -94,7 +94,7 @@ The actuary kept motor and contents and took buildings back to the check file's 
 
 ## 3. Use of AI, and the guardrails around it
 
-AI worked in roles set by standing prompts (data steward, modeller, filing writer, independent reviewer; `ai/prompt_library.md`). Each decision went to the actuary as a brief with options, evidence and a recommendation; he decided, challenged or proposed his own method. Every exchange that changed a decision is a card in `ai/ai_log.json`: 50 cards with the question, the AI's answer, the actuary's challenge where there was one, the test, the result and the decision.
+AI worked in roles set by standing prompts (data steward, modeller, filing writer, independent reviewer; `ai/prompt_library.md`). Each decision went to the actuary as a brief with options, evidence and a recommendation; he decided, challenged or proposed his own method. Every exchange that changed a decision is a card in `ai/ai_log.json`: 51 cards with the question, the AI's answer, the actuary's challenge where there was one, the test, the result and the decision.
 
 **Exhibit 5. Where the AI was wrong or was challenged**
 

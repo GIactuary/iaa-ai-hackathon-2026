@@ -64,7 +64,7 @@ Freeze the model by about the halfway point of the window. The second half goes 
 | `decisions/` | `thresholds.md`, `judgment_register.md`, `exclusions.md` |
 | `ai/` | `ai_log.json`, `prompt_library.md`, `transcript.md` |
 | `docs/` | Playbook, 2025 lessons, filing template, judging notes |
-| `reference/2025/` | The 2025 code and results: our decided model, the winner reproduction, the 2nd and 3rd prize reruns, the 2025 notebook builder. Context only; do not reuse its rules, settings or thresholds |
+| `reference/2025/` | The 2025 code and results: our decided model, the 2025 notebook builder, scores on identical folds. The reruns of other teams' notebooks were removed before publication (PUB-R). Context only; do not reuse its rules, settings or thresholds |
 | `outputs/` | Scores, exhibits, the evidence file, submission files |
 | `tests/` | Tests for `src/` and the notebook builder: `python -m pytest` |
 
