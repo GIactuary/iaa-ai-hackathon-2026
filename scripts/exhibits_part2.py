@@ -9,7 +9,7 @@ Every number in `docs/writeup/exhibits/` comes from one of:
     outputs/markets/part2/part2_exhibits.json, which is committed, so the build-ups trace to a file.
 
 The final file: motor priced by peril (K16, H-MP (a)), buildings at the check file's shape (H-F (b)), the
-new-business factor at the pure-premium credibility standard (H-NS (b)).
+new-business factor at the claim-count credibility standard (H-NS (a), exchange D49).
 
 Run: MARKET=part2 .venv/Scripts/python.exe -I scripts/exhibits_part2.py
 Writes docs/writeup/exhibits/part2_final.md, docs/writeup/exhibits/*.png and outputs/markets/part2/part2_exhibits.json.
@@ -31,9 +31,9 @@ ROOT = Path(__file__).resolve().parents[1]
 EV = ROOT / "outputs" / "markets" / "part2"
 RAW = ROOT / "data" / "raw_part2" / "emerging"
 DOCS = ROOT / "docs" / "writeup" / "exhibits"
-FILES = {"final": "part2_v2_nb-pp_wx-row_mprem_mperil_bchk_all"}               # H-MP (a), H-NS (b)
-COUNT_FILE = "part2_v2_nb-cred_wx-row_mprem_mperil_bchk_all"                     # the same shape, claim-count standard
-LABEL = {"final": "the final file (motor by peril, pure-premium new-business standard)"}
+FILES = {"final": "part2_v2_nb-cred_wx-row_mprem_mperil_bchk_all"}             # H-MP (a), H-NS (a)
+PP_FILE = "part2_v2_nb-pp_wx-row_mprem_mperil_bchk_all"                          # the same shape, pure-premium standard
+LABEL = {"final": "the final file (motor by peril, claim-count new-business standard)"}
 LINES = ("motor", "buildings", "contents")
 # the expense table as the actuary read it (OP-T (a), OP-B (a), P2-E (d)); checked against the competition file below
 EXPENSES = {"fixed_expense_per_policy": 85.0, "variable_expense": 0.15, "commission_direct": 0.0, "commission_broker": 0.20,
@@ -86,11 +86,11 @@ def ladder() -> dict:
     p1 = [
         dict(step="K0: the check file's shape (Part 1 relativities, emerging level)", v1="", v2="",
              d2=(r2["d2"]["V1"]["K0"], r2["d2"]["V2"]["K0"]), kept="incumbent"),
-        dict(step="K9 + own-year weather: gender layer in motor, fire and flood by property with address hazards, "
-                  "Part 1's tree in contents, each row's own-year weather",
+        dict(step="K9 + K7b: gender layer in motor, buildings by peril with address hazards, Part 1's tree in contents, "
+                  "each row's own-year weather",
              v1=gain(r2["K9+K7b"]["V1"]["gain"]), v2=f"{gain(r2['K9+K7b']['V2']['gain'])} {ci(r2['K9+K7b']['V2'])}",
              d2=(r2["d2"]["V1"]["K9+K7b"], r2["d2"]["V2"]["K9+K7b"]), kept="yes (M2-W)"),
-        dict(step="I: + the insured's premium as our fields predict it, motor only", v1=prem_v1, v2=prem_v2,
+        dict(step="I: + Part 1's premium model applied to emerging fields, motor only (re-tested on motor after K11 failed pooled)", v1=prem_v1, v2=prem_v2,
              d2=(t["d2"]["V1"]["I"], t["d2"]["V2"]["I"]), kept="yes (Y1, motor)"),
     ]
     p2 = [
@@ -111,12 +111,12 @@ def candidates() -> list:
     t, rr, bo, mp = ev("part2_tuning"), ev("part2_motor_rerate"), ev("part2_boosted"), ev("part2_motor_peril")
     rows = [
         ("Motor by peril, no premium term (K1)", c1["K1"]),
-        ("Fire and flood by property with address hazards (K3)", c1["K3"]),
+        ("Every peril separately, large-loss perils as frequency × severity, address hazards for fire and flood (K3)", c1["K3"]),
         ("Part 1's tree in contents (K4)", c1["K4_tree_contents"]),
         ("Gender in motor (K5)", c1["K5_gender"]),
         ("Prior-year claims, customer across lines (K8)", c2["K8_history"]),
-        ("K3 + K4 + K5 with each row's own-year weather (K9 + K7b)", c2["K9+K7b"]),
-        ("The insured's premium as our fields predict it, every line (K11)", c3["K11_premium"]),
+        ("K9 + K7b: K3 in buildings, K4 in contents, K5 in motor, each row's own-year weather", c2["K9+K7b"]),
+        ("Part 1's premium model applied to emerging fields, every line (K11)", c3["K11_premium"]),
         ("Credibility re-rate of every factor, penalised GLM (K12)", c3["K12_penalised"]),
         ("Region and occupation, credibility-encoded (K13)", c3["K13_cred_codes"]),
         ("Settings tuned on Part 1 rows", t["T_against_I"]),
@@ -168,8 +168,8 @@ def level(variant: str) -> dict:
 
 
 def nb_credibility(variant: str) -> dict:
-    """The factor in the file (pure-premium standard) beside the same shape at the claim-count standard."""
-    n, f, c = ev("part2_nb_standard"), ev(FILES[variant])["by_line"], ev(COUNT_FILE)["by_line"]
+    """The factor in the file (claim-count standard) beside the same shape at the pure-premium standard."""
+    n, c, f = ev("part2_nb_standard"), ev(FILES[variant])["by_line"], ev(PP_FILE)["by_line"]
     shape = "F16"
     rows = {}
     for l in LINES:
@@ -180,7 +180,9 @@ def nb_credibility(variant: str) -> dict:
     d2 = {k: (n["d2"]["V1"][f"{shape}|{k}"], n["d2"]["V2"][f"{shape}|{k}"]) for k in ("none", "pp", "count", "full")}
     log = "ai/ai_log.json"
     board = dict(count=quoted(log, "Credibility-weighted 0.15312"), none=quoted(log, "no adjustment 0.15080"),
-                 full=quoted(log, "full emerging figure 0.14646"))
+                 full=quoted(log, "full emerging figure 0.14646"),
+                 final_pp=quoted("decisions/part2_m2_design.md", "scored 0.15657"),
+                 final_count=quoted("decisions/part2_m2_design.md", "public against 0.15712"))
     return dict(rows=rows, pp_vs_count_motor=vs, d2=d2, board={k: v.split()[-1] for k, v in board.items()},
                 by_year_motor_ae=quoted("decisions/part2_m2_design.md", "(1.49 in 2023, 0.85 in 2024)"))
 
@@ -259,9 +261,11 @@ def render(variant: str, X: dict) -> str:
                   "yes" if c["passes"] else "no"] for c in C]), ""]
     k1 = next(c for c in C if c["candidate"].startswith("Motor by peril, no"))
     s += [f"> **How to read this.** P2-V keeps a change only if it saves deviance out of time and in cross-validation, with the "
-          f"cross-validation interval above zero. Rounds 1 to 3 judged the pooled interval; K15 and K16 were judged line by line, "
+          f"cross-validation interval above zero. Rounds 1 to 3 judged the pooled interval; K15 to K18 were judged line by line, "
           f"as the actuary judged buildings at H-F. Motor by peril without the premium term (K1) saved {gain(k1['v2_motor'])} in motor in "
-          f"cross-validation but {gain(k1['v2'])} pooled, because buildings swung the pooled figure; it was rejected on the pooled rule.", ""]
+          f"cross-validation but {gain(k1['v2'])} pooled, because buildings swung the pooled figure; it was rejected on the pooled rule. "
+          f"The rule was not applied the same way throughout: the premium term (K11) failed pooled and was then re-tested in motor alone, "
+          f"where it passed, a line chosen after its per-line gains were seen. From the hold-out on, every line was judged on its own.", ""]
 
     # ---- hold-out
     s += ["## Exhibit P2-3. The hold-out, opened once, by line", "",
@@ -287,7 +291,7 @@ def render(variant: str, X: dict) -> str:
                 [["Indication, capped cost per policy year at normal weather", *[f"{L[l]['indication']:.1f}" for l in LINES]],
                  ["Excess factor (cost above the cap)", *[f"{L[l]['excess']:.3f}" for l in LINES]],
                  ["Off-balance, shape to indication", *[f"{L[l]['off_balance']:.3f}" for l in LINES]],
-                 ["New-business factor (Z); renewal rebalance", *[f"{L[l]['nb_factor']:.3f} ({L[l]['nb_z']:.2f}); {L[l]['renewal']:.3f}" for l in LINES]],
+                 ["New-business factor (Z); rebalance on every row", *[f"{L[l]['nb_factor']:.3f} ({L[l]['nb_z']:.2f}); {L[l]['renewal']:.3f}" for l in LINES]],
                  ["2025 weather, mean (5th to 95th percentile)", *[f"{L[l]['weather']:.3f} ({L[l]['weather_p05_p95'][0]:.3f} to {L[l]['weather_p05_p95'][1]:.3f})" for l in LINES]],
                  ["2025 expected cost per policy year", *[f"{L[l]['per_year']:.1f}" for l in LINES]],
                  ["2025 expected cost, M CU; over written premium", *[f"{L[l]['predicted'] / 1e6:.2f}; {L[l]['ratio']:.2f}" for l in LINES]]]), ""]
@@ -305,25 +309,26 @@ def render(variant: str, X: dict) -> str:
     s += ["## Exhibit P2-5. The new-business factor and its credibility", "",
           table(["", *[l.capitalize() for l in LINES]],
                 [["New-business claims, 2023 to 2024", *[f"{R[l]['claims']:.0f}" for l in LINES]],
-                 ["New against renewal, actual over model", *[f"{R[l]['ae']:.3f}" for l in LINES]],
-                 ["Severity CV²; full credibility 1,082 × (1 + CV²) claims", *[f"{R[l]['cv2']:.2f}; {R[l]['full_standard_pp']:,.0f}" for l in LINES]],
-                 ["Z, pure-premium standard: factor used (H-NS (b))", *[f"{R[l]['z_pp']:.2f}: {R[l]['f_pp']:.3f}" for l in LINES]],
-                 ["Z, claim-count standard √(n ÷ 1,082): factor before H-NS", *[f"{R[l]['z_count']:.2f}: {R[l]['f_count']:.3f}" for l in LINES]]]), "",
-          f"Pooled D², out of time / cross-validation, by standard: none {nb['d2']['none'][0]:.4f} / {nb['d2']['none'][1]:.4f}; "
+                 ["New against renewal, actual over model (apparent: fitting rows)", *[f"{R[l]['ae']:.3f}" for l in LINES]],
+                 ["Z, claim-count standard √(n ÷ 1,082): factor used (H-NS (a))", *[f"{R[l]['z_count']:.2f}: {R[l]['f_count']:.3f}" for l in LINES]],
+                 ["Severity CV²; pure-premium standard 1,082 × (1 + CV²) claims", *[f"{R[l]['cv2']:.2f}; {R[l]['full_standard_pp']:,.0f}" for l in LINES]],
+                 ["Z, pure-premium standard: factor (not used)", *[f"{R[l]['z_pp']:.2f}: {R[l]['f_pp']:.3f}" for l in LINES]]]), "",
+          f"Pooled D² on this shape (motor by peril), out of time / cross-validation, by standard: none {nb['d2']['none'][0]:.4f} / {nb['d2']['none'][1]:.4f}; "
           f"pure premium {nb['d2']['pp'][0]:.4f} / {nb['d2']['pp'][1]:.4f}; count {nb['d2']['count'][0]:.4f} / {nb['d2']['count'][1]:.4f}; "
-          f"full {nb['d2']['full'][0]:.4f} / {nb['d2']['full'][1]:.4f}. Public board, paired check decided before upload: "
-          f"count {nb['board']['count']}, none {nb['board']['none']}, full {nb['board']['full']}.", "",
+          f"full {nb['d2']['full'][0]:.4f} / {nb['d2']['full'][1]:.4f}. Public board: paired check decided before upload (shape before motor by peril), "
+          f"count {nb['board']['count']}, none {nb['board']['none']}, full {nb['board']['full']}; final shape, count {nb['board']['final_count']} "
+          f"against pure premium {nb['board']['final_pp']}.", "",
           f"> **How to read this.** The 2025 book is 76% new business against 14% in training, so this factor carries more of the 2025 "
-          f"level than any other judgment. In motor, new business ran {R['motor']['ae']:.3f} times what the model expects. The factor weights a "
-          f"ratio of cost, so its full-credibility standard is the pure-premium one, 1,082 × (1 + {R['motor']['cv2']:.2f}) = "
-          f"{R['motor']['full_standard_pp']:,.0f} claims: Z = √({R['motor']['claims']:.0f} ÷ {R['motor']['full_standard_pp']:,.0f}) = "
-          f"{R['motor']['z_pp']:.2f} and the factor is 1 + {R['motor']['z_pp']:.2f} × ({R['motor']['ae']:.3f} − 1) = {R['motor']['f_pp']:.3f}. "
-          f"The first file used the claim-count standard (Z {R['motor']['z_count']:.2f}, factor {R['motor']['f_count']:.3f}); two independent "
-          f"reviews found the mismatch and the actuary chose the pure-premium standard in all three lines (H-NS (b)). Our tests cannot "
-          f"separate the two: in motor the pure-premium standard wins out of time by {gain(nb['pp_vs_count_motor']['V1']['gain'])} "
-          f"{ci(nb['pp_vs_count_motor']['V1'])} and loses in cross-validation by {gain(nb['pp_vs_count_motor']['V2']['gain']).lstrip('−')} "
-          f"{ci(nb['pp_vs_count_motor']['V2'])}, and the motor excess comes mostly from one year {nb['by_year_motor_ae']}. The one reading "
-          f"on the 2025 book, the paired board check, compared only the count standard with no factor.", ""]
+          f"level than any other judgment. In motor, new business ran {R['motor']['ae']:.3f} times what the model expects on the training rows. "
+          f"With {R['motor']['claims']:.0f} new-business claims the claim-count standard gives Z = √({R['motor']['claims']:.0f} ÷ 1,082) = "
+          f"{R['motor']['z_count']:.2f} and a factor of 1 + {R['motor']['z_count']:.2f} × ({R['motor']['ae']:.3f} − 1) = {R['motor']['f_count']:.3f}. "
+          f"The factor weights a ratio of cost, for which the textbook standard is the pure-premium one, {R['motor']['full_standard_pp']:,.0f} claims: "
+          f"Z {R['motor']['z_pp']:.2f}, factor {R['motor']['f_pp']:.3f}. Our validation cannot separate the two: on this shape, in motor, the "
+          f"pure-premium standard wins out of time by {gain(nb['pp_vs_count_motor']['V1']['gain'])} {ci(nb['pp_vs_count_motor']['V1'])} and loses "
+          f"in cross-validation by {gain(nb['pp_vs_count_motor']['V2']['gain']).lstrip('−')} {ci(nb['pp_vs_count_motor']['V2'])}, and the motor "
+          f"excess comes mostly from one year {nb['by_year_motor_ae']}. The actuary first chose the pure-premium standard (H-NS (b)), then "
+          f"returned to the count standard after both readings on the 2025 book favoured the larger factor (H-NS (a), decided after a board "
+          f"reading).", ""]
 
     # ---- Appendix A
     x = X["expenses"]
@@ -349,10 +354,10 @@ def render(variant: str, X: dict) -> str:
           f"{sum(b['line'] == 'contents' for b in over)} of 6 contents).", "",
           f"> **How to read this.** Take buildings policy {ex['row_id']} (broker): expected claims cost {ex['risk_premium']:.1f} CU a year, plus "
           f"{pct(x['cat_reinsurance'], 0)} for catastrophe reinsurance ({ex['cat_load']:.1f}), plus {ex['fixed']:.0f} CU fixed expense, is "
-          f"{ex['risk_premium'] + ex['cat_load'] + ex['fixed']:.1f} CU. Divided by {ex['divisor']:.2f}, the share left after 15% variable expense, "
+          f"{ex['risk_premium'] + ex['cat_load'] + ex['fixed']:.1f} CU (from the unrounded parts). Divided by {ex['divisor']:.2f}, the share left after 15% variable expense, "
           f"20% commission, 8% tax and 8% profit, it gives {ex['office_premium']:,.1f} CU against {ex['written_premium']:.1f} CU charged today. "
-          f"Most of the distance is the host's expense table: at the broker divisor a policy needs about twice its risk premium plus "
-          f"{85 / .49:.0f} CU before any profit is earned. The acquired broker book is priced well below the technical premium.", ""]
+          f"Most of the distance is the host's expense table: at the broker divisor a motor policy needs {1 / .49:.2f} times its risk premium "
+          f"plus {85 / .49:.0f} CU, and a property policy {1.12 / .49:.2f} times plus {85 / .49:.0f} CU. The acquired broker book is priced well below the technical premium.", ""]
 
     # ---- Appendix B
     mf, lo, hi = G["men_over_women"], *G["men_over_women_ci"]
@@ -365,7 +370,7 @@ def render(variant: str, X: dict) -> str:
           table(["", "Women", "Men"],
                 [["Fitting rows (2023 to 2024)", f"{G['fitting_rows']['by_gender'].get('F', 0):,}", f"{G['fitting_rows']['by_gender'].get('M', 0):,}"],
                  ["Actual over expected, Part 1 shape without the gender factor", f"{ae['without_layer']['F']:.3f}", f"{ae['without_layer']['M']:.3f}"],
-                 ["Actual over expected, with the gender factor", f"{ae['with_layer']['F']:.3f}", f"{ae['with_layer']['M']:.3f}"],
+                 ["Actual over expected, with the gender factor (apparent: fitting rows)", f"{ae['with_layer']['F']:.3f}", f"{ae['with_layer']['M']:.3f}"],
                  ["2025 rows", f"{bk['F']['rows']:,}", f"{bk['M']['rows']:,}"],
                  ["2025 average price per policy year, as filed", f"{bk['F']['annual_price']:.1f}", f"{bk['M']['annual_price']:.1f}"],
                  ["2025 average price per policy year, without gender (same motor total)", f"{bk['F']['annual_price_without_gender']:.1f}", f"{bk['M']['annual_price_without_gender']:.1f}"]]), "",
@@ -419,13 +424,19 @@ def charts(variant: str, X: dict) -> None:
              ("Variable, commission,\ntax and profit", b["office_premium"] - b["risk_premium"] - b["cat_load"] - b["fixed"])]
     fig, ax = plt.subplots(figsize=(8, 4.2))
     left = 0.0
+    small = 0
     for (name, v), c in zip(parts, [ink, "#4a6fa5", mute, "#d9a441"]):
         ax.barh(["Office premium"], [v], left=left, color=c)
-        ax.text(left + v / 2, 0, f"{name}\n{v:,.1f}", ha="center", va="center", color="white" if c != mute else ink, fontsize=9)
+        if v > 120:
+            ax.text(left + v / 2, 0, f"{name}\n{v:,.1f}", ha="center", va="center", color="white", fontsize=9)
+        else:                                   # narrow segment: label below, then above, the bar
+            ax.text(left + v / 2, -0.55 if small == 0 else 0.5, f"{name} {v:,.1f}", ha="center", va="center", color=ink, fontsize=9)
+            small += 1
         left += v
     ax.barh(["Written today"], [b["written_premium"]], color=accent)
     ax.text(b["written_premium"] + 10, 1, f"{b['written_premium']:,.1f}", va="center")
     ax.text(left + 10, 0, f"{left:,.1f}", va="center", fontweight="bold")
+    ax.set_ylim(-0.8, 1.5)
     ax.set_xlabel("CU per year")
     ax.set_title(f"Buildings {b['row_id']}, broker: office premium build-up", loc="left")
     fig.tight_layout()

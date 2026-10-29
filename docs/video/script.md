@@ -30,32 +30,32 @@
 | Scene | Time | Slide | Caption |
 |---|---|---|---|
 | 7. A new market | 2:30 to 2:55 | What changed | Two years of data; the 2025 book is 76% new business against 14% in training |
-| 8. Borrow the shape, learn the level | 2:55 to 3:25 | Exhibit 3, what passed | Fitted on 2023, scored on 2024: Part 1's buildings relativities D² 11.5%, an emerging GLM −144% |
-| 9. The hold-out decision | 3:25 to 3:55 | Hold-out by line (chart) | Motor and contents hold; buildings loses in three of four readings, so it goes back to Part 1's GLM |
-| 10. Reviews that found our inconsistency | 3:55 to 4:20 | Motor by peril | Rejected in round 1 on a pooled rule; on the line rule it passes: +13,443 [4,917, 23,084] |
-| 11. The price of one policy | 4:20 to 4:45 | Build-up for B00229821 (chart) | 370.1 risk + 44.4 cat + 85 fixed = 499.6, ÷ 0.49 = 1,019.5 CU, against 285.6 charged today |
-| 12. What the AI got wrong | 4:45 to 5:00 | Exhibit 5 | 48 logged exchanges; the AI's errors were caught by tests, reviews and questions |
+| 8. Borrow the shape, learn the level | 2:55 to 3:20 | Exhibit 3, what passed | Part 1's relativities beat an emerging-only GLM in every line; the emerging data adds only what passes |
+| 9. The hold-out decision | 3:20 to 3:50 | Hold-out by line (chart) | Motor holds; buildings loses in three of four readings, so it goes back to Part 1's shape |
+| 10. Reviews that found our inconsistency | 3:50 to 4:20 | Motor by peril | Rejected in round 1 on a pooled rule; on the line rule it passes: +13,443 [4,917, 23,084] |
+| 11. The price of one policy | 4:20 to 4:45 | Build-up for B00229821 (chart) | 359.0 risk + 43.1 cat + 85 fixed = 487.1, ÷ 0.49 = 994.0 CU, against 285.6 charged today |
+| 12. What the AI got wrong | 4:45 to 5:00 | Exhibit 5 | 50 logged exchanges; the AI's errors were caught by tests, reviews and questions |
 
-**7. A new market (2:30 to 2:55).** "Part 2 is an emerging market: two years of data, a book a twentieth the size, ages in bands, no credit score or telematics, and gender, which this market allows. The hard part is the 2025 book: 76 percent of it is new business from a broker portfolio the insurer has just bought. Our training data is 86 percent renewals."
-*About 60 words.*
+**7. A new market (2:30 to 2:55).** "Part 2 is an emerging market: two years of data, a much smaller book, ages in bands, no credit score or telematics, and gender, which this market allows. The hard part is the 2025 book: 76 percent of it is new business from a broker portfolio the insurer has just bought. Our training data is 86 percent renewals."
+*About 55 words.*
 
-**8. Borrow the shape, learn the level (2:55 to 3:25).** "Two years can't carry a full rating plan. In buildings, a GLM fitted on one emerging year scored minus 144 percent on the next; Part 1's relativities scored plus 11.5. So we used credibility at the level of the whole plan: Part 1's shape is the complement, and the emerging data sets the level and adds only what it proves. Of more than a dozen changes tested, the ones that passed were gender in motor, own-year weather, fire and flood with address hazards, and the insured's premium as our fields predict it."
-*About 90 words.*
-
-**9. The hold-out decision (3:25 to 3:55).** "We locked away 15 percent of customers and opened them once, on a rule written down first. Pooled, the model fell just short. By line, motor and contents held; buildings lost in three of four readings. Buildings here is a line of twelve fires. I kept motor and contents and took buildings back to the plain Part 1 GLM, and we report that as a decision made after the hold-out was opened."
+**8. Borrow the shape, learn the level (2:55 to 3:20).** "Two years can't carry a full rating plan. Part 1's relativities beat a model fitted on emerging data in every line. So we used credibility at the level of the whole plan: Part 1's shape is the complement, and the emerging data sets the level and adds only what passes our test. One combination passed: a gender factor in motor, buildings by peril, Part 1's tree in contents, and each row's own-year weather."
 *About 75 words.*
 
-**10. Reviews that found our inconsistency (3:55 to 4:20).** "Then I had four independent AI reviews look for what we missed. Three found the same thing on their own: in round one we rejected pricing motor by peril on a pooled test, where buildings swamped it. On the line-by-line rule I had used for buildings, it passes, and it holds on the hold-out customers. Two reviews also found we'd used a claim-count credibility standard on a cost ratio. I adopted both."
-*About 75 words.*
+**9. The hold-out decision (3:20 to 3:50).** "We locked away 15 percent of customers and opened them on a rule written down first. Pooled, the model fell just short. By line, motor held; buildings lost in three of four readings, and buildings here is driven by twelve large fires. I took buildings back to Part 1's shape alone, and we report that as a decision made after the hold-out was opened."
+*About 65 words.*
 
-**11. The price of one policy (4:20 to 4:45).** "Here's one reference buildings policy. Expected claims cost 370 a year, plus 44 for catastrophe reinsurance and 85 of fixed expense. Divide by the 49 percent left after commission, expenses, tax and profit, and the office premium is about 1,020. Today it's charged 286. Every buildings reference policy costs more in claims alone than it's charged."
+**10. Reviews that found our inconsistency (3:50 to 4:20).** "Then I had four independent AI reviews look for what we missed. Three found the same thing on their own: in round one we rejected pricing motor by peril on a pooled test, where buildings swamped it. On the line-by-line rule I had used for buildings, it passes, and it holds on the hold-out customers. I adopted it. Our final file scores 0.157 on the public board."
+*About 70 words.*
+
+**11. The price of one policy (4:20 to 4:45).** "Here's one reference buildings policy. Expected claims cost 359 a year, plus 43 for catastrophe reinsurance and 85 of fixed expense. Divide by the 49 percent left after commission, expenses, tax and profit, and the office premium is 994. Today it's charged 286. Every buildings reference policy costs more in claims alone than it's charged."
 *About 60 words.*
 
-**12. What the AI got wrong (4:45 to 5:00).** "Forty-eight exchanges are logged, with the AI's mistakes in plain view: a bug it found in its own code, a wrong diagnosis my question exposed, a threshold its own evidence contradicted. AI built and tested. The judgments were mine."
+**12. What the AI got wrong (4:45 to 5:00).** "Fifty exchanges are logged, with the AI's mistakes in plain view: a bug it found in its own code, a wrong diagnosis my question exposed, a threshold its own evidence contradicted. AI built and tested. The judgments were mine."
 *About 45 words.*
 
 ## Production notes
 
-- Total Part 2 narration is about 405 words: trim scene 8 if a take runs long.
-- The Part 2 public and private scores are not in the script, since the private result is unknown at recording. If the actuary wants one number, use the final file's public score once it is known.
-- If K17 or K18 changes the final file, scenes 10 and 11 change; the exhibits and slides regenerate from `scripts/exhibits_part2.py` and `scripts/build_slides.py`.
+- Part 2 narration is about 355 words, inside the 2 minutes 30 seconds at 150 words a minute.
+- Scene 10 gives the public score only; the private result is unknown at recording.
+- The slides regenerate from the evidence files with `scripts/exhibits_part2.py` then `scripts/build_slides.py`.

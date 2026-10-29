@@ -2,7 +2,7 @@
  "part2_doc_evidence": {
   "gender": {
    "final": {
-    "file": "part2_v2_nb-pp_wx-row_mprem_mperil_bchk_all",
+    "file": "part2_v2_nb-cred_wx-row_mprem_mperil_bchk_all",
     "layer": [
      {
       "factor": "gender",
@@ -43,83 +43,83 @@
      "F": {
       "rows": 45262,
       "exposure": 39515.172699999996,
-      "annual_price": 537.6915109015835,
-      "annual_price_without_gender": 619.8472872862433
+      "annual_price": 560.7024104642215,
+      "annual_price_without_gender": 646.372855908974
      },
      "M": {
       "rows": 45259,
       "exposure": 39491.7267,
-      "annual_price": 711.2765899167432,
-      "annual_price_without_gender": 629.0720381430568
+      "annual_price": 741.6944399774751,
+      "annual_price_without_gender": 655.9731325058696
      }
     },
-    "neutral_scale": 1.0152207009636354,
+    "neutral_scale": 1.01521874208312,
     "reference_policies": [
      {
       "row_id": "M00161473",
       "gender": "M",
       "exposure": 0.9644,
-      "annual_price": 1349.6771049357112,
-      "annual_price_other_gender": 1035.4764407416767,
-      "annual_price_without_gender": 1193.6905266857034
+      "annual_price": 1420.2449191206967,
+      "annual_price_other_gender": 1089.6162855949162,
+      "annual_price_without_gender": 1256.1001651157615
      },
      {
       "row_id": "M00176777",
       "gender": "M",
       "exposure": 0.9918,
-      "annual_price": 1089.0448679169187,
-      "annual_price_other_gender": 835.5185840485269,
-      "annual_price_without_gender": 963.180406049809
+      "annual_price": 1145.9855817705184,
+      "annual_price_other_gender": 879.2036754669102,
+      "annual_price_without_gender": 1013.5383405373755
      },
      {
       "row_id": "M00185311",
       "gender": "M",
       "exposure": 0.9644,
-      "annual_price": 1057.0395064288678,
-      "annual_price_other_gender": 810.9639719290033,
-      "annual_price_without_gender": 934.8740084146074
+      "annual_price": 1112.3068228950642,
+      "annual_price_other_gender": 853.3652277067599,
+      "annual_price_without_gender": 983.7520029734692
      },
      {
       "row_id": "M00167496",
       "gender": "M",
       "exposure": 0.9836,
-      "annual_price": 595.5082350549003,
-      "annual_price_other_gender": 456.87575599526673,
-      "annual_price_without_gender": 526.6834090530249
+      "annual_price": 626.6443676291175,
+      "annual_price_other_gender": 480.76349300918537,
+      "annual_price_without_gender": 554.2199680144773
      },
      {
       "row_id": "M00129413",
       "gender": "F",
       "exposure": 0.3315,
-      "annual_price": 456.9119155354449,
-      "annual_price_other_gender": 595.5553666955474,
-      "annual_price_without_gender": 526.7250935364779
+      "annual_price": 480.801508295626,
+      "annual_price_other_gender": 626.6939181159539,
+      "annual_price_without_gender": 554.26379170563
      },
      {
       "row_id": "M00118569",
       "gender": "M",
       "exposure": 0.9397,
-      "annual_price": 660.6891561136533,
-      "annual_price_other_gender": 506.882759815189,
-      "annual_price_without_gender": 584.3311588029092
+      "annual_price": 655.2982866872406,
+      "annual_price_other_gender": 502.7468681521006,
+      "annual_price_without_gender": 579.5622114371157
      },
      {
       "row_id": "M00153851",
       "gender": "F",
       "exposure": 0.9616,
-      "annual_price": 315.44051580698834,
-      "annual_price_other_gender": 411.156473872895,
-      "annual_price_without_gender": 363.6377812535766
+      "annual_price": 331.93334026622296,
+      "annual_price_other_gender": 432.6538123854048,
+      "annual_price_without_gender": 382.6498640190426
      }
     ],
     "file_check": {
      "new_business": {
-      "mean": 1.061384871100254,
-      "max_rel_dev": 9.472079306038772e-05
+      "mean": 1.1168793865123443,
+      "max_rel_dev": 4.598058510785208e-05
      },
      "renewal": {
-      "mean": 1.0104476898882253,
-      "max_rel_dev": 7.134086704518872e-05
+      "mean": 1.0022029626036582,
+      "max_rel_dev": 7.121681103039457e-05
      }
     }
    }
@@ -262,8 +262,8 @@
   }
  },
  "meta": {
-  "created": "2026-10-28T23:16:17",
-  "git_commit": "0b954ee",
+  "created": "2026-10-28T23:44:17",
+  "git_commit": "9f316ba",
   "seeds": [
    0
   ],

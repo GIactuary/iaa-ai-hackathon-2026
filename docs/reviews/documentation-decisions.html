@@ -88,282 +88,138 @@ details[open] > summary { margin-bottom: 10px; }
 
 <div class="wrap">
   <header class="stack">
-    <div class="eyebrow">IAA hackathon 2026 · Part 2 file and documentation · decisions for the appointed actuary</div>
-    <h1>One model change from the gap reviews, and the documentation choices</h1>
+    <div class="eyebrow">IAA hackathon 2026 · documentation and publication · decisions for the appointed actuary</div>
+    <h1>The drafts are ready; two things must leave the history before the repository goes public</h1>
     <div class="strip">
-      <span>Round <strong>2</strong></span>
-      <span class="pill open" id="state-pill">7 decisions open</span>
+      <span>Round <strong>3</strong></span>
+      <span class="pill open" id="state-pill">decisions open</span>
       <span class="status">Deadline: Friday 30 October, 23:59 EDT</span>
       <span class="status" id="blocked">Waiting on: your verdicts below</span>
     </div>
-    <p class="lede col">Four independent gap reviews found one change to the Part 2 file that passes our own test rule: price motor by peril. I rebuilt it in the project's code, and every reviewed number reproduces exactly. It gains in motor out of time, in cross-validation and on the hold-out customers. Because it came after the hold-out was opened, the choice is yours (H-MP). The same reviews raise two more cards: the new-business credibility standard (H-NS) and six corrections to the write-up (WU). The four documentation cards from round 1 are unchanged below.</p>
+    <p class="lede col">The write-up prints to exactly five pages, the exhibits regenerate from one command, the video script and slides are written for you to narrate, and the Part 2 final file rebuilds from the raw data byte for byte. The scan of the whole git history found no data, credentials or employer content, but it found two things that cannot be published as they stand: a copy of the host's pages and code copied from other teams' 2025 notebooks. Removing them means rewriting history, which only you can approve (PUB-H, PUB-R). An independent review then caught real errors in my drafts, including one that left them describing the wrong final file; they are fixed and nothing in it needs your judgment.</p>
   </header>
 
   <section class="stack">
-    <h2>Changed since round 1</h2>
+    <h2>Settled in round 2</h2>
+    <div class="table-scroll"><table>
+      <thead><tr><th>Card</th><th>Your verdict</th><th>Where it now shows</th></tr></thead>
+      <tbody>
+        <tr><td>H-MP</td><td>(a) motor priced by peril</td><td>Write-up section 2; Appendix D ladder</td></tr>
+        <tr><td>H-NS</td><td>(b), then (a) after the board reading (D49): the count standard</td><td>Write-up section 2; Exhibit D5 states both standards and the order of decisions</td></tr>
+        <tr><td>WU</td><td>(a) all six corrections</td><td>Write-up section 2, test power, boosted correction, history, board gap, twelve fires</td></tr>
+        <tr><td>OP-T, OP-B</td><td>(a), (a): tax in the loss ratio, annual basis</td><td>Appendix A: B00229821 at 359.0 + 43.1 + 85 = 487.1, ÷ 0.49 = 994.0 against 285.6</td></tr>
+        <tr><td>REPO</td><td>(a) public, full history, MIT</td><td>LICENSE, README, the scan below</td></tr>
+        <tr><td>VID</td><td>(a) you narrate</td><td><code>docs/video/script.md</code>, <code>docs/video/slides.html</code></td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section class="stack">
+    <h2>Done since round 2</h2>
+    <div class="table-scroll"><table>
+      <thead><tr><th>Deliverable</th><th>State</th><th>File</th></tr></thead>
+      <tbody>
+        <tr><td>Exhibits</td><td>One command, from committed evidence files only; the 20 build-ups, gender, weather, ladder, hold-out, level chain, new-business credibility</td><td><code>scripts/exhibits_part2.py</code> → <code>docs/writeup/exhibits/part2_final.md</code></td></tr>
+        <tr><td>Write-up</td><td>Graded part prints to 5 pages; appendices A to E after it (26 pages in all). One gap left for you: the repository link</td><td><code>docs/writeup/writeup.md</code>, <code>writeup.pdf</code></td></tr>
+        <tr><td>Video</td><td>Both halves, first person, about 375 to 405 words each; 12 slides</td><td><code>docs/video/script.md</code>, <code>slides.html</code></td></tr>
+        <tr><td>Clean rerun</td><td>Part 2: the final file (D49) rebuilt from the raw files in an empty copy of the repository in about 7 minutes and matches the uploaded file byte for byte. Part 1: running; its first steps reproduce the known level chain (1.058, 1.009, 0.9996), and I report the hash check in chat</td><td><code>scripts/reproduce.py</code></td></tr>
+        <tr><td>README and licence</td><td>Story, one command per part, data excluded, MIT</td><td><code>README.md</code>, <code>LICENSE</code></td></tr>
+        <tr><td>History scan</td><td>Every commit on both branches</td><td><code>docs/publication_scan.md</code></td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section class="stack">
+    <h2>What the history scan found</h2>
+    <div class="table-scroll"><table>
+      <thead><tr><th>Check</th><th>Result</th></tr></thead>
+      <tbody>
+        <tr class="bad"><td>Copies of the host's pages</td><td><code>competition/kaggle pages.docx</code> (45 KB, your copy of the Part 1 Overview, Data and Rules pages), committed 18 October and in every commit since on <code>intake-and-plan</code></td></tr>
+        <tr class="bad"><td>Third-party code</td><td><code>reference/2025/winner_reproduction/</code> and <code>other_winners/</code>: reruns of three teams' public 2025 notebooks, one stating its logic is copied from the notebook's cells, with those notebooks' row-specific fixes to the 2025 data. On both branches since the first commit. Nothing in the 2026 code imports them</td></tr>
+        <tr><td>Competition data</td><td>None ever committed. At most four record ids in any text file (named records in decision notes)</td></tr>
+        <tr><td>Credentials</td><td>None</td></tr>
+        <tr><td>Employer names, data or context</td><td>None. One commit identity, your personal address</td></tr>
+        <tr><td>Local paths</td><td>One evidence note shows the project's local folder with your Windows user name. Harmless</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <article class="card" id="PUB-H" data-rec="a">
+    <div class="card-head">
+      <div class="meta"><span class="ref">PUB-H</span><span class="pill oneway">One-way: history is rewritten</span></div>
+      <h3>How does the copy of the host's pages leave the repository?</h3>
+    </div>
+    <div class="sect"><div class="eyebrow">Why it matters</div>
+      <p>The data and the host's pages may not be redistributed, and a file deleted in a new commit stays readable in every earlier one. Once the repository is public, anyone can clone that history; deleting it afterwards does not recall the copies.</p>
+    </div>
+    <div class="options">
+      <div class="opt rec"><div class="opt-head"><strong>(a) Rewrite both branches to drop the file from every commit</strong><span class="pill done">Recommended</span></div><p>I install <code>git-filter-repo</code>, keep a full backup of the repository as it is now, rewrite <code>main</code> and <code>intake-and-plan</code>, and rerun the scan to show the file is gone from every commit. Commit order, dates and messages are kept, so the record that each design was committed before its test still stands. Every commit hash changes: the hashes quoted in evidence files and the AI log will point to the old commits, so I commit the old-to-new map beside the scan. About 30 minutes.</p></div>
+      <div class="opt"><div class="opt-head"><strong>(b) Publish a new repository with one commit of the current files</strong></div><p>Simplest and certain, but it gives up the version history the panel grades and the proof that rules came before results.</p></div>
+    </div>
+    <div class="rec-box"><strong>Recommendation: (a).</strong><span>It removes the copy completely and keeps the history, which is the best evidence we have on guardrails.</span></div>
+    <div class="verdict" data-id="PUB-H">
+      <div class="choices" role="radiogroup" aria-label="Verdict on PUB-H">
+        <label class="choice"><input type="radio" name="PUB-H" value="a">(a) Rewrite history</label>
+        <label class="choice"><input type="radio" name="PUB-H" value="b">(b) New repository, one commit</label>
+        <label class="choice"><input type="radio" name="PUB-H" value="reject">None of these</label>
+      </div>
+      <textarea placeholder="Note (optional)" aria-label="Note on PUB-H"></textarea>
+    </div>
+  </article>
+
+  <article class="card" id="PUB-R" data-rec="a">
+    <div class="card-head">
+      <div class="meta"><span class="ref">PUB-R</span><span class="pill oneway">One-way once published</span></div>
+      <h3>What happens to the 2025 reference folder?</h3>
+    </div>
+    <div class="sect"><div class="eyebrow">Why it matters</div>
+      <p><code>reference/2025/</code> holds our own 2025 preparation (the decided model, the notebook kit, the results on identical folds) and reruns of three other teams' public notebooks. Kaggle publishes notebooks under Apache 2.0, which cannot be relicensed under our MIT licence, and the reruns carry those notebooks' row-level fixes to the 2025 data, whose licence we have not checked. The 2026 entry does not use any of it; <code>CLAUDE.md</code> and <code>docs/LESSONS_2025.md</code> describe the 2025 lessons in our own words.</p>
+    </div>
+    <div class="options">
+      <div class="opt rec"><div class="opt-head"><strong>(a) Remove the other teams' reruns and the leaderboard copy; keep our own 2025 work</strong><span class="pill done">Recommended</span></div><p>In the same rewrite as PUB-H, drop <code>reference/2025/winner_reproduction/</code>, <code>reference/2025/other_winners/</code> and <code>reference/2025/results/leaderboard.json</code> from every commit. Our 2025 code and results stay, and the README notes what was removed and why.</p></div>
+      <div class="opt"><div class="opt-head"><strong>(b) Remove the whole <code>reference/2025/</code> folder</strong></div><p>Leaves nothing from 2025 to explain. The playbook and lessons still say what 2025 taught; the code behind them goes.</p></div>
+      <div class="opt"><div class="opt-head"><strong>(c) Keep everything and add Apache 2.0 notices for the reruns</strong></div><p>Keeps the record whole, but the row-level 2025 data fixes would still be published, and the licence mix needs care that the deadline does not leave time for.</p></div>
+    </div>
+    <div class="rec-box"><strong>Recommendation: (a).</strong><span>It removes exactly what is not ours to license and keeps the preparation that shaped how this entry was built.</span></div>
+    <div class="verdict" data-id="PUB-R">
+      <div class="choices" role="radiogroup" aria-label="Verdict on PUB-R">
+        <label class="choice"><input type="radio" name="PUB-R" value="a">(a) Remove others' reruns</label>
+        <label class="choice"><input type="radio" name="PUB-R" value="b">(b) Remove the folder</label>
+        <label class="choice"><input type="radio" name="PUB-R" value="c">(c) Keep with notices</label>
+        <label class="choice"><input type="radio" name="PUB-R" value="reject">None of these</label>
+      </div>
+      <textarea placeholder="Note (optional)" aria-label="Note on PUB-R"></textarea>
+    </div>
+  </article>
+
+  <section class="stack">
+    <h2>What the independent review found</h2>
+    <p class="col">A reviewer in a fresh session, which had not seen how the work was built, read the five pages, the appendices, the video script and the repository as a judge would and checked the numbers against the evidence files. It found 3 blocking, 15 material and 15 minor problems. None needs a judgment from you; the documents are revised and the full list with my response to each is in <code>outputs/review_2026-10-29.md</code> (exchange D50).</p>
+    <div class="table-scroll"><table>
+      <thead><tr><th>Finding</th><th>Response</th></tr></thead>
+      <tbody>
+        <tr class="bad"><td>The drafts described the pure-premium file after you selected the count-standard file (D49)</td><td>Exhibits, gender evidence, write-up, video, README and the rebuild command now follow <code>part2_v2_nb-cred_wx-row_mprem_mperil_bchk_all.csv</code> (0.15712). B00229821 is back to 359.0 + 43.1 + 85 = 487.1, ÷ 0.49 = 994.0</td></tr>
+        <tr class="bad"><td>The Summary said the borrowed shape failed in buildings; it was the emerging additions that lost</td><td>Corrected in the write-up, README and video</td></tr>
+        <tr class="bad"><td>"Both files rebuild byte for byte" was claimed before the Part 1 rerun had finished</td><td>Part 2 now verified; Part 1 reported as it stands</td></tr>
+        <tr><td>The guardrail paragraph said the hold-out and the public board were each used once</td><td>Rewritten to name every later use: K16 to K18 on the hold-out, the extra full-factor upload, and the final standard chosen after a board reading</td></tr>
+        <tr><td>Claims stronger than the log: four reviews (three found it), every card has a challenge (22 of 49 had none), the premium term re-cut to motor after failing pooled not disclosed</td><td>Corrected and disclosed</td></tr>
+        <tr><td>The AI log's D48 and D49 disagree on the motor factor and on when the count standard was recommended; the submissions log has no Part 2 rows</td><td>Passed to the model session, which owns those files</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section class="stack">
+    <h2>After your verdicts</h2>
     <ul class="col">
-      <li><strong>New, H-MP:</strong> motor by peril, with its file built and checked. Only this card changes the submission.</li>
-      <li><strong>New, H-NS:</strong> which credibility standard the new-business factor uses, with a test run on it.</li>
-      <li><strong>New, WU:</strong> six corrections to the Part 2 write-up that all four reviews support.</li>
-      <li><strong>Checked:</strong> the final file was rebuilt from a clean run and matches the uploaded file byte for byte.</li>
-      <li>OP-T, OP-B, REPO and VID are as in round 1. No verdicts had been sent on them.</li>
+      <li>I run the rewrite you approve on a backup-protected copy, rescan, and report the before and after commit counts. Nothing is pushed.</li>
+      <li><code>main</code> is 112 commits behind <code>intake-and-plan</code> and is its ancestor, so publishing <code>intake-and-plan</code> as <code>main</code> is a fast-forward. You create the GitHub repository and push.</li>
+      <li>Once the repository exists, give me its link and I put it in the write-up and rebuild the PDF.</li>
     </ul>
   </section>
 
-  <article class="card" id="H-MP" data-rec="a">
-    <div class="card-head">
-      <div class="meta"><span class="ref">H-MP</span><span class="pill oneway">Sets the final Part 2 submission</span></div>
-      <h3>Should the final Part 2 file price motor by peril?</h3>
-    </div>
-    <div class="sect"><div class="eyebrow">Why it matters</div>
-      <p>The final file prices motor with one Part 1 GLM for the whole line, so every relativity carries Part 1's mix of perils. Motor by peril (K16) fits the same factors and the premium term separately for each of the five motor perils on Part 1 rows. It then sets each peril to its own emerging cost level and excess factor, and applies the same gender layer and own-year weather. Buildings and contents do not change. The emerging peril mix differs from Part 1's, so the covers carry different shares of the cost.</p>
-      <p>Round 1's K1 (motor by peril without the premium term) gained in motor in both tests (+7,348, +8,285). It was rejected on an interval pooled over all three lines, where buildings swung the result. The line-by-line reading only came in at H-F and was never applied back. Three reviewers found this on their own.</p>
-    </div>
-    <div class="table-scroll"><table>
-      <thead><tr><th>Reading, motor deviance saved against the final file</th><th>Gain</th><th>95% interval</th></tr></thead>
-      <tbody>
-        <tr><td>Out of time (fit 2023, score 2024), every customer</td><td>+9,965</td><td>[4,825, 15,857]</td></tr>
-        <tr><td>Cross-validation, 3 seeds, every customer</td><td>+13,443</td><td>[4,917, 23,084]</td></tr>
-        <tr><td>Hold-out H1 (fitted without those customers, scores their 2024 rows)</td><td>+3,454</td><td>[448, 7,075]</td></tr>
-        <tr><td>Hold-out H2 (every hold-out row)</td><td>+5,952</td><td>[253, 13,884]</td></tr>
-        <tr><td>Cross-validation weighted to the 2025 mix (76% new business)</td><td>+57,287</td><td>[1,152, 127,082]</td></tr>
-        <tr class="hl"><td>Pooled D², out of time / cross-validation</td><td colspan="2">0.1429 to 0.1447 / 0.1401 to 0.1413</td></tr>
-      </tbody>
-    </table></div>
-    <p class="note col"><span><strong>How to read this.</strong> Positive means motor by peril is better. It passes P2-V in motor, judged line by line as you judged buildings at H-F. On the hold-out customers, fitted without them, it beats the final file in both readings, and both intervals clear zero. In D² that is about 0.0012 to 0.0018 on the training mix. The emerging peril mix explains why: third-party property is 34.4% of motor capped cost against 29.9% in Part 1, own damage 18.9% against 22.1%, and glass and hail 6.5% against 4.2%.</span></p>
-    <div class="table-scroll"><table>
-      <thead><tr><th>What it does to 2025 motor prices</th><th>New ÷ final file</th></tr></thead>
-      <tbody>
-        <tr><td>Third-party only (10,113 rows)</td><td>1.078</td></tr>
-        <tr><td>Third party, fire and theft (10,214 rows)</td><td>1.033</td></tr>
-        <tr><td>Comprehensive (70,194 rows)</td><td>0.981</td></tr>
-        <tr><td>Driver age bands</td><td>0.992 to 1.008</td></tr>
-        <tr><td>Row by row, 5th to 95th percentile</td><td>0.93 to 1.12</td></tr>
-        <tr class="hl"><td>Motor total (new-business factor 1.114 against 1.105)</td><td>0.997</td></tr>
-      </tbody>
-    </table></div>
-    <p class="note col"><span><strong>How to read this.</strong> A third-party-only policy priced at 500 CU in the final file prices at about 539 CU by peril. It carries no own damage, and own damage is a smaller share of emerging cost than of Part 1's. Buildings and contents rows are identical to the final file. The file is <code>outputs/markets/part2/submissions/part2_v2_nb-cred_wx-row_mprem_mperil_bchk_all.csv</code>, and it matches reviewer A's to 0.014% per row.</span></p>
-    <div class="options">
-      <div class="opt rec"><div class="opt-head"><strong>(a) Adopt motor by peril as the final Part 2 file</strong><span class="pill done">Recommended</span></div><p>You upload it and select it as the final submission. It is reported as decided after the hold-out was opened, as H-F was. The write-up's evidence table gains a row. The AI-use section gains a clear example: in round 1 we applied our own rule inconsistently, and independent reviews recovered the change it rejected.</p></div>
-      <div class="opt"><div class="opt-head"><strong>(b) Keep the final file and report K16 as a finding</strong></div><p>No change after the hold-out beyond H-F. This gives up a gain that passes every reading we have, and the write-up still has to explain why the rule that decided buildings was not applied to motor.</p></div>
-    </div>
-    <div class="rec-box"><strong>Recommendation: (a).</strong><span>It passes the rule you applied at H-F in the line it changes, and it holds on customers the model never saw. Each part takes only one final file, so the choice should follow the evidence. The public score should not decide it: on random thirds of the 2024 rows, motor by peril beats the final file by 0.0007 to 0.0030 nine times in ten, so a lower public score would most likely be noise. Select the file explicitly, because without a selection the best public score is used.</span></div>
-    <div class="verdict" data-id="H-MP">
-      <div class="choices" role="radiogroup" aria-label="Verdict on H-MP">
-        <label class="choice"><input type="radio" name="H-MP" value="a">(a) Adopt by peril</label>
-        <label class="choice"><input type="radio" name="H-MP" value="b">(b) Keep the final file</label>
-        <label class="choice"><input type="radio" name="H-MP" value="reject">None of these</label>
-      </div>
-      <textarea placeholder="Note (optional)" aria-label="Note on H-MP"></textarea>
-    </div>
-  </article>
-
-  <article class="card" id="H-NS" data-rec="a">
-    <div class="card-head">
-      <div class="meta"><span class="ref">H-NS</span><span class="pill door">Method statement; the price changes only under (b)</span></div>
-      <h3>Which credibility standard should the new-business factor use?</h3>
-    </div>
-    <div class="sect"><div class="eyebrow">Why it matters</div>
-      <p>M2-N gave the new-business factor credibility Z = √(claims ÷ 1,082), the limited-fluctuation standard for claim counts. The ratio it weights, though, is a ratio of capped cost. For a pure premium the standard is 1,082 × (1 + CV²), where CV is the coefficient of variation of claim severity. That puts full credibility at about 5,575 claims in motor, 8,900 in buildings and 3,750 in contents. Reviewers A and B both found the mismatch. A would change the factor; B would keep it, because the one paired board check favoured it.</p>
-    </div>
-    <div class="table-scroll"><table>
-      <thead><tr><th>Line</th><th>New-business claims</th><th>Severity CV²</th><th>Z: count / pure premium</th><th>Factor: count / pure premium</th></tr></thead>
-      <tbody>
-        <tr><td>Motor</td><td>697</td><td>4.15</td><td>0.80 / 0.35</td><td>1.105 / 1.046</td></tr>
-        <tr><td>Buildings</td><td>77</td><td>7.20</td><td>0.27 / 0.09</td><td>0.951 / 0.983</td></tr>
-        <tr><td>Contents</td><td>102</td><td>2.46</td><td>0.31 / 0.17</td><td>1.094 / 1.050</td></tr>
-      </tbody>
-    </table></div>
-    <p class="note col"><span><strong>How to read this.</strong> I tested four standards inside our validation splits, on a design written before the run: none, pure premium, count and full. In motor, pure premium beats count out of time by 2,932 [138, 5,251] but loses in cross-validation by 816 [−3,495, 1,348]. Pooled D² moves by 0.0005 or less, inside the band I set in advance as no evidence either way. The out-of-time reading takes its factor from 2023 alone, and 2023 is where reviewer A found the motor new-business excess (1.49 in 2023, 0.85 in 2024). Only the full emerging figure loses clearly. The one reading on the 2025 book itself was the paired board check, decided before upload: count scored 0.15312 against 0.15080 for none. The pure-premium factor lies between the two and was never uploaded.</span></p>
-    <div class="options">
-      <div class="opt rec"><div class="opt-head"><strong>(a) Keep the count standard, and say so in the write-up</strong><span class="pill done">Recommended</span></div><p>The write-up names the standard used and gives the pure-premium figures beside it. It also states that our validation cannot separate the two. The file does not change.</p></div>
-      <div class="opt"><div class="opt-head"><strong>(b) The pure-premium standard in all three lines</strong></div><p>The textbook standard for a cost ratio. New-business prices fall about 5% in motor and 4% in contents and rise about 3% in buildings, with renewals rebalanced. It needs a rebuild and goes against the only reading on the 2025 book.</p></div>
-    </div>
-    <div class="rec-box"><strong>Recommendation: (a).</strong><span>Our tests cannot tell the two apart, and the only evidence on the book being priced favours the larger factor. A disclosed choice with both figures holds up better than a switch made on a method argument the data does not back.</span></div>
-    <div class="verdict" data-id="H-NS">
-      <div class="choices" role="radiogroup" aria-label="Verdict on H-NS">
-        <label class="choice"><input type="radio" name="H-NS" value="a">(a) Keep, disclose</label>
-        <label class="choice"><input type="radio" name="H-NS" value="b">(b) Pure premium</label>
-        <label class="choice"><input type="radio" name="H-NS" value="reject">None of these</label>
-      </div>
-      <textarea placeholder="Note (optional)" aria-label="Note on H-NS"></textarea>
-    </div>
-  </article>
-
-  <article class="card" id="WU" data-rec="a">
-    <div class="card-head">
-      <div class="meta"><span class="ref">WU</span><span class="pill door">Write-up text; easily changed</span></div>
-      <h3>Should the Part 2 write-up take the reviewers' six corrections?</h3>
-    </div>
-    <div class="sect"><div class="eyebrow">Why it matters</div>
-      <p>All four reviews say the draft overstates some of its conclusions. The panel grades trust and validation (20%), and AI screening reads the claims first. Each correction costs about a sentence.</p>
-    </div>
-    <div class="table-scroll"><table>
-      <thead><tr><th>Draft says</th><th>Correction</th></tr></thead>
-      <tbody>
-        <tr><td class="wrap-cell">Every candidate change faced one rule</td><td class="wrap-cell">Round 1 judged on an interval pooled over lines; H-F judged line by line. Say so, and say that motor by peril was recovered when the line rule was applied back.</td></tr>
-        <tr><td class="wrap-cell">Three methods failing is the strongest evidence the borrowed shape was right</td><td class="wrap-cell">P2-V can only confirm a gain of about 0.002 of D² in motor and 0.004 in buildings. "Failed" often means "unproven".</td></tr>
-        <tr><td class="wrap-cell">Nothing learnable remains (boosted correction)</td><td class="wrap-cell">The boosted correction stopped at 1 to 57 trees. That means nothing large enough for our test to confirm. It rules out a single missed effect worth 0.005 of D² or more.</td></tr>
-        <tr><td class="wrap-cell">Prior-year claims history: 0 and −15,348, not kept</td><td class="wrap-cell">That test used the customer-across-lines form Part 1 had rejected. In Part 1's form (own policy, Part 1's credibility constant) motor gains in both tests, +4,750 and +4,362 [−3,130, 14,186], but does not pass. Positive, not significant.</td></tr>
-        <tr><td class="wrap-cell">One model's D² on a third ranges from 0.107 to 0.165</td><td class="wrap-cell">Every team is scored on the same rows. At the board's size, two equally good but different models differ by a standard deviation of about 0.004, so most of the 0.019 gap to the leader is real.</td></tr>
-        <tr><td class="wrap-cell">Buildings: a few large claims swing any reading</td><td class="wrap-cell">Name them: 12 total-loss fires, each near its sum insured, are 28% of emerging buildings cost, 3.7 times Part 1's rate. Every buildings reading, H-F included, rests on where they land.</td></tr>
-      </tbody>
-    </table></div>
-    <div class="options">
-      <div class="opt rec"><div class="opt-head"><strong>(a) Make all six corrections</strong><span class="pill done">Recommended</span></div><p>The limitations section becomes shorter and more accurate. The gap paragraph changes most: the gap is mostly real, and our tests could not find where it comes from.</p></div>
-      <div class="opt"><div class="opt-head"><strong>(b) Make them except those named in the note</strong></div><p>Name in the note the corrections to leave out.</p></div>
-    </div>
-    <div class="rec-box"><strong>Recommendation: (a).</strong><span>A reviewer's evidence file backs each correction, and a claim the panel can puncture costs more than the sentence it saves.</span></div>
-    <div class="verdict" data-id="WU">
-      <div class="choices" role="radiogroup" aria-label="Verdict on WU">
-        <label class="choice"><input type="radio" name="WU" value="a">(a) All six</label>
-        <label class="choice"><input type="radio" name="WU" value="b">(b) All but those noted</label>
-        <label class="choice"><input type="radio" name="WU" value="reject">None of these</label>
-      </div>
-      <textarea placeholder="Note (optional)" aria-label="Note on WU"></textarea>
-    </div>
-  </article>
-
-
-  <section class="stack">
-    <h2>What the panel grades, and where each deliverable earns it</h2>
-    <div class="table-scroll"><table>
-      <thead><tr><th>Criterion</th><th>Weight</th><th>Where we earn it</th></tr></thead>
-      <tbody>
-        <tr><td>Pricing performance and adaptation</td><td>40%</td><td class="wrap-cell">Both private leaderboards, plus the panel's view of modelling choices, adaptation to the new market, data quality, limitations and uncertainty: write-up sections 2 and 3, video 2:30 to 4:00</td></tr>
-        <tr><td>Effective use of AI</td><td>25%</td><td class="wrap-cell">The AI log (45 exchanges), the exchanges where the AI was wrong or challenged, the briefs you decided on: write-up section 4, video close</td></tr>
-        <tr><td>Trust, validation and guardrails</td><td>20%</td><td class="wrap-cell">Keep rules written before results, the hold-out opened once, the referral list, the fairness exhibit for gender</td></tr>
-        <tr><td>Communication and documentation</td><td>15%</td><td class="wrap-cell">A short, clear write-up and video; a repository that reruns from one command</td></tr>
-      </tbody>
-    </table></div>
-  </section>
-
-  <section class="stack">
-    <h2>The plan</h2>
-    <div class="table-scroll"><table>
-      <thead><tr><th>Deliverable</th><th>Content</th><th>When</th></tr></thead>
-      <tbody>
-        <tr><td>Write-up, 5 pages</td><td class="wrap-cell">Summary (both parts, half a page). Part 1, condensed from the draft to about 1.75 pages, updated with its private result (0.13641, 15th; first 0.13923). Part 2 in about 2 pages: what we borrowed and what the new market changed, the test rule, what passed and failed, the hold-out and your line-by-line call, the level, the reference policies. Use of AI and guardrails across both parts, 0.75 page. Appendices after page 5: the 20 build-ups, the gender fairness exhibit, the weather responses, the AI log.</td><td>Draft Thursday midday</td></tr>
-        <tr><td>Exhibits</td><td class="wrap-cell">Built by a script from the evidence files, so every number traces to a file: Part 2 evidence ladder, hold-out by line, level chain, new-business credibility, reference-policy build-ups, gender fairness</td><td>Thursday morning</td></tr>
-        <tr><td>Video, 5 minutes</td><td class="wrap-cell">Part 1 half drafted (2:30). Part 2 half: the new market, borrowing with credibility, the hold-out decision, the price for a reference policy, what the AI got wrong. Script and slides from the same exhibits.</td><td>Script Thursday; recording Friday</td></tr>
-        <tr><td>Repository</td><td class="wrap-cell">README with the story and one command per part; data excluded; clean rerun of the final file checked byte for byte; pre-publication scan</td><td>Thursday</td></tr>
-        <tr><td>Independent review</td><td class="wrap-cell">A reviewer that has not seen how the work was built reads the write-up and repository as a judge would</td><td>Thursday evening</td></tr>
-        <tr><td>Submission form</td><td class="wrap-cell">You submit: both prediction files, video, write-up, repository link</td><td>Friday</td></tr>
-      </tbody>
-    </table></div>
-  </section>
-
-  <article class="card" id="OP-T" data-rec="a">
-    <div class="card-head">
-      <div class="meta"><span class="ref">OP-T</span><span class="pill door">Reported figure; easily changed</span></div>
-      <h3>Where does premium tax sit in the office premium?</h3>
-    </div>
-    <div class="sect"><div class="eyebrow">Why it matters</div>
-      <p>The report must show, for each of the 20 reference policies, how our risk premium becomes an office premium. The expense table gives: fixed expense 85 CU per policy; variable expense 15%, commission (broker 20%, direct 0%), premium tax 8% and target profit 8%, each as a share of premium; catastrophe reinsurance 12% of property risk premium. I read "property" as both buildings and contents. The only open point is the tax.</p>
-    </div>
-    <div class="options">
-      <div class="opt rec"><div class="opt-head"><strong>(a) Tax in the permissible loss ratio</strong><span class="pill done">Recommended</span></div><p>Office premium = (risk premium + cat load + 85) ÷ (1 − 15% − commission − 8% tax − 8% profit). For a broker policy the divisor is 0.49.</p></div>
-      <div class="opt"><div class="opt-head"><strong>(b) Tax on top</strong></div><p>Office premium = (risk premium + cat load + 85) ÷ (1 − 15% − commission − 8%), then × 1.08. About 7% lower for broker policies: the first motor reference policy reads 2,644 instead of 2,848.</p></div>
-    </div>
-    <div class="rec-box"><strong>Recommendation: (a).</strong><span>The table states the tax as a share of premium, as it does commission and profit, so all three are treated alike. This also matches Canadian rate-filing practice, where premium tax is a variable expense inside the permissible loss ratio.</span></div>
-    <div class="verdict" data-id="OP-T">
-      <div class="choices" role="radiogroup" aria-label="Verdict on OP-T">
-        <label class="choice"><input type="radio" name="OP-T" value="a">(a) In the loss ratio</label>
-        <label class="choice"><input type="radio" name="OP-T" value="b">(b) On top</label>
-        <label class="choice"><input type="radio" name="OP-T" value="reject">None of these</label>
-      </div>
-      <textarea placeholder="Note (optional)" aria-label="Note on OP-T"></textarea>
-    </div>
-  </article>
-
-  <article class="card" id="OP-B" data-rec="a">
-    <div class="card-head">
-      <div class="meta"><span class="ref">OP-B</span><span class="pill door">Reported figure; easily changed</span></div>
-      <h3>On what basis is the build-up shown?</h3>
-    </div>
-    <div class="sect"><div class="eyebrow">Why it matters</div>
-      <p>Four reference policies are short rows: one starts on 22 November (0.11 of a year in 2025), one is cancelled after 25 days. Our prediction is the expected cost for the row's period. The written premium in the data is annual: the 0.11-year row shows 180.72 CU, against 230.80 for a full-year buildings policy. On a period basis, a 25-day contents row would carry the full 85 CU fixed expense.</p>
-    </div>
-    <div class="options">
-      <div class="opt rec"><div class="opt-head"><strong>(a) Annual</strong><span class="pill done">Recommended</span></div><p>Risk premium annualised (prediction ÷ exposure), office premium for a year, set beside the annual written premium.</p></div>
-      <div class="opt"><div class="opt-head"><strong>(b) The row's period, full fixed expense</strong></div><p>The 25-day contents row: risk premium 4.8 CU, office premium 184 CU, mostly the fixed expense.</p></div>
-      <div class="opt"><div class="opt-head"><strong>(c) The row's period, fixed expense pro rata</strong></div><p>Consistent, but cannot be compared with the annual written premium without annualising again.</p></div>
-    </div>
-    <div class="rec-box"><strong>Recommendation: (a).</strong><span>A price is quoted for a year, the fixed expense is per policy per year, and the comparison with the current premium only works like for like.</span></div>
-    <div class="verdict" data-id="OP-B">
-      <div class="choices" role="radiogroup" aria-label="Verdict on OP-B">
-        <label class="choice"><input type="radio" name="OP-B" value="a">(a) Annual</label>
-        <label class="choice"><input type="radio" name="OP-B" value="b">(b) Period, full fixed</label>
-        <label class="choice"><input type="radio" name="OP-B" value="c">(c) Period, pro rata</label>
-        <label class="choice"><input type="radio" name="OP-B" value="reject">None of these</label>
-      </div>
-      <textarea placeholder="Note (optional)" aria-label="Note on OP-B"></textarea>
-    </div>
-  </article>
-
-  <section class="stack">
-    <h2>What (a) and (a) give, and what it says about the acquired book</h2>
-    <div class="table-scroll"><table>
-      <thead><tr><th>Reference policy</th><th>Channel</th><th>Risk premium (annual)</th><th>Cat load</th><th>Office premium</th><th>Written premium</th><th>Office ÷ written</th></tr></thead>
-      <tbody>
-        <tr><td>Motor M00161473 (17-24, diesel)</td><td>broker</td><td>1,310.5</td><td>0</td><td>2,848.0</td><td>1,131.8</td><td>2.5</td></tr>
-        <tr><td>Motor M00118569 (renewal)</td><td>direct</td><td>651.2</td><td>0</td><td>1,066.9</td><td>1,095.5</td><td>1.0</td></tr>
-        <tr><td>Buildings B00229821</td><td>broker</td><td>359.0</td><td>43.1</td><td>994.0</td><td>285.6</td><td>3.5</td></tr>
-        <tr><td>Contents C00259568</td><td>broker</td><td>43.9</td><td>5.3</td><td>273.7</td><td>83.2</td><td>3.3</td></tr>
-        <tr class="hl"><td>Median of the 20, by line</td><td></td><td colspan="2">Risk ÷ written: motor 1.16, buildings 1.77, contents 0.48</td><td colspan="3">Office ÷ written: motor 2.5, buildings 4.2, contents 2.6</td></tr>
-      </tbody>
-    </table></div>
-    <p class="note col"><span><strong>How to read this.</strong> Take the buildings policy: expected claims cost 359.0 CU a year, plus 12% for catastrophe reinsurance (43.1), plus 85 CU fixed expense, is 487.1 CU. Divided by 0.49, the share left after 15% variable expense, 20% commission, 8% tax and 8% profit, gives 994.0 CU, against 285.6 CU charged today. The arithmetic of the host's expense table drives most of this: at a 100% loss ratio before expenses, a broker policy already needs about twice its risk premium plus 173 CU. On the risk premium alone, before any expense, 12 of the 20 already cost more than they are charged, including all 7 buildings policies; no contents policy does. The write-up will say that the acquired broker book is priced far below the technical premium, and that this follows from the given expenses as much as from our model.</span></p>
-  </section>
-
-  <article class="card" id="REPO" data-rec="a">
-    <div class="card-head">
-      <div class="meta"><span class="ref">REPO</span><span class="pill oneway">Public and permanent under your name</span></div>
-      <h3>How is the code repository published?</h3>
-    </div>
-    <div class="sect"><div class="eyebrow">Why it matters</div>
-      <p>The panel grades "a well-structured code repository with version control", and AI tools screen it first. A winner must license the code under an OSI-approved licence. The data may not be redistributed, so it stays out. The repository currently has no remote. Before anything is published I scan the whole history, not just the current files, for data, copies of the host's pages, credentials and anything from outside this entry.</p>
-    </div>
-    <div class="options">
-      <div class="opt rec"><div class="opt-head"><strong>(a) Public GitHub repository, full history, MIT licence</strong><span class="pill done">Recommended</span></div><p>You create it under your account and push it; I prepare the README, licence and scan. The history shows how the work was built: the designs committed before each test run, which is our strongest evidence on guardrails.</p></div>
-      <div class="opt"><div class="opt-head"><strong>(b) Private repository, access for the organisers</strong></div><p>Not permanent or public. Depends on the form accepting a private link, which it may not.</p></div>
-      <div class="opt"><div class="opt-head"><strong>(c) A zipped snapshot without history</strong></div><p>Loses the version control the criterion names.</p></div>
-    </div>
-    <div class="rec-box"><strong>Recommendation: (a).</strong><span>Version control is graded, and the commit history is the proof that rules came before results. The scan protects the data rule and your name.</span></div>
-    <div class="verdict" data-id="REPO">
-      <div class="choices" role="radiogroup" aria-label="Verdict on REPO">
-        <label class="choice"><input type="radio" name="REPO" value="a">(a) Public, MIT</label>
-        <label class="choice"><input type="radio" name="REPO" value="b">(b) Private</label>
-        <label class="choice"><input type="radio" name="REPO" value="c">(c) Zip</label>
-        <label class="choice"><input type="radio" name="REPO" value="reject">None of these</label>
-      </div>
-      <textarea placeholder="Note (optional), for example another licence" aria-label="Note on REPO"></textarea>
-    </div>
-  </article>
-
-  <article class="card" id="VID" data-rec="a">
-    <div class="card-head">
-      <div class="meta"><span class="ref">VID</span><span class="pill door">Shapes Friday's work</span></div>
-      <h3>Who narrates the video?</h3>
-    </div>
-    <div class="options">
-      <div class="opt rec"><div class="opt-head"><strong>(a) You, in your own words, over the exhibits</strong><span class="pill done">Recommended</span></div><p>I write a scene-by-scene script and the slides; you record in one or two takes on Friday. About 45 minutes of your time.</p></div>
-      <div class="opt"><div class="opt-head"><strong>(b) A synthetic voice reading the script</strong></div><p>No time from you, but the appointed actuary's judgment is the story, and a synthetic voice weakens it.</p></div>
-    </div>
-    <div class="rec-box"><strong>Recommendation: (a).</strong><span>The panel is judging an actuary's decisions made with AI. Hearing you explain them is the clearest evidence.</span></div>
-    <div class="verdict" data-id="VID">
-      <div class="choices" role="radiogroup" aria-label="Verdict on VID">
-        <label class="choice"><input type="radio" name="VID" value="a">(a) You narrate</label>
-        <label class="choice"><input type="radio" name="VID" value="b">(b) Synthetic voice</label>
-        <label class="choice"><input type="radio" name="VID" value="reject">None of these</label>
-      </div>
-      <textarea placeholder="Note (optional)" aria-label="Note on VID"></textarea>
-    </div>
-  </article>
-
   <section class="final" id="final">
     <h2>Send your verdicts</h2>
-    <p>Verdicts save as you pick them. After <strong>Send to Claude</strong>, type anything in the chat so I pick them up. H-MP sets which file you upload and select; the exhibits and the write-up follow from it.</p>
+    <p>Verdicts save as you pick them. After <strong>Send to Claude</strong>, type anything in the chat so I pick them up. Nothing is rewritten or pushed until you answer PUB-H and PUB-R.</p>
     <div class="actions"><button id="accept-rest" type="button">Accept my recommendation on every card you have not answered</button></div>
     <div class="actions">
       <button class="primary" id="send" type="button">Send to Claude</button>
@@ -376,7 +232,7 @@ details[open] > summary { margin-bottom: 10px; }
 
 <script>
 (function () {
-  const ROUND = 2;
+  const ROUND = 3;
   const $ = id => document.getElementById(id);
   const boxes = Array.from(document.querySelectorAll(".verdict[data-id]"));
   const ids = boxes.map(b => b.dataset.id);
@@ -452,7 +308,7 @@ details[open] > summary { margin-bottom: 10px; }
     db.collection("verdicts").onSnapshot(snap => { snap.docs.forEach(d => apply(d.id, d.data())); }, () => {});
     db.doc("brief/state").onSnapshot(s => {
       const d = s.exists ? s.data() : null;
-      if (d && d.status === "final") lock();
+      if (d && d.status === "final" && d.round === ROUND) lock();
       else if (d && d.status === "submitted" && d.round === ROUND) $("blocked").textContent = "Waiting on: Claude to read round " + ROUND;
     }, () => {});
   })();

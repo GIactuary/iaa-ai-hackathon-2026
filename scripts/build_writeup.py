@@ -85,10 +85,10 @@ def main() -> None:
     appendix = "\n".join(a.replace("## Appendix", "# Appendix") for a in apps if a.strip())
     appendix += "\n# Appendix D. Part 2 evidence\n\n" + "\n".join(ladder) + "\n" + log
     graded = W / "writeup_graded.html"
-    graded.write_text(html(main_md, "Write-up"), encoding="utf-8")
+    graded.write_text(html(main_md, "Write-up"), encoding="utf-8", newline="\n")
     n_graded = to_pdf(graded, W / "writeup_graded.pdf")
     full = W / "writeup.html"
-    full.write_text(html(main_md + "\n<div class='break'></div>\n\n" + appendix, "Write-up"), encoding="utf-8")
+    full.write_text(html(main_md + "\n<div class='break'></div>\n\n" + appendix, "Write-up"), encoding="utf-8", newline="\n")
     n_full = to_pdf(full, W / "writeup.pdf")
     graded.unlink()
     (W / "writeup_graded.pdf").unlink()

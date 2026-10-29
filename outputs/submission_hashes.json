@@ -12,12 +12,12 @@
  },
  "part2_v2_nb-cred_wx-row_mprem_mperil_bchk_all.csv": {
   "part": 2,
-  "status": "Motor by peril with the claim-count new-business standard, replaced at H-NS; public 0.15712",
+  "status": "Part 2 final submission: motor by peril (H-MP (a)), claim-count new-business standard (H-NS (a), D49); public 0.15712",
   "sha256": "9451d89486e655dc92bb6524258d72565ffb57a5441dd315311e590a4282dda5"
  },
  "part2_v2_nb-pp_wx-row_mprem_mperil_bchk_all.csv": {
   "part": 2,
-  "status": "Part 2 final file: motor by peril (H-MP (a)), pure-premium new-business standard (H-NS (b))",
+  "status": "Same shape with the pure-premium new-business standard (H-NS (b), replaced at D49); public 0.15657",
   "sha256": "c93a091fd03eed568d0e16e25eda501287c6f752956ab15c5059249b7e766afd"
  }
 }

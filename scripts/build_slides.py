@@ -59,19 +59,19 @@ def slides() -> list[tuple[str, str, str]]:
                                ["Gender", "allowed", "not present"]], ["", "Emerging", "Part 1"]),
          "The 2025 book is 76% new business from an acquired broker portfolio"),
         ("Borrow the shape, learn the level", rows([[r["step"], r["v2"] or "", f"{r['d2'][1]:.4f}"] for r in lad["panel1"]], ["Step", "Cross-validation [95%]", "D²"]),
-         "Fitted on 2023, scored on 2024: Part 1's buildings relativities 11.5%, an emerging GLM −144%"),
-        ("The hold-out decision", img("part2_holdout.png"), "Motor and contents hold; buildings goes back to Part 1's GLM (H-F (b))"),
+         "Part 1's relativities beat an emerging-only GLM in every line; the emerging data adds only what passes"),
+        ("The hold-out decision", img("part2_holdout.png"), "Motor holds; buildings loses in three of four readings and goes back to Part 1's shape (H-F (b))"),
         ("Reviews that found our inconsistency", rows([["Out of time", k16["v1"]], ["Cross-validation", k16["v2"]],
                                                        ["Hold-out, 2024 rows", f"+{H['H1']['k16_motor']['gain']:,.0f}"],
                                                        ["Hold-out, every row", f"+{H['H2']['k16_motor']['gain']:,.0f}"]], ["Motor by peril, motor deviance saved", ""]),
-         "Rejected in round 1 on a pooled rule; on the line rule it passes"),
+         "Rejected in round 1 on a pooled rule; on the line rule it passes. Final file: 0.15712 public"),
         ("The price of one policy", img("part2_final_buildup.png"),
          f"{b['risk_premium']:.1f} + {b['cat_load']:.1f} + {b['fixed']:.0f} = {b['risk_premium'] + b['cat_load'] + b['fixed']:.1f}, "
          f"÷ {b['divisor']:.2f} = {b['office_premium']:,.1f} CU, against {b['written_premium']:.1f} charged today"),
         ("What the AI got wrong", "<ul><li>D16: a bug in its own completion weights, found when asked why</li><li>D31: wrong about the cause of the gap</li>"
                                   "<li>D36: a wrong diagnosis of a slow run, exposed by a question</li><li>D37: a threshold its own evidence contradicted</li>"
-                                  f"<li>D47, D48: independent reviews found our rule applied inconsistently</li></ul><p>Gender in motor: men {g['men_over_women']:.2f} times women, everything else equal</p>",
-         "48 logged exchanges. AI built and tested; the judgments were the actuary's"),
+                                  f"<li>D47 to D49: independent reviews found our rule applied inconsistently</li></ul><p>Gender in motor: men {g['men_over_women']:.2f} times women, everything else equal</p>",
+         "50 logged exchanges. AI built and tested; the judgments were the actuary's"),
     ]
 
 

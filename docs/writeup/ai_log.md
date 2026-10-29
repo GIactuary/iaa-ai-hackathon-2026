@@ -1,6 +1,6 @@
 # Appendix E. The AI log
 
-*Rendered from `ai/ai_log.json` by `scripts/build_writeup.py`: 48 exchanges that changed a decision, in order.*
+*Rendered from `ai/ai_log.json` by `scripts/build_writeup.py`: 50 exchanges that changed a decision, in order.*
 
 ### D1. Preparation: modelling approach (Modeller; raised by Actuary)
 
@@ -442,7 +442,26 @@
 **AI answer.** Ran test N2 inside the validation splits (design committed before the run). It could not separate the standards: in motor, pure premium beat count out of time by 2,932 [138, 5,251] and lost in cross-validation by 816 [-3,495, 1,348]; pooled D2 moved by 0.0005 or less. The AI recommended keeping the count standard and disclosing it, because the one paired board check on the 2025 book favoured the larger factor (count 0.15312 against none 0.15080).  
 **Challenge.** The actuary chose the pure-premium standard, against the recommendation.  
 **Test.** N2, scripts/part2_nb_standard.py; file rebuilt with scripts/part2_model_v2.py --nb pp.  
-**Result.** Z falls from 0.80, 0.27, 0.31 to 0.35, 0.09, 0.17; factors motor 1.121 to 1.050, buildings 0.951 to 0.983, contents 1.094 to 1.050. Against the uploaded by-peril file: motor new business -5.0%, renewals +0.8%, motor total -4.1%; buildings total +2.3%; contents total -2.7%.  
+**Result.** Z falls from 0.80, 0.27, 0.31 to 0.35, 0.09, 0.17; factors as built in the motor-by-peril files (part2_v2_nb-cred_..._mperil and part2_v2_nb-pp_..._mperil): motor 1.114 to 1.050, buildings 0.950 to 0.983, contents 1.094 to 1.050 (on the earlier whole-line motor shape: motor 1.105 to 1.046). Against the uploaded by-peril file: motor new business -5.0%, renewals +0.8%, motor total -4.1%; buildings total +2.3%; contents total -2.7%.  
 **Decision.** Actuary, 2026-10-29: H-NS (b), the pure-premium standard in all three lines.  
 **Effect.** Final Part 2 file part2_v2_nb-pp_wx-row_mprem_mperil_bchk_all.csv. The write-up states the standard and why.  
+
+### D49. Part 2 build: choosing the final submission (Appointed actuary; raised by Actuary)
+
+**Question.** After the pure-premium file scored 0.15657 public against 0.15712 for the same file with the count standard, the actuary: "Why we are picking the model that gave a lower score?"  
+**AI answer.** Switch to the count standard. The two standards were equally defensible on our validation (N2 could not separate them), and the AI had recommended the count standard before the pure-premium file was uploaded, on the strength of the earlier M2-B board check. (In chat the AI first said "before any board reading"; that was wrong, since that recommendation itself rested on M2-B, and is corrected here.) The board now pointed the same way twice: the earlier paired check put the count factor 0.0023 above no factor, and the pure-premium factor, between the two, scored 0.00055 below the count factor. Public and private boards are random samples of the same 2025 book, and the factor acts on the 76% that is new business, so a direction seen twice on the public third more likely than not holds on the private rows. The AI also said 0.00055 alone is noise-sized, the expected private difference is small either way, and the change would be made after seeing a board score and must be reported so.  
+**Challenge.** The actuary questioned his own earlier choice of the textbook standard once the board read against it.  
+**Test.** None new; N2 (scripts/part2_nb_standard.py), the M2-B board check and the two public scores.  
+**Result.** Public: count-standard by-peril file 0.15712, pure-premium by-peril file 0.15657, earlier final file 0.15455.  
+**Decision.** Actuary, 2026-10-29: H-NS changed to (a), the count standard; selected part2_v2_nb-cred_wx-row_mprem_mperil_bchk_all.csv as the Part 2 final.  
+**Effect.** Final Part 2 file: motor by peril with the count-standard new-business factor (motor 1.114, buildings 0.950, contents 1.094). The write-up reports the standard, the pure-premium figures beside it, and that the tie between them was broken on the board.  
+
+### D50. Documentation: independent review (Independent reviewer; raised by AI)
+
+**Question.** Read the write-up's five graded pages, its appendices, the video script, the README and the repository as a judge would, and check at least 15 numbers against the evidence files.  
+**AI answer.** A reviewer in a fresh context, which had not seen the build, found 3 blocking, 15 material and 15 minor findings. The documenting AI had been wrong in several places: the Summary said the borrowed shape failed in buildings (it was the emerging additions), the write-up claimed both final files rebuilt byte for byte before the Part 1 rerun had completed, and the guardrail paragraph said the hold-out and the board were each used once.  
+**Test.** Spot checks against the evidence files: all 20 office premiums, the gender exhibit, the weather responses, the level chain, the hold-out tables and the AI exhibit's rows against their cards.  
+**Result.** The figures checked traced correctly. The documents still described the pure-premium file after the actuary had selected the count-standard file at D49; the reproduce command lacked a Part 1 history stage; several sentences overstated the AI log (four reviews where three found it, every card with a challenge where 22 of 49 have none).  
+**Decision.** Documentation fixes applied in session, none changing a decided judgment. Two items in the model session's files (D48/D49 wording, the Part 2 rows of the submissions log) were passed to it. The publication questions from the history scan go to the actuary on the documentation brief, round 3.  
+**Effect.** Exhibits, gender evidence, write-up, video script, README, reproduce.py and the hash file follow the D49 file; the guardrail paragraph names every later use of the hold-out and the board; the review and responses are in outputs/review_2026-10-29.md.  
 

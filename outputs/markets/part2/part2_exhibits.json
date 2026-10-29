@@ -14,7 +14,7 @@
       "kept": "incumbent"
      },
      {
-      "step": "K9 + own-year weather: gender layer in motor, fire and flood by property with address hazards, Part 1's tree in contents, each row's own-year weather",
+      "step": "K9 + K7b: gender layer in motor, buildings by peril with address hazards, Part 1's tree in contents, each row's own-year weather",
       "v1": "+7,498",
       "v2": "+37,526 [298, 76,858]",
       "d2": [
@@ -24,7 +24,7 @@
       "kept": "yes (M2-W)"
      },
      {
-      "step": "I: + the insured's premium as our fields predict it, motor only",
+      "step": "I: + Part 1's premium model applied to emerging fields, motor only (re-tested on motor after K11 failed pooled)",
       "v1": "+2,844 [44, 5,469]",
       "v2": "+5,981 [1,547, 10,441]",
       "d2": [
@@ -80,7 +80,7 @@
      "passes": false
     },
     {
-     "candidate": "Fire and flood by property with address hazards (K3)",
+     "candidate": "Every peril separately, large-loss perils as frequency \u00d7 severity, address hazards for fire and flood (K3)",
      "v1": -2049.363698201074,
      "v2": 30640.958220664088,
      "v2_lo": -8683.609341065016,
@@ -124,7 +124,7 @@
      "passes": false
     },
     {
-     "candidate": "K3 + K4 + K5 with each row's own-year weather (K9 + K7b)",
+     "candidate": "K9 + K7b: K3 in buildings, K4 in contents, K5 in motor, each row's own-year weather",
      "v1": 7498.159592512171,
      "v2": 37526.36603035826,
      "v2_lo": 298.0331572012683,
@@ -135,7 +135,7 @@
      "passes": true
     },
     {
-     "candidate": "The insured's premium as our fields predict it, every line (K11)",
+     "candidate": "Part 1's premium model applied to emerging fields, every line (K11)",
      "v1": 5782.808527673342,
      "v2": 2587.5958335530468,
      "v2_lo": -10783.562200758242,
@@ -428,64 +428,64 @@
      "rows": 90521,
      "indication": 464.6140044130685,
      "excess": 1.0070806547930282,
-     "off_balance": 1.015679501454188,
+     "off_balance": 1.0139815255651075,
      "nb_ae": 1.1425659068462417,
      "nb_claims": 697.0,
-     "nb_z": 0.35359453352044995,
-     "nb_factor": 1.0504105253272167,
-     "renewal": 0.9948489411007932,
+     "nb_z": 0.8026066590604685,
+     "nb_factor": 1.114424346189788,
+     "renewal": 0.9883838494933417,
      "weather": 0.9946408328996936,
      "weather_p05_p95": [
       0.9785600089048339,
       1.010162375774085
      ],
      "weather_mode": "each row's own year",
-     "predicted": 49336513.60633588,
+     "predicted": 51447046.70317856,
      "written": 53641068.262731,
-     "ratio": 0.9197526299194555,
-     "per_year": 624.4582939086441
+     "ratio": 0.9590981009400066,
+     "per_year": 651.1715697474715
     },
     "buildings": {
      "rows": 52295,
      "indication": 424.7534946814357,
      "excess": 1.038194995717553,
-     "off_balance": 0.9524216768234132,
+     "off_balance": 0.9528595762010432,
      "nb_ae": 0.8121271120567449,
      "nb_claims": 77.0,
-     "nb_z": 0.09314373211129731,
-     "nb_factor": 0.9825008180544377,
-     "renewal": 1.0014472663684844,
+     "nb_z": 0.26676677110607044,
+     "nb_factor": 0.9498817563050053,
+     "renewal": 1.0041562318813493,
      "weather": 1.0172301011467753,
      "weather_p05_p95": [
       1.0172301011467753,
       1.0172301011467753
      ],
      "weather_mode": "one factor per line",
-     "predicted": 22593132.68513459,
+     "predicted": 22079407.47087518,
      "written": 18336468.291276,
-     "ratio": 1.2321419984612738,
-     "per_year": 476.8866270776876
+     "ratio": 1.2041254139097206,
+     "per_year": 466.0431248468471
     },
     "contents": {
      "rows": 66247,
      "indication": 96.41581724586332,
      "excess": 1.0233878850513158,
-     "off_balance": 0.9788199569389842,
+     "off_balance": 0.9782735406954731,
      "nb_ae": 1.3053097804567801,
      "nb_claims": 102.0,
-     "nb_z": 0.16501237955821466,
-     "nb_factor": 1.0503798933755695,
-     "renewal": 0.9960662303813291,
+     "nb_z": 0.3070339893399125,
+     "nb_factor": 1.093740479878138,
+     "renewal": 0.9927052409989736,
      "weather": 0.9721112064736936,
      "weather_p05_p95": [
       0.910874712191904,
       1.0193902529513879
      ],
      "weather_mode": "each row's own year",
-     "predicted": 6010977.675068613,
+     "predicted": 6180646.528629743,
      "written": 8078337.3458,
-     "ratio": 0.744085994154945,
-     "per_year": 101.85270012661016
+     "ratio": 0.7650889365053709,
+     "per_year": 104.72764523483504
     }
    },
    "nb": {
@@ -555,7 +555,9 @@
     "board": {
      "count": "0.15312",
      "none": "0.15080",
-     "full": "0.14646"
+     "full": "0.14646",
+     "final_pp": "0.15657",
+     "final_count": "0.15712"
     },
     "by_year_motor_ae": "(1.49 in 2023, 0.85 in 2024)"
    },
@@ -567,15 +569,15 @@
      "new_business": true,
      "description": "17-24, third party fire theft, diesel",
      "exposure": 0.9644,
-     "prediction": 1301.6286,
-     "risk_premium": 1349.6771049357112,
+     "prediction": 1369.6842,
+     "risk_premium": 1420.2449191206967,
      "cat_load": 0.0,
      "fixed": 85.0,
      "divisor": 0.48999999999999994,
-     "office_premium": 2927.912459052472,
+     "office_premium": 3071.928406368769,
      "written_premium": 1131.78,
-     "office_over_written": 2.586997878609334,
-     "risk_over_written": 1.1925260253191532
+     "office_over_written": 2.7142451769502633,
+     "risk_over_written": 1.2548772015062086
     },
     {
      "row_id": "M00176777",
@@ -584,15 +586,15 @@
      "new_business": true,
      "description": "25-34, comprehensive, diesel",
      "exposure": 0.9918,
-     "prediction": 1080.1147,
-     "risk_premium": 1089.0448679169187,
+     "prediction": 1136.5885,
+     "risk_premium": 1145.9855817705184,
      "cat_load": 0.0,
      "fixed": 85.0,
      "divisor": 0.48999999999999994,
-     "office_premium": 2396.0099345243243,
+     "office_premium": 2512.2154730010584,
      "written_premium": 443.61,
-     "office_over_written": 5.401163036280346,
-     "risk_over_written": 2.454960140476812
+     "office_over_written": 5.663117317015077,
+     "risk_over_written": 2.5833177380368304
     },
     {
      "row_id": "M00185311",
@@ -601,15 +603,15 @@
      "new_business": true,
      "description": "17-24, third party only, petrol",
      "exposure": 0.9644,
-     "prediction": 1019.4089,
-     "risk_premium": 1057.0395064288678,
+     "prediction": 1072.7087,
+     "risk_premium": 1112.3068228950642,
      "cat_load": 0.0,
      "fixed": 85.0,
      "divisor": 0.6900000000000001,
-     "office_premium": 1655.129719462127,
+     "office_premium": 1735.2272795580639,
      "written_premium": 872.31,
-     "office_over_written": 1.8974100027078986,
-     "risk_over_written": 1.211770478876624
+     "office_over_written": 1.9892323595488577,
+     "risk_over_written": 1.2751279050968856
     },
     {
      "row_id": "M00167496",
@@ -618,15 +620,15 @@
      "new_business": true,
      "description": "25-34, comprehensive, petrol",
      "exposure": 0.9836,
-     "prediction": 585.7419,
-     "risk_premium": 595.5082350549003,
+     "prediction": 616.3674,
+     "risk_premium": 626.6443676291175,
      "cat_load": 0.0,
      "fixed": 85.0,
      "divisor": 0.48999999999999994,
-     "office_premium": 1388.7923164385722,
+     "office_premium": 1452.3354441410563,
      "written_premium": 463.95,
-     "office_over_written": 2.993409454550215,
-     "risk_over_written": 1.2835612351652124
+     "office_over_written": 3.1303706092058547,
+     "risk_over_written": 1.350672200946476
     },
     {
      "row_id": "M00129413",
@@ -635,15 +637,15 @@
      "new_business": true,
      "description": "25-34, comprehensive, petrol",
      "exposure": 0.3315,
-     "prediction": 151.4663,
-     "risk_premium": 456.9119155354449,
+     "prediction": 159.3857,
+     "risk_premium": 480.801508295626,
      "cat_load": 0.0,
      "fixed": 85.0,
      "divisor": 0.48999999999999994,
-     "office_premium": 1105.9426847662141,
+     "office_premium": 1154.6969557053594,
      "written_premium": 354.15,
-     "office_over_written": 3.122808653864787,
-     "risk_over_written": 1.2901649457445854
+     "office_over_written": 3.260474250191612,
+     "risk_over_written": 1.3576210879447297
     },
     {
      "row_id": "M00118569",
@@ -652,15 +654,15 @@
      "new_business": false,
      "description": "17-24, third party fire theft, petrol",
      "exposure": 0.9397,
-     "prediction": 620.8496,
-     "risk_premium": 660.6891561136533,
+     "prediction": 615.7838,
+     "risk_premium": 655.2982866872406,
      "cat_load": 0.0,
      "fixed": 85.0,
      "divisor": 0.6900000000000001,
-     "office_premium": 1080.7089219038453,
+     "office_premium": 1072.8960676626675,
      "written_premium": 1095.48,
-     "office_over_written": 0.9865163416071907,
-     "risk_over_written": 0.6031047176704762
+     "office_over_written": 0.9793844412154192,
+     "risk_over_written": 0.598183706400154
     },
     {
      "row_id": "M00153851",
@@ -669,15 +671,15 @@
      "new_business": true,
      "description": "35-49, comprehensive, petrol",
      "exposure": 0.9616,
-     "prediction": 303.3276,
-     "risk_premium": 315.44051580698834,
+     "prediction": 319.1871,
+     "risk_premium": 331.93334026622296,
      "cat_load": 0.0,
      "fixed": 85.0,
      "divisor": 0.48999999999999994,
-     "office_premium": 817.2255424632416,
+     "office_premium": 850.884367890251,
      "written_premium": 414.72,
-     "office_over_written": 1.970547700769776,
-     "risk_over_written": 0.7606108116487952
+     "office_over_written": 2.051708063006971,
+     "risk_over_written": 0.8003793891450206
     },
     {
      "row_id": "B00229821",
@@ -686,15 +688,15 @@
      "new_business": true,
      "description": "BRK, sum insured 378,000",
      "exposure": 0.9918,
-     "prediction": 367.1125,
-     "risk_premium": 370.14771123210323,
-     "cat_load": 44.41772534785239,
+     "prediction": 356.0481,
+     "risk_premium": 358.99183303085294,
+     "cat_load": 43.07901996370235,
      "fixed": 85.0,
      "divisor": 0.48999999999999994,
-     "office_premium": 1019.5212991427668,
+     "office_premium": 994.0221489684803,
      "written_premium": 285.6,
-     "office_over_written": 3.569752447978875,
-     "risk_over_written": 1.2960354034737507
+     "office_over_written": 3.48046970927339,
+     "risk_over_written": 1.2569742052901012
     },
     {
      "row_id": "B00218282",
@@ -703,15 +705,15 @@
      "new_business": true,
      "description": "MIX, sum insured 222,000",
      "exposure": 0.9726,
-     "prediction": 352.4459,
-     "risk_premium": 362.3749742957022,
-     "cat_load": 43.48499691548426,
+     "prediction": 341.8235,
+     "risk_premium": 351.4533209952704,
+     "cat_load": 42.17439851943245,
      "fixed": 85.0,
      "divisor": 0.48999999999999994,
-     "office_premium": 1001.7550432881358,
+     "office_premium": 976.7912643157202,
      "written_premium": 230.8,
-     "office_over_written": 4.340359806274418,
-     "risk_over_written": 1.570082210986578
+     "office_over_written": 4.2321978523211445,
+     "risk_over_written": 1.5227613561320208
     },
     {
      "row_id": "B00250679",
@@ -720,15 +722,15 @@
      "new_business": true,
      "description": "BRK, sum insured 236,000",
      "exposure": 0.1096,
-     "prediction": 38.913,
-     "risk_premium": 355.0456204379562,
-     "cat_load": 42.60547445255474,
+     "prediction": 37.7402,
+     "risk_premium": 344.3448905109489,
+     "cat_load": 41.32138686131387,
      "fixed": 85.0,
      "divisor": 0.48999999999999994,
-     "office_premium": 985.0022344704306,
+     "office_premium": 960.5434232086998,
      "written_premium": 180.72,
-     "office_over_written": 5.450432904329519,
-     "risk_over_written": 1.9646172002985625
+     "office_over_written": 5.315091983226537,
+     "risk_over_written": 1.9054055473160076
     },
     {
      "row_id": "B00223369",
@@ -737,15 +739,15 @@
      "new_business": true,
      "description": "WOD, sum insured 222,000",
      "exposure": 0.9945,
-     "prediction": 372.1497,
-     "risk_premium": 374.2078431372549,
-     "cat_load": 44.90494117647059,
+     "prediction": 360.9335,
+     "risk_premium": 362.9296128707893,
+     "cat_load": 43.551553544494716,
      "fixed": 85.0,
      "divisor": 0.48999999999999994,
-     "office_premium": 1028.801600640256,
+     "office_premium": 1003.0227886026206,
      "written_premium": 204.56,
-     "office_over_written": 5.029339072351663,
-     "risk_over_written": 1.8293304807257278
+     "office_over_written": 4.903318286090245,
+     "risk_over_written": 1.7741963867363575
     },
     {
      "row_id": "B00215809",
@@ -754,15 +756,15 @@
      "new_business": true,
      "description": "BRK, sum insured 362,000",
      "exposure": 0.9753,
-     "prediction": 542.9128,
-     "risk_premium": 556.662360299395,
-     "cat_load": 66.7994832359274,
+     "prediction": 526.5499,
+     "risk_premium": 539.8850610068697,
+     "cat_load": 64.78620732082436,
      "fixed": 85.0,
      "divisor": 0.6900000000000001,
-     "office_premium": 1026.756294978728,
+     "office_premium": 999.523577286513,
      "written_premium": 237.22,
-     "office_over_written": 4.328287222741455,
-     "risk_over_written": 2.346608044428779
+     "office_over_written": 4.213487805777392,
+     "risk_over_written": 2.2758834036205617
     },
     {
      "row_id": "B00215707",
@@ -771,15 +773,15 @@
      "new_business": true,
      "description": "BRK, sum insured 316,000",
      "exposure": 0.9863,
-     "prediction": 298.9124,
-     "risk_premium": 303.0643820338639,
-     "cat_load": 36.36772584406367,
+     "prediction": 289.9035,
+     "risk_premium": 293.93034573659133,
+     "cat_load": 35.27164148839096,
      "fixed": 85.0,
      "divisor": 0.48999999999999994,
-     "office_premium": 866.1879752610769,
+     "office_premium": 845.3101780101681,
      "written_premium": 272.44,
-     "office_over_written": 3.179371513951978,
-     "risk_over_written": 1.1124078036773746
+     "office_over_written": 3.1027388709813835,
+     "risk_over_written": 1.0788810223777394
     },
     {
      "row_id": "B00217584",
@@ -788,15 +790,15 @@
      "new_business": true,
      "description": "MIX, sum insured 198,000",
      "exposure": 0.9671,
-     "prediction": 1053.9213,
-     "risk_premium": 1089.7748940130286,
-     "cat_load": 130.77298728156345,
+     "prediction": 1022.1571,
+     "risk_premium": 1056.9301002998657,
+     "cat_load": 126.83161203598388,
      "fixed": 85.0,
      "divisor": 0.48999999999999994,
-     "office_premium": 2664.3834312134536,
+     "office_premium": 2589.3096170119384,
      "written_premium": 323.36,
-     "office_over_written": 8.239681566098014,
-     "risk_over_written": 3.370159865206051
+     "office_over_written": 8.007513659735089,
+     "risk_over_written": 3.2685864061722714
     },
     {
      "row_id": "C00259568",
@@ -805,15 +807,15 @@
      "new_business": false,
      "description": "renter, sum insured 22,100",
      "exposure": 1.0,
-     "prediction": 44.0258,
-     "risk_premium": 44.0258,
-     "cat_load": 5.283096,
+     "prediction": 43.8528,
+     "risk_premium": 43.8528,
+     "cat_load": 5.262336,
      "fixed": 85.0,
      "divisor": 0.48999999999999994,
-     "office_premium": 274.0997877551021,
+     "office_premium": 273.70435918367355,
      "written_premium": 83.18,
-     "office_over_written": 3.2952607328095946,
-     "risk_over_written": 0.5292834816061552
+     "office_over_written": 3.2905068427948247,
+     "risk_over_written": 0.5272036547246934
     },
     {
      "row_id": "C00283470",
@@ -822,15 +824,15 @@
      "new_business": true,
      "description": "owner, sum insured 35,700",
      "exposure": 0.9726,
-     "prediction": 55.8625,
-     "risk_premium": 57.436253341558704,
-     "cat_load": 6.892350400987044,
+     "prediction": 57.9399,
+     "risk_premium": 59.57217766810611,
+     "cat_load": 7.1486613201727325,
      "fixed": 85.0,
      "divisor": 0.48999999999999994,
-     "office_premium": 304.75225253580766,
+     "office_premium": 309.63436528220177,
      "written_premium": 117.97,
-     "office_over_written": 2.583302979874609,
-     "risk_over_written": 0.4868716906125176
+     "office_over_written": 2.6246873381554785,
+     "risk_over_written": 0.5049773473603977
     },
     {
      "row_id": "C00270331",
@@ -839,15 +841,15 @@
      "new_business": true,
      "description": "renter, sum insured 33,400",
      "exposure": 0.9726,
-     "prediction": 26.3264,
-     "risk_premium": 27.068064980464733,
-     "cat_load": 3.2481677976557677,
+     "prediction": 27.3054,
+     "risk_premium": 28.07464528069093,
+     "cat_load": 3.3689574336829113,
      "fixed": 85.0,
      "divisor": 0.48999999999999994,
-     "office_premium": 235.3392505675929,
+     "office_premium": 237.64000553953846,
      "written_premium": 140.29,
-     "office_over_written": 1.6775197845006267,
-     "risk_over_written": 0.1929436522949942
+     "office_over_written": 1.6939197771725603,
+     "risk_over_written": 0.20011864908896523
     },
     {
      "row_id": "C00314425",
@@ -856,15 +858,15 @@
      "new_business": true,
      "description": "owner, sum insured 27,200",
      "exposure": 0.0685,
-     "prediction": 4.614,
-     "risk_premium": 67.35766423357664,
-     "cat_load": 8.082919708029197,
+     "prediction": 4.7856,
+     "risk_premium": 69.86277372262772,
+     "cat_load": 8.383532846715326,
      "fixed": 85.0,
      "divisor": 0.48999999999999994,
-     "office_premium": 327.4297631461344,
+     "office_premium": 333.1557276925369,
      "written_premium": 102.87,
-     "office_over_written": 3.18294705109492,
-     "risk_over_written": 0.6547843320071609
+     "office_over_written": 3.238609193083862,
+     "risk_over_written": 0.679136519127323
     },
     {
      "row_id": "C00302985",
@@ -873,15 +875,15 @@
      "new_business": true,
      "description": "owner, sum insured 22,900",
      "exposure": 0.9918,
-     "prediction": 51.0671,
-     "risk_premium": 51.48931236136318,
-     "cat_load": 6.178717483363582,
+     "prediction": 52.9662,
+     "risk_premium": 53.40411373260738,
+     "cat_load": 6.408493647912885,
      "fixed": 85.0,
      "divisor": 0.48999999999999994,
-     "office_premium": 291.1592445810751,
+     "office_premium": 295.53593342963325,
      "written_premium": 115.88,
-     "office_over_written": 2.512592721617838,
-     "risk_over_written": 0.44433303729170853
+     "office_over_written": 2.5503618694307324,
+     "risk_over_written": 0.4608570394598497
     },
     {
      "row_id": "C00286287",
@@ -890,19 +892,19 @@
      "new_business": true,
      "description": "owner, sum insured 71,100",
      "exposure": 0.9671,
-     "prediction": 98.1922,
-     "risk_premium": 101.53262330679351,
-     "cat_load": 12.183914796815221,
+     "prediction": 101.8438,
+     "risk_premium": 105.30844793713163,
+     "cat_load": 12.637013752455795,
      "fixed": 85.0,
      "divisor": 0.48999999999999994,
-     "office_premium": 405.5439553134873,
+     "office_premium": 414.174411611403,
      "written_premium": 269.23,
-     "office_over_written": 1.506310423479877,
-     "risk_over_written": 0.3771222497745181
+     "office_over_written": 1.53836649560377,
+     "risk_over_written": 0.39114678132872127
     }
    ],
    "gender": {
-    "file": "part2_v2_nb-pp_wx-row_mprem_mperil_bchk_all",
+    "file": "part2_v2_nb-cred_wx-row_mprem_mperil_bchk_all",
     "layer": [
      {
       "factor": "gender",
@@ -943,91 +945,91 @@
      "F": {
       "rows": 45262,
       "exposure": 39515.172699999996,
-      "annual_price": 537.6915109015835,
-      "annual_price_without_gender": 619.8472872862433
+      "annual_price": 560.7024104642215,
+      "annual_price_without_gender": 646.372855908974
      },
      "M": {
       "rows": 45259,
       "exposure": 39491.7267,
-      "annual_price": 711.2765899167432,
-      "annual_price_without_gender": 629.0720381430568
+      "annual_price": 741.6944399774751,
+      "annual_price_without_gender": 655.9731325058696
      }
     },
-    "neutral_scale": 1.0152207009636354,
+    "neutral_scale": 1.01521874208312,
     "reference_policies": [
      {
       "row_id": "M00161473",
       "gender": "M",
       "exposure": 0.9644,
-      "annual_price": 1349.6771049357112,
-      "annual_price_other_gender": 1035.4764407416767,
-      "annual_price_without_gender": 1193.6905266857034
+      "annual_price": 1420.2449191206967,
+      "annual_price_other_gender": 1089.6162855949162,
+      "annual_price_without_gender": 1256.1001651157615
      },
      {
       "row_id": "M00176777",
       "gender": "M",
       "exposure": 0.9918,
-      "annual_price": 1089.0448679169187,
-      "annual_price_other_gender": 835.5185840485269,
-      "annual_price_without_gender": 963.180406049809
+      "annual_price": 1145.9855817705184,
+      "annual_price_other_gender": 879.2036754669102,
+      "annual_price_without_gender": 1013.5383405373755
      },
      {
       "row_id": "M00185311",
       "gender": "M",
       "exposure": 0.9644,
-      "annual_price": 1057.0395064288678,
-      "annual_price_other_gender": 810.9639719290033,
-      "annual_price_without_gender": 934.8740084146074
+      "annual_price": 1112.3068228950642,
+      "annual_price_other_gender": 853.3652277067599,
+      "annual_price_without_gender": 983.7520029734692
      },
      {
       "row_id": "M00167496",
       "gender": "M",
       "exposure": 0.9836,
-      "annual_price": 595.5082350549003,
-      "annual_price_other_gender": 456.87575599526673,
-      "annual_price_without_gender": 526.6834090530249
+      "annual_price": 626.6443676291175,
+      "annual_price_other_gender": 480.76349300918537,
+      "annual_price_without_gender": 554.2199680144773
      },
      {
       "row_id": "M00129413",
       "gender": "F",
       "exposure": 0.3315,
-      "annual_price": 456.9119155354449,
-      "annual_price_other_gender": 595.5553666955474,
-      "annual_price_without_gender": 526.7250935364779
+      "annual_price": 480.801508295626,
+      "annual_price_other_gender": 626.6939181159539,
+      "annual_price_without_gender": 554.26379170563
      },
      {
       "row_id": "M00118569",
       "gender": "M",
       "exposure": 0.9397,
-      "annual_price": 660.6891561136533,
-      "annual_price_other_gender": 506.882759815189,
-      "annual_price_without_gender": 584.3311588029092
+      "annual_price": 655.2982866872406,
+      "annual_price_other_gender": 502.7468681521006,
+      "annual_price_without_gender": 579.5622114371157
      },
      {
       "row_id": "M00153851",
       "gender": "F",
       "exposure": 0.9616,
-      "annual_price": 315.44051580698834,
-      "annual_price_other_gender": 411.156473872895,
-      "annual_price_without_gender": 363.6377812535766
+      "annual_price": 331.93334026622296,
+      "annual_price_other_gender": 432.6538123854048,
+      "annual_price_without_gender": 382.6498640190426
      }
     ],
     "file_check": {
      "new_business": {
-      "mean": 1.061384871100254,
-      "max_rel_dev": 9.472079306038772e-05
+      "mean": 1.1168793865123443,
+      "max_rel_dev": 4.598058510785208e-05
      },
      "renewal": {
-      "mean": 1.0104476898882253,
-      "max_rel_dev": 7.134086704518872e-05
+      "mean": 1.0022029626036582,
+      "max_rel_dev": 7.121681103039457e-05
      }
     }
    }
   }
  },
  "meta": {
-  "created": "2026-10-28T23:17:56",
-  "git_commit": "0b954ee",
+  "created": "2026-10-28T23:44:42",
+  "git_commit": "9f316ba",
   "seeds": null,
   "versions": {
    "python": "3.14.5",

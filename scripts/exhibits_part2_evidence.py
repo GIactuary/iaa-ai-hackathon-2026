@@ -38,7 +38,7 @@ from src.glm import TweedieGLM, cat
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = market.OUT
-FILES = {"final": "part2_v2_nb-pp_wx-row_mprem_mperil_bchk_all"}     # H-MP (a), H-NS (b)
+FILES = {"final": "part2_v2_nb-cred_wx-row_mprem_mperil_bchk_all"}     # H-MP (a), H-NS (a) (D49)
 N_BOOT, BOOT_SEED = 2000, 0
 
 
