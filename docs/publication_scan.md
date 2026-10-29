@@ -30,3 +30,23 @@ Nothing else was found: no competition data, no credentials, no employer names, 
 2. Re-run this scan on the rewritten history and confirm both paths are gone from every commit (`git log --all -- <path>` empty).
 3. Add the removed paths to `.gitignore` so they cannot come back.
 4. The actuary creates the public GitHub repository and pushes; nothing is pushed from here.
+
+## Outcome: history rewritten, 29 October 2026
+
+The appointed actuary approved option (a) on both cards (documentation brief round 3, finalized; register PUB-H, PUB-R; exchange D51). The rewrite was run with `git filter-repo` 2.47.0 on both branches, after a full backup of the repository as it stood (a git bundle and a mirror clone, kept outside the repository). It dropped four paths from every commit:
+
+- `competition/kaggle pages.docx`
+- `reference/2025/winner_reproduction/`
+- `reference/2025/other_winners/`
+- `reference/2025/results/leaderboard.json`
+
+| Check after the rewrite | Result |
+|---|---|
+| Commits on all branches | 137 before (136 at the scan plus the commit recording the verdicts), 137 after; no commit consisted only of the removed paths, so none was dropped |
+| Each commit against its original | All 137 have the same tree apart from the four paths, and the same author, committer, dates and message (one message quoted a commit hash; filter-repo rewrote it to the new hash) |
+| `git log --all` on the four paths | Empty |
+| Any `.docx` ever committed | None |
+| Objects for the removed paths, reachable or not | None; reflog expired and the repository repacked |
+| The copied-code statement | Appears only in this report and the decision brief, which quote it |
+
+Every commit hash changed. Hashes quoted before the rewrite (evidence files' `meta.git_commit`, the AI log, the register, decision notes) are old hashes: `docs/history_commit_map.txt` maps each to its new commit. The removed paths are in `.gitignore`. Nothing has been pushed; the actuary creates the public repository and pushes.
