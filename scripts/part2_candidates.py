@@ -186,6 +186,7 @@ def part1_fits_r3(L: Line) -> dict:
     out = {"lwp_tr": ht, "r2_part1": r2}
     if line == "motor":
         out["base"] = rate_of(TweedieGLM().fit(Fd, dv["costc"], ecd), L, Ft)
+        out["peril"] = motor_perils_r3(L, Fd, Ft)
     elif line == "buildings":
         per = {}
         for p in L.perils:
@@ -215,6 +216,13 @@ def part1_fits_r3(L: Line) -> dict:
         m = LGB("tweedie", 1.5, 31, 400, 0.05, m.best_iter_, 4, seed=11).fit(Xd, yd, ecd)
         out["tree"] = m.rate(Xe)
     return out
+
+
+def motor_perils_r3(L: Line, Fd: pd.DataFrame, Ft: pd.DataFrame) -> dict:
+    """K16: one Part 1 GLM per motor peril on the W2 factors plus lwp_hat (the round 3 base form, per peril)."""
+    dv = L.dv
+    return {p: rate_of(TweedieGLM().fit(Fd, dv[f"costc_{p}"], (dv["exposure"] * dv[f"completion_{p}"]).to_numpy(float)), L, Ft)
+            for p in L.perils}
 
 
 def layer_penalised(L: Line, mu: np.ndarray, F: pd.DataFrame, fit: np.ndarray) -> tuple:
@@ -307,6 +315,8 @@ def candidates(L: Line, P1: dict, fit: np.ndarray, stage: dict) -> dict:
         else:
             k11 = line_level(L, r3["tree"], fit)
         c["K11_premium"] = k11 * yf_b
+        if L.line == "motor" and "peril" in r3:
+            c["K16_motor_peril"] = layer(L, by_peril(L, r3["peril"], fit, set()), pd.DataFrame({"gender": cat(L.tr["gender"])}), fit) * yf_b
         inc9 = c["K9+K7b"]
         F = L.Ft.drop(columns="yr").assign(region=cat(L.tr["region"]))
         c["K12_penalised"], ALPHAS[(L.line, int(fit.sum()))] = layer_penalised(L, inc9, F, fit)
