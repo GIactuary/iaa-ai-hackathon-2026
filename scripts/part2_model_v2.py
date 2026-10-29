@@ -10,8 +10,9 @@ Shape by line (each fitted on Part 1 rows unless stated, P2-C (b)):
   all        each row's own-year weather (responses fitted on emerging fitting rows), --weather line keeps Y4's one
              factor per line instead
 Level: 2025 indication per line at normal weather, Part 1's trends (P2-T), excess factor mixed (P2-L), applied to the
-shape's 2024 level at normal weather. New business (--nb none | cred | full): the factor of M2-N, with renewals
-rebalanced so each line's total on the fitting rows is unchanged.
+shape's 2024 level at normal weather. New business (--nb none | cred | pp | full): the factor of M2-N, with renewals
+rebalanced so each line's total on the fitting rows is unchanged; cred weights it with the claim-count standard, pp with
+the pure-premium standard 1,082 x (1 + CV^2 of capped cost per claim) (H-NS (b)).
 --buildings-check: buildings at the check file's shape (hold-out option, decisions/part2_m2_design.md).
 --motor-peril: motor by peril (K16, with --motor-premium): one Part 1 GLM per peril, each at its emerging level.
 Run: MARKET=part2 .venv/Scripts/python.exe -I scripts/part2_model_v2.py --nb cred --weather row [--motor-premium] [--motor-peril] [--buildings-check] [--all]
@@ -155,7 +156,11 @@ def run(nb_mode: str, weather_mode: str, all_rows: bool, motor_premium: bool = F
         y = tr["costc"].to_numpy(float)
         ae = (y[nb_tr].sum() / mu[nb_tr].sum()) / (y[~nb_tr].sum() / mu[~nb_tr].sum())
         n_nb = float(tr.loc[nb_tr, "n_claims"].sum())
-        z = {"none": 0.0, "cred": min(1.0, float(np.sqrt(n_nb / FULL_CRED))), "full": 1.0}[nb_mode]
+        cl = (tr["n_claims"] > 0).to_numpy()
+        sev = y[cl] / tr.loc[cl, "n_claims"].to_numpy(float)
+        cv2 = float(sev.var() / sev.mean() ** 2)
+        z = {"none": 0.0, "cred": min(1.0, float(np.sqrt(n_nb / FULL_CRED))), "pp": min(1.0, float(np.sqrt(n_nb / (FULL_CRED * (1 + cv2))))),
+             "full": 1.0}[nb_mode]
         rel = 1.0 + z * (ae - 1.0)
         rebal = float(mu.sum() / (mu * np.where(nb_tr, rel, 1.0)).sum())
         nbf_tr, nbf_te = np.where(nb_tr, rel, 1.0) * rebal, np.where(nb_te, rel, 1.0) * rebal
@@ -181,7 +186,7 @@ def run(nb_mode: str, weather_mode: str, all_rows: bool, motor_premium: bool = F
         ob = float(ind.sum() * elf / model_lc)
         pred = r_te * nbf_te * ob * yf_te * te["exposure"].to_numpy(float)
         written = (te["written_premium"] * te["exposure"]).to_numpy(float)
-        info[line] = dict(rows=len(te), new_business=dict(actual_over_model=float(ae), claims=n_nb, z=z, factor=float(rel), renewal_rebalance=rebal),
+        info[line] = dict(rows=len(te), new_business=dict(actual_over_model=float(ae), claims=n_nb, severity_cv2=cv2, z=z, factor=float(rel), renewal_rebalance=rebal),
                           weather=dict(mode=weather_mode, elasticities={p: [w, c] for p, (w, c) in b.items()},
                                        factor_2025_mean=float(np.average(yf_te, weights=te["exposure"])),
                                        factor_2025_p05_p95=[float(np.quantile(yf_te, 0.05)), float(np.quantile(yf_te, 0.95))]),
@@ -204,7 +209,7 @@ def run(nb_mode: str, weather_mode: str, all_rows: bool, motor_premium: bool = F
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
-    ap.add_argument("--nb", choices=["none", "cred", "full"], default="cred")
+    ap.add_argument("--nb", choices=["none", "cred", "pp", "full"], default="cred")
     ap.add_argument("--weather", choices=["row", "line"], default="row")
     ap.add_argument("--all", action="store_true")
     ap.add_argument("--motor-premium", action="store_true")

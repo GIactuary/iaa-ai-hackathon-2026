@@ -657,6 +657,34 @@
       "decision": "Actuary, brief round 2 (2026-10-29): OP-T (a), OP-B (a), REPO (a), VID (a). H-MP, H-NS and WU in the same round were left open.",
       "effect": "Office premium = (risk premium + 12% cat load on property + 85) / (1 - 15% - commission - 8% tax - 8% profit), annual basis. Repository to be published by the actuary after the scan, MIT licence. Video script written for the actuary to narrate.",
       "section": "4.3"
+    },
+    {
+      "id": "D47",
+      "stage": "Part 2 build: gap reviews after the final file",
+      "role": "Independent reviewer",
+      "proposed_by": "AI",
+      "question": "After the final file scored 0.15455 (21st), the actuary had four independent AI reviews, in separate sessions, look for what the file misses. He then asked whether their shared finding could be built properly: \"take this input and build the model\".",
+      "ai_answer": "Three of the four reviews found the same change on their own: price motor by peril, one Part 1 GLM per peril on the W2 factors and the premium term, each peril at its own emerging level. Round 1's K1 had gained in motor in both tests (+7,348, +8,285) but was rejected on an interval pooled over all three lines, where buildings swung the result; the line-by-line rule the actuary applied at H-F was never applied back. The reviews also found six places where the write-up overstated its evidence, and one review corrected another's wrong reading of the board noise.",
+      "challenge": "The actuary asked for it to be rebuilt in the project's own pipeline, not patched onto the reviewers' files, with the reviewers' numbers reproduced and the decision reported as taken after the hold-out was opened.",
+      "test": "K16 in scripts/part2_candidates.py and scripts/part2_motor_peril.py under P2-V on every emerging customer and on hold-out H1 and H2 (design committed before the run); file built by scripts/part2_model_v2.py --motor-peril; the earlier final file rebuilt from a clean run.",
+      "result": "Every reviewed figure reproduced to the unit. Motor: out of time +9,965 [4,825, 15,857], cross-validation +13,443 [4,917, 23,084] (passes P2-V in motor), H1 +3,454 [448, 7,075], H2 +5,952 [253, 13,884]. Pooled D2 0.1401 to 0.1413 in cross-validation. Third-party-only prices +7.8%, comprehensive -1.9%. The earlier final file rebuilt byte for byte. Uploaded, the by-peril file scored 0.15712 public against 0.15455 (+0.0026), inside the +0.0007 to +0.0030 the reviews predicted.",
+      "decision": "Actuary, 2026-10-29: H-MP (a), motor by peril is the final Part 2 shape, reported as decided after the hold-out was opened; WU (a), all six write-up corrections.",
+      "effect": "Final Part 2 motor priced by peril. The write-up states that round 1 judged on a pooled interval and H-F line by line, and that motor by peril was recovered when the line rule was applied back.",
+      "section": "4.3"
+    },
+    {
+      "id": "D48",
+      "stage": "Part 2 build: new-business credibility standard",
+      "role": "Appointed actuary",
+      "proposed_by": "AI",
+      "question": "Two gap reviews found that M2-N weighted a ratio of capped cost with the claim-count standard (1,082 claims) instead of the pure-premium standard, 1,082 x (1 + CV2 of severity).",
+      "ai_answer": "Ran test N2 inside the validation splits (design committed before the run). It could not separate the standards: in motor, pure premium beat count out of time by 2,932 [138, 5,251] and lost in cross-validation by 816 [-3,495, 1,348]; pooled D2 moved by 0.0005 or less. The AI recommended keeping the count standard and disclosing it, because the one paired board check on the 2025 book favoured the larger factor (count 0.15312 against none 0.15080).",
+      "challenge": "The actuary chose the pure-premium standard, against the recommendation.",
+      "test": "N2, scripts/part2_nb_standard.py; file rebuilt with scripts/part2_model_v2.py --nb pp.",
+      "result": "Z falls from 0.80, 0.27, 0.31 to 0.35, 0.09, 0.17; factors motor 1.121 to 1.050, buildings 0.951 to 0.983, contents 1.094 to 1.050. Against the uploaded by-peril file: motor new business -5.0%, renewals +0.8%, motor total -4.1%; buildings total +2.3%; contents total -2.7%.",
+      "decision": "Actuary, 2026-10-29: H-NS (b), the pure-premium standard in all three lines.",
+      "effect": "Final Part 2 file part2_v2_nb-pp_wx-row_mprem_mperil_bchk_all.csv. The write-up states the standard and why.",
+      "section": "4.3"
     }
   ]
 }

@@ -1,0 +1,139 @@
+{
+ "part2_v2_nb-pp_wx-row_mprem_mperil_bchk_all": {
+  "file": "outputs\\markets\\part2\\submissions\\part2_v2_nb-pp_wx-row_mprem_mperil_bchk_all.csv",
+  "rows": 209063,
+  "by_line": {
+   "motor": {
+    "rows": 90521,
+    "new_business": {
+     "actual_over_model": 1.1425659068462417,
+     "claims": 697.0,
+     "severity_cv2": 4.1522203981566985,
+     "z": 0.35359453352044995,
+     "factor": 1.0504105253272167,
+     "renewal_rebalance": 0.9948489411007932
+    },
+    "weather": {
+     "mode": "row",
+     "elasticities": {
+      "glass_hail": [
+       "hail_days",
+       0.024064655457752555
+      ]
+     },
+     "factor_2025_mean": 0.9946408328996936,
+     "factor_2025_p05_p95": [
+      0.9785600089048339,
+      1.010162375774085
+     ]
+    },
+    "excess_factor": 1.0070806547930282,
+    "indication_capped_lc": 464.6140044130685,
+    "off_balance": 1.015679501454188,
+    "predicted": 49336513.60633588,
+    "written": 53641068.262731,
+    "predicted_over_written": 0.9197526299194555,
+    "mean_per_exposure": 624.4582939086441
+   },
+   "buildings": {
+    "rows": 52295,
+    "new_business": {
+     "actual_over_model": 0.8121271120567449,
+     "claims": 77.0,
+     "severity_cv2": 7.202688013610116,
+     "z": 0.09314373211129731,
+     "factor": 0.9825008180544377,
+     "renewal_rebalance": 1.0014472663684844
+    },
+    "weather": {
+     "mode": "row",
+     "elasticities": {
+      "storm": [
+       "wind_exposure_index",
+       0.08744070156911618
+      ],
+      "subsidence": [
+       "dry_summer_index",
+       0.04762998435749692
+      ],
+      "escape_of_water": [
+       "freezing_days",
+       0.014983627334949656
+      ],
+      "fire": [
+       "wildfire_index",
+       0.9756221589386751
+      ],
+      "flood": [
+       "rainfall_mm",
+       0.00012128606661306328
+      ]
+     },
+     "factor_2025_mean": 1.0172301011467753,
+     "factor_2025_p05_p95": [
+      1.0172301011467753,
+      1.0172301011467753
+     ]
+    },
+    "excess_factor": 1.038194995717553,
+    "indication_capped_lc": 424.7534946814357,
+    "off_balance": 0.9524216768234132,
+    "predicted": 22593132.68513459,
+    "written": 18336468.291276,
+    "predicted_over_written": 1.2321419984612738,
+    "mean_per_exposure": 476.8866270776876
+   },
+   "contents": {
+    "rows": 66247,
+    "new_business": {
+     "actual_over_model": 1.3053097804567801,
+     "claims": 102.0,
+     "severity_cv2": 2.4621019839373433,
+     "z": 0.16501237955821466,
+     "factor": 1.0503798933755695,
+     "renewal_rebalance": 0.9960662303813291
+    },
+    "weather": {
+     "mode": "row",
+     "elasticities": {
+      "escape_of_water": [
+       "freezing_days",
+       0.010030729161434496
+      ],
+      "flood": [
+       "rainfall_mm",
+       0.0013231109791887823
+      ]
+     },
+     "factor_2025_mean": 0.9721112064736936,
+     "factor_2025_p05_p95": [
+      0.910874712191904,
+      1.0193902529513879
+     ]
+    },
+    "excess_factor": 1.0233878850513158,
+    "indication_capped_lc": 96.41581724586332,
+    "off_balance": 0.9788199569389842,
+    "predicted": 6010977.675068613,
+    "written": 8078337.3458,
+    "predicted_over_written": 0.744085994154945,
+    "mean_per_exposure": 101.85270012661016
+   }
+  }
+ },
+ "meta": {
+  "created": "2026-10-28T23:05:47",
+  "git_commit": "ac2f22d",
+  "seeds": null,
+  "versions": {
+   "python": "3.14.5",
+   "numpy": "2.5.3",
+   "pandas": "3.0.5",
+   "scipy": "1.18.1",
+   "sklearn": "1.9.1",
+   "lightgbm": "4.7.0",
+   "xgboost": "3.4.1",
+   "catboost": "1.2.10"
+  }
+ }
+}
