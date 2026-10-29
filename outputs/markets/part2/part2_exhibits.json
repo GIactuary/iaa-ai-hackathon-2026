@@ -1,0 +1,1043 @@
+{
+ "part2_exhibits": {
+  "common": {
+   "ladder": {
+    "panel1": [
+     {
+      "step": "K0: the check file's shape (Part 1 relativities, emerging level)",
+      "v1": "",
+      "v2": "",
+      "d2": [
+       0.13739372910782777,
+       0.14016845812035394
+      ],
+      "kept": "incumbent"
+     },
+     {
+      "step": "K9 + own-year weather: gender layer in motor, fire and flood by property with address hazards, Part 1's tree in contents, each row's own-year weather",
+      "v1": "+7,498",
+      "v2": "+37,526 [298, 76,858]",
+      "d2": [
+       0.13900001992756805,
+       0.144169655755912
+      ],
+      "kept": "yes (M2-W)"
+     },
+     {
+      "step": "I: + the insured's premium as our fields predict it, motor only",
+      "v1": "+2,844 [44, 5,469]",
+      "v2": "+5,981 [1,547, 10,441]",
+      "d2": [
+       0.1396093490503888,
+       0.14480732645125294
+      ],
+      "kept": "yes (Y1, motor)"
+     }
+    ],
+    "panel2": [
+     {
+      "step": "K0: the check file's shape",
+      "v1": "",
+      "v2": "",
+      "d2": [
+       0.13827756331208318,
+       0.1368178683863145
+      ],
+      "kept": "reference"
+     },
+     {
+      "step": "F: I with buildings back at K0 (H-F (b), after the hold-out)",
+      "v1": "",
+      "v2": "",
+      "d2": [
+       0.142863275338576,
+       0.1400969159766794
+      ],
+      "kept": "yes (H-F (b))"
+     },
+     {
+      "step": "K16: F with motor priced by peril (after four gap reviews)",
+      "v1": "+9,965 [4,825, 15,857]",
+      "v2": "+13,443 [4,917, 23,084]",
+      "d2": [
+       0.14467209278797877,
+       0.14130727040403734
+      ],
+      "kept": "final (H-MP (a))"
+     }
+    ]
+   },
+   "candidates": [
+    {
+     "candidate": "Motor by peril, no premium term (K1)",
+     "v1": -17084.810056930084,
+     "v2": 248.5231472127789,
+     "v2_lo": -29876.221035128892,
+     "v2_hi": 29629.08834420017,
+     "v2_motor": 8284.970505295249,
+     "v2_buildings": -13360.867276300589,
+     "v2_contents": 5324.419918218124,
+     "passes": false
+    },
+    {
+     "candidate": "Fire and flood by property with address hazards (K3)",
+     "v1": -2049.363698201074,
+     "v2": 30640.958220664088,
+     "v2_lo": -8683.609341065016,
+     "v2_hi": 71226.70906050316,
+     "v2_motor": 5206.566590472354,
+     "v2_buildings": 11078.823582538746,
+     "v2_contents": 14355.568047653005,
+     "passes": false
+    },
+    {
+     "candidate": "Part 1's tree in contents (K4)",
+     "v1": 10194.833856099925,
+     "v2": 13264.218950482305,
+     "v2_lo": -3418.5437165194935,
+     "v2_hi": 30448.296980539348,
+     "v2_motor": 0.0,
+     "v2_buildings": 0.0,
+     "v2_contents": 13264.218950482304,
+     "passes": false
+    },
+    {
+     "candidate": "Gender in motor (K5)",
+     "v1": 5942.065569606673,
+     "v2": 7894.667743795673,
+     "v2_lo": -2112.8824601203355,
+     "v2_hi": 17897.65335062329,
+     "v2_motor": 7894.667743795676,
+     "v2_buildings": 0.0,
+     "v2_contents": 0.0,
+     "passes": false
+    },
+    {
+     "candidate": "Prior-year claims, customer across lines (K8)",
+     "v1": 0.0,
+     "v2": -15347.68193608599,
+     "v2_lo": -48576.755448130716,
+     "v2_hi": 13285.06278335334,
+     "v2_motor": -1531.6066533802477,
+     "v2_buildings": -11127.54258555686,
+     "v2_contents": -2688.5326971488817,
+     "passes": false
+    },
+    {
+     "candidate": "K3 + K4 + K5 with each row's own-year weather (K9 + K7b)",
+     "v1": 7498.159592512171,
+     "v2": 37526.36603035826,
+     "v2_lo": 298.0331572012683,
+     "v2_hi": 76857.86432899212,
+     "v2_motor": 9027.326243291565,
+     "v2_buildings": 14729.526067836112,
+     "v2_contents": 13769.513719230588,
+     "passes": true
+    },
+    {
+     "candidate": "The insured's premium as our fields predict it, every line (K11)",
+     "v1": 5782.808527673342,
+     "v2": 2587.5958335530468,
+     "v2_lo": -10783.562200758242,
+     "v2_hi": 15779.987933046532,
+     "v2_motor": 5980.575342627379,
+     "v2_buildings": -2667.5295169805877,
+     "v2_contents": -725.4499920937469,
+     "passes": false
+    },
+    {
+     "candidate": "Credibility re-rate of every factor, penalised GLM (K12)",
+     "v1": -3459.897292397786,
+     "v2": -10984.471305517389,
+     "v2_lo": -39508.54745920853,
+     "v2_hi": 11977.416800264591,
+     "v2_motor": 1717.0337501258364,
+     "v2_buildings": -6786.810764518342,
+     "v2_contents": -5914.694291124877,
+     "passes": false
+    },
+    {
+     "candidate": "Region and occupation, credibility-encoded (K13)",
+     "v1": -43450.56095160461,
+     "v2": -16730.298445145763,
+     "v2_lo": -38402.83616383996,
+     "v2_hi": 1461.6841307573245,
+     "v2_motor": -1516.5707015414673,
+     "v2_buildings": -9484.883296325477,
+     "v2_contents": -5728.8444472788215,
+     "passes": false
+    },
+    {
+     "candidate": "Settings tuned on Part 1 rows",
+     "v1": 316.6278414783319,
+     "v2": 2793.4190413407455,
+     "v2_lo": -3975.9883281176617,
+     "v2_hi": 9603.98873504615,
+     "v2_motor": -703.9738062311537,
+     "v2_buildings": -203.77190291817658,
+     "v2_contents": 3701.1647504900766,
+     "passes": false
+    },
+    {
+     "candidate": "Credibility re-rate per motor factor (K14)",
+     "v1": -3473.2246530365287,
+     "v2": -2619.4412267287357,
+     "v2_lo": -9927.901195134878,
+     "v2_hi": 4663.6964889664905,
+     "v2_motor": -2619.441226728735,
+     "v2_buildings": 0.0,
+     "v2_contents": 0.0,
+     "passes": false
+    },
+    {
+     "candidate": "Boosted correction learned on emerging rows (K15)",
+     "v1": -9114.633595791369,
+     "v2": -14876.05515594478,
+     "v2_lo": -30420.84927609013,
+     "v2_hi": -942.9626859016375,
+     "v2_motor": -1209.1098889713749,
+     "v2_buildings": -10865.658888994583,
+     "v2_contents": -2801.286377978823,
+     "passes": false
+    },
+    {
+     "candidate": "Motor by peril with the premium term (K16; motor interval)",
+     "v1": 9965.13701714073,
+     "v2": 13443.02341624178,
+     "v2_lo": 4916.747849405585,
+     "v2_hi": 23083.84611042039,
+     "v2_motor": 13443.02341624178,
+     "v2_buildings": null,
+     "v2_contents": null,
+     "passes": true
+    }
+   ],
+   "holdout": {
+    "H1": {
+     "per_line": {
+      "motor": 1970.9019093921204,
+      "buildings": -769.1541128066201,
+      "contents": -2189.084903607464
+     },
+     "pooled": -987.3371070219664,
+     "lo": -9648.466569112225,
+     "hi": 7429.581704198507,
+     "claims": {
+      "motor": 577,
+      "buildings": 92,
+      "contents": 65
+     },
+     "d2": {
+      "K0": 0.1507654830851024,
+      "I": 0.14959145457166423
+     },
+     "k16_motor": {
+      "gain": 3454.1566839373418,
+      "lo": 448.02582194079395,
+      "hi": 7075.400678553911
+     }
+    },
+    "H2": {
+     "per_line": {
+      "motor": 4788.681665856257,
+      "buildings": -17484.196368779692,
+      "contents": 1047.8759353131134
+     },
+     "pooled": -11647.638767610319,
+     "lo": -46176.84385034426,
+     "hi": 11635.469093117228,
+     "claims": {
+      "motor": 1168,
+      "buildings": 197,
+      "contents": 140
+     },
+     "d2": {
+      "K0": 0.12217370581047649,
+      "I": 0.11542438526109755
+     },
+     "k16_motor": {
+      "gain": 5951.605611992971,
+      "lo": 252.5476229120408,
+      "hi": 13884.354847256118
+     }
+    },
+    "every_customer": {
+     "motor": {
+      "out_of_time": "+10,773",
+      "cross_validation": "+19,797"
+     },
+     "buildings": {
+      "out_of_time": "\u221212,834",
+      "cross_validation": "\u22122,754"
+     },
+     "contents": {
+      "out_of_time": "+11,415",
+      "cross_validation": "+14,818"
+     }
+    }
+   },
+   "weather": {
+    "motor": {
+     "responses": [
+      {
+       "peril": "glass_hail",
+       "measure": "hail_days",
+       "coefficient": 0.024064655457752555,
+       "share_of_line_cost": 0.06542349195225601,
+       "dev_sd_fitting": 11.314031764535667,
+       "dev_p05_p95_fitting": [
+        -19.0,
+        19.0
+       ],
+       "dev_mean_2025": -4.127217097194427,
+       "normal_mean_2025": 15.517226004441836
+      }
+     ],
+     "mode": "row",
+     "factor_2025_mean": 0.9946408328996936,
+     "factor_2025_p05_p95": [
+      0.9785600089048339,
+      1.010162375774085
+     ]
+    },
+    "buildings": {
+     "responses": [
+      {
+       "peril": "storm",
+       "measure": "wind_exposure_index",
+       "coefficient": 0.08744070156911618,
+       "share_of_line_cost": 0.13486207803377756,
+       "dev_sd_fitting": 1.2622372796276098,
+       "dev_p05_p95_fitting": [
+        -1.7999999999999998,
+        1.8000000000000003
+       ],
+       "dev_mean_2025": 0.06506795249417269,
+       "normal_mean_2025": 5.049733885083818
+      },
+      {
+       "peril": "subsidence",
+       "measure": "dry_summer_index",
+       "coefficient": 0.04762998435749692,
+       "share_of_line_cost": 0.08146826107272837,
+       "dev_sd_fitting": 0.13945750169293614,
+       "dev_p05_p95_fitting": [
+        -0.242,
+        0.24
+       ],
+       "dev_mean_2025": -0.09046460141465952,
+       "normal_mean_2025": 0.6950866952327389
+      },
+      {
+       "peril": "escape_of_water",
+       "measure": "freezing_days",
+       "coefficient": 0.014983627334949656,
+       "share_of_line_cost": 0.11584484012361802,
+       "dev_sd_fitting": 8.866457719724385,
+       "dev_p05_p95_fitting": [
+        -14.0,
+        14.0
+       ],
+       "dev_mean_2025": 9.608293530887785,
+       "normal_mean_2025": 19.252307045032016
+      },
+      {
+       "peril": "fire",
+       "measure": "wildfire_index",
+       "coefficient": 0.9756221589386751,
+       "share_of_line_cost": 0.4190853920841254,
+       "dev_sd_fitting": 0.1099931051359598,
+       "dev_p05_p95_fitting": [
+        -0.16699999999999998,
+        0.17099999999999999
+       ],
+       "dev_mean_2025": 0.002105416447893511,
+       "normal_mean_2025": 0.5261079491035335
+      },
+      {
+       "peril": "flood",
+       "measure": "rainfall_mm",
+       "coefficient": 0.00012128606661306328,
+       "share_of_line_cost": 0.23650940403833448,
+       "dev_sd_fitting": 91.72764394002073,
+       "dev_p05_p95_fitting": [
+        -115.0,
+        115.0
+       ],
+       "dev_mean_2025": -127.573191534655,
+       "normal_mean_2025": 1378.1839220235822
+      }
+     ],
+     "mode": "one factor per line",
+     "factor_2025_mean": 1.0172301011467753,
+     "factor_2025_p05_p95": [
+      1.0172301011467753,
+      1.0172301011467753
+     ]
+    },
+    "contents": {
+     "responses": [
+      {
+       "peril": "escape_of_water",
+       "measure": "freezing_days",
+       "coefficient": 0.010030729161434496,
+       "share_of_line_cost": 0.14303661174275914,
+       "dev_sd_fitting": 8.872764551671361,
+       "dev_p05_p95_fitting": [
+        -14.0,
+        14.0
+       ],
+       "dev_mean_2025": 9.608760263307373,
+       "normal_mean_2025": 19.251410296594234
+      },
+      {
+       "peril": "flood",
+       "measure": "rainfall_mm",
+       "coefficient": 0.0013231109791887823,
+       "share_of_line_cost": 0.29257013284802413,
+       "dev_sd_fitting": 92.01452805869944,
+       "dev_p05_p95_fitting": [
+        -116.0,
+        116.0
+       ],
+       "dev_mean_2025": -127.01384024311949,
+       "normal_mean_2025": 1377.7681151537315
+      }
+     ],
+     "mode": "row",
+     "factor_2025_mean": 0.9721112064736936,
+     "factor_2025_p05_p95": [
+      0.910874712191904,
+      1.0193902529513879
+     ]
+    }
+   },
+   "expenses": {
+    "fixed_expense_per_policy": 85.0,
+    "variable_expense": 0.15,
+    "commission_direct": 0.0,
+    "commission_broker": 0.2,
+    "premium_tax": 0.08,
+    "cat_reinsurance": 0.12,
+    "target_profit_margin": 0.08
+   }
+  },
+  "final": {
+   "level": {
+    "motor": {
+     "rows": 90521,
+     "indication": 464.6140044130685,
+     "excess": 1.0070806547930282,
+     "off_balance": 1.015679501454188,
+     "nb_ae": 1.1425659068462417,
+     "nb_claims": 697.0,
+     "nb_z": 0.35359453352044995,
+     "nb_factor": 1.0504105253272167,
+     "renewal": 0.9948489411007932,
+     "weather": 0.9946408328996936,
+     "weather_p05_p95": [
+      0.9785600089048339,
+      1.010162375774085
+     ],
+     "weather_mode": "each row's own year",
+     "predicted": 49336513.60633588,
+     "written": 53641068.262731,
+     "ratio": 0.9197526299194555,
+     "per_year": 624.4582939086441
+    },
+    "buildings": {
+     "rows": 52295,
+     "indication": 424.7534946814357,
+     "excess": 1.038194995717553,
+     "off_balance": 0.9524216768234132,
+     "nb_ae": 0.8121271120567449,
+     "nb_claims": 77.0,
+     "nb_z": 0.09314373211129731,
+     "nb_factor": 0.9825008180544377,
+     "renewal": 1.0014472663684844,
+     "weather": 1.0172301011467753,
+     "weather_p05_p95": [
+      1.0172301011467753,
+      1.0172301011467753
+     ],
+     "weather_mode": "one factor per line",
+     "predicted": 22593132.68513459,
+     "written": 18336468.291276,
+     "ratio": 1.2321419984612738,
+     "per_year": 476.8866270776876
+    },
+    "contents": {
+     "rows": 66247,
+     "indication": 96.41581724586332,
+     "excess": 1.0233878850513158,
+     "off_balance": 0.9788199569389842,
+     "nb_ae": 1.3053097804567801,
+     "nb_claims": 102.0,
+     "nb_z": 0.16501237955821466,
+     "nb_factor": 1.0503798933755695,
+     "renewal": 0.9960662303813291,
+     "weather": 0.9721112064736936,
+     "weather_p05_p95": [
+      0.910874712191904,
+      1.0193902529513879
+     ],
+     "weather_mode": "each row's own year",
+     "predicted": 6010977.675068613,
+     "written": 8078337.3458,
+     "ratio": 0.744085994154945,
+     "per_year": 101.85270012661016
+    }
+   },
+   "nb": {
+    "rows": {
+     "motor": {
+      "claims": 697.0,
+      "ae": 1.1425659068462417,
+      "cv2": 4.1522203981566985,
+      "z_count": 0.8026066590604685,
+      "z_pp": 0.35359453352044995,
+      "f_count": 1.114424346189788,
+      "f_pp": 1.0504105253272167,
+      "full_standard_pp": 5574.702470805548
+     },
+     "buildings": {
+      "claims": 77.0,
+      "ae": 0.8121271120567449,
+      "cv2": 7.202688013610116,
+      "z_count": 0.26676677110607044,
+      "z_pp": 0.09314373211129731,
+      "f_count": 0.9498817563050053,
+      "f_pp": 0.9825008180544377,
+      "full_standard_pp": 8875.308430726145
+     },
+     "contents": {
+      "claims": 102.0,
+      "ae": 1.3053097804567801,
+      "cv2": 2.4621019839373433,
+      "z_count": 0.3070339893399125,
+      "z_pp": 0.16501237955821466,
+      "f_count": 1.093740479878138,
+      "f_pp": 1.0503798933755695,
+      "full_standard_pp": 3745.9943466202053
+     }
+    },
+    "pp_vs_count_motor": {
+     "V1": {
+      "gain": 2943.5880193063344,
+      "lo": 164.6774933132913,
+      "hi": 5231.463208599034
+     },
+     "V2": {
+      "gain": -1046.6333635724432,
+      "lo": -4191.367152271118,
+      "hi": 1423.0489131838594
+     },
+     "passes": false
+    },
+    "d2": {
+     "none": [
+      0.14467209278797877,
+      0.14130727040403734
+     ],
+     "pp": [
+      0.14443412644168507,
+      0.14142487235703738
+     ],
+     "count": [
+      0.14391645980234347,
+      0.14149684219857617
+     ],
+     "full": [
+      0.14291215229011534,
+      0.141070185612995
+     ]
+    },
+    "board": {
+     "count": "0.15312",
+     "none": "0.15080",
+     "full": "0.14646"
+    },
+    "by_year_motor_ae": "(1.49 in 2023, 0.85 in 2024)"
+   },
+   "buildups": [
+    {
+     "row_id": "M00161473",
+     "line": "motor",
+     "channel": "broker",
+     "new_business": true,
+     "description": "17-24, third party fire theft, diesel",
+     "exposure": 0.9644,
+     "prediction": 1301.6286,
+     "risk_premium": 1349.6771049357112,
+     "cat_load": 0.0,
+     "fixed": 85.0,
+     "divisor": 0.48999999999999994,
+     "office_premium": 2927.912459052472,
+     "written_premium": 1131.78,
+     "office_over_written": 2.586997878609334,
+     "risk_over_written": 1.1925260253191532
+    },
+    {
+     "row_id": "M00176777",
+     "line": "motor",
+     "channel": "broker",
+     "new_business": true,
+     "description": "25-34, comprehensive, diesel",
+     "exposure": 0.9918,
+     "prediction": 1080.1147,
+     "risk_premium": 1089.0448679169187,
+     "cat_load": 0.0,
+     "fixed": 85.0,
+     "divisor": 0.48999999999999994,
+     "office_premium": 2396.0099345243243,
+     "written_premium": 443.61,
+     "office_over_written": 5.401163036280346,
+     "risk_over_written": 2.454960140476812
+    },
+    {
+     "row_id": "M00185311",
+     "line": "motor",
+     "channel": "direct",
+     "new_business": true,
+     "description": "17-24, third party only, petrol",
+     "exposure": 0.9644,
+     "prediction": 1019.4089,
+     "risk_premium": 1057.0395064288678,
+     "cat_load": 0.0,
+     "fixed": 85.0,
+     "divisor": 0.6900000000000001,
+     "office_premium": 1655.129719462127,
+     "written_premium": 872.31,
+     "office_over_written": 1.8974100027078986,
+     "risk_over_written": 1.211770478876624
+    },
+    {
+     "row_id": "M00167496",
+     "line": "motor",
+     "channel": "broker",
+     "new_business": true,
+     "description": "25-34, comprehensive, petrol",
+     "exposure": 0.9836,
+     "prediction": 585.7419,
+     "risk_premium": 595.5082350549003,
+     "cat_load": 0.0,
+     "fixed": 85.0,
+     "divisor": 0.48999999999999994,
+     "office_premium": 1388.7923164385722,
+     "written_premium": 463.95,
+     "office_over_written": 2.993409454550215,
+     "risk_over_written": 1.2835612351652124
+    },
+    {
+     "row_id": "M00129413",
+     "line": "motor",
+     "channel": "broker",
+     "new_business": true,
+     "description": "25-34, comprehensive, petrol",
+     "exposure": 0.3315,
+     "prediction": 151.4663,
+     "risk_premium": 456.9119155354449,
+     "cat_load": 0.0,
+     "fixed": 85.0,
+     "divisor": 0.48999999999999994,
+     "office_premium": 1105.9426847662141,
+     "written_premium": 354.15,
+     "office_over_written": 3.122808653864787,
+     "risk_over_written": 1.2901649457445854
+    },
+    {
+     "row_id": "M00118569",
+     "line": "motor",
+     "channel": "direct",
+     "new_business": false,
+     "description": "17-24, third party fire theft, petrol",
+     "exposure": 0.9397,
+     "prediction": 620.8496,
+     "risk_premium": 660.6891561136533,
+     "cat_load": 0.0,
+     "fixed": 85.0,
+     "divisor": 0.6900000000000001,
+     "office_premium": 1080.7089219038453,
+     "written_premium": 1095.48,
+     "office_over_written": 0.9865163416071907,
+     "risk_over_written": 0.6031047176704762
+    },
+    {
+     "row_id": "M00153851",
+     "line": "motor",
+     "channel": "broker",
+     "new_business": true,
+     "description": "35-49, comprehensive, petrol",
+     "exposure": 0.9616,
+     "prediction": 303.3276,
+     "risk_premium": 315.44051580698834,
+     "cat_load": 0.0,
+     "fixed": 85.0,
+     "divisor": 0.48999999999999994,
+     "office_premium": 817.2255424632416,
+     "written_premium": 414.72,
+     "office_over_written": 1.970547700769776,
+     "risk_over_written": 0.7606108116487952
+    },
+    {
+     "row_id": "B00229821",
+     "line": "buildings",
+     "channel": "broker",
+     "new_business": true,
+     "description": "BRK, sum insured 378,000",
+     "exposure": 0.9918,
+     "prediction": 367.1125,
+     "risk_premium": 370.14771123210323,
+     "cat_load": 44.41772534785239,
+     "fixed": 85.0,
+     "divisor": 0.48999999999999994,
+     "office_premium": 1019.5212991427668,
+     "written_premium": 285.6,
+     "office_over_written": 3.569752447978875,
+     "risk_over_written": 1.2960354034737507
+    },
+    {
+     "row_id": "B00218282",
+     "line": "buildings",
+     "channel": "broker",
+     "new_business": true,
+     "description": "MIX, sum insured 222,000",
+     "exposure": 0.9726,
+     "prediction": 352.4459,
+     "risk_premium": 362.3749742957022,
+     "cat_load": 43.48499691548426,
+     "fixed": 85.0,
+     "divisor": 0.48999999999999994,
+     "office_premium": 1001.7550432881358,
+     "written_premium": 230.8,
+     "office_over_written": 4.340359806274418,
+     "risk_over_written": 1.570082210986578
+    },
+    {
+     "row_id": "B00250679",
+     "line": "buildings",
+     "channel": "broker",
+     "new_business": true,
+     "description": "BRK, sum insured 236,000",
+     "exposure": 0.1096,
+     "prediction": 38.913,
+     "risk_premium": 355.0456204379562,
+     "cat_load": 42.60547445255474,
+     "fixed": 85.0,
+     "divisor": 0.48999999999999994,
+     "office_premium": 985.0022344704306,
+     "written_premium": 180.72,
+     "office_over_written": 5.450432904329519,
+     "risk_over_written": 1.9646172002985625
+    },
+    {
+     "row_id": "B00223369",
+     "line": "buildings",
+     "channel": "broker",
+     "new_business": true,
+     "description": "WOD, sum insured 222,000",
+     "exposure": 0.9945,
+     "prediction": 372.1497,
+     "risk_premium": 374.2078431372549,
+     "cat_load": 44.90494117647059,
+     "fixed": 85.0,
+     "divisor": 0.48999999999999994,
+     "office_premium": 1028.801600640256,
+     "written_premium": 204.56,
+     "office_over_written": 5.029339072351663,
+     "risk_over_written": 1.8293304807257278
+    },
+    {
+     "row_id": "B00215809",
+     "line": "buildings",
+     "channel": "direct",
+     "new_business": true,
+     "description": "BRK, sum insured 362,000",
+     "exposure": 0.9753,
+     "prediction": 542.9128,
+     "risk_premium": 556.662360299395,
+     "cat_load": 66.7994832359274,
+     "fixed": 85.0,
+     "divisor": 0.6900000000000001,
+     "office_premium": 1026.756294978728,
+     "written_premium": 237.22,
+     "office_over_written": 4.328287222741455,
+     "risk_over_written": 2.346608044428779
+    },
+    {
+     "row_id": "B00215707",
+     "line": "buildings",
+     "channel": "broker",
+     "new_business": true,
+     "description": "BRK, sum insured 316,000",
+     "exposure": 0.9863,
+     "prediction": 298.9124,
+     "risk_premium": 303.0643820338639,
+     "cat_load": 36.36772584406367,
+     "fixed": 85.0,
+     "divisor": 0.48999999999999994,
+     "office_premium": 866.1879752610769,
+     "written_premium": 272.44,
+     "office_over_written": 3.179371513951978,
+     "risk_over_written": 1.1124078036773746
+    },
+    {
+     "row_id": "B00217584",
+     "line": "buildings",
+     "channel": "broker",
+     "new_business": true,
+     "description": "MIX, sum insured 198,000",
+     "exposure": 0.9671,
+     "prediction": 1053.9213,
+     "risk_premium": 1089.7748940130286,
+     "cat_load": 130.77298728156345,
+     "fixed": 85.0,
+     "divisor": 0.48999999999999994,
+     "office_premium": 2664.3834312134536,
+     "written_premium": 323.36,
+     "office_over_written": 8.239681566098014,
+     "risk_over_written": 3.370159865206051
+    },
+    {
+     "row_id": "C00259568",
+     "line": "contents",
+     "channel": "broker",
+     "new_business": false,
+     "description": "renter, sum insured 22,100",
+     "exposure": 1.0,
+     "prediction": 44.0258,
+     "risk_premium": 44.0258,
+     "cat_load": 5.283096,
+     "fixed": 85.0,
+     "divisor": 0.48999999999999994,
+     "office_premium": 274.0997877551021,
+     "written_premium": 83.18,
+     "office_over_written": 3.2952607328095946,
+     "risk_over_written": 0.5292834816061552
+    },
+    {
+     "row_id": "C00283470",
+     "line": "contents",
+     "channel": "broker",
+     "new_business": true,
+     "description": "owner, sum insured 35,700",
+     "exposure": 0.9726,
+     "prediction": 55.8625,
+     "risk_premium": 57.436253341558704,
+     "cat_load": 6.892350400987044,
+     "fixed": 85.0,
+     "divisor": 0.48999999999999994,
+     "office_premium": 304.75225253580766,
+     "written_premium": 117.97,
+     "office_over_written": 2.583302979874609,
+     "risk_over_written": 0.4868716906125176
+    },
+    {
+     "row_id": "C00270331",
+     "line": "contents",
+     "channel": "broker",
+     "new_business": true,
+     "description": "renter, sum insured 33,400",
+     "exposure": 0.9726,
+     "prediction": 26.3264,
+     "risk_premium": 27.068064980464733,
+     "cat_load": 3.2481677976557677,
+     "fixed": 85.0,
+     "divisor": 0.48999999999999994,
+     "office_premium": 235.3392505675929,
+     "written_premium": 140.29,
+     "office_over_written": 1.6775197845006267,
+     "risk_over_written": 0.1929436522949942
+    },
+    {
+     "row_id": "C00314425",
+     "line": "contents",
+     "channel": "broker",
+     "new_business": true,
+     "description": "owner, sum insured 27,200",
+     "exposure": 0.0685,
+     "prediction": 4.614,
+     "risk_premium": 67.35766423357664,
+     "cat_load": 8.082919708029197,
+     "fixed": 85.0,
+     "divisor": 0.48999999999999994,
+     "office_premium": 327.4297631461344,
+     "written_premium": 102.87,
+     "office_over_written": 3.18294705109492,
+     "risk_over_written": 0.6547843320071609
+    },
+    {
+     "row_id": "C00302985",
+     "line": "contents",
+     "channel": "broker",
+     "new_business": true,
+     "description": "owner, sum insured 22,900",
+     "exposure": 0.9918,
+     "prediction": 51.0671,
+     "risk_premium": 51.48931236136318,
+     "cat_load": 6.178717483363582,
+     "fixed": 85.0,
+     "divisor": 0.48999999999999994,
+     "office_premium": 291.1592445810751,
+     "written_premium": 115.88,
+     "office_over_written": 2.512592721617838,
+     "risk_over_written": 0.44433303729170853
+    },
+    {
+     "row_id": "C00286287",
+     "line": "contents",
+     "channel": "broker",
+     "new_business": true,
+     "description": "owner, sum insured 71,100",
+     "exposure": 0.9671,
+     "prediction": 98.1922,
+     "risk_premium": 101.53262330679351,
+     "cat_load": 12.183914796815221,
+     "fixed": 85.0,
+     "divisor": 0.48999999999999994,
+     "office_premium": 405.5439553134873,
+     "written_premium": 269.23,
+     "office_over_written": 1.506310423479877,
+     "risk_over_written": 0.3771222497745181
+    }
+   ],
+   "gender": {
+    "file": "part2_v2_nb-pp_wx-row_mprem_mperil_bchk_all",
+    "layer": [
+     {
+      "factor": "gender",
+      "level": "F",
+      "relativity": 1.0
+     },
+     {
+      "factor": "gender",
+      "level": "M",
+      "relativity": 1.303435840576907
+     }
+    ],
+    "men_over_women": 1.303435840576907,
+    "men_over_women_ci": [
+     1.1533220997284286,
+     1.4782130321204474
+    ],
+    "n_boot": 2000,
+    "boot_seed": 0,
+    "actual_over_expected": {
+     "without_layer": {
+      "F": 0.8650736200614668,
+      "M": 1.13645758937728
+     },
+     "with_layer": {
+      "F": 0.9955802645159717,
+      "M": 1.003429315527757
+     }
+    },
+    "fitting_rows": {
+     "rows": 47283,
+     "by_gender": {
+      "F": 23912,
+      "M": 23371
+     }
+    },
+    "book_2025": {
+     "F": {
+      "rows": 45262,
+      "exposure": 39515.172699999996,
+      "annual_price": 537.6915109015835,
+      "annual_price_without_gender": 619.8472872862433
+     },
+     "M": {
+      "rows": 45259,
+      "exposure": 39491.7267,
+      "annual_price": 711.2765899167432,
+      "annual_price_without_gender": 629.0720381430568
+     }
+    },
+    "neutral_scale": 1.0152207009636354,
+    "reference_policies": [
+     {
+      "row_id": "M00161473",
+      "gender": "M",
+      "exposure": 0.9644,
+      "annual_price": 1349.6771049357112,
+      "annual_price_other_gender": 1035.4764407416767,
+      "annual_price_without_gender": 1193.6905266857034
+     },
+     {
+      "row_id": "M00176777",
+      "gender": "M",
+      "exposure": 0.9918,
+      "annual_price": 1089.0448679169187,
+      "annual_price_other_gender": 835.5185840485269,
+      "annual_price_without_gender": 963.180406049809
+     },
+     {
+      "row_id": "M00185311",
+      "gender": "M",
+      "exposure": 0.9644,
+      "annual_price": 1057.0395064288678,
+      "annual_price_other_gender": 810.9639719290033,
+      "annual_price_without_gender": 934.8740084146074
+     },
+     {
+      "row_id": "M00167496",
+      "gender": "M",
+      "exposure": 0.9836,
+      "annual_price": 595.5082350549003,
+      "annual_price_other_gender": 456.87575599526673,
+      "annual_price_without_gender": 526.6834090530249
+     },
+     {
+      "row_id": "M00129413",
+      "gender": "F",
+      "exposure": 0.3315,
+      "annual_price": 456.9119155354449,
+      "annual_price_other_gender": 595.5553666955474,
+      "annual_price_without_gender": 526.7250935364779
+     },
+     {
+      "row_id": "M00118569",
+      "gender": "M",
+      "exposure": 0.9397,
+      "annual_price": 660.6891561136533,
+      "annual_price_other_gender": 506.882759815189,
+      "annual_price_without_gender": 584.3311588029092
+     },
+     {
+      "row_id": "M00153851",
+      "gender": "F",
+      "exposure": 0.9616,
+      "annual_price": 315.44051580698834,
+      "annual_price_other_gender": 411.156473872895,
+      "annual_price_without_gender": 363.6377812535766
+     }
+    ],
+    "file_check": {
+     "new_business": {
+      "mean": 1.061384871100254,
+      "max_rel_dev": 9.472079306038772e-05
+     },
+     "renewal": {
+      "mean": 1.0104476898882253,
+      "max_rel_dev": 7.134086704518872e-05
+     }
+    }
+   }
+  }
+ },
+ "meta": {
+  "created": "2026-10-28T23:17:56",
+  "git_commit": "0b954ee",
+  "seeds": null,
+  "versions": {
+   "python": "3.14.5",
+   "numpy": "2.5.3",
+   "pandas": "3.0.5",
+   "scipy": "1.18.1",
+   "sklearn": "1.9.1",
+   "lightgbm": "4.7.0",
+   "xgboost": "3.4.1",
+   "catboost": "1.2.10"
+  }
+ }
+}

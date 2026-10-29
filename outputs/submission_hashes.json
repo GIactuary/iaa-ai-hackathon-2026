@@ -1,0 +1,23 @@
+{
+ "note": "SHA-256 of each uploaded final candidate file, so scripts/reproduce.py can check a clean rebuild byte for byte. The files themselves hold test row ids (competition data) and are not committed. Recorded 2026-10-29 from the files in outputs/submissions/ and outputs/markets/part2/submissions/.",
+ "blend_final_all_v2.csv": {
+  "part": 1,
+  "status": "Part 1 final submission (decisions/submissions.md, U2); private 0.13641, 15th",
+  "sha256": "07bd861f9a358c54f32b16a291a106ab7153dd65576dba76385541d64bb0e469"
+ },
+ "part2_v2_nb-cred_wx-row_mprem_bchk_all.csv": {
+  "part": 2,
+  "status": "Part 2 file decided at H-F, replaced at H-MP; public 0.15455",
+  "sha256": "b6383e4f53913d1d9d75b1381705b0772c1ee4b54928664732ff579e8900a7a6"
+ },
+ "part2_v2_nb-cred_wx-row_mprem_mperil_bchk_all.csv": {
+  "part": 2,
+  "status": "Motor by peril with the claim-count new-business standard, replaced at H-NS; public 0.15712",
+  "sha256": "9451d89486e655dc92bb6524258d72565ffb57a5441dd315311e590a4282dda5"
+ },
+ "part2_v2_nb-pp_wx-row_mprem_mperil_bchk_all.csv": {
+  "part": 2,
+  "status": "Part 2 final file: motor by peril (H-MP (a)), pure-premium new-business standard (H-NS (b))",
+  "sha256": "c93a091fd03eed568d0e16e25eda501287c6f752956ab15c5059249b7e766afd"
+ }
+}

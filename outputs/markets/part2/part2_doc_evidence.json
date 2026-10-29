@@ -1,0 +1,281 @@
+{
+ "part2_doc_evidence": {
+  "gender": {
+   "final": {
+    "file": "part2_v2_nb-pp_wx-row_mprem_mperil_bchk_all",
+    "layer": [
+     {
+      "factor": "gender",
+      "level": "F",
+      "relativity": 1.0
+     },
+     {
+      "factor": "gender",
+      "level": "M",
+      "relativity": 1.303435840576907
+     }
+    ],
+    "men_over_women": 1.303435840576907,
+    "men_over_women_ci": [
+     1.1533220997284286,
+     1.4782130321204474
+    ],
+    "n_boot": 2000,
+    "boot_seed": 0,
+    "actual_over_expected": {
+     "without_layer": {
+      "F": 0.8650736200614668,
+      "M": 1.13645758937728
+     },
+     "with_layer": {
+      "F": 0.9955802645159717,
+      "M": 1.003429315527757
+     }
+    },
+    "fitting_rows": {
+     "rows": 47283,
+     "by_gender": {
+      "F": 23912,
+      "M": 23371
+     }
+    },
+    "book_2025": {
+     "F": {
+      "rows": 45262,
+      "exposure": 39515.172699999996,
+      "annual_price": 537.6915109015835,
+      "annual_price_without_gender": 619.8472872862433
+     },
+     "M": {
+      "rows": 45259,
+      "exposure": 39491.7267,
+      "annual_price": 711.2765899167432,
+      "annual_price_without_gender": 629.0720381430568
+     }
+    },
+    "neutral_scale": 1.0152207009636354,
+    "reference_policies": [
+     {
+      "row_id": "M00161473",
+      "gender": "M",
+      "exposure": 0.9644,
+      "annual_price": 1349.6771049357112,
+      "annual_price_other_gender": 1035.4764407416767,
+      "annual_price_without_gender": 1193.6905266857034
+     },
+     {
+      "row_id": "M00176777",
+      "gender": "M",
+      "exposure": 0.9918,
+      "annual_price": 1089.0448679169187,
+      "annual_price_other_gender": 835.5185840485269,
+      "annual_price_without_gender": 963.180406049809
+     },
+     {
+      "row_id": "M00185311",
+      "gender": "M",
+      "exposure": 0.9644,
+      "annual_price": 1057.0395064288678,
+      "annual_price_other_gender": 810.9639719290033,
+      "annual_price_without_gender": 934.8740084146074
+     },
+     {
+      "row_id": "M00167496",
+      "gender": "M",
+      "exposure": 0.9836,
+      "annual_price": 595.5082350549003,
+      "annual_price_other_gender": 456.87575599526673,
+      "annual_price_without_gender": 526.6834090530249
+     },
+     {
+      "row_id": "M00129413",
+      "gender": "F",
+      "exposure": 0.3315,
+      "annual_price": 456.9119155354449,
+      "annual_price_other_gender": 595.5553666955474,
+      "annual_price_without_gender": 526.7250935364779
+     },
+     {
+      "row_id": "M00118569",
+      "gender": "M",
+      "exposure": 0.9397,
+      "annual_price": 660.6891561136533,
+      "annual_price_other_gender": 506.882759815189,
+      "annual_price_without_gender": 584.3311588029092
+     },
+     {
+      "row_id": "M00153851",
+      "gender": "F",
+      "exposure": 0.9616,
+      "annual_price": 315.44051580698834,
+      "annual_price_other_gender": 411.156473872895,
+      "annual_price_without_gender": 363.6377812535766
+     }
+    ],
+    "file_check": {
+     "new_business": {
+      "mean": 1.061384871100254,
+      "max_rel_dev": 9.472079306038772e-05
+     },
+     "renewal": {
+      "mean": 1.0104476898882253,
+      "max_rel_dev": 7.134086704518872e-05
+     }
+    }
+   }
+  },
+  "weather": {
+   "motor": {
+    "responses": [
+     {
+      "peril": "glass_hail",
+      "measure": "hail_days",
+      "coefficient": 0.024064655457752555,
+      "share_of_line_cost": 0.06542349195225601,
+      "dev_sd_fitting": 11.314031764535667,
+      "dev_p05_p95_fitting": [
+       -19.0,
+       19.0
+      ],
+      "dev_mean_2025": -4.127217097194427,
+      "normal_mean_2025": 15.517226004441836
+     }
+    ],
+    "mode": "row",
+    "factor_2025_mean": 0.9946408328996936,
+    "factor_2025_p05_p95": [
+     0.9785600089048339,
+     1.010162375774085
+    ]
+   },
+   "buildings": {
+    "responses": [
+     {
+      "peril": "storm",
+      "measure": "wind_exposure_index",
+      "coefficient": 0.08744070156911618,
+      "share_of_line_cost": 0.13486207803377756,
+      "dev_sd_fitting": 1.2622372796276098,
+      "dev_p05_p95_fitting": [
+       -1.7999999999999998,
+       1.8000000000000003
+      ],
+      "dev_mean_2025": 0.06506795249417269,
+      "normal_mean_2025": 5.049733885083818
+     },
+     {
+      "peril": "subsidence",
+      "measure": "dry_summer_index",
+      "coefficient": 0.04762998435749692,
+      "share_of_line_cost": 0.08146826107272837,
+      "dev_sd_fitting": 0.13945750169293614,
+      "dev_p05_p95_fitting": [
+       -0.242,
+       0.24
+      ],
+      "dev_mean_2025": -0.09046460141465952,
+      "normal_mean_2025": 0.6950866952327389
+     },
+     {
+      "peril": "escape_of_water",
+      "measure": "freezing_days",
+      "coefficient": 0.014983627334949656,
+      "share_of_line_cost": 0.11584484012361802,
+      "dev_sd_fitting": 8.866457719724385,
+      "dev_p05_p95_fitting": [
+       -14.0,
+       14.0
+      ],
+      "dev_mean_2025": 9.608293530887785,
+      "normal_mean_2025": 19.252307045032016
+     },
+     {
+      "peril": "fire",
+      "measure": "wildfire_index",
+      "coefficient": 0.9756221589386751,
+      "share_of_line_cost": 0.4190853920841254,
+      "dev_sd_fitting": 0.1099931051359598,
+      "dev_p05_p95_fitting": [
+       -0.16699999999999998,
+       0.17099999999999999
+      ],
+      "dev_mean_2025": 0.002105416447893511,
+      "normal_mean_2025": 0.5261079491035335
+     },
+     {
+      "peril": "flood",
+      "measure": "rainfall_mm",
+      "coefficient": 0.00012128606661306328,
+      "share_of_line_cost": 0.23650940403833448,
+      "dev_sd_fitting": 91.72764394002073,
+      "dev_p05_p95_fitting": [
+       -115.0,
+       115.0
+      ],
+      "dev_mean_2025": -127.573191534655,
+      "normal_mean_2025": 1378.1839220235822
+     }
+    ],
+    "mode": "one factor per line",
+    "factor_2025_mean": 1.0172301011467753,
+    "factor_2025_p05_p95": [
+     1.0172301011467753,
+     1.0172301011467753
+    ]
+   },
+   "contents": {
+    "responses": [
+     {
+      "peril": "escape_of_water",
+      "measure": "freezing_days",
+      "coefficient": 0.010030729161434496,
+      "share_of_line_cost": 0.14303661174275914,
+      "dev_sd_fitting": 8.872764551671361,
+      "dev_p05_p95_fitting": [
+       -14.0,
+       14.0
+      ],
+      "dev_mean_2025": 9.608760263307373,
+      "normal_mean_2025": 19.251410296594234
+     },
+     {
+      "peril": "flood",
+      "measure": "rainfall_mm",
+      "coefficient": 0.0013231109791887823,
+      "share_of_line_cost": 0.29257013284802413,
+      "dev_sd_fitting": 92.01452805869944,
+      "dev_p05_p95_fitting": [
+       -116.0,
+       116.0
+      ],
+      "dev_mean_2025": -127.01384024311949,
+      "normal_mean_2025": 1377.7681151537315
+     }
+    ],
+    "mode": "row",
+    "factor_2025_mean": 0.9721112064736936,
+    "factor_2025_p05_p95": [
+     0.910874712191904,
+     1.0193902529513879
+    ]
+   }
+  }
+ },
+ "meta": {
+  "created": "2026-10-28T23:16:17",
+  "git_commit": "0b954ee",
+  "seeds": [
+   0
+  ],
+  "versions": {
+   "python": "3.14.5",
+   "numpy": "2.5.3",
+   "pandas": "3.0.5",
+   "scipy": "1.18.1",
+   "sklearn": "1.9.1",
+   "lightgbm": "4.7.0",
+   "xgboost": "3.4.1",
+   "catboost": "1.2.10"
+  }
+ }
+}
