@@ -32,7 +32,7 @@ python -m venv .venv
 .venv/Scripts/python.exe -m pip install -r requirements-dev.txt
 ```
 
-Then, for Part 1 (about [Part 1 time] on 4 cores):
+Then, for Part 1 (about 30 minutes):
 
 ```bash
 .venv/Scripts/python.exe -I scripts/reproduce.py --part 1
@@ -44,7 +44,7 @@ and for Part 2 (about 7 minutes, Part 1's data build included):
 .venv/Scripts/python.exe -I scripts/reproduce.py --part 2
 ```
 
-Each command runs every stage from the raw files, writes the submission file to `outputs/submissions/` (Part 1) or `outputs/markets/part2/submissions/` (Part 2), and checks its SHA-256 against the file that was uploaded (`outputs/submission_hashes.json`). Logs go to `data/work/reproduce/`. Both commands were run in an empty copy of the repository on 29 October 2026: [result].
+Each command runs every stage from the raw files, writes the submission file to `outputs/submissions/` (Part 1) or `outputs/markets/part2/submissions/` (Part 2), and checks its SHA-256 against the file that was uploaded (`outputs/submission_hashes.json`). Logs go to `data/work/reproduce/`. Both commands were run on 29 October 2026 in an empty copy of the repository with only the raw files added, and both files matched the uploaded files byte for byte.
 
 The exhibits, the write-up PDF and the video slides regenerate from the committed evidence files with:
 
