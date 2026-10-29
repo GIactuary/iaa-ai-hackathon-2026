@@ -72,7 +72,7 @@ Tests: `.venv/Scripts/python.exe -m pytest`.
 | `decisions/judgment_register.md` | Every judgment: options, evidence, recommendation, the actuary's verdict |
 | `decisions/*_design.md` | Test designs, each committed before the test ran; results appended after |
 | `decisions/thresholds.md`, `thresholds_part2.md` | Every threshold, dated before the test that uses it |
-| `ai/ai_log.json` | The AI log: 51 exchange cards (question, AI answer, the actuary's challenge where there was one, test, result, decision) |
+| `ai/ai_log.json` | The AI log: 52 exchange cards (question, AI answer, the actuary's challenge where there was one, test, result, decision) |
 | `ai/prompt_library.md` | The standing prompts for each AI role |
 | `src/` | Data rules, targets, GLM, level chain, weather, validation, evidence files |
 | `scripts/` | Each analysis step, named by phase; `reproduce.py` for the final files |

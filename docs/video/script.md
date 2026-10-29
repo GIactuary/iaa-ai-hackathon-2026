@@ -34,7 +34,7 @@
 | 9. The hold-out decision | 3:20 to 3:50 | Hold-out by line (chart) | Motor holds; buildings loses in three of four readings, so it goes back to Part 1's shape |
 | 10. Reviews that found our inconsistency | 3:50 to 4:20 | Motor by peril | Rejected in round 1 on a pooled rule; on the line rule it passes: +13,443 [4,917, 23,084] |
 | 11. The price of one policy | 4:20 to 4:45 | Build-up for B00229821 (chart) | 359.0 risk + 43.1 cat + 85 fixed = 487.1, ÷ 0.49 = 994.0 CU, against 285.6 charged today |
-| 12. What the AI got wrong | 4:45 to 5:00 | Exhibit 5 | 51 logged exchanges; the AI's errors were caught by tests, reviews and questions |
+| 12. What the AI got wrong | 4:45 to 5:00 | Exhibit 5 | 52 logged exchanges; the AI's errors were caught by tests, reviews and questions |
 
 **7. A new market (2:30 to 2:55).** "Part 2 is an emerging market: two years of data, a much smaller book, ages in bands, no credit score or telematics, and gender, which this market allows. The hard part is the 2025 book: 76 percent of it is new business from a broker portfolio the insurer has just bought. Our training data is 86 percent renewals."
 *About 55 words.*

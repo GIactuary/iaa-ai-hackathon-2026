@@ -71,7 +71,7 @@ def slides() -> list[tuple[str, str, str]]:
         ("What the AI got wrong", "<ul><li>D16: a bug in its own completion weights, found when asked why</li><li>D31: wrong about the cause of the gap</li>"
                                   "<li>D36: a wrong diagnosis of a slow run, exposed by a question</li><li>D37: a threshold its own evidence contradicted</li>"
                                   f"<li>D47 to D49: independent reviews found our rule applied inconsistently</li></ul><p>Gender in motor: men {g['men_over_women']:.2f} times women, everything else equal</p>",
-         "51 logged exchanges. AI built and tested; the judgments were the actuary's"),
+         "52 logged exchanges. AI built and tested; the judgments were the actuary's"),
     ]
 
 
