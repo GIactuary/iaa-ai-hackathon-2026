@@ -1,6 +1,6 @@
 # Appendix E. The AI log
 
-*Rendered from `ai/ai_log.json` by `scripts/build_writeup.py`: 51 exchanges that changed a decision, in order.*
+*Rendered from `ai/ai_log.json` by `scripts/build_writeup.py`: 52 exchanges that changed a decision, in order.*
 
 ### D1. Preparation: modelling approach (Modeller; raised by Actuary)
 
@@ -473,4 +473,13 @@
 **Result.** No competition data, credentials or employer content in any commit. The host-page copy has been in every commit on intake-and-plan since 18 October; the reruns and the leaderboard copy have been on both branches since the first commit; no 2026 code imports reference/. No commit consists only of the removed paths, so none disappears in the rewrite.  
 **Decision.** Actuary, documentation brief round 3 (2026-10-29), finalized: PUB-H (a), PUB-R (a).  
 **Effect.** History rewritten on both branches to drop the four paths; old-to-new commit hashes in docs/history_commit_map.txt; the paths added to .gitignore; reference/2025/README.md says what was removed and why. Nothing pushed; the actuary pushes.  
+
+### D52. Documentation: publication (Filing writer; raised by Actuary)
+
+**Question.** After the history rewrite, the actuary: "can you please create the repo yourself" (REPO (a) had him pushing).  
+**AI answer.** Asked which signed-in GitHub account, the name and the visibility, and recommended creating it private first so the actuary can look it over before anyone can clone it.  
+**Test.** Before the push: the 265 tracked files hold no data file (one CSV, scores only); after it, the remote's main matches the local tip and holds 138 commits.  
+**Result.** Created GIactuary/iaa-ai-hackathon-2026, private, with intake-and-plan pushed as main. The write-up's repository link filled in; the graded part still prints to five pages.  
+**Decision.** Actuary, in session (2026-10-29): account GIactuary, name iaa-ai-hackathon-2026, private first.  
+**Effect.** REPO (a) amended: the AI creates and pushes the repository; it goes public on the actuary's word.  
 

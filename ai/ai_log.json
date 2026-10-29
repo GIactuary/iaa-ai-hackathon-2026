@@ -727,6 +727,20 @@
       "decision": "Actuary, documentation brief round 3 (2026-10-29), finalized: PUB-H (a), PUB-R (a).",
       "effect": "History rewritten on both branches to drop the four paths; old-to-new commit hashes in docs/history_commit_map.txt; the paths added to .gitignore; reference/2025/README.md says what was removed and why. Nothing pushed; the actuary pushes.",
       "section": "4.3"
+    },
+    {
+      "id": "D52",
+      "stage": "Documentation: publication",
+      "role": "Filing writer",
+      "proposed_by": "Actuary",
+      "question": "After the history rewrite, the actuary: \"can you please create the repo yourself\" (REPO (a) had him pushing).",
+      "ai_answer": "Asked which signed-in GitHub account, the name and the visibility, and recommended creating it private first so the actuary can look it over before anyone can clone it.",
+      "challenge": "",
+      "test": "Before the push: the 265 tracked files hold no data file (one CSV, scores only); after it, the remote's main matches the local tip and holds 138 commits.",
+      "result": "Created GIactuary/iaa-ai-hackathon-2026, private, with intake-and-plan pushed as main. The write-up's repository link filled in; the graded part still prints to five pages.",
+      "decision": "Actuary, in session (2026-10-29): account GIactuary, name iaa-ai-hackathon-2026, private first.",
+      "effect": "REPO (a) amended: the AI creates and pushes the repository; it goes public on the actuary's word.",
+      "section": "4.3"
     }
   ]
 }

@@ -1096,7 +1096,7 @@ code { font-size: 8.5pt; }
 <p><strong>How to read this.</strong> The 2025 book is 76% new business against 14% in training, so this factor carries more of the 2025 level than any other judgment. In motor, new business ran 1.143 times what the model expects on the training rows. With 697 new-business claims the claim-count standard gives Z = √(697 ÷ 1,082) = 0.80 and a factor of 1 + 0.80 × (1.143 − 1) = 1.114. The factor weights a ratio of cost, for which the textbook standard is the pure-premium one, 5,575 claims: Z 0.35, factor 1.050. Our validation cannot separate the two: on this shape, in motor, the pure-premium standard wins out of time by +2,944 [165, 5,231] and loses in cross-validation by 1,047 [−4,191, 1,423], and the motor excess comes mostly from one year (1.49 in 2023, 0.85 in 2024). The actuary first chose the pure-premium standard (H-NS (b)), then returned to the count standard after both readings on the 2025 book favoured the larger factor (H-NS (a), decided after a board reading).</p>
 </blockquote>
 <h1>Appendix E. The AI log</h1>
-<p><em>Rendered from <code>ai/ai_log.json</code> by <code>scripts/build_writeup.py</code>: 51 exchanges that changed a decision, in order.</em></p>
+<p><em>Rendered from <code>ai/ai_log.json</code> by <code>scripts/build_writeup.py</code>: 52 exchanges that changed a decision, in order.</em></p>
 <h3>D1. Preparation: modelling approach (Modeller; raised by Actuary)</h3>
 <p><strong>Question.</strong> How should the 2026 model be built, given that the 2026 data will differ from 2025?<br />
 <strong>AI answer.</strong> Proposed keeping the 2025 choices (GLM and LightGBM pair at fixed 50/50, hand-set tree settings, ranges by predicted-value fifth, the 2025 threshold values) as defaults that the 2026 data would have to earn.<br />
@@ -1466,4 +1466,11 @@ code { font-size: 8.5pt; }
 <strong>Test.</strong> Full-history scan (docs/publication_scan.md): every path ever committed and every blob's content, checked for data files, row-level data, host-page copies, credentials, employer content and authors.<br />
 <strong>Result.</strong> No competition data, credentials or employer content in any commit. The host-page copy has been in every commit on intake-and-plan since 18 October; the reruns and the leaderboard copy have been on both branches since the first commit; no 2026 code imports reference/. No commit consists only of the removed paths, so none disappears in the rewrite.<br />
 <strong>Decision.</strong> Actuary, documentation brief round 3 (2026-10-29), finalized: PUB-H (a), PUB-R (a).<br />
-<strong>Effect.</strong> History rewritten on both branches to drop the four paths; old-to-new commit hashes in docs/history_commit_map.txt; the paths added to .gitignore; reference/2025/README.md says what was removed and why. Nothing pushed; the actuary pushes.  </p></body></html>
+<strong>Effect.</strong> History rewritten on both branches to drop the four paths; old-to-new commit hashes in docs/history_commit_map.txt; the paths added to .gitignore; reference/2025/README.md says what was removed and why. Nothing pushed; the actuary pushes.  </p>
+<h3>D52. Documentation: publication (Filing writer; raised by Actuary)</h3>
+<p><strong>Question.</strong> After the history rewrite, the actuary: "can you please create the repo yourself" (REPO (a) had him pushing).<br />
+<strong>AI answer.</strong> Asked which signed-in GitHub account, the name and the visibility, and recommended creating it private first so the actuary can look it over before anyone can clone it.<br />
+<strong>Test.</strong> Before the push: the 265 tracked files hold no data file (one CSV, scores only); after it, the remote's main matches the local tip and holds 138 commits.<br />
+<strong>Result.</strong> Created GIactuary/iaa-ai-hackathon-2026, private, with intake-and-plan pushed as main. The write-up's repository link filled in; the graded part still prints to five pages.<br />
+<strong>Decision.</strong> Actuary, in session (2026-10-29): account GIactuary, name iaa-ai-hackathon-2026, private first.<br />
+<strong>Effect.</strong> REPO (a) amended: the AI creates and pushes the repository; it goes public on the actuary's word.  </p></body></html>
