@@ -182,3 +182,14 @@ The actuary: "Yes, run both", after the motor-by-peril file scored 0.15712 publi
 - **Run order:** K18 first (minutes), then K17 (about 100 tree fits on a million rows; several hours).
 
 Outputs: `scripts/part2_last_tests.py`, `outputs/markets/part2/part2_last_tests.json`.
+
+**K18 and K17 results (29 October)** (`outputs/markets/part2/part2_last_tests.json`). Against C (motor by peril, buildings K0, contents K9+K7b), deviance saved, out of time / cross-validation [95%]:
+
+| Candidate | Motor | Buildings | Contents | Pooled D², out of time / cross-validation |
+|---|---|---|---|---|
+| K18 premium remainder | −7,177 / −176 [−3,673, 3,019] | +3,699 / +4,921 [−13,379, 21,574] | +706 / −40 [−5,797, 5,357] | 0.1442 / 0.1417 (C 0.1447 / 0.1413) |
+| K17 pooled tree | −21,241 / −27,238 [−62,416, −561] | −23,998 / −45,153 [−109,282, 13,306] | +4,030 / +452 [−10,751, 11,746] | 0.1372 / 0.1348 |
+
+Both fail in every line. Hold-out: K18 H1 −785, H2 +1,589 pooled, inside noise; K17 H1 −365, H2 −26,226 [−68,477, 2,997]. K18 repeats Part 1's PM6: the part of the premium our fields do not predict carries nothing we can use. K17, a single tree on both markets with a market flag (34 to 444 trees per fit), is significantly worse in motor and worse in buildings; only contents, where the final shape is already a Part 1 tree, is level. Pricing the emerging market from Part 1's shape with emerging levels beats letting one flexible model learn both markets at once. The final file stands as decided (H-MP (a), H-NS (b)).
+
+**Board (29 October).** The pure-premium file scored 0.15657 public against 0.15712 for the same file with the count standard, the direction of the M2-B check; a move this size is inside the noise of a level read from a third of the rows (level study), so it does not reopen H-NS.
