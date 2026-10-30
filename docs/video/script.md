@@ -7,7 +7,7 @@
 | Scene | Time | Slide | Caption |
 |---|---|---|---|
 | 1. The question | 0:00 to 0:20 | Loss ratio by line | Buildings paid out 1.29 to 1.36 of its premium every year from 2021 to 2024 |
-| 2. Building the target | 0:20 to 0:45 | How the target was built | Nine data rules; claims capped; exposure scaled by expected reporting, IBNR at row level |
+| 2. Building the target | 0:20 to 0:45 | How the target was built | Exposure scaled by expected reporting, IBNR for one policy; written rules repair the data's errors; no record excluded |
 | 3. The keep rule | 0:45 to 1:10 | Exhibit 1, the ladder | Claims history moved ranking D² from 10.02% to 10.34% on 2023; a step stays only if its interval is above zero |
 | 4. The price | 1:10 to 1:40 | The pricing chain | 500 × 1.058 × 1.009 × 0.9996 = 533.5 CU; buildings losses 1.43 times the current premium |
 | 5. The sealed envelope | 1:40 to 2:05 | Exhibit 2, hold-out | Across lines +41,250 on 2023 [2,450, 103,420]; one 11.9M claim is 43.8% of the hold-out's 2023 motor cost |
@@ -15,7 +15,7 @@
 
 **1. The question.** "I'm Bavan Amirthalingam, an actuary, and I made every judgment in this entry. Part 1 put us in the pricing team of an insurer whose buildings book had lost money every year for four years. The job: the expected cost of every 2025 policy, built so it can be filed, explained, and moved to a new market."
 
-**2. Building the target.** "The answer we are scored on isn't in the data. Claims are valued at the end of 2024, so recent years are short. Each row's exposure is scaled by the share of its claims we expect to have been reported: IBNR at the level of one policy. Nine stated rules repair the planted errors, and no record was thrown away."
+**2. Building the target.** "Before any model, two fixes. Claims are valued at the end of 2024, so recent years are not fully reported: we scale each policy's exposure by the share of its claims we expect to be reported by then. That is IBNR for one policy. And the data has errors: exposure entered in days, sum insured a thousand times too large. Written rules repair them; no record was thrown away."
 
 **3. The keep rule.** "Every idea was tested the way a 2025 price is set: fit on earlier years, score the next one. It stayed only if it won in both test years and the win survived 2,000 resamples of customers. Sixty-seven features were tried; three stayed. Claims history, weighted by credibility, gave the largest step."
 

@@ -43,8 +43,8 @@ def slides() -> list[tuple[str, str, str]]:
         ("A technical price for an established book", rows([["Motor", "about 1.0"], ["Buildings", quoted("1.29 to 1.36")], ["Contents", "about 0.84"]], ["Line", "Loss ratio, 2021 to 2024"]),
          "Buildings paid out 1.29 to 1.36 of its premium every year from 2021 to 2024"),
         ("Building the target", "<ul><li>Net cost by loss date; repudiated claims out</li><li>Claims capped: 100k motor, 200k buildings, 30k contents</li>"
-                                "<li>Exposure × expected reporting completion: IBNR at row level</li><li>Nine stated data rules; no record excluded</li></ul>",
-         "The answer we are scored on is not in the data: it has to be built"),
+                                "<li>Exposure × expected reporting completion: IBNR at row level</li><li>Written rules repair the data's errors: exposure entered in days, sum insured 1,000 times too large</li><li>No record excluded</li></ul>",
+         "Before any model, two fixes: recent years not fully reported, and errors in the data"),
         ("The keep rule", rows([["Plain GLM", "9.98%"], ["Claims history with credibility", quoted("10.34%")], ["GLM W2", "10.51%"], ["Blend of families", quoted("10.67%")]],
                                ["Step", "Ranking D², 2023"]),
          "A step stays only if it wins in both test years and its interval is above zero"),
