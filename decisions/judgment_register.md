@@ -1,6 +1,6 @@
 # Judgment register
 
-Status is "Needs your call" until the appointed actuary decides. Only the actuary changes a status to "Decided".
+Status is "Needs your call" until the actuary decides. Only the actuary changes a status to "Decided".
 
 Verdicts marked "brief round 1" or "brief round 2" were recorded by the actuary on the plan brief (https://claude.ai/artifact/PhDnuDVjiDGdT332jEPHz5) and sent on 2026-10-18; exchanges D6 and D7 in `ai/ai_log.json`.
 

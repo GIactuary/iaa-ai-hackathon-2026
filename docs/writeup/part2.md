@@ -1,10 +1,10 @@
 # Part 2: the same pipeline in an emerging market
 
-*Draft for the appointed actuary, 2026-10-28, sized for about 2 of the 5 graded pages. Every number comes from an evidence file in `outputs/markets/part2/` or a decision note in `decisions/`, named under each exhibit. Appendix references (A to C) are to material after page 5.*
+*Draft for the actuary, 2026-10-28, sized for about 2 of the 5 graded pages. Every number comes from an evidence file in `outputs/markets/part2/` or a decision note in `decisions/`, named under each exhibit. Appendix references (A to C) are to material after page 5.*
 
 ## Summary
 
-The emerging market has two years of data, a book a twentieth the size of Part 1's, and a 2025 test book that is 76% new business from an acquired broker portfolio. We priced it by borrowing Part 1's risk shape, fitted on a million developed-market rows, and letting the emerging data set the level and add only what it could prove. Every change had to beat the incumbent out of time and in cross-validation, with a 95% interval above zero. Every candidate change faced one rule; of about twenty tested, two passed. On customers locked away until the end, the borrowed shape held in motor and contents and failed in buildings, so the appointed actuary took buildings back to the plain Part 1 GLM. The final file scored 0.15455 on the public leaderboard, against 0.14266 for our first check file.
+The emerging market has two years of data, a book a twentieth the size of Part 1's, and a 2025 test book that is 76% new business from an acquired broker portfolio. We priced it by borrowing Part 1's risk shape, fitted on a million developed-market rows, and letting the emerging data set the level and add only what it could prove. Every change had to beat the incumbent out of time and in cross-validation, with a 95% interval above zero. Every candidate change faced one rule; of about twenty tested, two passed. On customers locked away until the end, the borrowed shape held in motor and contents and failed in buildings, so the actuary took buildings back to the plain Part 1 GLM. The final file scored 0.15455 on the public leaderboard, against 0.14266 for our first check file.
 
 ## 1. What changed, and what we borrowed
 

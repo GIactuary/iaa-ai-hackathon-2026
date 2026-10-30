@@ -1,6 +1,6 @@
 # Pre-publication scan of the whole git history
 
-*29 October 2026, before the repository is made public (register REPO (a)). Scope: every commit on every branch (125 commits on `main` and `intake-and-plan` at the time of the scan), every path ever committed (259), every blob's content. Nothing has been rewritten or pushed; the clean-up below waits for the appointed actuary's decision.*
+*29 October 2026, before the repository is made public (register REPO (a)). Scope: every commit on every branch (125 commits on `main` and `intake-and-plan` at the time of the scan), every path ever committed (259), every blob's content. Nothing has been rewritten or pushed; the clean-up below waits for the actuary's decision.*
 
 ## Conclusion
 
@@ -33,7 +33,7 @@ Nothing else was found: no competition data, no credentials, no employer names, 
 
 ## Outcome: history rewritten, 29 October 2026
 
-The appointed actuary approved option (a) on both cards (documentation brief round 3, finalized; register PUB-H, PUB-R; exchange D51). The rewrite was run with `git filter-repo` 2.47.0 on both branches, after a full backup of the repository as it stood (a git bundle and a mirror clone, kept outside the repository). It dropped four paths from every commit:
+The actuary approved option (a) on both cards (documentation brief round 3, finalized; register PUB-H, PUB-R; exchange D51). The rewrite was run with `git filter-repo` 2.47.0 on both branches, after a full backup of the repository as it stood (a git bundle and a mirror clone, kept outside the repository). It dropped four paths from every commit:
 
 - `competition/kaggle pages.docx`
 - `reference/2025/winner_reproduction/`

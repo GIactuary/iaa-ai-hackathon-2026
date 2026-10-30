@@ -1,6 +1,6 @@
 # Video outline: Part 1 half (2 minutes 30 seconds)
 
-*Draft for the appointed actuary, 2026-10-20. The graded video is the first 5 minutes; Part 1 takes 0:00 to 2:30 and Part 2 takes 2:30 to 5:00. Narration is written at about 150 words a minute (about 375 words for this half) for the actuary to say in his own words. One exhibit per scene; each carries an on-screen caption that reads it with one real number. Numbers are those in `docs/writeup/part1.md`, with the same sources.*
+*Draft for the actuary, 2026-10-20. The graded video is the first 5 minutes; Part 1 takes 0:00 to 2:30 and Part 2 takes 2:30 to 5:00. Narration is written at about 150 words a minute (about 375 words for this half) for the actuary to say in his own words. One exhibit per scene; each carries an on-screen caption that reads it with one real number. Numbers are those in `docs/writeup/part1.md`, with the same sources.*
 
 | Scene | Time | Exhibit on screen | Caption (how to read it) |
 |---|---|---|---|
@@ -26,7 +26,7 @@ Narration: "Every idea was tested the way a 2025 price is set: fit on earlier ye
 *Source: Exhibit 1.*
 
 **4. The price (1:10 to 1:40).** The pricing chain for one motor row, then the last row of Exhibit 2.
-Narration: "Each line's price is a weighted blend of model families: GLMs, an explainable additive model, and a small boosted correction to the GLM. The level is set separately, from weather-normalised experience, the method the appointed actuary proposed. A 500 CU motor rate becomes 533.5. And the answer to the opening question: expected buildings losses are 1.43 times what the book charges."
+Narration: "Each line's price is a weighted blend of model families: GLMs, an explainable additive model, and a small boosted correction to the GLM. The level is set separately, from weather-normalised experience, the method the actuary proposed. A 500 CU motor rate becomes 533.5. And the answer to the opening question: expected buildings losses are 1.43 times what the book charges."
 *Source: Exhibit 2.*
 
 **5. The sealed envelope (1:40 to 2:05).** Exhibit 3, then a highlight on motor 2023.
@@ -34,11 +34,11 @@ Narration: "Fifteen percent of customers were locked away before any model was f
 *Source: Exhibit 3.*
 
 **6. Where the AI was challenged (2:05 to 2:30).** The D16 card full screen, then the five AI-error rows of Exhibit 4.
-Narration: "AI proposed and tested; the appointed actuary made every decision, and 29 exchanges are logged. When he asked the AI to explain a recommendation, it found a bug in its own code and withdrew it. Eleven exchanges record AI errors, each caught by a check before the final file. The same pipeline now runs on Part 2."
+Narration: "AI proposed and tested; the actuary made every decision, and 29 exchanges are logged. When he asked the AI to explain a recommendation, it found a bug in its own code and withdrew it. Eleven exchanges record AI errors, each caught by a check before the final file. The same pipeline now runs on Part 2."
 *Source: `ai/ai_log.json` D16; Exhibit 4.*
 
 ## Production notes
 
 - Scenes 1 and 2 need two small charts that the write-up does not carry (loss ratio by year; motor completion before and after). Both numbers are already in the brief and the log; the charts should be built from `outputs/` or a script in the repo so they are reproducible.
 - Keep the leaderboard score to one mention at most (0.12908, 5th at the time of writing); the private leaderboard decides the accuracy grade.
-- The narration says "the appointed actuary" in the third person; if the actuary narrates, change it to "I".
+- The narration says "the actuary" in the third person; if the actuary narrates, change it to "I".

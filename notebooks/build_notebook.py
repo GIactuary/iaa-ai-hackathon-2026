@@ -149,7 +149,7 @@ def build(evidence_path: Path | None, out_path: Path, root: Path = ROOT, log_pat
 
 {ph("Title in summary.title: name the business use decided in J1, not the method.")}
 
-**How to read this notebook.** It follows the IAA template (sections 1 to 5). Inside section 3 the model is documented the way a Canadian rate filing justifies a rating model: what the model is for, what data went in, why each choice was made, how it was validated, what changes against the current model, and which judgments the appointed actuary made. Grey boxes state what a reviewer would ask; green boxes explain the technical terms with a worked example; exchange cards show where AI changed a decision and the test that settled it.
+**How to read this notebook.** It follows the IAA template (sections 1 to 5). Inside section 3 the model is documented the way a Canadian rate filing justifies a rating model: what the model is for, what data went in, why each choice was made, how it was validated, what changes against the current model, and which judgments the actuary made. Grey boxes state what a reviewer would ask; green boxes explain the technical terms with a worked example; exchange cards show where AI changed a decision and the test that settled it.
 """)
     md(f"""
 ## 1. Summary
@@ -182,7 +182,7 @@ def build(evidence_path: Path | None, out_path: Path, root: Path = ROOT, log_pat
     md("""
 ## 2. Generative AI integration
 
-AI was used as a team of defined roles, each set up once with a standing prompt (section 5), working inside a loop the appointed actuary controls: a question, an AI proposal, a challenge, a test, the evidence, and a decision the actuary makes. Every exchange that changed a decision is logged as a card beside the analysis it changed. The ledger below lists them all.
+AI was used as a team of defined roles, each set up once with a standing prompt (section 5), working inside a loop the actuary controls: a question, an AI proposal, a challenge, a test, the evidence, and a decision the actuary makes. Every exchange that changed a decision is logged as a card beside the analysis it changed. The ledger below lists them all.
 """)
     code("""
 # ---------- the AI decision log (ai/ai_log.json, "entries"); input hidden on Kaggle ----------
@@ -198,7 +198,7 @@ print(f"{len(AI_LOG)} logged exchanges")
 | Filing writer | Drafts the filing-style documentation and the judgment register | Interpretability, documentation |
 | Plain-language explainer | Writes the green "how to read this" boxes | Explaining outputs |
 | Independent reviewer | A fresh session that did not build the model, asked to break it | Validation |
-| Appointed actuary (human) | Challenges every claim and makes every judgment | |
+| Actuary (human) | Challenges every claim and makes every judgment | |
 """)
     code("""
 from src.exhibits import cards_for, ledger, plot_loop, style_plots
@@ -308,7 +308,7 @@ if EVIDENCE is None:
 
 {ph("Three to five sentences for a stakeholder, written by the actuary after the final run: what drives the outcome, how accurate the model is in real units, where it should not be trusted, what the business should do with it.")}
 
-**Judgment register.** Every decision a number cannot settle. Only the appointed actuary marks a judgment decided.
+**Judgment register.** Every decision a number cannot settle. Only the actuary marks a judgment decided.
 """)
     md(judgments.split("\n", 1)[1] if judgments.startswith("# ") else judgments)
     cards("4")

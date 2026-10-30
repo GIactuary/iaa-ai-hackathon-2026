@@ -1,6 +1,6 @@
-# Video script: five minutes, narrated by the appointed actuary
+# Video script: five minutes, narrated by the actuary
 
-*Draft for the appointed actuary (VID (a): he narrates in his own words over the exhibits). The graded video is the first 5 minutes: Part 1 takes 0:00 to 2:30, Part 2 2:30 to 5:00. Narration runs at about 150 words a minute, about 375 words per half. One slide per scene, in `docs/video/slides.html` (open it in a browser, press F11, arrow keys to move); each slide carries a caption that reads its exhibit with one real number. Every number is in the write-up (`docs/writeup/writeup.md`) with its source. Suggested recording: one take per half, screen and voice, then join.*
+*Draft for the actuary (VID (a): he narrates in his own words over the exhibits). The graded video is the first 5 minutes: Part 1 takes 0:00 to 2:30, Part 2 2:30 to 5:00. Narration runs at about 150 words a minute, about 375 words per half. One slide per scene, in `docs/video/slides.html` (open it in a browser, press F11, arrow keys to move); each slide carries a caption that reads its exhibit with one real number. Every number is in the write-up (`docs/writeup/writeup.md`) with its source. Suggested recording: one take per half, screen and voice, then join.*
 
 ## Part 1 (0:00 to 2:30)
 
@@ -13,7 +13,7 @@
 | 5. The sealed envelope | 1:40 to 2:05 | Exhibit 2, hold-out | Across lines +41,250 on 2023 [2,450, 103,420]; one 11.9M claim is 43.8% of the hold-out's 2023 motor cost |
 | 6. The result | 2:05 to 2:30 | Part 1 result and the D16 card | Private 0.13641, 15th; first 0.13923. Asked to explain its recommendation, the AI found its own bug |
 
-**1. The question.** "I'm the appointed actuary for this entry. Part 1 put us in the pricing team of an insurer whose buildings book had lost money every year for four years. The job: the expected cost of every 2025 policy, built so it can be filed, explained, and moved to a new market."
+**1. The question.** "I'm Bavan Amirthalingam, an actuary, and I made every judgment in this entry. Part 1 put us in the pricing team of an insurer whose buildings book had lost money every year for four years. The job: the expected cost of every 2025 policy, built so it can be filed, explained, and moved to a new market."
 
 **2. Building the target.** "The answer we are scored on isn't in the data. Claims are valued at the end of 2024, so recent years are short. Each row's exposure is scaled by the share of its claims we expect to have been reported: IBNR at the level of one policy. Nine stated rules repair the planted errors, and no record was thrown away."
 

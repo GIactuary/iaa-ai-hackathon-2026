@@ -1,6 +1,6 @@
 # Part 2 build specification
 
-Every constraint below was decided by the appointed actuary. Sources: the post-mortem brief (Y1 to Y4, D32), Y3-T (D33), Y2-T and Y2-T2 (D35, D37), and the Part 2 decisions brief (https://claude.ai/artifact/1iVTKSXB7d6atT6XvrfWkf, P2-C to P2-P on 2026-10-27, D38; P2-E on 2026-10-28, D39). Evidence: `outputs/part2_decision_evidence.json`, `outputs/part2_decision_evidence_extra.json`. Configuration: `config/part2.json`; thresholds: `decisions/thresholds_part2.md` (all dated except `tele_quantiles`, which is not used).
+Every constraint below was decided by the actuary. Sources: the post-mortem brief (Y1 to Y4, D32), Y3-T (D33), Y2-T and Y2-T2 (D35, D37), and the Part 2 decisions brief (https://claude.ai/artifact/1iVTKSXB7d6atT6XvrfWkf, P2-C to P2-P on 2026-10-27, D38; P2-E on 2026-10-28, D39). Evidence: `outputs/part2_decision_evidence.json`, `outputs/part2_decision_evidence_extra.json`. Configuration: `config/part2.json`; thresholds: `decisions/thresholds_part2.md` (all dated except `tele_quantiles`, which is not used).
 
 ## Constraints, in the order the build needs them
 

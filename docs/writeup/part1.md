@@ -1,10 +1,10 @@
 # Part 1: a technical price for an established book
 
-*Draft for the appointed actuary, 2026-10-20, sized for about 2.5 of the 5 graded pages (it measures 2.8 at 10.5 pt on Letter). Every number comes from an evidence file in `outputs/` or a decision note in `decisions/`, named under each exhibit.*
+*Draft for the actuary, 2026-10-20, sized for about 2.5 of the 5 graded pages (it measures 2.8 at 10.5 pt on Letter). Every number comes from an evidence file in `outputs/` or a decision note in `decisions/`, named under each exhibit.*
 
 ## Summary
 
-We priced 2025 motor, buildings and contents with a blend of model families per line, set to a weather-normalised 2025 level. On customers locked away before any model was fitted, the blend beat our working GLM in every line and year and passed the keep rule across lines. The final file scored 0.12908 on the public leaderboard (5th; leader 0.12996), up from 0.11710 for our first baseline. The appointed actuary decided every judgment; of 29 logged exchanges, 11 record an error of the AI's own, each found by a check and corrected.
+We priced 2025 motor, buildings and contents with a blend of model families per line, set to a weather-normalised 2025 level. On customers locked away before any model was fitted, the blend beat our working GLM in every line and year and passed the keep rule across lines. The final file scored 0.12908 on the public leaderboard (5th; leader 0.12996), up from 0.11710 for our first baseline. The actuary decided every judgment; of 29 logged exchanges, 11 record an error of the AI's own, each found by a check and corrected.
 
 ## 1. Purpose and data
 
@@ -54,7 +54,7 @@ More failed than passed: 67 engineered features gave three keepers, five origina
 
 > **How to read this.** The families set the relativities; the three factors set each line's total. A motor row the GLM rates at 500 CU at the 2024 level is priced at 500 × 1.058 × 1.009 × 0.9996 = 533.5 CU: the cost above the cap, the move to the trended 2025 indication, and 2025's realised weather. The last row reads as an expected loss ratio before expenses: buildings losses are expected to exceed the current premium by 43%.
 
-**Level.** The 2025 indication is built peril by peril from weather-normalised experience, the appointed actuary's method (K4): each year's frequency is restated to normal weather, trends are fitted on the restated years (bounded at −5% to +12%), and the result is multiplied by the 2025 weather.
+**Level.** The 2025 indication is built peril by peril from weather-normalised experience, the actuary's method (K4): each year's frequency is restated to normal weather, trends are fitted on the restated years (bounded at −5% to +12%), and the result is multiplied by the 2025 weather.
 
 **Referral.** Rows are flagged when the sum insured is beyond 1.25 times its segment's training maximum, the segment has under 100 training rows, or a weighted family prices more than 30% from the blend. Out of time, flagged rows were no less accurate, so a flag alone does not change the price. Only in motor did a treatment pass the keep rule: 1,516 rows take the W2 GLM's price. Every flag is listed for underwriting review.
 
@@ -83,7 +83,7 @@ The final file refits the frozen pipeline on all customers, restoring claims his
 
 ## 7. How AI was used and challenged
 
-AI worked in roles set by standing prompts (`ai/prompt_library.md`): a data steward run as a separate subagent, a modeller, a filing writer and an independent reviewer. Each decision went to the appointed actuary on a page with options, evidence and a recommendation; he challenged or decided. At his direction no model, setting or threshold was carried over from the 2025 competition (D4), and compute was never a reason to test less (D14).
+AI worked in roles set by standing prompts (`ai/prompt_library.md`): a data steward run as a separate subagent, a modeller, a filing writer and an independent reviewer. Each decision went to the actuary on a page with options, evidence and a recommendation; he challenged or decided. At his direction no model, setting or threshold was carried over from the 2025 competition (D4), and compute was never a reason to test less (D14).
 
 **Exhibit 4. Exchanges that changed the outcome**
 

@@ -25,7 +25,7 @@
 **Decision.** Actuary: model work waits for the 2026 data and starts from the principles, not from code prepared in advance. J-model (D2) stands as the approach.  
 **Effect.** Candidate-model build stopped before any code was written; preparation ends at intake readiness.  
 
-### D4. Preparation: scope of what is carried into 2026 (Appointed actuary; raised by Actuary)
+### D4. Preparation: scope of what is carried into 2026 (Actuary; raised by Actuary)
 
 **Question.** What from the 2025 preparation should the 2026 work start with?  
 **AI answer.** Had built model code on synthetic data that carried 2025 choices: a forward GLM, a LightGBM wrapper with the 2025 settings, a fixed 50/50 pair, 2025 threshold values, and evaluation calculations.  
@@ -42,7 +42,7 @@
 **Decision.** None yet. J1, J-ext, J-weather and J-prem opened at 'Needs your call'.  
 **Effect.** competition/brief.md written; judgment register opened with four items.  
 
-### D6. 0. Intake: plan brief round 1 (Appointed actuary; raised by AI)
+### D6. 0. Intake: plan brief round 1 (Actuary; raised by AI)
 
 **Question.** Twelve plan decisions put to the actuary on the round 1 brief (intended use, target construction, validation, structure, large losses, weather, history, fairness exclusions, current premium, model families, data repairs, external data).  
 **AI answer.** Recommended J1 (a), P1 (a) shape and level apart, P2 (a) out of time, P3 (c) both structures tested, P4 (a) cap and load, J-weather (c), P5 (a), P6 (a), J-prem (a), P7 (a), P8 (a), and J-ext (a) no external data.  
@@ -52,7 +52,7 @@
 **Decision.** Actuary decided eleven items as recommended (J1, P1 to P8, J-weather, J-prem). J-ext stays open pending the research. The AI's research opened three new decisions (P9 trend selection, P10 row-level completion offset, P11 explicit level calibration).  
 **Effect.** Judgment register updated; research saved in docs/research/2026-10-18_round2_research.md; brief round 2 carries J-ext with findings and the three new cards.  
 
-### D7. 0. Intake: plan brief round 2 (Appointed actuary; raised by AI)
+### D7. 0. Intake: plan brief round 2 (Actuary; raised by AI)
 
 **Question.** Four open calls after the round 2 research: J-ext with the market findings, P9 trend by peril, P10 row-level reporting completion, P11 explicit level calibration.  
 **AI answer.** Recommended J-ext (a) leave external data out, since the data uses UK vocabulary but does not behave like the UK (regional climates 6.6 to 17.3 C; real 2025 was a record UK subsidence year while the file's 2025 dry-summer reading is below normal). Recommended P9 (a) per-peril trends with stated breaks, P10 (a) a row completion offset, and P11 (a) an explicit off-balance by line and peril with models compared at a common level.  
@@ -71,7 +71,7 @@
 **Decision.** R5 withdrawn by the AI before use; zero kept as a value. The phase 1 rules as a whole await the actuary (register P8-R).  
 **Effect.** The rule and its test were removed from src/data_rules.py and replaced by a test that zero survives the rules. decisions/data_rules.md records the first proposal and why it failed.  
 
-### D9. 1. Data rules: missed payments and the phase 1 decisions (Appointed actuary; raised by Actuary)
+### D9. 1. Data rules: missed payments and the phase 1 decisions (Actuary; raised by Actuary)
 
 **Question.** Phase 1 rules and the customer snapshot put to the actuary; the actuary asked for a second look at missed payments.  
 **AI answer.** Had cleared missed_payments_12m for use on raw evidence (motor frequency 0.137 with none, 0.217 with three or more; same distribution in train and test; above zero only for monthly payers), without testing whether it only stood in for credit band, payment method or driver profile.  
@@ -119,7 +119,7 @@
 **Decision.** Figures corrected in competition/brief.md, the register (J1, P9), the spec (open item 6) and the phase 5 brief (C1, C4). Finalized documents and earlier log cards are kept as written.  
 **Effect.** The level check against the market is now a reasonableness check, not a gap to explain. X1's load effect is deferred to the final refit, where the actuary confirms it with both figures.  
 
-### D14. 5. Features and model: thresholds (Appointed actuary; raised by AI)
+### D14. 5. Features and model: thresholds (Actuary; raised by AI)
 
 **Question.** Eight phase 5 calls put to the actuary on a decision brief, each with evidence, alternatives and a recommendation: caps, load form, trend bounds, level band, training power, weather adjustment, claims history, engineered features.  
 **AI answer.** Recommended (a) on all eight: caps of 100k, 200k and 30k; a per-peril excess-loss factor in place of the spec's flat load; per-peril trends bounded at -5% to +12% with bodily injury as a step; a +/-3% level band (a 3% miss costs 0.01 to 0.02 D2 points); a power grid; same-address weather multipliers; credibility-weighted history; a reasoned feature list. Several options were costed partly in analyst time or compute.  
@@ -165,7 +165,7 @@
 **Decision.** Reported to the actuary at check-in 2 as a true null, reached through a test the AI designed badly. No re-run.  
 **Effect.** M7 is not in the model. The check-in 2 page records the error and the hand check.  
 
-### D19. 5. Check-in 2: claims history and features kept and dropped (Appointed actuary; raised by AI)
+### D19. 5. Check-in 2: claims history and features kept and dropped (Actuary; raised by AI)
 
 **Question.** Eight calls (L1 to L8): the credibility estimator, policy and declared claims history, the failed history pieces, the motor and buildings additions, the near misses, and five V1 factors that improve their line when removed.  
 **AI answer.** The AI recommended (a) on every card. It disclosed two estimator errors of its own (D17, D18) and recommended dropping five V1 factors on drop-one evidence, keeping every factor that defines cover.  
@@ -174,7 +174,7 @@
 **Decision.** The actuary chose (a) on all eight cards on the check-in 2 page, with no notes.  
 **Effect.** The working base becomes V1 + H-P + H-D in every line, with Poisson-gamma k, plus voluntary excess and vehicle age in motor and trees x clay in buildings. Body type, property type, bedrooms and new business are removed as listed. Customer, address and repudiation history and the near misses go to step 7 as candidates.  
 
-### D20. 5. Check-in 3: model structure and the excess-loss factor (Appointed actuary; raised by AI)
+### D20. 5. Check-in 3: model structure and the excess-loss factor (Actuary; raised by AI)
 
 **Question.** Three calls: the GLM structure (one Tweedie per line or frequency x severity per peril, M1), the excess-loss factor (line or per peril, M2), and whether the 2025 weather applies row by row or as one factor per line (M3).  
 **AI answer.** The AI recommended one Tweedie GLM per line with frequency x severity built in step 7 for motor only (M1 a), the line excess factor everywhere (M2 a, reversing C2's per-peril form on evidence), and the 2025 weather as one factor per line (M3 b). It disclosed that the weather test was added after the scored frames were seen and that the design's per-peril diagnostic proved uninformative.  
@@ -183,7 +183,7 @@
 **Decision.** The actuary chose M1 (a), M2 (a) and M3 (b) on the check-in 3 page, with no notes, and confirmed in the chat.  
 **Effect.** One capped Tweedie GLM per line stays; step 7 builds frequency x severity for motor only. The line excess factor applies everywhere; the 2025 weather enters as one exposure-weighted factor per line, level unchanged.  
 
-### D21. 5. Step 7: model families (Appointed actuary; raised by Actuary)
+### D21. 5. Step 7: model families (Actuary; raised by Actuary)
 
 **Question.** Should the inputs be standardised (z-score) so the penalised optimisation works better?  
 **AI answer.** The AI confirmed that scaling matters only for the penalised GLM: its elastic-net penalty acted on raw coefficients, so rare levels and small-scale terms were penalised unevenly. Trees and the EBM split on order and are unaffected; the W2 GLM's penalty is negligible.  
@@ -211,7 +211,7 @@
 **Decision.** Reported at check-in 4; no decision rests on the invalid test.  
 **Effect.** The GLM stays per line in motor on the step 6 evidence.  
 
-### D24. 5. Check-in 4: model families (Appointed actuary; raised by AI)
+### D24. 5. Check-in 4: model families (Actuary; raised by AI)
 
 **Question.** Three calls: where the held-over factors go in the boosted correction (N1), the motor structure within the families (N2), and whether a boosted correction may enter the final price (N3).  
 **AI answer.** The AI recommended (a) on all three. Each card led with the trade-off in plain pricing terms: a more accurate price against a price read from an adjustment table beside the GLM relativities. The AI disclosed its penalised-GLM frequency x severity error (D23) and the contents blank defect (D22).  
@@ -220,7 +220,7 @@
 **Decision.** The actuary chose (a) on N1, N2 and N3 on the check-in 4 page, with no notes.  
 **Effect.** Step 8 weights the families with F4 including the held-over factors in motor and buildings, per-peril EBM and LightGBM in motor, and the boosted correction allowed into the final price.  
 
-### D25. 5. Check-in 5: family weights and the freeze (Appointed actuary; raised by AI)
+### D25. 5. Check-in 5: family weights and the freeze (Actuary; raised by AI)
 
 **Question.** Freeze the cross-fitted blend of families as the Part 1 model (O1), and mix by plain or log average (O2)?  
 **AI answer.** The AI recommended freezing the blend in all three lines (O1 (a)) and, as the keep rule written first says, a log average in buildings where it passed and a plain average elsewhere (O2 (b)).  
@@ -229,7 +229,7 @@
 **Decision.** The actuary chose O1 (a) and O2 (b) on the check-in 5 page, with no notes.  
 **Effect.** The frozen model: per line, the pooled-weight blend of the families refitted on 2021-2024 (motor 0.666 per-peril EBM and 0.334 GLM with boosted correction; buildings, log average, 0.788 GLM with boosted correction and 0.212 CatBoost; contents 0.910 spline GLM, 0.058 LightGBM and 0.032 EBM), times the decided level chain.  
 
-### D26. 6. Check-in 6: referral and treatment (Appointed actuary; raised by AI)
+### D26. 6. Check-in 6: referral and treatment (Actuary; raised by AI)
 
 **Question.** How should 2025 rows be treated where the model families disagree by more than 30% (Q1), or that sit beyond or at a thin edge of the size evidence (Q2)?  
 **AI answer.** The AI reported that disagreement is not a warning sign in this data: flagged rows were no less reliable out of time. It recommended the W2 GLM's price on flagged motor rows, where that passed the keep rule, keeping the blend in property; and keeping the blend on size referrals, since the models do not use the thin segments (property type and bedrooms were dropped at L8). It first labelled the cards P1 and P2, IDs already held by phase 0 decisions, and renamed them Q1 and Q2 when recording.  
@@ -257,7 +257,7 @@
 **Decision.** No judgment needed: a nil claim has no severity, so it is not counted as a claim that costs something.  
 **Effect.** scripts/freeze_build.py counts only claims with positive cost in the per-peril models; the refit file blend_final_all_v2 was built.  
 
-### D29. 7. Check-in 7: the hold-out and the final file (Appointed actuary; raised by AI)
+### D29. 7. Check-in 7: the hold-out and the final file (Actuary; raised by AI)
 
 **Question.** Confirm the 11.9M bodily injury claim in the motor large-loss load now that its effect is known (U1), and choose the final submission (U2).  
 **AI answer.** The AI showed the hold-out result (the blend beats the W2 GLM in every line and year on 73,227 unseen customers: +41,250 on 2023 [2,450, 103,420], +18,403 on 2024), explained why the plain GLM looks best in motor 2023 (one claim is 43.8% of that cost), and recommended confirming X1 (a) and submitting the refit on all customers.  
@@ -282,7 +282,7 @@
 **Decision.** None yet. Y1 to Y4 put to the actuary in decisions/judgment_register.md.  
 **Effect.** decisions/postmortem_results.md; recommendations for Part 2's inputs, a proposed recoveries data rule, and weather left out.  
 
-### D32. Part 1 post-mortem and Part 2 preparation (Appointed actuary; raised by AI)
+### D32. Part 1 post-mortem and Part 2 preparation (Actuary; raised by AI)
 
 **Question.** How should Part 2 be built in light of the post-mortem: the premium as our fields predict it (Y1), wider tree inputs (Y2), recoveries on open claims (Y3), weather (Y4)?  
 **AI answer.** Recommended (a) on all four: the predicted part of the premium as one GLM term and a tree input, retested on Part 2; every legitimate field for the trees with the family weights deciding; deduct expected recoveries on open claims if Part 2's claims show the same pattern; keep weather as one factor per line.  
@@ -307,7 +307,7 @@
 **Decision.** Y3-T confirmed by the actuary. Y2 built; code_levels_max awaits the actuary (register Y2-T).  
 **Effect.** src/fields.py, scripts/freeze_build.py (behind tree_inputs: wide), build.py merges only the customer fields a market has, R3 maps the emerging construction codes. A Part 2 run is blocked by the W2 GLM's Part 1 fields and by the validation design for two years (SPEC_part2_settings.md, build status).  
 
-### D35. Part 2 build: Y2 tree inputs, code-level threshold (Appointed actuary; raised by AI)
+### D35. Part 2 build: Y2 tree inputs, code-level threshold (Actuary; raised by AI)
 
 **Question.** Y2-T: how many levels may a code have and still enter the trees as a raw category? The AI recommended 20 on the decision brief (https://claude.ai/artifact/33tSXGP97CsbFQtFSUAuW3, round 1).  
 **AI answer.** Recommended 20: in the emerging market, occupation in buildings and contents has 77 of 80 levels under 30 claims and no measurable frequency spread, while every code at or below 20 levels has hundreds of claims per level.  
@@ -327,7 +327,7 @@
 **Decision.** The actuary set code_levels_max to 11 under Y2-T2 (exchange D37).  
 **Effect.** src/validation.py make_folds in linear time (same folds); scripts/y2t_threshold_test.py Part 1 by unit; Part 1 results in decisions/y2t_threshold_test_results.md; register Y2-T2 opened.  
 
-### D37. Part 2 build: Y2 tree inputs, code-level threshold (Appointed actuary; raised by AI)
+### D37. Part 2 build: Y2 tree inputs, code-level threshold (Actuary; raised by AI)
 
 **Question.** Y2-T2: after the Part 1 threshold results contradicted the recorded reason for code_levels_max 20, keep 20 with a corrected reason or set 11?  
 **AI answer.** Recommended (b) 11: it encodes every code with 12 or more levels, which Part 1's capped-cost results support in both scorings, and gives the same emerging model as 20. The threshold then rests on both markets' evidence instead of a reason the test contradicts.  
@@ -336,7 +336,7 @@
 **Decision.** Actuary: "Y2-T2 (b): set code_levels_max to 11, the value Part 1's cost evidence supports. Same emerging model."  
 **Effect.** code_levels_max 11 in decisions/thresholds_part2.md (dated 2026-10-27); register Y2-T2 decided and Y2-T annotated; results file and spec updated.  
 
-### D38. Part 2 build: decisions before the first run (Appointed actuary; raised by AI)
+### D38. Part 2 build: decisions before the first run (Actuary; raised by AI)
 
 **Question.** Fifteen open Part 2 decisions on one brief (https://claude.ai/artifact/1iVTKSXB7d6atT6XvrfWkf, round 1), asked for by the actuary: "If you need any decision, put all the information that I need to understand to make this decision in an HTML artifact and surface to me".  
 **AI answer.** Recommended, card by card: Part 1's risk shape with the emerging level and emerging-only additions (P2-C (b)); out-of-time and cross-validation tests with the interval on cross-validation (P2-V); a 15% hold-out opened once then refit on all rows (P2-H); Part 1's W2 adapted and drop-one tested (P2-G); gender in motor only, where it passes (P2-S); Part 1 caps with a mixed excess-loss factor (P2-L); Part 1's trends (P2-T); Part 1's delay curves with emerging's peril mix (P2-R); the other thresholds re-confirmed (P2-TH); new business as a modelled factor (P2-N); Part 1's blank treatment (P2-B); occupation trimmed and case-folded (P2-O); full tuning (P2-F); an early check file then the final file chosen on own validation (P2-P); ask the host on the comparison-site commission (P2-E).  
@@ -346,7 +346,7 @@
 **Decision.** The actuary chose the recommendation on 14 cards (P2-C, P2-V, P2-H, P2-G, P2-S, P2-L, P2-T, P2-R, P2-TH, P2-N, P2-B, P2-O, P2-F, P2-P) and asked that P2-E be decided without the forum. The AI found none of the 20 reference policies is sold through a comparison site and put P2-E back with options (a) 10%, (b) 13.3%, (c) 20%.  
 **Effect.** Register P2 items decided except P2-E; 31 thresholds dated for the emerging market in decisions/thresholds_part2.md (tele_quantiles left undated, not used). The Part 2 build follows these settings.  
 
-### D39. Part 2 build: expense assumptions for the reference policies (Appointed actuary; raised by Actuary)
+### D39. Part 2 build: expense assumptions for the reference policies (Actuary; raised by Actuary)
 
 **Question.** P2-E, comparison-site commission. Actuary: "I'm not asking anything on the forum. Can we make any decision here?" then "why do we need this? Like the final answer should include the commission and give the premium, or like why do we need it? Are we not just predicting the cost here?"  
 **AI answer.** The Kaggle file is the expected claims cost only; commission enters only the office premium build-up the report must show for 20 reference policies. All 20 are broker (16) or direct (4), whose rates are given, so the missing comparison-site rate is used nowhere. First recommended 13.3% as a stated assumption; revised to stating the rate is not given and not needed.  
@@ -356,7 +356,7 @@
 **Decision.** Actuary: "Yes, go with it." P2-E (d): the write-up states the rate is not given and not needed; no rate is assumed.  
 **Effect.** Register P2-E decided; every card on the Part 2 decisions brief is now decided.  
 
-### D40. Part 2 build: milestone 2, improving the shape and the 2025 level (Appointed actuary; raised by AI)
+### D40. Part 2 build: milestone 2, improving the shape and the 2025 level (Actuary; raised by AI)
 
 **Question.** After the check file scored 0.14266 (24th; leader 0.17303), the actuary: "I want to get as close as possible, and I want you to give you the best analytical work." Three decisions on the milestone 2 brief (https://claude.ai/artifact/5B3nntbwiuU2oH9F6z17gv).  
 **AI answer.** Ten candidates tested under P2-V with the design written before each round. Only K9 plus row-level weather passes. Separately, the 2025 book is 76% new business and the new-business relativity is off in contents (frequency 1.37 [1.10, 1.66]), which the 2024 tests cannot measure. Recommended: adopt the combination with row weather (reopens Y4), a credibility-weighted new-business factor, and one paired public-board check of that factor.  
@@ -366,7 +366,7 @@
 **Decision.** Actuary chose M2-W (a), M2-N (b), M2-B (a) on 2026-10-28, with no notes.  
 **Effect.** Improved file part2_v2_nb-cred_wx-row built by scripts/part2_model_v2.py; Y4 becomes a row-level weather factor for Part 2; the paired check (part2_v2_nb-none_wx-row against part2_v2_nb-cred_wx-row) is run with the rule written before it.  
 
-### D41. Part 2 build: paired public-board check of the new-business factor (M2-B) (Appointed actuary; raised by AI)
+### D41. Part 2 build: paired public-board check of the new-business factor (M2-B) (Actuary; raised by AI)
 
 **Question.** One paired check, rule written before upload (decisions/part2_m2_design.md): keep the credibility-weighted new-business factor unless its public score is lower than the unadjusted file's.  
 **AI answer.** The two files differ only in the new-business factor; the paired difference is mostly the 2025 new-business level, which the 2024 tests cannot measure.  
@@ -376,7 +376,7 @@
 **Decision.** Under the pre-written rule the credibility-weighted factor stays. No further variant is chosen on the public board.  
 **Effect.** part2_v2_nb-cred_wx-row is the incumbent file; the write-up reports all three scores and the rule.  
 
-### D42. Part 2 build: using submissions to fine-tune (Appointed actuary; raised by Actuary)
+### D42. Part 2 build: using submissions to fine-tune (Actuary; raised by Actuary)
 
 **Question.** Actuary: "We can do a lot of submissions here, right? So let's try to fine-tune our model. Let's use this opportunity to fine-tune."  
 **AI answer.** Measured first how noisy the public board is: on random thirds of our 2024 rows one model's D2 spans 0.107 to 0.165, and a buildings change that truly gains +0.0016 looks worse on 39% of thirds, while a motor change (gender, +0.0013) looks worse on 1%. Proposed: judge a variant on the board only if its expected gain exceeds twice its measured paired spread; buildings large-loss changes stay on our own validation.  
@@ -386,7 +386,7 @@
 **Decision.** Actuary: "Yes, then tuning": the rule is adopted (register M2-R), the motor-only premium file is tested on the board under it, then the tuning round runs under P2-V.  
 **Effect.** Board use limited to pre-measured, pre-thresholded checks; motor premium threshold written before upload.  
 
-### D43. Part 2 build: re-rating with credibility (Appointed actuary; raised by Actuary)
+### D43. Part 2 build: re-rating with credibility (Actuary; raised by Actuary)
 
 **Question.** Actuary: "I'm thinking, is there a gain in re-rating this based on GLM? And using credibility factors to apply credibility between part one and part two. Is that a good idea?"  
 **AI answer.** Sound in principle, and already tested in GLM form (K12, one penalty for every factor): the data chose the strongest pull toward Part 1 and the blend still lost; a GLM fitted on emerging rows alone scored D2 -0.33. Motor was the one line where K12 gained (+759; +1,717), so a motor-only re-rate with each factor's own credibility (empirical Bayes on the GLM deviations, customer-clustered standard errors) was worth a clean test. Expected public gain at most +0.0004, far short of the 0.02 gap.  
@@ -396,7 +396,7 @@
 **Decision.** Actuary: "Test motor re-rate". Under the rule written before the run, the incumbent keeps Part 1's relativities in motor.  
 **Effect.** No change to the model. The Part 1 / blend / emerging-only bracket goes into the write-up as the credibility evidence for keeping Part 1's risk shape.  
 
-### D44. Part 2 build: hold-out and final file (Appointed actuary; raised by AI)
+### D44. Part 2 build: hold-out and final file (Actuary; raised by AI)
 
 **Question.** Actuary: "Freeze and open". The hold-out, opened once on a rule written before opening, showed the frozen model slightly below the check file's shape pooled (H1 -987 [-9,648, 7,430]; H2 -11,648 [-46,177, 11,635]), which under that rule left the final file to the actuary.  
 **AI answer.** Read by line across every customer (validation and hold-out are different customers): motor +10,773 and +19,797, contents +11,415 and +14,818, buildings -12,834 and -2,754. Recommended applying the keep rule to all the evidence line by line: keep motor and contents, return buildings to the check file's shape (the K0 every test measured against), and keep Part 1's referral treatment for the 10 referred rows.  
@@ -406,7 +406,7 @@
 **Decision.** Actuary (hold-out brief): H-F (b), the frozen model with buildings at the check file's shape; H-R (a), referred rows keep the model price and are listed for underwriting review.  
 **Effect.** Final file part2_v2_nb-cred_wx-row_mprem_bchk_all.csv. The buildings fire and flood hazards and buildings row weather leave the final model; the write-up states the choice followed the hold-out.  
 
-### D45. Part 2 build: the gap to the leaders (Appointed actuary; raised by Actuary)
+### D45. Part 2 build: the gap to the leaders (Actuary; raised by Actuary)
 
 **Question.** Actuary, after the final file scored 0.15455 (21st; top 0.17353): "how did we ended up so behind? ... is it the intelligence that the model is lacking, or is it some of the decision what we made is not optimal? Is there something we can do to close this bridge as much as possible?"  
 **AI answer.** Measured the level first: one line off by 10% costs at most 0.0008 of D2, and the best level on a random third differs from the other two-thirds by 9% (motor) to 28% (buildings), so neither our level nor a level read from the public board explains or closes a 0.019 gap. The 2025 public score matches our 2024 validation, so nothing broke on the test year. Part of the leaders' lead is likely selection on a noisy third (25 to 41 submissions each against our 6). The one untested modelling lever was a boosted correction learned on emerging rows on top of our model (the pooled challenger K6 had been swapped for K12 to save run time).  
@@ -436,7 +436,7 @@
 **Decision.** Actuary, 2026-10-29: H-MP (a), motor by peril is the final Part 2 shape, reported as decided after the hold-out was opened; WU (a), all six write-up corrections.  
 **Effect.** Final Part 2 motor priced by peril. The write-up states that round 1 judged on a pooled interval and H-F line by line, and that motor by peril was recovered when the line rule was applied back.  
 
-### D48. Part 2 build: new-business credibility standard (Appointed actuary; raised by AI)
+### D48. Part 2 build: new-business credibility standard (Actuary; raised by AI)
 
 **Question.** Two gap reviews found that M2-N weighted a ratio of capped cost with the claim-count standard (1,082 claims) instead of the pure-premium standard, 1,082 x (1 + CV2 of severity).  
 **AI answer.** Ran test N2 inside the validation splits (design committed before the run). It could not separate the standards: in motor, pure premium beat count out of time by 2,932 [138, 5,251] and lost in cross-validation by 816 [-3,495, 1,348]; pooled D2 moved by 0.0005 or less. The AI recommended keeping the count standard and disclosing it, because the one paired board check on the 2025 book favoured the larger factor (count 0.15312 against none 0.15080).  
@@ -446,7 +446,7 @@
 **Decision.** Actuary, 2026-10-29: H-NS (b), the pure-premium standard in all three lines.  
 **Effect.** Final Part 2 file part2_v2_nb-pp_wx-row_mprem_mperil_bchk_all.csv. The write-up states the standard and why.  
 
-### D49. Part 2 build: choosing the final submission (Appointed actuary; raised by Actuary)
+### D49. Part 2 build: choosing the final submission (Actuary; raised by Actuary)
 
 **Question.** After the pure-premium file scored 0.15657 public against 0.15712 for the same file with the count standard, the actuary: "Why we are picking the model that gave a lower score?"  
 **AI answer.** Switch to the count standard. The two standards were equally defensible on our validation (N2 could not separate them), and the AI had recommended the count standard before the pure-premium file was uploaded, on the strength of the earlier M2-B board check. (In chat the AI first said "before any board reading"; that was wrong, since that recommendation itself rested on M2-B, and is corrected here.) The board now pointed the same way twice: the earlier paired check put the count factor 0.0023 above no factor, and the pure-premium factor, between the two, scored 0.00055 below the count factor. Public and private boards are random samples of the same 2025 book, and the factor acts on the 76% that is new business, so a direction seen twice on the public third more likely than not holds on the private rows. The AI also said 0.00055 alone is noise-sized, the expected private difference is small either way, and the change would be made after seeing a board score and must be reported so.  

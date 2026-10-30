@@ -4,7 +4,7 @@ This repo is the entry for the 2026 IAA AI Hackathon on Kaggle. Read this file, 
 
 ## Who you are working with
 
-The user is a Canadian P&C chief actuary (FCAS, FCIA) and the appointed actuary for this entry. He makes every judgment; you propose, test and document. Work as a senior actuarial modeller and thought partner, not a tutor. He knows GLMs, credibility, reserving and rate filings; explain ML terms by analogy to those when needed.
+The user is a Canadian P&C chief actuary (FCAS, FCIA). He makes every judgment for this entry; you propose, test and document. Work as a senior actuarial modeller and thought partner, not a tutor. He knows GLMs, credibility, reserving and rate filings; explain ML terms by analogy to those when needed.
 
 The entry is a public, permanent professional artefact under his name. It must contain no employer names, employer data, employer code or context from his day job.
 

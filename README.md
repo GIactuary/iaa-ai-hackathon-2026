@@ -1,6 +1,6 @@
 # A technical price, built with AI and decided by an actuary
 
-Entry by Bavan Amirthalingam, FCAS, FCIA (appointed actuary for the entry), to the IAA AI-Assisted Hackathon 2026 on Kaggle. Part 1 prices 2025 motor, home buildings and home contents for an established insurer in a developed market. Part 2 prices the same three lines for an emerging market with two years of data and a 2025 book that is 76% new business from an acquired broker portfolio.
+Entry by Bavan Amirthalingam, FCAS, FCIA, to the IAA AI-Assisted Hackathon 2026 on Kaggle. Part 1 prices 2025 motor, home buildings and home contents for an established insurer in a developed market. Part 2 prices the same three lines for an emerging market with two years of data and a 2025 book that is 76% new business from an acquired broker portfolio.
 
 The AI proposed, built and tested; the actuary made every judgment. Each decision is in the judgment register with its options, evidence and verdict, and each exchange that changed a decision is a card in the AI log, including the ones where the AI was wrong.
 
